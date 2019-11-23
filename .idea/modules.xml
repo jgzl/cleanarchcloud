@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/conversion-plantform.iml" filepath="$PROJECT_DIR$/.idea/conversion-plantform.iml" />
       <module fileurl="file://$PROJECT_DIR$/conversion-platform.iml" filepath="$PROJECT_DIR$/conversion-platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway.iml" filepath="$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway-sc/conversion-platform-gateway-sc.iml" filepath="$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway-sc/conversion-platform-gateway-sc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway-zuul/conversion-platform-gateway-zuul.iml" filepath="$PROJECT_DIR$/conversion-platform-gateway/conversion-platform-gateway-zuul/conversion-platform-gateway-zuul.iml" />
     </modules>
   </component>
 </project>
