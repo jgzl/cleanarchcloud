@@ -5,8 +5,6 @@
 package com.dlihaifeng.conversion.platform.gateway.config;
 
 import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,15 +32,15 @@ public class SpringCloudGatewayConfig {
     return new CustomerGatewayFilter();
   }
 
-  @Bean
+/*  @Bean
   public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
     return builder.routes()
         .route(r -> r.path("/customer/**")
             .filters(f -> f.filter(new CustomerGatewayFilter())
                 .addResponseHeader("X-Response-test", "test"))
-            .uri("http://baidu.com:80")
+            .uri("http://httpbin.org:80/get")
             .id("customer_filter_router")
         )
         .build();
-  }
+  }*/
 }
