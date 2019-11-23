@@ -1,66 +1,87 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# Created by .ignore support plugin (hsz.mobi)
+### Go template
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+# Test binary, built with `go test -c`
+*.test
 
-# Generated files
-.idea/**/contentModel.xml
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+# Dependency directories (remove the comment below to include it)
+# vendor/
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+### Java template
+# Compiled class file
+*.class
 
-# Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
-# since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
+# Log file
+*.log
 
-# CMake
-cmake-build-*/
+# BlueJ files
+*.ctxt
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-# File-based project format
-*.iws
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
-# IntelliJ
-out/
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
+### Lua template
+# Compiled Lua sources
+luac.out
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+# luarocks build files
+*.src.rock
+*.zip
+*.tar.gz
 
-# Cursive Clojure plugin
-.idea/replstate.xml
+# Object files
+*.o
+*.os
+*.ko
+*.obj
+*.elf
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+# Precompiled Headers
+*.gch
+*.pch
 
-# Editor-based Rest Client
-.idea/httpRequests
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.def
+*.exp
 
-# Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+/target/
+
