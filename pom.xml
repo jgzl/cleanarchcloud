@@ -5,10 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dlihaifeng</groupId>
-  <artifactId>conversion-plantform</artifactId>
+  <artifactId>conversion-platform</artifactId>
+  <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>conversion-platform-gateway</module>
+  </modules>
 
-  <name>conversion-plantform::根节点</name>
+  <name>conversion-platform::根节点POM</name>
   <url>http://dlihaifeng.com</url>
 
   <properties>
@@ -32,7 +36,7 @@
     <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
     <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
     <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-    <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+    <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
     <spring.version>5.2.0.RELEASE</spring.version>
   </properties>
 
@@ -178,24 +182,40 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven.compiler.version}</version>
-        <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-          <encoding>${maven.compiler.encoding}</encoding>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>${lombok.version}</version>
-            </path>
-            <path>
-              <groupId>org.mapstruct</groupId>
-              <artifactId>mapstruct-processor</artifactId>
-              <version>${mapstruct.version}</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
+          <configuration>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+            <encoding>${maven.compiler.encoding}</encoding>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+              </path>
+              <path>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+              </path>
+            </annotationProcessorPaths>
+          </configuration>
+        </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
