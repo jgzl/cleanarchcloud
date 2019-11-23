@@ -85,4 +85,4 @@ luac.out
 *.iml
 
 /target/
-
+/.idea/*
