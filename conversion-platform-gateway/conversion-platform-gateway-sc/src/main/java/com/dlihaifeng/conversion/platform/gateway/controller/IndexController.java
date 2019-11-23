@@ -22,7 +22,7 @@ public class IndexController {
 
   @RequestMapping("ping")
   public Mono<String> ping(ServerHttpRequest serverHttpRequest) {
-    log.info("serverRequest:{}", serverHttpRequest);
+    log.info("serverRequest:{}", serverHttpRequest.getURI());
     return Mono.just("pong");
   }
 }

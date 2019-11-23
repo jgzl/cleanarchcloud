@@ -12,11 +12,12 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: remoteaddr_route
+        - id: api
           uri: http://api.192.168.0.232.nip.io/oauth/login/
+          routeId: http://api.192.168.0.232.nip.io/oauth/login/
           predicates:
             - Path=/test/**
           #- Demo=/demo/**
           filters:
             - Customer=true
-            - StripPrefix=1
+          #- StripPrefix=1
