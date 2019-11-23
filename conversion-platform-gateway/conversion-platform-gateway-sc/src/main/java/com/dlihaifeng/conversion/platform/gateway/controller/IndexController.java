@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019-2019
+ */
+
 package com.dlihaifeng.conversion.platform.gateway.controller;
 
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -15,6 +19,7 @@ import reactor.core.publisher.Mono;
 @Controller
 @ResponseBody
 public class IndexController {
+
   @RequestMapping("ping")
   public Mono<String> ping(ServerHttpRequest serverHttpRequest) {
     log.info("serverRequest:{}", serverHttpRequest);
