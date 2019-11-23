@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ReadinessHealthIndicator extends AbstractHealthIndicator {
   @Override
   protected void doHealthCheck(Builder builder) {
-    builder.withDetail("usercount", 10)
-        .withDetail("userstatus", "up").up().build();
+    builder.withDetail("timestamp", System.currentTimeMillis())
+        .withDetail("IP", "127.0.0.1").up().build();
   }
 }
