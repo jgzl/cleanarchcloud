@@ -8,3 +8,12 @@ management:
       show-details: always
 server:
   port: 8081
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: remoteaddr_route
+          uri: http://example.org
+          predicates:
+            - Path=/foo/**
+            - Demo=/demo/**
