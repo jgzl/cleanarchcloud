@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.dlihaifeng.conversion.platform.gateway.feign.service.DemoRemoteService;
+
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
@@ -24,6 +26,9 @@ public class IndexController {
 
   @Autowired
   private RestTemplate restTemplate;
+
+  @Autowired
+  private DemoRemoteService demoRemoteService;
 
   /**
    * http://localhost:8081/demo
@@ -43,7 +48,7 @@ public class IndexController {
 
   @RequestMapping("test")
   public Mono<String> test(ServerHttpRequest serverHttpRequest) {
-    log.info("test_url:{}", serverHttpRequest.getURI());
-    return Mono.just("test");
+    log.info("demo service port:{}", demoRemoteService.getServerPort());
+    return Mono.just("demo service port:" + demoRemoteService.getServerPort());
   }
 }
