@@ -25,7 +25,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.version>3.8.1</maven.compiler.version>
-    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    <maven.resources.version>3.1.0</maven.resources.version>
+    <maven.encoding>UTF-8</maven.encoding>
     <bootstrap.swagger.version>1.9.6</bootstrap.swagger.version>
     <cxf.rs.version>3.3.4</cxf.rs.version>
     <cxf.rs.json>2.10.1</cxf.rs.json>
@@ -190,7 +191,7 @@
           <configuration>
             <source>${maven.compiler.source}</source>
             <target>${maven.compiler.target}</target>
-            <encoding>${maven.compiler.encoding}</encoding>
+            <encoding>${maven.encoding}</encoding>
             <annotationProcessorPaths>
               <path>
                 <groupId>org.projectlombok</groupId>
@@ -205,6 +206,14 @@
             </annotationProcessorPaths>
           </configuration>
         </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven.resources.version}</version>
+        <configuration>
+          <encoding>${maven.encoding}</encoding>
+        </configuration>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>

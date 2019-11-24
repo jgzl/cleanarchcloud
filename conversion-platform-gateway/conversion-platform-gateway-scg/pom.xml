@@ -16,11 +16,6 @@
   <description>conversion-platform::SpringCloudGateway网关</description>
 
   <dependencies>
-    <!--    <dependency>
-          <groupId>com.dlihaifeng</groupId>
-          <artifactId>conversion-platform-common-check-starter</artifactId>
-          <version>${project.parent.version}</version>
-        </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
