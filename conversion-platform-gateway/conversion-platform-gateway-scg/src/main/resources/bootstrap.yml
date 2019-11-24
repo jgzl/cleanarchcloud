@@ -1,3 +1,5 @@
+server:
+  port: ${random.int[8000,8010]}
 spring:
   application:
     name: ${project.artifactId}
@@ -7,5 +9,7 @@ spring:
       config:
         namespace: 9b47670a-29b0-4760-9f86-2c0fe8b688ad
         file-extension: yaml
+        shared-dataids: common.yaml
+        refreshable-dataids: common.yaml
       discovery:
         namespace: 9b47670a-29b0-4760-9f86-2c0fe8b688ad
