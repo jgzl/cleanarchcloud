@@ -3,16 +3,16 @@ server:
 spring:
   shardingsphere:
     datasource:
-      names: odb,odb0,odb1,odb2,odb3,odb4,odb5,odb6,odb7,odb0-slave,odb1-slave,odb2-slave,odb3-slave,odb4-slave,odb5-slave,odb6-slave,odb7-slave
+      names: odb,odb-slave,odb0,odb1,odb2,odb3,odb4,odb5,odb6,odb7,odb0-slave,odb1-slave,odb2-slave,odb3-slave,odb4-slave,odb5-slave,odb6-slave,odb7-slave
       odb:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       odb-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
@@ -123,7 +123,7 @@ spring:
       default-data-source-name: odb
       default-database-strategy:
         inline:
-          algorithm-expression: ds->{shop_id % 8}
+          algorithm-expression: ds$->{shop_id % 8}
           sharding-column: shop_id
       master-slave-rules:
         ds0:
@@ -152,7 +152,7 @@ spring:
           slave-data-source-names: odb7-slave
       tables:
         o_order:
-          actual-data-nodes: ds$->{0..1}.o_order$->{0..1}
+          actual-data-nodes: ds$->{0..7}.o_order$->{0..1}
           key-generator:
             column: id
             type: SNOWFLAKE
@@ -161,7 +161,7 @@ spring:
               algorithm-expression: o_order$->{id % 2}
               sharding-column: id
         o_order_item:
-          actual-data-nodes: ds$->{0..1}.o_order_item$->{0..1}
+          actual-data-nodes: ds$->{0..7}.o_order_item$->{0..1}
           key-generator:
             column: id
             type: SNOWFLAKE

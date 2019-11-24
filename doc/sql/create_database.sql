@@ -1,0 +1,9 @@
+create database odb charset utf8mb4;
+create database odb0 charset utf8mb4;
+create database odb1 charset utf8mb4;
+create database odb2 charset utf8mb4;
+create database odb3 charset utf8mb4;
+create database odb4 charset utf8mb4;
+create database odb5 charset utf8mb4;
+create database odb6 charset utf8mb4;
+create database odb7 charset utf8mb4;
