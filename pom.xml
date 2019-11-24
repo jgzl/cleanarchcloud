@@ -31,13 +31,14 @@
     <bootstrap.swagger.version>1.9.6</bootstrap.swagger.version>
     <cxf.rs.version>3.3.4</cxf.rs.version>
     <cxf.rs.json>2.10.1</cxf.rs.json>
-    <druid.starter.version>1.1.10</druid.starter.version>
+    <druid.starter.version>1.1.21</druid.starter.version>
     <flowable.starter.version>6.4.2</flowable.starter.version>
     <guava.version>27.0.1-jre</guava.version>
     <hutool.version>4.5.10</hutool.version>
     <lombok.version>1.18.10</lombok.version>
     <mybatisplus.starter.version>3.1.1</mybatisplus.starter.version>
     <smart.doc.version>1.7.5</smart.doc.version>
+    <shardingjdbc.starter.version>4.0.0-RC2</shardingjdbc.starter.version>
 
     <!-- bom依赖配置管理 -->
     <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
@@ -121,6 +122,11 @@
         <groupId>com.baomidou</groupId>
         <artifactId>mybatis-plus-boot-starter</artifactId>
         <version>${mybatisplus.starter.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.shardingsphere</groupId>
+        <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+        <version>${shardingjdbc.starter.version}</version>
       </dependency>
       <dependency>
         <groupId>com.alibaba</groupId>

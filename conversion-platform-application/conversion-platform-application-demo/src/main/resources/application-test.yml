@@ -1,2 +1,171 @@
 server:
   port: 8020
+spring:
+  shardingsphere:
+    datasource:
+      names: odb,odb0,odb1,odb2,odb3,odb4,odb5,odb6,odb7,odb0-slave,odb1-slave,odb2-slave,odb3-slave,odb4-slave,odb5-slave,odb6-slave,odb7-slave
+      odb:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb0-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb1-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb2:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb2-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb3:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb3-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb4:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb4-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb5:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb5-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb6:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb6-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb7:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      odb7-slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+    props:
+      executor:
+        size: 4
+      sql:
+        show: true
+    sharding:
+      binding-tables: o_order,o_order_item
+      broadcast-tables: o_dict
+      default-data-source-name: odb
+      default-database-strategy:
+        inline:
+          algorithm-expression: ds->{shop_id % 8}
+          sharding-column: shop_id
+      master-slave-rules:
+        ds0:
+          master-data-source-name: odb0
+          slave-data-source-names: odb0-slave
+        ds1:
+          master-data-source-name: odb1
+          slave-data-source-names: odb1-slave
+        ds2:
+          master-data-source-name: odb2
+          slave-data-source-names: odb2-slave
+        ds3:
+          master-data-source-name: odb3
+          slave-data-source-names: odb3-slave
+        ds4:
+          master-data-source-name: odb4
+          slave-data-source-names: odb4-slave
+        ds5:
+          master-data-source-name: odb5
+          slave-data-source-names: odb5-slave
+        ds6:
+          master-data-source-name: odb6
+          slave-data-source-names: odb6-slave
+        ds7:
+          master-data-source-name: odb7
+          slave-data-source-names: odb7-slave
+      tables:
+        o_order:
+          actual-data-nodes: ds$->{0..1}.o_order$->{0..1}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+          table-strategy:
+            inline:
+              algorithm-expression: o_order$->{id % 2}
+              sharding-column: id
+        o_order_item:
+          actual-data-nodes: ds$->{0..1}.o_order_item$->{0..1}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+          table-strategy:
+            inline:
+              algorithm-expression: o_order_item$->{order_id % 2}
+              sharding-column: order_id
