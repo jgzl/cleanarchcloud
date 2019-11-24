@@ -46,6 +46,11 @@ public class IndexController {
     return Mono.just("pong");
   }
 
+  /**
+   * 使用openfeign调用demoservice相关服务
+   * @param serverHttpRequest
+   * @return
+   */
   @RequestMapping("test")
   public Mono<String> test(ServerHttpRequest serverHttpRequest) {
     log.info("demo service port:{}", demoRemoteService.getServerPort());
