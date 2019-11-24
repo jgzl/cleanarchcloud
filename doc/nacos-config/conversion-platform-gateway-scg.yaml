@@ -1,20 +1,11 @@
-server:
-  port: 8081
-management:
-  endpoints:
-    web:
-      exposure:
-        include: ['*']
-  endpoint:
-    health:
-      show-details: always
 spring:
   cloud:
     gateway:
+      default-filters:
       routes:
-        - id: api
-          uri: http://api.192.168.0.232.nip.io/oauth/login/
+        - id: cpa-demo
+          uri: lb://conversion-platform-application-demo
           predicates:
-            - Path=/test/**
+            - Path=/demo/**
           filters:
             - StripPrefix=1
