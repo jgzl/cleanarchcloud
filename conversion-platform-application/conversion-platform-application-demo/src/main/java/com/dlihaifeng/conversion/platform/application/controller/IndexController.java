@@ -45,7 +45,7 @@ public class IndexController {
   }
 
   @RequestMapping("/order")
-  public String createOrder() {
+  public List createOrder() {
     List<OrderDAO> orders = Lists.newArrayListWithCapacity(1300);
     List<OrderItemDAO> orderItems = Lists.newArrayListWithCapacity(1300);
     for (long i = 0; i < 1000; i++) {
@@ -64,6 +64,7 @@ public class IndexController {
       orderItems.add(orderItemDAO);
     });
     orderItemService.saveBatch(orderItems);
-    return "success";
+    List<OrderDAO> shopIds = orderService.query().ge("shop_id", 2).list();
+    return shopIds;
   }
 }
