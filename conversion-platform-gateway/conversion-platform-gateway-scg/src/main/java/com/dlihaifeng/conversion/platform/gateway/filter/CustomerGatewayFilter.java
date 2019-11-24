@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2019-2019
- */
+ *//*
+
 
 package com.dlihaifeng.conversion.platform.gateway.filter;
 
@@ -15,10 +16,12 @@ import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Mono;
 
+*/
 /**
  * 统计某个或者某种路由的处理时长
  * @author lihaifeng
- */
+ *//*
+
 public class CustomerGatewayFilter implements GatewayFilter, Ordered {
 
   private static final Logger log = LoggerFactory.getLogger(CustomerGatewayFilter.class);
@@ -41,4 +44,4 @@ public class CustomerGatewayFilter implements GatewayFilter, Ordered {
   public int getOrder() {
     return 0;
   }
-}
+}*/

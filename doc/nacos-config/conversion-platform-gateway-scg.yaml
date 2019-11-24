@@ -1,3 +1,5 @@
+server:
+  port: 8081
 management:
   endpoints:
     web:
@@ -6,18 +8,13 @@ management:
   endpoint:
     health:
       show-details: always
-server:
-  port: 8081
 spring:
   cloud:
     gateway:
       routes:
         - id: api
           uri: http://api.192.168.0.232.nip.io/oauth/login/
-          routeId: http://api.192.168.0.232.nip.io/oauth/login/
           predicates:
             - Path=/test/**
-          #- Demo=/demo/**
           filters:
-            - Customer=true
-          #- StripPrefix=1
+            - StripPrefix=1

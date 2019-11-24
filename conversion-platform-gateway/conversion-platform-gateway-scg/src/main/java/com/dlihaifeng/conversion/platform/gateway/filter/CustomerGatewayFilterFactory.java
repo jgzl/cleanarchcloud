@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2019-2019
- */
+ *//*
+
 
 package com.dlihaifeng.conversion.platform.gateway.filter;
 
@@ -58,9 +59,11 @@ public class CustomerGatewayFilterFactory extends AbstractGatewayFilterFactory<C
   }
 
   public static class Config {
-    /**
+    */
+/**
      * 控制是否开启统计
-     */
+ *//*
+
     private boolean enabled;
 
     public Config() {
@@ -75,3 +78,4 @@ public class CustomerGatewayFilterFactory extends AbstractGatewayFilterFactory<C
     }
   }
 }
+*/

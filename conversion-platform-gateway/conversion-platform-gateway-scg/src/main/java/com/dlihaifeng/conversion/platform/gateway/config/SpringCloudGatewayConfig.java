@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2019-2019
- */
+ *//*
+
 
 package com.dlihaifeng.conversion.platform.gateway.config;
 
@@ -12,9 +13,11 @@ import com.dlihaifeng.conversion.platform.gateway.filter.CustomerGatewayFilter;
 import com.dlihaifeng.conversion.platform.gateway.filter.RequestGlobalFilter;
 import com.dlihaifeng.conversion.platform.gateway.predicate.DemoRoutePredicateFactory;
 
+*/
 /**
  * @author lihaifeng
- */
+ *//*
+
 @Configuration
 public class SpringCloudGatewayConfig {
   @Bean
@@ -32,6 +35,7 @@ public class SpringCloudGatewayConfig {
     return new CustomerGatewayFilter();
   }
 
+*/
 /*  @Bean
   public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
     return builder.routes()
@@ -42,5 +46,7 @@ public class SpringCloudGatewayConfig {
             .id("customer_filter_router")
         )
         .build();
-  }*/
+  }*//*
+
 }
+*/

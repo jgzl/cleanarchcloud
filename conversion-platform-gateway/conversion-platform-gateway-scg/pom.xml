@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2019-2019
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -7,16 +11,16 @@
     <artifactId>conversion-platform-gateway</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>conversion-platform-gateway-sc</artifactId>
+  <artifactId>conversion-platform-gateway-scg</artifactId>
   <name>conversion-platform::SpringCloudGateway网关</name>
   <description>conversion-platform::SpringCloudGateway网关</description>
 
   <dependencies>
-    <dependency>
-      <groupId>com.dlihaifeng</groupId>
-      <artifactId>conversion-platform-common-check-starter</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
+    <!--    <dependency>
+          <groupId>com.dlihaifeng</groupId>
+          <artifactId>conversion-platform-common-check-starter</artifactId>
+          <version>${project.parent.version}</version>
+        </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
