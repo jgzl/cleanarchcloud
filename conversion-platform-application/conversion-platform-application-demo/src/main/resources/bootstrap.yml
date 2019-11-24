@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ${project.artifactId}
+  cloud:
+    nacos:
+      server-addr: 106.14.155.108:8848
+      config:
+        namespace: 9b47670a-29b0-4760-9f86-2c0fe8b688ad
+        file-extension: yaml
+      discovery:
+        namespace: 9b47670a-29b0-4760-9f86-2c0fe8b688ad

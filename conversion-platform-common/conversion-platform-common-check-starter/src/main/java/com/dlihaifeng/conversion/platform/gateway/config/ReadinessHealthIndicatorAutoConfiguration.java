@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019-2019
+ */
+
 package com.dlihaifeng.conversion.platform.gateway.config;
 
 import org.springframework.boot.actuate.autoconfigure.health.CompositeHealthIndicatorConfiguration;

@@ -8,26 +8,17 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.dlihaifeng</groupId>
-    <artifactId>conversion-platform-gateway</artifactId>
+    <artifactId>conversion-platform-application</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>conversion-platform-gateway-zuul</artifactId>
-  <name>conversion-platform::Zuul网关</name>
-  <description>conversion-platform::Zuul网关</description>
+  <artifactId>conversion-platform-application-demo</artifactId>
+  <name>conversion-platform::Demo服务</name>
+  <description>conversion-platform::Demo服务</description>
 
   <dependencies>
     <dependency>
-      <groupId>com.dlihaifeng</groupId>
-      <artifactId>conversion-platform-common-check-starter</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

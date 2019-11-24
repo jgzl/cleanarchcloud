@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2019-2019
- */
+ *//*
+
 
 package com.dlihaifeng.conversion.platform.gateway.predicate;
 
@@ -25,9 +26,11 @@ import org.springframework.web.util.pattern.PathPatternParser;
 
 import lombok.extern.slf4j.Slf4j;
 
+*/
 /**
  * @author lihaifeng
- */
+ *//*
+
 @Slf4j
 public class DemoRoutePredicateFactory extends AbstractRoutePredicateFactory<DemoRoutePredicateFactory.Config> {
 
@@ -153,3 +156,4 @@ public class DemoRoutePredicateFactory extends AbstractRoutePredicateFactory<Dem
     }
   }
 }
+*/

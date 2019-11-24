@@ -12,14 +12,13 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>conversion-platform-gateway</artifactId>
+  <artifactId>conversion-platform-application</artifactId>
   <packaging>pom</packaging>
-  <name>conversion-platform::网关组件POM</name>
-  <description>conversion-platform::网关组件POM</description>
+  <name>conversion-platform::应用组件POM</name>
+  <description>conversion-platform::应用组件POM</description>
 
   <modules>
-    <module>conversion-platform-gateway-zuul</module>
-    <module>conversion-platform-gateway-scg</module>
+    <module>conversion-platform-application-demo</module>
   </modules>
 
   <dependencies>

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019-2019
+ */
+
 package com.dlihaifeng.conversion.platform.gateway.healthindicator;
 
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
