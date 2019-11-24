@@ -1,3 +1,12 @@
+drop database if exists odb;
+drop database if exists odb0;
+drop database if exists odb1;
+drop database if exists odb2;
+drop database if exists odb3;
+drop database if exists odb4;
+drop database if exists odb5;
+drop database if exists odb6;
+drop database if exists odb7;
 create database odb charset utf8mb4;
 create database odb0 charset utf8mb4;
 create database odb1 charset utf8mb4;
