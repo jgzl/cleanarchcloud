@@ -64,7 +64,7 @@ public class IndexController {
       orderItems.add(orderItemDAO);
     });
     orderItemService.saveBatch(orderItems);
-    List<OrderDAO> shopIds = orderService.query().ge("shop_id", 2).list();
+    List<OrderDAO> shopIds = orderService.query().eq("shop_id", 2).list();
     return shopIds;
   }
 }
