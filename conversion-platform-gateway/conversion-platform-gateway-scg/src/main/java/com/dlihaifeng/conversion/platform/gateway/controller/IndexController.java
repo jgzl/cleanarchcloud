@@ -29,7 +29,7 @@ public class IndexController {
    * http://localhost:8081/demo
    * @return
    */
-  @RequestMapping("/demo")
+  @RequestMapping("/demo-rest")
   public Mono<String> demo() {
     String result = restTemplate.getForObject("http://conversion-platform-application-demo/ping", String.class);
     return Mono.just(result);

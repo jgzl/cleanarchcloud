@@ -32,12 +32,10 @@ public class SpringCloudGatewayConfig {
     @Bean
     public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
       return builder.routes()
-          .route(r -> r.path("/customer/**")
-              .filters(f -> f.filter(new CustomerGatewayFilter())
-                  .addResponseHeader("X-Response-test", "test"))
-              .uri("http://httpbin.org:80/get")
-              .id("customer_filter_router")
-          )
+          .route("demo_route",
+              r -> r.path("/demodemo")
+                  .uri("lb://conversion-platform-application-demo/")
+                  .filters())
           .build();
     }*/
 
