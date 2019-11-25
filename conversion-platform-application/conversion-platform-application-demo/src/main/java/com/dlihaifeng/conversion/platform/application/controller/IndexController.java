@@ -11,8 +11,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dlihaifeng.conversion.platform.application.model.bo.OrderBO;
 import com.dlihaifeng.conversion.platform.application.model.dao.OrderDAO;
@@ -22,16 +23,14 @@ import com.dlihaifeng.conversion.platform.application.service.IOrderItemService;
 import com.dlihaifeng.conversion.platform.application.service.IOrderService;
 import com.google.common.collect.Lists;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
  */
-@Api(value = "主页")
 @Slf4j
-@RestController
+@Controller
+@ResponseBody
 public class IndexController {
 
   @Autowired
@@ -43,8 +42,7 @@ public class IndexController {
   @Autowired
   private IOrderItemService orderItemService;
 
-  @ApiOperation(value = "存活接口，心跳接口")
-  @GetMapping("ping")
+  @RequestMapping("ping")
   public String ping() {
     log.info("ping_url:{}", environment.getProperty("server.port"));
     return environment.getProperty("server.port");
@@ -54,8 +52,7 @@ public class IndexController {
    * 🈚️参创建订单
    * @return
    */
-  @ApiOperation(value = "无参创建订单")
-  @GetMapping("/orderWithNoArgs")
+  @RequestMapping("/orderWithNoArgs")
   public List createOrderWithNoArguments() {
     List<OrderDAO> orders = Lists.newArrayListWithCapacity(1300);
     List<OrderItemDAO> orderItems = Lists.newArrayListWithCapacity(1300);
@@ -84,8 +81,7 @@ public class IndexController {
    * @param orderVO
    * @return
    */
-  @ApiOperation(value = "通过VO视图对象创建订单对象")
-  @GetMapping("/createOrders")
+  @RequestMapping("/createOrders")
   public List<OrderDAO> createOrders(@Valid OrderVO orderVO) {
     List<OrderBO> orderVOs = orderService.createOrderByVO(orderVO);
     orderVOs.forEach(System.out::println);
