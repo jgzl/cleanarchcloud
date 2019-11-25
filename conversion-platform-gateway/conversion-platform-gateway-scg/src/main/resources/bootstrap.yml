@@ -1,3 +1,17 @@
+server:
+  port: 8000
 spring:
   profiles:
-    active: dev
+    active: ${env.profile}
+  application:
+    name: ${project.artifactId}
+  cloud:
+    nacos:
+      server-addr: ${env.nacos.address}
+      config:
+        namespace: ${env.nacos.namespace}
+        file-extension: ${env.nacos.fileext}
+        shared-dataids: ${env.nacos.share}
+        refreshable-dataids: ${env.nacos.refresh}
+      discovery:
+        namespace: ${env.nacos.namespace}
