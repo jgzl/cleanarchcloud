@@ -43,6 +43,7 @@ public class IndexController {
   private IOrderItemService orderItemService;
 
   @GetMapping("ping")
+  @ApiOperation(value = "存活心跳接口")
   public String ping() {
     log.info("ping_url:{}", environment.getProperty("server.port"));
     return environment.getProperty("server.port");
