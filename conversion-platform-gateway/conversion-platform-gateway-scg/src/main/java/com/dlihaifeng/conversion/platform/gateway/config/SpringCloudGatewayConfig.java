@@ -14,31 +14,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @Configuration
 public class SpringCloudGatewayConfig {
-  /*  @Bean
-    public RoutePredicateFactory routePredicateFactory() {
-      return new DemoRoutePredicateFactory();
-    }
-
-    @Bean
-    public RequestGlobalFilter requestGatewayFilter() {
-      return new RequestGlobalFilter();
-    }
-
-    @Bean
-    public CustomerGatewayFilter customerGatewayFilter() {
-      return new CustomerGatewayFilter();
-    }
-
-    @Bean
-    public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
-      return builder.routes()
-          .route("demo_route",
-              r -> r.path("/demodemo")
-                  .uri("lb://conversion-platform-application-demo/")
-                  .filters())
-          .build();
-    }*/
-
   /**
    * ribbon负载均衡
    * @return
