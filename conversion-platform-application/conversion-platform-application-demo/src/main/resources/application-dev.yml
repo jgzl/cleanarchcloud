@@ -1,2 +1,32 @@
+#主从读写分离配置
 server:
-  port: ${random.int[8010,8020]}
+  port: 8020
+spring:
+  shardingsphere:
+    dataSource:
+      ds-master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      ds-slave0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      ds-slave1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        username: root
+      names: ds-master,ds-slave0,ds-slave1
+    props:
+      sql:
+        show: true
+    masterslave:
+      name: ms
+      master-data-source-name: ds-master
+      slave-data-source-names: ds-slave0,ds-slave1

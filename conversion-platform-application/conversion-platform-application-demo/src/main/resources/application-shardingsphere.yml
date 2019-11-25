@@ -1,3 +1,4 @@
+#读写分离加数据分片
 server:
   port: 8020
 spring:
