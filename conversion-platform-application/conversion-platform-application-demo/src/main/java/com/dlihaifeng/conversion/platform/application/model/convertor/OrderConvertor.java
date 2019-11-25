@@ -11,6 +11,7 @@ import com.dlihaifeng.conversion.platform.application.model.bo.OrderBO;
 import com.dlihaifeng.conversion.platform.application.model.bo.OrderItemBO;
 import com.dlihaifeng.conversion.platform.application.model.dao.OrderDAO;
 import com.dlihaifeng.conversion.platform.application.model.dao.OrderItemDAO;
+import com.dlihaifeng.conversion.platform.application.model.vo.OrderVO;
 
 /**
  * @author lihaifeng
@@ -27,7 +28,7 @@ public interface OrderConvertor {
   @Mappings({
       @Mapping(source = "id", target = "orderId")
   })
-  OrderBO convert(OrderDAO orderDAO);
+  OrderBO convertDAO2BO(OrderDAO orderDAO);
 
   /**
    * dao->bo
@@ -37,12 +38,29 @@ public interface OrderConvertor {
   @Mappings({
       @Mapping(source = "id", target = "orderItemId")
   })
-  OrderItemBO convert(OrderItemDAO orderItemDAO);
+  OrderItemBO convertDAO2BO(OrderItemDAO orderItemDAO);
 
   /**
    * 批量转换
    * @param orderItemDAOs
    * @return
    */
-  List<OrderItemBO> convert(List<OrderItemDAO> orderItemDAOs);
+  List<OrderItemBO> convertDAO2BOList(List<OrderItemDAO> orderItemDAOs);
+
+  /**
+   * vo->bo
+   * @param orderVO
+   * @return
+   */
+  OrderBO covertVO2BO(OrderVO orderVO);
+
+  /**
+   * vo->dao
+   * @param orderVO
+   * @return
+   */
+  @Mappings({
+      @Mapping(source = "orderId", target = "id")
+  })
+  OrderDAO covertVO2DAO(OrderVO orderVO);
 }
