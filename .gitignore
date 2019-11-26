@@ -86,3 +86,4 @@ luac.out
 
 /target/
 /.idea/*
+**/rebel.xml

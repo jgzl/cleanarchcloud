@@ -306,7 +306,7 @@
         <!--当前环境-->
         <env.profile>dev-boss</env.profile>
         <!--Nacos配置中心地址-->
-        <env.nacos.address>106.14.155.108:8848</env.nacos.address>
+        <env.nacos.address>localhost:8848</env.nacos.address>
         <!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
         <env.nacos.namespace>9b47670a-29b0-4760-9f86-2c0fe8b688ad</env.nacos.namespace>
         <!--    扩展类型    -->
