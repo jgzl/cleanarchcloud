@@ -27,6 +27,7 @@ import com.dlihaifeng.conversion.platform.application.ws.interceptor.HttpAuthInt
 @Configuration
 @EnableWebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
+
   @Autowired
   private HttpAuthHandler httpAuthHandler;
 
