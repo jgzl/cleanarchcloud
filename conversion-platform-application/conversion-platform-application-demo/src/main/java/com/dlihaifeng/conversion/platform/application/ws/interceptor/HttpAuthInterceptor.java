@@ -11,6 +11,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
@@ -19,6 +20,7 @@ import cn.hutool.http.HttpUtil;
  * 这里是建立握手时的事件，分为握手前与握手后，而  Handler 的事件是在握手成功后的基础上建立 socket 的连接。
  * 所以在如果把认证放在这个步骤相对来说最节省服务器资源。它主要有两个方法 beforeHandshake 与 afterHandshake ，顾名思义一个在握手前触发，一个在握手后触发。
  */
+@Slf4j
 @Component
 public class HttpAuthInterceptor implements HandshakeInterceptor {
 
@@ -35,17 +37,17 @@ public class HttpAuthInterceptor implements HandshakeInterceptor {
   @Override
   public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
       Map<String, Object> attributes) throws Exception {
-    System.out.println("握手开始");
+    log.info("握手开始");
     // 获得请求参数
     HashMap<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), "utf-8");
     String uid = paramMap.get("token");
     if (StrUtil.isNotBlank(uid)) {
       // 放入属性域
       attributes.put("token", uid);
-      System.out.println("用户 token " + uid + " 握手成功！");
+      log.info("用户 token {} 握手成功！", uid);
       return true;
     }
-    System.out.println("用户登录已失效");
+    log.info("用户登录已失效");
     return false;
   }
 
@@ -60,6 +62,6 @@ public class HttpAuthInterceptor implements HandshakeInterceptor {
   @Override
   public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
       Exception exception) {
-    System.out.println("握手完成");
+    log.info("握手完成");
   }
 }
