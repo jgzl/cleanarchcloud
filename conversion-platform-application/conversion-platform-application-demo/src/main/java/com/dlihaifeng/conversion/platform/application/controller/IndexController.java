@@ -10,7 +10,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,6 +44,12 @@ public class IndexController {
   @Autowired
   private IOrderItemService orderItemService;
 
+  @Autowired
+  private StringRedisTemplate redisTemplate;
+
+  @Value("${redis.topic.chat}")
+  private String chatTopic;
+
   @GetMapping("ping")
   @ApiOperation(value = "存活心跳接口")
   public String ping() {
@@ -50,7 +58,7 @@ public class IndexController {
   }
 
   /**
-   * 🈚️参创建订单
+   * 无参创建订单
    * @return
    */
   @GetMapping("/orderWithNoArgs")
@@ -91,5 +99,25 @@ public class IndexController {
     List<OrderDAO> orderDAOs = orderService.query().eq("shop_id", 2).list();
     orderDAOs.forEach(System.out::println);
     return orderDAOs;
+  }
+
+  /**
+   * 发送消息
+   * 先登录 http://www.websocket-test.com/ 打开三个窗口输入
+   * ws://127.0.0.1:8020/ws?token=lihaifeng1
+   * ws://127.0.0.1:8020/ws?token=lihaifeng2
+   * ws://127.0.0.1:8020/ws?token=lihaifeng3
+   * 最后再调用这个方法，
+   * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
+   * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
+   * 如果没有名字李海峰,则
+   * @param msg
+   * @return
+   */
+  @GetMapping("/sendMsg")
+  @ApiOperation(value = "发送信息")
+  public String sendMsg(String msg) {
+    redisTemplate.convertAndSend(chatTopic, msg);
+    return "success";
   }
 }
