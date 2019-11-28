@@ -14,15 +14,15 @@
   </div>
   <div>WebSocket地址:<br>
     <input id="wsUrl" class="text-x" type="text" value="ws://localhost:8020/ws?token=xxxxx"/>
-    <button onclick="wsopen()">连接</button>
-    <button onclick="wsclose()">断开连接</button>
+    <button id="b1" onclick="wsopen()">连接</button>
+    <button id="b2" onclick="wsclose()">断开连接</button>
   </div>
   <div>
     <div>ws发送文本框<br><input id="wsMsg" class="text-x" type="text"/>
-      <button onclick="wssend()">ws发送</button>
+      <button id="b3" onclick="wssend()">ws发送</button>
     </div>
     <div>http发送文本框<br><input id="httpMsg" class="text-x" type="text"/>
-      <button onclick="httpsend()">http发送</button>
+      <button id="b4" onclick="httpsend()">http发送</button>
     </div>
   </div>
 </div>
@@ -55,7 +55,9 @@
 
     ws.onclose = function (evt) {
       console.log("Connection closed.");
+      document.getElementById("b1").style.disabled = disabled
     };
+    document.getElementById("b1").style = undefined
   }
 
   function wssend() {
@@ -86,6 +88,7 @@
 
   function wsclose() {
     ws.close();
+    document.getElementById("b1").style = undefined
   }
 </script>
 </html>

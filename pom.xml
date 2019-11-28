@@ -16,6 +16,7 @@
     <module>conversion-platform-common</module>
     <module>conversion-platform-gateway</module>
     <module>conversion-platform-application</module>
+    <module>conversion-platform-infrastructure</module>
   </modules>
 
   <name>conversion-platform::根节点POM</name>
