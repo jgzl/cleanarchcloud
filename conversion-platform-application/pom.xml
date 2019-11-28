@@ -19,6 +19,7 @@
 
   <modules>
     <module>conversion-platform-application-demo</module>
+    <module>conversion-platform-application-template</module>
   </modules>
 
   <dependencies>
@@ -34,14 +35,6 @@
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
     </dependency>
     <dependency>
       <groupId>com.github.xiaoymin</groupId>
