@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>conversion-platform-application-template-dubbo</artifactId>
+    <groupId>com.dlihaifeng</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>conversion-platform-application-template-dubbo-service-impl</artifactId>
+  <name>conversion-platform::Dubbo模板service实现类，mapper类及文件</name>
+  <description>conversion-platform::Dubbo模板service实现类，mapper类及文件</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.dlihaifeng</groupId>
+      <artifactId>conversion-platform-application-template-dubbo-service-api</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>

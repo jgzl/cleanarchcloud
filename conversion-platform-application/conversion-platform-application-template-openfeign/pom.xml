@@ -11,7 +11,7 @@
     <artifactId>conversion-platform-application</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>conversion-platform-application-template</artifactId>
+  <artifactId>conversion-platform-application-template-openfeign</artifactId>
   <name>conversion-platform::template模板</name>
   <description>conversion-platform::template模板</description>
 

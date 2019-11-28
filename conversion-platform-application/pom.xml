@@ -19,7 +19,8 @@
 
   <modules>
     <module>conversion-platform-application-demo</module>
-    <module>conversion-platform-application-template</module>
+    <module>conversion-platform-application-template-openfeign</module>
+    <module>conversion-platform-application-template-dubbo</module>
   </modules>
 
   <dependencies>
