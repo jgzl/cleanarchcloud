@@ -1,3 +1,5 @@
+server:
+  port: 7001
 spring:
   profiles:
     active: ${env.profile}
@@ -13,3 +15,14 @@ spring:
         refreshable-dataids: ${env.nacos.refresh}
       discovery:
         namespace: ${env.nacos.namespace}
+dubbo:
+  protocol:
+    # dubbo 协议
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: -1
+  registry:
+    # 挂载到 Spring Cloud 注册中心
+    address: spring-cloud://localhost
+  cloud:
+    subscribed-services: ${project.artifactId}

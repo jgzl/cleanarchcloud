@@ -19,6 +19,11 @@
       <artifactId>conversion-platform-application-template-dubbo-service-api</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
+    <!-- Dubbo Spring Cloud Starter -->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-dubbo</artifactId>
+    </dependency>
   </dependencies>
 
 </project>
