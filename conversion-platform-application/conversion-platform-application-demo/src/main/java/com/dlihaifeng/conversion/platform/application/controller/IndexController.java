@@ -7,14 +7,22 @@ package com.dlihaifeng.conversion.platform.application.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dlihaifeng.conversion.platform.application.model.bo.OrderBO;
 import com.dlihaifeng.conversion.platform.application.model.dao.OrderDAO;
@@ -25,6 +33,7 @@ import com.dlihaifeng.conversion.platform.application.service.IOrderService;
 import com.google.common.collect.Lists;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -119,5 +128,22 @@ public class IndexController {
   public String sendMsg(String msg) {
     redisTemplate.convertAndSend(chatTopic, msg);
     return "success";
+  }
+
+  /**
+   * 上传文件
+   * @param multipartFile
+   * @param request
+   * @param response
+   */
+  @SneakyThrows
+  @PostMapping("/upload")
+  public void upload(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request,
+      HttpServletResponse response) {
+    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+        "attachment;fileName=" + java.net.URLEncoder.encode(multipartFile.getOriginalFilename(), "UTF-8"));
+    response.setContentType(MediaType.MULTIPART_FORM_DATA_VALUE);
+    response.setCharacterEncoding("UTF-8");
+    IOUtils.copy(multipartFile.getInputStream(), response.getOutputStream());
   }
 }
