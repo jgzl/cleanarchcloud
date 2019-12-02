@@ -33,3 +33,6 @@ spring:
       name: ms
       master-data-source-name: ds-master
       slave-data-source-names: ds-slave0,ds-slave1
+redis:
+  topic:
+    chat: chat-topic
