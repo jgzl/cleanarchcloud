@@ -1,6 +1,5 @@
 package com.dlihaifeng.conversion.platform.application.ws;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -23,14 +22,18 @@ public class RedisMessageListener extends MessageListenerAdapter {
   @Value("${redis.topic.chat}")
   private String chatTopic;
 
-  @Autowired
-  private StringRedisTemplate redisTemplate;
+  private final StringRedisTemplate redisTemplate;
 
-  @Autowired
-  private HttpAuthHandler httpAuthHandler;
+  private final HttpAuthHandler httpAuthHandler;
 
-  @Autowired
-  private HttpAuthInterceptor httpAuthInterceptor;
+  private final HttpAuthInterceptor httpAuthInterceptor;
+
+  public RedisMessageListener(StringRedisTemplate redisTemplate, HttpAuthHandler httpAuthHandler,
+      HttpAuthInterceptor httpAuthInterceptor) {
+    this.redisTemplate = redisTemplate;
+    this.httpAuthHandler = httpAuthHandler;
+    this.httpAuthInterceptor = httpAuthInterceptor;
+  }
 
   @Override
   public void onMessage(Message message, byte[] pattern) {
