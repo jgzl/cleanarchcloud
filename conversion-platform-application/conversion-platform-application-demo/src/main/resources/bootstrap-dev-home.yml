@@ -4,6 +4,7 @@ server:
 spring:
   freemarker:
     cache: false
+    request-context-attribute: request
   shardingsphere:
     dataSource:
       ds-master:
