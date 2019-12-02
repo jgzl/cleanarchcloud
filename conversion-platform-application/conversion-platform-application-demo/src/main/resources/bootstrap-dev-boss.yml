@@ -2,6 +2,8 @@
 server:
   port: 8020
 spring:
+  freemarker:
+    cache: true
   shardingsphere:
     dataSource:
       ds-master:
