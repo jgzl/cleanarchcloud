@@ -13,6 +13,6 @@ spring:
         refreshable-dataids: ${env.nacos.refresh}
       discovery:
         namespace: ${env.nacos.namespace}
-server:
-  servlet:
-    context-path: /demo
+#server:
+#  servlet:
+#    context-path: /demo
