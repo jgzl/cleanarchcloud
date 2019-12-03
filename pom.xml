@@ -20,7 +20,7 @@
   </modules>
 
   <name>conversion-platform::根节点POM</name>
-  <url>http://dlihaifeng.com</url>
+  <url>https://blog.dlihaifeng.com</url>
 
   <properties>
     <mapstruct.version>1.3.0.Final</mapstruct.version>
