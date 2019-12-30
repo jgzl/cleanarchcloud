@@ -277,14 +277,20 @@
           </executions>
         </plugin>
         <plugin>
+          <!--docker镜像相关的配置信息-->
+          <groupId>com.spotify</groupId>
           <artifactId>docker-maven-plugin</artifactId>
+          <version>0.4.13</version>
           <configuration>
             <dockerDirectory>${project.basedir}/</dockerDirectory>
             <dockerHost>${docker-host}</dockerHost>
-            <forceTags>true</forceTags>        <!--镜像生成后需要推送到某个仓库地址的配置-->
+            <forceTags>true</forceTags>
+            <!--生成的镜像名称-->
+            <!--镜像生成后需要推送到某个仓库地址的配置-->
             <imageName>${docker-registry-url}/${docker-registry-org}/${project.artifactId}:${project.version}
-            </imageName>        <!--是否向配置的仓库推送镜像-->
-            <pushImage>true</pushImage>    <!--生成的镜像名称-->
+            </imageName>
+            <!--是否向配置的仓库推送镜像-->
+            <pushImage>true</pushImage>
             <!-- 使用Dockerfile -->
             <registryUrl>${docker-registry-url}</registryUrl>
             <!--这里是复制 jar 包到 docker 容器指定目录配置-->
@@ -300,9 +306,6 @@
               <phase>deploy</phase>
             </execution>
           </executions>
-          <groupId>com.spotify</groupId>
-          <!--docker镜像相关的配置信息-->
-          <version>0.4.13</version>
         </plugin>
       </plugins>
     </pluginManagement>
