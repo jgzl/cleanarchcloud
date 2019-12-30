@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>com.dlihaifeng</groupId>
-      <artifactId>conversion-platform-common-check-starter</artifactId>
+      <artifactId>common-check-starter</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
     <dependency>
@@ -56,7 +56,6 @@
           <execution>
             <goals>
               <goal>build</goal>
-              <goal>push</goal>
             </goals>
             <id>docker-package</id>
             <phase>package</phase>

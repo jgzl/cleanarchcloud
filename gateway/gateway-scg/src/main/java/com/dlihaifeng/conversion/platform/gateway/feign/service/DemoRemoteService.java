@@ -8,7 +8,7 @@ import com.dlihaifeng.conversion.platform.gateway.feign.fallback.DemoFallbackRem
 /**
  * @author lihaifeng
  */
-@FeignClient(name = "conversion-platform-application-demo", fallback = DemoFallbackRemoteServiceImpl.class)
+@FeignClient(name = "application-demo", fallback = DemoFallbackRemoteServiceImpl.class)
 public interface DemoRemoteService {
   @GetMapping("/ping")
   String getServerPort();

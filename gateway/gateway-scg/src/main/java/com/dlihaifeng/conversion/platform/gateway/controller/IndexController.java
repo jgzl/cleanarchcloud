@@ -34,7 +34,7 @@ public class IndexController {
    */
   @RequestMapping("/demo-rest")
   public Mono<String> demo() {
-    String result = restTemplate.getForObject("http://conversion-platform-application-demo/ping", String.class);
+    String result = restTemplate.getForObject("http://application-demo/ping", String.class);
     return Mono.just(result);
   }
 
