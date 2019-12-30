@@ -12,4 +12,4 @@ EXPOSE 8000
 
 ADD ./target/gateway-scg.jar ./
 
-CMD sleep 10;java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar gateway-scg.jar
+CMD java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar gateway-scg.jar

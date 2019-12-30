@@ -12,4 +12,4 @@ EXPOSE 8010
 
 ADD ./target/infrastructure-apm-admin.jar ./
 
-CMD sleep 10;java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar infrastructure-apm-admin.jar
+CMD java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar infrastructure-apm-admin.jar
