@@ -13,10 +13,10 @@
   <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
   <modules>
-    <module>conversion-platform-common</module>
-    <module>conversion-platform-gateway</module>
-    <module>conversion-platform-application</module>
-    <module>conversion-platform-infrastructure</module>
+    <module>common</module>
+    <module>gateway</module>
+    <module>application</module>
+    <module>infrastructure</module>
   </modules>
 
   <name>conversion-platform::根节点POM</name>

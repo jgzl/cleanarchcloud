@@ -6,38 +6,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <artifactId>application-template-openfeign</artifactId>
   <parent>
     <groupId>com.dlihaifeng</groupId>
-    <artifactId>conversion-platform-gateway</artifactId>
+    <artifactId>application</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>conversion-platform-gateway-zuul</artifactId>
-  <name>conversion-platform::Zuul网关</name>
-  <description>conversion-platform::Zuul网关</description>
+  <name>conversion-platform::Openfeign模板</name>
+  <description>conversion-platform::Openfeign模板</description>
 
   <dependencies>
-    <dependency>
-      <groupId>com.dlihaifeng</groupId>
-      <artifactId>conversion-platform-common-check-starter</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -49,20 +38,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <artifactId>docker-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-            <id>docker-package</id>
-            <phase>package</phase>
-          </execution>
-        </executions>
-        <groupId>com.spotify</groupId>
       </plugin>
     </plugins>
   </build>

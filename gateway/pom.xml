@@ -12,15 +12,14 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>conversion-platform-application</artifactId>
+  <artifactId>gateway</artifactId>
   <packaging>pom</packaging>
-  <name>conversion-platform::应用组件POM</name>
-  <description>conversion-platform::应用组件POM</description>
+  <name>conversion-platform::网关组件POM</name>
+  <description>conversion-platform::网关组件POM</description>
 
   <modules>
-    <module>conversion-platform-application-demo</module>
-    <module>conversion-platform-application-template-openfeign</module>
-    <module>conversion-platform-application-template-dubbo</module>
+    <module>gateway-zuul</module>
+    <module>gateway-scg</module>
   </modules>
 
   <dependencies>
@@ -33,8 +32,30 @@
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.xiaoymin</groupId>
+      <artifactId>knife4j-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>io.swagger</groupId>
+          <artifactId>swagger-models</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>de.codecentric</groupId>

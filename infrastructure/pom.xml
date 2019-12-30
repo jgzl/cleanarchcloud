@@ -12,19 +12,23 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>conversion-platform-common</artifactId>
+  <artifactId>infrastructure</artifactId>
   <packaging>pom</packaging>
-  <name>conversion-platform::Common组件POM</name>
-  <description>conversion-platform::Common组件POM</description>
+  <name>conversion-platform::基础设施组件POM</name>
+  <description>conversion-platform::基础设施组件POM</description>
 
   <modules>
-    <module>conversion-platform-common-check-starter</module>
+    <module>infrastructure-apm-admin</module>
   </modules>
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
     </dependency>
   </dependencies>
 </project>
