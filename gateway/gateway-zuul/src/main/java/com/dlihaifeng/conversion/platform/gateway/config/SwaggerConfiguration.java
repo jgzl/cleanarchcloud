@@ -36,7 +36,7 @@ public class SwaggerConfiguration {
         .title("转换平台Zuul网关")
         .description("<div style='font-size:14px;color:red;'>转换平台Zuul网关,用于调用转换平台所有微服务实例</div>")
         .termsOfServiceUrl("http://www.dlihaifeng.com/")
-        .contact(new Contact("李海峰", "http://conversion-platform-gateway-zuul", "li7hai26@gmail.com"))
+        .contact(new Contact("李海峰", "http://gateway-zuul", "li7hai26@gmail.com"))
         .version("2.0")
         .build();
   }
