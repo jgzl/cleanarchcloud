@@ -280,7 +280,7 @@
           <artifactId>docker-maven-plugin</artifactId>
           <configuration>
             <dockerDirectory>${project.basedir}/</dockerDirectory>
-            <dockerHost>http://localhost:2375</dockerHost>
+            <dockerHost>${docker-host}</dockerHost>
             <forceTags>true</forceTags>        <!--镜像生成后需要推送到某个仓库地址的配置-->
             <imageName>${docker-registry-url}/${docker-registry-org}/${project.artifactId}:${project.version}
             </imageName>        <!--是否向配置的仓库推送镜像-->
@@ -320,6 +320,7 @@
         <!--当前环境-->
         <docker-registry-org>saicmotor-dev</docker-registry-org>
         <!--Nacos配置中心地址-->
+        <docker-host>http://106.14.155.108:2375</docker-host>
         <docker-registry-serverId>aliyun-registry</docker-registry-serverId>
         <!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
         <env.nacos.namespace>a4220c7b-bb1f-4b5f-a274-118ed95c101f</env.nacos.namespace>
@@ -338,6 +339,7 @@
         <!--当前环境-->
         <docker-registry-org>test</docker-registry-org>
         <!--Nacos配置中心地址-->
+        <docker-host>http://192.168.0.101:2375</docker-host>
         <env.nacos.address>nacos.dlihaifeng.cn:8848</env.nacos.address>
         <!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
         <env.nacos.namespace>a4220c7b-bb1f-4b5f-a274-118ed95c101f</env.nacos.namespace>
