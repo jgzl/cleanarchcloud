@@ -4,7 +4,7 @@ spring:
       default-filters:
       routes:
         - id: cpa-demo
-          uri: lb://conversion-platform-application-demo
+          uri: lb://application-demo
           predicates:
             - Path=/demo/**
           filters:

@@ -311,43 +311,43 @@
   <profiles>
     <!-- 开发 -->
     <profile>
-      <id>dev-home</id>
+      <id>dev</id>
       <activation>
         <!--默认激活配置-->
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
         <!--当前环境-->
-        <env.profile>dev-home</env.profile>
+        <docker-registry-org>dev</docker-registry-org>
         <!--Nacos配置中心地址-->
         <env.nacos.address>nacos.dlihaifeng.cn:8848</env.nacos.address>
         <!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
-        <docker-registry-org>dev-home</docker-registry-org>
+        <env.nacos.namespace>a4220c7b-bb1f-4b5f-a274-118ed95c101f</env.nacos.namespace>
         <!--    扩展类型    -->
         <env.nacos.fileext>yaml</env.nacos.fileext>
         <env.nacos.share>common.yaml</env.nacos.share>
         <env.nacos.refresh>common.yaml</env.nacos.refresh>
         <docker-registry-serverId>harbor-registry</docker-registry-serverId>
         <docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
-        <env.nacos.namespace>aa933646-c26e-4df3-af21-57783f78a53d</env.nacos.namespace>
+        <env.profile>dev</env.profile>
       </properties>
     </profile>
     <profile>
-      <id>dev-boss</id>
+      <id>test</id>
       <properties>
         <!--当前环境-->
-        <env.profile>dev-boss</env.profile>
+        <docker-registry-org>test</docker-registry-org>
         <!--Nacos配置中心地址-->
         <env.nacos.address>nacos.dlihaifeng.cn:8848</env.nacos.address>
         <!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
-        <docker-registry-org>dev-boss</docker-registry-org>
+        <env.nacos.namespace>a4220c7b-bb1f-4b5f-a274-118ed95c101f</env.nacos.namespace>
         <!--    扩展类型    -->
         <env.nacos.fileext>yaml</env.nacos.fileext>
         <env.nacos.share>common.yaml</env.nacos.share>
         <env.nacos.refresh>common.yaml</env.nacos.refresh>
         <docker-registry-serverId>harbor-registry</docker-registry-serverId>
         <docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
-        <env.nacos.namespace>aa933646-c26e-4df3-af21-57783f78a53d</env.nacos.namespace>
+        <env.profile>test</env.profile>
       </properties>
     </profile>
   </profiles>

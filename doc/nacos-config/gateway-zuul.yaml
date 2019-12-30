@@ -2,4 +2,4 @@ zuul:
   ignored-services: '*'
   prefix: /api
   routes:
-    conversion-platform-application-demo: /demo/**
+    application-demo: /demo/**
