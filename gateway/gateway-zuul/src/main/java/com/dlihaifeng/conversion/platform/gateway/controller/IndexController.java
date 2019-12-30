@@ -33,7 +33,7 @@ public class IndexController {
   @ApiOperation(value = "通过restTemplate的restful方式调用demo服务")
   @RequestMapping("/demo-rest")
   public String demo() {
-    String result = restTemplate.getForObject("http://conversion-platform-application-demo/ping", String.class);
+    String result = restTemplate.getForObject("http://application-demo/ping", String.class);
     return result;
   }
 
