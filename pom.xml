@@ -22,59 +22,6 @@
   <name>conversion-platform::根节点POM</name>
   <url>https://blog.dlihaifeng.com</url>
 
-  <properties>
-    <mapstruct.version>1.3.0.Final</mapstruct.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.version>3.8.1</maven.compiler.version>
-    <maven.resources.version>3.1.0</maven.resources.version>
-    <maven.encoding>UTF-8</maven.encoding>
-    <bootstrap.swagger.version>1.9.6</bootstrap.swagger.version>
-    <cxf.rs.version>3.3.4</cxf.rs.version>
-    <cxf.rs.json>2.10.1</cxf.rs.json>
-    <druid.starter.version>1.1.21</druid.starter.version>
-    <flowable.starter.version>6.4.2</flowable.starter.version>
-    <guava.version>27.0.1-jre</guava.version>
-    <hutool.version>4.5.10</hutool.version>
-    <lombok.version>1.18.10</lombok.version>
-    <mybatisplus.starter.version>3.1.1</mybatisplus.starter.version>
-    <smart.doc.version>1.7.5</smart.doc.version>
-    <shardingjdbc.starter.version>4.0.0-RC2</shardingjdbc.starter.version>
-    <springfox.version>2.9.2</springfox.version>
-    <swagger.version>1.5.21</swagger.version>
-    <sbu.version>1.9.3</sbu.version>
-
-    <!-- bom依赖配置管理 -->
-    <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
-    <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
-    <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-    <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-    <spring.version>5.2.0.RELEASE</spring.version>
-  </properties>
-
-  <dependencies>
-    <!--  lombok自动添加getset  -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <scope>provided</scope>
-      <optional>true</optional>
-    </dependency>
-    <!--  实体类转换  -->
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct</artifactId>
-      <version>${mapstruct.version}</version>
-    </dependency>
-    <!--  配置可视化，可以通过yml直接点击到java代码配置位置  -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
-    </dependency>
-  </dependencies>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -217,8 +164,68 @@
         <version>${smart.doc.version}</version>
         <scope>test</scope>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+      <dependency>
+        <artifactId>javassist</artifactId>
+        <groupId>org.javassist</groupId>
+        <version>${javassist.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <dependencies>
+    <!--  lombok自动添加getset  -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+    <!--  实体类转换  -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${mapstruct.version}</version>
+    </dependency>
+    <!--  配置可视化，可以通过yml直接点击到java代码配置位置  -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <mapstruct.version>1.3.0.Final</mapstruct.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.version>3.8.1</maven.compiler.version>
+    <maven.resources.version>3.1.0</maven.resources.version>
+    <maven.encoding>UTF-8</maven.encoding>
+    <bootstrap.swagger.version>1.9.6</bootstrap.swagger.version>
+    <cxf.rs.version>3.3.4</cxf.rs.version>
+    <cxf.rs.json>2.10.1</cxf.rs.json>
+    <druid.starter.version>1.1.21</druid.starter.version>
+    <flowable.starter.version>6.4.2</flowable.starter.version>
+    <guava.version>27.0.1-jre</guava.version>
+    <hutool.version>4.5.10</hutool.version>
+    <javassist.version>3.24.1-GA</javassist.version>
+    <lombok.version>1.18.10</lombok.version>
+    <mybatisplus.starter.version>3.1.1</mybatisplus.starter.version>
+    <smart.doc.version>1.7.5</smart.doc.version>
+    <shardingjdbc.starter.version>4.0.0-RC2</shardingjdbc.starter.version>
+    <springfox.version>2.9.2</springfox.version>
+    <swagger.version>1.5.21</swagger.version>
+    <sbu.version>1.9.3</sbu.version>
+
+    <!-- bom依赖配置管理 -->
+    <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+    <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
+    <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+    <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+    <spring.version>5.2.0.RELEASE</spring.version>
+  </properties>
   <build>
     <resources>
       <!-- 先指定 src/main/resources下所有文件及文件夹为资源文件 -->

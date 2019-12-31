@@ -17,14 +17,15 @@
   <name>conversion-platform::Common组件POM</name>
   <description>conversion-platform::Common组件POM</description>
 
-  <modules>
-    <module>common-check-starter</module>
-  </modules>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
   </dependencies>
+
+  <modules>
+    <module>common-check-starter</module>
+    <module>common-core</module>
+  </modules>
 </project>

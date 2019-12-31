@@ -16,7 +16,10 @@
   <description>conversion-platform::校验starter</description>
 
   <dependencies>
-
+    <dependency>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
   </dependencies>
 
   <build>
