@@ -217,7 +217,7 @@
     <shardingjdbc.starter.version>4.0.0-RC2</shardingjdbc.starter.version>
     <springfox.version>2.9.2</springfox.version>
     <swagger.version>1.5.21</swagger.version>
-    <sbu.version>1.9.3</sbu.version>
+    <sbu.version>1.9.6</sbu.version>
 
     <!-- bom依赖配置管理 -->
     <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
