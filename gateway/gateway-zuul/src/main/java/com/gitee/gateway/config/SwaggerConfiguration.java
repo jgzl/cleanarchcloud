@@ -26,7 +26,7 @@ public class SwaggerConfiguration {
     return new Docket(DocumentationType.SWAGGER_2)
         .apiInfo(groupApiInfo())
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.dlihaifeng.conversion.platform.gateway.controller"))
+        .apis(RequestHandlerSelectors.basePackage("com.gitee.gateway.controller"))
         .paths(PathSelectors.any())
         .build();
   }

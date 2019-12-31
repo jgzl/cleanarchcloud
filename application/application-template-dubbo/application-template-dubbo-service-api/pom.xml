@@ -7,7 +7,7 @@
 
   <parent>
     <artifactId>application-template-dubbo</artifactId>
-    <groupId>com.dlihaifeng</groupId>
+    <groupId>com.gitee</groupId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <name>conversion-platform::Dubbo模板service接口，dto，bo，以及转换类</name>

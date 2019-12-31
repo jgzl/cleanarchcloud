@@ -7,17 +7,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>gateway-zuul</artifactId>
-  <parent>
-    <groupId>com.dlihaifeng</groupId>
-    <artifactId>gateway</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <name>conversion-platform::Zuul网关</name>
-  <description>conversion-platform::Zuul网关</description>
-
   <dependencies>
     <dependency>
-      <groupId>com.dlihaifeng</groupId>
+      <groupId>com.gitee</groupId>
       <artifactId>common-check-starter</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
@@ -35,6 +27,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <name>conversion-platform::Zuul网关</name>
+  <description>conversion-platform::Zuul网关</description>
+
+  <parent>
+    <groupId>com.gitee</groupId>
+    <artifactId>gateway</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 
   <build>
     <finalName>${project.artifactId}</finalName>

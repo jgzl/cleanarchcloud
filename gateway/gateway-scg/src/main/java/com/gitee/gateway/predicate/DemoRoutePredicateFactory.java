@@ -3,7 +3,7 @@
  *//*
 
 
-package com.dlihaifeng.conversion.platform.gateway.predicate;
+package com.gitee.conversion.platform.gateway.predicate;
 
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.putUriTemplateVariables;
 import static org.springframework.http.server.PathContainer.parsePath;

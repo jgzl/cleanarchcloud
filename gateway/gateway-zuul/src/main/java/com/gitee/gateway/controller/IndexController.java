@@ -16,9 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author lihaifeng
  */
-@Api(value = "主页")
+@Api(value = "主页", tags = {"主页"})
 @Slf4j
 @RestController
+@RequestMapping
 public class IndexController {
   @Autowired
   private RestTemplate restTemplate;

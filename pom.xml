@@ -8,20 +8,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.dlihaifeng</groupId>
-  <artifactId>conversion-platform</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0.0-SNAPSHOT</version>
-  <modules>
-    <module>common</module>
-    <module>gateway</module>
-    <module>application</module>
-    <module>infrastructure</module>
-  </modules>
-
-  <name>conversion-platform::根节点POM</name>
-  <url>https://blog.dlihaifeng.com</url>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -56,6 +42,13 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-framework-bom</artifactId>
         <version>${spring.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <artifactId>common-bom</artifactId>
+        <groupId>com.gitee</groupId>
+        <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -172,6 +165,20 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <artifactId>conversion-platform</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>common</module>
+    <module>gateway</module>
+    <module>application</module>
+    <module>infrastructure</module>
+  </modules>
+
+  <name>conversion-platform::根节点POM</name>
+  <url>https://blog.dlihaifeng.com</url>
+
+  <groupId>com.gitee</groupId>
 
   <dependencies>
     <!--  lombok自动添加getset  -->

@@ -6,3 +6,22 @@ management:
   endpoint:
     health:
       show-details: always
+swagger:
+  title: Platform Swagger API
+  version: 1.0.0
+  description: 平台API接口
+  license: Powered By Platform
+  licenseUrl: https://blog.dlihaifeng.com/
+  terms-of-service-url: https://blog.dlihaifeng.com/
+  contact:
+    name: 李海峰
+    email: li7hai26@gmail.com
+    url: https://blog.dlihaifeng.cn
+  authorization:
+    name: Platform OAuth
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: server all
+    token-url-list:
+      - http://${GATEWAY-HOST:gateway-scg}:${GATEWAY-PORT:8000}/auth/oauth/token

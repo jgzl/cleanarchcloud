@@ -7,14 +7,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>application-template-openfeign</artifactId>
-  <parent>
-    <groupId>com.dlihaifeng</groupId>
-    <artifactId>application</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <name>conversion-platform::Openfeign模板</name>
-  <description>conversion-platform::Openfeign模板</description>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -24,7 +16,19 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
+    <dependency>
+      <artifactId>common-swagger</artifactId>
+      <groupId>com.gitee</groupId>
+    </dependency>
   </dependencies>
+  <name>conversion-platform::Openfeign模板</name>
+  <description>conversion-platform::Openfeign模板</description>
+
+  <parent>
+    <groupId>com.gitee</groupId>
+    <artifactId>application</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
 
   <build>
     <plugins>
