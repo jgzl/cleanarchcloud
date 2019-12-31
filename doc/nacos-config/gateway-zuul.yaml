@@ -3,3 +3,5 @@ zuul:
   prefix: /api
   routes:
     application-demo: /demo/**
+    application-template-dubbo-service-web: /dubbo/**
+    application-template-openfeign: /openfeign/**

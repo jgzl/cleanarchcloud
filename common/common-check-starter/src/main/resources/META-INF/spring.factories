@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.dlihaifeng.conversion.platform.gateway.config.ReadinessHealthIndicatorAutoConfiguration
+  com.gitee.gateway.config.ReadinessHealthIndicatorAutoConfiguration
