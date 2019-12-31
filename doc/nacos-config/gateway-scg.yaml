@@ -9,3 +9,9 @@ spring:
             - Path=/demo/**
           filters:
             - StripPrefix=1
+        - id: cpa-template-dubbo-web
+          uri: lb://application-template-dubbo-service-web
+          predicates:
+            - Path=/dubbo/**
+          filters:
+            - StripPrefix=1
