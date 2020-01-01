@@ -23,9 +23,9 @@
     </dependency>
   </dependencies>
 
-  <description>common-bom::common依赖管理bom</description>
+  <description>common-bom::common网关</description>
+  <name>common-bom::common网关</name>
   <modelVersion>4.0.0</modelVersion>
-  <name>common-bom::common依赖管理bom</name>
   <parent>
     <artifactId>common</artifactId>
     <groupId>com.gitee</groupId>
