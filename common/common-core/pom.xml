@@ -4,43 +4,42 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>common-core</artifactId>
   <dependencies>
+    <!--hutool-->
     <dependency>
-      <artifactId>spring-boot-starter</artifactId>
-      <groupId>org.springframework.boot</groupId>
+      <artifactId>hutool-all</artifactId>
+      <groupId>cn.hutool</groupId>
     </dependency>
-    <dependency>
-      <artifactId>jackson-databind</artifactId>
-      <groupId>com.fasterxml.jackson.core</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>lombok</artifactId>
-      <groupId>org.projectlombok</groupId>
-    </dependency>
-    <!--字节码操作-->
+    <!--server-api-->
     <dependency>
       <artifactId>javax.servlet-api</artifactId>
       <groupId>javax.servlet</groupId>
-      <optional>true</optional>
     </dependency>
+    <!--hibernate-validator-->
     <dependency>
-      <artifactId>javassist</artifactId>
-      <groupId>org.javassist</groupId>
-      <optional>true</optional>
+      <artifactId>spring-boot-starter-validation</artifactId>
+      <groupId>org.springframework.boot</groupId>
     </dependency>
-    <!--http连接池-->
+    <!--json模块-->
     <dependency>
-      <artifactId>httpclient</artifactId>
-      <groupId>org.apache.httpcomponents</groupId>
-      <optional>true</optional>
+      <artifactId>spring-boot-starter-json</artifactId>
+      <groupId>org.springframework.boot</groupId>
     </dependency>
+    <!--swagger 依赖-->
     <dependency>
-      <artifactId>httpmime</artifactId>
-      <groupId>org.apache.httpcomponents</groupId>
-      <optional>true</optional>
+      <artifactId>swagger-annotations</artifactId>
+      <groupId>io.swagger</groupId>
+    </dependency>
+    <!--TTL-->
+    <dependency>
+      <artifactId>transmittable-thread-local</artifactId>
+      <groupId>com.alibaba</groupId>
+      <version>2.10.2</version>
     </dependency>
   </dependencies>
 
   <modelVersion>4.0.0</modelVersion>
+  <description>common-core::common核心</description>
+  <name>common-core::common核心</name>
 
   <parent>
     <artifactId>common</artifactId>

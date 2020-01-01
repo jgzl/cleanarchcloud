@@ -6,6 +6,16 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <artifactId>common-core</artifactId>
+        <groupId>com.gitee</groupId>
+        <version>${bom.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>common-gateway</artifactId>
+        <groupId>com.gitee</groupId>
+        <version>${bom.version}</version>
+      </dependency>
+      <dependency>
         <artifactId>common-swagger</artifactId>
         <groupId>com.gitee</groupId>
         <version>${bom.version}</version>
@@ -15,6 +25,8 @@
   <groupId>com.gitee</groupId>
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
+  <description>common-bom::common依赖管理bom</description>
+  <name>common-bom::common依赖管理bom</name>
 
   <properties>
     <bom.version>1.0.0-SNAPSHOT</bom.version>
