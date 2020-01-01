@@ -21,6 +21,7 @@
     <module>application-demo</module>
     <module>application-template-openfeign</module>
     <module>application-template-dubbo</module>
+    <module>application-auth</module>
   </modules>
 
   <dependencies>

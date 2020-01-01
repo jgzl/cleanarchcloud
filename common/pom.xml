@@ -10,8 +10,9 @@
     <module>common-bom</module>
     <module>common-check-starter</module>
     <module>common-core</module>
-    <module>common-swagger</module>
     <module>common-gateway</module>
+    <module>common-security</module>
+    <module>common-swagger</module>
   </modules>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>common</artifactId>

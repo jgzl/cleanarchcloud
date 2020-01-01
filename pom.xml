@@ -68,6 +68,11 @@
         <version>${mybatisplus.starter.version}</version>
       </dependency>
       <dependency>
+        <artifactId>mybatis-plus-extension</artifactId>
+        <groupId>com.baomidou</groupId>
+        <version>${mybatisplus.starter.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.shardingsphere</groupId>
         <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
         <version>${shardingjdbc.starter.version}</version>

@@ -20,6 +20,11 @@
         <groupId>com.gitee</groupId>
         <version>${bom.version}</version>
       </dependency>
+      <dependency>
+        <artifactId>common-security</artifactId>
+        <groupId>com.gitee</groupId>
+        <version>${bom.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <groupId>com.gitee</groupId>
