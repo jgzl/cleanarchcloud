@@ -63,6 +63,11 @@
         <version>${guava.version}</version>
       </dependency>
       <dependency>
+        <artifactId>keycloak-spring-boot-starter</artifactId>
+        <groupId>org.keycloak</groupId>
+        <version>${keycloak.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.baomidou</groupId>
         <artifactId>mybatis-plus-boot-starter</artifactId>
         <version>${mybatisplus.starter.version}</version>
@@ -229,6 +234,7 @@
     <guava.version>27.0.1-jre</guava.version>
     <hutool.version>5.0.5</hutool.version>
     <javassist.version>3.24.1-GA</javassist.version>
+    <keycloak.version>8.0.1</keycloak.version>
     <lombok.version>1.18.10</lombok.version>
     <mybatisplus.starter.version>3.1.1</mybatisplus.starter.version>
     <smart.doc.version>1.7.5</smart.doc.version>
