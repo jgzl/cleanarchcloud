@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gitee.application.auth.bussiness.dto.UserDTO;
+import com.gitee.application.auth.bussiness.service.SysUserService;
 import com.gitee.common.core.util.R;
 
 import io.swagger.annotations.Api;
@@ -44,6 +46,9 @@ public class PlatformTokenController {
   private ClientDetailsService clientDetailsService;
 
   @Autowired
+  private SysUserService sysUserService;
+
+  @Autowired
   private TokenStore tokenStore;
 
   /**
@@ -59,6 +64,13 @@ public class PlatformTokenController {
     modelAndView.setViewName("ftl/login");
     modelAndView.addObject("error", error);
     return modelAndView;
+  }
+
+  @GetMapping("/create")
+  @ApiOperation(value = "创建新用户", notes = "创建新用户")
+  public String createUser(UserDTO userDTO) {
+    sysUserService.saveUser(userDTO);
+    return "success";
   }
 
   /**

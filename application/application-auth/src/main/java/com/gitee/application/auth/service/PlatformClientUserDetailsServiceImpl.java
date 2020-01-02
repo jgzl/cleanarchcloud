@@ -4,7 +4,10 @@ import javax.sql.DataSource;
 
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.security.oauth2.provider.ClientDetails;
+import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+
+import com.gitee.common.core.constant.SecurityConstants;
 
 /**
  * @author lihaifeng
@@ -16,6 +19,8 @@ public class PlatformClientUserDetailsServiceImpl extends JdbcClientDetailsServi
 
   @Override
   public ClientDetails loadClientByClientId(String clientId) throws InvalidClientException {
-    return super.loadClientByClientId(clientId);
+    BaseClientDetails user = (BaseClientDetails) super.loadClientByClientId(clientId);
+    user.setClientSecret(SecurityConstants.BCRYPT + user.getClientSecret());
+    return user;
   }
 }

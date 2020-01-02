@@ -21,8 +21,8 @@ import lombok.SneakyThrows;
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-	@Bean
 	@Override
+	@Bean
 	@SneakyThrows
 	public AuthenticationManager authenticationManagerBean() {
 		return super.authenticationManagerBean();
