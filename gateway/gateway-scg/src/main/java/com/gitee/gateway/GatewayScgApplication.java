@@ -9,12 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-import com.gitee.common.gateway.annotation.EnableDynamicSpringCloudGateway;
-
 /**
  * @author lihaifeng
  */
-@EnableDynamicSpringCloudGateway
+//@EnableDynamicSpringCloudGateway
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
