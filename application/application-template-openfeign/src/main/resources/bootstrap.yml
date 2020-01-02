@@ -13,3 +13,5 @@ spring:
         refreshable-dataids: ${env.nacos.refresh}
       discovery:
         namespace: ${env.nacos.namespace}
+server:
+  port: 8060

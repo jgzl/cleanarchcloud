@@ -1,6 +1,6 @@
 #主从读写分离配置
 server:
-  port: 8020
+  port: 8040
 spring:
   freemarker:
     cache: false
