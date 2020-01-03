@@ -24,7 +24,7 @@ import lombok.SneakyThrows;
 @Primary
 @Order(90)
 @Configuration
-public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {

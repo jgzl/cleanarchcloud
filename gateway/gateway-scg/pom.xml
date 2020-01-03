@@ -24,10 +24,10 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-gateway</artifactId>
     </dependency>
-    <dependency>
+<!--    <dependency>
       <artifactId>common-gateway</artifactId>
       <groupId>com.gitee</groupId>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis-reactive</artifactId>

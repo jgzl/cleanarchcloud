@@ -25,10 +25,10 @@ public class PlatformTokenEnhancer implements TokenEnhancer {
     }
 
     final Map<String, Object> additionalInfo = new HashMap<>(8);
-    PlatformUser platformUser = (PlatformUser) authentication.getUserAuthentication().getCredentials();
+    PlatformUser platformUser = (PlatformUser) authentication.getUserAuthentication().getPrincipal();
     additionalInfo.put(SecurityConstants.DETAILS_USER_ID, platformUser.getId());
     additionalInfo.put(SecurityConstants.DETAILS_USERNAME, platformUser.getUsername());
-    additionalInfo.put(SecurityConstants.DETAILS_LICENSE, SecurityConstants.PIGX_LICENSE);
+    additionalInfo.put(SecurityConstants.DETAILS_LICENSE, SecurityConstants.PLATFORM_LICENSE);
     additionalInfo.put(SecurityConstants.ACTIVE, Boolean.TRUE);
     ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
     return accessToken;
