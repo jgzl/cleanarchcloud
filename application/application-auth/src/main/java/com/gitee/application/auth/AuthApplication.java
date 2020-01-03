@@ -8,6 +8,8 @@ import com.gitee.annotation.EnableSwaggerPlus;
 
 /**
  * @author lihaifeng
+ * 登录http://localhost:8030/token/login
+ * 输入账号密码 lihaifeng 123456
  */
 @EnableSwaggerPlus
 @EnableDiscoveryClient
