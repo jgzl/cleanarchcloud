@@ -13,6 +13,7 @@ import com.gitee.common.core.constant.SecurityConstants;
  * @author lihaifeng
  */
 public class PlatformClientUserDetailsServiceImpl extends JdbcClientDetailsService {
+
   public PlatformClientUserDetailsServiceImpl(DataSource dataSource) {
     super(dataSource);
   }

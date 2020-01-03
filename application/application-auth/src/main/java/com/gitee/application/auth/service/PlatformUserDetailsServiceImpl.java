@@ -32,7 +32,7 @@ public class PlatformUserDetailsServiceImpl implements PlatformUserDetailsServic
     dbAuthsSet.add(SecurityConstants.ROLE + "ADMIN");
     Collection<? extends GrantedAuthority> authorities
         = AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-    return new PlatformUser(user.getId().toString(), SecurityConstants.BCRYPT + user.getPassword(), true,
+    return new PlatformUser(user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(), true,
         true, true, true, authorities);
   }
 }
