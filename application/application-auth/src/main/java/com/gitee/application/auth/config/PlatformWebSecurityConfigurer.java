@@ -35,7 +35,7 @@ public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter 
 				.failureHandler(authenticationFailureHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers("/token/**", "/actuator/**").permitAll()
+				.antMatchers("/token/**", "/actuator/**","/v2/api-docs").permitAll()
 				.anyRequest().authenticated()
 				.and().csrf().disable();
 	}

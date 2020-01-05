@@ -9,13 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- *   `id` bigint(20) NOT NULL,
- *   `name` varchar(20) DEFAULT NULL,
- *   `username` varchar(20) NOT NULL,
- *   `password` varchar(128) NOT NULL,
- *   `tel` varchar(20) DEFAULT NULL,
- *   `gender` varchar(10) DEFAULT NULL,
- *   `createTime` datetime DEFAULT NULL,
+ * @author lihaifeng
  */
 @Data
 @TableName("sys_user")

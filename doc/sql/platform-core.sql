@@ -88,3 +88,4 @@ CREATE TABLE `sys_user` (
 
 INSERT INTO `sys_user` VALUES ('1', '张三', 'admin', '123456', '13712345678', 'MALE', sysdate());
 INSERT INTO `sys_user` VALUES ('2', '李四', 'user', '123456', '13812345678', 'UNKNOWN', sysdate());
+INSERT INTO `sys_user` VALUES ('3', 'lihaifeng', 'lihaifeng', '$2a$10$8q4.lL/6Vsyafnc9JO78E.b0F1v5beFXINnnI/KOUx/n2Y/bdBhGi', '13812345678', 'UNKNOWN', sysdate());
