@@ -9,20 +9,20 @@ spring:
     dataSource:
       ds-master:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
-        password: root
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       ds-slave0:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
-        password: root
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       ds-slave1:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
-        password: root
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       names: ds-master,ds-slave0,ds-slave1
@@ -33,6 +33,11 @@ spring:
       name: ms
       master-data-source-name: ds-master
       slave-data-source-names: ds-slave0,ds-slave1
+  redis:
+    host: 192.168.99.100
+    password:
 redis:
   topic:
     chat: chat-topic
+mybatis-plus:
+  mapper-locations: classpath*:mybatis.mapper/*.xml
