@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 @Configuration
 @ConditionalOnBean(DataSource.class)
 @AutoConfigureAfter(DataSourceAutoConfiguration.class)
-@MapperScan("com.gitee.application.**.mapper")
+@MapperScan("com.gitee.application.**.**.mapper")
 public class PlatformMybatisPlusConfiguration {
   @Bean
   @ConditionalOnMissingBean

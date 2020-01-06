@@ -1,5 +1,7 @@
 package com.gitee.application.auth.bussiness.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,10 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   public void saveUser(UserDTO userDTO) {
     PlatformSsoUser platformSsoUser = new PlatformSsoUser();
     BeanUtil.copyProperties(userDTO, platformSsoUser);
+    LocalDateTime loginTime=platformSsoUser.getLoginTime();
+    if (loginTime==null){
+      platformSsoUser.setLoginTime(LocalDateTime.now());
+    }
     platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
     baseMapper.insert(platformSsoUser);
   }
