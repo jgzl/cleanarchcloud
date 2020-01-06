@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.gitee.application.auth.bussiness.domain.PlatformSsoUser;
 import com.gitee.application.auth.bussiness.service.PlatformSsoUserService;
-import com.gitee.application.auth.model.PlatformUser;
 import com.gitee.common.core.constant.SecurityConstants;
+import com.gitee.common.security.login.PlatformUser;
 
 import lombok.AllArgsConstructor;
 
@@ -34,7 +34,10 @@ public class PlatformUserDetailsServiceImpl implements UserDetailsService {
     dbAuthsSet.add(SecurityConstants.ROLE + "ADMIN");
     Collection<? extends GrantedAuthority> authorities
         = AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-    return new PlatformUser(user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(), true,
+    PlatformUser platformUser = new PlatformUser(user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(),
+        true,
         true, true, true, authorities);
+    platformUser.setId(user.getId());
+    return platformUser;
   }
 }
