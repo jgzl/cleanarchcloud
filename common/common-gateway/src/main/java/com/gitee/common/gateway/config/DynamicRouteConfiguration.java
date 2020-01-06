@@ -30,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
+@ConditionalOnProperty(prefix = "platform.gateway.dynamic",havingValue = "true")
 @ConditionalOnWebApplication(type = Type.REACTIVE)
 public class DynamicRouteConfiguration {
   /**

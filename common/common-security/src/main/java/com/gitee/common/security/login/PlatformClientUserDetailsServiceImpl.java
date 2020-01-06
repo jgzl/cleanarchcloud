@@ -1,4 +1,4 @@
-package com.gitee.application.auth.service;
+package com.gitee.common.security.login;
 
 import javax.sql.DataSource;
 

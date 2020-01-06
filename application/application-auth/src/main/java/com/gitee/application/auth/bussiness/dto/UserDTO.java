@@ -1,6 +1,6 @@
 package com.gitee.application.auth.bussiness.dto;
 
-import com.gitee.application.auth.bussiness.domain.SysUser;
+import com.gitee.application.auth.bussiness.domain.PlatformSsoUser;
 
 import lombok.Data;
 
@@ -8,5 +8,5 @@ import lombok.Data;
  * @author lihaifeng
  */
 @Data
-public class UserDTO extends SysUser {
+public class UserDTO extends PlatformSsoUser {
 }

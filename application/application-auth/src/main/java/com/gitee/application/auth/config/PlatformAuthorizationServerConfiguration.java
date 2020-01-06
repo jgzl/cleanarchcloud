@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import com.gitee.application.auth.service.PlatformClientUserDetailsServiceImpl;
+import com.gitee.common.security.login.PlatformClientUserDetailsServiceImpl;
 
 import lombok.AllArgsConstructor;
 

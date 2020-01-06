@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -25,12 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gitee.application.auth.bussiness.dto.UserDTO;
-import com.gitee.application.auth.bussiness.service.SysUserService;
+import com.gitee.application.auth.bussiness.service.PlatformSsoUserService;
 import com.gitee.common.core.util.R;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import cn.hutool.core.util.StrUtil;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -38,18 +38,16 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RestController
+@AllArgsConstructor
 @RequestMapping("token")
 @Api(value = "token端点", tags = "token端点")
 public class PlatformTokenController {
 
-  @Autowired
-  private ClientDetailsService clientDetailsService;
+  private final ClientDetailsService clientDetailsService;
 
-  @Autowired
-  private SysUserService sysUserService;
+  private final PlatformSsoUserService platformSsoUserService;
 
-  @Autowired
-  private TokenStore tokenStore;
+  private final TokenStore tokenStore;
 
   /**
    * 认证页面
@@ -69,7 +67,7 @@ public class PlatformTokenController {
   @GetMapping("/create")
   @ApiOperation(value = "创建新用户", notes = "创建新用户")
   public String createUser(UserDTO userDTO) {
-    sysUserService.saveUser(userDTO);
+    platformSsoUserService.saveUser(userDTO);
     return "success";
   }
 
