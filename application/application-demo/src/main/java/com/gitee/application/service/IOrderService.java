@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.gitee.application.model.bo.OrderBO;
 import com.gitee.application.model.dao.OrderDAO;
 import com.gitee.application.model.vo.OrderVO;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author lihaifeng
@@ -17,4 +18,6 @@ public interface IOrderService extends IService<OrderDAO> {
    * @return
    */
   List<OrderBO> createOrderByVO(OrderVO orderVO);
+
+  List<OrderBO> pageList();
 }
