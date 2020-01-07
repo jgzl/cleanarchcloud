@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * xuhang
  */
 @Configuration
-
+@MapperScan("com.gitee.application.**.mapper")
 public class MybatisPlusConfig {
 
     /**

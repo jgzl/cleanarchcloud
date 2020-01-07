@@ -19,7 +19,6 @@ import com.gitee.annotation.EnableSwaggerPlus;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@MapperScan("com.gitee.application.**.mapper")
 public class DemoApplication {
 
   public static void main(String[] args) {
