@@ -22,17 +22,10 @@
     <module>application-template-openfeign</module>
     <module>application-template-dubbo</module>
     <module>application-auth</module>
+    <module>application-ssoclient-demo</module>
   </modules>
 
   <dependencies>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.github.xiaoymin</groupId>
       <artifactId>knife4j-micro-spring-boot-starter</artifactId>

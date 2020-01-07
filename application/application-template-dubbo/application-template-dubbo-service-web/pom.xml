@@ -9,6 +9,14 @@
   <artifactId>application-template-dubbo-service-web</artifactId>
   <dependencies>
     <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.gitee</groupId>
       <artifactId>application-template-dubbo-service-impl</artifactId>
       <version>${project.parent.version}</version>
