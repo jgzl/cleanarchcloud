@@ -1,4 +1,4 @@
-package com.gitee.common.data.config;
+package com.gitee.common.data.mybatis;
 
 import java.time.LocalDateTime;
 

@@ -17,6 +17,11 @@
       <artifactId>mybatis-plus-extension</artifactId>
       <groupId>com.baomidou</groupId>
     </dependency>
+    <!--缓存依赖-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
   </dependencies>
 
   <modelVersion>4.0.0</modelVersion>

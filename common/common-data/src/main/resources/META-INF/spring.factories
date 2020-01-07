@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.gitee.common.data.config.PlatformMybatisPlusConfiguration
+  com.gitee.common.data.mybatis.PlatformMybatisPlusConfiguration,\
+  com.gitee.common.data.redis.RedisTemplateConfiguration
