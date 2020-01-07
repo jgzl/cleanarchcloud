@@ -9,12 +9,12 @@ management:
 swagger:
   title: Platform Swagger API
   version: 1.0.0
-  description: 平台API接口
+  description: API
   license: Powered By Platform
   licenseUrl: https://blog.dlihaifeng.com/
   terms-of-service-url: https://blog.dlihaifeng.com/
   contact:
-    name: 李海峰
+    name: 
     email: li7hai26@gmail.com
     url: https://blog.dlihaifeng.cn
   authorization:
@@ -25,3 +25,5 @@ swagger:
         description: server all
     token-url-list:
       - http://${GATEWAY-HOST:gateway-scg}:${GATEWAY-PORT:8000}/auth/oauth/token
+mybatis-plus:
+  mapper-locations: classpath*:mybatis.mapper/*.xml

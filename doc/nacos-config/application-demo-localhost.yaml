@@ -39,5 +39,3 @@ spring:
 redis:
   topic:
     chat: chat-topic
-mybatis-plus:
-  mapper-locations: classpath*:mybatis.mapper/*.xml
