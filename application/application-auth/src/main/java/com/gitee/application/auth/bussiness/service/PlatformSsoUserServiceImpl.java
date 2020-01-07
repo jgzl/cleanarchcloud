@@ -2,6 +2,7 @@ package com.gitee.application.auth.bussiness.service;
 
 import java.time.LocalDateTime;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,13 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
 
   private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
+  /**
+   * 使用cache相关注解，自动注入数据
+   * @param username
+   * @return
+   */
   @Override
+  @Cacheable(value = "findByUserName",key = "#username")
   public PlatformSsoUser findUserByName(String username) {
     return this.getOne(Wrappers.<PlatformSsoUser>lambdaQuery().eq(PlatformSsoUser::getUsername,username));
   }
@@ -38,6 +45,6 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
       platformSsoUser.setLoginTime(LocalDateTime.now());
     }
     platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
-    baseMapper.insert(platformSsoUser);
+    this.save(platformSsoUser);
   }
 }
