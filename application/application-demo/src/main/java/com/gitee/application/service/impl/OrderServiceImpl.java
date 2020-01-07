@@ -1,5 +1,6 @@
 package com.gitee.application.service.impl;
 
+import java.rmi.server.ExportException;
 import java.util.Date;
 import java.util.List;
 
@@ -50,4 +51,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDAO> impleme
       orderDAOIPage.getRecords().forEach(a -> System.out.println(a));
       return null;
   }
+
+
+  @Transactional(rollbackFor = Exception.class)
+  @Override
+  public void insert(){
+      OrderDAO orderDAO = new OrderDAO();
+      orderDAO.setCode("123");
+      this.save(orderDAO);
+  }
+
 }

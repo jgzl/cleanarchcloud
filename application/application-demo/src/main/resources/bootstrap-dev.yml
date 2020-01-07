@@ -9,19 +9,19 @@ spring:
     dataSource:
       ds-master:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
         password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       ds-slave0:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
         password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
       ds-slave1:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.99.100:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
         password: 123456
         type: com.zaxxer.hikari.HikariDataSource
         username: root
@@ -41,3 +41,9 @@ redis:
     chat: chat-topic
 mybatis-plus:
   mapper-locations: classpath*:mybatis.mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  #typeAliasesPackage: com.baomidou.springboot.db.entity
+  #typeEnumsPackage: com.baomidou.springboot.db.entity.enums
+  configuration:
+  # 使用idea mybatis log查看实际执行的sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

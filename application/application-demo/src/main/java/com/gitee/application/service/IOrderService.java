@@ -12,12 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
  * @author lihaifeng
  */
 public interface IOrderService extends IService<OrderDAO> {
-  /**
-   * 通过VO创建订单
-   * @param orderVO
-   * @return
-   */
-  List<OrderBO> createOrderByVO(OrderVO orderVO);
+    /**
+     * 通过VO创建订单
+     *
+     * @param orderVO
+     * @return
+     */
+    List<OrderBO> createOrderByVO(OrderVO orderVO);
 
-  List<OrderBO> pageList();
+    List<OrderBO> pageList();
+
+    void insert();
 }
