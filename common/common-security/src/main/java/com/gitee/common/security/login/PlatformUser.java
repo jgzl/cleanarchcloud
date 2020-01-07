@@ -1,4 +1,4 @@
-package com.gitee.application.auth.model;
+package com.gitee.common.security.login;
 
 import java.util.Collection;
 

@@ -18,6 +18,7 @@
       </plugin>
     </plugins>
   </build>
+  <name>application-auth::登录模块</name>
 
   <dependencies>
     <dependency>
@@ -42,6 +43,14 @@
     </dependency>
     <dependency>
       <artifactId>common-core</artifactId>
+      <groupId>com.gitee</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>common-data</artifactId>
+      <groupId>com.gitee</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>common-security</artifactId>
       <groupId>com.gitee</groupId>
     </dependency>
     <dependency>

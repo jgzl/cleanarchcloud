@@ -22,9 +22,9 @@ import cn.hutool.core.date.DatePattern;
  * @author L.cm
  * @author lishanbu
  */
-public class PigxJavaTimeModule extends SimpleModule {
+public class PlatformJavaTimeModule extends SimpleModule {
 
-  public PigxJavaTimeModule() {
+  public PlatformJavaTimeModule() {
     super(PackageVersion.VERSION);
     this.addSerializer(LocalDateTime.class,
         new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)));

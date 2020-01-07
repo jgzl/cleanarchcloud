@@ -1,4 +1,4 @@
-package com.gitee.application.auth.service;
+package com.gitee.common.security.login;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

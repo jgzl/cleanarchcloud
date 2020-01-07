@@ -2,23 +2,26 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>common-security</artifactId>
+  <artifactId>common-data</artifactId>
   <dependencies>
-    <!--工具类核心包-->
     <dependency>
-      <artifactId>common-core</artifactId>
       <groupId>com.gitee</groupId>
+      <artifactId>common-core</artifactId>
     </dependency>
-    <!--安全模块 -->
     <dependency>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <groupId>org.springframework.cloud</groupId>
+      <groupId>com.gitee</groupId>
+      <artifactId>common-security</artifactId>
+    </dependency>
+    <!-- mybatis-plus注解-->
+    <dependency>
+      <artifactId>mybatis-plus-extension</artifactId>
+      <groupId>com.baomidou</groupId>
     </dependency>
   </dependencies>
 
-  <description>common-security::common安全权限</description>
   <modelVersion>4.0.0</modelVersion>
-  <name>common-security::common安全权限</name>
+  <description>common-data::SQL,NOSQL操作</description>
+  <name>common-data::SQL,NOSQL操作</name>
 
   <parent>
     <artifactId>common</artifactId>

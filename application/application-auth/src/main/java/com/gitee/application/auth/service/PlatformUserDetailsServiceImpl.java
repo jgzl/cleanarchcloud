@@ -4,35 +4,40 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.gitee.application.auth.bussiness.domain.SysUser;
-import com.gitee.application.auth.bussiness.service.SysUserService;
-import com.gitee.application.auth.model.PlatformUser;
+import com.gitee.application.auth.bussiness.domain.PlatformSsoUser;
+import com.gitee.application.auth.bussiness.service.PlatformSsoUserService;
 import com.gitee.common.core.constant.SecurityConstants;
+import com.gitee.common.security.login.PlatformUser;
+
+import lombok.AllArgsConstructor;
 
 /**
  * @author lihaifeng
  */
 @Component
-public class PlatformUserDetailsServiceImpl implements PlatformUserDetailsService {
+@AllArgsConstructor
+public class PlatformUserDetailsServiceImpl implements UserDetailsService {
 
-  @Autowired
-  private SysUserService sysUserService;
+  private final PlatformSsoUserService platformSsoUserService;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    SysUser user = sysUserService.findUserByName(username);
+    PlatformSsoUser user = platformSsoUserService.findUserByName(username);
     Set<String> dbAuthsSet = new HashSet<>();
     dbAuthsSet.add(SecurityConstants.ROLE + "ADMIN");
     Collection<? extends GrantedAuthority> authorities
         = AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-    return new PlatformUser(user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(), true,
+    PlatformUser platformUser = new PlatformUser(user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(),
+        true,
         true, true, true, authorities);
+    platformUser.setId(user.getId());
+    return platformUser;
   }
 }
