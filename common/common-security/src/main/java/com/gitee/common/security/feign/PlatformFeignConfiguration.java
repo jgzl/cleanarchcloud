@@ -16,6 +16,7 @@
 
 package com.gitee.common.security.feign;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.security.oauth2.client.AccessTokenContextRelay;
@@ -38,7 +39,8 @@ public class PlatformFeignConfiguration {
 
 	@Bean
 	@ConditionalOnProperty("security.oauth2.client.client-id")
-	public RequestInterceptor oauth2FeignRequestInterceptor(OAuth2ClientContext oAuth2ClientContext,
+	public RequestInterceptor oauth2FeignRequestInterceptor(
+			@Qualifier("oauth2ClientContext") OAuth2ClientContext oAuth2ClientContext,
 															OAuth2ProtectedResourceDetails resource,
 															AccessTokenContextRelay accessTokenContextRelay) {
 		return new PlatformFeignClientInterceptor(oAuth2ClientContext, resource, accessTokenContextRelay);

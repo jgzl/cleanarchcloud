@@ -22,6 +22,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -48,7 +49,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class PlatformResourceServerTokenRelayAutoConfiguration {
 
 	@Bean
-	public AccessTokenContextRelay accessTokenContextRelay(OAuth2ClientContext context) {
+	public AccessTokenContextRelay accessTokenContextRelay(
+			@Qualifier("oauth2ClientContext") OAuth2ClientContext context) {
 		return new AccessTokenContextRelay(context);
 	}
 
