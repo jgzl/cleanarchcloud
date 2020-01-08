@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -17,6 +18,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gitee.application.auth.bussiness.dto.UserDTO;
 import com.gitee.application.auth.bussiness.service.PlatformSsoUserService;
+import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.util.R;
 
 import io.swagger.annotations.Api;
@@ -49,6 +53,8 @@ public class PlatformTokenController {
 
   private final TokenStore tokenStore;
 
+  private final CacheManager cacheManager;
+
   /**
    * 认证页面
    *
@@ -64,9 +70,9 @@ public class PlatformTokenController {
     return modelAndView;
   }
 
-  @GetMapping("/create")
-  @ApiOperation(value = "创建新用户", notes = "创建新用户")
-  public String createUser(UserDTO userDTO) {
+  @PostMapping("/create")
+  @ApiOperation(value = "创建新用户", notes = "创建新用户",httpMethod = "POST")
+  public String createUser(@RequestBody UserDTO userDTO) {
     platformSsoUserService.saveUser(userDTO);
     return "success";
   }
@@ -115,8 +121,8 @@ public class PlatformTokenController {
 
     OAuth2Authentication auth2Authentication = tokenStore.readAuthentication(accessToken);
     // 清空用户信息
-    /*cacheManager.getCache(CacheConstants.USER_DETAILS)
-        .evict(auth2Authentication.getName());*/
+    cacheManager.getCache(CacheConstants.USER_DETAILS)
+        .evict(auth2Authentication.getName());
 
     // 清空access token
     tokenStore.removeAccessToken(accessToken);

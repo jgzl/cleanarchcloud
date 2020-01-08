@@ -33,7 +33,6 @@
     <dependency>
       <artifactId>transmittable-thread-local</artifactId>
       <groupId>com.alibaba</groupId>
-      <version>2.10.2</version>
     </dependency>
   </dependencies>
 

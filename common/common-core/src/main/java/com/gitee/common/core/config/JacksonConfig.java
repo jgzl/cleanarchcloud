@@ -18,6 +18,7 @@ import cn.hutool.core.date.DatePattern;
 
 /**
  * JacksonConfig
+ * 必须是json传入才会走这个自动序列化反序列化LocalDateTime,LocalDate,LocalTime
  *
  * @author: lihaifeng
  * @author L.cm

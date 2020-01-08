@@ -63,6 +63,22 @@
         <version>${guava.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>${jwt.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>${jjwt.version}</version>
+      </dependency>
+      <!--TTL-->
+      <dependency>
+        <artifactId>transmittable-thread-local</artifactId>
+        <groupId>com.alibaba</groupId>
+        <version>${ttl.version}</version>
+      </dependency>
+      <dependency>
         <artifactId>keycloak-spring-boot-starter</artifactId>
         <groupId>org.keycloak</groupId>
         <version>${keycloak.version}</version>
@@ -239,6 +255,8 @@
     <guava.version>27.0.1-jre</guava.version>
     <hutool.version>5.0.5</hutool.version>
     <javassist.version>3.24.1-GA</javassist.version>
+    <jwt.version>3.9.0</jwt.version>
+    <jjwt.version>0.9.1</jjwt.version>
     <keycloak.version>8.0.1</keycloak.version>
     <lombok.version>1.18.10</lombok.version>
     <mybatisplus.starter.version>3.1.1</mybatisplus.starter.version>
@@ -247,11 +265,12 @@
     <springfox.version>2.9.2</springfox.version>
     <swagger.version>1.5.22</swagger.version>
     <sbu.version>1.9.6</sbu.version>
+    <ttl.version>2.10.2</ttl.version>
 
     <!-- bom依赖配置管理 -->
-    <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+    <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
-    <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+    <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
     <spring.version>5.2.0.RELEASE</spring.version>
   </properties>
