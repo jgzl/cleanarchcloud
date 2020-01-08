@@ -1,20 +1,17 @@
 /*
+ *    Copyright [2020] [lihaifeng,xuhang]
  *
- *      Copyright (c) 2018-2025, lihaifeng All rights reserved.
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions are met:
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Redistributions of source code must retain the above copyright notice,
- *  this list of conditions and the following disclaimer.
- *  Redistributions in binary form must reproduce the above copyright
- *  notice, this list of conditions and the following disclaimer in the
- *  documentation and/or other materials provided with the distribution.
- *  Neither the name of the dlihaifeng.com developer nor the names of its
- *  contributors may be used to endorse or promote products derived from
- *  this software without specific prior written permission.
- *  Author: lihaifeng (wangiegie@gmail.com)
- *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 
 package com.gitee.common.core.util;
@@ -43,7 +40,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ApiModel(value = "响应信息主体")
-public class R<T> implements Serializable {
+public class Result<T> implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Getter
@@ -62,36 +59,36 @@ public class R<T> implements Serializable {
   @ApiModelProperty(value = "数据")
   private T data;
 
-  public static <T> R<T> ok() {
+  public static <T> Result<T> ok() {
     return restResult(null, CommonConstants.SUCCESS, null);
   }
 
-  public static <T> R<T> ok(T data) {
+  public static <T> Result<T> ok(T data) {
     return restResult(data, CommonConstants.SUCCESS, null);
   }
 
-  public static <T> R<T> ok(T data, String msg) {
+  public static <T> Result<T> ok(T data, String msg) {
     return restResult(data, CommonConstants.SUCCESS, msg);
   }
 
-  public static <T> R<T> failed() {
+  public static <T> Result<T> failed() {
     return restResult(null, CommonConstants.FAIL, null);
   }
 
-  public static <T> R<T> failed(String msg) {
+  public static <T> Result<T> failed(String msg) {
     return restResult(null, CommonConstants.FAIL, msg);
   }
 
-  public static <T> R<T> failed(T data) {
+  public static <T> Result<T> failed(T data) {
     return restResult(data, CommonConstants.FAIL, null);
   }
 
-  public static <T> R<T> failed(T data, String msg) {
+  public static <T> Result<T> failed(T data, String msg) {
     return restResult(data, CommonConstants.FAIL, msg);
   }
 
-  private static <T> R<T> restResult(T data, int code, String msg) {
-    R<T> apiResult = new R<>();
+  private static <T> Result<T> restResult(T data, int code, String msg) {
+    Result<T> apiResult = new Result<>();
     apiResult.setCode(code);
     apiResult.setData(data);
     apiResult.setMsg(msg);

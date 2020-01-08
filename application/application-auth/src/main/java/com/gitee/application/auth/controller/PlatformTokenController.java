@@ -1,3 +1,19 @@
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package com.gitee.application.auth.controller;
 
 import java.util.Map;
@@ -26,10 +42,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gitee.application.auth.bussiness.dto.UserDTO;
 import com.gitee.application.auth.bussiness.service.PlatformSsoUserService;
 import com.gitee.common.core.constant.CacheConstants;
-import com.gitee.common.core.util.R;
+import com.gitee.common.core.util.Result;
+import com.gitee.common.upms.dto.UserDTO;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -77,6 +93,13 @@ public class PlatformTokenController {
     return "success";
   }
 
+  @GetMapping("/baidu")
+  @ApiOperation(value = "重定向到百度", notes = "重定向网址",httpMethod = "GET")
+  public ModelAndView redirectToBaidu(ModelAndView modelAndView){
+    modelAndView.setViewName("redirect:https://www.baidu.com");
+    return modelAndView;
+  }
+
   /**
    * 确认授权页面
    *
@@ -108,15 +131,15 @@ public class PlatformTokenController {
    * @param authHeader Authorization
    */
   @DeleteMapping("/logout")
-  public R logout(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
+  public Result logout(@RequestHeader(value = HttpHeaders.AUTHORIZATION, required = false) String authHeader) {
     if (StrUtil.isBlank(authHeader)) {
-      return R.ok(Boolean.FALSE, "退出失败，token 为空");
+      return Result.ok(Boolean.FALSE, "退出失败，token 为空");
     }
 
     String tokenValue = authHeader.replace(OAuth2AccessToken.BEARER_TYPE, StrUtil.EMPTY).trim();
     OAuth2AccessToken accessToken = tokenStore.readAccessToken(tokenValue);
     if (accessToken == null || StrUtil.isBlank(accessToken.getValue())) {
-      return R.ok(Boolean.TRUE, "退出失败，token 无效");
+      return Result.ok(Boolean.TRUE, "退出失败，token 无效");
     }
 
     OAuth2Authentication auth2Authentication = tokenStore.readAuthentication(accessToken);
@@ -130,7 +153,7 @@ public class PlatformTokenController {
     // 清空 refresh token
     OAuth2RefreshToken refreshToken = accessToken.getRefreshToken();
     tokenStore.removeRefreshToken(refreshToken);
-    return R.ok(Boolean.TRUE);
+    return Result.ok(Boolean.TRUE);
   }
 
   /**
@@ -140,9 +163,9 @@ public class PlatformTokenController {
    * @return
    */
   @DeleteMapping("/{token}")
-  public R<Boolean> delToken(@PathVariable("token") String token) {
+  public Result<Boolean> delToken(@PathVariable("token") String token) {
     OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
     tokenStore.removeAccessToken(oAuth2AccessToken);
-    return new R<>();
+    return new Result<>();
   }
 }
