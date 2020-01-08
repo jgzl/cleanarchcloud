@@ -9,11 +9,6 @@
   <artifactId>gateway-zuul</artifactId>
   <dependencies>
     <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-check-starter</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>

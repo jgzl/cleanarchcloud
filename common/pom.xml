@@ -8,7 +8,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modules>
     <module>common-bom</module>
-    <module>common-check-starter</module>
     <module>common-core</module>
     <module>common-gateway</module>
     <module>common-security</module>
