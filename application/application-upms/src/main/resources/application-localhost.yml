@@ -21,4 +21,4 @@ security:
         - /user/info/**
     resource:
       loadBalanced: true
-      token-info-uri: http://pigx-auth/oauth/check_token
+      token-info-uri: http://application-auth/oauth/check_token

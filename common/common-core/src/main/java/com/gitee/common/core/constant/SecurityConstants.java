@@ -40,7 +40,7 @@ public interface SecurityConstants {
   /**
    * 前缀
    */
-  String PIGX_PREFIX = "pigx_";
+  String PLATFORM_PREFIX = "platform_";
 
   /**
    * oauth 相关前缀
@@ -118,6 +118,7 @@ public interface SecurityConstants {
    * {bcrypt} 加密的特征码
    */
   String BCRYPT = "{bcrypt}";
+  String NOOP = "{noop}";
   /**
    * sys_oauth_client_details 表的字段，不包括client_id、client_secret
    */
@@ -129,7 +130,7 @@ public interface SecurityConstants {
    * JdbcClientDetailsService 查询语句
    */
   String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
-      + " from sys_oauth_client_details";
+      + " from platform_oauth_client_details";
 
   /**
    * 默认的查询语句

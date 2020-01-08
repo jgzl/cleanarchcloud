@@ -69,8 +69,8 @@ public class PlatformUserAuthenticationConverter implements UserAuthenticationCo
 		if (map.containsKey(USERNAME)) {
 			Collection<? extends GrantedAuthority> authorities = getAuthorities(map);
 			String username = (String) map.get(USERNAME);
-			Long id = (Long) map.get(SecurityConstants.DETAILS_USER_ID);
-			PlatformUser user = new PlatformUser(id, username, N_A, true
+			Integer id = (Integer) map.get(SecurityConstants.DETAILS_USER_ID);
+			PlatformUser user = new PlatformUser(id.longValue(), username, N_A, true
 					, true, true, true, authorities);
 			return new UsernamePasswordAuthenticationToken(user, N_A, authorities);
 		}

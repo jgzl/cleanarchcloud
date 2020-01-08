@@ -13,6 +13,8 @@ server:
 security:
   oauth2:
     client:
+      client-id: app
+      client-secret: app
       ignore-urls:
         - /actuator/**
         - /v2/api-docs
