@@ -1,3 +1,8 @@
+drop database if exists `platform-core`;
+create database `platform-core` charset utf8mb4;
+USE `platform-core`;
+
+
 /*
  Navicat Premium Data Transfer
 
@@ -11,11 +16,9 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 09/01/2020 17:33:31
+ Date: 10/01/2020 00:00:52
 */
-drop database if exists `platform-core`;
-create database `platform-core` charset utf8mb4;
-USE `platform-core`;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -141,10 +144,9 @@ CREATE TABLE `platform_oauth_client_details` (
 -- Records of platform_oauth_client_details
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', '', 43200, 2592001, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8071/sso/login,http://localhost:8072/sso/login,http://127.0.0.1:8071/sso/login,http://127.0.0.1:8072/sso/login', '', 43200, 2592001, NULL, '');
 INSERT INTO `platform_oauth_client_details` VALUES ('codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
 INSERT INTO `platform_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
-INSERT INTO `platform_oauth_client_details` VALUES ('demo', NULL, 'demo', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', '', 43200, 2592001, NULL, '');
 INSERT INTO `platform_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
 COMMIT;
 

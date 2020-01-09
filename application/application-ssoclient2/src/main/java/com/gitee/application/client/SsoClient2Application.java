@@ -14,11 +14,13 @@
  *    limitations under the License.
  */
 
-package com.gitee.application.auth;
+package com.gitee.application.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 import com.gitee.annotation.EnableSwaggerPlus;
 import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
@@ -28,12 +30,14 @@ import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
  * 登录http://localhost:8030/token/login
  * 输入账号密码 admin admin
  */
+@EnableOAuth2Sso
 @EnableSwaggerPlus
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnablePlatformFeignClientsPlus
-public class AuthApplication {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SsoClient2Application {
   public static void main(String[] args) {
-    SpringApplication.run(AuthApplication.class, args);
+    SpringApplication.run(SsoClient2Application.class, args);
   }
 }

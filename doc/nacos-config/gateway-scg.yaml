@@ -21,6 +21,18 @@ spring:
             - Path=/demo/**
           filters:
             - StripPrefix=1
+        - id: ssoclient1
+          uri: lb://application-ssoclient1
+          predicates:
+            - Path=/ssoclient1/**
+          filters:
+            - StripPrefix=1
+        - id: ssoclient2
+          uri: lb://application-ssoclient2
+          predicates:
+            - Path=/ssoclient2/**
+          filters:
+            - StripPrefix=1
         - id: dubbo
           uri: lb://application-template-dubbo-service-web
           predicates:

@@ -35,7 +35,8 @@
     <module>application-template-dubbo</module>
     <module>application-auth</module>
     <module>application-upms</module>
-    <module>application-ssoclient-demo</module>
+    <module>application-ssoclient1</module>
+    <module>application-ssoclient2</module>
   </modules>
 
   <dependencies>

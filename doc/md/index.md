@@ -47,7 +47,7 @@ db.password=root
 
 get访问 localhost:8030/oauth/authorize?response_type=code&client_id=app&redirect_uri=http://www.jianshu.com&scope=server
 
-输入账户名密码 lihaifeng 123456 授权，获取到code，用来获取access_token
+输入账户名密码 admin admin 授权，获取到code，用来获取access_token
 
 post访问 localhost:8030/oauth/token
 
