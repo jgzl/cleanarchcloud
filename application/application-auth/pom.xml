@@ -62,6 +62,11 @@
       <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <artifactId>spring-cloud-starter-oauth2</artifactId>
       <groupId>org.springframework.cloud</groupId>
     </dependency>

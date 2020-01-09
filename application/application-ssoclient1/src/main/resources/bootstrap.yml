@@ -1,3 +1,6 @@
+server:
+  servlet:
+    context-path: /sso
 spring:
   profiles:
     active: ${env.profile}
@@ -13,3 +16,6 @@ spring:
         refreshable-dataids: ${env.nacos.refresh}
       discovery:
         namespace: ${env.nacos.namespace}
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
