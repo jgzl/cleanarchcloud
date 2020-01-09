@@ -1,3 +1,19 @@
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package com.gitee.application.auth.config;
 
 import javax.sql.DataSource;
@@ -16,6 +32,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.security.login.PlatformClientUserDetailsServiceImpl;
 
 import lombok.AllArgsConstructor;
@@ -54,6 +71,8 @@ public class PlatformAuthorizationServerConfiguration extends AuthorizationServe
   public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     PlatformClientUserDetailsServiceImpl clientUserDetailsService = new PlatformClientUserDetailsServiceImpl(
         dataSource);
+    clientUserDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
+    clientUserDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
     clients.withClientDetails(clientUserDetailsService);
   }
 
@@ -66,6 +85,7 @@ public class PlatformAuthorizationServerConfiguration extends AuthorizationServe
   @Bean
   public RedisTokenStore tokenStore() {
     RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+    redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX+SecurityConstants.OAUTH_PREFIX);
     return redisTokenStore;
   }
 }

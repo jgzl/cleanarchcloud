@@ -1,20 +1,17 @@
 /*
+ *    Copyright [2020] [lihaifeng,xuhang]
  *
- *      Copyright (c) 2018-2025, lihaifeng All rights reserved.
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions are met:
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Redistributions of source code must retain the above copyright notice,
- *  this list of conditions and the following disclaimer.
- *  Redistributions in binary form must reproduce the above copyright
- *  notice, this list of conditions and the following disclaimer in the
- *  documentation and/or other materials provided with the distribution.
- *  Neither the name of the dlihaifeng.com developer nor the names of its
- *  contributors may be used to endorse or promote products derived from
- *  this software without specific prior written permission.
- *  Author: lihaifeng (wangiegie@gmail.com)
- *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 
 package com.gitee.common.core.constant;
@@ -43,7 +40,7 @@ public interface SecurityConstants {
   /**
    * 前缀
    */
-  String PIGX_PREFIX = "pigx_";
+  String PLATFORM_PREFIX = "platform_";
 
   /**
    * oauth 相关前缀
@@ -121,6 +118,7 @@ public interface SecurityConstants {
    * {bcrypt} 加密的特征码
    */
   String BCRYPT = "{bcrypt}";
+  String NOOP = "{noop}";
   /**
    * sys_oauth_client_details 表的字段，不包括client_id、client_secret
    */
@@ -132,7 +130,7 @@ public interface SecurityConstants {
    * JdbcClientDetailsService 查询语句
    */
   String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
-      + " from sys_oauth_client_details";
+      + " from platform_oauth_client_details";
 
   /**
    * 默认的查询语句
@@ -157,22 +155,12 @@ public interface SecurityConstants {
   /**
    * 用户ID字段
    */
-  String DETAILS_USER_ID = "user_id";
+  String DETAILS_USER_ID = "id";
 
   /**
    * 用户名字段
    */
   String DETAILS_USERNAME = "username";
-
-  /**
-   * 用户部门字段
-   */
-  String DETAILS_DEPT_ID = "dept_id";
-
-  /**
-   * 租户ID 字段
-   */
-  String DETAILS_TENANT_ID = "tenant_id";
 
   /**
    * 协议字段

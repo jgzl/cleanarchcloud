@@ -1,3 +1,19 @@
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package com.gitee.common.security.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +45,10 @@ public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfi
   protected RemoteTokenServices remoteTokenServices;
 
   @Autowired
-  private RestTemplate lbRestTemplate;
+  private RestTemplate restTemplate;
+
+  @Autowired
+  private PlatformPermitAllUrlProperties ignoreUrls;
 
   /**
    * 默认的配置，对外暴露
@@ -44,6 +63,7 @@ public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfi
     ExpressionUrlAuthorizationConfigurer<HttpSecurity>
         .ExpressionInterceptUrlRegistry registry = httpSecurity
         .authorizeRequests();
+    ignoreUrls.getIgnoreUrls().forEach(url->registry.antMatchers(url).permitAll());
     registry.anyRequest().authenticated()
         .and().csrf().disable();
   }
@@ -51,11 +71,10 @@ public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfi
   @Override
   public void configure(ResourceServerSecurityConfigurer resources) {
     DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
-    UserAuthenticationConverter userTokenConverter = null;
-    // new PigxUserAuthenticationConverter();
+    UserAuthenticationConverter userTokenConverter = new PlatformUserAuthenticationConverter();
     accessTokenConverter.setUserTokenConverter(userTokenConverter);
 
-    remoteTokenServices.setRestTemplate(lbRestTemplate);
+    remoteTokenServices.setRestTemplate(restTemplate);
     remoteTokenServices.setAccessTokenConverter(accessTokenConverter);
     resources.authenticationEntryPoint(resourceAuthExceptionEntryPoint)
         .tokenServices(remoteTokenServices);

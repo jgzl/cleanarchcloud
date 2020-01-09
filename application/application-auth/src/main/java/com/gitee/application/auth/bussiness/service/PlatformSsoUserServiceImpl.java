@@ -1,18 +1,32 @@
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package com.gitee.application.auth.bussiness.service;
 
 import java.time.LocalDateTime;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gitee.application.auth.bussiness.domain.PlatformSsoUser;
-import com.gitee.application.auth.bussiness.dto.UserDTO;
 import com.gitee.application.auth.bussiness.mapper.PlatformSsoUserMapper;
+import com.gitee.common.upms.dto.UserDTO;
+import com.gitee.common.upms.entity.PlatformSsoUser;
 
 import cn.hutool.core.bean.BeanUtil;
 
@@ -23,17 +37,6 @@ import cn.hutool.core.bean.BeanUtil;
 public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUser> implements PlatformSsoUserService {
 
   private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
-
-  /**
-   * 使用cache相关注解，自动注入数据
-   * @param username
-   * @return
-   */
-  @Override
-  @Cacheable(value = "findByUserName",key = "#username")
-  public PlatformSsoUser findUserByName(String username) {
-    return this.getOne(Wrappers.<PlatformSsoUser>lambdaQuery().eq(PlatformSsoUser::getUsername,username));
-  }
 
   @Transactional(rollbackFor = Exception.class)
   @Override
