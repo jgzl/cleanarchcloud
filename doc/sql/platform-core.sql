@@ -1,20 +1,4 @@
 /*
- *    Copyright [2020] [lihaifeng,xuhang]
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
-
-/*
  Navicat Premium Data Transfer
 
  Source Server         : docker-local
@@ -27,9 +11,11 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 09/01/2020 00:59:09
+ Date: 09/01/2020 17:33:31
 */
-
+drop database if exists `platform-core`;
+create database `platform-core` charset utf8mb4;
+USE `platform-core`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -101,13 +87,6 @@ CREATE TABLE `oauth_client_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of oauth_client_details
--- ----------------------------
-BEGIN;
-INSERT INTO `oauth_client_details` VALUES ('app', NULL, '$2a$10$/I15oMYYP6Yd1vdgbbhmCOQBKK6mFISdIWy50nVn9agxH4KUqLZ4.', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://localhost:8071/sso/login,http://localhost:8072/sso/login,http://localhost:8073/sso/login', 'ROLE_ADMIN', NULL, NULL, NULL, 'false');
-COMMIT;
-
--- ----------------------------
 -- Table structure for oauth_client_token
 -- ----------------------------
 DROP TABLE IF EXISTS `oauth_client_token`;
@@ -162,12 +141,28 @@ CREATE TABLE `platform_oauth_client_details` (
 -- Records of platform_oauth_client_details
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', 'ROLE_ADMIN', 43200, 2592001, NULL, 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, 'ROLE_ADMIN', NULL, NULL, NULL, 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, 'ROLE_ADMIN', NULL, NULL, NULL, 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('demo', NULL, 'demo', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', 'ROLE_ADMIN', 43200, 2592001, NULL, 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, 'ROLE_ADMIN', NULL, NULL, NULL, 'true');
+INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', '', 43200, 2592001, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('demo', NULL, 'demo', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com,http://localhost:8070/sso/login,http://127.0.0.1:8070/sso/login', '', 43200, 2592001, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
 COMMIT;
+
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
 -- ----------------------------
 -- Table structure for platform_sso_user
@@ -200,14 +195,7 @@ CREATE TABLE `platform_sso_user` (
 -- Records of platform_sso_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_sso_user` VALUES (-1, 'lihaifeng', 'lihaifeng-nick', '$2a$10$fv8..VP5uJXxRQvcyOunN.fFIzxy.vKnQKC5fX1i9DNe4xhMS8mTy', '17621006318', 'li7hai26@gmail.com', 0, 0, '2020-01-06 00:00:00', 0, '', 0, 1, '2020-01-06 00:00:00', 1, '2020-01-06 00:00:00');
-INSERT INTO `platform_sso_user` VALUES (1214229486854348802, 'lihaifeng1', 'lihaifeng1-nick', '$2a$10$knJNbYsQXcxqy4o3GJCG5.6Ojd.ujpf17chZDhz2IEEljJu73I/lG', '17621016318', 'li7hai26@gmail.com', 0, 0, '2020-01-07 00:57:24', 0, '', 0, -1, '2020-01-07 00:57:25', -1, '2020-01-07 00:57:25');
-INSERT INTO `platform_sso_user` VALUES (1214237069111697410, 'lihaifeng3', 'lihaifeng1-nick', '$2a$10$vArVXSueJ2Kgf7oLPVCSz.tLlA2dvyzA1wcnbGNL1YQrvR6mUxNEC', '17621016318', 'li7hai26@gmail.com', 0, 0, '2020-01-07 01:27:31', 0, '', 0, 1214229486854348802, '2020-01-07 01:27:40', 1214229486854348802, '2020-01-07 01:27:48');
-INSERT INTO `platform_sso_user` VALUES (1214509895139889154, 'wuzhiyuan', 'wuzhiyuan', '$2a$10$KJBzhqMCDW0PJMFsN.KMyecTkmy2cNrcQrAWcZnrTjMDwzyjsOx3C', '', '', 0, 0, '2020-01-07 19:31:37', 0, '', 0, -1, '2020-01-07 19:31:50', -1, '2020-01-07 19:31:59');
-INSERT INTO `platform_sso_user` VALUES (1214530330174853122, 'xielinfeng', 'xielinfeng-nick', '$2a$10$.RgbqPahLelg4MeSlq9I3ugxvo6e7fo4/Yf8ngMdEd0y/7r/Z28g2', '', '', 0, 0, '2020-01-07 20:52:50', 0, '', 0, -1, '2020-01-07 20:52:50', -1, '2020-01-07 20:52:50');
-INSERT INTO `platform_sso_user` VALUES (1214530818630914050, 'guanyong', 'guanyong-nick', '$2a$10$symk5RH3iQchcYMj5ScYWuFypsePdxlRrtgPgyqekQ00L0xTz4g.W', '', '', 0, 0, '2020-01-07 20:54:47', 0, '', 0, -1, '2020-01-07 20:54:47', -1, '2020-01-07 20:54:47');
-INSERT INTO `platform_sso_user` VALUES (1214727232044879874, 'demo1', 'demo1-demo1', '$2a$10$UjXtqujVo8WgT34wsq8ymujeDr47K4Q2NaAZ1w76dPuUDjxBekaMO', '', '', 0, 0, '2019-09-10 00:30:00', 0, '', 0, -1, '2020-01-08 09:55:15', -1, '2020-01-08 09:55:15');
-INSERT INTO `platform_sso_user` VALUES (1214807153870065665, 'demo10', '10demo', '$2a$10$XVw3dEhJuoyyc8vSFWixM.UM1ViegesgLVNoXog/.lhemEpMgC3Lq', '', '', 0, 0, '2019-09-23 00:01:34', 0, '\"https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96\"', 0, -1, '2020-01-08 15:12:50', -1, '2020-01-08 15:12:50');
+INSERT INTO `platform_sso_user` VALUES (0, 'admin', 'admin-nickname', '$2a$10$UN122m92j4urCWio9CkMrOYyODshc.RSEiap7x/kJiFw838v0Odsu', '17000000000', '', 0, 0, '2020-01-09 17:31:27', 0, '', 0, 0, '2020-01-09 17:31:28', 0, '2020-01-09 17:31:28');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

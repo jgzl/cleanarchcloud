@@ -127,9 +127,9 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
     UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
     PlatformSsoUser sysUser = new PlatformSsoUser();
     if (StrUtil.isNotBlank(userDto.getPassword())
-        && StrUtil.isNotBlank(userDto.getNewpassword1())) {
+        && StrUtil.isNotBlank(userDto.getNewPassword())) {
       if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
-        sysUser.setPassword(ENCODER.encode(userDto.getNewpassword1()));
+        sysUser.setPassword(ENCODER.encode(userDto.getNewPassword()));
       } else {
         log.warn("原密码错误，修改密码失败:{}", userDto.getUsername());
         return Result.ok(Boolean.FALSE, "原密码错误，修改失败");
