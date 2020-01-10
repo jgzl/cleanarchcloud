@@ -14,8 +14,8 @@ spring:
 security:
   oauth2:
     client:
-      client-id: app
-      client-secret: app
+      client-id: ssoclient2
+      client-secret: ssoclient2
       user-authorization-uri: http://localhost:8030/oauth/authorize
       access-token-uri: http://localhost:8030/oauth/token
       scope: server
