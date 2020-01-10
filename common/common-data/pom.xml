@@ -8,10 +8,6 @@
       <groupId>com.gitee</groupId>
       <artifactId>common-core</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-security</artifactId>
-    </dependency>
     <!-- mybatis-plus注解-->
     <dependency>
       <artifactId>mybatis-plus-extension</artifactId>

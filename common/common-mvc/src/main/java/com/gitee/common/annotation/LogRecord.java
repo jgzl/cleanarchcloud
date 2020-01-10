@@ -13,7 +13,7 @@ import java.lang.annotation.*;
  * @author xuhang
  */
 @Documented
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LogRecord {
 

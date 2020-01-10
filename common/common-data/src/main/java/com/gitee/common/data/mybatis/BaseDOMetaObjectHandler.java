@@ -1,12 +1,11 @@
-package com.gitee.application.config;
+package com.gitee.common.data.mybatis;
 
 import cn.hutool.core.date.DateTime;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
-@Component
-public class BaseDAOMetaObjectHandler implements MetaObjectHandler {
+public class BaseDOMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {

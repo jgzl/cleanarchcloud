@@ -35,6 +35,10 @@
       <artifactId>common-data</artifactId>
       <groupId>com.gitee</groupId>
     </dependency>
+    <dependency>
+      <artifactId>common-security</artifactId>
+      <groupId>com.gitee</groupId>
+    </dependency>
   </dependencies>
 
   <description>common-mvc::common Web层公共模块</description>

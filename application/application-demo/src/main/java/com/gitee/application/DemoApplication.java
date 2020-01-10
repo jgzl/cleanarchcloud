@@ -4,6 +4,7 @@
 
 package com.gitee.application;
 
+import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ import com.gitee.annotation.EnableSwaggerPlus;
  * @author lihaifeng
  */
 @EnableSwaggerPlus
-@EnableFeignClients
+@EnablePlatformFeignClientsPlus
 @EnableDiscoveryClient
 @SpringBootApplication
 public class DemoApplication {

@@ -8,6 +8,6 @@ import com.gitee.application.model.dao.OrderItemDAO;
 /**
  * @author lihaifeng
  */
-//@Mapper
+@Mapper
 public interface OrderItemMapper extends BaseMapper<OrderItemDAO> {
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author lihaifeng
  */
-//@Mapper
+@Mapper
 public interface OrderMapper extends BaseMapper<OrderDAO> {
 
     List<Map<Object,Object>> list();

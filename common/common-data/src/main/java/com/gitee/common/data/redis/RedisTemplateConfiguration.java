@@ -30,36 +30,37 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisTemplateConfiguration {
-  @Bean
-  public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-    RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-    redisTemplate.setKeySerializer(new StringRedisSerializer());
-    redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-    redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-    redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
-    redisTemplate.setConnectionFactory(redisConnectionFactory);
-    return redisTemplate;
-  }
-  @Bean
-  @ConditionalOnProperty(value = "spring.redis.cluster.enable",havingValue = "true")
-  public LettuceConnectionFactory redisConnectionFactory(RedisProperties redisProperties) {
-    RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration(redisProperties.getCluster().getNodes());
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+        redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        return redisTemplate;
+    }
 
-    // https://github.com/lettuce-io/lettuce-core/wiki/Redis-Cluster#user-content-refreshing-the-cluster-topology-view
-    ClusterTopologyRefreshOptions clusterTopologyRefreshOptions = ClusterTopologyRefreshOptions.builder()
-        .enablePeriodicRefresh()
-        .enableAllAdaptiveRefreshTriggers()
-        .refreshPeriod(Duration.ofSeconds(5))
-        .build();
+    @Bean
+    @ConditionalOnProperty(value = "spring.redis.cluster.enable", havingValue = "true")
+    public LettuceConnectionFactory redisConnectionFactory(RedisProperties redisProperties) {
+        RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration(redisProperties.getCluster().getNodes());
 
-    ClusterClientOptions clusterClientOptions = ClusterClientOptions.builder()
-        .topologyRefreshOptions(clusterTopologyRefreshOptions).build();
+        // https://github.com/lettuce-io/lettuce-core/wiki/Redis-Cluster#user-content-refreshing-the-cluster-topology-view
+        ClusterTopologyRefreshOptions clusterTopologyRefreshOptions = ClusterTopologyRefreshOptions.builder()
+                .enablePeriodicRefresh()
+                .enableAllAdaptiveRefreshTriggers()
+                .refreshPeriod(Duration.ofSeconds(5))
+                .build();
 
-    // https://github.com/lettuce-io/lettuce-core/wiki/ReadFrom-Settings
-    LettuceClientConfiguration lettuceClientConfiguration = LettuceClientConfiguration.builder()
-        .readFrom(ReadFrom.REPLICA_PREFERRED)
-        .clientOptions(clusterClientOptions).build();
+        ClusterClientOptions clusterClientOptions = ClusterClientOptions.builder()
+                .topologyRefreshOptions(clusterTopologyRefreshOptions).build();
 
-    return new LettuceConnectionFactory(redisClusterConfiguration, lettuceClientConfiguration);
-  }
+        // https://github.com/lettuce-io/lettuce-core/wiki/ReadFrom-Settings
+        LettuceClientConfiguration lettuceClientConfiguration = LettuceClientConfiguration.builder()
+                .readFrom(ReadFrom.REPLICA_PREFERRED)
+                .clientOptions(clusterClientOptions).build();
+
+        return new LettuceConnectionFactory(redisClusterConfiguration, lettuceClientConfiguration);
+    }
 }

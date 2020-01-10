@@ -58,9 +58,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-
-
-
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
@@ -70,6 +67,10 @@
         <dependency>
             <groupId>com.gitee</groupId>
             <artifactId>common-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gitee</groupId>
+            <artifactId>common-mvc</artifactId>
         </dependency>
     </dependencies>
     <name>conversion-platform::Demo服务</name>

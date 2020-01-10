@@ -22,14 +22,19 @@
   <dependencies>
     <!--工具类核心包-->
     <dependency>
-      <artifactId>common-core</artifactId>
+      <artifactId>common-data</artifactId>
+      <groupId>com.gitee</groupId>
+    </dependency>
+    <!--数据包-->
+    <dependency>
+      <artifactId>common-data</artifactId>
       <groupId>com.gitee</groupId>
     </dependency>
     <!--mybatis plus extension,包含了mybatis plus core-->
-    <dependency>
-      <artifactId>mybatis-plus-extension</artifactId>
-      <groupId>com.baomidou</groupId>
-    </dependency>
+    <!--<dependency>-->
+      <!--<artifactId>mybatis-plus-extension</artifactId>-->
+      <!--<groupId>com.baomidou</groupId>-->
+    <!--</dependency>-->
     <!--feign 依赖-->
     <dependency>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
