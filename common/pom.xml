@@ -26,6 +26,7 @@
     <module>common-swagger</module>
     <module>common-data</module>
     <module>common-upms</module>
+    <module>common-mvc</module>
     <module>common-agent</module>
   </modules>
   <modelVersion>4.0.0</modelVersion>
