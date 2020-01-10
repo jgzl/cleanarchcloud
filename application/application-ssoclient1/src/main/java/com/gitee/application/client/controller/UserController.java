@@ -14,26 +14,27 @@
  *    limitations under the License.
  */
 
-package com.gitee.application.auth;
+package com.gitee.application.client.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-
-import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author lihaifeng
- * 登录http://localhost:8030/token/login
- * 输入账号密码 admin admin
+ * @date 2018/1/27
+ * demo controller
  */
-@EnableSwaggerPlus
-@EnableDiscoveryClient
-@SpringBootApplication
-@EnablePlatformFeignClientsPlus
-public class AuthApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(AuthApplication.class, args);
-  }
+@RestController
+public class UserController {
+    @GetMapping("/user")
+    public Authentication user(Authentication authentication) {
+        return authentication;
+    }
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @GetMapping("hello")
+    public String hello(){
+        return "hello";
+    }
 }

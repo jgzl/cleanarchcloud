@@ -14,21 +14,32 @@
  *    limitations under the License.
  */
 
-package com.gitee.application.client.controller;
+package com.gitee.application.auth.controller;
 
-import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gitee.common.core.util.Result;
+import com.gitee.common.security.util.SecurityUtils;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @author lihaifeng
- * @date 2018/1/27
- * demo controller
  */
-@RestController
-public class UserController {
-    @GetMapping("/user")
-    public Authentication user(Authentication authentication) {
-        return authentication;
-    }
+@Controller
+@Api("主页")
+public class PlatformIndexController {
+  @ApiOperation(value = "获取用户信息",notes = "通过安全工具类获取具体用户信息",httpMethod = "GET")
+  @GetMapping("/user")
+  @ResponseBody
+  public Result user(){
+    return Result.ok(SecurityUtils.getUser());
+  }
+  @GetMapping("/")
+  public String welcome(){
+    return "ftl/index";
+  }
 }

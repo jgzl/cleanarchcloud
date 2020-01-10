@@ -176,4 +176,19 @@ public interface SecurityConstants {
    * AES 加密
    */
   String AES = "aes";
+
+  /**
+   * springboot暴露信息
+   */
+  String PATH_TOKEN="/token/**";
+
+  /**
+   * springboot暴露信息
+   */
+  String PATH_ACTUATOR="/actuator/**";
+
+  /**
+   * springboot暴露信息
+   */
+  String PATH_API_DOCS="/v2/api-docs";
 }

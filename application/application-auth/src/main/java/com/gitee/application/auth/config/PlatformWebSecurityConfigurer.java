@@ -28,6 +28,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
+import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.security.handler.FormAuthenticationFailureHandler;
 
 import lombok.SneakyThrows;
@@ -51,7 +52,7 @@ public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter 
 				.failureHandler(authenticationFailureHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers("/token/**", "/actuator/**","/v2/api-docs").permitAll()
+				.antMatchers(SecurityConstants.PATH_TOKEN,SecurityConstants.PATH_API_DOCS, SecurityConstants.PATH_ACTUATOR,SecurityConstants.PATH_API_DOCS).permitAll()
 				.anyRequest().authenticated()
 				.and().csrf().disable();
 	}

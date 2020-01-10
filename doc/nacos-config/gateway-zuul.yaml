@@ -5,5 +5,7 @@ zuul:
     application-auth: /auth/**
     application-upms: /upms/**
     application-demo: /demo/**
+    application-ssoclient1: /ssoclient1/**
+    application-ssoclient2: /ssoclient2/**
     application-template-dubbo-service-web: /dubbo/**
     application-template-openfeign: /openfeign/**

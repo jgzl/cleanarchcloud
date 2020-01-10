@@ -18,7 +18,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>application-auth</artifactId>
+  <artifactId>application-ssoclient2</artifactId>
   <build>
     <plugins>
       <plugin>
@@ -34,41 +34,32 @@
       </plugin>
     </plugins>
   </build>
-  <name>application-auth::认证模块</name>
-
   <dependencies>
     <dependency>
-      <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+      <groupId>com.alibaba.cloud</groupId>
     </dependency>
     <dependency>
-      <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+      <groupId>com.alibaba.cloud</groupId>
     </dependency>
+    <dependency>
+      <artifactId>spring-cloud-starter-security</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+      <groupId>org.springframework.security.oauth.boot</groupId>
+    </dependency>
+    <!--web 模块-->
     <dependency>
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
+    <!--undertow容器-->
     <dependency>
-      <artifactId>spring-boot-starter-freemarker</artifactId>
+      <artifactId>spring-boot-starter-undertow</artifactId>
       <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-      <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>spring-boot-starter-security</artifactId>
-      <groupId>org.springframework.boot</groupId>
-    </dependency>
-    <dependency>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <groupId>org.springframework.boot</groupId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <groupId>org.springframework.cloud</groupId>
     </dependency>
     <dependency>
       <artifactId>common-core</artifactId>
@@ -95,7 +86,9 @@
       <groupId>mysql</groupId>
     </dependency>
   </dependencies>
+
   <modelVersion>4.0.0</modelVersion>
+  <name>application-sso-demo::单点登录客户端模块</name>
 
   <parent>
     <artifactId>application</artifactId>
