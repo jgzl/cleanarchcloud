@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.gitee.application.model.bo.OrderBO;
 import com.gitee.application.model.bo.OrderItemBO;
-import com.gitee.application.model.dao.OrderDAO;
+import com.gitee.application.model.dao.OrderDO;
 import com.gitee.application.model.dao.OrderItemDAO;
 import com.gitee.application.model.vo.OrderVO;
 
@@ -28,7 +28,7 @@ public interface OrderConvertor {
   @Mappings({
       @Mapping(source = "id", target = "orderId")
   })
-  OrderBO convertDAO2BO(OrderDAO orderDAO);
+  OrderBO convertDAO2BO(OrderDO orderDAO);
 
   /**
    * dao->bo
@@ -62,5 +62,5 @@ public interface OrderConvertor {
   @Mappings({
       @Mapping(source = "orderId", target = "id")
   })
-  OrderDAO covertVO2DAO(OrderVO orderVO);
+  OrderDO covertVO2DAO(OrderVO orderVO);
 }

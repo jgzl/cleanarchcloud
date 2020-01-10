@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gitee.application.model.bo.OrderBO;
-import com.gitee.application.model.dao.OrderDAO;
+import com.gitee.application.model.dao.OrderDO;
 import com.gitee.application.model.dao.OrderItemDAO;
 import com.gitee.application.model.vo.OrderVO;
 import com.gitee.application.service.IOrderItemService;
@@ -76,10 +76,10 @@ public class IndexController {
   @GetMapping("/orderWithNoArgs")
   @ApiOperation(value = "无参创建订单")
   public List createOrderWithNoArguments() {
-    List<OrderDAO> orders = Lists.newArrayListWithCapacity(1300);
+    List<OrderDO> orders = Lists.newArrayListWithCapacity(1300);
     List<OrderItemDAO> orderItems = Lists.newArrayListWithCapacity(1300);
     for (long i = 0; i < 1000; i++) {
-      OrderDAO orderDAO = new OrderDAO();
+      OrderDO orderDAO = new OrderDO();
       orderDAO.setCode("a0" + i);
       orderDAO.setShopId(i % 8);
       orderDAO.setCreateTime(new Date());
@@ -94,7 +94,7 @@ public class IndexController {
       orderItems.add(orderItemDAO);
     });
     orderItemService.saveBatch(orderItems);
-    List<OrderDAO> shopIds = orderService.query().eq("shop_id", 2).list();
+    List<OrderDO> shopIds = orderService.query().eq("shop_id", 2).list();
     return shopIds;
   }
 
@@ -105,10 +105,10 @@ public class IndexController {
    */
   @GetMapping("/createOrders")
   @ApiOperation(value = "通过OrderVO创建订单DAO")
-  public List<OrderDAO> createOrders(@Valid OrderVO orderVO) {
+  public List<OrderDO> createOrders(@Valid OrderVO orderVO) {
     List<OrderBO> orderVOs = orderService.createOrderByVO(orderVO);
     orderVOs.forEach(System.out::println);
-    List<OrderDAO> orderDAOs = orderService.query().eq("shop_id", 2).list();
+    List<OrderDO> orderDAOs = orderService.query().eq("shop_id", 2).list();
     orderDAOs.forEach(System.out::println);
     return orderDAOs;
   }

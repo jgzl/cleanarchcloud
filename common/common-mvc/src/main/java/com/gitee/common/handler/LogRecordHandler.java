@@ -1,11 +1,10 @@
 package com.gitee.common.handler;
 
 import com.gitee.common.annotation.LogRecord;
-import com.gitee.common.enums.OperateModule;
 import com.gitee.common.model.OperateLog;
+import com.gitee.common.properties.LogProperties;
 import com.gitee.common.security.login.PlatformUser;
 import com.gitee.common.security.util.SecurityUtils;
-import javafx.application.Platform;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,15 +13,12 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.annotation.processing.Processor;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotBlank;
 import java.lang.reflect.Method;
 
 /**
@@ -38,6 +34,8 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 @AllArgsConstructor
+//@PropertySource("classpath:bootstarp.yml")
+//@ConfigurationProperties(prefix = "spring.application")
 //@EnableBinding(Processor.class)
 public class LogRecordHandler {
 
@@ -51,8 +49,10 @@ public class LogRecordHandler {
     public void logRecordPointcut() {
     }
 
-//    @Value("${spring.application.name}")
-//    String serviceName;
+//    @Value("${abc}")
+//    String name;
+//    @Autowired
+//    private LogProperties logProperties;
 
     /**
      * 这里只用了环绕切的方式,如有需要,可另行添加其他的方式
@@ -108,6 +108,9 @@ public class LogRecordHandler {
             System.out.println(user.getUsername());
             System.out.println(methodPath);
             System.out.println(uri);
+            System.out.println(LogProperties.getServiceName());
+//            System.out.println(context.getApplicationName());
+//            System.out.println((String)SpringContextHolder.getBean("spring.application.name"));
 
 
             //2.推送到kafka等 中间件(有其他服务处理)

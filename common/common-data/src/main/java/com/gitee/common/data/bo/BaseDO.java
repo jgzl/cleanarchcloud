@@ -1,15 +1,17 @@
-package com.gitee.application.model.dao;
+package com.gitee.common.data.bo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class BaseDAO {
+public class BaseDO<M> extends Model<BaseDO<M>> implements Serializable,Cloneable {
 
     @TableField(fill = FieldFill.INSERT)
     private Long createUser;

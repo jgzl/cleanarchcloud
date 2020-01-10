@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * @author xuhang
  */
-@Mapper
 public interface OperateLogMapper extends BaseMapper<OperateLog> {
 
 }

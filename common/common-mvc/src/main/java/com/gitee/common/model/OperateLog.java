@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.gitee.common.data.bo.BaseDO;
 import com.gitee.common.upms.base.BaseModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,11 +25,11 @@ import java.util.UUID;
 @Getter
 @ApiModel(description = "日志格式信息封装类")
 @TableName("operate_log")
-public class OperateLog extends BaseModel<OperateLog> implements Serializable {
+public class OperateLog extends BaseDO<OperateLog> implements Serializable {
 
     @ApiModelProperty("主键id")
     @TableId(type = IdType.ID_WORKER)
-    private String id;
+    private Long id;
 
     @ApiModelProperty("用户Id")
     private Long userId;
