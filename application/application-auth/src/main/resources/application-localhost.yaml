@@ -24,3 +24,9 @@ spring:
   redis:
     host: localhost
     password:
+ribbon:
+  ReadTimeout: 600000
+  ConnectTimeout: 600000
+feign:
+  httpclient:
+    connection-timeout: 600000

@@ -44,8 +44,8 @@
     </form>
 </div>
 <footer>
-    <p>support by: dlihaifeng.com</p>
-    <p>email: <a href="mailto:wangiegie@gmail.com">wangiegie@gmail.com</a>.</p>
+    <p>support by: lihaifeng,xuhang</p>
+    <p>email: <a href="mailto:li7hai26@gmail.com">li7hai26@gmail.com</a>.</p>
 </footer>
 </body>
 </html>
