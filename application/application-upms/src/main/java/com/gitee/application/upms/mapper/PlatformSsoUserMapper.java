@@ -23,14 +23,14 @@ import org.apache.ibatis.annotations.Param;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 import com.gitee.common.upms.vo.UserVO;
 
 /**
  * @author lihaifeng
  */
-public interface PlatformSsoUserMapper extends BaseMapper<PlatformSsoUser> {
+public interface PlatformSsoUserMapper extends BaseMapper<PlatformSsoUserDAO> {
   /**
    * 通过用户名查询用户信息（含有角色信息）
    *

@@ -14,38 +14,44 @@
  *    limitations under the License.
  */
 
-package com.gitee.common.upms.dto;
+package com.gitee.common.upms.dao;
 
-import java.util.List;
-
-import com.gitee.common.upms.dao.PlatformSsoUserDAO;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.gitee.common.data.dao.BaseDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
+ * <p>
+ * 部门表
+ * </p>
+ *
  * @author lihaifeng
- * @date 2017/11/5
+ * @since 2020-01-12
  */
 @Data
-@ApiModel(value = "系统用户传输对象")
 @EqualsAndHashCode(callSuper = true)
-public class UserDTO extends PlatformSsoUserDAO {
-	/**
-	 * 角色ID
-	 */
-	@ApiModelProperty(value = "角色id集合")
-	private List<Integer> role;
-	/**
-	 * 部门id
-	 */
-	@ApiModelProperty(value = "部门id")
-	private Integer deptId;
-	/**
-	 * 新密码
-	 */
-	@ApiModelProperty(value = "新密码")
-	private String newPassword;
+@Accessors(chain = true)
+@ApiModel(value = "PlatformDept对象", description = "部门表")
+public class PlatformDeptDAO extends BaseDAO<PlatformDeptDAO> {
+
+  private static final long serialVersionUID = 1L;
+
+  @ApiModelProperty(value = "部门id")
+  @TableId(value = "dept_id", type = IdType.AUTO)
+  private Long deptId;
+
+  @ApiModelProperty(value = "上级部门id")
+  private Long parentId;
+
+  @ApiModelProperty(value = "部门名称")
+  private String deptName;
+
+  @ApiModelProperty(value = "排序")
+  private Double orderNum;
 }

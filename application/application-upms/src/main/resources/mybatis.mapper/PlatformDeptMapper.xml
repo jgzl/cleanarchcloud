@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformDeptMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.entity.PlatformDept">
+    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformDeptDAO">
         <id column="dept_id" property="deptId"/>
         <result column="create_user" property="createUser"/>
         <result column="create_date" property="createDate"/>

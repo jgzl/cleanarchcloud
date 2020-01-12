@@ -25,8 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.auth.bussiness.mapper.PlatformSsoUserMapper;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 
 import cn.hutool.core.bean.BeanUtil;
 
@@ -34,14 +34,14 @@ import cn.hutool.core.bean.BeanUtil;
  * @author lihaifeng
  */
 @Service
-public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUser> implements PlatformSsoUserService {
+public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDAO> implements PlatformSsoUserService {
 
   private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
   @Transactional(rollbackFor = Exception.class)
   @Override
   public void saveUser(UserDTO userDTO) {
-    PlatformSsoUser platformSsoUser = new PlatformSsoUser();
+    PlatformSsoUserDAO platformSsoUser = new PlatformSsoUserDAO();
     BeanUtil.copyProperties(userDTO, platformSsoUser);
     LocalDateTime loginTime=platformSsoUser.getLoginTime();
     if (loginTime==null){

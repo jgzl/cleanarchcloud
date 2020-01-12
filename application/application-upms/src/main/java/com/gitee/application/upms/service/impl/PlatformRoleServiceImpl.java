@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformRoleMapper;
 import com.gitee.application.upms.service.IPlatformRoleService;
-import com.gitee.common.upms.entity.PlatformRole;
+import com.gitee.common.upms.dao.PlatformRoleDAO;
 
 /**
  * <p>
@@ -34,12 +34,12 @@ import com.gitee.common.upms.entity.PlatformRole;
  * @since 2020-01-12
  */
 @Service
-public class PlatformRoleServiceImpl extends ServiceImpl<PlatformRoleMapper, PlatformRole> implements
+public class PlatformRoleServiceImpl extends ServiceImpl<PlatformRoleMapper, PlatformRoleDAO> implements
     IPlatformRoleService {
 
   @Override
-  public List<PlatformRole> findRolesByUserId(Long id) {
-    List<PlatformRole> roles = baseMapper.listRolesByUserId(id);
+  public List<PlatformRoleDAO> findRolesByUserId(Long id) {
+    List<PlatformRoleDAO> roles = baseMapper.listRolesByUserId(id);
     return roles;
   }
 }

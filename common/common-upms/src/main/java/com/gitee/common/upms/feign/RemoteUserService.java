@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.gitee.common.core.constant.ServiceNameConstants;
 import com.gitee.common.core.util.Result;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserInfoDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 
 /**
  * @author lihaifeng
@@ -58,5 +58,5 @@ public interface RemoteUserService {
 	 * @return Result
 	 */
 	@GetMapping("/user/ancestor/{username}")
-	Result<List<PlatformSsoUser>> ancestorUsers(@PathVariable("username") String username);
+	Result<List<PlatformSsoUserDAO>> ancestorUsers(@PathVariable("username") String username);
 }

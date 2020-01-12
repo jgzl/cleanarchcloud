@@ -17,7 +17,7 @@
 package com.gitee.application.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gitee.common.upms.entity.PlatformDept;
+import com.gitee.common.upms.dao.PlatformDeptDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformDept;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface IPlatformDeptService extends IService<PlatformDept> {
+public interface IPlatformDeptService extends IService<PlatformDeptDAO> {
 
 }

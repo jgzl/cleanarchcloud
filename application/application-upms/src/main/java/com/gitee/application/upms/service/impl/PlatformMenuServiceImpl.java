@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformMenuMapper;
 import com.gitee.application.upms.service.IPlatformMenuService;
-import com.gitee.common.upms.entity.PlatformMenu;
+import com.gitee.common.upms.dao.PlatformMenuDAO;
 
 /**
  * <p>
@@ -32,7 +32,7 @@ import com.gitee.common.upms.entity.PlatformMenu;
  * @since 2020-01-12
  */
 @Service
-public class PlatformMenuServiceImpl extends ServiceImpl<PlatformMenuMapper, PlatformMenu> implements
+public class PlatformMenuServiceImpl extends ServiceImpl<PlatformMenuMapper, PlatformMenuDAO> implements
     IPlatformMenuService {
 
 }

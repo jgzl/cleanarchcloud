@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformRoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.entity.PlatformRole">
+    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformRoleDAO">
         <id column="role_id" property="roleId"/>
         <result column="create_user" property="createUser"/>
         <result column="create_date" property="createDate"/>

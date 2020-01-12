@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformDeptMapper;
 import com.gitee.application.upms.service.IPlatformDeptService;
-import com.gitee.common.upms.entity.PlatformDept;
+import com.gitee.common.upms.dao.PlatformDeptDAO;
 
 /**
  * <p>
@@ -32,7 +32,7 @@ import com.gitee.common.upms.entity.PlatformDept;
  * @since 2020-01-12
  */
 @Service
-public class PlatformDeptServiceImpl extends ServiceImpl<PlatformDeptMapper, PlatformDept> implements
+public class PlatformDeptServiceImpl extends ServiceImpl<PlatformDeptMapper, PlatformDeptDAO> implements
     IPlatformDeptService {
 
 }

@@ -17,7 +17,7 @@
 package com.gitee.application.upms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gitee.common.upms.entity.PlatformDept;
+import com.gitee.common.upms.dao.PlatformDeptDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformDept;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface PlatformDeptMapper extends BaseMapper<PlatformDept> {
+public interface PlatformDeptMapper extends BaseMapper<PlatformDeptDAO> {
 
 }

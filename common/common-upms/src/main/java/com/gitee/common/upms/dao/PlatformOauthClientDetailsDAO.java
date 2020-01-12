@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.gitee.common.upms.entity;
+package com.gitee.common.upms.dao;
 
 import javax.validation.constraints.NotBlank;
 
@@ -38,7 +38,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @ApiModel(value = "客户端信息")
 @EqualsAndHashCode(callSuper = true)
-public class PlatformOauthClientDetails extends Model<PlatformOauthClientDetails> {
+public class PlatformOauthClientDetailsDAO extends Model<PlatformOauthClientDetailsDAO> {
 
 	private static final long serialVersionUID = 1L;
 	/**

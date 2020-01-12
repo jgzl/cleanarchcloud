@@ -17,13 +17,13 @@
 package com.gitee.application.auth.bussiness.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 
 /**
  * @author lihaifeng
  */
-public interface PlatformSsoUserService extends IService<PlatformSsoUser> {
+public interface PlatformSsoUserService extends IService<PlatformSsoUserDAO> {
   /**
    * 创建新用户
    * @param userDTO

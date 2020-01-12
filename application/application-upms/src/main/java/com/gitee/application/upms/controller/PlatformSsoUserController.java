@@ -34,8 +34,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.application.upms.service.IPlatformSsoUserService;
 import com.gitee.common.core.util.Result;
 import com.gitee.common.security.util.SecurityUtils;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -61,8 +61,8 @@ public class PlatformSsoUserController {
   @GetMapping(value = {"/current"})
   public Result info() {
     String username = SecurityUtils.getUser().getUsername();
-    PlatformSsoUser user = userService.getOne(Wrappers.<PlatformSsoUser>query()
-        .lambda().eq(PlatformSsoUser::getUsername, username));
+    PlatformSsoUserDAO user = userService.getOne(Wrappers.<PlatformSsoUserDAO>query()
+        .lambda().eq(PlatformSsoUserDAO::getUsername, username));
     if (user == null) {
       return Result.failed(null, "获取当前用户信息失败");
     }
@@ -76,8 +76,8 @@ public class PlatformSsoUserController {
    */
   @GetMapping("/info/{username}")
   public Result info(@PathVariable String username) {
-    PlatformSsoUser user = userService.getOne(Wrappers.<PlatformSsoUser>query()
-        .lambda().eq(PlatformSsoUser::getUsername, username));
+    PlatformSsoUserDAO user = userService.getOne(Wrappers.<PlatformSsoUserDAO>query()
+        .lambda().eq(PlatformSsoUserDAO::getUsername, username));
     if (user == null) {
       return Result.failed(null, String.format("用户信息为空 %s", username));
     }
@@ -103,7 +103,7 @@ public class PlatformSsoUserController {
    */
   @GetMapping("/details/{username}")
   public Result user(@PathVariable String username) {
-    PlatformSsoUser condition = new PlatformSsoUser();
+    PlatformSsoUserDAO condition = new PlatformSsoUserDAO();
     condition.setUsername(username);
     return Result.ok(userService.getOne(new QueryWrapper<>(condition)));
   }
@@ -119,7 +119,7 @@ public class PlatformSsoUserController {
   @ApiOperation(value = "删除用户", notes = "根据ID删除用户")
   @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "int", paramType = "path")
   public Result userDel(@PathVariable Integer id) {
-    PlatformSsoUser PlatformSsoUser = userService.getById(id);
+    PlatformSsoUserDAO PlatformSsoUser = userService.getById(id);
     return Result.ok(userService.deleteUserById(PlatformSsoUser));
   }
 

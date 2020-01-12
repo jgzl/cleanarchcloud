@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformMenuMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.entity.PlatformMenu">
+    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformMenuDAO">
         <id column="menu_id" property="menuId"/>
         <result column="create_user" property="createUser"/>
         <result column="create_date" property="createDate"/>

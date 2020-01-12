@@ -17,7 +17,7 @@
 package com.gitee.application.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gitee.common.upms.entity.PlatformUserConnection;
+import com.gitee.common.upms.dao.PlatformUserConnectionDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformUserConnection;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface IPlatformUserConnectionService extends IService<PlatformUserConnection> {
+public interface IPlatformUserConnectionService extends IService<PlatformUserConnectionDAO> {
 
 }

@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformLogMapper;
 import com.gitee.application.upms.service.IPlatformLogService;
-import com.gitee.common.upms.entity.PlatformLog;
+import com.gitee.common.upms.dao.PlatformLogDAO;
 
 /**
  * <p>
@@ -32,6 +32,6 @@ import com.gitee.common.upms.entity.PlatformLog;
  * @since 2020-01-12
  */
 @Service
-public class PlatformLogServiceImpl extends ServiceImpl<PlatformLogMapper, PlatformLog> implements IPlatformLogService {
+public class PlatformLogServiceImpl extends ServiceImpl<PlatformLogMapper, PlatformLogDAO> implements IPlatformLogService {
 
 }

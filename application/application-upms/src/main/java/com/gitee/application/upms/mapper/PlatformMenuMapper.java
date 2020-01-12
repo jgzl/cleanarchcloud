@@ -17,7 +17,7 @@
 package com.gitee.application.upms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gitee.common.upms.entity.PlatformMenu;
+import com.gitee.common.upms.dao.PlatformMenuDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformMenu;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface PlatformMenuMapper extends BaseMapper<PlatformMenu> {
+public interface PlatformMenuMapper extends BaseMapper<PlatformMenuDAO> {
 
 }

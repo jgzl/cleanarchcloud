@@ -17,7 +17,7 @@
 package com.gitee.application.upms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gitee.common.upms.entity.PlatformLog;
+import com.gitee.common.upms.dao.PlatformLogDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformLog;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface PlatformLogMapper extends BaseMapper<PlatformLog> {
+public interface PlatformLogMapper extends BaseMapper<PlatformLogDAO> {
 
 }

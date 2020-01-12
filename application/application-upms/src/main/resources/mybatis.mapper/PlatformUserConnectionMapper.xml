@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformUserConnectionMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.entity.PlatformUserConnection">
+    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformUserConnectionDAO">
         <id column="user_connection_id" property="userConnectionId"/>
         <result column="version" property="version"/>
         <result column="user_name" property="userName"/>

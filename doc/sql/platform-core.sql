@@ -14,6 +14,22 @@
  *    limitations under the License.
  */
 
+/*
+ *    Copyright [2020] [lihaifeng,xuhang]
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 drop database if exists `platform-core`;
 create database `platform-core` charset utf8mb4;
 use `platform-core`;
@@ -93,7 +109,7 @@ CREATE TABLE `platform_log` (
 DROP TABLE IF EXISTS `platform_menu`;
 CREATE TABLE `platform_menu` (
   `menu_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单/按钮id',
-  `parenplatform_id` bigint(20) NOT NULL COMMENT '上级菜单id',
+  `parent_id` bigint(20) NOT NULL COMMENT '上级菜单id',
   `menu_name` varchar(50) NOT NULL COMMENT '菜单/按钮名称',
   `path` varchar(255) DEFAULT NULL COMMENT '对应路由path',
   `component` varchar(255) DEFAULT NULL COMMENT '对应路由组件component',

@@ -18,7 +18,7 @@ package com.gitee.common.upms.dto;
 
 import java.io.Serializable;
 
-import com.gitee.common.upms.entity.PlatformSsoUser;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -35,7 +35,7 @@ public class UserInfoDTO implements Serializable {
 	 * 用户基本信息
 	 */
 	@ApiModelProperty(value = "用户基本信息")
-	private PlatformSsoUser sysUser;
+	private PlatformSsoUserDAO sysUser;
 	/**
 	 * 权限标识集合
 	 */

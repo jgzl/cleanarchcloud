@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformLogMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.entity.PlatformLog">
+    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformLogDAO">
         <id column="log_id" property="logId"/>
         <result column="create_user" property="createUser"/>
         <result column="create_date" property="createDate"/>

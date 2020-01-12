@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.gitee.common.upms.entity;
+package com.gitee.common.upms.dao;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +38,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @ApiModel(value = "第三方账号信息")
 @EqualsAndHashCode(callSuper = true)
-public class PlatformSocialDetails extends Model<PlatformSocialDetails> {
+public class PlatformSocialDetailsDAO extends Model<PlatformSocialDetailsDAO> {
 	private static final long serialVersionUID = 1L;
 
 	/**

@@ -14,13 +14,14 @@
  *    limitations under the License.
  */
 
-package com.gitee.common.upms.base;
+package com.gitee.common.data.dao;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
@@ -33,11 +34,16 @@ import lombok.Data;
  */
 @Data
 @ApiModel("基础对象")
-public class BaseModel<M> extends Model<BaseModel<M>> implements Serializable,Cloneable {
+public class BaseDAO<M> extends Model<BaseDAO<M>> implements Serializable,Cloneable {
   /** 乐观锁 */
   @Version
+  @TableField(fill = FieldFill.INSERT)
   @ApiModelProperty("乐观锁")
   private Integer version ;
+  @TableLogic
+  @TableField(fill = FieldFill.INSERT)
+  @ApiModelProperty("逻辑删除")
+  private Integer deleted;
   /** 创建人 */
   @ApiModelProperty("创建人")
   @TableField(fill = FieldFill.INSERT)

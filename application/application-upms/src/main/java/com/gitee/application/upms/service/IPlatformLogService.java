@@ -17,7 +17,7 @@
 package com.gitee.application.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gitee.common.upms.entity.PlatformLog;
+import com.gitee.common.upms.dao.PlatformLogDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformLog;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface IPlatformLogService extends IService<PlatformLog> {
+public interface IPlatformLogService extends IService<PlatformLogDAO> {
 
 }

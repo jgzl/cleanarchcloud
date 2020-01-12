@@ -19,7 +19,7 @@ package com.gitee.application.upms.mapper;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gitee.common.upms.entity.PlatformRole;
+import com.gitee.common.upms.dao.PlatformRoleDAO;
 
 /**
  * <p>
@@ -29,12 +29,12 @@ import com.gitee.common.upms.entity.PlatformRole;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface PlatformRoleMapper extends BaseMapper<PlatformRole> {
+public interface PlatformRoleMapper extends BaseMapper<PlatformRoleDAO> {
 
   /**
    * 通过id查找用户具体角色信息
    * @param id
    * @return 用户角色集合
    */
-  List<PlatformRole> listRolesByUserId(Long id);
+  List<PlatformRoleDAO> listRolesByUserId(Long id);
 }

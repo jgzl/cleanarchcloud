@@ -24,7 +24,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.gitee.common.core.sensitive.Sensitive;
 import com.gitee.common.core.sensitive.SensitiveTypeEnum;
-import com.gitee.common.upms.entity.PlatformRole;
+import com.gitee.common.upms.dao.PlatformRoleDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -93,5 +93,5 @@ public class UserVO implements Serializable {
 
 	/** 拥有的角色列表 */
 	@ApiModelProperty(value = "拥有的角色列表")
-	private List<PlatformRole> roleList;
+	private List<PlatformRoleDAO> roleList;
 }

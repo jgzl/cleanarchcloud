@@ -19,7 +19,7 @@
 <mapper namespace="com.gitee.application.upms.mapper.PlatformSsoUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="userDOMap" type="com.gitee.common.upms.entity.PlatformSsoUser">
+    <resultMap id="userDOMap" type="com.gitee.common.upms.dao.PlatformSsoUserDAO">
         <id column="id" property="id"/>
         <result column="version" property="version"/>
         <result column="create_user" property="createUser"/>
@@ -39,7 +39,7 @@
     </resultMap>
 
     <resultMap id="userVOMap" type="com.gitee.common.upms.vo.UserVO">
-        <collection ofType="com.gitee.common.upms.entity.PlatformRole" property="roleList">
+        <collection ofType="com.gitee.common.upms.dao.PlatformRoleDAO" property="roleList">
             <id column="role_id" property="roleId"/>
             <result column="role_name" property="roleName"/>
             <result column="remark" property="remark"/>

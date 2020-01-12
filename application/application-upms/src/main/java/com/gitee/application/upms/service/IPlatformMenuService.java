@@ -17,7 +17,7 @@
 package com.gitee.application.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gitee.common.upms.entity.PlatformMenu;
+import com.gitee.common.upms.dao.PlatformMenuDAO;
 
 /**
  * <p>
@@ -27,6 +27,6 @@ import com.gitee.common.upms.entity.PlatformMenu;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface IPlatformMenuService extends IService<PlatformMenu> {
+public interface IPlatformMenuService extends IService<PlatformMenuDAO> {
 
 }

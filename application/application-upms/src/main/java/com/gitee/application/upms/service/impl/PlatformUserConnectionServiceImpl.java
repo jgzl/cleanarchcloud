@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformUserConnectionMapper;
 import com.gitee.application.upms.service.IPlatformUserConnectionService;
-import com.gitee.common.upms.entity.PlatformUserConnection;
+import com.gitee.common.upms.dao.PlatformUserConnectionDAO;
 
 /**
  * <p>
@@ -33,6 +33,6 @@ import com.gitee.common.upms.entity.PlatformUserConnection;
  */
 @Service
 public class PlatformUserConnectionServiceImpl extends
-    ServiceImpl<PlatformUserConnectionMapper, PlatformUserConnection> implements IPlatformUserConnectionService {
+    ServiceImpl<PlatformUserConnectionMapper, PlatformUserConnectionDAO> implements IPlatformUserConnectionService {
 
 }
