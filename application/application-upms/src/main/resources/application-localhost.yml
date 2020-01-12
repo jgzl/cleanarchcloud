@@ -10,15 +10,3 @@ spring:
   redis:
     host: localhost
     password:
-security:
-  oauth2:
-    client:
-      client-id: app
-      client-secret: app
-      ignore-urls:
-        - /actuator/**
-        - /v2/api-docs
-        - /user/info/**
-    resource:
-      loadBalanced: true
-      token-info-uri: http://application-auth/oauth/check_token

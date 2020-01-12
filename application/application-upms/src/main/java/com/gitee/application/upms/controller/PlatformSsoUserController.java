@@ -58,7 +58,7 @@ public class PlatformSsoUserController {
    *
    * @return 用户信息
    */
-  @GetMapping(value = {"/info"})
+  @GetMapping(value = {"/current"})
   public Result info() {
     String username = SecurityUtils.getUser().getUsername();
     PlatformSsoUser user = userService.getOne(Wrappers.<PlatformSsoUser>query()
