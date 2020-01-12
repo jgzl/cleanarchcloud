@@ -10,3 +10,15 @@ spring:
   redis:
     host: localhost
     password:
+security:
+  oauth2:
+    client:
+      client_id: app
+      client_secret: app
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+        - /user/info/**
+    resource:
+      loadBalanced: true
+      token-info-uri: http://gateway-scg/auth/oauth/check_token

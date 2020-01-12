@@ -1,7 +1,4 @@
 spring:
-  redis:
-    host: localhost
-    password:
   servlet:
     multipart:
       max-file-size: 100MB
@@ -33,14 +30,8 @@ swagger:
         description: server all
     token-url-list:
       - http://${GATEWAY-HOST:localhost}:${GATEWAY-PORT:8000}/auth/oauth/token
-security:
-  oauth2:
-    client:
-      ignore-urls:
-        - /actuator/**
-        - /v2/api-docs
-    resource:
-      loadBalanced: true
-      token-info-uri: http://application-auth/oauth/check_token
 mybatis-plus:
   mapper-locations: classpath*:mybatis.mapper/*.xml
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

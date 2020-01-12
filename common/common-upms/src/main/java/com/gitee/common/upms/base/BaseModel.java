@@ -37,21 +37,21 @@ public class BaseModel<M> extends Model<BaseModel<M>> implements Serializable,Cl
   /** 乐观锁 */
   @Version
   @ApiModelProperty("乐观锁")
-  private Integer revision ;
+  private Integer version ;
   /** 创建人 */
   @ApiModelProperty("创建人")
   @TableField(fill = FieldFill.INSERT)
-  private Long createdBy ;
+  private Long createUser ;
   /** 创建时间 */
   @ApiModelProperty("创建时间")
   @TableField(fill = FieldFill.INSERT)
-  private LocalDateTime createdTime ;
+  private LocalDateTime createDate ;
   /** 更新人 */
   @ApiModelProperty("更新人")
   @TableField(fill = FieldFill.INSERT_UPDATE)
-  private Long updatedBy ;
+  private Long updateUser ;
   /** 更新时间 */
   @ApiModelProperty("更新时间")
   @TableField(fill = FieldFill.INSERT_UPDATE)
-  private LocalDateTime updatedTime ;
+  private LocalDateTime updateDate ;
 }

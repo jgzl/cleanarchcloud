@@ -14,22 +14,6 @@
  *    limitations under the License.
  */
 
-/*
- * Copyright [2020] [lihaifeng,xuhang]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
 drop database if exists `platform-core`;
 create database `platform-core` charset utf8mb4;
 use `platform-core`;
@@ -60,15 +44,15 @@ DROP TABLE IF EXISTS `platform_dept`;
 CREATE TABLE `platform_dept` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
   `parent_id` bigint(20) NOT NULL COMMENT '上级部门id',
-  `dept_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '部门名称',
+  `dept_name` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT '部门名称',
   `order_num` double(20,0) DEFAULT NULL COMMENT '排序',
-  `created_by` bigint(20) NOT NULL COMMENT '创建人',
-  `created_time` datetime NOT NULL COMMENT '创建时间',
-  `updated_by` bigint(20) NOT NULL COMMENT '更新人',
-  `updated_time` datetime NOT NULL COMMENT '更新时间',
-  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `create_user` bigint(20) NOT NULL COMMENT '创建人',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NOT NULL COMMENT '更新人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='部门表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='部门表';
 
 -- ----------------------------
 -- Records of platform_dept
@@ -95,13 +79,13 @@ CREATE TABLE `platform_log` (
   `params` text COMMENT '方法参数',
   `ip` varchar(64) DEFAULT NULL COMMENT '操作者ip',
   `location` varchar(50) DEFAULT NULL COMMENT '操作地点',
-  `created_by` bigint(20) NOT NULL COMMENT '创建人',
-  `created_time` datetime NOT NULL COMMENT '创建时间',
-  `updated_by` bigint(20) NOT NULL COMMENT '更新人',
-  `updated_time` datetime NOT NULL COMMENT '更新时间',
-  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `create_user` bigint(20) NOT NULL COMMENT '创建人',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NOT NULL COMMENT '更新人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户操作日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户操作日志表';
 
 -- ----------------------------
 -- Table structure for platform_menu
@@ -117,13 +101,13 @@ CREATE TABLE `platform_menu` (
   `icon` varchar(50) DEFAULT NULL COMMENT '图标',
   `type` char(2) NOT NULL COMMENT '类型 0菜单 1按钮',
   `order_num` decimal(20,0) DEFAULT NULL COMMENT '排序',
-  `created_by` bigint(20) NOT NULL COMMENT '创建人',
-  `created_time` datetime NOT NULL COMMENT '创建时间',
-  `updated_by` bigint(20) NOT NULL COMMENT '更新人',
-  `updated_time` datetime NOT NULL COMMENT '更新时间',
-  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `create_user` bigint(20) NOT NULL COMMENT '创建人',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NOT NULL COMMENT '更新人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='菜单表';
 
 -- ----------------------------
 -- Records of platform_menu
@@ -167,7 +151,7 @@ CREATE TABLE `platform_oauth_client_details` (
   `additional_information` varchar(4096) DEFAULT NULL,
   `autoapprove` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`client_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='终端信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='终端信息表';
 
 -- ----------------------------
 -- Records of platform_oauth_client_details
@@ -189,13 +173,13 @@ CREATE TABLE `platform_role` (
   `role_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色id',
   `role_name` varchar(10) NOT NULL COMMENT '角色名称',
   `remark` varchar(100) DEFAULT NULL COMMENT '角色描述',
-  `created_by` bigint(20) NOT NULL COMMENT '创建人',
-  `created_time` datetime NOT NULL COMMENT '创建时间',
-  `updated_by` bigint(20) NOT NULL COMMENT '更新人',
-  `updated_time` datetime NOT NULL COMMENT '更新时间',
-  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `create_user` bigint(20) NOT NULL COMMENT '创建人',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NOT NULL COMMENT '更新人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色表';
 
 -- ----------------------------
 -- Records of platform_role
@@ -213,7 +197,7 @@ DROP TABLE IF EXISTS `platform_role_menu`;
 CREATE TABLE `platform_role_menu` (
   `role_id` bigint(20) NOT NULL,
   `menu_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
 
 -- ----------------------------
 -- Records of platform_role_menu
@@ -253,16 +237,16 @@ CREATE TABLE `platform_sso_user` (
   `login_time` datetime NOT NULL COMMENT '登录时间(最新)',
   `login_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '账号状态',
   `avatar` varchar(1024) NOT NULL DEFAULT '"https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96"' COMMENT '头像',
-  `revision` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
-  `created_by` bigint(20) NOT NULL COMMENT '创建人',
-  `created_time` datetime NOT NULL COMMENT '创建时间',
-  `updated_by` bigint(20) NOT NULL COMMENT '更新人',
-  `updated_time` datetime NOT NULL COMMENT '更新时间',
+  `version` int(11) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `create_user` bigint(20) NOT NULL COMMENT '创建人',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint(20) NOT NULL COMMENT '更新人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sso_user_username` (`username`),
   KEY `idx_sso_user_email` (`email`),
   KEY `idx_sso_user_mobile` (`mobile`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='单点登录用户表 ';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单点登录用户表 ';
 
 -- ----------------------------
 -- Records of platform_sso_user
@@ -286,10 +270,10 @@ CREATE TABLE `platform_user_connection` (
   `image_url` varchar(512) DEFAULT NULL COMMENT '第三方平台头像',
   `location` varchar(255) DEFAULT NULL COMMENT '地址',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`user_connection_id`) USING BTREE,
   UNIQUE KEY `idx_user_connection` (`user_name`,`provider_name`,`provider_user_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='平台系统用户关联第三方用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='平台系统用户关联第三方用户表';
 
 -- ----------------------------
 -- Table structure for platform_user_role
@@ -298,7 +282,7 @@ DROP TABLE IF EXISTS `platform_user_role`;
 CREATE TABLE `platform_user_role` (
   `user_id` bigint(20) NOT NULL COMMENT '用户id',
   `role_id` bigint(20) NOT NULL COMMENT '角色id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
 
 -- ----------------------------
 -- Records of platform_user_role

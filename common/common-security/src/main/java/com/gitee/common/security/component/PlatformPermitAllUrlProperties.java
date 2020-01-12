@@ -18,7 +18,6 @@ package com.gitee.common.security.component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.InitializingBean;
@@ -27,9 +26,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -56,7 +52,8 @@ public class PlatformPermitAllUrlProperties implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() {
-		RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
+		log.debug("PlatformPermitAllUrlProperties----------------------------------->start");
+/*		RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
 		Map<RequestMappingInfo, HandlerMethod> map = mapping.getHandlerMethods();
 		ignoreUrls.forEach(url->
 				log.info("PlatformPermitAllUrlProperties-ignoreUrl:{}",url)
@@ -64,7 +61,7 @@ public class PlatformPermitAllUrlProperties implements InitializingBean {
 		map.keySet().forEach(info -> {
 			HandlerMethod handlerMethod = map.get(info);
 			log.info("PlatformPermitAllUrlProperties-handlerMethod:{}",handlerMethod);
-/*			// 获取方法上边的注解 替代path variable 为 *
+			// 获取方法上边的注解 替代path variable 为 *
 			Inner method = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), Inner.class);
 			Optional.ofNullable(method)
 					.ifPresent(inner -> info.getPatternsCondition().getPatterns()
@@ -74,8 +71,8 @@ public class PlatformPermitAllUrlProperties implements InitializingBean {
 			Inner controller = AnnotationUtils.findAnnotation(handlerMethod.getBeanType(), Inner.class);
 			Optional.ofNullable(controller)
 					.ifPresent(inner -> info.getPatternsCondition().getPatterns()
-							.forEach(url -> ignoreUrls.add(ReUtil.replaceAll(url, PATTERN, StringPool.ASTERISK))));*/
-		});
+							.forEach(url -> ignoreUrls.add(ReUtil.replaceAll(url, PATTERN, StringPool.ASTERISK))));
+		});*/
 
 	}
 }

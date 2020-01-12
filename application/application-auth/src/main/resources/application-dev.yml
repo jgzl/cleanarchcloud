@@ -24,3 +24,12 @@ spring:
   redis:
     host: 192.168.99.100
     password:
+security:
+  oauth2:
+    client:
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+    resource:
+      loadBalanced: true
+      token-info-uri: http://gateway-scg/auth/oauth/check_token
