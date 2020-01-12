@@ -1,4 +1,20 @@
 /*
+ * Copyright [2020] [lihaifeng,xuhang]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+/*
  *    Copyright [2020] [lihaifeng,xuhang]
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,22 +32,22 @@
 
 drop database if exists `platform-core`;
 create database `platform-core` charset utf8mb4;
-USE `platform-core`;
+use `platform-core`;
 
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 192.168.0.6
+ Source Server         : 192.168.0.5
  Source Server Type    : MySQL
- Source Server Version : 50728
- Source Host           : 192.168.0.6:3306
+ Source Server Version : 80018
+ Source Host           : 192.168.0.5:3306
  Source Schema         : platform-core
 
  Target Server Type    : MySQL
- Target Server Version : 50728
+ Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 12/01/2020 16:51:39
+ Date: 12/01/2020 18:07:11
 */
 
 SET NAMES utf8mb4;
@@ -42,27 +58,28 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `platform_dept`;
 CREATE TABLE `platform_dept` (
-  `depplatform_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
-  `parenplatform_id` bigint(20) NOT NULL COMMENT '上级部门id',
-  `depplatform_name` varchar(100) NOT NULL COMMENT '部门名称',
+  `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
+  `parent_id` bigint(20) NOT NULL COMMENT '上级部门id',
+  `dept_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '部门名称',
   `order_num` double(20,0) DEFAULT NULL COMMENT '排序',
   `created_by` bigint(20) NOT NULL COMMENT '创建人',
   `created_time` datetime NOT NULL COMMENT '创建时间',
   `updated_by` bigint(20) NOT NULL COMMENT '更新人',
   `updated_time` datetime NOT NULL COMMENT '更新时间',
-  PRIMARY KEY (`depplatform_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='部门表';
+  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  PRIMARY KEY (`dept_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='部门表';
 
 -- ----------------------------
 -- Records of platform_dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_dept` VALUES (1, 0, '开发部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
-INSERT INTO `platform_dept` VALUES (2, 1, '开发一部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
-INSERT INTO `platform_dept` VALUES (3, 1, '开发二部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
-INSERT INTO `platform_dept` VALUES (4, 0, '市场部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
-INSERT INTO `platform_dept` VALUES (5, 0, '人事部', 3, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
-INSERT INTO `platform_dept` VALUES (6, 0, '测试部', 4, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13');
+INSERT INTO `platform_dept` VALUES (1, 0, '开发部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (2, 1, '开发一部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (3, 1, '开发二部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (4, 0, '市场部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (5, 0, '人事部', 3, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (6, 0, '测试部', 4, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
 COMMIT;
 
 -- ----------------------------
@@ -82,8 +99,9 @@ CREATE TABLE `platform_log` (
   `created_time` datetime NOT NULL COMMENT '创建时间',
   `updated_by` bigint(20) NOT NULL COMMENT '更新人',
   `updated_time` datetime NOT NULL COMMENT '更新时间',
+  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户操作日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户操作日志表';
 
 -- ----------------------------
 -- Table structure for platform_menu
@@ -103,32 +121,33 @@ CREATE TABLE `platform_menu` (
   `created_time` datetime NOT NULL COMMENT '创建时间',
   `updated_by` bigint(20) NOT NULL COMMENT '更新人',
   `updated_time` datetime NOT NULL COMMENT '更新时间',
+  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='菜单表';
 
 -- ----------------------------
 -- Records of platform_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_menu` VALUES (1, 0, '系统管理', '/system', 'layout', NULL, 'el-icon-set-up', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (2, 0, '系统监控', '/monitor', 'layout', NULL, 'el-icon-data-line', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (3, 1, '用户管理', '/system/user', 'platform/system/user/index', 'user:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (4, 1, '角色管理', '/system/role', 'platform/system/role/index', 'role:view', '', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (5, 1, '菜单管理', '/system/menu', 'platform/system/menu/index', 'menu:view', '', '0', 3, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (6, 1, '部门管理', '/system/dept', 'platform/system/dept/index', 'dept:view', '', '0', 4, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (7, 2, '系统日志', '/monitor/systemlog', 'febs/monitor/systemlog/index', 'log:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (11, 3, '新增用户', '', '', 'user:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (12, 3, '修改用户', '', '', 'user:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (13, 3, '删除用户', '', '', 'user:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (14, 4, '新增角色', '', '', 'role:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (15, 4, '修改角色', '', '', 'role:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (16, 4, '删除角色', '', '', 'role:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (17, 5, '新增菜单', '', '', 'menu:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (18, 5, '修改菜单', '', '', 'menu:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (19, 5, '删除菜单', '', '', 'menu:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (20, 6, '新增部门', '', '', 'dept:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (21, 6, '修改部门', '', '', 'dept:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_menu` VALUES (22, 6, '删除部门', '', '', 'dept:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
+INSERT INTO `platform_menu` VALUES (1, 0, '系统管理', '/system', 'layout', NULL, 'el-icon-set-up', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (2, 0, '系统监控', '/monitor', 'layout', NULL, 'el-icon-data-line', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (3, 1, '用户管理', '/system/user', 'platform/system/user/index', 'user:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (4, 1, '角色管理', '/system/role', 'platform/system/role/index', 'role:view', '', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (5, 1, '菜单管理', '/system/menu', 'platform/system/menu/index', 'menu:view', '', '0', 3, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (6, 1, '部门管理', '/system/dept', 'platform/system/dept/index', 'dept:view', '', '0', 4, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (7, 2, '系统日志', '/monitor/systemlog', 'febs/monitor/systemlog/index', 'log:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (11, 3, '新增用户', '', '', 'user:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (12, 3, '修改用户', '', '', 'user:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (13, 3, '删除用户', '', '', 'user:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (14, 4, '新增角色', '', '', 'role:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (15, 4, '修改角色', '', '', 'role:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (16, 4, '删除角色', '', '', 'role:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (17, 5, '新增菜单', '', '', 'menu:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (18, 5, '修改菜单', '', '', 'menu:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (19, 5, '删除菜单', '', '', 'menu:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (20, 6, '新增部门', '', '', 'dept:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (21, 6, '修改部门', '', '', 'dept:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (22, 6, '删除部门', '', '', 'dept:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
 COMMIT;
 
 -- ----------------------------
@@ -148,7 +167,7 @@ CREATE TABLE `platform_oauth_client_details` (
   `additional_information` varchar(4096) DEFAULT NULL,
   `autoapprove` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`client_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='终端信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='终端信息表';
 
 -- ----------------------------
 -- Records of platform_oauth_client_details
@@ -174,16 +193,17 @@ CREATE TABLE `platform_role` (
   `created_time` datetime NOT NULL COMMENT '创建时间',
   `updated_by` bigint(20) NOT NULL COMMENT '更新人',
   `updated_time` datetime NOT NULL COMMENT '更新时间',
+  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色表';
 
 -- ----------------------------
 -- Records of platform_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_role` VALUES (1, '管理员', '管理员', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_role` VALUES (2, '注册用户', '可查看，新增，导出', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
-INSERT INTO `platform_role` VALUES (3, '系统监控员', '负责系统监控模块', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14');
+INSERT INTO `platform_role` VALUES (1, '管理员', '管理员', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_role` VALUES (2, '注册用户', '可查看，新增，导出', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_role` VALUES (3, '系统监控员', '负责系统监控模块', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
 COMMIT;
 
 -- ----------------------------
@@ -193,7 +213,7 @@ DROP TABLE IF EXISTS `platform_role_menu`;
 CREATE TABLE `platform_role_menu` (
   `role_id` bigint(20) NOT NULL,
   `menu_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单关联表';
 
 -- ----------------------------
 -- Records of platform_role_menu
@@ -242,7 +262,7 @@ CREATE TABLE `platform_sso_user` (
   UNIQUE KEY `idx_sso_user_username` (`username`),
   KEY `idx_sso_user_email` (`email`),
   KEY `idx_sso_user_mobile` (`mobile`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单点登录用户表 ';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='单点登录用户表 ';
 
 -- ----------------------------
 -- Records of platform_sso_user
@@ -266,9 +286,10 @@ CREATE TABLE `platform_user_connection` (
   `image_url` varchar(512) DEFAULT NULL COMMENT '第三方平台头像',
   `location` varchar(255) DEFAULT NULL COMMENT '地址',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `revision` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`user_connection_id`) USING BTREE,
   UNIQUE KEY `idx_user_connection` (`user_name`,`provider_name`,`provider_user_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='平台系统用户关联第三方用户表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='平台系统用户关联第三方用户表';
 
 -- ----------------------------
 -- Table structure for platform_user_role
@@ -277,7 +298,7 @@ DROP TABLE IF EXISTS `platform_user_role`;
 CREATE TABLE `platform_user_role` (
   `user_id` bigint(20) NOT NULL COMMENT '用户id',
   `role_id` bigint(20) NOT NULL COMMENT '角色id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色关联表';
 
 -- ----------------------------
 -- Records of platform_user_role
