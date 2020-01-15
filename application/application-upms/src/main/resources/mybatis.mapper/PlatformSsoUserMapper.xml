@@ -71,16 +71,21 @@
         <include refid="userRoleSql"/>
         from platform_sso_user u
         left join platform_user_role ur on u.id = ur.user_id
-        left join platfrom_role r on r.role_id = ur.role_id
-        where t.username=#{username}
+        left join platform_role r on r.role_id = ur.role_id
+        where u.username=#{username}
     </select>
 
     <select id="getUserVosPage" resultType="java.util.List">
 
     </select>
 
-    <select id="getUserVoById" resultType="com.gitee.common.upms.vo.UserVO">
-
+    <select id="getUserVoById" resultMap="userVOMap" >
+        select
+        <include refid="userRoleSql"/>
+        from platform_sso_user u
+        left join platform_user_role ur on u.id = ur.user_id
+        left join platform_role r on r.role_id = ur.role_id
+        where u.id=#{id}
     </select>
     <sql id="userRoleSql">
         u.id,
@@ -104,7 +109,7 @@
         r.create_user,
         r.create_date,
         r.update_user,
-        r.update_date,
+        r.update_date
     </sql>
     <sql id="userSql">
         u.id,

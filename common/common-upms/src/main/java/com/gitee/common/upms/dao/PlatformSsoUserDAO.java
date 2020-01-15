@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.common.core.sensitive.Sensitive;
 import com.gitee.common.core.sensitive.SensitiveTypeEnum;
 import com.gitee.common.data.dao.BaseDAO;
@@ -42,6 +43,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel(value = "PlatformSsoUser对象", description = "单点登录用户表 ")
+@TableName("platform_sso_user")
 public class PlatformSsoUserDAO extends BaseDAO<PlatformSsoUserDAO> {
 
   private static final long serialVersionUID = 1L;

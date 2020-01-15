@@ -20,5 +20,7 @@ security:
         - /v2/api-docs
         - /user/info/**
     resource:
-      loadBalanced: true
-      token-info-uri: http://gateway-scg/auth/oauth/check_token
+      token-info-uri: http://localhost:3000/auth/oauth/check_token
+      jwt:
+        #         key-uri: http://localhost:3000/auth/oauth/token_key
+        key-value: platform-key

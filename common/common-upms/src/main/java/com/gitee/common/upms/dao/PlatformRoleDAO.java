@@ -18,6 +18,7 @@ package com.gitee.common.upms.dao;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.common.data.dao.BaseDAO;
 
 import io.swagger.annotations.ApiModel;
@@ -38,6 +39,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel(value = "PlatformRole对象", description = "角色表")
+@TableName("platform_role")
 public class PlatformRoleDAO extends BaseDAO<PlatformRoleDAO> {
 
   private static final long serialVersionUID = 1L;

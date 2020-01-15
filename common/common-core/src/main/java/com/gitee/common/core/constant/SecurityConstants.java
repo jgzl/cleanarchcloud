@@ -191,4 +191,6 @@ public interface SecurityConstants {
    * springboot暴露信息
    */
   String PATH_API_DOCS="/v2/api-docs";
+
+  String JWT_KEY="platform-key";
 }

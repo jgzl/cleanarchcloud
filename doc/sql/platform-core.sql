@@ -14,22 +14,6 @@
  *    limitations under the License.
  */
 
-/*
- *    Copyright [2020] [lihaifeng,xuhang]
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
-
 drop database if exists `platform-core`;
 create database `platform-core` charset utf8mb4;
 use `platform-core`;
@@ -37,17 +21,17 @@ use `platform-core`;
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 192.168.0.5
+ Source Server         : docker-local
  Source Server Type    : MySQL
- Source Server Version : 80018
- Source Host           : 192.168.0.5:3306
+ Source Server Version : 50728
+ Source Host           : localhost:3306
  Source Schema         : platform-core
 
  Target Server Type    : MySQL
- Target Server Version : 80018
+ Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 12/01/2020 18:07:11
+ Date: 15/01/2020 22:54:34
 */
 
 SET NAMES utf8mb4;
@@ -60,13 +44,14 @@ DROP TABLE IF EXISTS `platform_dept`;
 CREATE TABLE `platform_dept` (
   `dept_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门id',
   `parent_id` bigint(20) NOT NULL COMMENT '上级部门id',
-  `dept_name` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT '部门名称',
+  `dept_name` varchar(100) NOT NULL COMMENT '部门名称',
   `order_num` double(20,0) DEFAULT NULL COMMENT '排序',
   `create_user` bigint(20) NOT NULL COMMENT '创建人',
   `create_date` datetime NOT NULL COMMENT '创建时间',
   `update_user` bigint(20) NOT NULL COMMENT '更新人',
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`dept_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='部门表';
 
@@ -74,12 +59,12 @@ CREATE TABLE `platform_dept` (
 -- Records of platform_dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_dept` VALUES (1, 0, '开发部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
-INSERT INTO `platform_dept` VALUES (2, 1, '开发一部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
-INSERT INTO `platform_dept` VALUES (3, 1, '开发二部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
-INSERT INTO `platform_dept` VALUES (4, 0, '市场部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
-INSERT INTO `platform_dept` VALUES (5, 0, '人事部', 3, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
-INSERT INTO `platform_dept` VALUES (6, 0, '测试部', 4, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0);
+INSERT INTO `platform_dept` VALUES (1, 0, '开发部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
+INSERT INTO `platform_dept` VALUES (2, 1, '开发一部', 1, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
+INSERT INTO `platform_dept` VALUES (3, 1, '开发二部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
+INSERT INTO `platform_dept` VALUES (4, 0, '市场部', 2, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
+INSERT INTO `platform_dept` VALUES (5, 0, '人事部', 3, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
+INSERT INTO `platform_dept` VALUES (6, 0, '测试部', 4, 0, '2020-01-12 08:51:13', 0, '2020-01-12 08:51:13', 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -100,6 +85,7 @@ CREATE TABLE `platform_log` (
   `update_user` bigint(20) NOT NULL COMMENT '更新人',
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`log_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='用户操作日志表';
 
@@ -109,7 +95,7 @@ CREATE TABLE `platform_log` (
 DROP TABLE IF EXISTS `platform_menu`;
 CREATE TABLE `platform_menu` (
   `menu_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单/按钮id',
-  `parent_id` bigint(20) NOT NULL COMMENT '上级菜单id',
+  `parenplatform_id` bigint(20) NOT NULL COMMENT '上级菜单id',
   `menu_name` varchar(50) NOT NULL COMMENT '菜单/按钮名称',
   `path` varchar(255) DEFAULT NULL COMMENT '对应路由path',
   `component` varchar(255) DEFAULT NULL COMMENT '对应路由组件component',
@@ -122,6 +108,7 @@ CREATE TABLE `platform_menu` (
   `update_user` bigint(20) NOT NULL COMMENT '更新人',
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`menu_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='菜单表';
 
@@ -129,25 +116,25 @@ CREATE TABLE `platform_menu` (
 -- Records of platform_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_menu` VALUES (1, 0, '系统管理', '/system', 'layout', NULL, 'el-icon-set-up', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (2, 0, '系统监控', '/monitor', 'layout', NULL, 'el-icon-data-line', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (3, 1, '用户管理', '/system/user', 'platform/system/user/index', 'user:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (4, 1, '角色管理', '/system/role', 'platform/system/role/index', 'role:view', '', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (5, 1, '菜单管理', '/system/menu', 'platform/system/menu/index', 'menu:view', '', '0', 3, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (6, 1, '部门管理', '/system/dept', 'platform/system/dept/index', 'dept:view', '', '0', 4, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (7, 2, '系统日志', '/monitor/systemlog', 'febs/monitor/systemlog/index', 'log:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (11, 3, '新增用户', '', '', 'user:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (12, 3, '修改用户', '', '', 'user:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (13, 3, '删除用户', '', '', 'user:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (14, 4, '新增角色', '', '', 'role:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (15, 4, '修改角色', '', '', 'role:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (16, 4, '删除角色', '', '', 'role:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (17, 5, '新增菜单', '', '', 'menu:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (18, 5, '修改菜单', '', '', 'menu:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (19, 5, '删除菜单', '', '', 'menu:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (20, 6, '新增部门', '', '', 'dept:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (21, 6, '修改部门', '', '', 'dept:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_menu` VALUES (22, 6, '删除部门', '', '', 'dept:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_menu` VALUES (1, 0, '系统管理', '/system', 'layout', NULL, 'el-icon-set-up', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (2, 0, '系统监控', '/monitor', 'layout', NULL, 'el-icon-data-line', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (3, 1, '用户管理', '/system/user', 'platform/system/user/index', 'user:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (4, 1, '角色管理', '/system/role', 'platform/system/role/index', 'role:view', '', '0', 2, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (5, 1, '菜单管理', '/system/menu', 'platform/system/menu/index', 'menu:view', '', '0', 3, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (6, 1, '部门管理', '/system/dept', 'platform/system/dept/index', 'dept:view', '', '0', 4, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (7, 2, '系统日志', '/monitor/systemlog', 'febs/monitor/systemlog/index', 'log:view', '', '0', 1, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (11, 3, '新增用户', '', '', 'user:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (12, 3, '修改用户', '', '', 'user:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (13, 3, '删除用户', '', '', 'user:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (14, 4, '新增角色', '', '', 'role:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (15, 4, '修改角色', '', '', 'role:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (16, 4, '删除角色', '', '', 'role:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (17, 5, '新增菜单', '', '', 'menu:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (18, 5, '修改菜单', '', '', 'menu:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (19, 5, '删除菜单', '', '', 'menu:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (20, 6, '新增部门', '', '', 'dept:add', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (21, 6, '修改部门', '', '', 'dept:update', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_menu` VALUES (22, 6, '删除部门', '', '', 'dept:delete', NULL, '1', NULL, 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -166,6 +153,8 @@ CREATE TABLE `platform_oauth_client_details` (
   `refresh_token_validity` int(11) DEFAULT NULL,
   `additional_information` varchar(4096) DEFAULT NULL,
   `autoapprove` varchar(256) DEFAULT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
+  `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
   PRIMARY KEY (`client_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='终端信息表';
 
@@ -173,12 +162,12 @@ CREATE TABLE `platform_oauth_client_details` (
 -- Records of platform_oauth_client_details
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com', '', 43200, 2592001, '{\"website\":\"https://blog.dlihaifeng.cn\",\"appName\":\"APP\"}', '');
-INSERT INTO `platform_oauth_client_details` VALUES ('codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
-INSERT INTO `platform_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
-INSERT INTO `platform_oauth_client_details` VALUES ('ssoclient1', NULL, 'ssoclient1', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8071/sso/login,http://127.0.0.1:8071/sso/login,http://client.sso-1.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8071/sso\",\"appName\":\"单点登录客户端1\"}', 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('ssoclient2', NULL, 'ssoclient2', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8072/sso/login,http://127.0.0.1:8072/sso/login,http://client.sso-2.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8072/sso\",\"appName\":\"单点登录客户端2\"}', 'true');
-INSERT INTO `platform_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '');
+INSERT INTO `platform_oauth_client_details` VALUES ('app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com', '', 43200, 2592001, '{\"website\":\"https://blog.dlihaifeng.cn\",\"appName\":\"APP\"}', '', 0, 0);
+INSERT INTO `platform_oauth_client_details` VALUES ('codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
+INSERT INTO `platform_oauth_client_details` VALUES ('daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
+INSERT INTO `platform_oauth_client_details` VALUES ('ssoclient1', NULL, 'ssoclient1', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8071/sso/login,http://127.0.0.1:8071/sso/login,http://client.sso-1.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8071/sso\",\"appName\":\"单点登录客户端1\"}', 'true', 0, 0);
+INSERT INTO `platform_oauth_client_details` VALUES ('ssoclient2', NULL, 'ssoclient2', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8072/sso/login,http://127.0.0.1:8072/sso/login,http://client.sso-2.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8072/sso\",\"appName\":\"单点登录客户端2\"}', 'true', 0, 0);
+INSERT INTO `platform_oauth_client_details` VALUES ('test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -194,6 +183,7 @@ CREATE TABLE `platform_role` (
   `update_user` bigint(20) NOT NULL COMMENT '更新人',
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`role_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='角色表';
 
@@ -201,9 +191,9 @@ CREATE TABLE `platform_role` (
 -- Records of platform_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_role` VALUES (1, '管理员', '管理员', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_role` VALUES (2, '注册用户', '可查看，新增，导出', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
-INSERT INTO `platform_role` VALUES (3, '系统监控员', '负责系统监控模块', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0);
+INSERT INTO `platform_role` VALUES (1, '管理员', '管理员', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_role` VALUES (2, '注册用户', '可查看，新增，导出', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
+INSERT INTO `platform_role` VALUES (3, '系统监控员', '负责系统监控模块', 0, '2020-01-12 08:51:14', 0, '2020-01-12 08:51:14', 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -258,6 +248,7 @@ CREATE TABLE `platform_sso_user` (
   `create_date` datetime NOT NULL COMMENT '创建时间',
   `update_user` bigint(20) NOT NULL COMMENT '更新人',
   `update_date` datetime NOT NULL COMMENT '更新时间',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sso_user_username` (`username`),
   KEY `idx_sso_user_email` (`email`),
@@ -268,8 +259,7 @@ CREATE TABLE `platform_sso_user` (
 -- Records of platform_sso_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `platform_sso_user` VALUES (-1, 'test', 'test-nickname', '$2a$10$T8HuULDVyTVfxOTzApSMEOYrbW33NTyL.KSEbQPqZhHeUQxynYJf.', '17621006318', 'test@test.com', 0, 0, '2020-01-10 01:17:48', 0, '\"https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96\"', 0, -1, '2020-01-10 01:17:48', -1, '2020-01-10 01:17:48');
-INSERT INTO `platform_sso_user` VALUES (0, 'admin', 'admin-nickname', '$2a$10$UN122m92j4urCWio9CkMrOYyODshc.RSEiap7x/kJiFw838v0Odsu', '17000000000', '', 0, 0, '2020-01-09 17:31:27', 0, '', 0, 0, '2020-01-09 17:31:28', 0, '2020-01-09 17:31:28');
+INSERT INTO `platform_sso_user` VALUES (0, 'admin', 'admin-nickname', '$2a$10$UN122m92j4urCWio9CkMrOYyODshc.RSEiap7x/kJiFw838v0Odsu', '17000000000', '', 0, 0, '2020-01-09 17:31:27', 0, '', 0, 0, '2020-01-09 17:31:28', 0, '2020-01-09 17:31:28', 0);
 COMMIT;
 
 -- ----------------------------
@@ -287,6 +277,7 @@ CREATE TABLE `platform_user_connection` (
   `location` varchar(255) DEFAULT NULL COMMENT '地址',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `version` int(10) NOT NULL DEFAULT '0' COMMENT '乐观锁',
+  `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '逻辑删除标志',
   PRIMARY KEY (`user_connection_id`) USING BTREE,
   UNIQUE KEY `idx_user_connection` (`user_name`,`provider_name`,`provider_user_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='平台系统用户关联第三方用户表';

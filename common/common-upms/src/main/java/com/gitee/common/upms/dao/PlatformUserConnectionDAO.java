@@ -18,6 +18,7 @@ package com.gitee.common.upms.dao;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.common.data.dao.BaseDAO;
 
 import io.swagger.annotations.ApiModel;
@@ -38,6 +39,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel(value = "PlatformUserConnection对象", description = "平台系统用户关联第三方用户表")
+@TableName("platform_user_connection")
 public class PlatformUserConnectionDAO extends BaseDAO<PlatformUserConnectionDAO> {
 
   private static final long serialVersionUID = 1L;

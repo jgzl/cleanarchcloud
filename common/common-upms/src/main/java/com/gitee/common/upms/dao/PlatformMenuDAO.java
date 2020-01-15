@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.common.data.dao.BaseDAO;
 
 import io.swagger.annotations.ApiModel;
@@ -40,6 +41,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel(value = "PlatformMenu对象", description = "菜单表")
+@TableName("platform_menu")
 public class PlatformMenuDAO extends BaseDAO<PlatformMenuDAO> {
 
   private static final long serialVersionUID = 1L;

@@ -20,6 +20,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import io.swagger.annotations.ApiModel;
@@ -38,6 +39,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @ApiModel(value = "客户端信息")
 @EqualsAndHashCode(callSuper = true)
+@TableName("platform_oauth_client_details")
 public class PlatformOauthClientDetailsDAO extends Model<PlatformOauthClientDetailsDAO> {
 
 	private static final long serialVersionUID = 1L;
