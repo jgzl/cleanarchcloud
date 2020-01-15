@@ -39,15 +39,6 @@
     </resultMap>
 
     <resultMap id="userVOMap" type="com.gitee.common.upms.vo.UserVO">
-        <collection ofType="com.gitee.common.upms.dao.PlatformRoleDAO" property="roleList">
-            <id column="role_id" property="roleId"/>
-            <result column="role_name" property="roleName"/>
-            <result column="remark" property="remark"/>
-            <result column="create_user" property="createUser"/>
-            <result column="create_date" property="createDate"/>
-            <result column="update_user" property="updateUser"/>
-            <result column="update_date" property="updateDate"/>
-        </collection>
         <id column="id" property="id"/>
         <result column="create_user" property="createUser"/>
         <result column="create_date" property="createDate"/>
@@ -63,6 +54,15 @@
         <result column="login_time" property="loginTime"/>
         <result column="login_status" property="loginStatus"/>
         <result column="avatar" property="avatar"/>
+        <collection ofType="com.gitee.common.upms.dao.PlatformRoleDAO" property="roleList">
+            <id column="role_id" property="roleId"/>
+            <result column="role_name" property="roleName"/>
+            <result column="remark" property="remark"/>
+            <result column="create_user" property="createUser"/>
+            <result column="create_date" property="createDate"/>
+            <result column="update_user" property="updateUser"/>
+            <result column="update_date" property="updateDate"/>
+        </collection>
     </resultMap>
 
     <!-- 通用查询结果列 -->
