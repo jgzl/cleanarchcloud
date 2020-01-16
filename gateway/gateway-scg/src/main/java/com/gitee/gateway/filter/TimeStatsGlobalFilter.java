@@ -38,6 +38,7 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+    log.info("Welcome to TimeStatsGlobalFilter.");
     exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
     return chain.filter(exchange).then(
         Mono.fromRunnable(() -> {
@@ -50,6 +51,6 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 
   @Override
   public int getOrder() {
-    return 0;
+    return 1;
   }
 }
