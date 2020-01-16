@@ -1,3 +1,8 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 management:
   endpoints:
     web:
@@ -14,7 +19,7 @@ swagger:
   licenseUrl: https://blog.dlihaifeng.com/
   terms-of-service-url: https://blog.dlihaifeng.com/
   contact:
-    name: lihaifeng,xuhang
+    name: 李海峰，徐航
     email: li7hai26@gmail.com
     url: https://blog.dlihaifeng.cn
   authorization:
@@ -24,6 +29,9 @@ swagger:
       - scope: server
         description: server all
     token-url-list:
-      - http://${GATEWAY-HOST:gateway-scg}:${GATEWAY-PORT:8000}/auth/oauth/token
+      - http://${GATEWAY-HOST:localhost}:${GATEWAY-PORT:8000}/auth/oauth/token
 mybatis-plus:
   mapper-locations: classpath*:mybatis.mapper/*.xml
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

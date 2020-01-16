@@ -17,8 +17,11 @@
 package com.gitee.application.upms.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,19 +30,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.upms.mapper.PlatformSsoUserMapper;
-import com.gitee.application.upms.service.PlatformSsoUserService;
+import com.gitee.application.upms.service.IPlatformRoleService;
+import com.gitee.application.upms.service.IPlatformSsoUserService;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.util.Result;
+import com.gitee.common.upms.dao.PlatformRoleDAO;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserDTO;
 import com.gitee.common.upms.dto.UserInfoDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 import com.gitee.common.upms.vo.UserVO;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,25 +53,30 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUser> implements
-    PlatformSsoUserService {
+public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDAO> implements
+    IPlatformSsoUserService {
 
   private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
+
+  @Autowired
+  private IPlatformRoleService roleService;
 
   /**
    * 通过查用户的全部信息
    * 使用cache相关注解，自动注入数据
-   * @param platformSsoUser
+   * @param user
    * @return
    */
   @Override
-  @Cacheable(value = "findUserInfo",key = "#platformSsoUser.username")
-  public UserInfoDTO findUserInfo(PlatformSsoUser platformSsoUser) {
+  @Cacheable(value = "findUserInfo",key = "#user.username")
+  public UserInfoDTO findUserInfo(PlatformSsoUserDAO user) {
     UserInfoDTO userInfoDTO=new UserInfoDTO();
-    PlatformSsoUser user = this
-        .getOne(Wrappers.<PlatformSsoUser>lambdaQuery().eq(PlatformSsoUser::getUsername, platformSsoUser.getUsername()));
     userInfoDTO.setSysUser(user);
     //设置角色列表  （ID）
+    List<Long> roleIds = roleService.findRolesByUserId(user.getId()).stream()
+        .map(PlatformRoleDAO::getRoleId)
+        .collect(Collectors.toList());
+    userInfoDTO.setRoles(ArrayUtil.toArray(roleIds, Long.class));
     //设置权限列表（menu.permission）
     return userInfoDTO;
   }
@@ -74,7 +84,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @Transactional(rollbackFor = Exception.class)
   @Override
   public Boolean saveUser(UserDTO userDTO) {
-    PlatformSsoUser platformSsoUser = new PlatformSsoUser();
+    PlatformSsoUserDAO platformSsoUser = new PlatformSsoUserDAO();
     BeanUtil.copyProperties(userDTO, platformSsoUser);
     LocalDateTime loginTime=platformSsoUser.getLoginTime();
     if (loginTime==null){
@@ -116,7 +126,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
    */
   @Override
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#sysUser.username")
-  public Boolean deleteUserById(PlatformSsoUser sysUser) {
+  public Boolean deleteUserById(PlatformSsoUserDAO sysUser) {
     this.removeById(sysUser.getId());
     return Boolean.TRUE;
   }
@@ -125,7 +135,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
   public Result<Boolean> updateUserInfo(UserDTO userDto) {
     UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
-    PlatformSsoUser sysUser = new PlatformSsoUser();
+    PlatformSsoUserDAO sysUser = new PlatformSsoUserDAO();
     if (StrUtil.isNotBlank(userDto.getPassword())
         && StrUtil.isNotBlank(userDto.getNewPassword())) {
       if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
@@ -144,7 +154,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @Override
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
   public Boolean updateUser(UserDTO userDto) {
-    PlatformSsoUser sysUser = new PlatformSsoUser();
+    PlatformSsoUserDAO sysUser = new PlatformSsoUserDAO();
     BeanUtils.copyProperties(userDto, sysUser);
 
     if (StrUtil.isNotBlank(userDto.getPassword())) {

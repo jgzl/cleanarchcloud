@@ -18,9 +18,13 @@ package com.gitee.common.upms.vo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.gitee.common.core.sensitive.Sensitive;
 import com.gitee.common.core.sensitive.SensitiveTypeEnum;
+import com.gitee.common.upms.dao.PlatformRoleDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -35,45 +39,59 @@ import lombok.Data;
 public class UserVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 主键ID
-	 */
-	@ApiModelProperty(value = "主键")
+	@ApiModelProperty(value = "用户id")
+	@TableId(value = "id", type = IdType.ID_WORKER)
 	private Long id;
-	/**
-	 * 用户名
-	 */
-	@ApiModelProperty(value = "用户名")
+
+	@ApiModelProperty(value = "用户姓名(账户)")
 	private String username;
-	/**
-	 * 密码
-	 */
-	@ApiModelProperty(value = "密码")
+
+	@ApiModelProperty(value = "用户昵称")
+	private String nickname;
+
+	@ApiModelProperty(value = "用户密码")
 	private String password;
-	/**
-	 * 创建时间
-	 */
-	@ApiModelProperty(value = "创建时间")
-	private LocalDateTime createTime;
-	/**
-	 * 修改时间
-	 */
-	@ApiModelProperty(value = "修改时间")
-	private LocalDateTime updateTime;
-	/**
-	 * 锁定标记
-	 */
-	@ApiModelProperty(value = "锁定标记,0:正常,9:已锁定")
-	private String loginStatus;
-	/**
-	 * 手机号
-	 */
+
 	@Sensitive(type = SensitiveTypeEnum.MOBILE_PHONE)
 	@ApiModelProperty(value = "手机号")
-	private String phone;
-	/**
-	 * 头像
-	 */
+	private String mobile;
+
+	@Sensitive(type = SensitiveTypeEnum.EMAIL)
+	@ApiModelProperty(value = "邮箱")
+	private String email;
+
+	@ApiModelProperty(value = "登录次数")
+	private Integer loginCount;
+
+	@ApiModelProperty(value = "登录错误次数")
+	private Integer loginErrorCount;
+
+	@ApiModelProperty(value = "登录时间(最新)")
+	private LocalDateTime loginTime;
+
+	@ApiModelProperty(value = "账号状态")
+	private Integer loginStatus;
+
 	@ApiModelProperty(value = "头像")
 	private String avatar;
+
+	/** 创建人 */
+	@ApiModelProperty("创建人")
+	private Long createUser ;
+
+	/** 创建时间 */
+	@ApiModelProperty("创建时间")
+	private LocalDateTime createDate ;
+
+	/** 更新人 */
+	@ApiModelProperty("更新人")
+	private Long updateUser ;
+
+	/** 更新时间 */
+	@ApiModelProperty("更新时间")
+	private LocalDateTime updateDate ;
+
+	/** 拥有的角色列表 */
+	@ApiModelProperty(value = "拥有的角色列表")
+	private List<PlatformRoleDAO> roleList;
 }

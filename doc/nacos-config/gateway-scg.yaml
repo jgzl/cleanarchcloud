@@ -15,6 +15,12 @@ spring:
             - Path=/upms/**
           filters:
             - StripPrefix=1
+        - id: codegen
+          uri: lb://application-codegen
+          predicates:
+            - Path=/codegen/**
+          filters:
+            - StripPrefix=1
         - id: demo
           uri: lb://application-demo
           predicates:

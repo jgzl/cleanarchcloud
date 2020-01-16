@@ -24,9 +24,12 @@ spring:
   redis:
     host: localhost
     password:
-ribbon:
-  ReadTimeout: 600000
-  ConnectTimeout: 600000
-feign:
-  httpclient:
-    connection-timeout: 600000
+security:
+  oauth2:
+    client:
+      ignore-urls:
+        - /actuator/**
+        - /v2/api-docs
+    resource:
+      loadBalanced: true
+      token-info-uri: http://gateway-scg/auth/oauth/check_token

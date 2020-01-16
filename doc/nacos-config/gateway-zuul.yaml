@@ -4,6 +4,7 @@ zuul:
   routes:
     application-auth: /auth/**
     application-upms: /upms/**
+    application-codegen: /codegen/**
     application-demo: /demo/**
     application-ssoclient1: /ssoclient1/**
     application-ssoclient2: /ssoclient2/**

@@ -32,8 +32,8 @@ import org.springframework.stereotype.Component;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.core.util.Result;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 import com.gitee.common.upms.dto.UserInfoDTO;
-import com.gitee.common.upms.entity.PlatformSsoUser;
 import com.gitee.common.upms.feign.RemoteUserService;
 
 import lombok.AllArgsConstructor;
@@ -56,7 +56,7 @@ public class PlatformUserDetailsServiceImpl implements UserDetailsService {
       return (PlatformUser) cache.get(username).get();
     }
     Result<UserInfoDTO> userInfoDTO = remoteUserService.info(username);
-    PlatformSsoUser user = userInfoDTO.getData().getSysUser();
+    PlatformSsoUserDAO user = userInfoDTO.getData().getSysUser();
     Set<String> authSet = new HashSet<>();
     authSet.add(SecurityConstants.ROLE + "ADMIN");
     Collection<? extends GrantedAuthority> authorities

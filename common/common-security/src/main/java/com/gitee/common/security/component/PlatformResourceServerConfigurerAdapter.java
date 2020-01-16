@@ -17,14 +17,16 @@
 package com.gitee.common.security.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
-import org.springframework.security.oauth2.provider.token.UserAuthenticationConverter;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import com.gitee.common.core.constant.SecurityConstants;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -38,14 +40,12 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
-  @Autowired
-  protected PlatformResourceAuthExceptionEntryPoint resourceAuthExceptionEntryPoint;
 
   @Autowired
-  protected RemoteTokenServices remoteTokenServices;
+  private RedisConnectionFactory redisConnectionFactory;
 
   @Autowired
-  private RestTemplate restTemplate;
+  private PlatformResourceAuthExceptionEntryPoint resourceAuthExceptionEntryPoint;
 
   @Autowired
   private PlatformPermitAllUrlProperties ignoreUrls;
@@ -70,13 +70,20 @@ public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfi
 
   @Override
   public void configure(ResourceServerSecurityConfigurer resources) {
-    DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
-    UserAuthenticationConverter userTokenConverter = new PlatformUserAuthenticationConverter();
-    accessTokenConverter.setUserTokenConverter(userTokenConverter);
-
-    remoteTokenServices.setRestTemplate(restTemplate);
-    remoteTokenServices.setAccessTokenConverter(accessTokenConverter);
     resources.authenticationEntryPoint(resourceAuthExceptionEntryPoint)
-        .tokenServices(remoteTokenServices);
+        .tokenStore(tokenStore());
+  }
+
+  @Bean
+  public TokenStore tokenStore() {
+    RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+    redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX+SecurityConstants.OAUTH_PREFIX);
+    return redisTokenStore;
+  }
+  @Bean
+  public PlatformJwtAccessTokenConvertor accessTokenConvertor(){
+    PlatformJwtAccessTokenConvertor accessTokenConvertor = new PlatformJwtAccessTokenConvertor();
+    accessTokenConvertor.setSigningKey(SecurityConstants.JWT_KEY);
+    return accessTokenConvertor;
   }
 }

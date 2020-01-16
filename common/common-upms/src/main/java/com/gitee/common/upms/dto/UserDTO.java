@@ -18,7 +18,7 @@ package com.gitee.common.upms.dto;
 
 import java.util.List;
 
-import com.gitee.common.upms.entity.PlatformSsoUser;
+import com.gitee.common.upms.dao.PlatformSsoUserDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -32,7 +32,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @ApiModel(value = "系统用户传输对象")
 @EqualsAndHashCode(callSuper = true)
-public class UserDTO extends PlatformSsoUser {
+public class UserDTO extends PlatformSsoUserDAO {
 	/**
 	 * 角色ID
 	 */

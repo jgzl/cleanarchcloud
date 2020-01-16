@@ -13,12 +13,14 @@ spring:
 security:
   oauth2:
     client:
-      client-id: app
-      client-secret: app
+      client_id: app
+      client_secret: app
       ignore-urls:
         - /actuator/**
         - /v2/api-docs
         - /user/info/**
     resource:
-      loadBalanced: true
-      token-info-uri: http://application-auth/oauth/check_token
+      token-info-uri: http://localhost:3000/auth/oauth/check_token
+      jwt:
+#         key-uri: http://localhost:3000/auth/oauth/token_key
+        key-value: platform-key
