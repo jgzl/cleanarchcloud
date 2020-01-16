@@ -64,6 +64,6 @@ public class AccessTokenGatewayFilter implements GatewayFilter, Ordered {
 
   @Override
   public int getOrder() {
-    return 0;
+    return 1;
   }
 }

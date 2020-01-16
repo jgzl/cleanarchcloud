@@ -23,6 +23,8 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -63,6 +65,8 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
       boolean startsWith = token.startsWith(GatewayConstants.BEARER_SPACE);
       if (startsWith) {
         token=token.substring(7);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
         boolean flag = Optional.ofNullable(redisTemplate.opsForValue().get("platform_oauth:access:"+token)).isPresent();
         if (flag){
           log.info("redis中有这个token，则此token未失效");
