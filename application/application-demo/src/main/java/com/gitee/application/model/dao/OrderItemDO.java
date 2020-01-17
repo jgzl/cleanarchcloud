@@ -14,37 +14,27 @@
  *  limitations under the License.
  */
 
-package com.gitee.common.upms.dto;
+package com.gitee.application.model.dao;
 
 import java.io.Serializable;
 
-import com.gitee.common.upms.dao.PlatformSsoUserDO;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  * @author lihaifeng
- * @date 2017/11/11
  */
 @Data
-@ApiModel(value = "用户信息")
-public class UserInfoDTO implements Serializable {
-  /**
-   * 用户基本信息
-   */
-  @ApiModelProperty(value = "用户基本信息")
-  private PlatformSsoUserDO sysUser;
+@TableName("o_order_item")
+public class OrderItemDO implements Serializable {
+  @TableId
+  private Long id;
 
-  /**
-   * 权限标识集合
-   */
-  @ApiModelProperty(value = "权限标识集合")
-  private String[] permissions;
-	/**
-	 * 角色集合
-	 */
-	@ApiModelProperty(value = "角色标识集合")
-	private Long[] roles;
+  private Long shopId;
+
+  private Long orderId;
+
+  private String name;
 }

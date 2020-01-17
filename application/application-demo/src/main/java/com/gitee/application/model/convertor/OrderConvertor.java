@@ -1,3 +1,19 @@
+/*
+ * Copyright [2020] [lihaifeng,xuhang]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 package com.gitee.application.model.convertor;
 
 import java.util.List;
@@ -10,7 +26,7 @@ import org.mapstruct.factory.Mappers;
 import com.gitee.application.model.bo.OrderBO;
 import com.gitee.application.model.bo.OrderItemBO;
 import com.gitee.application.model.dao.OrderDO;
-import com.gitee.application.model.dao.OrderItemDAO;
+import com.gitee.application.model.dao.OrderItemDO;
 import com.gitee.application.model.vo.OrderVO;
 
 /**
@@ -22,30 +38,30 @@ public interface OrderConvertor {
 
   /**
    * 根据order数据库对象转换为order业务对象
-   * @param orderDAO
+   * @param orderDO
    * @return OrderBO
    */
   @Mappings({
       @Mapping(source = "id", target = "orderId")
   })
-  OrderBO convertDAO2BO(OrderDO orderDAO);
+  OrderBO convertDO2BO(OrderDO orderDO);
 
   /**
    * dao->bo
-   * @param orderItemDAO
+   * @param orderItemDO
    * @return
    */
   @Mappings({
       @Mapping(source = "id", target = "orderItemId")
   })
-  OrderItemBO convertDAO2BO(OrderItemDAO orderItemDAO);
+  OrderItemBO convertDO2BO(OrderItemDO orderItemDO);
 
   /**
    * 批量转换
-   * @param orderItemDAOs
+   * @param orderItemDOs
    * @return
    */
-  List<OrderItemBO> convertDAO2BOList(List<OrderItemDAO> orderItemDAOs);
+  List<OrderItemBO> convertDO2BOList(List<OrderItemDO> orderItemDOs);
 
   /**
    * vo->bo
@@ -62,5 +78,5 @@ public interface OrderConvertor {
   @Mappings({
       @Mapping(source = "orderId", target = "id")
   })
-  OrderDO covertVO2DAO(OrderVO orderVO);
+  OrderDO covertVO2DO(OrderVO orderVO);
 }

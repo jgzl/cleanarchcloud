@@ -1,17 +1,17 @@
 /*
- *    Copyright [2020] [lihaifeng,xuhang]
+ * Copyright [2020] [lihaifeng,xuhang]
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package com.gitee.application.upms.controller;
@@ -34,7 +34,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.application.upms.service.IPlatformSsoUserService;
 import com.gitee.common.core.util.Result;
 import com.gitee.common.security.util.SecurityUtils;
-import com.gitee.common.upms.dao.PlatformSsoUserDAO;
+import com.gitee.common.upms.dao.PlatformSsoUserDO;
 import com.gitee.common.upms.dto.UserDTO;
 
 import io.swagger.annotations.Api;
@@ -61,8 +61,8 @@ public class PlatformSsoUserController {
   @GetMapping(value = {"/current"})
   public Result info() {
     String username = SecurityUtils.getUser().getUsername();
-    PlatformSsoUserDAO user = userService.getOne(Wrappers.<PlatformSsoUserDAO>query()
-        .lambda().eq(PlatformSsoUserDAO::getUsername, username));
+    PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
+        .lambda().eq(PlatformSsoUserDO::getUsername, username));
     if (user == null) {
       return Result.failed(null, "获取当前用户信息失败");
     }
@@ -76,8 +76,8 @@ public class PlatformSsoUserController {
    */
   @GetMapping("/info/{username}")
   public Result info(@PathVariable String username) {
-    PlatformSsoUserDAO user = userService.getOne(Wrappers.<PlatformSsoUserDAO>query()
-        .lambda().eq(PlatformSsoUserDAO::getUsername, username));
+    PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
+        .lambda().eq(PlatformSsoUserDO::getUsername, username));
     if (user == null) {
       return Result.failed(null, String.format("用户信息为空 %s", username));
     }
@@ -103,7 +103,7 @@ public class PlatformSsoUserController {
    */
   @GetMapping("/details/{username}")
   public Result user(@PathVariable String username) {
-    PlatformSsoUserDAO condition = new PlatformSsoUserDAO();
+    PlatformSsoUserDO condition = new PlatformSsoUserDO();
     condition.setUsername(username);
     return Result.ok(userService.getOne(new QueryWrapper<>(condition)));
   }
@@ -119,7 +119,7 @@ public class PlatformSsoUserController {
   @ApiOperation(value = "删除用户", notes = "根据ID删除用户")
   @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "int", paramType = "path")
   public Result userDel(@PathVariable Integer id) {
-    PlatformSsoUserDAO PlatformSsoUser = userService.getById(id);
+    PlatformSsoUserDO PlatformSsoUser = userService.getById(id);
     return Result.ok(userService.deleteUserById(PlatformSsoUser));
   }
 

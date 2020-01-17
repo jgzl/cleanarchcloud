@@ -1,17 +1,17 @@
 /*
- *    Copyright [2020] [lihaifeng,xuhang]
+ * Copyright [2020] [lihaifeng,xuhang]
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package com.gitee.application.upms.service;
@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gitee.common.core.util.Result;
-import com.gitee.common.upms.dao.PlatformSsoUserDAO;
+import com.gitee.common.upms.dao.PlatformSsoUserDO;
 import com.gitee.common.upms.dto.UserDTO;
 import com.gitee.common.upms.dto.UserInfoDTO;
 import com.gitee.common.upms.vo.UserVO;
@@ -33,13 +33,13 @@ import com.gitee.common.upms.vo.UserVO;
  * @author lihaifeng
  * @since 2020-01-12
  */
-public interface IPlatformSsoUserService extends IService<PlatformSsoUserDAO> {
+public interface IPlatformSsoUserService extends IService<PlatformSsoUserDO> {
   /**
    * 通过用户名查找用户信息（用户名唯一主键）
    * @param platformSsoUser
    * @return
    */
-  UserInfoDTO findUserInfo(PlatformSsoUserDAO platformSsoUser);
+  UserInfoDTO findUserInfo(PlatformSsoUserDO platformSsoUser);
 
   /**
    * 分页查询用户信息（含有角色信息）
@@ -63,7 +63,7 @@ public interface IPlatformSsoUserService extends IService<PlatformSsoUserDAO> {
    * @param sysUser 用户
    * @return boolean
    */
-  Boolean deleteUserById(PlatformSsoUserDAO sysUser);
+  Boolean deleteUserById(PlatformSsoUserDO sysUser);
 
   /**
    * 更新当前用户基本信息

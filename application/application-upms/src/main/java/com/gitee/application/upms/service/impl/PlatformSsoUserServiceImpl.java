@@ -1,17 +1,17 @@
 /*
- *    Copyright [2020] [lihaifeng,xuhang]
+ * Copyright [2020] [lihaifeng,xuhang]
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package com.gitee.application.upms.service.impl;
@@ -37,8 +37,8 @@ import com.gitee.application.upms.service.IPlatformRoleService;
 import com.gitee.application.upms.service.IPlatformSsoUserService;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.util.Result;
-import com.gitee.common.upms.dao.PlatformRoleDAO;
-import com.gitee.common.upms.dao.PlatformSsoUserDAO;
+import com.gitee.common.upms.dao.PlatformRoleDO;
+import com.gitee.common.upms.dao.PlatformSsoUserDO;
 import com.gitee.common.upms.dto.UserDTO;
 import com.gitee.common.upms.dto.UserInfoDTO;
 import com.gitee.common.upms.vo.UserVO;
@@ -53,7 +53,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDAO> implements
+public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDO> implements
     IPlatformSsoUserService {
 
   private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
@@ -68,13 +68,13 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
    * @return
    */
   @Override
-  @Cacheable(value = "findUserInfo",key = "#user.username")
-  public UserInfoDTO findUserInfo(PlatformSsoUserDAO user) {
-    UserInfoDTO userInfoDTO=new UserInfoDTO();
+  @Cacheable(value = "findUserInfo", key = "#user.username")
+  public UserInfoDTO findUserInfo(PlatformSsoUserDO user) {
+    UserInfoDTO userInfoDTO = new UserInfoDTO();
     userInfoDTO.setSysUser(user);
     //设置角色列表  （ID）
     List<Long> roleIds = roleService.findRolesByUserId(user.getId()).stream()
-        .map(PlatformRoleDAO::getRoleId)
+        .map(PlatformRoleDO::getRoleId)
         .collect(Collectors.toList());
     userInfoDTO.setRoles(ArrayUtil.toArray(roleIds, Long.class));
     //设置权限列表（menu.permission）
@@ -84,7 +84,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @Transactional(rollbackFor = Exception.class)
   @Override
   public Boolean saveUser(UserDTO userDTO) {
-    PlatformSsoUserDAO platformSsoUser = new PlatformSsoUserDAO();
+    PlatformSsoUserDO platformSsoUser = new PlatformSsoUserDO();
     BeanUtil.copyProperties(userDTO, platformSsoUser);
     LocalDateTime loginTime=platformSsoUser.getLoginTime();
     if (loginTime==null){
@@ -126,7 +126,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
    */
   @Override
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#sysUser.username")
-  public Boolean deleteUserById(PlatformSsoUserDAO sysUser) {
+  public Boolean deleteUserById(PlatformSsoUserDO sysUser) {
     this.removeById(sysUser.getId());
     return Boolean.TRUE;
   }
@@ -135,7 +135,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
   public Result<Boolean> updateUserInfo(UserDTO userDto) {
     UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
-    PlatformSsoUserDAO sysUser = new PlatformSsoUserDAO();
+    PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
     if (StrUtil.isNotBlank(userDto.getPassword())
         && StrUtil.isNotBlank(userDto.getNewPassword())) {
       if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
@@ -154,7 +154,7 @@ public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMappe
   @Override
   @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
   public Boolean updateUser(UserDTO userDto) {
-    PlatformSsoUserDAO sysUser = new PlatformSsoUserDAO();
+    PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
     BeanUtils.copyProperties(userDto, sysUser);
 
     if (StrUtil.isNotBlank(userDto.getPassword())) {

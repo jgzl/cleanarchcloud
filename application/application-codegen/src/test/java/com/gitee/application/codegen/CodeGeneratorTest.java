@@ -1,17 +1,17 @@
 /*
- *    Copyright [2020] [lihaifeng,xuhang]
+ * Copyright [2020] [lihaifeng,xuhang]
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package com.gitee.application.codegen;
@@ -36,7 +36,7 @@ import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.gitee.common.data.dao.BaseDAO;
+import com.gitee.common.data.bo.BaseDO;
 
 /**
  * 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
@@ -150,7 +150,7 @@ public class CodeGeneratorTest {
     StrategyConfig strategy = new StrategyConfig();
     strategy.setNaming(NamingStrategy.underline_to_camel);
     strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-    strategy.setSuperEntityClass(BaseDAO.class);
+    strategy.setSuperEntityClass(BaseDO.class);
     strategy.setEntityLombokModel(true);
     strategy.setRestControllerStyle(true);
     // 公共父类
