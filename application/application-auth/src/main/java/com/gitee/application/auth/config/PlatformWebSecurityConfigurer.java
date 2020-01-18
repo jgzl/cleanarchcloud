@@ -63,8 +63,8 @@ public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter 
 	 * @param web
 	 */
 	@Override
-	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**","/favicon.ico");
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**","/favicon.ico");
 	}
 
 	@Bean

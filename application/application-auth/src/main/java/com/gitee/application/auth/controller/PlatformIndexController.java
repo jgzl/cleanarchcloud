@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gitee.common.core.util.Result;
 import com.gitee.common.security.util.SecurityUtils;
@@ -39,8 +40,11 @@ public class PlatformIndexController {
   public Result user(Authentication authentication){
     return Result.ok(authentication);
   }
-  @GetMapping("/")
-  public String welcome(){
-    return "ftl/index";
+
+  @GetMapping({"/","index"})
+  public ModelAndView index(Authentication authentication, ModelAndView modelAndView) {
+    modelAndView.addObject("username",authentication.getName());
+    modelAndView.setViewName("index");
+    return modelAndView;
   }
 }

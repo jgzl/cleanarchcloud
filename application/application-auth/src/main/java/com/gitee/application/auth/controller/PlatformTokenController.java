@@ -81,7 +81,7 @@ public class PlatformTokenController {
   @GetMapping("/login")
   @ApiOperation(value = "登录接口", notes = "跳转登录页面")
   public ModelAndView require(ModelAndView modelAndView, @RequestParam(required = false) String error) {
-    modelAndView.setViewName("ftl/login");
+    modelAndView.setViewName("login");
     modelAndView.addObject("error", error);
     return modelAndView;
   }
@@ -121,7 +121,7 @@ public class PlatformTokenController {
       modelAndView.addObject("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
-    modelAndView.setViewName("ftl/confirm");
+    modelAndView.setViewName("confirm");
     return modelAndView;
   }
 
