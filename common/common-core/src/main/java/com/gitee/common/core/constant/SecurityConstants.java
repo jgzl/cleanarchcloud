@@ -193,4 +193,29 @@ public interface SecurityConstants {
   String PATH_API_DOCS="/v2/api-docs";
 
   String JWT_KEY="platform-key";
+
+  /**
+   * dev环境变量
+   */
+  String DEV="dev";
+
+  /**
+   * localhost环境变量
+   */
+  String LOCALHOST="localhost";
+
+  /**
+   * test环境变量
+   */
+  String TEST="test";
+
+  /**
+   * uat环境变量
+   */
+  String UAT="uat";
+
+  /**
+   * prod环境变量
+   */
+  String PROD="prod";
 }

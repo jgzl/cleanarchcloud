@@ -30,7 +30,6 @@ import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
  * 登录http://localhost:8030/token/login
  * 输入账号密码 admin admin
  */
-@EnableOAuth2Sso
 @EnableSwaggerPlus
 @EnableDiscoveryClient
 @SpringBootApplication

@@ -16,11 +16,16 @@
 
 package com.gitee.application.client.config;
 
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import com.gitee.application.client.handler.PlatformLogoutSuccessHandler;
 import com.gitee.common.core.constant.SecurityConstants;
 
 import lombok.SneakyThrows;
@@ -32,14 +37,25 @@ import lombok.SneakyThrows;
  */
 @Order(101)
 @Configuration
+@EnableOAuth2Sso
 public class PlatformClientWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {
-		http
+		http.logout().logoutSuccessHandler(logoutSuccessHandler())
+				.and()
 				.authorizeRequests()
 				.antMatchers(SecurityConstants.PATH_ACTUATOR,SecurityConstants.PATH_API_DOCS).permitAll()
 				.anyRequest().authenticated()
-				.and().csrf().disable();
+				.and()
+				.csrf().disable();
+	}
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/bootstrap/**");
+	}
+	@Bean
+	public LogoutSuccessHandler logoutSuccessHandler(){
+		return new PlatformLogoutSuccessHandler();
 	}
 }

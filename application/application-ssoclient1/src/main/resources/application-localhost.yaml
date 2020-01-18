@@ -20,5 +20,4 @@ security:
       access-token-uri: http://localhost:8030/oauth/token
       scope: sso
     resource:
-      loadBalanced: true
       token-info-uri: http://localhost:8030/oauth/check_token
