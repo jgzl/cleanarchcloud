@@ -16,6 +16,7 @@
 
 package com.gitee.application.auth.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,8 +36,8 @@ public class PlatformIndexController {
   @ApiOperation(value = "获取用户信息",notes = "通过安全工具类获取具体用户信息",httpMethod = "GET")
   @GetMapping("/user")
   @ResponseBody
-  public Result user(){
-    return Result.ok(SecurityUtils.getUser());
+  public Result user(Authentication authentication){
+    return Result.ok(authentication);
   }
   @GetMapping("/")
   public String welcome(){
