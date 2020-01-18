@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
  * @author lihaifeng
  */
 @Controller
-@Api("主页")
+@Api(value = "主页",tags = "index端点")
 public class PlatformIndexController {
   @ApiOperation(value = "获取用户信息",notes = "通过安全工具类获取具体用户信息",httpMethod = "GET")
   @GetMapping("/user")
