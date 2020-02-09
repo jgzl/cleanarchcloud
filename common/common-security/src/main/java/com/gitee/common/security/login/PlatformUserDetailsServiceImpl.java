@@ -37,10 +37,12 @@ import com.gitee.common.upms.dto.UserInfoDTO;
 import com.gitee.common.upms.feign.RemoteUserService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
  */
+@Slf4j
 @Component
 @AllArgsConstructor
 public class PlatformUserDetailsServiceImpl implements UserDetailsService {
@@ -51,6 +53,7 @@ public class PlatformUserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    //log.debug("使用SpringSecurity登录接口，使用参数{"+username+"}远程调用upms服务");
     Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
     if (cache != null && cache.get(username) != null) {
       return (PlatformUser) cache.get(username).get();

@@ -23,3 +23,6 @@ ribbon:
   eager-load:
     enabled: true
     clients: application-upms,application-codegen
+logging:
+  level:
+    com.gitee.common.upms: debug
