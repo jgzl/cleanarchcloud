@@ -31,7 +31,7 @@ import com.gitee.common.upms.dto.UserInfoDTO;
  * @author lihaifeng
  * @date 2018/6/22
  */
-@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.UPMS_SERVICE,configuration = UpmsFeginConfiguration.class)
+@FeignClient(contextId = "remoteUserService", value = ServiceNameConstants.UPMS_SERVICE)
 public interface RemoteUserService {
 	/**
 	 * 通过用户名查询用户、角色信息

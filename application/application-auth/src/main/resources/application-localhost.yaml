@@ -23,6 +23,20 @@ ribbon:
   eager-load:
     enabled: true
     clients: application-upms,application-codegen
+feign:
+  httpclient:
+    enabled: true
+    #最大连接数
+    max‐connections: 200
+    #为每个url请求设置最大连接数
+    max‐connections‐per‐route: 50
+  client:
+    config:
+      default:
+        # 以feign的超时时间为主
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
 logging:
   level:
     com.gitee.common.upms: debug
