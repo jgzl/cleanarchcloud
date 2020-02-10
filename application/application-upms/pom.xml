@@ -26,8 +26,8 @@
 
   <artifactId>application-upms</artifactId>
   <modelVersion>4.0.0</modelVersion>
-  <name>application-auth::用户授权模块</name>
-  <description>application-auth::用户授权模块</description>
+  <name>application-upms::用户授权模块</name>
+  <description>application-upms::用户授权模块</description>
 
   <dependencies>
     <dependency>
