@@ -21,7 +21,12 @@ fi
 # processProject 			true 					是否更新模块自身的版本号
 # removeSnapshot 			false 					移除snapshot快照版本，使之为release稳定版
 # updateMatchingVersions 	true 					是否更新在子模块中显式指定的匹配版本(如/项目/版本)
-mvn -f "pom.xml" versions:set -DoldVersion=* -DnewVersion=$1 -DprocessAllModules=true -DallowSnapshots=true -DgenerateBackupPoms=true -DupdateMatchingVersions=true
+
+# 方便改参数
+#mvn -f "pom.xml" versions:set -DoldVersion=* -DnewVersion=$1 -DprocessAllModules=true -DallowSnapshots=true -DgenerateBackupPoms=true -DupdateMatchingVersions=true
+
+#简化版命令：
+mvn versions:set -DnewVersion=$1
 
 #回退版本号
 # mvn versions:revert

@@ -22,7 +22,7 @@
 	<parent>
 		<artifactId>application</artifactId>
 		<groupId>com.gitee</groupId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0.RELEASE</version>
 	</parent>
 	<artifactId>application-auth</artifactId>
 	<modelVersion>4.0.0</modelVersion>
