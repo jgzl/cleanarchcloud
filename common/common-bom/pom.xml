@@ -22,7 +22,7 @@
 
 	<groupId>com.gitee</groupId>
 	<artifactId>common-bom</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0.RELEASE</version>
 	<packaging>pom</packaging>
 
 	<description>公共资源::common依赖管理bom</description>

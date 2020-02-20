@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>com.gitee</groupId>
 		<artifactId>infrastructure</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0.RELEASE</version>
 	</parent>
 	<name>基础服务::SpringBootAdmin微服务监控</name>
 	<description>基础服务::SpringBootAdmin微服务监控</description>

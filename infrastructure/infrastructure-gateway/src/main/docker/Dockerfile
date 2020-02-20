@@ -10,6 +10,6 @@ WORKDIR /app
 
 EXPOSE 8000
 
-ADD gateway-scg.jar app.jar
+ADD infrastructure-gateway.jar app.jar
 
 CMD java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar app.jar
