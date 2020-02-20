@@ -1,41 +1,22 @@
 # 前言
-[![Spring Boot](https://img.shields.io/badge/spring--boot-2.2.1.RELEASE-brightgreen)](https://github.com/spring-projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/spring--boot-2.2.4.RELEASE-brightgreen)](https://github.com/spring-projects/spring-boot)
 [![Spring Cloud](https://img.shields.io/badge/spring--cloud-Hoxton.RELEASE-brightgreen)](https://github.com/spring-cloud)
-[![Spring Cloud Alibaba](https://img.shields.io/badge/spring--cloud--alibaba-2.1.1.RELEASE-brightgreen)](https://github.com/alibaba/spring-cloud-alibaba)
+[![Spring Cloud Alibaba](https://img.shields.io/badge/spring--cloud--alibaba-2.2.0.RELEASE-brightgreen)](https://github.com/alibaba/spring-cloud-alibaba)
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/dlhf/conversion-platform/blob/master/LICENSE)
 
-#### 介绍
-文本类型，数据类型转换平台系统
+#### 凤凰微服务平台系统
+- 基于 Spring Cloud Hoxton 、Spring Boot 2.2、 OAuth2 的RBAC权限管理系统  
+- 基于数据驱动视图的理念封装 element-ui，即使没有 vue 的使用经验也能快速上手  
+- 提供对常见容器化支持 Docker、Kubernetes、Rancher2 支持  
+- 提供 lambda 、stream api 、webflux 的生产实践   
 
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+#### 核心依赖 
 
 
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+依赖 | 版本
+---|---
+Spring Boot |  2.2.4.RELEASE  
+Spring Cloud | Hoxton.SR1   
+Spring Security OAuth2 | 2.3.6
+Mybatis Plus | 3.3.1
+hutool | 5.1.2

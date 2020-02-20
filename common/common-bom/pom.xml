@@ -44,30 +44,30 @@
 			</dependency>
 			<dependency>
 				<artifactId>common-swagger</artifactId>
-        <groupId>com.gitee</groupId>
-        <version>${bom.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>common-security</artifactId>
-        <groupId>com.gitee</groupId>
-        <version>${bom.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>common-data</artifactId>
-        <groupId>com.gitee</groupId>
-        <version>${bom.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>common-upms</artifactId>
-        <groupId>com.gitee</groupId>
-        <version>${bom.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>common-mvc</artifactId>
-        <groupId>com.gitee</groupId>
-        <version>${bom.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+				<groupId>com.gitee</groupId>
+				<version>${bom.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>common-security</artifactId>
+				<groupId>com.gitee</groupId>
+				<version>${bom.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>common-data</artifactId>
+				<groupId>com.gitee</groupId>
+				<version>${bom.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>common-upms</artifactId>
+				<groupId>com.gitee</groupId>
+				<version>${bom.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>common-mvc</artifactId>
+				<groupId>com.gitee</groupId>
+				<version>${bom.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>

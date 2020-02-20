@@ -43,7 +43,7 @@
 	</dependencies>
 
 	<parent>
-		<artifactId>conversion-platform</artifactId>
+		<artifactId>phoenix</artifactId>
 		<groupId>com.gitee</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
