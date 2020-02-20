@@ -27,7 +27,7 @@
 
   <artifactId>common-swagger</artifactId>
   <modelVersion>4.0.0</modelVersion>
-  <name>common-swagger::common接口文档</name>
+  <name>公共资源::common接口文档</name>
   <description>使用这个common-swagger包的@EnableSwaggerPlus快速接入swagger，需要配置相关的swagger配置</description>
   <dependencies>
     <!--swagger 依赖-->

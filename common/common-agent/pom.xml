@@ -16,41 +16,42 @@
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>common-agent</artifactId>
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<artifactId>common-agent</artifactId>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Agent-Class>com.gitee.common.CommonAgent</Agent-Class>
-              <Can-Redefine-Classes>true</Can-Redefine-Classes>
-              <Can-Retransform-Classes>true</Can-Retransform-Classes>
-              <Premain-Class>com.gitee.common.CommonAgent</Premain-Class>
-              <Project-name>${project.name}</Project-name>
-              <Project-version>${project.version}</Project-version>
-            </manifestEntries>
-          </archive>
-        </configuration>
-        <groupId>org.apache.maven.plugins</groupId>
-        <version>3.2.0</version>
-      </plugin>
-    </plugins>
-  </build>
-  <description>common-agent::common代理包动态修改字节码</description>
-  <modelVersion>4.0.0</modelVersion>
-  <name>common-agent::common代理包动态修改字节码</name>
+	<parent>
+		<artifactId>common</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <packaging>jar</packaging>
+	<description>公共资源::common代理包动态修改字节码</description>
+	<modelVersion>4.0.0</modelVersion>
+	<name>公共资源::common代理包动态修改字节码</name>
+	<packaging>jar</packaging>
 
-  <parent>
-    <artifactId>common</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Agent-Class>com.gitee.common.CommonAgent</Agent-Class>
+							<Can-Redefine-Classes>true</Can-Redefine-Classes>
+							<Can-Retransform-Classes>true</Can-Retransform-Classes>
+							<Premain-Class>com.gitee.common.CommonAgent</Premain-Class>
+							<Project-name>${project.name}</Project-name>
+							<Project-version>${project.version}</Project-version>
+						</manifestEntries>
+					</archive>
+				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>3.2.0</version>
+			</plugin>
+		</plugins>
+	</build>
+
 
 </project>

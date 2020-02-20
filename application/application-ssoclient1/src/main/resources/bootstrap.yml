@@ -3,19 +3,21 @@ server:
     context-path: /sso
 spring:
   profiles:
-    active: ${env.profile}
+    active: @pom.profile@
   application:
-    name: ${project.artifactId}
+    name: @project.artifactId@
   cloud:
     nacos:
-      server-addr: ${env.nacos.address}
+      server-addr: @pom.nacos.address@
       config:
-        namespace: ${env.nacos.namespace}
-        file-extension: ${env.nacos.fileext}
-        shared-dataids: ${env.nacos.share}
-        refreshable-dataids: ${env.nacos.refresh}
+        namespace: @pom.nacos.namespace@
+        file-extension: @pom.nacos.fileext@
+        shared-configs:
+          - data-id: @pom.nacos.share@
+            group: DEFAULT_GROUP
+            refresh: true
       discovery:
-        namespace: ${env.nacos.namespace}
+        namespace: @pom.nacos.namespace@
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator

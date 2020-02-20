@@ -182,40 +182,45 @@ public interface SecurityConstants {
    */
   String PATH_TOKEN="/token/**";
 
-  /**
-   * springboot暴露信息
-   */
-  String PATH_ACTUATOR="/actuator/**";
+	/**
+	 * springboot暴露信息
+	 */
+	String PATH_ACTUATOR = "/actuator/**";
 
-  /**
-   * springboot暴露信息
-   */
-  String PATH_API_DOCS="/v2/api-docs";
+	/**
+	 * springboot暴露信息
+	 */
+	String PATH_API_DOCS = "/v2/api-docs";
 
-  String JWT_KEY="platform-key";
+	String JWT_KEY = "platform-key";
 
-  /**
-   * dev环境变量
-   */
-  String DEV="dev";
+	/**
+	 * dev环境变量
+	 */
+	String DEV = "dev";
 
-  /**
-   * localhost环境变量
-   */
-  String LOCALHOST="localhost";
+	/**
+	 * lhf环境变量
+	 */
+	String LHF = "lhf";
 
-  /**
-   * test环境变量
-   */
-  String TEST="test";
+	/**
+	 * xh环境变量
+	 */
+	String XH = "xh";
 
-  /**
-   * uat环境变量
-   */
-  String UAT="uat";
+	/**
+	 * test环境变量
+	 */
+	String TEST = "test";
 
-  /**
-   * prod环境变量
-   */
-  String PROD="prod";
+	/**
+	 * uat环境变量
+	 */
+	String UAT = "uat";
+
+	/**
+	 * prod环境变量
+	 */
+	String PROD = "prod";
 }

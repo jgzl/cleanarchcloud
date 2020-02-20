@@ -16,34 +16,34 @@
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>common</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>common</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>common-data</artifactId>
-  <modelVersion>4.0.0</modelVersion>
-  <description>common-data::SQL,NOSQL操作</description>
-  <name>common-data::SQL,NOSQL操作</name>
-  <dependencies>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-core</artifactId>
-    </dependency>
-    <!-- mybatis-plus注解-->
-    <dependency>
-      <artifactId>mybatis-plus-extension</artifactId>
-      <groupId>com.baomidou</groupId>
-    </dependency>
-    <!--缓存依赖-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
-  </dependencies>
+	<artifactId>common-data</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<description>公共资源::common数据库</description>
+	<name>公共资源::common数据库</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-core</artifactId>
+		</dependency>
+		<!-- mybatis-plus注解-->
+		<dependency>
+			<artifactId>mybatis-plus-extension</artifactId>
+			<groupId>com.baomidou</groupId>
+		</dependency>
+		<!--缓存依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+	</dependencies>
 
 
 </project>

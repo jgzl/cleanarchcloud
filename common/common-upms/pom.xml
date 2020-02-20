@@ -16,30 +16,30 @@
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <parent>
-    <artifactId>common</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<artifactId>common</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>common-upms</artifactId>
-  <modelVersion>4.0.0</modelVersion>
-  <name>common-upms::common用户管理接口模块</name>
-  <description>common-upms::common用户管理接口模块</description>
-  <dependencies>
-    <!--工具类核心包-->
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-data</artifactId>
-    </dependency>
-    <!--feign 依赖-->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
-  </dependencies>
+	<artifactId>common-upms</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<name>公共资源::common用户管理接口模块</name>
+	<description>公共资源::common用户管理接口模块</description>
+	<dependencies>
+		<!--工具类核心包-->
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-data</artifactId>
+		</dependency>
+		<!--feign 依赖-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>

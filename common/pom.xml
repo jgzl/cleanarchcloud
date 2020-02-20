@@ -19,32 +19,32 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modules>
-    <module>common-bom</module>
-    <module>common-core</module>
-    <module>common-gateway</module>
-    <module>common-security</module>
-    <module>common-swagger</module>
-    <module>common-data</module>
-    <module>common-upms</module>
-    <module>common-mvc</module>
-    <module>common-agent</module>
+	  <module>common-bom</module>
+	  <module>common-core</module>
+	  <module>common-gateway</module>
+	  <module>common-security</module>
+	  <module>common-swagger</module>
+	  <module>common-data</module>
+	  <module>common-upms</module>
+	  <module>common-mvc</module>
+	  <module>common-agent</module>
   </modules>
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>common</artifactId>
-  <packaging>pom</packaging>
-  <name>conversion-platform::Common组件POM</name>
-  <description>conversion-platform::Common组件POM</description>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>common</artifactId>
+	<packaging>pom</packaging>
+	<name>公共资源::Common组件POM</name>
+	<description>公共资源::Common组件POM</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
 
-  <parent>
-    <artifactId>conversion-platform</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<artifactId>conversion-platform</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 </project>

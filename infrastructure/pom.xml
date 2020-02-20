@@ -4,31 +4,32 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>conversion-platform</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>infrastructure</artifactId>
-  <packaging>pom</packaging>
-  <name>conversion-platform::基础设施组件POM</name>
-  <description>conversion-platform::基础设施组件POM</description>
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>conversion-platform</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>infrastructure</artifactId>
+	<packaging>pom</packaging>
+	<name>基础服务::基础设施组件POM</name>
+	<description>基础服务::基础设施组件POM</description>
 
-  <modules>
-    <module>infrastructure-apm-admin</module>
-  </modules>
+	<modules>
+		<module>infrastructure-apm-admin</module>
+		<module>infrastructure-gateway</module>
+	</modules>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+	</dependencies>
 </project>

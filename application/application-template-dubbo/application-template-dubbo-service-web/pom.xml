@@ -4,29 +4,37 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>application-template-dubbo-service-web</artifactId>
-  <dependencies>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>application-template-dubbo-service-impl</artifactId>
-      <version>${project.parent.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.gitee</groupId>
+		<artifactId>application-template-dubbo</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>application-template-dubbo-service-web</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<name>应用服务::Dubbo模板service web</name>
+	<description>应用服务::Dubbo模板service web</description>
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>application-template-dubbo-service-impl</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
     <dependency>
@@ -34,14 +42,6 @@
       <groupId>com.gitee</groupId>
     </dependency>
   </dependencies>
-  <name>conversion-platform::Dubbo模板service web</name>
-  <description>conversion-platform::Dubbo模板service web</description>
-
-  <parent>
-    <groupId>com.gitee</groupId>
-    <artifactId>application-template-dubbo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
 
   <build>
     <plugins>

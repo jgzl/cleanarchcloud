@@ -16,38 +16,38 @@
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <parent>
-    <artifactId>common</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>common-security</artifactId>
-  <modelVersion>4.0.0</modelVersion>
-  <description>common-security::common安全权限</description>
-  <name>common-security::common安全权限</name>
+	<parent>
+		<artifactId>common</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>common-security</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<description>公共资源::common安全权限</description>
+	<name>公共资源::common安全权限</name>
 
-  <dependencies>
-    <!--工具类核心包-->
-    <dependency>
-      <artifactId>common-core</artifactId>
-      <groupId>com.gitee</groupId>
-    </dependency>
-    <!--用户接口-->
-    <dependency>
-      <artifactId>common-upms</artifactId>
-      <groupId>com.gitee</groupId>
-    </dependency>
-    <!--安全模块 -->
-    <dependency>
-      <artifactId>spring-cloud-starter-oauth2</artifactId>
-      <groupId>org.springframework.cloud</groupId>
-    </dependency>
-    <dependency>
-      <groupId>com.auth0</groupId>
-      <artifactId>java-jwt</artifactId>
+	<dependencies>
+		<!--工具类核心包-->
+		<dependency>
+			<artifactId>common-core</artifactId>
+			<groupId>com.gitee</groupId>
+		</dependency>
+		<!--用户接口-->
+		<dependency>
+			<artifactId>common-upms</artifactId>
+			<groupId>com.gitee</groupId>
+		</dependency>
+		<!--安全模块 -->
+		<dependency>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
     </dependency>
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
