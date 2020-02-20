@@ -44,30 +44,30 @@ import lombok.experimental.Accessors;
 @TableName("platform_log")
 public class PlatformLogDO extends BaseDO<PlatformLogDO> {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @ApiModelProperty(value = "日志id")
-  @TableId(value = "log_id", type = IdType.ID_WORKER)
-  private Long logId;
+	@ApiModelProperty(value = "日志id")
+	@TableId(value = "log_id", type = IdType.ID_WORKER)
+	private Long logId;
 
-  @ApiModelProperty(value = "操作用户")
-  private String username;
+	@ApiModelProperty(value = "操作用户")
+	private String username;
 
-  @ApiModelProperty(value = "操作内容")
-  private String operation;
+	@ApiModelProperty(value = "操作内容")
+	private String operation;
 
-  @ApiModelProperty(value = "耗时")
-  private BigDecimal time;
+	@ApiModelProperty(value = "耗时")
+	private BigDecimal time;
 
-  @ApiModelProperty(value = "操作方法")
-  private String method;
+	@ApiModelProperty(value = "操作方法")
+	private String method;
 
-  @ApiModelProperty(value = "方法参数")
-  private String params;
+	@ApiModelProperty(value = "方法参数")
+	private String params;
 
-  @ApiModelProperty(value = "操作者ip")
-  private String ip;
+	@ApiModelProperty(value = "操作者ip")
+	private String ip;
 
-  @ApiModelProperty(value = "操作地点")
-  private String location;
+	@ApiModelProperty(value = "操作地点")
+	private String location;
 }

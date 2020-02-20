@@ -18,54 +18,52 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.gitee</groupId>
 	<artifactId>common-bom</artifactId>
-	<modelVersion>4.0.0</modelVersion>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<description>公共资源::common依赖管理bom</description>
 	<name>公共资源::common依赖管理bom</name>
 
-	<properties>
-		<bom.version>1.0.0-SNAPSHOT</bom.version>
-	</properties>
-
-	<version>${bom.version}</version>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<artifactId>common-core</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-gateway</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-swagger</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-security</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-data</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-upms</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>common-mvc</artifactId>
 				<groupId>com.gitee</groupId>
-				<version>${bom.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

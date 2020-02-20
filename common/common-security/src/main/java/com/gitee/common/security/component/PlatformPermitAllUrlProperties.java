@@ -43,6 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 @ConfigurationProperties(prefix = "security.oauth2.client")
 public class PlatformPermitAllUrlProperties implements InitializingBean {
 	private static final Pattern PATTERN = Pattern.compile("\\{(.*?)\\}");
+
 	@Autowired
 	private WebApplicationContext applicationContext;
 

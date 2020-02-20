@@ -31,14 +31,14 @@ import com.gitee.common.core.constant.CacheConstants;
  */
 public class PlatformClientUserDetailsServiceImpl extends JdbcClientDetailsService {
 
-  public PlatformClientUserDetailsServiceImpl(DataSource dataSource) {
-    super(dataSource);
-  }
+	public PlatformClientUserDetailsServiceImpl(DataSource dataSource) {
+		super(dataSource);
+	}
 
-  @Override
-  @Cacheable(value = CacheConstants.CLIENT_DETAILS_KEY, key = "#clientId", unless = "#result == null")
-  public ClientDetails loadClientByClientId(String clientId) throws InvalidClientException {
-    BaseClientDetails user = (BaseClientDetails) super.loadClientByClientId(clientId);
-    return user;
-  }
+	@Override
+	@Cacheable(value = CacheConstants.CLIENT_DETAILS_KEY, key = "#clientId", unless = "#result == null")
+	public ClientDetails loadClientByClientId(String clientId) throws InvalidClientException {
+		BaseClientDetails user = (BaseClientDetails) super.loadClientByClientId(clientId);
+		return user;
+	}
 }

@@ -38,7 +38,7 @@ public class PlatformAuth2Exception extends OAuth2Exception {
 	}
 
 	public PlatformAuth2Exception(String msg, Throwable t) {
-		super(msg,t);
+		super(msg, t);
 	}
 
 	public PlatformAuth2Exception(String msg, String errorCode) {

@@ -46,41 +46,41 @@ import lombok.experimental.Accessors;
 @TableName("platform_sso_user")
 public class PlatformSsoUserDO extends BaseDO<PlatformSsoUserDO> {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @ApiModelProperty(value = "用户id")
-  @TableId(value = "id", type = IdType.ID_WORKER)
-  private Long id;
+	@ApiModelProperty(value = "用户id")
+	@TableId(value = "id", type = IdType.ID_WORKER)
+	private Long id;
 
-  @ApiModelProperty(value = "用户姓名(账户)")
-  private String username;
+	@ApiModelProperty(value = "用户姓名(账户)")
+	private String username;
 
-  @ApiModelProperty(value = "用户昵称")
-  private String nickname;
+	@ApiModelProperty(value = "用户昵称")
+	private String nickname;
 
-  @ApiModelProperty(value = "用户密码")
-  private String password;
+	@ApiModelProperty(value = "用户密码")
+	private String password;
 
-  @Sensitive(type = SensitiveTypeEnum.MOBILE_PHONE)
-  @ApiModelProperty(value = "手机号")
-  private String mobile;
+	@Sensitive(type = SensitiveTypeEnum.MOBILE_PHONE)
+	@ApiModelProperty(value = "手机号")
+	private String mobile;
 
-  @Sensitive(type = SensitiveTypeEnum.EMAIL)
-  @ApiModelProperty(value = "邮箱")
-  private String email;
+	@Sensitive(type = SensitiveTypeEnum.EMAIL)
+	@ApiModelProperty(value = "邮箱")
+	private String email;
 
-  @ApiModelProperty(value = "登录次数")
-  private Integer loginCount;
+	@ApiModelProperty(value = "登录次数")
+	private Integer loginCount;
 
-  @ApiModelProperty(value = "登录错误次数")
-  private Integer loginErrorCount;
+	@ApiModelProperty(value = "登录错误次数")
+	private Integer loginErrorCount;
 
-  @ApiModelProperty(value = "登录时间(最新)")
-  private LocalDateTime loginTime;
+	@ApiModelProperty(value = "登录时间(最新)")
+	private LocalDateTime loginTime;
 
-  @ApiModelProperty(value = "账号状态")
-  private Integer loginStatus;
+	@ApiModelProperty(value = "账号状态")
+	private Integer loginStatus;
 
-  @ApiModelProperty(value = "头像")
-  private String avatar;
+	@ApiModelProperty(value = "头像")
+	private String avatar;
 }

@@ -6,12 +6,12 @@ package com.gitee.common.core.constant;
  * @date 2018/11/22
  */
 public interface PaginationConstants {
-  /**
-   * 当前页
-   */
-  String CURRENT = "current";
-  /**
-   * 每页大小
-   */
-  String SIZE = "size";
+	/**
+	 * 当前页
+	 */
+	String CURRENT = "current";
+	/**
+	 * 每页大小
+	 */
+	String SIZE = "size";
 }

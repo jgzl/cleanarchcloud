@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexController {
-  @GetMapping({"/","/index"})
-  @ResponseBody
-  public String index(){
-    return "hello,codegen!!!";
-  }
+	@GetMapping({"/", "/index"})
+	@ResponseBody
+	public String index() {
+		return "hello,codegen!!!";
+	}
 }

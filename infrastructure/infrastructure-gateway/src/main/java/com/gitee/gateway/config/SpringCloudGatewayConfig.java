@@ -14,13 +14,13 @@ import org.springframework.web.client.RestTemplate;
  */
 @Configuration
 public class SpringCloudGatewayConfig {
-  /**
-   * ribbon负载均衡
-   * @return
-   */
-  @Bean
-  @LoadBalanced
-  public RestTemplate restTemplate() {
-    return new RestTemplate();
-  }
+	/**
+	 * ribbon负载均衡
+	 * @return
+	 */
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

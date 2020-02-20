@@ -39,36 +39,36 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/member")
 public class MemberController {
 
-    @GetMapping("/list")
-    public String list() {
-        return "member/list";
-    }
+	@GetMapping("/list")
+	public String list() {
+		return "member/list";
+	}
 
-    @ApiOperation(value = "登录用户信息")
-    @GetMapping("/info")
-    @ResponseBody
-    public Principal info(Principal principal) {
-        return principal;
-    }
+	@ApiOperation(value = "登录用户信息")
+	@GetMapping("/info")
+	@ResponseBody
+	public Principal info(Principal principal) {
+		return principal;
+	}
 
-    @ApiOperation(value = "登录用户信息")
-    @GetMapping("/me")
-    @ResponseBody
-    public Authentication me(Authentication authentication) {
-        return authentication;
-    }
+	@ApiOperation(value = "登录用户信息")
+	@GetMapping("/me")
+	@ResponseBody
+	public Authentication me(Authentication authentication) {
+		return authentication;
+	}
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @ResponseBody
-    @PostMapping("/add")
-    public String add() {
-        return "admin add";
-    }
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@ResponseBody
+	@PostMapping("/add")
+	public String add() {
+		return "admin add";
+	}
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @ResponseBody
-    @GetMapping("/detail")
-    public String detail() {
-        return "admin detail";
-    }
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	@ResponseBody
+	@GetMapping("/detail")
+	public String detail() {
+		return "admin detail";
+	}
 }

@@ -42,18 +42,18 @@ import lombok.experimental.Accessors;
 @TableName("platform_dept")
 public class PlatformDeptDO extends BaseDO<PlatformDeptDO> {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @ApiModelProperty(value = "部门id")
-  @TableId(value = "dept_id", type = IdType.ID_WORKER)
-  private Long deptId;
+	@ApiModelProperty(value = "部门id")
+	@TableId(value = "dept_id", type = IdType.ID_WORKER)
+	private Long deptId;
 
-  @ApiModelProperty(value = "上级部门id")
-  private Long parentId;
+	@ApiModelProperty(value = "上级部门id")
+	private Long parentId;
 
-  @ApiModelProperty(value = "部门名称")
-  private String deptName;
+	@ApiModelProperty(value = "部门名称")
+	private String deptName;
 
-  @ApiModelProperty(value = "排序")
-  private Double orderNum;
+	@ApiModelProperty(value = "排序")
+	private Double orderNum;
 }

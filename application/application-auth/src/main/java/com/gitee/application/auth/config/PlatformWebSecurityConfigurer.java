@@ -52,7 +52,8 @@ public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter 
 				.failureHandler(authenticationFailureHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers(SecurityConstants.PATH_TOKEN,SecurityConstants.PATH_API_DOCS, SecurityConstants.PATH_ACTUATOR,SecurityConstants.PATH_API_DOCS).permitAll()
+				.antMatchers(SecurityConstants.PATH_TOKEN, SecurityConstants.PATH_API_DOCS,
+						SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DOCS).permitAll()
 				.anyRequest().authenticated()
 				.and().csrf().disable();
 	}
@@ -64,7 +65,7 @@ public class PlatformWebSecurityConfigurer extends WebSecurityConfigurerAdapter 
 	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**","/favicon.ico");
+		web.ignoring().antMatchers("/assets/**", "/css/**", "/images/**", "/favicon.ico");
 	}
 
 	@Bean

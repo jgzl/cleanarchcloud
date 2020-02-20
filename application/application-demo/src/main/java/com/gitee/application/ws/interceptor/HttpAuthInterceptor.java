@@ -24,44 +24,44 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class HttpAuthInterceptor implements HandshakeInterceptor {
 
-  /**
-   * 握手前
-   *
-   * @param request
-   * @param response
-   * @param wsHandler
-   * @param attributes
-   * @return
-   * @throws Exception
-   */
-  @Override
-  public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
-      Map<String, Object> attributes) throws Exception {
-    log.info("握手开始");
-    // 获得请求参数
-    HashMap<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), "utf-8");
-    String uid = paramMap.get("token");
-    if (StrUtil.isNotBlank(uid)) {
-      // 放入属性域
-      attributes.put("token", uid);
-      log.info("用户 token {} 握手成功！", uid);
-      return true;
-    }
-    log.info("用户登录已失效");
-    return false;
-  }
+	/**
+	 * 握手前
+	 *
+	 * @param request
+	 * @param response
+	 * @param wsHandler
+	 * @param attributes
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
+			Map<String, Object> attributes) throws Exception {
+		log.info("握手开始");
+		// 获得请求参数
+		HashMap<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), "utf-8");
+		String uid = paramMap.get("token");
+		if (StrUtil.isNotBlank(uid)) {
+			// 放入属性域
+			attributes.put("token", uid);
+			log.info("用户 token {} 握手成功！", uid);
+			return true;
+		}
+		log.info("用户登录已失效");
+		return false;
+	}
 
-  /**
-   * 握手后
-   *
-   * @param request
-   * @param response
-   * @param wsHandler
-   * @param exception
-   */
-  @Override
-  public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
-      Exception exception) {
-    log.info("握手完成");
-  }
+	/**
+	 * 握手后
+	 *
+	 * @param request
+	 * @param response
+	 * @param wsHandler
+	 * @param exception
+	 */
+	@Override
+	public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
+			Exception exception) {
+		log.info("握手完成");
+	}
 }

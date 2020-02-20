@@ -29,16 +29,17 @@ import com.gitee.common.core.util.Result;
  */
 @Controller
 public class PlatformErrorPageController {
-  @GetMapping("/error/404")
-  @ResponseBody
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  public Result error404() {
-    return Result.failed("404页面找不到");
-  }
-  @GetMapping("/error/500")
-  @ResponseBody
-  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  public Result error500() {
-    return Result.failed("500后台异常");
-  }
+	@GetMapping("/error/404")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public Result error404() {
+		return Result.failed("404页面找不到");
+	}
+
+	@GetMapping("/error/500")
+	@ResponseBody
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public Result error500() {
+		return Result.failed("500后台异常");
+	}
 }

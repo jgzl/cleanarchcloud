@@ -77,21 +77,21 @@ public class UserVO implements Serializable {
 
 	/** 创建人 */
 	@ApiModelProperty("创建人")
-	private Long createUser ;
+	private Long createUser;
 
 	/** 创建时间 */
 	@ApiModelProperty("创建时间")
-	private LocalDateTime createDate ;
+	private LocalDateTime createDate;
 
 	/** 更新人 */
 	@ApiModelProperty("更新人")
-	private Long updateUser ;
+	private Long updateUser;
 
 	/** 更新时间 */
 	@ApiModelProperty("更新时间")
-	private LocalDateTime updateDate ;
+	private LocalDateTime updateDate;
 
-  /** 拥有的角色列表 */
-  @ApiModelProperty(value = "拥有的角色列表")
-  private List<PlatformRoleDO> roleList;
+	/** 拥有的角色列表 */
+	@ApiModelProperty(value = "拥有的角色列表")
+	private List<PlatformRoleDO> roleList;
 }

@@ -10,6 +10,6 @@ import com.gitee.gateway.feign.fallback.DemoFallbackRemoteServiceImpl;
  */
 @FeignClient(name = "application-demo", fallback = DemoFallbackRemoteServiceImpl.class)
 public interface DemoRemoteService {
-  @GetMapping("/ping")
-  String getServerPort();
+	@GetMapping("/ping")
+	String getServerPort();
 }

@@ -41,5 +41,4 @@ public class ServerErrorException extends PlatformAuth2Exception {
 	public int getHttpErrorCode() {
 		return HttpStatus.INTERNAL_SERVER_ERROR.value();
 	}
-
 }

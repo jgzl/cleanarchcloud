@@ -54,113 +54,113 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDO> implements
-    IPlatformSsoUserService {
+		IPlatformSsoUserService {
 
-  private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
+	private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
-  @Autowired
-  private IPlatformRoleService roleService;
+	@Autowired
+	private IPlatformRoleService roleService;
 
-  /**
-   * 通过查用户的全部信息
-   * 使用cache相关注解，自动注入数据
-   * @param user
-   * @return
-   */
-  @Override
-  @Cacheable(value = "findUserInfo", key = "#user.username")
-  public UserInfoDTO findUserInfo(PlatformSsoUserDO user) {
-    UserInfoDTO userInfoDTO = new UserInfoDTO();
-    userInfoDTO.setSysUser(user);
-    //设置角色列表  （ID）
-    List<Long> roleIds = roleService.findRolesByUserId(user.getId()).stream()
-        .map(PlatformRoleDO::getRoleId)
-        .collect(Collectors.toList());
-    userInfoDTO.setRoles(ArrayUtil.toArray(roleIds, Long.class));
-    //设置权限列表（menu.permission）
-    return userInfoDTO;
-  }
+	/**
+	 * 通过查用户的全部信息
+	 * 使用cache相关注解，自动注入数据
+	 * @param user
+	 * @return
+	 */
+	@Override
+	@Cacheable(value = "findUserInfo", key = "#user.username")
+	public UserInfoDTO findUserInfo(PlatformSsoUserDO user) {
+		UserInfoDTO userInfoDTO = new UserInfoDTO();
+		userInfoDTO.setSysUser(user);
+		//设置角色列表  （ID）
+		List<Long> roleIds = roleService.findRolesByUserId(user.getId()).stream()
+				.map(PlatformRoleDO::getRoleId)
+				.collect(Collectors.toList());
+		userInfoDTO.setRoles(ArrayUtil.toArray(roleIds, Long.class));
+		//设置权限列表（menu.permission）
+		return userInfoDTO;
+	}
 
-  @Transactional(rollbackFor = Exception.class)
-  @Override
-  public Boolean saveUser(UserDTO userDTO) {
-    PlatformSsoUserDO platformSsoUser = new PlatformSsoUserDO();
-    BeanUtil.copyProperties(userDTO, platformSsoUser);
-    LocalDateTime loginTime=platformSsoUser.getLoginTime();
-    if (loginTime==null){
-      platformSsoUser.setLoginTime(LocalDateTime.now());
-    }
-    platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
-    this.save(platformSsoUser);
-    return true;
-  }
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public Boolean saveUser(UserDTO userDTO) {
+		PlatformSsoUserDO platformSsoUser = new PlatformSsoUserDO();
+		BeanUtil.copyProperties(userDTO, platformSsoUser);
+		LocalDateTime loginTime = platformSsoUser.getLoginTime();
+		if (loginTime == null) {
+			platformSsoUser.setLoginTime(LocalDateTime.now());
+		}
+		platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
+		this.save(platformSsoUser);
+		return true;
+	}
 
-  /**
-   * 分页查询用户信息（含有角色信息）
-   *
-   * @param page    分页对象
-   * @param userDTO 参数列表
-   * @return
-   */
-  @Override
-  public IPage getUsersWithRolePage(Page page, UserDTO userDTO) {
-    return baseMapper.getUserVosPage(page, userDTO);
-  }
+	/**
+	 * 分页查询用户信息（含有角色信息）
+	 *
+	 * @param page    分页对象
+	 * @param userDTO 参数列表
+	 * @return
+	 */
+	@Override
+	public IPage getUsersWithRolePage(Page page, UserDTO userDTO) {
+		return baseMapper.getUserVosPage(page, userDTO);
+	}
 
-  /**
-   * 通过ID查询用户信息
-   *
-   * @param id 用户ID
-   * @return 用户信息
-   */
-  @Override
-  public UserVO selectUserVoById(Long id) {
-    return baseMapper.getUserVoById(id);
-  }
+	/**
+	 * 通过ID查询用户信息
+	 *
+	 * @param id 用户ID
+	 * @return 用户信息
+	 */
+	@Override
+	public UserVO selectUserVoById(Long id) {
+		return baseMapper.getUserVoById(id);
+	}
 
-  /**
-   * 删除用户
-   *
-   * @param sysUser 用户
-   * @return Boolean
-   */
-  @Override
-  @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#sysUser.username")
-  public Boolean deleteUserById(PlatformSsoUserDO sysUser) {
-    this.removeById(sysUser.getId());
-    return Boolean.TRUE;
-  }
+	/**
+	 * 删除用户
+	 *
+	 * @param sysUser 用户
+	 * @return Boolean
+	 */
+	@Override
+	@CacheEvict(value = CacheConstants.USER_DETAILS, key = "#sysUser.username")
+	public Boolean deleteUserById(PlatformSsoUserDO sysUser) {
+		this.removeById(sysUser.getId());
+		return Boolean.TRUE;
+	}
 
-  @Override
-  @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
-  public Result<Boolean> updateUserInfo(UserDTO userDto) {
-    UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
-    PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
-    if (StrUtil.isNotBlank(userDto.getPassword())
-        && StrUtil.isNotBlank(userDto.getNewPassword())) {
-      if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
-        sysUser.setPassword(ENCODER.encode(userDto.getNewPassword()));
-      } else {
-        log.warn("原密码错误，修改密码失败:{}", userDto.getUsername());
-        return Result.ok(Boolean.FALSE, "原密码错误，修改失败");
-      }
-    }
-    sysUser.setMobile(userDto.getMobile());
-    sysUser.setId(userVO.getId());
-    sysUser.setAvatar(userDto.getAvatar());
-    return Result.ok(this.updateById(sysUser));
-  }
+	@Override
+	@CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
+	public Result<Boolean> updateUserInfo(UserDTO userDto) {
+		UserVO userVO = baseMapper.getUserVoByUsername(userDto.getUsername());
+		PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
+		if (StrUtil.isNotBlank(userDto.getPassword())
+				&& StrUtil.isNotBlank(userDto.getNewPassword())) {
+			if (ENCODER.matches(userDto.getPassword(), userVO.getPassword())) {
+				sysUser.setPassword(ENCODER.encode(userDto.getNewPassword()));
+			} else {
+				log.warn("原密码错误，修改密码失败:{}", userDto.getUsername());
+				return Result.ok(Boolean.FALSE, "原密码错误，修改失败");
+			}
+		}
+		sysUser.setMobile(userDto.getMobile());
+		sysUser.setId(userVO.getId());
+		sysUser.setAvatar(userDto.getAvatar());
+		return Result.ok(this.updateById(sysUser));
+	}
 
-  @Override
-  @CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
-  public Boolean updateUser(UserDTO userDto) {
-    PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
-    BeanUtils.copyProperties(userDto, sysUser);
+	@Override
+	@CacheEvict(value = CacheConstants.USER_DETAILS, key = "#userDto.username")
+	public Boolean updateUser(UserDTO userDto) {
+		PlatformSsoUserDO sysUser = new PlatformSsoUserDO();
+		BeanUtils.copyProperties(userDto, sysUser);
 
-    if (StrUtil.isNotBlank(userDto.getPassword())) {
-      sysUser.setPassword(ENCODER.encode(userDto.getPassword()));
-    }
-    this.updateById(sysUser);
-    return Boolean.TRUE;
-  }
+		if (StrUtil.isNotBlank(userDto.getPassword())) {
+			sysUser.setPassword(ENCODER.encode(userDto.getPassword()));
+		}
+		this.updateById(sysUser);
+		return Boolean.TRUE;
+	}
 }

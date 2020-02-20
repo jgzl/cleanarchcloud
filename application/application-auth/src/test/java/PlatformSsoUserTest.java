@@ -27,30 +27,32 @@ import com.gitee.common.upms.dto.UserDTO;
 import cn.hutool.core.lang.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes={AuthApplication.class})
+@SpringBootTest(classes = {AuthApplication.class})
 public class PlatformSsoUserTest {
 
-    @Autowired
-    private PlatformSsoUserService userService;
+	@Autowired
+	private PlatformSsoUserService userService;
 
-    @Test
-    public void list(){
-        userService.list().forEach(System.out::println);
-    }
-    @Test
-    public void save(){
-        UserDTO user=new UserDTO();
-        user.setId(-1L);
-        user.setUsername("test");
-        user.setPassword("test");
-        user.setMobile("17621006318");
-        user.setEmail("test@test.com");
-        user.setNickname("test-nickname");
-        userService.saveUser(user);
-    }
-    @Test
-    public void delete(){
-        boolean b = userService.removeById(-1L);
-        Assert.isFalse(!b);
-    }
+	@Test
+	public void list() {
+		userService.list().forEach(System.out::println);
+	}
+
+	@Test
+	public void save() {
+		UserDTO user = new UserDTO();
+		user.setId(-1L);
+		user.setUsername("test");
+		user.setPassword("test");
+		user.setMobile("17621006318");
+		user.setEmail("test@test.com");
+		user.setNickname("test-nickname");
+		userService.saveUser(user);
+	}
+
+	@Test
+	public void delete() {
+		boolean b = userService.removeById(-1L);
+		Assert.isFalse(!b);
+	}
 }

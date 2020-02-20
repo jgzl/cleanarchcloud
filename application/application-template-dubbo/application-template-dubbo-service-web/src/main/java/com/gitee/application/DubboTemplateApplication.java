@@ -20,7 +20,7 @@ import com.gitee.annotation.EnableSwaggerPlus;
 @SpringBootApplication
 public class DubboTemplateApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(DubboTemplateApplication.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(DubboTemplateApplication.class, args);
+	}
 }

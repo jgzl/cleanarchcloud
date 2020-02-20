@@ -31,28 +31,28 @@ import com.gitee.common.upms.vo.UserVO;
  * @author lihaifeng
  */
 public interface PlatformSsoUserMapper extends BaseMapper<PlatformSsoUserDO> {
-  /**
-   * 通过用户名查询用户信息（含有角色信息）
-   *
-   * @param username 用户名
-   * @return userVo
-   */
-  UserVO getUserVoByUsername(String username);
+	/**
+	 * 通过用户名查询用户信息（含有角色信息）
+	 *
+	 * @param username 用户名
+	 * @return userVo
+	 */
+	UserVO getUserVoByUsername(String username);
 
-  /**
-   * 分页查询用户信息（含角色）
-   *
-   * @param page      分页
-   * @param userDTO   查询参数
-   * @return list
-   */
-  IPage<List<UserVO>> getUserVosPage(Page page, @Param("query") UserDTO userDTO);
+	/**
+	 * 分页查询用户信息（含角色）
+	 *
+	 * @param page      分页
+	 * @param userDTO   查询参数
+	 * @return list
+	 */
+	IPage<List<UserVO>> getUserVosPage(Page page, @Param("query") UserDTO userDTO);
 
-  /**
-   * 通过ID查询用户信息
-   *
-   * @param id 用户ID
-   * @return userVo
-   */
-  UserVO getUserVoById(Long id);
+	/**
+	 * 通过ID查询用户信息
+	 *
+	 * @param id 用户ID
+	 * @return userVo
+	 */
+	UserVO getUserVoById(Long id);
 }

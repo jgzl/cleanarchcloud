@@ -48,34 +48,34 @@
 			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
 		<dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-data</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-swagger</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gitee</groupId>
-      <artifactId>common-upms</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-  </dependencies>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-data</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-swagger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gitee</groupId>
+			<artifactId>common-upms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -106,5 +106,5 @@
 				</executions>
 			</plugin>
 		</plugins>
-  </build>
+	</build>
 </project>

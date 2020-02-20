@@ -32,8 +32,10 @@ import lombok.Data;
 public class TreeNode {
 	@ApiModelProperty(value = "当前节点id")
 	protected int id;
+
 	@ApiModelProperty(value = "父节点id")
 	protected int parentId;
+
 	@ApiModelProperty(value = "子节点列表")
 	protected List<TreeNode> children = new ArrayList<TreeNode>();
 

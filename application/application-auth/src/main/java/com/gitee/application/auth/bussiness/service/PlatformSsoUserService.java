@@ -24,9 +24,9 @@ import com.gitee.common.upms.dto.UserDTO;
  * @author lihaifeng
  */
 public interface PlatformSsoUserService extends IService<PlatformSsoUserDO> {
-  /**
-   * 创建新用户
-   * @param userDTO
-   */
-  void saveUser(UserDTO userDTO);
+	/**
+	 * 创建新用户
+	 * @param userDTO
+	 */
+	void saveUser(UserDTO userDTO);
 }

@@ -33,7 +33,7 @@ import com.gitee.common.security.annotation.EnablePlatformResourceServerPlus;
 @EnablePlatformFeignClientsPlus
 @EnablePlatformResourceServerPlus
 public class UpmsApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(UpmsApplication.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(UpmsApplication.class, args);
+	}
 }

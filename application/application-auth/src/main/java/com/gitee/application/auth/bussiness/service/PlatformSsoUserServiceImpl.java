@@ -35,20 +35,20 @@ import cn.hutool.core.bean.BeanUtil;
  */
 @Service
 public class PlatformSsoUserServiceImpl extends ServiceImpl<PlatformSsoUserMapper, PlatformSsoUserDO> implements
-    PlatformSsoUserService {
+		PlatformSsoUserService {
 
-  private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
+	private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder();
 
-  @Transactional(rollbackFor = Exception.class)
-  @Override
-  public void saveUser(UserDTO userDTO) {
-    PlatformSsoUserDO platformSsoUser = new PlatformSsoUserDO();
-    BeanUtil.copyProperties(userDTO, platformSsoUser);
-    LocalDateTime loginTime = platformSsoUser.getLoginTime();
-    if (loginTime == null) {
-      platformSsoUser.setLoginTime(LocalDateTime.now());
-    }
-    platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
-    this.save(platformSsoUser);
-  }
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void saveUser(UserDTO userDTO) {
+		PlatformSsoUserDO platformSsoUser = new PlatformSsoUserDO();
+		BeanUtil.copyProperties(userDTO, platformSsoUser);
+		LocalDateTime loginTime = platformSsoUser.getLoginTime();
+		if (loginTime == null) {
+			platformSsoUser.setLoginTime(LocalDateTime.now());
+		}
+		platformSsoUser.setPassword(ENCODER.encode(platformSsoUser.getPassword()));
+		this.save(platformSsoUser);
+	}
 }

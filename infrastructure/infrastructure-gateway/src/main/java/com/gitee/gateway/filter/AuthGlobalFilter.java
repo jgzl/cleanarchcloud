@@ -47,41 +47,42 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
-  private StringRedisTemplate redisTemplate;
+	private StringRedisTemplate redisTemplate;
 
-  @Override
-  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-    log.info("Welcome to AuthGlobalFilter.");
-    ServerHttpRequest request = exchange.getRequest();
-    String path = request.getURI().getPath();
-    if (path.startsWith("/")){
-      log.info("访问认证授权模块不需要token");
-      return chain.filter(exchange);
-    }
-    HttpHeaders headers = request.getHeaders();
-    List<String> authorizations = headers.get(GatewayConstants.AUTHORIZATION);
-    if (authorizations != null) {
-      String token = authorizations.get(0);
-      boolean startsWith = token.startsWith(GatewayConstants.BEARER_SPACE);
-      if (startsWith) {
-        token=token.substring(7);
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        boolean flag = Optional.ofNullable(redisTemplate.opsForValue().get("platform_oauth:access:"+token)).isPresent();
-        if (flag){
-          log.info("redis中有这个token，则此token未失效");
-          return chain.filter(exchange);
-        }
-      }
-    }
-    log.info("redis中没有这个token，则此token失效");
-    ServerHttpResponse response = exchange.getResponse();
-    response.setStatusCode(HttpStatus.UNAUTHORIZED);
-    return response.setComplete();
-  }
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+		log.info("Welcome to AuthGlobalFilter.");
+		ServerHttpRequest request = exchange.getRequest();
+		String path = request.getURI().getPath();
+		if (path.startsWith("/")) {
+			log.info("访问认证授权模块不需要token");
+			return chain.filter(exchange);
+		}
+		HttpHeaders headers = request.getHeaders();
+		List<String> authorizations = headers.get(GatewayConstants.AUTHORIZATION);
+		if (authorizations != null) {
+			String token = authorizations.get(0);
+			boolean startsWith = token.startsWith(GatewayConstants.BEARER_SPACE);
+			if (startsWith) {
+				token = token.substring(7);
+				redisTemplate.setKeySerializer(new StringRedisSerializer());
+				redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+				boolean flag = Optional.ofNullable(redisTemplate.opsForValue().get("platform_oauth:access:" + token))
+						.isPresent();
+				if (flag) {
+					log.info("redis中有这个token，则此token未失效");
+					return chain.filter(exchange);
+				}
+			}
+		}
+		log.info("redis中没有这个token，则此token失效");
+		ServerHttpResponse response = exchange.getResponse();
+		response.setStatusCode(HttpStatus.UNAUTHORIZED);
+		return response.setComplete();
+	}
 
-  @Override
-  public int getOrder() {
-    return 2;
-  }
+	@Override
+	public int getOrder() {
+		return 2;
+	}
 }

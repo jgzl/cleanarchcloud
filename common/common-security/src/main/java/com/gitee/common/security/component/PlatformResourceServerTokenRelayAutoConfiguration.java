@@ -63,7 +63,7 @@ public class PlatformResourceServerTokenRelayAutoConfiguration {
 	}
 
 	private static class OAuth2OnClientInResourceServerCondition
-		extends AllNestedConditions {
+			extends AllNestedConditions {
 
 		public OAuth2OnClientInResourceServerCondition() {
 			super(ConfigurationPhase.REGISTER_BEAN);
@@ -76,6 +76,5 @@ public class PlatformResourceServerTokenRelayAutoConfiguration {
 		@ConditionalOnBean(OAuth2ClientConfiguration.class)
 		static class Client {
 		}
-
 	}
 }

@@ -41,49 +41,50 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PlatformResourceServerConfigurerAdapter extends ResourceServerConfigurerAdapter {
 
-  @Autowired
-  private RedisConnectionFactory redisConnectionFactory;
+	@Autowired
+	private RedisConnectionFactory redisConnectionFactory;
 
-  @Autowired
-  private PlatformResourceAuthExceptionEntryPoint resourceAuthExceptionEntryPoint;
+	@Autowired
+	private PlatformResourceAuthExceptionEntryPoint resourceAuthExceptionEntryPoint;
 
-  @Autowired
-  private PlatformPermitAllUrlProperties ignoreUrls;
+	@Autowired
+	private PlatformPermitAllUrlProperties ignoreUrls;
 
-  /**
-   * 默认的配置，对外暴露
-   *
-   * @param httpSecurity
-   */
-  @Override
-  @SneakyThrows
-  public void configure(HttpSecurity httpSecurity) {
-    //允许使用iframe 嵌套，避免swagger-ui 不被加载的问题
-    httpSecurity.headers().frameOptions().disable();
-    ExpressionUrlAuthorizationConfigurer<HttpSecurity>
-        .ExpressionInterceptUrlRegistry registry = httpSecurity
-        .authorizeRequests();
-    ignoreUrls.getIgnoreUrls().forEach(url->registry.antMatchers(url).permitAll());
-    registry.anyRequest().authenticated()
-        .and().csrf().disable();
-  }
+	/**
+	 * 默认的配置，对外暴露
+	 *
+	 * @param httpSecurity
+	 */
+	@Override
+	@SneakyThrows
+	public void configure(HttpSecurity httpSecurity) {
+		//允许使用iframe 嵌套，避免swagger-ui 不被加载的问题
+		httpSecurity.headers().frameOptions().disable();
+		ExpressionUrlAuthorizationConfigurer<HttpSecurity>
+				.ExpressionInterceptUrlRegistry registry = httpSecurity
+				.authorizeRequests();
+		ignoreUrls.getIgnoreUrls().forEach(url -> registry.antMatchers(url).permitAll());
+		registry.anyRequest().authenticated()
+				.and().csrf().disable();
+	}
 
-  @Override
-  public void configure(ResourceServerSecurityConfigurer resources) {
-    resources.authenticationEntryPoint(resourceAuthExceptionEntryPoint)
-        .tokenStore(tokenStore());
-  }
+	@Override
+	public void configure(ResourceServerSecurityConfigurer resources) {
+		resources.authenticationEntryPoint(resourceAuthExceptionEntryPoint)
+				.tokenStore(tokenStore());
+	}
 
-  @Bean
-  public TokenStore tokenStore() {
-    RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-    redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX+SecurityConstants.OAUTH_PREFIX);
-    return redisTokenStore;
-  }
-  @Bean
-  public PlatformJwtAccessTokenConvertor accessTokenConvertor(){
-    PlatformJwtAccessTokenConvertor accessTokenConvertor = new PlatformJwtAccessTokenConvertor();
-    accessTokenConvertor.setSigningKey(SecurityConstants.JWT_KEY);
-    return accessTokenConvertor;
-  }
+	@Bean
+	public TokenStore tokenStore() {
+		RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+		redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX + SecurityConstants.OAUTH_PREFIX);
+		return redisTokenStore;
+	}
+
+	@Bean
+	public PlatformJwtAccessTokenConvertor accessTokenConvertor() {
+		PlatformJwtAccessTokenConvertor accessTokenConvertor = new PlatformJwtAccessTokenConvertor();
+		accessTokenConvertor.setSigningKey(SecurityConstants.JWT_KEY);
+		return accessTokenConvertor;
+	}
 }

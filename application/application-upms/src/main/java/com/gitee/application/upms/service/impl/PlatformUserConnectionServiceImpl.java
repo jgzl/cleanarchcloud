@@ -33,6 +33,6 @@ import com.gitee.common.upms.dao.PlatformUserConnectionDO;
  */
 @Service
 public class PlatformUserConnectionServiceImpl extends
-    ServiceImpl<PlatformUserConnectionMapper, PlatformUserConnectionDO> implements IPlatformUserConnectionService {
+		ServiceImpl<PlatformUserConnectionMapper, PlatformUserConnectionDO> implements IPlatformUserConnectionService {
 
 }

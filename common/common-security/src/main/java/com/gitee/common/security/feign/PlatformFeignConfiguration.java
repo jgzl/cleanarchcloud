@@ -41,9 +41,8 @@ public class PlatformFeignConfiguration {
 	@ConditionalOnProperty("security.oauth2.client.client-id")
 	public RequestInterceptor oauth2FeignRequestInterceptor(
 			@Qualifier("oauth2ClientContext") OAuth2ClientContext oAuth2ClientContext,
-															OAuth2ProtectedResourceDetails resource,
-															AccessTokenContextRelay accessTokenContextRelay) {
+			OAuth2ProtectedResourceDetails resource,
+			AccessTokenContextRelay accessTokenContextRelay) {
 		return new PlatformFeignClientInterceptor(oAuth2ClientContext, resource, accessTokenContextRelay);
 	}
-
 }

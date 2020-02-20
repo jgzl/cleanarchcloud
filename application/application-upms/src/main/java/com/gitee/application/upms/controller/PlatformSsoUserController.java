@@ -51,123 +51,122 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/user")
 @Api(value = "user", tags = "用户管理模块")
 public class PlatformSsoUserController {
-  private final IPlatformSsoUserService userService;
+	private final IPlatformSsoUserService userService;
 
-  /**
-   * 获取当前用户全部信息
-   *
-   * @return 用户信息
-   */
-  @GetMapping(value = {"/current"})
-  public Result info() {
-    String username = SecurityUtils.getUser().getUsername();
-    PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
-        .lambda().eq(PlatformSsoUserDO::getUsername, username));
-    if (user == null) {
-      return Result.failed(null, "获取当前用户信息失败");
-    }
-    return Result.ok(userService.findUserInfo(user));
-  }
+	/**
+	 * 获取当前用户全部信息
+	 *
+	 * @return 用户信息
+	 */
+	@GetMapping(value = {"/current"})
+	public Result info() {
+		String username = SecurityUtils.getUser().getUsername();
+		PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
+				.lambda().eq(PlatformSsoUserDO::getUsername, username));
+		if (user == null) {
+			return Result.failed(null, "获取当前用户信息失败");
+		}
+		return Result.ok(userService.findUserInfo(user));
+	}
 
-  /**
-   * 获取指定用户全部信息
-   *
-   * @return 用户信息
-   */
-  @GetMapping("/info/{username}")
-  public Result info(@PathVariable String username) {
-    PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
-        .lambda().eq(PlatformSsoUserDO::getUsername, username));
-    if (user == null) {
-      return Result.failed(null, String.format("用户信息为空 %s", username));
-    }
-    return Result.ok(userService.findUserInfo(user));
-  }
+	/**
+	 * 获取指定用户全部信息
+	 *
+	 * @return 用户信息
+	 */
+	@GetMapping("/info/{username}")
+	public Result info(@PathVariable String username) {
+		PlatformSsoUserDO user = userService.getOne(Wrappers.<PlatformSsoUserDO>query()
+				.lambda().eq(PlatformSsoUserDO::getUsername, username));
+		if (user == null) {
+			return Result.failed(null, String.format("用户信息为空 %s", username));
+		}
+		return Result.ok(userService.findUserInfo(user));
+	}
 
-  /**
-   * 通过ID查询用户信息
-   *
-   * @param id ID
-   * @return 用户信息
-   */
-  @GetMapping("/{id}")
-  public Result user(@PathVariable Long id) {
-    return Result.ok(userService.selectUserVoById(id));
-  }
+	/**
+	 * 通过ID查询用户信息
+	 *
+	 * @param id ID
+	 * @return 用户信息
+	 */
+	@GetMapping("/{id}")
+	public Result user(@PathVariable Long id) {
+		return Result.ok(userService.selectUserVoById(id));
+	}
 
-  /**
-   * 根据用户名查询用户信息
-   *
-   * @param username 用户名
-   * @return
-   */
-  @GetMapping("/details/{username}")
-  public Result user(@PathVariable String username) {
-    PlatformSsoUserDO condition = new PlatformSsoUserDO();
-    condition.setUsername(username);
-    return Result.ok(userService.getOne(new QueryWrapper<>(condition)));
-  }
+	/**
+	 * 根据用户名查询用户信息
+	 *
+	 * @param username 用户名
+	 * @return
+	 */
+	@GetMapping("/details/{username}")
+	public Result user(@PathVariable String username) {
+		PlatformSsoUserDO condition = new PlatformSsoUserDO();
+		condition.setUsername(username);
+		return Result.ok(userService.getOne(new QueryWrapper<>(condition)));
+	}
 
-  /**
-   * 删除用户信息
-   *
-   * @param id ID
-   * @return R
-   */
-  @DeleteMapping("/{id}")
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
-  @ApiOperation(value = "删除用户", notes = "根据ID删除用户")
-  @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "int", paramType = "path")
-  public Result userDel(@PathVariable Integer id) {
-    PlatformSsoUserDO PlatformSsoUser = userService.getById(id);
-    return Result.ok(userService.deleteUserById(PlatformSsoUser));
-  }
+	/**
+	 * 删除用户信息
+	 *
+	 * @param id ID
+	 * @return R
+	 */
+	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@ApiOperation(value = "删除用户", notes = "根据ID删除用户")
+	@ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "int", paramType = "path")
+	public Result userDel(@PathVariable Integer id) {
+		PlatformSsoUserDO PlatformSsoUser = userService.getById(id);
+		return Result.ok(userService.deleteUserById(PlatformSsoUser));
+	}
 
-  /**
-   * 添加用户
-   *
-   * @param userDto 用户信息
-   * @return success/false
-   */
-  @PostMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public Result user(@RequestBody UserDTO userDto) {
-    return Result.ok(userService.saveUser(userDto));
-  }
+	/**
+	 * 添加用户
+	 *
+	 * @param userDto 用户信息
+	 * @return success/false
+	 */
+	@PostMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public Result user(@RequestBody UserDTO userDto) {
+		return Result.ok(userService.saveUser(userDto));
+	}
 
-  /**
-   * 更新用户信息
-   *
-   * @param userDto 用户信息
-   * @return R
-   */
-  @PutMapping
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public Result updateUser(@Valid @RequestBody UserDTO userDto) {
-    return Result.ok(userService.updateUser(userDto));
-  }
+	/**
+	 * 更新用户信息
+	 *
+	 * @param userDto 用户信息
+	 * @return R
+	 */
+	@PutMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public Result updateUser(@Valid @RequestBody UserDTO userDto) {
+		return Result.ok(userService.updateUser(userDto));
+	}
 
-  /**
-   * 分页查询用户
-   *
-   * @param page    参数集
-   * @param userDTO 查询参数列表
-   * @return 用户集合
-   */
-  @GetMapping("/page")
-  public Result getUserPage(Page page, UserDTO userDTO) {
-    return Result.ok(userService.getUsersWithRolePage(page, userDTO));
-  }
+	/**
+	 * 分页查询用户
+	 *
+	 * @param page    参数集
+	 * @param userDTO 查询参数列表
+	 * @return 用户集合
+	 */
+	@GetMapping("/page")
+	public Result getUserPage(Page page, UserDTO userDTO) {
+		return Result.ok(userService.getUsersWithRolePage(page, userDTO));
+	}
 
-  /**
-   * 修改个人信息
-   *
-   * @param userDto userDto
-   * @return success/false
-   */
-  @PutMapping("/edit")
-  public Result updateUserInfo(@Valid @RequestBody UserDTO userDto) {
-    return userService.updateUserInfo(userDto);
-  }
-
+	/**
+	 * 修改个人信息
+	 *
+	 * @param userDto userDto
+	 * @return success/false
+	 */
+	@PutMapping("/edit")
+	public Result updateUserInfo(@Valid @RequestBody UserDTO userDto) {
+		return userService.updateUserInfo(userDto);
+	}
 }

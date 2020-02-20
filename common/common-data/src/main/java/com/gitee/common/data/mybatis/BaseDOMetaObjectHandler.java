@@ -27,22 +27,22 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
  */
 public class BaseDOMetaObjectHandler implements MetaObjectHandler {
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-        //this.setFieldValByName("createUser", "admin1", metaObject);//版本号3.0.6以及之前的版本
-        //@since 快照：3.0.7.2-SNAPSHOT， @since 正式版暂未发布3.0.7
-        this.setInsertFieldValByName("createUser", 0L, metaObject);
-        this.setInsertFieldValByName("createDate", LocalDateTime.now(), metaObject);
-        this.setInsertFieldValByName("updateUser", 0L, metaObject);
-        this.setInsertFieldValByName("updateDate", LocalDateTime.now(), metaObject);
-        this.setInsertFieldValByName("version", 0, metaObject);
-        this.setInsertFieldValByName("deleted", 0, metaObject);
-    }
+	@Override
+	public void insertFill(MetaObject metaObject) {
+		//this.setFieldValByName("createUser", "admin1", metaObject);//版本号3.0.6以及之前的版本
+		//@since 快照：3.0.7.2-SNAPSHOT， @since 正式版暂未发布3.0.7
+		this.setInsertFieldValByName("createUser", 0L, metaObject);
+		this.setInsertFieldValByName("createDate", LocalDateTime.now(), metaObject);
+		this.setInsertFieldValByName("updateUser", 0L, metaObject);
+		this.setInsertFieldValByName("updateDate", LocalDateTime.now(), metaObject);
+		this.setInsertFieldValByName("version", 0, metaObject);
+		this.setInsertFieldValByName("deleted", 0, metaObject);
+	}
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
-        //@since 快照：3.0.7.2-SNAPSHOT， @since 正式版暂未发布3.0.7
-        this.setInsertFieldValByName("updateUser", 0L, metaObject);
-        this.setInsertFieldValByName("updateDate", LocalDateTime.now(), metaObject);
-    }
+	@Override
+	public void updateFill(MetaObject metaObject) {
+		//@since 快照：3.0.7.2-SNAPSHOT， @since 正式版暂未发布3.0.7
+		this.setInsertFieldValByName("updateUser", 0L, metaObject);
+		this.setInsertFieldValByName("updateDate", LocalDateTime.now(), metaObject);
+	}
 }

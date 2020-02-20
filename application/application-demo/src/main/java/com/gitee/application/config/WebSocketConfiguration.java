@@ -28,17 +28,17 @@ import com.gitee.application.ws.interceptor.HttpAuthInterceptor;
 @EnableWebSocket
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
-  @Autowired
-  private HttpAuthHandler httpAuthHandler;
+	@Autowired
+	private HttpAuthHandler httpAuthHandler;
 
-  @Autowired
-  private HttpAuthInterceptor httpAuthInterceptor;
+	@Autowired
+	private HttpAuthInterceptor httpAuthInterceptor;
 
-  @Override
-  public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-    registry
-        .addHandler(httpAuthHandler, "ws")
-        .addInterceptors(httpAuthInterceptor)
-        .setAllowedOrigins("*");
-  }
+	@Override
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		registry
+				.addHandler(httpAuthHandler, "ws")
+				.addInterceptors(httpAuthInterceptor)
+				.setAllowedOrigins("*");
+	}
 }

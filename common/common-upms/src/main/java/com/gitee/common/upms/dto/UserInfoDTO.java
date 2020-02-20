@@ -31,17 +31,18 @@ import lombok.Data;
 @Data
 @ApiModel(value = "用户信息")
 public class UserInfoDTO implements Serializable {
-  /**
-   * 用户基本信息
-   */
-  @ApiModelProperty(value = "用户基本信息")
-  private PlatformSsoUserDO sysUser;
+	/**
+	 * 用户基本信息
+	 */
+	@ApiModelProperty(value = "用户基本信息")
+	private PlatformSsoUserDO sysUser;
 
-  /**
-   * 权限标识集合
-   */
-  @ApiModelProperty(value = "权限标识集合")
-  private String[] permissions;
+	/**
+	 * 权限标识集合
+	 */
+	@ApiModelProperty(value = "权限标识集合")
+	private String[] permissions;
+
 	/**
 	 * 角色集合
 	 */

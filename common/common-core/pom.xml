@@ -48,18 +48,18 @@
 		<dependency>
 			<artifactId>spring-boot-starter-json</artifactId>
 			<groupId>org.springframework.boot</groupId>
-    </dependency>
-    <!--swagger 依赖-->
-    <dependency>
-      <artifactId>swagger-annotations</artifactId>
-      <groupId>io.swagger</groupId>
-    </dependency>
-    <!--TTL-->
-    <dependency>
-      <artifactId>transmittable-thread-local</artifactId>
-      <groupId>com.alibaba</groupId>
-    </dependency>
-  </dependencies>
+		</dependency>
+		<!--swagger 依赖-->
+		<dependency>
+			<artifactId>swagger-annotations</artifactId>
+			<groupId>io.swagger</groupId>
+		</dependency>
+		<!--TTL-->
+		<dependency>
+			<artifactId>transmittable-thread-local</artifactId>
+			<groupId>com.alibaba</groupId>
+		</dependency>
+	</dependencies>
 
 
 </project>

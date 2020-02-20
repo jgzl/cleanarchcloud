@@ -34,23 +34,23 @@ import reactor.core.publisher.Mono;
 @Component
 public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 
-  private static final String COUNT_START_TIME = "countStartTime";
+	private static final String COUNT_START_TIME = "countStartTime";
 
-  @Override
-  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-    log.info("Welcome to TimeStatsGlobalFilter.");
-    exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
-    return chain.filter(exchange).then(
-        Mono.fromRunnable(() -> {
-          long startTime = exchange.getAttribute(COUNT_START_TIME);
-          long endTime = (Instant.now().toEpochMilli() - startTime);
-          log.info("执行共消耗时间为：{}",exchange.getRequest().getURI().getRawPath() + ": " + endTime + "ms");
-        })
-    );
-  }
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+		log.info("Welcome to TimeStatsGlobalFilter.");
+		exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
+		return chain.filter(exchange).then(
+				Mono.fromRunnable(() -> {
+					long startTime = exchange.getAttribute(COUNT_START_TIME);
+					long endTime = (Instant.now().toEpochMilli() - startTime);
+					log.info("执行共消耗时间为：{}", exchange.getRequest().getURI().getRawPath() + ": " + endTime + "ms");
+				})
+		);
+	}
 
-  @Override
-  public int getOrder() {
-    return 1;
-  }
+	@Override
+	public int getOrder() {
+		return 1;
+	}
 }

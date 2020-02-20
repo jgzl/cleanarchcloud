@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PlatformFeignClientInterceptor extends OAuth2FeignRequestInterceptor {
 	private final OAuth2ClientContext oAuth2ClientContext;
+
 	private final AccessTokenContextRelay accessTokenContextRelay;
 
 	/**
@@ -43,7 +44,7 @@ public class PlatformFeignClientInterceptor extends OAuth2FeignRequestIntercepto
 	 * @param accessTokenContextRelay
 	 */
 	public PlatformFeignClientInterceptor(OAuth2ClientContext oAuth2ClientContext
-		, OAuth2ProtectedResourceDetails resource, AccessTokenContextRelay accessTokenContextRelay) {
+			, OAuth2ProtectedResourceDetails resource, AccessTokenContextRelay accessTokenContextRelay) {
 		super(oAuth2ClientContext, resource);
 		this.oAuth2ClientContext = oAuth2ClientContext;
 		this.accessTokenContextRelay = accessTokenContextRelay;
@@ -66,7 +67,7 @@ public class PlatformFeignClientInterceptor extends OAuth2FeignRequestIntercepto
 
 		accessTokenContextRelay.copyToken();
 		if (oAuth2ClientContext != null
-			&& oAuth2ClientContext.getAccessToken() != null) {
+				&& oAuth2ClientContext.getAccessToken() != null) {
 			super.apply(template);
 		}
 	}

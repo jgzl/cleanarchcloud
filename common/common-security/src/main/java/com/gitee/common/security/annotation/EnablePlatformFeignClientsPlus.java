@@ -52,7 +52,7 @@ public @interface EnablePlatformFeignClientsPlus {
 	 *
 	 * @return the array of 'basePackages'.
 	 */
-	String[] basePackages() default {"com.gitee.common","com.gitee.application"};
+	String[] basePackages() default {"com.gitee.common", "com.gitee.application"};
 
 	/**
 	 * Type-safe alternative to {@link #basePackages()} for specifying the packages to

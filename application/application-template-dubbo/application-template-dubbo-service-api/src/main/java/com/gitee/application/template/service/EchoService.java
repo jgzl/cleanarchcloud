@@ -5,10 +5,10 @@ package com.gitee.application.template.service;
  */
 public interface EchoService {
 
-  /**
-   * ping pong
-   * @param message
-   * @return
-   */
-  String echo(String message);
+	/**
+	 * ping pong
+	 * @param message
+	 * @return
+	 */
+	String echo(String message);
 }

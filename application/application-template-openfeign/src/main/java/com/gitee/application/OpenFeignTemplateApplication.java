@@ -18,7 +18,7 @@ import com.gitee.annotation.EnableSwaggerPlus;
 @SpringBootApplication
 public class OpenFeignTemplateApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(OpenFeignTemplateApplication.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(OpenFeignTemplateApplication.class, args);
+	}
 }

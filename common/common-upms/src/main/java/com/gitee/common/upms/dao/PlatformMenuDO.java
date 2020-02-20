@@ -44,33 +44,33 @@ import lombok.experimental.Accessors;
 @TableName("platform_menu")
 public class PlatformMenuDO extends BaseDO<PlatformMenuDO> {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @ApiModelProperty(value = "菜单/按钮id")
-  @TableId(value = "menu_id", type = IdType.ID_WORKER)
-  private Long menuId;
+	@ApiModelProperty(value = "菜单/按钮id")
+	@TableId(value = "menu_id", type = IdType.ID_WORKER)
+	private Long menuId;
 
-  @ApiModelProperty(value = "上级菜单id")
-  private Long parentId;
+	@ApiModelProperty(value = "上级菜单id")
+	private Long parentId;
 
-  @ApiModelProperty(value = "菜单/按钮名称")
-  private String menuName;
+	@ApiModelProperty(value = "菜单/按钮名称")
+	private String menuName;
 
-  @ApiModelProperty(value = "对应路由path")
-  private String path;
+	@ApiModelProperty(value = "对应路由path")
+	private String path;
 
-  @ApiModelProperty(value = "对应路由组件component")
-  private String component;
+	@ApiModelProperty(value = "对应路由组件component")
+	private String component;
 
-  @ApiModelProperty(value = "权限标识")
-  private String perms;
+	@ApiModelProperty(value = "权限标识")
+	private String perms;
 
-  @ApiModelProperty(value = "图标")
-  private String icon;
+	@ApiModelProperty(value = "图标")
+	private String icon;
 
-  @ApiModelProperty(value = "类型 0菜单 1按钮")
-  private String type;
+	@ApiModelProperty(value = "类型 0菜单 1按钮")
+	private String type;
 
-  @ApiModelProperty(value = "排序")
-  private BigDecimal orderNum;
+	@ApiModelProperty(value = "排序")
+	private BigDecimal orderNum;
 }

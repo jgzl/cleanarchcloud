@@ -16,13 +16,13 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 public class IndexController {
 
-  @Reference
-  private EchoService echoService;
+	@Reference
+	private EchoService echoService;
 
-  @ApiOperation("回音接口")
-  @GetMapping("/echo")
-  public String echo() {
-    String message = echoService.echo("李海峰");
-    return message;
-  }
+	@ApiOperation("回音接口")
+	@GetMapping("/echo")
+	public String echo() {
+		String message = echoService.echo("李海峰");
+		return message;
+	}
 }

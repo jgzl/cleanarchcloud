@@ -11,15 +11,15 @@ import com.gitee.application.model.vo.OrderVO;
  * @author lihaifeng
  */
 public interface IOrderService extends IService<OrderDO> {
-    /**
-     * 通过VO创建订单
-     *
-     * @param orderVO
-     * @return
-     */
-    List<OrderBO> createOrderByVO(OrderVO orderVO);
+	/**
+	 * 通过VO创建订单
+	 *
+	 * @param orderVO
+	 * @return
+	 */
+	List<OrderBO> createOrderByVO(OrderVO orderVO);
 
-    List<OrderBO> pageList();
+	List<OrderBO> pageList();
 
-    void insert();
+	void insert();
 }

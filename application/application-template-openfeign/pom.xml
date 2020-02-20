@@ -36,9 +36,9 @@
 		</dependency>
 		<dependency>
 			<groupId>com.gitee</groupId>
-            <artifactId>common-swagger</artifactId>
-        </dependency>
-    </dependencies>
+			<artifactId>common-swagger</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -52,9 +52,9 @@
 							<goal>repackage</goal>
 						</goals>
 					</execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

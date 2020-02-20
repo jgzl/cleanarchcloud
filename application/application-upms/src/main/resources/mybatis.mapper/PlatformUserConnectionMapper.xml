@@ -18,22 +18,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gitee.application.upms.mapper.PlatformUserConnectionMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformUserConnectionDO">
-      <id column="user_connection_id" property="userConnectionId"/>
-      <result column="version" property="version"/>
-      <result column="user_name" property="userName"/>
-      <result column="provider_name" property="providerName"/>
-      <result column="provider_user_id" property="providerUserId"/>
-      <result column="provider_user_name" property="providerUserName"/>
-      <result column="nick_name" property="nickName"/>
-      <result column="image_url" property="imageUrl"/>
-      <result column="location" property="location"/>
-      <result column="remark" property="remark"/>
-    </resultMap>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformUserConnectionDO">
+		<id column="user_connection_id" property="userConnectionId"/>
+		<result column="version" property="version"/>
+		<result column="user_name" property="userName"/>
+		<result column="provider_name" property="providerName"/>
+		<result column="provider_user_id" property="providerUserId"/>
+		<result column="provider_user_name" property="providerUserName"/>
+		<result column="nick_name" property="nickName"/>
+		<result column="image_url" property="imageUrl"/>
+		<result column="location" property="location"/>
+		<result column="remark" property="remark"/>
+	</resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
         version,
         user_connection_id, user_name, provider_name, provider_user_id, provider_user_name, nick_name, image_url, location, remark
     </sql>

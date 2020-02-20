@@ -32,7 +32,8 @@ import cn.hutool.core.collection.CollUtil;
  * @date 2018/10/8
  * 认证成功事件处理器
  */
-public abstract class AbstractAuthenticationSuccessEventHandler implements ApplicationListener<AuthenticationSuccessEvent> {
+public abstract class AbstractAuthenticationSuccessEventHandler implements
+		ApplicationListener<AuthenticationSuccessEvent> {
 	/**
 	 * Handle an application event.
 	 *
@@ -60,5 +61,6 @@ public abstract class AbstractAuthenticationSuccessEventHandler implements Appli
 	 * @param request        请求
 	 * @param response       响应
 	 */
-	public abstract void handle(Authentication authentication, HttpServletRequest request, HttpServletResponse response);
+	public abstract void handle(Authentication authentication, HttpServletRequest request,
+			HttpServletResponse response);
 }

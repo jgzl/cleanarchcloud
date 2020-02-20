@@ -9,8 +9,8 @@ import com.gitee.application.template.service.EchoService;
  */
 @Service
 public class EchoServiceImpl implements EchoService {
-  @Override
-  public String echo(String message) {
-    return "[echo] Hello, " + message;
-  }
+	@Override
+	public String echo(String message) {
+		return "[echo] Hello, " + message;
+	}
 }

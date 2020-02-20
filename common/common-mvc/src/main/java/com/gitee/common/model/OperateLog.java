@@ -41,38 +41,38 @@ import lombok.Setter;
 @TableName("operate_log")
 public class OperateLog extends BaseDO<OperateLog> implements Serializable {
 
-    @ApiModelProperty("主键id")
-    @TableId(type = IdType.ID_WORKER)
-    private String id;
+	@ApiModelProperty("主键id")
+	@TableId(type = IdType.ID_WORKER)
+	private String id;
 
-    @ApiModelProperty("用户Id")
-    private Long userId;
+	@ApiModelProperty("用户Id")
+	private Long userId;
 
-    @ApiModelProperty("用户名称")
-    private String username;
+	@ApiModelProperty("用户名称")
+	private String username;
 
-    @ApiModelProperty("用户姓名")
-    private String fullName;
+	@ApiModelProperty("用户姓名")
+	private String fullName;
 
-    @ApiModelProperty("所属部门(机构名称)")
-    private String orgName;
+	@ApiModelProperty("所属部门(机构名称)")
+	private String orgName;
 
-    @ApiModelProperty("所属部门(机构码,解决名称变更造成的问题)")
-    private String orgCode;
+	@ApiModelProperty("所属部门(机构码,解决名称变更造成的问题)")
+	private String orgCode;
 
-    @ApiModelProperty("操作时间")
-    private LocalDateTime operateTime;
+	@ApiModelProperty("操作时间")
+	private LocalDateTime operateTime;
 
-    @ApiModelProperty("操作模块")
-    private String operateModule;
+	@ApiModelProperty("操作模块")
+	private String operateModule;
 
-    @ApiModelProperty("操作内容")
-    private String operateContent;
+	@ApiModelProperty("操作内容")
+	private String operateContent;
 
-    @ApiModelProperty("服务名称(微服务模块名)")
-    private String serviceName;
+	@ApiModelProperty("服务名称(微服务模块名)")
+	private String serviceName;
 
-    public OperateLog() {
-        this.operateTime = LocalDateTime.now();
-    }
+	public OperateLog() {
+		this.operateTime = LocalDateTime.now();
+	}
 }

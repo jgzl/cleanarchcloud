@@ -59,106 +59,106 @@ import lombok.extern.slf4j.Slf4j;
 @Api(value = "demo测试服务", tags = {"demo测试服务"})
 public class IndexController {
 
-  @Autowired
-  private Environment environment;
+	@Autowired
+	private Environment environment;
 
-  @Autowired
-  private IOrderService orderService;
+	@Autowired
+	private IOrderService orderService;
 
-  @Autowired
-  private IOrderItemService orderItemService;
+	@Autowired
+	private IOrderItemService orderItemService;
 
-  @Autowired
-  private StringRedisTemplate redisTemplate;
+	@Autowired
+	private StringRedisTemplate redisTemplate;
 
-  @Value("${redis.topic.chat}")
-  private String chatTopic;
+	@Value("${redis.topic.chat}")
+	private String chatTopic;
 
-  @GetMapping("ping")
-  @ApiOperation(value = "存活心跳接口")
-  public String ping() {
-    log.info("ping_url:{}", environment.getProperty("server.port"));
-    return environment.getProperty("server.port");
-  }
+	@GetMapping("ping")
+	@ApiOperation(value = "存活心跳接口")
+	public String ping() {
+		log.info("ping_url:{}", environment.getProperty("server.port"));
+		return environment.getProperty("server.port");
+	}
 
-  /**
-   * 无参创建订单
-   * @return
-   */
-  @GetMapping("/orderWithNoArgs")
-  @ApiOperation(value = "无参创建订单")
-  public List createOrderWithNoArguments() {
-    List<OrderDO> orders = Lists.newArrayListWithCapacity(1300);
-    List<OrderItemDO> orderItems = Lists.newArrayListWithCapacity(1300);
-    for (long i = 0; i < 1000; i++) {
-      OrderDO orderDO = new OrderDO();
-      orderDO.setCode("a0" + i);
-      orderDO.setShopId(i % 8);
-      orderDO.setCreateTime(new Date());
-      orders.add(orderDO);
-    }
-    orderService.saveBatch(orders);
-    orders.forEach(s -> {
-      OrderItemDO orderItemDO = new OrderItemDO();
-      orderItemDO.setOrderId(s.getId());
-      orderItemDO.setShopId(s.getShopId());
-      orderItemDO.setName(s.getId() + ":name");
-      orderItems.add(orderItemDO);
-    });
-    orderItemService.saveBatch(orderItems);
-    List<OrderDO> shopIds = orderService.query().eq("shop_id", 2).list();
-    return shopIds;
-  }
+	/**
+	 * 无参创建订单
+	 * @return
+	 */
+	@GetMapping("/orderWithNoArgs")
+	@ApiOperation(value = "无参创建订单")
+	public List createOrderWithNoArguments() {
+		List<OrderDO> orders = Lists.newArrayListWithCapacity(1300);
+		List<OrderItemDO> orderItems = Lists.newArrayListWithCapacity(1300);
+		for (long i = 0; i < 1000; i++) {
+			OrderDO orderDO = new OrderDO();
+			orderDO.setCode("a0" + i);
+			orderDO.setShopId(i % 8);
+			orderDO.setCreateTime(new Date());
+			orders.add(orderDO);
+		}
+		orderService.saveBatch(orders);
+		orders.forEach(s -> {
+			OrderItemDO orderItemDO = new OrderItemDO();
+			orderItemDO.setOrderId(s.getId());
+			orderItemDO.setShopId(s.getShopId());
+			orderItemDO.setName(s.getId() + ":name");
+			orderItems.add(orderItemDO);
+		});
+		orderItemService.saveBatch(orderItems);
+		List<OrderDO> shopIds = orderService.query().eq("shop_id", 2).list();
+		return shopIds;
+	}
 
-  /**
-   * 通过orderVO视图对象创建订单对象
-   * @param orderVO
-   * @return
-   */
-  @GetMapping("/createOrders")
-  @ApiOperation(value = "通过OrderVO创建订单DO")
-  public List<OrderDO> createOrders(@Valid OrderVO orderVO) {
-    List<OrderBO> orderVOs = orderService.createOrderByVO(orderVO);
-    orderVOs.forEach(System.out::println);
-    List<OrderDO> orderDOs = orderService.query().eq("shop_id", 2).list();
-    orderDOs.forEach(System.out::println);
-    return orderDOs;
-  }
+	/**
+	 * 通过orderVO视图对象创建订单对象
+	 * @param orderVO
+	 * @return
+	 */
+	@GetMapping("/createOrders")
+	@ApiOperation(value = "通过OrderVO创建订单DO")
+	public List<OrderDO> createOrders(@Valid OrderVO orderVO) {
+		List<OrderBO> orderVOs = orderService.createOrderByVO(orderVO);
+		orderVOs.forEach(System.out::println);
+		List<OrderDO> orderDOs = orderService.query().eq("shop_id", 2).list();
+		orderDOs.forEach(System.out::println);
+		return orderDOs;
+	}
 
-  /**
-   * 发送消息
-   * 先登录 http://www.websocket-test.com/ 打开三个窗口输入
-   * ws://127.0.0.1:8020/ws?token=lihaifeng1
-   * ws://127.0.0.1:8020/ws?token=lihaifeng2
-   * ws://127.0.0.1:8020/ws?token=lihaifeng3
-   * 最后再调用这个方法，
-   * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
-   * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
-   * 如果没有名字李海峰,则
-   * @param msg
-   * @return
-   */
-  @GetMapping("/sendMsg")
-  @ApiOperation(value = "发送信息")
-  public String sendMsg(String msg) {
-    redisTemplate.convertAndSend(chatTopic, msg);
-    return "success";
-  }
+	/**
+	 * 发送消息
+	 * 先登录 http://www.websocket-test.com/ 打开三个窗口输入
+	 * ws://127.0.0.1:8020/ws?token=lihaifeng1
+	 * ws://127.0.0.1:8020/ws?token=lihaifeng2
+	 * ws://127.0.0.1:8020/ws?token=lihaifeng3
+	 * 最后再调用这个方法，
+	 * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
+	 * 发送 http://127.0.0.1:8020/sendMsg?msg=%E7%BE%A4%E5%8F%91WebSocket%E6%B6%88%E6%81%AF
+	 * 如果没有名字李海峰,则
+	 * @param msg
+	 * @return
+	 */
+	@GetMapping("/sendMsg")
+	@ApiOperation(value = "发送信息")
+	public String sendMsg(String msg) {
+		redisTemplate.convertAndSend(chatTopic, msg);
+		return "success";
+	}
 
-  /**
-   * 上传文件
-   * @param multipartFile
-   * @param request
-   * @param response
-   */
-  @SneakyThrows
-  @PostMapping("/upload")
-  public void upload(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request,
-      HttpServletResponse response) {
-    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-        "attachment;fileName=" + java.net.URLEncoder.encode(multipartFile.getOriginalFilename(), "UTF-8"));
-    response.setContentType(MediaType.MULTIPART_FORM_DATA_VALUE);
-    response.setCharacterEncoding("UTF-8");
-    IOUtils.copy(multipartFile.getInputStream(), response.getOutputStream());
-  }
+	/**
+	 * 上传文件
+	 * @param multipartFile
+	 * @param request
+	 * @param response
+	 */
+	@SneakyThrows
+	@PostMapping("/upload")
+	public void upload(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+				"attachment;fileName=" + java.net.URLEncoder.encode(multipartFile.getOriginalFilename(), "UTF-8"));
+		response.setContentType(MediaType.MULTIPART_FORM_DATA_VALUE);
+		response.setCharacterEncoding("UTF-8");
+		IOUtils.copy(multipartFile.getInputStream(), response.getOutputStream());
+	}
 }

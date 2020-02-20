@@ -33,6 +33,6 @@ import com.gitee.common.upms.dao.PlatformDeptDO;
  */
 @Service
 public class PlatformDeptServiceImpl extends ServiceImpl<PlatformDeptMapper, PlatformDeptDO> implements
-    IPlatformDeptService {
+		IPlatformDeptService {
 
 }

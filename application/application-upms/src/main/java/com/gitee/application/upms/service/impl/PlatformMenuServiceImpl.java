@@ -33,6 +33,6 @@ import com.gitee.common.upms.dao.PlatformMenuDO;
  */
 @Service
 public class PlatformMenuServiceImpl extends ServiceImpl<PlatformMenuMapper, PlatformMenuDO> implements
-    IPlatformMenuService {
+		IPlatformMenuService {
 
 }

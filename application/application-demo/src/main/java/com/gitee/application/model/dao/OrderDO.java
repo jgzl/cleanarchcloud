@@ -6,8 +6,8 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import com.gitee.common.data.bo.BaseDO;
+
 import lombok.Data;
 
 /**
@@ -16,12 +16,12 @@ import lombok.Data;
 @Data
 @TableName("o_order")
 public class OrderDO extends BaseDO implements Serializable {
-  @TableId(type = IdType.ID_WORKER)
-  private Long id;
+	@TableId(type = IdType.ID_WORKER)
+	private Long id;
 
-  private Long shopId;
+	private Long shopId;
 
-  private String code;
+	private String code;
 
-  private Date createTime;
+	private Date createTime;
 }

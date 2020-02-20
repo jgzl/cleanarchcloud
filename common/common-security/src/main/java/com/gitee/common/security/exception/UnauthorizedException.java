@@ -41,5 +41,4 @@ public class UnauthorizedException extends PlatformAuth2Exception {
 	public int getHttpErrorCode() {
 		return HttpStatus.UNAUTHORIZED.value();
 	}
-
 }

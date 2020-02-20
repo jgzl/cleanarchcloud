@@ -45,17 +45,19 @@ public class PlatformClientWebSecurityConfigurer extends WebSecurityConfigurerAd
 		http.logout().logoutSuccessHandler(logoutSuccessHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers(SecurityConstants.PATH_ACTUATOR,SecurityConstants.PATH_API_DOCS).permitAll()
+				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DOCS).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.csrf().disable();
 	}
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/bootstrap/**");
 	}
+
 	@Bean
-	public LogoutSuccessHandler logoutSuccessHandler(){
+	public LogoutSuccessHandler logoutSuccessHandler() {
 		return new PlatformLogoutSuccessHandler();
 	}
 }

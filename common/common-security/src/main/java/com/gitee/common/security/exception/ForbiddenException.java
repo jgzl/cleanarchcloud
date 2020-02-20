@@ -30,8 +30,9 @@ public class ForbiddenException extends PlatformAuth2Exception {
 	public ForbiddenException(String msg) {
 		super(msg);
 	}
+
 	public ForbiddenException(String msg, Throwable t) {
-		super(msg,t);
+		super(msg, t);
 	}
 
 	@Override
@@ -43,6 +44,5 @@ public class ForbiddenException extends PlatformAuth2Exception {
 	public int getHttpErrorCode() {
 		return HttpStatus.FORBIDDEN.value();
 	}
-
 }
 

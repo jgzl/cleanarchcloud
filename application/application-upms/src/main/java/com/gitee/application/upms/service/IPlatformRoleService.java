@@ -31,11 +31,11 @@ import com.gitee.common.upms.dao.PlatformRoleDO;
  */
 public interface IPlatformRoleService extends IService<PlatformRoleDO> {
 
-  /**
-   * 通过用户ID，查询角色信息
-   *
-   * @param id
-   * @return 用户角色信息
-   */
-  List<PlatformRoleDO> findRolesByUserId(Long id);
+	/**
+	 * 通过用户ID，查询角色信息
+	 *
+	 * @param id
+	 * @return 用户角色信息
+	 */
+	List<PlatformRoleDO> findRolesByUserId(Long id);
 }

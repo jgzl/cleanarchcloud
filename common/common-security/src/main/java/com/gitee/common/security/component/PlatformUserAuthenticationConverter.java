@@ -88,5 +88,4 @@ public class PlatformUserAuthenticationConverter implements UserAuthenticationCo
 		}
 		throw new IllegalArgumentException("Authorities must be either a String or a Collection");
 	}
-
 }

@@ -61,7 +61,7 @@ public class CustomerGatewayFilterFactory extends AbstractGatewayFilterFactory<C
   public static class Config {
     */
 /**
-     * 控制是否开启统计
+ * 控制是否开启统计
  *//*
 
     private boolean enabled;

@@ -46,9 +46,8 @@
 		<dependency>
 			<artifactId>common-security</artifactId>
 			<groupId>com.gitee</groupId>
-    </dependency>
-  </dependencies>
-
+		</dependency>
+	</dependencies>
 
 
 </project>

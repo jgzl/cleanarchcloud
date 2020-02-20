@@ -33,6 +33,6 @@ import com.gitee.common.upms.dao.PlatformLogDO;
  */
 @Service
 public class PlatformLogServiceImpl extends ServiceImpl<PlatformLogMapper, PlatformLogDO> implements
-    IPlatformLogService {
+		IPlatformLogService {
 
 }

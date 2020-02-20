@@ -34,49 +34,49 @@ import com.gitee.application.model.vo.OrderVO;
  */
 @Mapper
 public interface OrderConvertor {
-  OrderConvertor INSTANCE = Mappers.getMapper(OrderConvertor.class);
+	OrderConvertor INSTANCE = Mappers.getMapper(OrderConvertor.class);
 
-  /**
-   * 根据order数据库对象转换为order业务对象
-   * @param orderDO
-   * @return OrderBO
-   */
-  @Mappings({
-      @Mapping(source = "id", target = "orderId")
-  })
-  OrderBO convertDO2BO(OrderDO orderDO);
+	/**
+	 * 根据order数据库对象转换为order业务对象
+	 * @param orderDO
+	 * @return OrderBO
+	 */
+	@Mappings({
+			@Mapping(source = "id", target = "orderId")
+	})
+	OrderBO convertDO2BO(OrderDO orderDO);
 
-  /**
-   * dao->bo
-   * @param orderItemDO
-   * @return
-   */
-  @Mappings({
-      @Mapping(source = "id", target = "orderItemId")
-  })
-  OrderItemBO convertDO2BO(OrderItemDO orderItemDO);
+	/**
+	 * dao->bo
+	 * @param orderItemDO
+	 * @return
+	 */
+	@Mappings({
+			@Mapping(source = "id", target = "orderItemId")
+	})
+	OrderItemBO convertDO2BO(OrderItemDO orderItemDO);
 
-  /**
-   * 批量转换
-   * @param orderItemDOs
-   * @return
-   */
-  List<OrderItemBO> convertDO2BOList(List<OrderItemDO> orderItemDOs);
+	/**
+	 * 批量转换
+	 * @param orderItemDOs
+	 * @return
+	 */
+	List<OrderItemBO> convertDO2BOList(List<OrderItemDO> orderItemDOs);
 
-  /**
-   * vo->bo
-   * @param orderVO
-   * @return
-   */
-  OrderBO covertVO2BO(OrderVO orderVO);
+	/**
+	 * vo->bo
+	 * @param orderVO
+	 * @return
+	 */
+	OrderBO covertVO2BO(OrderVO orderVO);
 
-  /**
-   * vo->dao
-   * @param orderVO
-   * @return
-   */
-  @Mappings({
-      @Mapping(source = "orderId", target = "id")
-  })
-  OrderDO covertVO2DO(OrderVO orderVO);
+	/**
+	 * vo->dao
+	 * @param orderVO
+	 * @return
+	 */
+	@Mappings({
+			@Mapping(source = "orderId", target = "id")
+	})
+	OrderDO covertVO2DO(OrderVO orderVO);
 }

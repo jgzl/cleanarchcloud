@@ -18,26 +18,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gitee.application.upms.mapper.PlatformMenuMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformMenuDO">
-      <id column="menu_id" property="menuId"/>
-      <result column="create_user" property="createUser"/>
-      <result column="create_date" property="createDate"/>
-      <result column="update_user" property="updateUser"/>
-      <result column="update_date" property="updateDate"/>
-      <result column="version" property="version"/>
-      <result column="parenplatform_id" property="parenplatformId"/>
-      <result column="menu_name" property="menuName"/>
-      <result column="path" property="path"/>
-      <result column="component" property="component"/>
-        <result column="perms" property="perms"/>
-        <result column="icon" property="icon"/>
-        <result column="type" property="type"/>
-        <result column="order_num" property="orderNum"/>
-    </resultMap>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformMenuDO">
+		<id column="menu_id" property="menuId"/>
+		<result column="create_user" property="createUser"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_user" property="updateUser"/>
+		<result column="update_date" property="updateDate"/>
+		<result column="version" property="version"/>
+		<result column="parenplatform_id" property="parenplatformId"/>
+		<result column="menu_name" property="menuName"/>
+		<result column="path" property="path"/>
+		<result column="component" property="component"/>
+		<result column="perms" property="perms"/>
+		<result column="icon" property="icon"/>
+		<result column="type" property="type"/>
+		<result column="order_num" property="orderNum"/>
+	</resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
         create_user,
         create_date,
         update_user,

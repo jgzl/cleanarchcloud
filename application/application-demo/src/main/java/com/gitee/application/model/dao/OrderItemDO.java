@@ -29,12 +29,12 @@ import lombok.Data;
 @Data
 @TableName("o_order_item")
 public class OrderItemDO implements Serializable {
-  @TableId
-  private Long id;
+	@TableId
+	private Long id;
 
-  private Long shopId;
+	private Long shopId;
 
-  private Long orderId;
+	private Long orderId;
 
-  private String name;
+	private String name;
 }

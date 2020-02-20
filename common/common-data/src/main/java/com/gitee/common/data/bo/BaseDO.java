@@ -36,29 +36,29 @@ import lombok.Data;
 @ApiModel("基础对象")
 public class BaseDO<M> extends Model<BaseDO<M>> implements Serializable, Cloneable {
 
-    @ApiModelProperty("创建人")
-    @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+	@ApiModelProperty("创建人")
+	@TableField(fill = FieldFill.INSERT)
+	private Long createUser;
 
-    @ApiModelProperty("创建时间")
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createDate;
+	@ApiModelProperty("创建时间")
+	@TableField(fill = FieldFill.INSERT)
+	private LocalDateTime createDate;
 
-    @ApiModelProperty("更新人")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+	@ApiModelProperty("更新人")
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	private Long updateUser;
 
-    @ApiModelProperty("更新时间")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateDate;
+	@ApiModelProperty("更新时间")
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	private LocalDateTime updateDate;
 
-    @Version
-    @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty("乐观锁")
-    private Integer version;
+	@Version
+	@TableField(fill = FieldFill.INSERT)
+	@ApiModelProperty("乐观锁")
+	private Integer version;
 
-    @TableLogic
-    @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty("逻辑删除")
-    private Integer deleted;
+	@TableLogic
+	@TableField(fill = FieldFill.INSERT)
+	@ApiModelProperty("逻辑删除")
+	private Integer deleted;
 }

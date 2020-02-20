@@ -31,10 +31,10 @@ import com.gitee.common.upms.dao.PlatformRoleDO;
  */
 public interface PlatformRoleMapper extends BaseMapper<PlatformRoleDO> {
 
-  /**
-   * 通过id查找用户具体角色信息
-   * @param id
-   * @return 用户角色集合
-   */
-  List<PlatformRoleDO> listRolesByUserId(Long id);
+	/**
+	 * 通过id查找用户具体角色信息
+	 * @param id
+	 * @return 用户角色集合
+	 */
+	List<PlatformRoleDO> listRolesByUserId(Long id);
 }

@@ -41,5 +41,4 @@ public class MethodNotAllowedException extends PlatformAuth2Exception {
 	public int getHttpErrorCode() {
 		return HttpStatus.METHOD_NOT_ALLOWED.value();
 	}
-
 }

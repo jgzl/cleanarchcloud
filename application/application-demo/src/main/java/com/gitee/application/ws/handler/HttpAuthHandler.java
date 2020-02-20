@@ -26,83 +26,83 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class HttpAuthHandler extends TextWebSocketHandler {
 
-  private static final String P_ANYONE = "#anyone#";
+	private static final String P_ANYONE = "#anyone#";
 
-  private static final String P_EVERYONE = "#everyone#";
+	private static final String P_EVERYONE = "#everyone#";
 
-  /**
-   * socket 建立成功事件
-   *
-   * @param session
-   * @throws Exception
-   */
-  @Override
-  public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-    Object token = session.getAttributes().get("token");
-    if (token != null) {
-      // 用户连接成功，放入在线用户缓存
-      WsSessionManager.add(token.toString(), session);
-    } else {
-      throw new RuntimeException("用户登录已经失效!");
-    }
-  }
+	/**
+	 * socket 建立成功事件
+	 *
+	 * @param session
+	 * @throws Exception
+	 */
+	@Override
+	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		Object token = session.getAttributes().get("token");
+		if (token != null) {
+			// 用户连接成功，放入在线用户缓存
+			WsSessionManager.add(token.toString(), session);
+		} else {
+			throw new RuntimeException("用户登录已经失效!");
+		}
+	}
 
-  /**
-   * 接收消息事件
-   *
-   * @param session
-   * @param message
-   * @throws Exception
-   */
-  @Override
-  protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-    // 获得客户端传来的消息
-    String payload = message.getPayload();
-    String token = (String) session.getAttributes().get("token");
-    log.info("server 接收到 " + token + " 发送的 " + payload);
-    //单独发送给某一个人
-    sendToUser(token, message);
-  }
+	/**
+	 * 接收消息事件
+	 *
+	 * @param session
+	 * @param message
+	 * @throws Exception
+	 */
+	@Override
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		// 获得客户端传来的消息
+		String payload = message.getPayload();
+		String token = (String) session.getAttributes().get("token");
+		log.info("server 接收到 " + token + " 发送的 " + payload);
+		//单独发送给某一个人
+		sendToUser(token, message);
+	}
 
-  /**
-   * socket 断开连接时
-   *
-   * @param session
-   * @param status
-   * @throws Exception
-   */
-  @Override
-  public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-    Object token = session.getAttributes().get("token");
-    if (token != null) {
-      // 用户退出，移除缓存
-      WsSessionManager.remove(token.toString());
-    }
-  }
+	/**
+	 * socket 断开连接时
+	 *
+	 * @param session
+	 * @param status
+	 * @throws Exception
+	 */
+	@Override
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		Object token = session.getAttributes().get("token");
+		if (token != null) {
+			// 用户退出，移除缓存
+			WsSessionManager.remove(token.toString());
+		}
+	}
 
-  public void sendToUser(String userId, TextMessage message) {
-    Assert.notNull(userId);
-    Assert.notNull(message);
-    Assert.notNull(message.getPayload());
-    // 获得客户端传来的消息
-    String payload = message.getPayload();
-    if (payload.startsWith(P_EVERYONE)) {
-      userId = P_EVERYONE;
-    }
-    String finalUserId = userId;
-    WsSessionManager.SESSION_POOL.keySet().forEach(id -> {
-      if (P_EVERYONE.equals(finalUserId) || id.equals(finalUserId)) {
-        try {
-          log.debug("需要发送给{}", id);
-          WebSocketSession webSocketSession = WsSessionManager.SESSION_POOL.get(id);
-          if (webSocketSession.isOpen()) {
-            webSocketSession
-                .sendMessage(message);
-          }
-        } catch (IOException e) {
-          log.error("发送websocket消息发生异常:", e);
-        }
-      }
-    });
-  }
+	public void sendToUser(String userId, TextMessage message) {
+		Assert.notNull(userId);
+		Assert.notNull(message);
+		Assert.notNull(message.getPayload());
+		// 获得客户端传来的消息
+		String payload = message.getPayload();
+		if (payload.startsWith(P_EVERYONE)) {
+			userId = P_EVERYONE;
+		}
+		String finalUserId = userId;
+		WsSessionManager.SESSION_POOL.keySet().forEach(id -> {
+			if (P_EVERYONE.equals(finalUserId) || id.equals(finalUserId)) {
+				try {
+					log.debug("需要发送给{}", id);
+					WebSocketSession webSocketSession = WsSessionManager.SESSION_POOL.get(id);
+					if (webSocketSession.isOpen()) {
+						webSocketSession
+								.sendMessage(message);
+					}
+				} catch (IOException e) {
+					log.error("发送websocket消息发生异常:", e);
+				}
+			}
+		});
+	}
 }

@@ -20,7 +20,7 @@ package com.gitee.gateway.utils;
  * @author lihaifeng
  */
 public interface GatewayConstants {
-  String AUTHORIZATION="Authorization";
-  String BEARER_SPACE="Bearer ";
-  String BEARER="Bearer";
+	String AUTHORIZATION = "Authorization";
+	String BEARER_SPACE = "Bearer ";
+	String BEARER = "Bearer";
 }

@@ -16,31 +16,31 @@
   -->
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <parent>
-    <artifactId>common</artifactId>
-    <groupId>com.gitee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<artifactId>common</artifactId>
+		<groupId>com.gitee</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>common-swagger</artifactId>
-  <modelVersion>4.0.0</modelVersion>
-  <name>公共资源::common接口文档</name>
-  <description>使用这个common-swagger包的@EnableSwaggerPlus快速接入swagger，需要配置相关的swagger配置</description>
-  <dependencies>
-    <!--swagger 依赖-->
-    <dependency>
-      <artifactId>springfox-swagger2</artifactId>
-      <groupId>io.springfox</groupId>
-    </dependency>
-    <!--knife4j是为Java MVC框架集成Swagger生成Api文档的增强-->
-    <dependency>
-      <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-      <groupId>com.github.xiaoymin</groupId>
-    </dependency>
-  </dependencies>
+	<artifactId>common-swagger</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<name>公共资源::common接口文档</name>
+	<description>使用这个common-swagger包的@EnableSwaggerPlus快速接入swagger，需要配置相关的swagger配置</description>
+	<dependencies>
+		<!--swagger 依赖-->
+		<dependency>
+			<artifactId>springfox-swagger2</artifactId>
+			<groupId>io.springfox</groupId>
+		</dependency>
+		<!--knife4j是为Java MVC框架集成Swagger生成Api文档的增强-->
+		<dependency>
+			<artifactId>knife4j-micro-spring-boot-starter</artifactId>
+			<groupId>com.github.xiaoymin</groupId>
+		</dependency>
+	</dependencies>
 
 
 </project>

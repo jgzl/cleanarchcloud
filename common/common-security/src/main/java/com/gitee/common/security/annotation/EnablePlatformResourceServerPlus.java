@@ -42,7 +42,7 @@ import com.gitee.common.security.component.PlatformSecurityBeanDefinitionRegistr
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import({PlatformResourceServerAutoConfiguration.class,PlatformSecurityBeanDefinitionRegistrar.class})
+@Import({PlatformResourceServerAutoConfiguration.class, PlatformSecurityBeanDefinitionRegistrar.class})
 public @interface EnablePlatformResourceServerPlus {
 
 }

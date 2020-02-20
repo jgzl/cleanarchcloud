@@ -15,9 +15,9 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping
 public class IndexController {
 
-  @ApiOperation("回音接口")
-  @GetMapping("/echo")
-  public String echo() {
-    return "echo:[message]";
-  }
+	@ApiOperation("回音接口")
+	@GetMapping("/echo")
+	public String echo() {
+		return "echo:[message]";
+	}
 }

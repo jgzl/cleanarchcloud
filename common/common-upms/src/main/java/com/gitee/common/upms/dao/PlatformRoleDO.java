@@ -42,15 +42,15 @@ import lombok.experimental.Accessors;
 @TableName("platform_role")
 public class PlatformRoleDO extends BaseDO<PlatformRoleDO> {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @ApiModelProperty(value = "角色id")
-  @TableId(value = "role_id", type = IdType.ID_WORKER)
-  private Long roleId;
+	@ApiModelProperty(value = "角色id")
+	@TableId(value = "role_id", type = IdType.ID_WORKER)
+	private Long roleId;
 
-  @ApiModelProperty(value = "角色名称")
-  private String roleName;
+	@ApiModelProperty(value = "角色名称")
+	private String roleName;
 
-  @ApiModelProperty(value = "角色描述")
-  private String remark;
+	@ApiModelProperty(value = "角色描述")
+	private String remark;
 }

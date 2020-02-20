@@ -18,21 +18,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gitee.application.upms.mapper.PlatformDeptMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformDeptDO">
-      <id column="dept_id" property="deptId"/>
-      <result column="create_user" property="createUser"/>
-      <result column="create_date" property="createDate"/>
-      <result column="update_user" property="updateUser"/>
-      <result column="update_date" property="updateDate"/>
-      <result column="version" property="version"/>
-      <result column="parent_id" property="parentId"/>
-      <result column="dept_name" property="deptName"/>
-      <result column="order_num" property="orderNum"/>
-    </resultMap>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.gitee.common.upms.dao.PlatformDeptDO">
+		<id column="dept_id" property="deptId"/>
+		<result column="create_user" property="createUser"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_user" property="updateUser"/>
+		<result column="update_date" property="updateDate"/>
+		<result column="version" property="version"/>
+		<result column="parent_id" property="parentId"/>
+		<result column="dept_name" property="deptName"/>
+		<result column="order_num" property="orderNum"/>
+	</resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
         create_user,
         create_date,
         update_user,

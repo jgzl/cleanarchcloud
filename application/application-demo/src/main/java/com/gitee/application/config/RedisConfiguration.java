@@ -11,15 +11,15 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 @Configuration
 public class RedisConfiguration {
 
-  @Value("${redis.topic.chat}")
-  private String chatTopic;
+	@Value("${redis.topic.chat}")
+	private String chatTopic;
 
-  @Bean
-  RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory,
-      MessageListener messageListener) {
-    RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
-    redisMessageListenerContainer.setConnectionFactory(connectionFactory);
-    redisMessageListenerContainer.addMessageListener(messageListener, new PatternTopic(chatTopic));
-    return redisMessageListenerContainer;
-  }
+	@Bean
+	RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory,
+			MessageListener messageListener) {
+		RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
+		redisMessageListenerContainer.setConnectionFactory(connectionFactory);
+		redisMessageListenerContainer.addMessageListener(messageListener, new PatternTopic(chatTopic));
+		return redisMessageListenerContainer;
+	}
 }

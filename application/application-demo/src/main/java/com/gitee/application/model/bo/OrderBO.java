@@ -10,13 +10,13 @@ import lombok.Data;
  */
 @Data
 public class OrderBO {
-  private Long orderId;
+	private Long orderId;
 
-  private Long shopId;
+	private Long shopId;
 
-  private String code;
+	private String code;
 
-  private Date createTime;
+	private Date createTime;
 
-  private List<OrderItemBO> orderItems;
+	private List<OrderItemBO> orderItems;
 }

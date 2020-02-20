@@ -9,9 +9,9 @@ import lombok.Data;
 @Data
 @Builder
 public class WelcomeVO {
-  private String userName;
+	private String userName;
 
-  private String urlName;
+	private String urlName;
 
-  private String urlDescription;
+	private String urlDescription;
 }

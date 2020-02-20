@@ -21,24 +21,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PlatformLogoutSuccessHandler implements LogoutSuccessHandler {
 
-  @Autowired
-  private Environment environment;
+	@Autowired
+	private Environment environment;
 
-  @Override
-  public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-      throws IOException, ServletException {
-	  log.info(environment.getProperty("spring.application.name") + ":登出成功");
-	  String profile;
-	  if (environment.getActiveProfiles().length > 0) {
-		  profile = environment.getActiveProfiles()[0];
-	  } else {
-		  profile = environment.getDefaultProfiles()[0];
-	  }
-	  if (SecurityConstants.DEV.equalsIgnoreCase(profile)
-			  || SecurityConstants.LHF.equalsIgnoreCase(profile)
-			  || SecurityConstants.XH.equalsIgnoreCase(profile)
-	  ) {
-		  response.sendRedirect("http://localhost:8030/logout");
-	  }
-  }
+	@Override
+	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+			throws IOException, ServletException {
+		log.info(environment.getProperty("spring.application.name") + ":登出成功");
+		String profile;
+		if (environment.getActiveProfiles().length > 0) {
+			profile = environment.getActiveProfiles()[0];
+		} else {
+			profile = environment.getDefaultProfiles()[0];
+		}
+		if (SecurityConstants.DEV.equalsIgnoreCase(profile)
+				|| SecurityConstants.LHF.equalsIgnoreCase(profile)
+				|| SecurityConstants.XH.equalsIgnoreCase(profile)
+		) {
+			response.sendRedirect("http://localhost:8030/logout");
+		}
+	}
 }

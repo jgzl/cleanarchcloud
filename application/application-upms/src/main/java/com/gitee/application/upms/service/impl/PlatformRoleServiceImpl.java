@@ -35,11 +35,11 @@ import com.gitee.common.upms.dao.PlatformRoleDO;
  */
 @Service
 public class PlatformRoleServiceImpl extends ServiceImpl<PlatformRoleMapper, PlatformRoleDO> implements
-    IPlatformRoleService {
+		IPlatformRoleService {
 
-  @Override
-  public List<PlatformRoleDO> findRolesByUserId(Long id) {
-    List<PlatformRoleDO> roles = baseMapper.listRolesByUserId(id);
-    return roles;
-  }
+	@Override
+	public List<PlatformRoleDO> findRolesByUserId(Long id) {
+		List<PlatformRoleDO> roles = baseMapper.listRolesByUserId(id);
+		return roles;
+	}
 }

@@ -39,5 +39,4 @@ public class InvalidException extends PlatformAuth2Exception {
 	public int getHttpErrorCode() {
 		return 426;
 	}
-
 }

@@ -31,7 +31,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * @date 2018/10/8
  * 认证失败事件处理器
  */
-public abstract class AbstractAuthenticationFailureEvenHandler implements ApplicationListener<AbstractAuthenticationFailureEvent> {
+public abstract class AbstractAuthenticationFailureEvenHandler implements
+		ApplicationListener<AbstractAuthenticationFailureEvent> {
 
 	/**
 	 * Handle an application event.

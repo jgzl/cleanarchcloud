@@ -51,79 +51,82 @@ import lombok.AllArgsConstructor;
 @EnableAuthorizationServer
 public class PlatformAuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-  private DataSource dataSource;
+	private DataSource dataSource;
 
-  private AuthenticationManager authenticationManager;
+	private AuthenticationManager authenticationManager;
 
-  private UserDetailsService userDetailsService;
+	private UserDetailsService userDetailsService;
 
-  private RedisConnectionFactory redisConnectionFactory;
+	private RedisConnectionFactory redisConnectionFactory;
 
-  /**
-   * 配置授权服务器断点
-   * @param endpoints
-   */
-  @Override
-  public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-    /**
-     * 自定义jwt生成token方式
-     */
-    TokenEnhancerChain tokenEnhancerChain=new TokenEnhancerChain();
-    tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(),accessTokenConvertor()));
-    endpoints
-        .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
-        .authenticationManager(authenticationManager)
-        .userDetailsService(userDetailsService)
-        .tokenStore(tokenStore())
-        .accessTokenConverter(accessTokenConvertor())
-        //自定义jwt生成token方式
-        .tokenEnhancer(tokenEnhancerChain)
-        .tokenStore(tokenStore())
-        .reuseRefreshTokens(false)
-        .pathMapping("/oauth/confirm_access", "/token/confirm_access");
-  }
+	/**
+	 * 配置授权服务器断点
+	 * @param endpoints
+	 */
+	@Override
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+		/**
+		 * 自定义jwt生成token方式
+		 */
+		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConvertor()));
+		endpoints
+				.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
+				.authenticationManager(authenticationManager)
+				.userDetailsService(userDetailsService)
+				.tokenStore(tokenStore())
+				.accessTokenConverter(accessTokenConvertor())
+				//自定义jwt生成token方式
+				.tokenEnhancer(tokenEnhancerChain)
+				.tokenStore(tokenStore())
+				.reuseRefreshTokens(false)
+				.pathMapping("/oauth/confirm_access", "/token/confirm_access");
+	}
 
-  @Override
-  public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-    PlatformClientUserDetailsServiceImpl clientUserDetailsService = new PlatformClientUserDetailsServiceImpl(
-        dataSource);
-    clientUserDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
-    clientUserDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
-    clients.withClientDetails(clientUserDetailsService);
-  }
+	@Override
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		PlatformClientUserDetailsServiceImpl clientUserDetailsService = new PlatformClientUserDetailsServiceImpl(
+				dataSource);
+		clientUserDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);
+		clientUserDetailsService.setFindClientDetailsSql(SecurityConstants.DEFAULT_FIND_STATEMENT);
+		clients.withClientDetails(clientUserDetailsService);
+	}
 
-  @Override
-  public void configure(AuthorizationServerSecurityConfigurer security) {
-    security.allowFormAuthenticationForClients()
-        .tokenKeyAccess("permitAll()")
-        .checkTokenAccess("isAuthenticated()");
-  }
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) {
+		security.allowFormAuthenticationForClients()
+				.tokenKeyAccess("permitAll()")
+				.checkTokenAccess("isAuthenticated()");
+	}
 
-  @Bean
-  public TokenStore tokenStore() {
-    RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-    redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX+SecurityConstants.OAUTH_PREFIX);
-    return redisTokenStore;
-  }
-  @Bean
-  public DefaultTokenServices tokenServices(){
-    DefaultTokenServices tokenServices=new DefaultTokenServices();
-    tokenServices.setTokenStore(tokenStore());
-    tokenServices.setSupportRefreshToken(true);
-    tokenServices.setReuseRefreshToken(false);
-    tokenServices.setAccessTokenValiditySeconds(60*60*24);
-    tokenServices.setRefreshTokenValiditySeconds(60*60*24*30);
-    tokenServices.setTokenEnhancer(tokenEnhancer());
-    return tokenServices;
-  }
-  @Bean
-  public PlatformTokenEnhancer tokenEnhancer(){
-    return new PlatformTokenEnhancer();
-  }
-  @Bean
-  public PlatformJwtAccessTokenConvertor accessTokenConvertor(){
-    PlatformJwtAccessTokenConvertor accessTokenConvertor = new PlatformJwtAccessTokenConvertor();
-    accessTokenConvertor.setSigningKey(SecurityConstants.JWT_KEY);
-    return accessTokenConvertor;
-  }
+	@Bean
+	public TokenStore tokenStore() {
+		RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+		redisTokenStore.setPrefix(SecurityConstants.PLATFORM_PREFIX + SecurityConstants.OAUTH_PREFIX);
+		return redisTokenStore;
+	}
+
+	@Bean
+	public DefaultTokenServices tokenServices() {
+		DefaultTokenServices tokenServices = new DefaultTokenServices();
+		tokenServices.setTokenStore(tokenStore());
+		tokenServices.setSupportRefreshToken(true);
+		tokenServices.setReuseRefreshToken(false);
+		tokenServices.setAccessTokenValiditySeconds(60 * 60 * 24);
+		tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 30);
+		tokenServices.setTokenEnhancer(tokenEnhancer());
+		return tokenServices;
+	}
+
+	@Bean
+	public PlatformTokenEnhancer tokenEnhancer() {
+		return new PlatformTokenEnhancer();
+	}
+
+	@Bean
+	public PlatformJwtAccessTokenConvertor accessTokenConvertor() {
+		PlatformJwtAccessTokenConvertor accessTokenConvertor = new PlatformJwtAccessTokenConvertor();
+		accessTokenConvertor.setSigningKey(SecurityConstants.JWT_KEY);
+		return accessTokenConvertor;
+	}
 }

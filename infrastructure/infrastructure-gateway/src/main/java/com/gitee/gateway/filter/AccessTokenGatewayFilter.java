@@ -43,27 +43,27 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class AccessTokenGatewayFilter implements GatewayFilter, Ordered {
 
-  private RedisTemplate redisTemplate;
+	private RedisTemplate redisTemplate;
 
-  @Override
-  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-    log.info("Welcome to AccessTokenGatewayFilter.");
-    ServerHttpRequest request = exchange.getRequest();
-    MultiValueMap<String, String> params = request.getQueryParams();
-    List<String> list = params.get("access_token");
-    if (list!=null&&list.size()>0){
-      boolean flag = Optional.ofNullable(redisTemplate.opsForValue().get(list.get(0))).isPresent();
-      if (flag){
-        return chain.filter(exchange);
-      }
-    }
-    ServerHttpResponse response = exchange.getResponse();
-    response.setStatusCode(HttpStatus.UNAUTHORIZED);
-    return response.setComplete();
-  }
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+		log.info("Welcome to AccessTokenGatewayFilter.");
+		ServerHttpRequest request = exchange.getRequest();
+		MultiValueMap<String, String> params = request.getQueryParams();
+		List<String> list = params.get("access_token");
+		if (list != null && list.size() > 0) {
+			boolean flag = Optional.ofNullable(redisTemplate.opsForValue().get(list.get(0))).isPresent();
+			if (flag) {
+				return chain.filter(exchange);
+			}
+		}
+		ServerHttpResponse response = exchange.getResponse();
+		response.setStatusCode(HttpStatus.UNAUTHORIZED);
+		return response.setComplete();
+	}
 
-  @Override
-  public int getOrder() {
-    return 1;
-  }
+	@Override
+	public int getOrder() {
+		return 1;
+	}
 }

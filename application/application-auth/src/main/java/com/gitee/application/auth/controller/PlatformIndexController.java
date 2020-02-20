@@ -31,19 +31,19 @@ import io.swagger.annotations.ApiOperation;
  * @author lihaifeng
  */
 @Controller
-@Api(value = "主页",tags = "index端点")
+@Api(value = "主页", tags = "index端点")
 public class PlatformIndexController {
-  @ApiOperation(value = "获取用户信息",notes = "通过安全工具类获取具体用户信息",httpMethod = "GET")
-  @GetMapping("/user")
-  @ResponseBody
-  public Result user(Authentication authentication){
-    return Result.ok(authentication);
-  }
+	@ApiOperation(value = "获取用户信息", notes = "通过安全工具类获取具体用户信息", httpMethod = "GET")
+	@GetMapping("/user")
+	@ResponseBody
+	public Result user(Authentication authentication) {
+		return Result.ok(authentication);
+	}
 
-  @GetMapping({"/","index"})
-  public ModelAndView index(Authentication authentication, ModelAndView modelAndView) {
-    modelAndView.addObject("username",authentication.getName());
-    modelAndView.setViewName("index");
-    return modelAndView;
-  }
+	@GetMapping({"/", "index"})
+	public ModelAndView index(Authentication authentication, ModelAndView modelAndView) {
+		modelAndView.addObject("username", authentication.getName());
+		modelAndView.setViewName("index");
+		return modelAndView;
+	}
 }

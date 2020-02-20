@@ -45,7 +45,8 @@ public class PlatformAuthenticationFailureEvenHandler extends AbstractAuthentica
 	 * @param response                响应
 	 */
 	@Override
-	public void handle(AuthenticationException authenticationException, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+	public void handle(AuthenticationException authenticationException, Authentication authentication,
+			HttpServletRequest request, HttpServletResponse response) {
 		log.info("用户：{} 登录失败，异常：{}", authentication.getPrincipal(), authenticationException.getLocalizedMessage());
 	}
 }

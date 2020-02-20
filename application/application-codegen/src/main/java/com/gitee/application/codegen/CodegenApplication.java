@@ -33,7 +33,7 @@ import com.gitee.common.security.annotation.EnablePlatformResourceServerPlus;
 @EnablePlatformFeignClientsPlus
 @EnablePlatformResourceServerPlus
 public class CodegenApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(CodegenApplication.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(CodegenApplication.class, args);
+	}
 }

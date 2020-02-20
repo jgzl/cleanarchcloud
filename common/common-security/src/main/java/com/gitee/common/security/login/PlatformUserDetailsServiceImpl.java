@@ -47,26 +47,27 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class PlatformUserDetailsServiceImpl implements UserDetailsService {
 
-  private final RemoteUserService remoteUserService;
+	private final RemoteUserService remoteUserService;
 
-  private final CacheManager cacheManager;
+	private final CacheManager cacheManager;
 
-  @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    //log.debug("使用SpringSecurity登录接口，使用参数{"+username+"}远程调用upms服务");
-    Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
-    if (cache != null && cache.get(username) != null) {
-      return (PlatformUser) cache.get(username).get();
-    }
-    Result<UserInfoDTO> userInfoDTO = remoteUserService.info(username);
-    PlatformSsoUserDO user = userInfoDTO.getData().getSysUser();
-    Set<String> authSet = new HashSet<>();
-    authSet.add(SecurityConstants.ROLE + "ADMIN");
-    Collection<? extends GrantedAuthority> authorities
-        = AuthorityUtils.createAuthorityList(authSet.toArray(new String[0]));
-    UserDetails userDetails= new PlatformUser(user.getId(),user.getUsername(), SecurityConstants.BCRYPT + user.getPassword(), true,
-        true, true, true, authorities);
-    cache.put(username, userDetails);
-    return userDetails;
-  }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		//log.debug("使用SpringSecurity登录接口，使用参数{"+username+"}远程调用upms服务");
+		Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
+		if (cache != null && cache.get(username) != null) {
+			return (PlatformUser) cache.get(username).get();
+		}
+		Result<UserInfoDTO> userInfoDTO = remoteUserService.info(username);
+		PlatformSsoUserDO user = userInfoDTO.getData().getSysUser();
+		Set<String> authSet = new HashSet<>();
+		authSet.add(SecurityConstants.ROLE + "ADMIN");
+		Collection<? extends GrantedAuthority> authorities
+				= AuthorityUtils.createAuthorityList(authSet.toArray(new String[0]));
+		UserDetails userDetails = new PlatformUser(user.getId(), user.getUsername(),
+				SecurityConstants.BCRYPT + user.getPassword(), true,
+				true, true, true, authorities);
+		cache.put(username, userDetails);
+		return userDetails;
+	}
 }

@@ -18,7 +18,6 @@ package com.gitee.application.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
@@ -36,7 +35,7 @@ import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
 @EnablePlatformFeignClientsPlus
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SsoClient1Application {
-  public static void main(String[] args) {
-    SpringApplication.run(SsoClient1Application.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(SsoClient1Application.class, args);
+	}
 }

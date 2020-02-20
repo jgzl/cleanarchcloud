@@ -7,11 +7,11 @@ import lombok.Data;
  */
 @Data
 public class OrderItemBO {
-  private Long orderItemId;
+	private Long orderItemId;
 
-  private Long orderId;
+	private Long orderId;
 
-  private String name;
+	private String name;
 
-  private Long shopId;
+	private Long shopId;
 }

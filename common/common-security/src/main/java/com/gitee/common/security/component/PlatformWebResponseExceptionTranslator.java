@@ -56,8 +56,9 @@ public class PlatformWebResponseExceptionTranslator implements WebResponseExcept
 		// Try to extract a SpringSecurityException from the stacktrace
 		Throwable[] causeChain = throwableAnalyzer.determineCauseChain(e);
 
-		Exception ase = (AuthenticationException) throwableAnalyzer.getFirstThrowableOfType(AuthenticationException.class,
-				causeChain);
+		Exception ase = (AuthenticationException) throwableAnalyzer
+				.getFirstThrowableOfType(AuthenticationException.class,
+						causeChain);
 		if (ase != null) {
 			return handleOAuth2Exception(new UnauthorizedException(e.getMessage(), e));
 		}
@@ -88,7 +89,6 @@ public class PlatformWebResponseExceptionTranslator implements WebResponseExcept
 		}
 
 		return handleOAuth2Exception(new ServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), e));
-
 	}
 
 	private ResponseEntity<OAuth2Exception> handleOAuth2Exception(OAuth2Exception e) {
@@ -98,7 +98,8 @@ public class PlatformWebResponseExceptionTranslator implements WebResponseExcept
 		headers.set(HttpHeaders.CACHE_CONTROL, "no-store");
 		headers.set(HttpHeaders.PRAGMA, "no-cache");
 		if (status == HttpStatus.UNAUTHORIZED.value() || (e instanceof InsufficientScopeException)) {
-			headers.set(HttpHeaders.WWW_AUTHENTICATE, String.format("%s %s", OAuth2AccessToken.BEARER_TYPE, e.getSummary()));
+			headers.set(HttpHeaders.WWW_AUTHENTICATE,
+					String.format("%s %s", OAuth2AccessToken.BEARER_TYPE, e.getSummary()));
 		}
 
 		// 客户端异常直接返回客户端,不然无法解析
@@ -108,6 +109,5 @@ public class PlatformWebResponseExceptionTranslator implements WebResponseExcept
 		}
 		return new ResponseEntity<>(new PlatformAuth2Exception(e.getMessage(), e.getOAuth2ErrorCode()), headers,
 				HttpStatus.valueOf(status));
-
 	}
 }

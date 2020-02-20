@@ -22,14 +22,13 @@ package com.gitee.common.core.constant;
  * 服务名称
  */
 public interface ServiceNameConstants {
-  /**
-   * 认证中心
-   */
-  String AUTH_SERVICE = "application-auth";
+	/**
+	 * 认证中心
+	 */
+	String AUTH_SERVICE = "application-auth";
 
-  /**
-   * UMPS模块
-   */
-  String UPMS_SERVICE = "application-upms";
-
+	/**
+	 * UMPS模块
+	 */
+	String UPMS_SERVICE = "application-upms";
 }
