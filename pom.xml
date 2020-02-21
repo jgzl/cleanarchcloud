@@ -356,7 +356,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>${maven.docker.version}</version>
 					<configuration>
-						<dockerDirectory>${pom.basedir}/src/main/docker</dockerDirectory>
+						<dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
 						<dockerHost>${docker-host}</dockerHost>
 						<forceTags>true</forceTags>
 						<!--生成的镜像名称-->
@@ -403,10 +403,10 @@
 				<!--    扩展类型    -->
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
-				<docker-host>http://106.14.155.108:2375</docker-host>
-				<docker-registry-serverId>docker-hub</docker-registry-serverId>
-				<docker-registry-url>docker.io</docker-registry-url>
-				<docker-registry-org>oxaxo</docker-registry-org>
+				<docker-host>http://192.168.0.5:2375</docker-host>
+				<docker-registry-serverId>aliyun-dockerhub</docker-registry-serverId>
+				<docker-registry-url>registry.cn-shanghai.aliyuncs.com</docker-registry-url>
+				<docker-registry-org>phoenix-platform</docker-registry-org>
 			</properties>
 		</profile>
 		<profile>
@@ -422,9 +422,9 @@
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
 				<docker-host>http://192.168.0.5:2375</docker-host>
-				<docker-registry-serverId>harbor-registry</docker-registry-serverId>
+				<docker-registry-serverId>local-dockerhub</docker-registry-serverId>
 				<docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
-				<docker-registry-org>microservice</docker-registry-org>
+				<docker-registry-org>phoenix-platform</docker-registry-org>
 			</properties>
 		</profile>
 	</profiles>

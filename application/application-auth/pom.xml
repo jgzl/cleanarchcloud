@@ -112,8 +112,8 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>docker-package</id>
-						<phase>package</phase>
+						<id>docker-install</id>
+						<phase>install</phase>
 						<goals>
 							<goal>build</goal>
 							<goal>push</goal>

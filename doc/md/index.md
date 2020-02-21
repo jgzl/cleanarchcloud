@@ -17,30 +17,24 @@ db.password=root
 
 ## 配置setttings.xml在<servers></servers>中增加节点
 ```xml
-<server>
-    <id>docker-hub</id>
-    <username>dlhf</username>
-    <password>952726SS507.</password>
-    <configuration>
-        <email>li7hai26@mail.com</email>
-    </configuration>
-</server>
-<server>
-    <id>aliyun-registry</id>
-    <username>鼎峯云科技</username>
-    <password>Root1q2w</password>
-    <configuration>
-        <email>li7hai26@mail.com</email>
-    </configuration>
-</server>
-<server>
-    <id>harbor-registry</id>
-    <username>admin</username>
-    <password>Harbor12345</password>
-    <configuration>
-        <email>li7hai26@mail.com</email>
-    </configuration>
-</server>
+<servers>
+    <server>
+        <id>aliyun-dockerhub</id>
+        <username>li7hai26</username>
+        <password>Root1q2w.</password>
+        <configuration>
+            <email>li7hai26@gmail.com</email>
+        </configuration>
+    </server>
+    <server>
+        <id>local-dockerhub</id>
+        <username>admin</username>
+        <password>Harbor12345</password>
+        <configuration>
+            <email>li7hai26@gmail.com</email>
+        </configuration>
+    </server>
+</servers>
 ```
 ##使用oauth2访问认证服务
 ###1.使用授权码模式登录
