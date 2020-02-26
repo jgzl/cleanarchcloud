@@ -34,8 +34,38 @@ spring:
       master-data-source-name: ds-master
       slave-data-source-names: ds-slave0,ds-slave1
   redis:
-    host: localhost
+    host: 10.144.177.157
     password:
 redis:
   topic:
     chat: chat-topic
+security:
+  oauth2:
+    client:
+      # 客户端ID
+      client-id: app
+      # 客户端密钥
+      client-secret: app
+      # 获取访问令牌的URI
+      access-token-uri: http://localhost:8030/oauth/token
+      # 用户将被重定向到的授权 URI
+      user-authorization-uri: http://localhost:8030/oauth/authorize
+    resource:
+      jwt:
+        # 获取JWT 非对称加密的公钥URI
+        key-uri: http://localhost:8030/oauth/token_key
+sso:
+  oauth2:
+    url-permit-all:
+      - /actuator/**
+      - /v2/api-docs
+      - /webjars/**
+      - /static/**
+      - /**/*.css
+      - /**/*.jpg
+      - /**/*.jpeg
+      - /**/*.png
+      - /**/*.svg
+      - /**/*.woff2
+      - /**/*.js
+      - /**/*.ico

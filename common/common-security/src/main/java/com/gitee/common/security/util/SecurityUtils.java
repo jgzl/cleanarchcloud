@@ -3,7 +3,7 @@ package com.gitee.common.security.util;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.gitee.common.security.login.PlatformUser;
+import com.gitee.common.security.vo.SsoUserVO;
 
 import lombok.experimental.UtilityClass;
 
@@ -26,10 +26,10 @@ public class SecurityUtils {
 	 * @return PigxUser
 	 * <p>
 	 */
-	public PlatformUser getUser(Authentication authentication) {
+	public SsoUserVO getUser(Authentication authentication) {
 		Object principal = authentication.getPrincipal();
-		if (principal instanceof PlatformUser) {
-			return (PlatformUser) principal;
+		if (principal instanceof SsoUserVO) {
+			return (SsoUserVO) principal;
 		}
 		return null;
 	}
@@ -37,7 +37,7 @@ public class SecurityUtils {
 	/**
 	 * 获取用户
 	 */
-	public PlatformUser getUser() {
+	public SsoUserVO getUser() {
 		Authentication authentication = getAuthentication();
 		return getUser(authentication);
 	}

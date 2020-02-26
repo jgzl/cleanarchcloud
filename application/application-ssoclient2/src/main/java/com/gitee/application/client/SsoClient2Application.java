@@ -22,7 +22,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
+import com.gitee.common.security.annotation.EnableFeignClientsPlus;
 
 /**
  * @author lihaifeng
@@ -32,7 +32,7 @@ import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
 @EnableSwaggerPlus
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnablePlatformFeignClientsPlus
+@EnableFeignClientsPlus
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SsoClient2Application {
 	public static void main(String[] args) {

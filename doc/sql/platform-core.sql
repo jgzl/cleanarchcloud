@@ -14,9 +14,9 @@
  *    limitations under the License.
  */
 
-drop database if exists `platform-core`;
-create database `platform-core` charset utf8mb4;
-use `platform-core`;
+drop database if exists `sso`;
+create database `sso` charset utf8mb4;
+use `sso`;
 
 /*
  Navicat Premium Data Transfer
@@ -25,7 +25,7 @@ use `platform-core`;
  Source Server Type    : MySQL
  Source Server Version : 50728
  Source Host           : localhost:3306
- Source Schema         : platform-core
+ Source Schema         : sso
 
  Target Server Type    : MySQL
  Target Server Version : 50728

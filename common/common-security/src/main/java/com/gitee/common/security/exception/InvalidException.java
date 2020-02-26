@@ -17,17 +17,17 @@
 package com.gitee.common.security.exception;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.gitee.common.security.component.PlatformAuth2ExceptionSerializer;
+import com.gitee.common.security.component.CustomOauth2ExceptionSerializer;
 
 /**
  * @author lihaifeng
  * @date 2018/7/8
  */
-@JsonSerialize(using = PlatformAuth2ExceptionSerializer.class)
-public class InvalidException extends PlatformAuth2Exception {
+@JsonSerialize(using = CustomOauth2ExceptionSerializer.class)
+public class InvalidException extends CustomOauth2Exception {
 
 	public InvalidException(String msg, Throwable t) {
-		super(msg);
+		super(msg,t);
 	}
 
 	@Override

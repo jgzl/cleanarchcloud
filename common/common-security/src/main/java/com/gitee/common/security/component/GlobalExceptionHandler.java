@@ -16,19 +16,7 @@
 
 package com.gitee.common.security.component;
 
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.SpringSecurityMessageSource;
-import org.springframework.validation.BindException;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.gitee.common.core.util.Result;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,47 +28,81 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-	/**
-	 * 全局异常.
+/*	*//**
+	 * 业务异常统一处理
 	 *
-	 * @param e the e
-	 * @return Result
-	 */
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public Result handleGlobalException(Exception e) {
-		log.error("全局异常信息 ex={}", e.getMessage(), e);
-		return Result.failed(e.getLocalizedMessage());
+	 * @param e
+	 * @return
+	 *//*
+	@ExceptionHandler( {BusiException.class})
+	public ResponseEntity<Response> handleBusiException(BusiException e) {
+		return ResponseEntity.ok(Response.failure(e.getMessage()));
 	}
 
-	/**
-	 * AccessDeniedException
+	*//**
+	 * 参数验证 异常处理
 	 *
-	 * @param e the e
-	 * @return Result
-	 */
-	@ExceptionHandler(AccessDeniedException.class)
-	@ResponseStatus(HttpStatus.FORBIDDEN)
-	public Result handleAccessDeniedException(AccessDeniedException e) {
-		String msg = SpringSecurityMessageSource.getAccessor()
-				.getMessage("AbstractAccessDecisionManager.accessDenied"
-						, e.getMessage());
-		log.error("拒绝授权异常信息 ex={}", msg, e);
-		return Result.failed(e.getLocalizedMessage());
+	 * @param ex ConstraintViolationException
+	 * @return
+	 *//*
+	@ExceptionHandler( {ConstraintViolationException.class})
+	public ResponseEntity<Response> handleCiException(ConstraintViolationException ex) {
+		final ResponseEntity<Response> result = ResponseEntity.ok(Response.failure(null));
+		final Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
+		for (ConstraintViolation<?> violation : violations) {
+			if (!StringUtils.isEmpty(violation.getMessage())) {
+				final Response resultBody = result.getBody();
+				assert resultBody != null;
+				resultBody.setErrorMessage(violation.getMessage());
+				break;
+			}
+		}
+		return result;
 	}
 
-	/**
-	 * validation Exception
+	*//**
+	 * 兜底异常处理
 	 *
-	 * @param exception
-	 * @return Result
-	 */
-	@ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public Result handleBodyValidException(MethodArgumentNotValidException exception) {
-		List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
-		log.error("参数绑定异常,ex = {}", fieldErrors.get(0).getDefaultMessage());
-		return Result.failed(fieldErrors.get(0).getDefaultMessage());
-	}
+	 * @param ex
+	 * @return
+	 *//*
+	@ExceptionHandler( {Exception.class})
+	public ResponseEntity<Response> handle(Exception ex) {
+		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+		final Response response = Response.failure("系统错误");
+		if (ex instanceof HttpMessageNotReadableException
+				|| ex instanceof MethodArgumentTypeMismatchException) {
+			response.setErrorMessage("参数解析失败");
+			status = HttpStatus.BAD_REQUEST;
+		} else if (ex instanceof HttpRequestMethodNotSupportedException) {
+			response.setErrorMessage("不支持当前请求方法");
+			status = HttpStatus.METHOD_NOT_ALLOWED;
+		} else if (ex instanceof HttpMediaTypeNotSupportedException) {
+			response.setErrorMessage("不支持当前媒体类型");
+			status = HttpStatus.UNSUPPORTED_MEDIA_TYPE;
+		} else if (ex instanceof SQLException) {
+			response.setErrorMessage("服务运行SQL异常");
+		} else if (ex instanceof MissingServletRequestParameterException) {
+			status = HttpStatus.BAD_REQUEST;
+			response.setErrorMessage("请求参数不全");
+		} else if (ex instanceof MaxUploadSizeExceededException) {
+			status = HttpStatus.PAYLOAD_TOO_LARGE;
+			response.setErrorMessage("上传文件总大小不允许超过" + 100);
+		} else if (ex instanceof MethodArgumentNotValidException) {
+			status = HttpStatus.BAD_REQUEST;
+			BindingResult bindingResult = ((MethodArgumentNotValidException) ex).getBindingResult();
+			if (bindingResult.hasErrors()) {
+				final FieldError fieldError = bindingResult.getFieldError();
+				response.setErrorMessage(fieldError.getDefaultMessage());
+			}
+		} else if (ex instanceof BindException) {
+			BindingResult bindingResult = ((BindException) ex).getBindingResult();
+			if (bindingResult.hasErrors()) {
+				final FieldError fieldError = bindingResult.getFieldError();
+				response.setErrorMessage(fieldError.getDefaultMessage());
+			}
+		}
+		log.error("兜底异常", ex);
+		return ResponseEntity.status(status).body(response);
+	}*/
 }

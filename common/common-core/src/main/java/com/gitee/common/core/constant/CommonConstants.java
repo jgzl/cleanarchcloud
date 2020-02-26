@@ -66,21 +66,6 @@ public interface CommonConstants {
 	String UTF8 = "UTF-8";
 
 	/**
-	 * 前端工程名
-	 */
-	String FRONT_END_PROJECT = "pigx-ui";
-
-	/**
-	 * 后端工程名
-	 */
-	String BACK_END_PROJECT = "pigx";
-
-	/**
-	 * 公共参数
-	 */
-	String PIG_PUBLIC_PARAM_KEY = "PIG_PUBLIC_PARAM_KEY";
-
-	/**
 	 * 成功标记
 	 */
 	Integer SUCCESS = 0;
@@ -90,7 +75,12 @@ public interface CommonConstants {
 	Integer FAIL = 1;
 
 	/**
-	 * 默认存储bucket
+	 * 默认角色
 	 */
-	String BUCKET_NAME = "lihaifeng";
+	String ROLE_DEFAULT = "USER";
+
+	/**
+	 * 默认操作角色
+	 */
+	String OP_DEFAULT = "USER";
 }

@@ -18,8 +18,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.gitee.common.annotation.LogRecord;
 import com.gitee.common.model.OperateLog;
 import com.gitee.common.properties.LogProperties;
-import com.gitee.common.security.login.PlatformUser;
 import com.gitee.common.security.util.SecurityUtils;
+import com.gitee.common.security.vo.SsoUserVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +73,7 @@ public class LogRecordHandler {
 		//判断签名是否属性指定的签名类型--->这里我只处理方法的签名(注解也只允许在方法上注解)
 		if (signature instanceof MethodSignature) {
 			// 如果这里报错,由最终的拦截器拦截异常 统一推送至ELK或者别的日志记录方式.
-			PlatformUser user = SecurityUtils.getUser();
+			SsoUserVO user = SecurityUtils.getUser();
 			//获取方法签名
 			Method method = ((MethodSignature) signature).getMethod();
 			//获取方法上的自定义注解
@@ -92,7 +92,7 @@ public class LogRecordHandler {
 				OperateLog operateLog = new OperateLog();
 				operateLog.setFullName(user.getUsername());
 				operateLog.setUsername(user.getUsername());
-				operateLog.setUserId(user.getId());
+				operateLog.setUserId(user.getUserId());
 				operateLog.setOperateContent(operateContent);
 				operateLog.setOperateModule(operateModule);
 				operateLog.setServiceName("123");

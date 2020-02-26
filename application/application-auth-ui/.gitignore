@@ -1,35 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-**/node_modules
-
-# production
-/dist
-/.vscode
-build
-
-# testing
-coverage
-# misc
 .DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
-yarn-error.log
-.env
-npm-debug.log
-/coverage
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
 .idea
-yarn.lock
-package-lock.json
-*bak
 .vscode
-
-# visual studio code
-.history
-*.log
-
-functions/mock
-.temp/**
-
-# screenshot
-screenshot
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*

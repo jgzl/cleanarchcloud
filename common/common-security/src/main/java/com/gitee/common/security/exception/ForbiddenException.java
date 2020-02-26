@@ -19,17 +19,14 @@ package com.gitee.common.security.exception;
 import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.gitee.common.security.component.PlatformAuth2ExceptionSerializer;
+import com.gitee.common.security.component.CustomOauth2ExceptionSerializer;
 
 /**
  * @author lihaifeng
  * @date 2018/7/8
  */
-@JsonSerialize(using = PlatformAuth2ExceptionSerializer.class)
-public class ForbiddenException extends PlatformAuth2Exception {
-	public ForbiddenException(String msg) {
-		super(msg);
-	}
+@JsonSerialize(using = CustomOauth2ExceptionSerializer.class)
+public class ForbiddenException extends CustomOauth2Exception {
 
 	public ForbiddenException(String msg, Throwable t) {
 		super(msg, t);

@@ -21,17 +21,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
-import com.gitee.common.security.annotation.EnablePlatformResourceServerPlus;
+import com.gitee.common.security.annotation.EnableFeignClientsPlus;
+import com.gitee.common.security.annotation.EnableResourceServerPlus;
 
 /**
  * @author lihaifeng
  */
-@EnableSwaggerPlus
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnablePlatformFeignClientsPlus
-@EnablePlatformResourceServerPlus
+@EnableSwaggerPlus
+@EnableFeignClientsPlus
+@EnableResourceServerPlus
 public class CodegenApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CodegenApplication.class, args);

@@ -290,11 +290,20 @@
 
 	<build>
 		<resources>
-			<!-- 先指定 src/main/resources下所有文件及文件夹为资源文件 -->
+			<!-- 先指定 src/main/resources下所有文件及文件夹为资源文件,*.yml,*.yaml,*.properties进行变量替换操作 -->
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.yaml</include>
+					<include>**/*.yml</include>
+					<include>**/*.properties</include>
 				</includes>
 				<filtering>true</filtering>
 			</resource>
