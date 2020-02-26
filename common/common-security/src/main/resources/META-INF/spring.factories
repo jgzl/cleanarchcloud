@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.gitee.common.security.component.GlobalExceptionHandler,\
-  com.gitee.common.security.login.PlatformUserDetailsServiceImpl
+  com.gitee.common.security.component.GlobalExceptionHandler

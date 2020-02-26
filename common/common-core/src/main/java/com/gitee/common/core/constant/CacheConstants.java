@@ -13,13 +13,17 @@ public interface CacheConstants {
 	 * <p/>
 	 * {@code @Cacheable(value = CacheConstants.GLOBALLY+CacheConstants.MENU_DETAILS, key = "#roleId  + '_menu'", unless = "#result == null")}
 	 */
-	String GLOBALLY = "gl:";
+	String GLOBALLY = "gl";
 
 	/**
-	 * 验证码前缀
+	 * 缓存分隔符
 	 */
-	String DEFAULT_CODE_KEY = "DEFAULT_CODE_KEY:";
+	String SPLIT = ":";
 
+	/**
+	 * 全局缓存公共前缀
+	 */
+	String PREFIX = GLOBALLY + SPLIT;
 
 	/**
 	 * 菜单信息缓存
@@ -40,7 +44,7 @@ public interface CacheConstants {
 	/**
 	 * oauth 客户端信息
 	 */
-	String CLIENT_DETAILS_KEY = "platform_oauth:client:details";
+	String CLIENT_DETAILS_KEY = "oauth:client:details";
 
 
 	/**
@@ -75,5 +79,30 @@ public interface CacheConstants {
 	/**
 	 * 租户缓存 (不区分租户)
 	 */
-	String TENANT_DETAILS = GLOBALLY + "tenant_details";
+	String TENANT_DETAILS = PREFIX + "tenant_details";
+
+	/**
+	 * Redis session 缓存前缀
+	 */
+	String REDIS_SESSION_PREFIX = PREFIX + "session";
+
+	/**
+	 * Redis token 缓存前缀
+	 */
+	String REDIS_TOKEN_PREFIX = PREFIX + "token" + SPLIT;
+
+	/**
+	 * Redis 客户端 缓存前缀
+	 */
+	String REDIS_CLIENTS_PREFIX = PREFIX + "clients" + SPLIT;
+
+	/**
+	 * 验证码缓存key
+	 */
+	String DEFAULT_CODE_KEY = PREFIX + "code" + SPLIT;
+
+	/**
+	 * 默认过期时间 60秒
+	 */
+	int DEFAULT_EXPIRE_SECONDS = 60;
 }

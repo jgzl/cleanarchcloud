@@ -16,20 +16,14 @@
 
 package com.gitee.common.core.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import com.gitee.common.core.util.Result;
 
 /**
  * @author lihaifeng
  */
 @Controller
 public class PlatformErrorPageController {
-	@GetMapping("/error/404")
+/*	@GetMapping("/error/404")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public Result error404() {
@@ -41,5 +35,5 @@ public class PlatformErrorPageController {
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public Result error500() {
 		return Result.failed("500后台异常");
-	}
+	}*/
 }

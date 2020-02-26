@@ -9,13 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
+import com.gitee.common.security.annotation.EnableFeignClientsPlus;
 
 /**
  * @author lihaifeng
  */
 @EnableSwaggerPlus
-@EnablePlatformFeignClientsPlus
+@EnableFeignClientsPlus
 @EnableDiscoveryClient
 @SpringBootApplication
 public class DemoApplication {

@@ -21,8 +21,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnablePlatformFeignClientsPlus;
-import com.gitee.common.security.annotation.EnablePlatformResourceServerPlus;
+import com.gitee.common.security.annotation.EnableFeignClientsPlus;
+import com.gitee.common.security.annotation.EnableResourceServerPlus;
 
 /**
  * @author lihaifeng
@@ -30,8 +30,8 @@ import com.gitee.common.security.annotation.EnablePlatformResourceServerPlus;
 @SpringBootApplication
 @EnableSwaggerPlus
 @EnableDiscoveryClient
-@EnablePlatformFeignClientsPlus
-@EnablePlatformResourceServerPlus
+@EnableFeignClientsPlus
+@EnableResourceServerPlus
 public class UpmsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UpmsApplication.class, args);

@@ -40,16 +40,42 @@ public interface SecurityConstants {
 	/**
 	 * 前缀
 	 */
-	String PLATFORM_PREFIX = "platform_";
+	String APP_PREFIX = "phoenix_";
+
+	/**
+	 * basic
+	 */
+	String BASIC_HEADER = "Basic ";
+
+	/**
+	 * AUTHORIZATION name
+	 */
+	String AUTHORIZATION = "Authorization";
+
+	/**
+	 * 用户名信息头
+	 */
+	String USER_NAME_HEADER = "x-user-name";
+
+	/**
+	 * 用户密码信息头
+	 */
+	String USER_ID_HEADER = "x-user-id";
+
+	/**
+	 * license key
+	 */
+	String LICENSE_KEY = "license";
+
+	/**
+	 * 项目的license
+	 */
+	String LICENSE = "made by phoenix";
 
 	/**
 	 * oauth 相关前缀
 	 */
 	String OAUTH_PREFIX = "oauth:";
-	/**
-	 * 项目的license
-	 */
-	String PLATFORM_LICENSE = "made by platform";
 
 	/**
 	 * 内部
@@ -65,20 +91,6 @@ public interface SecurityConstants {
 	 * OAUTH URL
 	 */
 	String OAUTH_TOKEN_URL = "/oauth/token";
-
-	/**
-	 * 手机号登录URL
-	 */
-	String SMS_TOKEN_URL = "/mobile/token/sms";
-
-	/**
-	 * 社交登录URL
-	 */
-	String SOCIAL_TOKEN_URL = "/mobile/token/social";
-	/**
-	 * 自定义登录URL
-	 */
-	String MOBILE_TOKEN_URL = "/mobile/token/*";
 
 	/**
 	 * 微信获取OPENID
@@ -130,7 +142,7 @@ public interface SecurityConstants {
 	 * JdbcClientDetailsService 查询语句
 	 */
 	String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
-			+ " from platform_oauth_client_details";
+			+ " from sso_oauth_client_details";
 
 	/**
 	 * 默认的查询语句
@@ -176,6 +188,16 @@ public interface SecurityConstants {
 	 * AES 加密
 	 */
 	String AES = "aes";
+
+	/**
+	 * 手机号获取token路径
+	 */
+	String MOBILE_TOKEN_URL = "/oauth/mobile";
+
+	/**
+	 * 手机号登录路径
+	 */
+	String MOBILE_LOGIN_URL = "/login/mobile";
 
 	/**
 	 * springboot暴露信息
