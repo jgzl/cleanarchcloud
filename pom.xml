@@ -337,6 +337,7 @@
 				<version>${maven.resources.version}</version>
 				<configuration>
 					<encoding>${maven.encoding}</encoding>
+					<useDefaultDelimiters>true</useDefaultDelimiters>
 				</configuration>
 			</plugin>
 			<plugin>
