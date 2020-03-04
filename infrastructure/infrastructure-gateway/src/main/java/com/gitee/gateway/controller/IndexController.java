@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.gitee.gateway.feign.service.DemoRemoteService;
-
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
@@ -24,9 +22,6 @@ public class IndexController {
 
 	@Autowired
 	private RestTemplate restTemplate;
-
-	@Autowired
-	private DemoRemoteService demoRemoteService;
 
 	/**
 	 * http://localhost:8081/demo
@@ -42,16 +37,5 @@ public class IndexController {
 	public Mono<String> ping(ServerHttpRequest serverHttpRequest) {
 		log.info("ping_url:{}", serverHttpRequest.getURI());
 		return Mono.just("pong");
-	}
-
-	/**
-	 * 使用openfeign调用demoservice相关服务
-	 * @param serverHttpRequest
-	 * @return
-	 */
-	@RequestMapping("test")
-	public Mono<String> test(ServerHttpRequest serverHttpRequest) {
-		log.info("demo service port:{}", demoRemoteService.getServerPort());
-		return Mono.just("demo service port:" + demoRemoteService.getServerPort());
 	}
 }

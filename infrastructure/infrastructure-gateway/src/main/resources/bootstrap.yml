@@ -17,3 +17,20 @@ spring:
             refresh: true
       discovery:
         namespace: @pom.nacos.namespace@
+    sentinel:
+      #      datasource.ds2.file:
+      #        file: "classpath: gateway.json"
+      #        ruleType: gw-flow
+      #      datasource.ds1.file:
+      #        file: "classpath: api.json"
+      #        ruleType: gw-api-group
+      transport:
+        dashboard: 192.168.0.3:8888
+      #      filter:
+      #        enabled: true
+      #      scg.fallback:
+      #        mode: response
+      #        response-status: 444
+      #        response-body: "被限流或者降级了"
+      scg:
+        order: -100

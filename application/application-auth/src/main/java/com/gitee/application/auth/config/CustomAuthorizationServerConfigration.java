@@ -104,8 +104,8 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) {
         security
-                .tokenKeyAccess("isAuthenticated()")
-                .checkTokenAccess("permitAll()")
+				.tokenKeyAccess("isAuthenticated()")
+				.checkTokenAccess("isAuthenticated()")
                 //allowFormAuthenticationForClients是为了注册clientCredentialsTokenEndpointFilter
                 //clientCredentialsTokenEndpointFilter,解析request中的client_id和client_secret
                 //构造成UsernamePasswordAuthenticationToken,然后通过UserDetailsService查询作简单的认证而已
