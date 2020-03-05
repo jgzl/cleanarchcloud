@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gitee.application.auth.mapper.SsoOauthClientDetailsMapper;
@@ -36,7 +37,8 @@ public class SsoOauthClientDetailsServiceImpl extends ServiceImpl<SsoOauthClient
 
     @Override
     public SsoOauthClientDetailsVO getVo(final String clientId) {
-        final SsoOauthClientDetailsDAO client = this.getById(clientId);
+		final SsoOauthClientDetailsDAO client = this.getOne(Wrappers.<SsoOauthClientDetailsDAO>lambdaQuery()
+				.eq(SsoOauthClientDetailsDAO::getClientId, clientId));
         return new SsoOauthClientDetailsVO(client);
     }
 
@@ -67,9 +69,11 @@ public class SsoOauthClientDetailsServiceImpl extends ServiceImpl<SsoOauthClient
 
     @Override
     public Boolean delete(final String clientId) {
-        if (this.getById(clientId) == null) {
-            throw new BusiException("不存在的客户端ID: " + clientId);
-        }
+		if (this.getOne(
+				Wrappers.<SsoOauthClientDetailsDAO>lambdaQuery().eq(SsoOauthClientDetailsDAO::getClientId, clientId))
+				== null) {
+			throw new BusiException("不存在的客户端ID: " + clientId);
+		}
         final String key = CacheConstants.REDIS_CLIENTS_PREFIX + clientId;
         if (redisRepository.exists(key)) {
             if (log.isDebugEnabled()) {
@@ -77,7 +81,8 @@ public class SsoOauthClientDetailsServiceImpl extends ServiceImpl<SsoOauthClient
             }
             redisRepository.del(key);
         }
-        return this.removeById(clientId);
+		return this.remove(Wrappers.<SsoOauthClientDetailsDAO>lambdaQuery()
+				.eq(SsoOauthClientDetailsDAO::getClientId, clientId));
     }
 
     @Override

@@ -15,3 +15,41 @@ spring:
             refresh: true
       discovery:
         namespace: @pom.nacos.namespace@
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+      datasource:
+        # 名称随意
+        flow:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: flow
+        degrade:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
+            rule-type: degrade
+        system:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
+            rule-type: system
+        authority:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
+            rule-type: authority
+        param-flow:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-param-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: param-flow
+      filter:
+        enabled: true
+        url-patterns: /**
