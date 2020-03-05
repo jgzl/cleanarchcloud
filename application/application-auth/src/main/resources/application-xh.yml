@@ -44,6 +44,7 @@ sso:
       secret: taroco!@#$
       alias: taroco
     url-permit-all:
+      - /test/**
       - /v2/api-docs
       - /actuator/**
       - /smsCode/*
