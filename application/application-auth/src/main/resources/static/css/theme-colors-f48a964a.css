@@ -1,47 +1,176 @@
 
-a[data-v-3935b0ba]{color:#1890ff}
-a[data-v-3935b0ba]:hover{color:#40a9ff}
-a[data-v-3935b0ba]:active{color:#096dd9}
-[data-v-3935b0ba]::-moz-selection{background:#1890ff}
-[data-v-3935b0ba]::selection{background:#1890ff}
-.ant-click-animating-node[data-v-3935b0ba],[ant-click-animating-without-extra-node][data-v-3935b0ba]:after{border:0 solid #1890ff}
-.chart-mini-progress .progress-wrapper .progress[data-v-6cf3d8ac]{background-color:#1890ff}
-a[data-v-2a8e8ed8]{color:#1890ff}
-a[data-v-2a8e8ed8]:hover{color:#40a9ff}
-a[data-v-2a8e8ed8]:active{color:#096dd9}
-[data-v-2a8e8ed8]::-moz-selection{background:#1890ff}
-[data-v-2a8e8ed8]::selection{background:#1890ff}
-.ant-click-animating-node[data-v-2a8e8ed8],[ant-click-animating-without-extra-node][data-v-2a8e8ed8]:after{border:0 solid #1890ff}
-a[data-v-65626eea]{color:#1890ff}
-a[data-v-65626eea]:hover{color:#40a9ff}
-a[data-v-65626eea]:active{color:#096dd9}
-[data-v-65626eea]::-moz-selection{background:#1890ff}
-[data-v-65626eea]::selection{background:#1890ff}
-.ant-click-animating-node[data-v-65626eea],[ant-click-animating-without-extra-node][data-v-65626eea]:after{border:0 solid #1890ff}
-a[data-v-91314cf4]{color:#1890ff}
-a[data-v-91314cf4]:hover{color:#40a9ff}
-a[data-v-91314cf4]:active{color:#096dd9}
-[data-v-91314cf4]::-moz-selection{background:#1890ff}
-[data-v-91314cf4]::selection{background:#1890ff}
-.ant-click-animating-node[data-v-91314cf4],[ant-click-animating-without-extra-node][data-v-91314cf4]:after{border:0 solid #1890ff}
-a[data-v-6ed91afc]{color:#1890ff}
-a[data-v-6ed91afc]:hover{color:#40a9ff}
-a[data-v-6ed91afc]:active{color:#096dd9}
-[data-v-6ed91afc]::-moz-selection{background:#1890ff}
-[data-v-6ed91afc]::selection{background:#1890ff}
-.ant-click-animating-node[data-v-6ed91afc],[ant-click-animating-without-extra-node][data-v-6ed91afc]:after{border:0 solid #1890ff}
-.setting-drawer-index-content .setting-drawer-index-blockChecbox .setting-drawer-index-item .setting-drawer-index-selectIcon[data-v-f4163356]{color:#1890ff}
-.setting-drawer-index-handle[data-v-f4163356]{background:#1890ff}
-a{color:#1890ff}
-a:hover{color:#40a9ff}
-a:active{color:#096dd9}
-::-moz-selection{background:#1890ff}
-::selection{background:#1890ff}
-.ant-click-animating-node,[ant-click-animating-without-extra-node]:after{border:0 solid #1890ff}
-.layout.ant-layout .header .user-wrapper .action .avatar,.layout.ant-layout .top-nav-header-index .user-wrapper .action .avatar{color:#1890ff}
-.ant-alert-info{border:1px solid #91d5ff;background-color:#e6f7ff}
-.ant-alert-info .ant-alert-icon{color:#1890ff}
-.ant-anchor-ink-ball{border:2px solid #1890ff}
+a[data-v-3935b0ba] {
+  color: #1890ff
+}
+
+a[data-v-3935b0ba]:hover {
+  color: #40a9ff
+}
+
+a[data-v-3935b0ba]:active {
+  color: #096dd9
+}
+
+[data-v-3935b0ba]::-moz-selection {
+  background: #1890ff
+}
+
+[data-v-3935b0ba]::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node[data-v-3935b0ba], [ant-click-animating-without-extra-node][data-v-3935b0ba]:after {
+  border: 0 solid #1890ff
+}
+
+.chart-mini-progress .progress-wrapper .progress[data-v-6cf3d8ac] {
+  background-color: #1890ff
+}
+
+a[data-v-1b1681a0] {
+  color: #1890ff
+}
+
+a[data-v-1b1681a0]:hover {
+  color: #40a9ff
+}
+
+a[data-v-1b1681a0]:active {
+  color: #096dd9
+}
+
+[data-v-1b1681a0]::-moz-selection {
+  background: #1890ff
+}
+
+[data-v-1b1681a0]::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node[data-v-1b1681a0], [ant-click-animating-without-extra-node][data-v-1b1681a0]:after {
+  border: 0 solid #1890ff
+}
+
+a[data-v-65626eea] {
+  color: #1890ff
+}
+
+a[data-v-65626eea]:hover {
+  color: #40a9ff
+}
+
+a[data-v-65626eea]:active {
+  color: #096dd9
+}
+
+[data-v-65626eea]::-moz-selection {
+  background: #1890ff
+}
+
+[data-v-65626eea]::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node[data-v-65626eea], [ant-click-animating-without-extra-node][data-v-65626eea]:after {
+  border: 0 solid #1890ff
+}
+
+a[data-v-91314cf4] {
+  color: #1890ff
+}
+
+a[data-v-91314cf4]:hover {
+  color: #40a9ff
+}
+
+a[data-v-91314cf4]:active {
+  color: #096dd9
+}
+
+[data-v-91314cf4]::-moz-selection {
+  background: #1890ff
+}
+
+[data-v-91314cf4]::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node[data-v-91314cf4], [ant-click-animating-without-extra-node][data-v-91314cf4]:after {
+  border: 0 solid #1890ff
+}
+
+a[data-v-6ed91afc] {
+  color: #1890ff
+}
+
+a[data-v-6ed91afc]:hover {
+  color: #40a9ff
+}
+
+a[data-v-6ed91afc]:active {
+  color: #096dd9
+}
+
+[data-v-6ed91afc]::-moz-selection {
+  background: #1890ff
+}
+
+[data-v-6ed91afc]::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node[data-v-6ed91afc], [ant-click-animating-without-extra-node][data-v-6ed91afc]:after {
+  border: 0 solid #1890ff
+}
+
+.setting-drawer-index-content .setting-drawer-index-blockChecbox .setting-drawer-index-item .setting-drawer-index-selectIcon[data-v-3f5cb25d] {
+  color: #1890ff
+}
+
+.setting-drawer-index-handle[data-v-3f5cb25d] {
+  background: #1890ff
+}
+
+a {
+  color: #1890ff
+}
+
+a:hover {
+  color: #40a9ff
+}
+
+a:active {
+  color: #096dd9
+}
+
+::-moz-selection {
+  background: #1890ff
+}
+
+::selection {
+  background: #1890ff
+}
+
+.ant-click-animating-node, [ant-click-animating-without-extra-node]:after {
+  border: 0 solid #1890ff
+}
+
+.layout.ant-layout .header .user-wrapper .action .avatar, .layout.ant-layout .top-nav-header-index .user-wrapper .action .avatar {
+  color: #1890ff
+}
+
+.ant-alert-info {
+  border: 1px solid #91d5ff;
+  background-color: #e6f7ff
+}
+
+.ant-alert-info .ant-alert-icon {
+  color: #1890ff
+}
+
+.ant-anchor-ink-ball {
+  border: 2px solid #1890ff
+}
 .ant-anchor-link-active>.ant-anchor-link-title{color:#1890ff}
 .ant-select-auto-complete.ant-select .ant-input:focus,.ant-select-auto-complete.ant-select .ant-input:hover{border-color:#40a9ff}
 .ant-badge-status-processing{background-color:#1890ff}
@@ -239,5 +368,11 @@ a:active{color:#096dd9}
 .ant-upload.ant-upload-drag.ant-upload-drag-hover:not(.ant-upload-disabled){border:2px dashed #40a9ff}
 .ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover{border-color:#40a9ff}
 .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon{color:#40a9ff}
-.ant-upload-list-item:hover .ant-upload-list-item-info{background-color:#e6f7ff}
-.user-layout-login .user-login-other .item-icon[data-v-ef44164e]:hover{color:#1890ff}
+
+.ant-upload-list-item:hover .ant-upload-list-item-info {
+  background-color: #e6f7ff
+}
+
+.user-layout-login .user-login-other .item-icon[data-v-3cc16f86]:hover {
+  color: #1890ff
+}

@@ -47,7 +47,7 @@ sso:
       - /test/**
       - /v2/api-docs
       - /actuator/**
-      - /smsCode/*
+      - /user/smsCode/*
       - /login/mobile
       - /oauth/mobile
       - /oauth/exit
