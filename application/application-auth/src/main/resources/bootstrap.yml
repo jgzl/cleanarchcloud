@@ -17,7 +17,12 @@ spring:
         namespace: @pom.nacos.namespace@
     sentinel:
       transport:
-        dashboard: localhost:8888
+        dashboard: 127.0.0.1:8888
+        client-ip: 127.0.0.1
+      eager: true
+      filter:
+        enabled: true
+        url-patterns: /*
       datasource:
         # 名称随意
         flow:
