@@ -92,7 +92,7 @@ public class LogRecordHandler {
 				OperateLog operateLog = new OperateLog();
 				operateLog.setFullName(user.getUsername());
 				operateLog.setUsername(user.getUsername());
-				operateLog.setUserId(user.getUserId());
+				operateLog.setUserId(Long.valueOf(user.getUserId()));
 				operateLog.setOperateContent(operateContent);
 				operateLog.setOperateModule(operateModule);
 				operateLog.setServiceName("123");

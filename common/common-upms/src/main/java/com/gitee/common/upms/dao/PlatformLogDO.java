@@ -47,7 +47,7 @@ public class PlatformLogDO extends BaseDO<PlatformLogDO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "日志id")
-	@TableId(value = "log_id", type = IdType.ID_WORKER)
+	@TableId(value = "log_id", type = IdType.ASSIGN_ID)
 	private Long logId;
 
 	@ApiModelProperty(value = "操作用户")

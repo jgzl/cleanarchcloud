@@ -1,3 +1,5 @@
+package com.gitee.application.auth;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class EncodePasswordTest {

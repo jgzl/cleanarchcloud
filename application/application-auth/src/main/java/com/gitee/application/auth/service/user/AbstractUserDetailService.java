@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.vo.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,11 +22,11 @@ public abstract class AbstractUserDetailService implements UserDetailsService {
         return getUserVO(username);
     }
 
-    /**
-     * 获取 SsoUserVO 对象
-     *
-     * @param username 用户名
-     * @return
-     */
-    protected abstract SsoUserVO getUserVO(String username);
+	/**
+	 * 获取 SsoUserVO 对象
+	 *
+	 * @param username 用户名
+	 * @return
+	 */
+	protected abstract UserVO getUserVO(String username);
 }

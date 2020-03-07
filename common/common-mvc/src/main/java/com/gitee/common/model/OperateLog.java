@@ -42,7 +42,7 @@ import lombok.Setter;
 public class OperateLog extends BaseDO<OperateLog> implements Serializable {
 
 	@ApiModelProperty("主键id")
-	@TableId(type = IdType.ID_WORKER)
+	@TableId(type = IdType.ASSIGN_ID)
 	private String id;
 
 	@ApiModelProperty("用户Id")

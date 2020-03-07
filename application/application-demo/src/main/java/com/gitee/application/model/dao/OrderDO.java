@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 @TableName("o_order")
 public class OrderDO extends BaseDO implements Serializable {
-	@TableId(type = IdType.ID_WORKER)
+	@TableId(type = IdType.ASSIGN_ID)
 	private Long id;
 
 	private Long shopId;

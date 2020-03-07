@@ -1,26 +1,14 @@
 package com.gitee.common.security.vo;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.common.core.sensitive.Sensitive;
 import com.gitee.common.core.sensitive.SensitiveTypeEnum;
 import com.gitee.common.data.bo.BaseDO;
+import com.gitee.common.security.dao.SsoUserDAO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import cn.hutool.core.collection.CollUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -36,15 +24,13 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel(value = "SsoUser对象", description = "单点登录用户表 ")
-@TableName("sso_user")
-public class SsoUserVO extends BaseDO<SsoUserVO> implements UserDetails {
+@ApiModel(value = "SsoUser对象", description = "单点登录用户表")
+public class SsoUserVO extends BaseDO<SsoUserVO> {
 
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "用户id")
-	@TableId(value = "id", type = IdType.ID_WORKER)
-	private Long userId;
+	private String userId;
 
 	@ApiModelProperty(value = "用户姓名(账户)")
 	private String username;
@@ -78,64 +64,26 @@ public class SsoUserVO extends BaseDO<SsoUserVO> implements UserDetails {
 	@ApiModelProperty(value = "头像")
 	private String avatar;
 
-	/**
-	 * 是否过期
-	 */
-	private Boolean expired;
-
-	/**
-	 * 是否锁定
-	 */
-	private Boolean locked;
-
-	/**
-	 * 是否可用
-	 */
-	private Boolean enabled;
-
-	/**
-	 * 密码是否过期
-	 */
-	private Boolean passwordExpired;
-
-	/**
-	 * 角色列表
-	 */
-	private List<SsoRoleVO> roles = new ArrayList<>();
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if (CollUtil.isEmpty(roles)) {
-			return Collections.emptyList();
-		}
-		final List<GrantedAuthority> authorities = new ArrayList<>(AuthorityUtils.createAuthorityList(
-				roles.stream().map(SsoRoleVO::getAuthority).collect(Collectors.joining())));
-		roles.forEach(role -> {
-			if (CollUtil.isNotEmpty(role.getOperations())) {
-				authorities.addAll(AuthorityUtils.createAuthorityList(
-						role.getOperations().stream().map(Operation::getAuthority).collect(Collectors.joining())));
-			}
-		});
-		return authorities;
+	public SsoUserVO() {
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return !expired;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return !locked;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return !passwordExpired;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return enabled;
+	public SsoUserVO(SsoUserDAO user) {
+		this.setUserId(String.valueOf(user.getUserId()));
+		this.setCreateUser(user.getCreateUser());
+		this.setCreateDate(user.getCreateDate());
+		this.setUpdateUser(user.getUpdateUser());
+		this.setUpdateDate(user.getUpdateDate());
+		this.setVersion(user.getVersion());
+		this.setDeleted(user.getDeleted());
+		this.setUsername(user.getUsername());
+		this.setNickname(user.getNickname());
+		//不给前端传递密码 this.setPassword(user.getPassword());
+		this.setMobile(user.getMobile());
+		this.setEmail(user.getEmail());
+		this.setLoginCount(user.getLoginCount());
+		this.setLoginErrorCount(user.getLoginErrorCount());
+		this.setLoginTime(user.getLoginTime());
+		this.setLoginStatus(user.getLoginStatus());
+		this.setAvatar(user.getAvatar());
 	}
 }

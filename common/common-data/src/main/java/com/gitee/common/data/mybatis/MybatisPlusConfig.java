@@ -9,11 +9,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 
 /**
  * xuhang
@@ -45,17 +43,6 @@ public class MybatisPlusConfig {
 	@Bean
 	public OptimisticLockerInterceptor optimisticLockerInterceptor() {
 		return new OptimisticLockerInterceptor();
-	}
-
-
-	/**
-	 * SQL执行效率插件
-	 */
-	@Bean
-	@Profile({"dev", "test"})// 设置 dev test 环境开启
-	@ConditionalOnMissingBean
-	public PerformanceInterceptor performanceInterceptor() {
-		return new PerformanceInterceptor();
 	}
 
 	@Bean

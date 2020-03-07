@@ -47,7 +47,7 @@ public class PlatformMenuDO extends BaseDO<PlatformMenuDO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "菜单/按钮id")
-	@TableId(value = "menu_id", type = IdType.ID_WORKER)
+	@TableId(value = "menu_id", type = IdType.ASSIGN_ID)
 	private Long menuId;
 
 	@ApiModelProperty(value = "上级菜单id")

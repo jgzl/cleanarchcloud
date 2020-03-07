@@ -76,7 +76,7 @@ public class CodeGeneratorTest {
 		gc.setAuthor("lihaifeng");
 		gc.setOpen(true);
 		gc.setSwagger2(true); //实体属性 Swagger2 注解
-		gc.setIdType(IdType.ID_WORKER);
+		gc.setIdType(IdType.ASSIGN_ID);
 		gc.setBaseResultMap(true);
 		gc.setBaseColumnList(true);
 		mpg.setGlobalConfig(gc);

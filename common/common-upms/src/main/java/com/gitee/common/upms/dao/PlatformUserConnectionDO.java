@@ -45,7 +45,7 @@ public class PlatformUserConnectionDO extends BaseDO<PlatformUserConnectionDO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "平台系统用户关联第三方用户id")
-	@TableId(value = "user_connection_id", type = IdType.ID_WORKER)
+	@TableId(value = "user_connection_id", type = IdType.ASSIGN_ID)
 	private Long userConnectionId;
 
 	@ApiModelProperty(value = "平台系统用户名")

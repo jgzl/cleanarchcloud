@@ -253,7 +253,7 @@ CREATE TABLE `sso_user`  (
   `login_error_count` int(11) NOT NULL DEFAULT 0 COMMENT '登录错误次数',
   `login_time` datetime(0) NOT NULL COMMENT '登录时间(最新)',
   `login_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '账号状态',
-  `avatar` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '\"https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96\"' COMMENT '头像',
+  `avatar` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96' COMMENT '头像',
   `version` int(11) NOT NULL DEFAULT 0 COMMENT '乐观锁',
   `create_user` bigint(20) NOT NULL COMMENT '创建人',
   `create_date` datetime(0) NOT NULL COMMENT '创建时间',
@@ -269,7 +269,7 @@ CREATE TABLE `sso_user`  (
 -- ----------------------------
 -- Records of sso_user
 -- ----------------------------
-INSERT INTO `sso_user` VALUES (0, 'admin', 'admin-nickname', '{bcrypt}$2a$10$UN122m92j4urCWio9CkMrOYyODshc.RSEiap7x/kJiFw838v0Odsu', '17000000000', '', 0, 0, '2020-01-09 17:31:27', 0, '', 0, 0, '2020-01-09 17:31:28', 0, '2020-01-09 17:31:28', 0);
+INSERT INTO `sso_user` VALUES (0, 'admin', 'admin-nickname', '{bcrypt}$2a$10$UN122m92j4urCWio9CkMrOYyODshc.RSEiap7x/kJiFw838v0Odsu', '17000000000', 'li7hai26@gmail.com', 0, 0, '2020-01-09 17:31:27', 0, 'https://upload.jianshu.io/users/upload_avatars/2631077/dc99c361412c?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96', 0, 0, '2020-01-09 17:31:28', 0, '2020-01-09 17:31:28', 0);
 
 -- ----------------------------
 -- Table structure for sso_user_connection

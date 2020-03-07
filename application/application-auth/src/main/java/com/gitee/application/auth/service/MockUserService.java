@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gitee.common.core.constant.CommonConstants;
 import com.gitee.common.security.vo.Operation;
 import com.gitee.common.security.vo.SsoRoleVO;
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.vo.UserVO;
 
 import cn.hutool.core.util.RandomUtil;
 
@@ -28,49 +28,51 @@ public class MockUserService {
 
     private static final String PWD = "$2a$10$X8qJKHLTM9MjCVv9JE.dNOkqzuXkLfJ5kdt45x9AG.7aFby8JLdAC";
 
-    /**
-     * 根据用户名称返回用户
-     *
-     * @param username 用户名称,必须唯一
-     * @return
-     */
-    public SsoUserVO findUserByUsername(String username) {
-        final SsoUserVO user = new SsoUserVO();
-        user.setUsername(username);
-        // 密码和用户名保持一致
-        user.setPassword(PWD);
-        user.setEnabled(true);
-        user.setUserId(RandomUtil.randomLong());
-        user.setEnabled(true);
-        user.setExpired(false);
-        user.setLocked(false);
-        user.setPasswordExpired(false);
-        user.setRoles(Collections.singletonList(defaultRole()));
+	/**
+	 * 根据用户名称返回用户
+	 *
+	 * @param username 用户名称,必须唯一
+	 * @return
+	 */
+	public UserVO findUserByUsername(String username) {
+		final UserVO user = new UserVO();
+		user.setUsername(username);
+		// 密码和用户名保持一致
+		user.setPassword(PWD);
+		user.setEnabled(true);
+		user.setUserId(RandomUtil.randomLong());
+		user.setEnabled(true);
+		user.setExpired(false);
+		user.setLocked(false);
+		user.setPasswordExpired(false);
+		user.setRoles(Collections.singletonList(defaultRole()));
         return user;
     }
 
-    /**
-     * 根据手机号返回用户
-     *
-     * @param mobile 手机号,必须唯一
-     * @return
-     */
-    public SsoUserVO findUserByMobile(String mobile) {
-        final SsoUserVO user = new SsoUserVO();
-        user.setUsername(mobile);
-        // 密码和用户名保持一致
-        user.setPassword(encoder.encode(mobile));
-        user.setEnabled(true);
-        user.setUserId(RandomUtil.randomLong());
-        user.setEnabled(true);
-        user.setExpired(false);
-        user.setLocked(false);
-        user.setPasswordExpired(false);
-        user.setRoles(Collections.singletonList(defaultRole()));
+	/**
+	 * 根据手机号返回用户
+	 *
+	 * @param mobile 手机号,必须唯一
+	 * @return
+	 */
+	public UserVO findUserByMobile(String mobile) {
+		final UserVO user = new UserVO();
+		user.setUsername(mobile);
+		// 密码和用户名保持一致
+		user.setPassword(encoder.encode(mobile));
+		user.setEnabled(true);
+		user.setUserId(RandomUtil.randomLong());
+		user.setEnabled(true);
+		user.setExpired(false);
+		user.setLocked(false);
+		user.setPasswordExpired(false);
+		user.setRoles(Collections.singletonList(defaultRole()));
         return user;
     }
 
     private SsoRoleVO defaultRole() {
-        return new SsoRoleVO().setRemark(CommonConstants.ROLE_DEFAULT).setOperations( Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
-    }
+		return new SsoRoleVO().setRemark(
+				CommonConstants.ROLE_DEFAULT)
+				.setOperations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
+	}
 }

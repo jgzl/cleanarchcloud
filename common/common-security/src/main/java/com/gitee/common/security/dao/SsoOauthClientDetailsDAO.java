@@ -1,5 +1,7 @@
 package com.gitee.common.security.dao;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.gitee.common.security.vo.SsoOauthClientDetailsVO;
@@ -20,15 +22,16 @@ import lombok.experimental.Accessors;
 @TableName("sso_oauth_client_details")
 public class SsoOauthClientDetailsDAO extends Model<SsoOauthClientDetailsDAO> {
 
-    private String clientId;
+	@TableId(type = IdType.INPUT)
+	private String clientId;
 
-    private String appName;
+	private String appName;
 
-    private String resourceIds;
+	private String resourceIds;
 
-    private String clientSecret;
+	private String clientSecret;
 
-    private String scope;
+	private String scope;
 
     private String authorizedGrantTypes;
 

@@ -6,7 +6,7 @@ import {axios} from '@/utils/request'
  * @param {用户名,密码} data
  */
 export function login (data) {
-  const { username, password } = data
+  const {username, password} = data;
   return axios({
     url: '/login',
     method: 'post',
@@ -27,14 +27,14 @@ export const loginByMobile = (params) => {
     method: 'post',
     params
   })
-}
+};
 
 /**
  * 查询用户信息
  */
 export function getInfo () {
   return axios({
-    url: '/user',
+    url: '/user/userInfo',
     method: 'get'
   })
 }
@@ -52,9 +52,62 @@ export function logout () {
 /**
  * 发送手机验证码
  */
-export function smsCode (mobile) {
+export function smsCode(mobile) {
   return axios({
-    url: `/smsCode/${mobile}`,
+    url: `/user/smsCode/${mobile}`,
     method: 'get'
+  })
+}
+
+/**
+ * 查询单个用户
+ */
+export function getUser(userId) {
+  return axios({
+    url: `/user/${userId}`,
+    method: 'get'
+  })
+}
+
+/**
+ * 查询用户分页
+ */
+export function getList(params) {
+  return axios({
+    url: `/user`,
+    method: 'get',
+    params
+  })
+}
+
+/**
+ * 修改单个用户
+ */
+export function updateUser(data) {
+  return axios({
+    url: `/user`,
+    method: 'put',
+    data
+  })
+}
+
+/**
+ * 新增单个用户
+ */
+export function addUser(data) {
+  return axios({
+    url: `/user`,
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 删除单个用户
+ */
+export function deleteUser(userId) {
+  return axios({
+    url: `/user/${userId}`,
+    method: 'delete'
   })
 }

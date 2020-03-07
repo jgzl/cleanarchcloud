@@ -45,7 +45,7 @@ public class SsoRoleDAO extends BaseDO<SsoRoleDAO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "角色id")
-	@TableId(value = "role_id", type = IdType.ID_WORKER)
+	@TableId(value = "role_id", type = IdType.ASSIGN_ID)
 	private Long roleId;
 
 	@ApiModelProperty(value = "角色名称")

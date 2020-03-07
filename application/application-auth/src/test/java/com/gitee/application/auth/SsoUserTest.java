@@ -12,8 +12,8 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- *//*
-
+ */
+package com.gitee.application.auth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,9 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.gitee.application.auth.AuthApplication;
 import com.gitee.application.auth.service.SsoUserService;
-import com.gitee.common.upms.dto.UserDTO;
+import com.gitee.common.security.vo.SsoUserVO;
 
 import cn.hutool.core.lang.Assert;
 
@@ -41,14 +40,14 @@ public class SsoUserTest {
 
 	@Test
 	public void save() {
-		UserDTO user = new UserDTO();
-		user.setId(-1L);
+		SsoUserVO user = new SsoUserVO();
+		user.setUserId("-10");
 		user.setUsername("test");
 		user.setPassword("test");
 		user.setMobile("17621006318");
 		user.setEmail("test@test.com");
 		user.setNickname("test-nickname");
-		userService.saveUser(user);
+		userService.add(user);
 	}
 
 	@Test
@@ -57,4 +56,3 @@ public class SsoUserTest {
 		Assert.isFalse(!b);
 	}
 }
-*/

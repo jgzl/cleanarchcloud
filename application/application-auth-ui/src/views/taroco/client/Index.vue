@@ -110,7 +110,7 @@
         onOk: () => {
           deleteClient(record.clientId).then(res => {
             if (res.status === 'SUCCEED') {
-              this.$message.success('操作成功!')
+              this.$message.success('操作成功!');
               this.refreshList()
             }
           })

@@ -13,7 +13,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.security.vo.AuthenticationBean;
 
 import lombok.extern.slf4j.Slf4j;

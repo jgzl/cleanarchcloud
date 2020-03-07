@@ -33,8 +33,8 @@ public class SsoUserDAO extends BaseDO<SsoUserDAO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "用户id")
-	@TableId(value = "id", type = IdType.ID_WORKER)
-	private Long id;
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
+	private Long userId;
 
 	@ApiModelProperty(value = "用户姓名(账户)")
 	private String username;

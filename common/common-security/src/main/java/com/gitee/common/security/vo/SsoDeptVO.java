@@ -43,7 +43,7 @@ public class SsoDeptVO extends BaseDO<SsoDeptVO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "部门id")
-	@TableId(value = "dept_id", type = IdType.ID_WORKER)
+	@TableId(value = "dept_id", type = IdType.ASSIGN_ID)
 	private Long deptId;
 
 	@ApiModelProperty(value = "上级部门id")

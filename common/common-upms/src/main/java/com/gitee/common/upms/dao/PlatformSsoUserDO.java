@@ -49,7 +49,7 @@ public class PlatformSsoUserDO extends BaseDO<PlatformSsoUserDO> {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "用户id")
-	@TableId(value = "id", type = IdType.ID_WORKER)
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
 	private Long id;
 
 	@ApiModelProperty(value = "用户姓名(账户)")

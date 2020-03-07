@@ -1,11 +1,10 @@
 package com.gitee.application.auth.service.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.stereotype.Service;
 
 import com.gitee.application.auth.service.SsoUserService;
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.vo.UserVO;
 
 /**
  *
@@ -22,11 +21,11 @@ public class MobileUserDetailsService extends AbstractUserDetailService {
 	}
 
 	@Override
-    protected SsoUserVO getUserVO(final String username) {
-        final SsoUserVO user = userService.findUserByMobile(username);
-        if (user == null) {
-            throw new InternalAuthenticationServiceException("手机号: " + username + ", 不存在");
-        }
-        return user;
-    }
+	protected UserVO getUserVO(final String username) {
+		final UserVO user = userService.findUserByMobile(username);
+		if (user == null) {
+			throw new InternalAuthenticationServiceException("手机号: " + username + ", 不存在");
+		}
+		return user;
+	}
 }

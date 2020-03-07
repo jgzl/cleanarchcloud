@@ -18,22 +18,28 @@ export const asyncRouterMap = [
       },
       // client
       {
-        path: '/client',
-        redirect: '/client/index',
+        path: '/manage',
+        redirect: '/manage/index',
         component: PageView,
-        meta: { title: '系统管理', icon: 'setting' },
+        meta: {title: '系统管理', icon: 'setting'},
         children: [
           {
-            path: '/client/index',
+            path: '/manage/client',
             name: 'clients',
             component: () => import('@/views/taroco/client/Index'),
-            meta: { title: '应用管理', icon: 'desktop' }
+            meta: {title: '应用管理', icon: 'desktop'}
+          },
+          {
+            path: '/manage/user',
+            name: 'user',
+            component: () => import('@/views/taroco/user/Index'),
+            meta: {title: '用户管理', icon: 'desktop'}
           }
         ]
       }
     ]
   }
-]
+];
 
 /**
  * 基础路由
@@ -83,7 +89,7 @@ export const constantRouterMap = [
         path: '/exception/500',
         name: 'Exception500',
         component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
-        meta: { title: '500' }
+        meta: {title: '500'}
       }
     ]
   },
@@ -91,4 +97,4 @@ export const constantRouterMap = [
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
   }
-]
+];
