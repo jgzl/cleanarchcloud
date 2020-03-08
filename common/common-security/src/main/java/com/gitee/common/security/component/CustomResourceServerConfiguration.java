@@ -59,6 +59,7 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 	@Bean
 	public TokenStore tokenStore() {
 		final RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+		tokenStore.setSerializationStrategy(new CustomStringSerializationStrategy());
 		tokenStore.setPrefix(CacheConstants.REDIS_TOKEN_PREFIX);
 		return tokenStore;
 	}

@@ -38,7 +38,8 @@ import com.gitee.common.core.config.SsoOauth2Properties;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.data.redis.CustomRedisRepository;
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.component.CustomStringSerializationStrategy;
+import com.gitee.common.security.vo.UserVO;
 
 /**
  * 认证服务器配置抽象
@@ -134,25 +135,25 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
     @Bean
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
-            final Authentication userAuthentication = authentication.getUserAuthentication();
-            if (userAuthentication == null) {
-                return accessToken;
-            }
-            Map<String, Object> additionalInfo = new LinkedHashMap<>(accessToken.getAdditionalInformation());
-            final Object principal = userAuthentication.getPrincipal();
-            SsoUserVO user;
-            if (principal instanceof SsoUserVO) {
-                user = (SsoUserVO) principal;
-            } else {
-                final String username = (String) principal;
-                user = (SsoUserVO) userNameUserDetailsService.loadUserByUsername(username);
-            }
-            additionalInfo.put(SecurityConstants.LICENSE_KEY, SecurityConstants.LICENSE);
-            additionalInfo.put(SecurityConstants.USER_NAME_HEADER, user.getUsername());
-            additionalInfo.put(SecurityConstants.USER_ID_HEADER, user.getUserId());
-            ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
-            return accessToken;
-        };
+			final Authentication userAuthentication = authentication.getUserAuthentication();
+			if (userAuthentication == null) {
+				return accessToken;
+			}
+			Map<String, Object> additionalInfo = new LinkedHashMap<>(accessToken.getAdditionalInformation());
+			final Object principal = userAuthentication.getPrincipal();
+			UserVO user;
+			if (principal instanceof UserVO) {
+				user = (UserVO) principal;
+			} else {
+				final String username = (String) principal;
+				user = (UserVO) userNameUserDetailsService.loadUserByUsername(username);
+			}
+			additionalInfo.put(SecurityConstants.LICENSE_KEY, SecurityConstants.LICENSE);
+			additionalInfo.put(SecurityConstants.USER_NAME_HEADER, user.getUsername());
+			additionalInfo.put(SecurityConstants.USER_ID_HEADER, user.getUserId());
+			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
+			return accessToken;
+		};
     }
 
     @Bean
@@ -192,6 +193,7 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 	@Bean
 	public TokenStore tokenStore() {
 		final RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+		tokenStore.setSerializationStrategy(new CustomStringSerializationStrategy());
 		tokenStore.setPrefix(CacheConstants.REDIS_TOKEN_PREFIX);
 		return tokenStore;
 	}
