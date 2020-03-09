@@ -130,7 +130,7 @@ public class AuthorizationFilter implements GlobalFilter, Ordered, InitializingB
 
 	@Override
 	public int getOrder() {
-		return 0;
+		return 1;
 	}
 
 	@Override

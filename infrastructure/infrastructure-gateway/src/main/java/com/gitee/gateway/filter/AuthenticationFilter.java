@@ -69,7 +69,7 @@ public class AuthenticationFilter implements GlobalFilter, Ordered, Initializing
 
 	@Override
 	public int getOrder() {
-		return 1;
+		return 2;
 	}
 
 	@Override
