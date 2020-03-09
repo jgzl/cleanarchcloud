@@ -31,6 +31,7 @@
         hasFeedback
       >
         <a-input
+          type="password"
           v-decorator="[
             'password',
             {rules: [{ required: true, min: 8,max: 32, message: '请输入用户密码,8以上32以内' }]
@@ -59,10 +60,16 @@
         hasFeedback
       >
         <a-input
-          v-decorator="[
-            'email',
-            {rules: [{ required: true, max: 64, message: '请输入邮件,64以内' }]
-            }]"
+          v-decorator="
+          ['email',
+            {
+              rules:
+              [
+                { required: true, max: 64, message: '请输入邮箱地址,256以内' },
+                { pattern: /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/, message: '请输入合法的邮箱地址' }
+              ]
+            }
+          ]"
         />
       </a-form-item>
 
@@ -75,7 +82,11 @@
         <a-input
           v-decorator="[
             'mobile',
-            {rules: [{ required: true, max: 64, message: '请输入手机号,64以内' }]
+            {
+              rules: [
+                { required: true, max: 64, message: '请输入手机号,11位' },
+                { pattern: /^1(3|4|5|6|7|8|9)\d{9}$/, message: '请输入合法的手机号码' }
+              ]
             }]"
         />
       </a-form-item>
