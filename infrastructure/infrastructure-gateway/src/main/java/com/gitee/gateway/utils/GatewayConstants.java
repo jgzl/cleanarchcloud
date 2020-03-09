@@ -19,8 +19,17 @@ package com.gitee.gateway.utils;
 /**
  * @author lihaifeng
  */
-public interface GatewayConstants {
-	String AUTHORIZATION = "Authorization";
-	String BEARER_SPACE = "Bearer ";
-	String BEARER = "Bearer";
+public class GatewayConstants {
+
+	public static final String AUTHORIZATION = "Authorization";
+
+	public static final String BEARER_SPACE = "Bearer ";
+
+	public static final String BEARER = "Bearer";
+
+	public static final String clientId = "app";
+
+	public static final String clientSecret = "app";
+
+	public static final String checkTokenUrl = "http://application-auth/oauth/check_token";
 }

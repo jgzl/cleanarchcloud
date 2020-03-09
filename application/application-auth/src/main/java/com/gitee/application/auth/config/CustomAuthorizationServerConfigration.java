@@ -38,7 +38,6 @@ import com.gitee.common.core.config.SsoOauth2Properties;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.data.redis.CustomRedisRepository;
-import com.gitee.common.security.component.CustomStringSerializationStrategy;
 import com.gitee.common.security.vo.UserVO;
 
 /**
@@ -106,8 +105,8 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
     public void configure(AuthorizationServerSecurityConfigurer security) {
         security
 				//isAuthenticated() permitAll()
-				.tokenKeyAccess("permitAll()")
-				.checkTokenAccess("permitAll()")
+				.tokenKeyAccess("isAuthenticated()")
+				.checkTokenAccess("isAuthenticated()")
                 //allowFormAuthenticationForClients是为了注册clientCredentialsTokenEndpointFilter
                 //clientCredentialsTokenEndpointFilter,解析request中的client_id和client_secret
                 //构造成UsernamePasswordAuthenticationToken,然后通过UserDetailsService查询作简单的认证而已
@@ -193,7 +192,6 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 	@Bean
 	public TokenStore tokenStore() {
 		final RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-		tokenStore.setSerializationStrategy(new CustomStringSerializationStrategy());
 		tokenStore.setPrefix(CacheConstants.REDIS_TOKEN_PREFIX);
 		return tokenStore;
 	}
