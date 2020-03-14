@@ -32,8 +32,8 @@ public class UsernamePasswordLogoutSuccessHandler implements LogoutSuccessHandle
 			ServletException {
         final Response resp = Response.success("登出成功");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(resp));
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+		response.getWriter().write(objectMapper.writeValueAsString(resp));
 		response.sendRedirect("http://localhost:8030");
     }
 }

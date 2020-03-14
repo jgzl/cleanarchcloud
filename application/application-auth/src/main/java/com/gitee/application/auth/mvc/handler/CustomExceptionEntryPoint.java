@@ -38,7 +38,7 @@ public class CustomExceptionEntryPoint implements AuthenticationEntryPoint {
         }
         final Response resp = Response.failure(authException.getMessage());
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(resp));
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+		response.getWriter().write(objectMapper.writeValueAsString(resp));
     }
 }

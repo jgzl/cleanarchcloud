@@ -45,7 +45,7 @@ public class UsernamePasswordAuthenticationSuccessHandler extends SavedRequestAw
         clearAuthenticationAttributes(request);
         final Response resp = Response.success(redirectUri);
         response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(resp));
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+		response.getWriter().write(objectMapper.writeValueAsString(resp));
     }
 }

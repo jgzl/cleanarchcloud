@@ -41,7 +41,7 @@ public class UsernamePasswordAuthenticationFailureHandler implements Authenticat
         }
         final Response resp = Response.failure(exception.getMessage());
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        response.getWriter().write(objectMapper.writeValueAsString(resp));
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+		response.getWriter().write(objectMapper.writeValueAsString(resp));
     }
 }

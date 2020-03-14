@@ -25,7 +25,6 @@
 		<module>common-security</module>
 		<module>common-swagger</module>
 		<module>common-data</module>
-		<module>common-upms</module>
 		<module>common-mvc</module>
 		<module>common-agent</module>
 	</modules>

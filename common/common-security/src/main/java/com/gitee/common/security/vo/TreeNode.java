@@ -14,26 +14,32 @@
  *    limitations under the License.
  */
 
-package com.gitee.application.upms;
+package com.gitee.common.security.vo;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.gitee.annotation.EnableSwaggerPlus;
-import com.gitee.common.security.annotation.EnableFeignClientsPlus;
-import com.gitee.common.security.annotation.EnableResourceServerPlus;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * @author lihaifeng
+ * @date 2017年11月9日23:33:45
  */
-@SpringBootApplication
-@EnableSwaggerPlus
-@EnableDiscoveryClient
-@EnableFeignClientsPlus
-@EnableResourceServerPlus
-public class UpmsApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(UpmsApplication.class, args);
+@Data
+@ApiModel(value = "树形节点")
+public class TreeNode {
+	@ApiModelProperty(value = "当前节点id")
+	protected int id;
+
+	@ApiModelProperty(value = "父节点id")
+	protected int parentId;
+
+	@ApiModelProperty(value = "子节点列表")
+	protected List<TreeNode> children = new ArrayList<TreeNode>();
+
+	public void add(TreeNode node) {
+		children.add(node);
 	}
 }

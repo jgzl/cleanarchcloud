@@ -14,13 +14,13 @@
  *    limitations under the License.
  */
 
-package com.gitee.common.upms.util;
+package com.gitee.common.security.util;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gitee.common.upms.dto.TreeNode;
+import com.gitee.common.security.vo.TreeNode;
 
 import lombok.experimental.UtilityClass;
 
@@ -29,7 +29,7 @@ import lombok.experimental.UtilityClass;
  * @date 2017年11月9日23:34:11
  */
 @UtilityClass
-public class TreeUtil {
+public class TreeUtils {
 	/**
 	 * 两层循环实现建树
 	 *

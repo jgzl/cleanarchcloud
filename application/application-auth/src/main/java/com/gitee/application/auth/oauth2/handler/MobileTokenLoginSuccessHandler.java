@@ -77,7 +77,7 @@ public class MobileTokenLoginSuccessHandler implements AuthenticationSuccessHand
             }
 
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-            response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             final PrintWriter printWriter = response.getWriter();
             printWriter.append(objectMapper.writeValueAsString(oAuth2AccessToken));
         } catch (IOException e) {

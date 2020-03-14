@@ -67,10 +67,6 @@
 			<artifactId>common-swagger</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.gitee</groupId>
-			<artifactId>common-upms</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 		</dependency>

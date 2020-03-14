@@ -35,15 +35,20 @@
 			<artifactId>common-core</artifactId>
 			<groupId>com.gitee</groupId>
 		</dependency>
-		<!--用户接口-->
+		<!--数据库操作包-->
 		<dependency>
-			<artifactId>common-upms</artifactId>
+			<artifactId>common-data</artifactId>
 			<groupId>com.gitee</groupId>
 		</dependency>
 		<!--安全模块 -->
 		<dependency>
 			<artifactId>spring-cloud-starter-oauth2</artifactId>
 			<groupId>org.springframework.cloud</groupId>
+		</dependency>
+		<!--feign 依赖-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.auth0</groupId>

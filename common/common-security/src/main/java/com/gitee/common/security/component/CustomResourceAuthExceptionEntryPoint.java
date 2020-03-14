@@ -52,7 +52,7 @@ public class CustomResourceAuthExceptionEntryPoint implements AuthenticationEntr
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) {
 		response.setCharacterEncoding(CommonConstants.UTF8);
-		response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		Result<String> result = new Result<>();
 		result.setCode(CommonConstants.FAIL);
 		if (authException != null) {

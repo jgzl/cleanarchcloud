@@ -31,7 +31,6 @@
 
 	<modules>
 		<module>application-auth</module>
-		<module>application-upms</module>
 		<module>application-codegen</module>
 		<module>application-demo</module>
 		<module>application-ssoclient1</module>
