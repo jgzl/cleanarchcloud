@@ -32,7 +32,7 @@ import com.gitee.application.auth.mvc.handler.CustomExceptionEntryPoint;
 import com.gitee.application.auth.oauth2.code.RedisAuthenticationCodeServices;
 import com.gitee.application.auth.oauth2.exception.CustomWebResponseExceptionTranslator;
 import com.gitee.application.auth.oauth2.provider.CustomClientDetailsService;
-import com.gitee.application.auth.oauth2.token.CustomerAccessTokenConverter;
+import com.gitee.application.auth.oauth2.token.CustomAccessTokenConverter;
 import com.gitee.application.auth.service.user.UserNameUserDetailsServiceImpl;
 import com.gitee.common.core.config.SsoProperties;
 import com.gitee.common.core.constant.CacheConstants;
@@ -185,7 +185,7 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 						ssoProperties.getOauth2().getKeyStore().getSecret().toCharArray())
 				.getKeyPair(ssoProperties.getOauth2().getKeyStore().getAlias());
 		converter.setKeyPair(keyPair);
-		converter.setAccessTokenConverter(new CustomerAccessTokenConverter());
+		converter.setAccessTokenConverter(new CustomAccessTokenConverter());
 		return converter;
 	}
 
