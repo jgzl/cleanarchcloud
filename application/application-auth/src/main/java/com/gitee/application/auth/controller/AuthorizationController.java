@@ -25,7 +25,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.application.auth.service.client.SsoOauthClientDetailsService;
-import com.gitee.common.core.config.SsoProperties;
 import com.gitee.common.core.util.Response;
 import com.gitee.common.security.dao.SsoOauthClientDetailsDAO;
 
@@ -57,9 +56,6 @@ public class AuthorizationController {
 
 	@Autowired
 	private AuthorizationEndpoint authorizationEndpoint;
-
-	@Autowired
-	private SsoProperties ssoProperties;
 
 	/**
 	 * 自定义 确认/拒绝授权
@@ -95,8 +91,8 @@ public class AuthorizationController {
 		final SsoOauthClientDetailsDAO oauthClient = oauthClientService
 				.getOne(Wrappers.<SsoOauthClientDetailsDAO>lambdaQuery()
 						.eq(SsoOauthClientDetailsDAO::getClientId, authorizationRequest.getClientId()));
-		String str = "redirect:{}/confirm_access?clientId={}&scope={}&redirectUri={}&appName={}";
-		str = StrUtil.format(str, ssoProperties.getFrontendUrl(),
+		String str = "redirect:/confirm_access?clientId={}&scope={}&redirectUri={}&appName={}";
+		str = StrUtil.format(str,
 				authorizationRequest.getClientId(),
 				CollUtil.join(authorizationRequest.getScope(), StrUtil.COMMA),
 				authorizationRequest.getRedirectUri(),

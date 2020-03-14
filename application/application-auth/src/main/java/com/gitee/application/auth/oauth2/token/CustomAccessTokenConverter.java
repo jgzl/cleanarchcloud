@@ -23,10 +23,10 @@ import com.gitee.common.security.vo.UserVO;
 public class CustomAccessTokenConverter extends DefaultAccessTokenConverter {
 
 	public CustomAccessTokenConverter() {
-		super.setUserTokenConverter(new CustomerUserAuthenticationConverter());
+		super.setUserTokenConverter(new CustomUserAuthenticationConverter());
 	}
 
-	private class CustomerUserAuthenticationConverter extends DefaultUserAuthenticationConverter {
+	private class CustomUserAuthenticationConverter extends DefaultUserAuthenticationConverter {
 
 		@Override
 		public Map<String, ?> convertUserAuthentication(Authentication authentication) {

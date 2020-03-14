@@ -38,7 +38,7 @@ logging:
     com.gitee.common.upms: debug
 
 sso:
-  frontend-url: http://localhost:9000
+  frontend-url: http://localhost:${server.port}
   oauth2:
     key-store:
       location: classpath:taroco.jks
