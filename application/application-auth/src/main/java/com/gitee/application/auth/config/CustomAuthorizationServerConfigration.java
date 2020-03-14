@@ -34,7 +34,7 @@ import com.gitee.application.auth.oauth2.exception.CustomWebResponseExceptionTra
 import com.gitee.application.auth.oauth2.provider.CustomClientDetailsService;
 import com.gitee.application.auth.oauth2.token.CustomerAccessTokenConverter;
 import com.gitee.application.auth.service.user.UserNameUserDetailsServiceImpl;
-import com.gitee.common.core.config.SsoOauth2Properties;
+import com.gitee.common.core.config.SsoProperties;
 import com.gitee.common.core.constant.CacheConstants;
 import com.gitee.common.core.constant.SecurityConstants;
 import com.gitee.common.data.redis.CustomRedisRepository;
@@ -53,8 +53,8 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private SsoOauth2Properties oauth2Properties;
+	@Autowired
+	private SsoProperties ssoProperties;
 
     @Autowired
     private CustomRedisRepository redisRepository;
@@ -158,21 +158,20 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
     @Bean
     public DefaultTokenServices tokenServices() {
 
-        DefaultTokenServices tokenServices = new DefaultTokenServices();
-        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+		DefaultTokenServices tokenServices = new DefaultTokenServices();
+		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
 
 		tokenServices.setSupportRefreshToken(true);
 		tokenServices.setReuseRefreshToken(false);
 		tokenServices.setTokenStore(tokenStore());
-		tokenServices.setAccessTokenValiditySeconds(oauth2Properties.getAccessTokenValiditySeconds());
-		tokenServices.setRefreshTokenValiditySeconds(oauth2Properties.getRefreshTokenValiditySeconds());
+		tokenServices.setAccessTokenValiditySeconds(ssoProperties.getOauth2().getAccessTokenValiditySeconds());
+		tokenServices.setRefreshTokenValiditySeconds(ssoProperties.getOauth2().getRefreshTokenValiditySeconds());
 
 		tokenServices.setTokenEnhancer(tokenEnhancerChain);
-        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtAccessTokenConverter(), tokenEnhancer()));
+		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtAccessTokenConverter(), tokenEnhancer()));
 
-
-        return tokenServices;
-    }
+		return tokenServices;
+	}
 	/**
 	 * JWT Token 生成转换器（加密方式以及加密的Token中存放哪些信息）
 	 *
@@ -182,8 +181,9 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 		KeyPair keyPair = new KeyStoreKeyFactory
-				(oauth2Properties.getKeyStore().getLocation(), oauth2Properties.getKeyStore().getSecret().toCharArray())
-				.getKeyPair(oauth2Properties.getKeyStore().getAlias());
+				(ssoProperties.getOauth2().getKeyStore().getLocation(),
+						ssoProperties.getOauth2().getKeyStore().getSecret().toCharArray())
+				.getKeyPair(ssoProperties.getOauth2().getKeyStore().getAlias());
 		converter.setKeyPair(keyPair);
 		converter.setAccessTokenConverter(new CustomerAccessTokenConverter());
 		return converter;

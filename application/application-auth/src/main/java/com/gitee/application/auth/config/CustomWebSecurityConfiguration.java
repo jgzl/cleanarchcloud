@@ -31,7 +31,7 @@ import com.gitee.application.auth.mvc.handler.UsernamePasswordAuthenticationSucc
 import com.gitee.application.auth.mvc.handler.UsernamePasswordLogoutSuccessHandler;
 import com.gitee.application.auth.oauth2.configurer.MobileTokenAuthenticationSecurityConfigration;
 import com.gitee.application.auth.service.user.UserNameUserDetailsServiceImpl;
-import com.gitee.common.core.config.SsoOauth2Properties;
+import com.gitee.common.core.config.SsoProperties;
 
 /**
  * webSecurity 权限控制类
@@ -47,8 +47,8 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private SsoOauth2Properties oauth2Properties;
+	@Autowired
+	private SsoProperties ssoProperties;
 
     @Autowired
     private UserNameUserDetailsServiceImpl userNameUserDetailsService;
@@ -100,7 +100,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                         .and().rememberMe().key(RM_KEY).rememberMeServices(rememberMeServices())
                         .and().authorizeRequests();
 
-        final List<String> urlPermitAll = oauth2Properties.getUrlPermitAll();
+		final List<String> urlPermitAll = ssoProperties.getOauth2().getUrlPermitAll();
         urlPermitAll.forEach(url -> registry.antMatchers(url).permitAll());
         registry.anyRequest().authenticated().and().cors().and().csrf().disable();
     }

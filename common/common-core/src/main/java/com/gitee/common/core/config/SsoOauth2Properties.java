@@ -3,7 +3,6 @@ package com.gitee.common.core.config;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.io.Resource;
 
 import lombok.Data;
@@ -12,7 +11,6 @@ import lombok.Data;
  * @author Administrator
  */
 @Data
-@ConfigurationProperties(prefix = "sso.oauth2")
 public class SsoOauth2Properties {
 
 	/**

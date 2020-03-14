@@ -25,6 +25,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.application.auth.service.client.SsoOauthClientDetailsService;
+import com.gitee.common.core.config.SsoProperties;
 import com.gitee.common.core.util.Response;
 import com.gitee.common.security.dao.SsoOauthClientDetailsDAO;
 
@@ -57,15 +58,18 @@ public class AuthorizationController {
 	@Autowired
 	private AuthorizationEndpoint authorizationEndpoint;
 
+	@Autowired
+	private SsoProperties ssoProperties;
+
 	/**
 	 * 自定义 确认/拒绝授权
 	 *
 	 * @param approvalParameters
 	 * @param model
-     * @param sessionStatus
-     * @param principal
-     * @return
-     */
+	 * @param sessionStatus
+	 * @param principal
+	 * @return
+	 */
     @RequestMapping(value = "/oauth/custom_authorize", method = RequestMethod.POST, params = OAuth2Utils.USER_OAUTH_APPROVAL)
     public ResponseEntity<Response> approveOrDeny(@RequestParam Map<String, String> approvalParameters,
                                                   Map<String, ?> model, SessionStatus sessionStatus, Principal principal) {
@@ -91,13 +95,14 @@ public class AuthorizationController {
 		final SsoOauthClientDetailsDAO oauthClient = oauthClientService
 				.getOne(Wrappers.<SsoOauthClientDetailsDAO>lambdaQuery()
 						.eq(SsoOauthClientDetailsDAO::getClientId, authorizationRequest.getClientId()));
-		String str = "redirect:/confirm_access?clientId={}&scope={}&redirectUri={}&appName={}";
-        return StrUtil.format(str,
-                authorizationRequest.getClientId(),
-                CollUtil.join(authorizationRequest.getScope(), StrUtil.COMMA),
-                authorizationRequest.getRedirectUri(),
-                oauthClient.getAppName());
-    }
+		String str = "redirect:{}/confirm_access?clientId={}&scope={}&redirectUri={}&appName={}";
+		str = StrUtil.format(str, ssoProperties.getFrontendUrl(),
+				authorizationRequest.getClientId(),
+				CollUtil.join(authorizationRequest.getScope(), StrUtil.COMMA),
+				authorizationRequest.getRedirectUri(),
+				oauthClient.getAppName());
+		return str;
+	}
 
     /**
      * 自定义错误处理 重写{@link WhitelabelErrorEndpoint}
