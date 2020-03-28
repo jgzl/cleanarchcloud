@@ -35,8 +35,6 @@
 		<module>application-demo</module>
 		<module>application-ssoclient1</module>
 		<module>application-ssoclient2</module>
-		<module>application-template-openfeign</module>
-		<module>application-template-dubbo</module>
 	</modules>
 
 	<dependencies>
