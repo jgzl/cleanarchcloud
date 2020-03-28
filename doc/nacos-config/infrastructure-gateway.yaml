@@ -33,15 +33,3 @@ spring:
             - Path=/ssoclient2/**
           filters:
             - StripPrefix=1
-        - id: dubbo
-          uri: lb://application-template-dubbo-service-web
-          predicates:
-            - Path=/dubbo/**
-          filters:
-            - StripPrefix=1
-        - id: openfeign
-          uri: lb://application-template-openfeign
-          predicates:
-            - Path=/openfeign/**
-          filters:
-            - StripPrefix=1
