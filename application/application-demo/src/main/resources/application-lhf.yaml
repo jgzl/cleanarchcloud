@@ -34,7 +34,7 @@ spring:
       master-data-source-name: ds-master
       slave-data-source-names: ds-slave0,ds-slave1
   redis:
-    host: 192.168.0.5
+    host: 127.0.0.1
     password:
 redis:
   topic:

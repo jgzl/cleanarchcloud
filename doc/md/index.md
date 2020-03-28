@@ -9,7 +9,7 @@ vim application.properties
 #增加mysql配置
 spring.datasource.platform=mysql
 db.num=1
-db.url.0=jdbc:mysql://192.168.0.5:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
 db.user=root
 db.password=root
 ```
