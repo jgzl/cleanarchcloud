@@ -59,80 +59,80 @@
   import {validUsername} from '@/utils/validate'
 
   export default {
-    name: 'Login',
-    data() {
-      const validateUsername = (rule, value, callback) => {
-        if (!validUsername(value)) {
-          callback(new Error('Please enter the correct user name'))
-        } else {
-          callback()
-        }
-      };
-      const validatePassword = (rule, value, callback) => {
-        if (value.length < 5) {
-          callback(new Error('The password can not be less than 6 digits'))
-        } else {
-          callback()
-        }
-      };
-      return {
-        loginForm: {
-          username: 'admin',
-          password: 'admin'
-        },
-        loginRules: {
-          username: [{required: true, trigger: 'blur', validator: validateUsername}],
-          password: [{required: true, trigger: 'blur', validator: validatePassword}]
-        },
-        loading: false,
-        passwordType: 'password',
-        redirect: undefined
+  name: 'Login',
+  data() {
+    const validateUsername = (rule, value, callback) => {
+      if (!validUsername(value)) {
+        callback(new Error('Please enter the correct user name'))
+      } else {
+        callback()
       }
-    },
-    watch: {
-      $route: {
-        handler: function (route) {
-          this.redirect = route.query && route.query.redirect
-        },
-        immediate: true
+    };
+    const validatePassword = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('The password can not be less than 6 digits'))
+      } else {
+        callback()
       }
-    },
-    methods: {
-      showPwd() {
-        if (this.passwordType === 'password') {
-          this.passwordType = ''
-        } else {
-          this.passwordType = 'password'
-        }
-        this.$nextTick(() => {
-          this.$refs.password.focus()
-        })
+    };
+    return {
+      loginForm: {
+        username: 'admin',
+        password: 'admin'
       },
-      handleLogin() {
-        this.$refs.loginForm.validate(valid => {
-          if (valid) {
-            this.loading = true;
-            this.$store.dispatch('user/login', this.loginForm).then((data) => {
-              console.log('handleLogin->user/login');
-              console.log(`redirect:${this.redirect}`);
-              console.log(`data:${data}`);
-              if (data) {
-                window.location.href = data
-              } else {
-                this.$router.push({path: this.redirect})
-              }
-              this.loading = false
-            }).catch(() => {
-              this.loading = false
-            })
-          } else {
-            console.log('error submit!!');
-            return false
-          }
-        })
+      loginRules: {
+        username: [{required: true, trigger: 'blur', validator: validateUsername}],
+        password: [{required: true, trigger: 'blur', validator: validatePassword}]
+      },
+      loading: false,
+      passwordType: 'password',
+      redirect: undefined
+    }
+  },
+  watch: {
+    $route: {
+      handler: function (route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    showPwd() {
+      if (this.passwordType === 'password') {
+        this.passwordType = ''
+      } else {
+        this.passwordType = 'password'
       }
+      this.$nextTick(() => {
+        this.$refs.password.focus()
+      })
+    },
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true;
+          this.$store.dispatch('user/login', this.loginForm).then((data) => {
+            console.log('handleLogin->user/login');
+            console.log(`redirect:${this.redirect}`);
+            console.log(`data:${data}`);
+            if (data) {
+              window.location.href = data
+            } else {
+              this.$router.push({path: this.redirect})
+            }
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
+        } else {
+          console.log('error submit!!');
+          return false
+        }
+      })
     }
   }
+}
 </script>
 
 <style lang="scss">
