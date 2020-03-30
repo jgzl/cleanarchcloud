@@ -16,16 +16,20 @@
 
 package com.gitee.common.security.component;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import com.gitee.common.core.config.SsoProperties;
 import com.gitee.common.core.constant.CacheConstants;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,12 +47,16 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 	@Autowired
 	private RedisConnectionFactory redisConnectionFactory;
 
+	@Autowired
+	private SsoProperties ssoProperties;
+
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http
-				.authorizeRequests()
-				.anyRequest()
-				.access("isAuthenticated()");
+		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
+				.authorizeRequests();
+		final List<String> urls = ssoProperties.getOauth2().getUrlPermitAll();
+		urls.forEach(url -> registry.antMatchers(url).permitAll());
+		registry.anyRequest().authenticated().and().cors().and().csrf().disable();
 	}
 
 	@Bean

@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gitee.common.core.util.Response;
+import com.gitee.common.core.util.Result;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,12 +36,11 @@ public class UsernamePasswordAuthenticationFailureHandler implements Authenticat
     public void onAuthenticationFailure(final HttpServletRequest request,
                                         final HttpServletResponse response,
                                         final AuthenticationException exception) throws IOException, ServletException {
-        if (log.isDebugEnabled()) {
-            log.debug("UsernamePasswordAuthenticationFailureHandler:" + exception.getMessage());
-        }
-        final Response resp = Response.failure(exception.getMessage());
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		if (log.isDebugEnabled()) {
+			log.debug("UsernamePasswordAuthenticationFailureHandler:" + exception.getMessage());
+		}
+		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(resp));
-    }
+		response.getWriter().write(objectMapper.writeValueAsString(Result.failed(exception.getMessage())));
+	}
 }

@@ -1,5 +1,6 @@
 package com.gitee.application.auth.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
@@ -17,11 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gitee.application.auth.service.SsoUserService;
 import com.gitee.common.core.constant.CacheConstants;
-import com.gitee.common.core.util.Response;
+import com.gitee.common.core.util.Result;
 import com.gitee.common.data.redis.CustomRedisRepository;
 import com.gitee.common.security.validate.Add;
 import com.gitee.common.security.vo.SsoUserVO;
@@ -49,45 +49,45 @@ public class UserController {
 	@Autowired
 	private SsoUserService userService;
 
-    /**
-     * 查询登录用户
-     *
-     * @param authentication 信息
-     * @return 用户信息
-     */
-	@RequestMapping("/userInfo")
+	/**
+	 * 查询登录用户
+	 *
+	 * @param authentication 信息
+	 * @return 用户信息
+	 */
+	@RequestMapping({"/userInfo", "/info"})
 	@ResponseBody
-    public ResponseEntity<Response> user(Authentication authentication) {
-        if (authentication == null) {
-            return null;
-        }
-        return ResponseEntity.ok(Response.success(authentication.getPrincipal()));
-    }
+	public ResponseEntity<Result> userInfo(Authentication authentication) {
+		if (authentication == null) {
+			return null;
+		}
+		return ResponseEntity.ok(Result.ok(authentication.getPrincipal()));
+	}
 
-    /**
-     * 发送手机验证码
-     *
-     * @param mobile
-     * @return
-     */
-    @RequestMapping("/smsCode/{mobile}")
-    @ResponseBody
-    public ResponseEntity<Response> smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号")
-                                            @PathVariable String mobile) {
-        Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
-        if (tempCode != null) {
-            log.error("用户:{}验证码未失效{}", mobile, tempCode);
-            return ResponseEntity.ok(Response.failure("验证码: " + tempCode + " 未失效，请失效后再次申请"));
+	/**
+	 * 发送手机验证码
+	 *
+	 * @param mobile
+	 * @return
+	 */
+	@RequestMapping("/smsCode/{mobile}")
+	@ResponseBody
+	public ResponseEntity<Result> smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号")
+	@PathVariable String mobile) {
+		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
+		if (tempCode != null) {
+			log.error("用户:{}验证码未失效{}", mobile, tempCode);
+			return ResponseEntity.ok(Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请"));
 		}
 		if (userService.findUserByMobile(mobile) == null) {
 			log.error("根据用户手机号:{}, 查询用户为空", mobile);
-			return ResponseEntity.ok(Response.failure("手机号不存在"));
+			return ResponseEntity.ok(Result.failed("手机号不存在"));
 		}
 		String code = RandomUtil.randomNumbers(6);
 		log.info("短信发送请求消息中心 -> 手机号:{} -> 验证码：{}", mobile, code);
 		redisRepository
 				.setExpire(CacheConstants.DEFAULT_CODE_KEY + mobile, code, CacheConstants.DEFAULT_EXPIRE_SECONDS);
-		return ResponseEntity.ok(Response.success(code));
+		return ResponseEntity.ok(Result.ok(code));
 	}
 
 	/**
@@ -97,9 +97,9 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Response> get(@PathVariable("id") String id) {
+	public ResponseEntity<Result> get(@PathVariable("id") String id) {
 
-		return ResponseEntity.ok(Response.success(userService.getVo(id)));
+		return ResponseEntity.ok(Result.ok(userService.getVo(id)));
 	}
 
 	/**
@@ -109,9 +109,9 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping
-	public ResponseEntity<Response> update(@Valid @RequestBody SsoUserVO vo) {
+	public ResponseEntity<Result> update(@Valid @RequestBody SsoUserVO vo) {
 
-		return ResponseEntity.ok(Response.success(userService.update(vo)));
+		return ResponseEntity.ok(Result.ok(userService.update(vo)));
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public ResponseEntity<Response> add(@Validated(Add.class) @RequestBody SsoUserVO vo) {
+	public ResponseEntity<Result> add(@Validated(Add.class) @RequestBody SsoUserVO vo) {
 
-		return ResponseEntity.ok(Response.success(userService.add(vo)));
+		return ResponseEntity.ok(Result.ok(userService.add(vo)));
 	}
 
 	/**
@@ -133,20 +133,23 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Response> delete(@PathVariable("id") String id) {
+	public ResponseEntity<Result> delete(@PathVariable("id") String id) {
 
-		return ResponseEntity.ok(Response.success(userService.delete(id)));
+		return ResponseEntity.ok(Result.ok(userService.delete(id)));
 	}
 
 	/**
 	 * 分页查询用户
 	 *
-	 * @param page 分页参数
+	 * @param request
 	 * @return
 	 */
 	@GetMapping
-	public ResponseEntity<Response> page(Page page) {
-		IPage<SsoUserVO> iPage = userService.selectPageVo(page);
-		return ResponseEntity.ok(Response.success(iPage));
+	public ResponseEntity<Result> page(HttpServletRequest request) {
+		final Integer current = Integer.valueOf(request.getParameter("page"));
+		final Integer size = Integer.valueOf(request.getParameter("limit"));
+		Page page = new Page(current, size);
+		userService.selectPageVo(page);
+		return ResponseEntity.ok(Result.ok(page));
 	}
 }

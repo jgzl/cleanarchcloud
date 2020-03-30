@@ -13,7 +13,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gitee.common.core.util.Response;
+import com.gitee.common.core.util.Result;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,12 +33,11 @@ public class CustomExceptionEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authException) throws IOException,
 			ServletException {
-        if (log.isDebugEnabled()) {
-            log.debug("CustomExceptionEntryPoint:" + authException.getMessage());
-        }
-        final Response resp = Response.failure(authException.getMessage());
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		if (log.isDebugEnabled()) {
+			log.debug("CustomExceptionEntryPoint:" + authException.getMessage());
+		}
+		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(resp));
-    }
+		response.getWriter().write(objectMapper.writeValueAsString(Result.failed(authException.getMessage())));
+	}
 }

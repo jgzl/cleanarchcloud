@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gitee.common.core.config.SsoProperties;
-import com.gitee.common.core.util.Response;
+import com.gitee.common.core.util.Result;
 
 /**
  * 用户名密码退出登录成功处理
@@ -33,10 +33,9 @@ public class UsernamePasswordLogoutSuccessHandler implements LogoutSuccessHandle
 	@Override
 	public void onLogoutSuccess(final HttpServletRequest request, final HttpServletResponse response,
 			final Authentication authentication) throws IOException {
-		final Response resp = Response.success("登出成功");
 		response.setStatus(HttpServletResponse.SC_OK);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(resp));
+		response.getWriter().write(objectMapper.writeValueAsString(Result.ok("登出成功")));
 		response.sendRedirect(ssoProperties.getFrontendUrl());
 	}
 }

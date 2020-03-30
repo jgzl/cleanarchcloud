@@ -2,10 +2,11 @@ package com.gitee.application.auth.oauth2.exception;
 
 import java.io.IOException;
 
+import org.springframework.http.HttpStatus;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.gitee.common.core.util.Response;
 
 /**
  * CustomOauth2Exception 序列化实现
@@ -25,8 +26,8 @@ public class CustomOauth2ExceptionSerializer extends StdSerializer<CustomOauth2E
     public void serialize(final CustomOauth2Exception e, final JsonGenerator jsonGenerator, final SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("errorCode", e.getOAuth2ErrorCode());
-        jsonGenerator.writeStringField("errorMessage", e.getMessage());
-        jsonGenerator.writeStringField("status", Response.Status.FAILED.name());
-        jsonGenerator.writeEndObject();
+		jsonGenerator.writeStringField("errorMessage", e.getMessage());
+		jsonGenerator.writeStringField("status", String.valueOf(HttpStatus.BAD_REQUEST.value()));
+		jsonGenerator.writeEndObject();
     }
 }

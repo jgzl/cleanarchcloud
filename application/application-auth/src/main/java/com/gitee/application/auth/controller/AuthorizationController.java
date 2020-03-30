@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gitee.application.auth.service.client.SsoOauthClientDetailsService;
-import com.gitee.common.core.util.Response;
+import com.gitee.common.core.util.Result;
 import com.gitee.common.security.dao.SsoOauthClientDetailsDAO;
 
 import cn.hutool.core.collection.CollUtil;
@@ -45,7 +45,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @SessionAttributes({AuthorizationController.AUTHORIZATION_REQUEST_ATTR_NAME,
 		AuthorizationController.ORIGINAL_AUTHORIZATION_REQUEST_ATTR_NAME})
-public class AuthorizationController {
+public class
+AuthorizationController {
 
 	static final String AUTHORIZATION_REQUEST_ATTR_NAME = "authorizationRequest";
 
@@ -66,18 +67,19 @@ public class AuthorizationController {
 	 * @param principal
 	 * @return
 	 */
-    @RequestMapping(value = "/oauth/custom_authorize", method = RequestMethod.POST, params = OAuth2Utils.USER_OAUTH_APPROVAL)
-    public ResponseEntity<Response> approveOrDeny(@RequestParam Map<String, String> approvalParameters,
-                                                  Map<String, ?> model, SessionStatus sessionStatus, Principal principal) {
-        try{
-            final RedirectView redirectView = (RedirectView) authorizationEndpoint.approveOrDeny(
-                    approvalParameters, model, sessionStatus, principal);
-            return ResponseEntity.ok(Response.success(redirectView.getUrl()));
-        } catch (OAuth2Exception e) {
-            log.error("确认/拒绝授权失败", e);
-            return ResponseEntity.status(e.getHttpErrorCode()).body(Response.failure(e.getOAuth2ErrorCode(), e.getMessage()));
-        }
-    }
+	@RequestMapping(value = "/oauth/custom_authorize", method = RequestMethod.POST, params = OAuth2Utils.USER_OAUTH_APPROVAL)
+	public ResponseEntity<Result> approveOrDeny(@RequestParam Map<String, String> approvalParameters,
+			Map<String, ?> model, SessionStatus sessionStatus, Principal principal) {
+		try {
+			final RedirectView redirectView = (RedirectView) authorizationEndpoint.approveOrDeny(
+					approvalParameters, model, sessionStatus, principal);
+			return ResponseEntity.ok(Result.ok(redirectView.getUrl()));
+		} catch (OAuth2Exception e) {
+			log.error("确认/拒绝授权失败", e);
+			return ResponseEntity.status(e.getHttpErrorCode())
+					.body(Result.failed(e.getOAuth2ErrorCode(), e.getMessage()));
+		}
+	}
 
     /**
      * 授权页面 重写{@link WhitelabelApprovalEndpoint}
@@ -100,23 +102,23 @@ public class AuthorizationController {
 		return str;
 	}
 
-    /**
-     * 自定义错误处理 重写{@link WhitelabelErrorEndpoint}
-     *
-     * @param request
-     * @return
-     */
-    @RequestMapping("/oauth/error")
-    @ResponseBody
-    public ResponseEntity<Response> handleError(HttpServletRequest request) {
-        Object error = request.getAttribute("error");
-        String errorSummary;
-        if (error instanceof OAuth2Exception) {
-            OAuth2Exception oauthError = (OAuth2Exception) error;
-            errorSummary = oauthError.getMessage();
-        } else {
-            errorSummary = "Unknown error";
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Response.failure(errorSummary));
-    }
+	/**
+	 * 自定义错误处理 重写{@link WhitelabelErrorEndpoint}
+	 *
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/oauth/error")
+	@ResponseBody
+	public ResponseEntity<Result> handleError(HttpServletRequest request) {
+		Object error = request.getAttribute("error");
+		String errorSummary;
+		if (error instanceof OAuth2Exception) {
+			OAuth2Exception oauthError = (OAuth2Exception) error;
+			errorSummary = oauthError.getMessage();
+		} else {
+			errorSummary = "Unknown error";
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Result.failed(errorSummary));
+	}
 }

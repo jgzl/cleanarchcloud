@@ -35,8 +35,8 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {BusiException.class})
-	public ResponseEntity<Response> handleBusiException(BusiException e) {
-		return ResponseEntity.ok(Response.failure(e.getMessage()));
+	public ResponseEntity<Result> handleBusiException(BusiException e) {
+		return ResponseEntity.ok(Result.failed(e.getMessage()));
 	}
 
 	*//**
@@ -46,8 +46,8 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {ConstraintViolationException.class})
-	public ResponseEntity<Response> handleCiException(ConstraintViolationException ex) {
-		final ResponseEntity<Response> result = ResponseEntity.ok(Response.failure(null));
+	public ResponseEntity<Result> handleCiException(ConstraintViolationException ex) {
+		final ResponseEntity<Result> result = ResponseEntity.ok(Result.failed(null));
 		final Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
 		for (ConstraintViolation<?> violation : violations) {
 			if (!StringUtils.isEmpty(violation.getMessage())) {
@@ -67,9 +67,9 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {Exception.class})
-	public ResponseEntity<Response> handle(Exception ex) {
+	public ResponseEntity<Result> handle(Exception ex) {
 		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-		final Response response = Response.failure("系统错误");
+		final Response response = Result.failed("系统错误");
 		if (ex instanceof HttpMessageNotReadableException
 				|| ex instanceof MethodArgumentTypeMismatchException) {
 			response.setErrorMessage("参数解析失败");

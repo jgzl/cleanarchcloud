@@ -1,76 +1,89 @@
-import Vue from 'vue'
 import axios from 'axios'
-import {VueAxios} from './axios'
-import notification from 'ant-design-vue/es/notification'
-import {ACCESS_TOKEN} from '@/store/mutation-types'
+import {Message, MessageBox} from 'element-ui'
+import store from '@/store'
+import {getToken} from '@/utils/auth'
 
-// 创建 axios 实例
+// create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL, // api base_url
-  withCredentials: true, // 跨域请求，允许保存cookie
-  timeout: 10000 // 请求超时时间
-})
-
-const err = (error) => {
-  if (error.response) {
-    const data = error.response.data
-    if (error.response.status === 400) {
-      notification.error({
-        message: data.errorCode ? data.errorCode : '请求错误',
-        description: data.errorMessage
-      })
-    }
-    if (error.response.status === 500) {
-      notification.error({
-        message: data.errorCode ? data.errorCode : '请求错误',
-        description: data.errorMessage
-      })
-    }
-    if (error.response.status === 403) {
-      notification.error({
-        message: '拒绝访问',
-        description: data.errorMessage
-      })
-    }
-    if (error.response.status === 401 && !(data.result && data.status === 'FAILED')) {
-      notification.error({
-        message: '认证失败',
-        description: data.errorMessage
-      })
-    }
-  }
-  return Promise.reject(error)
-}
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API
+    : '/', // url = base url + request url
+  withCredentials: true, // send cookies when cross-domain requests
+  timeout: 5000 // request timeout
+});
 
 // request interceptor
-service.interceptors.request.use(config => {
-  const token = Vue.ls.get(ACCESS_TOKEN)
-  if (token) {
-    config.headers['Authorization'] = 'Bearer ' + token // 让每个请求携带自定义 token 请根据实际情况自行修改
+service.interceptors.request.use(
+  config => {
+    // do something before request is sent
+
+    if (store.getters.token) {
+      // let each request carry token
+      // ['X-Token'] is a custom headers key
+      // please modify it according to the actual situation
+      config.headers['Authorization'] = getToken()
+    }
+    return config
+  },
+  error => {
+    // do something with request error
+    console.log(error); // for debug
+    return Promise.reject(error)
   }
-  return config
-}, err)
+);
 
 // response interceptor
-service.interceptors.response.use((response) => {
-  const { status, errorCode, errorMessage } = response.data
-  if (status === 'FAILED') {
-    notification.error({
-      message: errorCode || '请求错误',
-      description: errorMessage
-    })
-  }
-  return response.data
-}, err)
+service.interceptors.response.use(
+  /**
+   * If you want to get http information such as headers or status
+   * Please return  response => response
+   */
 
-const installer = {
-  vm: {},
-  install (Vue) {
-    Vue.use(VueAxios, service)
-  }
-}
+  /**
+   * Determine the request status by custom code
+   * Here is just an example
+   * You can also judge the status by HTTP Status Code
+   */
+  response => {
+    const res = response.data;
+    console.log(`axios返回数据data：${res.data}`);
+    console.log(`axios返回数据code：${res.code}`);
+    // if the custom code is not 20000, it is judged as an error.
+    if (res.code === 1) {
+      Message({
+        message: res.msg || 'Error',
+        type: 'error',
+        duration: 5 * 1000
+      });
 
-export {
-  installer as VueAxios,
-  service as axios
-}
+      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
+      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
+        // to re-login
+        MessageBox.confirm(
+          'You have been logged out, you can cancel to stay on this page, or log in again',
+          'Confirm logout', {
+            confirmButtonText: 'Re-Login',
+            cancelButtonText: 'Cancel',
+            type: 'warning'
+          }).then(() => {
+          store.dispatch('user/resetToken').then(() => {
+            location.reload()
+          })
+        })
+      }
+      return Promise.reject(new Error(res.msg || 'Error'))
+    } else {
+      return res
+    }
+  },
+  error => {
+    console.log('err' + error); // for debug
+    Message({
+      message: error.message,
+      type: 'error',
+      duration: 5 * 1000
+    });
+    return Promise.reject(error)
+  }
+);
+
+export default service
