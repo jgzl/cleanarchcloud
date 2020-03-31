@@ -12,8 +12,8 @@ export function parseTime(time, cFormat) {
   if (arguments.length === 0) {
     return null
   }
-  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
-  let date;
+  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+  let date
   if (typeof time === 'object') {
     date = time
   } else {
@@ -33,15 +33,13 @@ export function parseTime(time, cFormat) {
     i: date.getMinutes(),
     s: date.getSeconds(),
     a: date.getDay()
-  };
+  }
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
-    const value = formatObj[key];
+    const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') {
-      return ['日', '一', '二', '三', '四', '五', '六'][value]
-    }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
     return value.toString().padStart(2, '0')
-  });
+  })
   return time_str
 }
 
@@ -56,10 +54,10 @@ export function formatTime(time, option) {
   } else {
     time = +time
   }
-  const d = new Date(time);
-  const now = Date.now();
+  const d = new Date(time)
+  const now = Date.now()
 
-  const diff = (now - d) / 1000;
+  const diff = (now - d) / 1000
 
   if (diff < 30) {
     return '刚刚'
@@ -93,17 +91,17 @@ export function formatTime(time, option) {
  * @returns {Object}
  */
 export function param2Obj(url) {
-  const search = url.split('?')[1];
+  const search = url.split('?')[1]
   if (!search) {
     return {}
   }
   return JSON.parse(
     '{"' +
-    decodeURIComponent(search)
-    .replace(/"/g, '\\"')
-    .replace(/&/g, '","')
-    .replace(/=/g, '":"')
-    .replace(/\+/g, ' ') +
-    '"}'
+      decodeURIComponent(search)
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"')
+        .replace(/\+/g, ' ') +
+      '"}'
   )
 }

@@ -5,7 +5,7 @@ import app from './modules/app'
 import settings from './modules/settings'
 import user from './modules/user'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
@@ -14,6 +14,6 @@ const store = new Vuex.Store({
     user
   },
   getters
-});
+})
 
 export default store

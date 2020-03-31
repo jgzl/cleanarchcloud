@@ -1,3 +1,4 @@
+
 const tokens = {
   admin: {
     token: 'admin-token'
@@ -5,7 +6,7 @@ const tokens = {
   editor: {
     token: 'editor-token'
   }
-};
+}
 
 const users = {
   'admin-token': {
@@ -20,7 +21,7 @@ const users = {
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor'
   }
-};
+}
 
 export default [
   // user login
@@ -28,8 +29,8 @@ export default [
     url: '/vue-admin-template/user/login',
     type: 'post',
     response: config => {
-      const {username} = config.body;
-      const token = tokens[username];
+      const { username } = config.body
+      const token = tokens[username]
 
       // mock error
       if (!token) {
@@ -51,8 +52,8 @@ export default [
     url: '/vue-admin-template/user/info\.*',
     type: 'get',
     response: config => {
-      const {token} = config.query;
-      const info = users[token];
+      const { token } = config.query
+      const info = users[token]
 
       // mock error
       if (!info) {
