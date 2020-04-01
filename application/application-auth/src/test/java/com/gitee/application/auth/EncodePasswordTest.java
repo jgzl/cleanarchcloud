@@ -1,10 +1,11 @@
 package com.gitee.application.auth;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class EncodePasswordTest {
 
-	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 	public void encode(String password) {
 		System.out.println(encoder.encode(password));

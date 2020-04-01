@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
  * @date 2018/8/9 15:59
  */
 @Configuration
-public class CustomCorsConfigration {
+public class CustomCorsConfiguration {
 
     @Bean
     public CorsFilter corsFilter() {
