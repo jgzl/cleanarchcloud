@@ -42,8 +42,8 @@
 			<groupId>org.springframework.boot</groupId>
 		</dependency>
 		<dependency>
-			<artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
 			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
