@@ -95,6 +95,7 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
                 .userDetailsService(userNameUserDetailsService)
                 .tokenServices(tokenServices())
                 .exceptionTranslator(exceptionTranslator)
+				.pathMapping("/oauth/confirm_access","/token/confirm_access")
                 .authorizationCodeServices(redisAuthenticationCodeServices());
     }
 

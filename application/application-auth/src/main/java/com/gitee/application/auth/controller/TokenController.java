@@ -62,7 +62,8 @@ public class TokenController {
 		if (auth != null) {
 			AuthorizationRequest authorizationRequest = (AuthorizationRequest) auth;
 			SsoOauthClientDetailsVO clientDetails = oauthClientService.getVo(authorizationRequest.getClientId());
-			modelAndView.addObject("app", clientDetails.getAdditionalInformation());
+			modelAndView.addObject("website", "https://www.baidu.com");
+			modelAndView.addObject("appName", "DemoApp");
 			modelAndView.addObject("user", SecurityUtils.getUser());
 		}
 
