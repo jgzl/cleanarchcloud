@@ -1,3 +1,4 @@
+/*
 package com.gitee.gateway.filter;
 
 import java.util.LinkedHashSet;
@@ -29,12 +30,14 @@ import com.gitee.gateway.utils.GatewayConstants;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+*/
 /**
  * 认证过滤器,根据url判断用户请求是要经过认证 才能访问
  *
  * @author smlz
  * @date 2019/12/17
- */
+ *//*
+
 @Component
 @Slf4j
 public class AuthorizationFilter implements GlobalFilter, Ordered, InitializingBean {
@@ -42,9 +45,11 @@ public class AuthorizationFilter implements GlobalFilter, Ordered, InitializingB
 	@Autowired
 	private RestTemplate restTemplate;
 
-	/**
+	*/
+/**
 	 * 请求各个微服务 不需要用户认证的URL
-	 */
+	 *//*
+
 	private static Set<String> shouldSkipUrl = new LinkedHashSet<>();
 
 
@@ -109,14 +114,16 @@ public class AuthorizationFilter implements GlobalFilter, Ordered, InitializingB
 	}
 
 
-	/**
+	*/
+/**
 	 * 方法实现说明:不需要授权的路径
 	 * @author:smlz
 	 * @param reqPath 当前请求路径
 	 * @return:
 	 * @exception:
 	 * @date:2019/12/26 13:49
-	 */
+	 *//*
+
 	private boolean shouldSkip(String reqPath) {
 
 		for (String skipPath : shouldSkipUrl) {
@@ -135,13 +142,16 @@ public class AuthorizationFilter implements GlobalFilter, Ordered, InitializingB
 
 	@Override
 	public void afterPropertiesSet() {
-		/**
+		*/
+/**
 		 *实际上，这边需要通过去数据库读取 不需要认证的URL,不需要认证的URL是各个微服务
 		 * 开发模块的人员提供出来的. 我在这里没有去查询数据库了,直接模拟写死
-		 */
+		 *//*
+
 		//模仿商品详情接口不需要认证
 		shouldSkipUrl.add("/product/selectProductInfoById");
 		//去认证的请求,本来就不需要拦截
 		shouldSkipUrl.add("/oauth/token");
 	}
 }
+*/

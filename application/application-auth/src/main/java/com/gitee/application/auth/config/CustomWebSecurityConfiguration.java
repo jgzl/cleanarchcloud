@@ -87,8 +87,8 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                         .apply(smsCodeAuthenticationSecurityConfigration)
                         .and()
                         .addFilterAt(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                        .formLogin().loginPage("/").permitAll()
-                        .loginProcessingUrl("/login").permitAll()
+                        .formLogin().loginPage("/token/login")
+                        .loginProcessingUrl("/token/form")
                         .and().logout().logoutUrl("/logout").permitAll().logoutSuccessHandler(logoutSuccessHandler)
                         // 异常处理filter: ExceptionTranslationFilter
                         .and().exceptionHandling()

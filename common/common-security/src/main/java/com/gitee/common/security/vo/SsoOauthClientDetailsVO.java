@@ -51,6 +51,8 @@ public class SsoOauthClientDetailsVO implements Serializable {
     @NotNull(message = "是否自动认证不能为空")
     private Boolean autoapprove;
 
+	private String additionalInformation;
+
     public SsoOauthClientDetailsVO(){}
 
     public SsoOauthClientDetailsVO(final SsoOauthClientDetailsDAO client) {
@@ -63,5 +65,6 @@ public class SsoOauthClientDetailsVO implements Serializable {
         this.setWebServerRedirectUri(client.getWebServerRedirectUri());
         this.setAuthorities(StrUtil.splitTrim(client.getAuthorities(), StrUtil.COMMA));
         this.setAutoapprove(Boolean.valueOf(client.getAutoapprove()));
+        this.setAdditionalInformation(client.getAdditionalInformation());
     }
 }
