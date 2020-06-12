@@ -27,8 +27,8 @@
     </form>
 </div>
 <footer>
-    <p>support by: pig4cloud</p>
-    <p>email: <a href="mailto:pig4cloud@qq.com">pig4cloud@qq.com</a>.</p>
+    <p>support by: li7hai26</p>
+    <p>email: <a href="mailto:li7hai26@qq.com">li7hai26@qq.com</a>.</p>
 </footer>
 </body>
 </html>
