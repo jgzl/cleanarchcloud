@@ -362,34 +362,45 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<!--docker镜像相关的配置信息-->
-					<groupId>com.spotify</groupId>
+					<groupId>io.fabric8</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
-					<version>${maven.docker.version}</version>
+					<version>0.33.0</version>
+
+					<!--全局配置-->
 					<configuration>
-						<dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
-						<dockerHost>${docker-host}</dockerHost>
-						<forceTags>true</forceTags>
-						<!--生成的镜像名称-->
-						<!--镜像生成后需要推送到某个仓库地址的配置-->
-						<imageName>
-							${docker-registry-url}/${docker-registry-org}/${project.artifactId}:${project.version}
-						</imageName>
-						<!--是否向配置的仓库推送镜像-->
-						<pushImage>true</pushImage>
-						<!-- 使用Dockerfile -->
-						<registryUrl>${docker-registry-url}</registryUrl>
-						<serverId>${docker-registry-serverId}</serverId>        <!--覆盖相同标签镜像-->
-						<!--这里是复制 jar 包到 docker 容器指定目录配置-->                <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
-						<resources>
-							<resource>
-								<targetPath>/</targetPath>
-								<!--jar 包所在的路径  此处配置的 即对应 target 目录-->
-								<directory>${project.build.directory}</directory>
-								<!-- 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　-->
-								<include>${project.artifactId}.jar</include>
-							</resource>
-						</resources>
+						<!--这一部分是为了实现对远程docker容器的控制-->
+						<!--docker主机地址,用于完成docker各项功能,注意是tcp不是http!-->
+						<dockerHost>tcp://10.144.187.188:2375</dockerHost>
+						<!--docker远程访问所需证书地址,如果docker远程主机没有启用TLS验证则不需要配证书-->
+						<!--<certPath>${project.basedir}/docker/ssh</certPath>-->
+
+						<!--这一部分是为了实现docker镜像的构建和推送-->
+						<!--registry地址,用于推送,拉取镜像,我这里用的是阿里的registry-->
+						<registry>${docker-registry-url}</registry>
+						<!--认证配置,用于私有registry认证,如果忘记了可以去阿里的registry查看-->
+						<authConfig>
+							<push>
+								<username>${docker-registry-username}</username>
+								<password>${docker-registry-password}</password>
+							</push>
+						</authConfig>
+
+						<!--镜像相关配置,支持多镜像-->
+						<images>
+							<!-- 单个镜像配置 -->
+							<image>
+								<!--镜像名(含版本号)-->
+								<name>${docker-registry-url}/${docker-registry-org}/${project.artifactId}:${project.version}</name>
+								<!--别名:用于容器命名和在docker-compose.yml文件只能找到对应名字的配置-->
+								<alias>${project.artifactId}</alias>
+								<!--镜像build相关配置-->
+								<build>
+									<assembly>
+										<descriptorRef>artifact-with-dependencies</descriptorRef>
+									</assembly>
+								</build>
+							</image>
+						</images>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -414,10 +425,11 @@
 				<!--    扩展类型    -->
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
-				<docker-host>http://10.144.187.188:2375</docker-host>
-				<docker-registry-serverId>aliyun-dockerhub</docker-registry-serverId>
+				<docker-host>tcp://10.144.187.188:2375</docker-host>
 				<docker-registry-url>registry.cn-shanghai.aliyuncs.com</docker-registry-url>
 				<docker-registry-org>phoenix-platform</docker-registry-org>
+				<docker-registry-username>li7hai26</docker-registry-username>
+				<docker-registry-password>Root1q2w.</docker-registry-password>
 			</properties>
 		</profile>
 		<profile>
@@ -432,11 +444,25 @@
 				<!--    扩展类型    -->
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
-				<docker-host>http://10.144.187.188:2375</docker-host>
-				<docker-registry-serverId>aliyun-dockerhub</docker-registry-serverId>
+				<docker-host>tcp://10.144.187.188:2375</docker-host>
 				<docker-registry-url>registry.cn-shanghai.aliyuncs.com</docker-registry-url>
 				<docker-registry-org>phoenix-platform</docker-registry-org>
+				<docker-registry-username>li7hai26</docker-registry-username>
+				<docker-registry-password>Root1q2w.</docker-registry-password>
 			</properties>
 		</profile>
 	</profiles>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>User Project Release</name>
+			<url>http://nexus.dlihaifeng.cn/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>User Project SNAPSHOTS</name>
+			<url>http://nexus.dlihaifeng.cn/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

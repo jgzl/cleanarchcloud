@@ -63,4 +63,16 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>User Project Release</name>
+			<url>http://nexus.dlihaifeng.cn/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>User Project SNAPSHOTS</name>
+			<url>http://nexus.dlihaifeng.cn/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

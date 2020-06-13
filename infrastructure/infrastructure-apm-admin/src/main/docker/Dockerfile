@@ -10,6 +10,6 @@ WORKDIR /app
 
 EXPOSE 7000
 
-ADD infrastructure-apm-admin.jar app.jar
+ADD maven/infrastructure-apm-admin.jar app.jar
 
 CMD java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar app.jar

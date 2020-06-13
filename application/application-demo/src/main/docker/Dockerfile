@@ -10,6 +10,6 @@ WORKDIR /app
 
 EXPOSE 8040
 
-ADD application-demo.jar app.jar
+ADD maven/application-demo.jar app.jar
 
 CMD java -Xms1024m -Xmx1024m -Djava.security.egd=file:/dev/./urandom -jar app.jar
