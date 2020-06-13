@@ -411,10 +411,6 @@
 		<!-- 开发 -->
 		<profile>
 			<id>dev-xh</id>
-			<activation>
-				<!--默认激活配置-->
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<!--当前环境-->
 				<pom.profile>xh</pom.profile>
@@ -426,14 +422,18 @@
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
 				<docker-host>tcp://10.144.187.188:2375</docker-host>
-				<docker-registry-url>registry.cn-shanghai.aliyuncs.com</docker-registry-url>
+				<docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
 				<docker-registry-org>phoenix-platform</docker-registry-org>
-				<docker-registry-username>li7hai26</docker-registry-username>
-				<docker-registry-password>Root1q2w.</docker-registry-password>
+				<docker-registry-username>admin</docker-registry-username>
+				<docker-registry-password>Harbor12345</docker-registry-password>
 			</properties>
 		</profile>
 		<profile>
 			<id>dev-lhf</id>
+			<activation>
+				<!--默认激活配置-->
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<!--当前环境-->
 				<pom.profile>lhf</pom.profile>
@@ -445,10 +445,10 @@
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>
 				<docker-host>tcp://10.144.187.188:2375</docker-host>
-				<docker-registry-url>registry.cn-shanghai.aliyuncs.com</docker-registry-url>
+				<docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
 				<docker-registry-org>phoenix-platform</docker-registry-org>
-				<docker-registry-username>li7hai26</docker-registry-username>
-				<docker-registry-password>Root1q2w.</docker-registry-password>
+				<docker-registry-username>admin</docker-registry-username>
+				<docker-registry-password>Harbor12345</docker-registry-password>
 			</properties>
 		</profile>
 	</profiles>
