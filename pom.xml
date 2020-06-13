@@ -55,7 +55,7 @@
 		<jjwt.version>0.9.1</jjwt.version>
 		<keycloak.version>9.0.0</keycloak.version>
 		<lombok.version>1.18.12</lombok.version>
-		<mybatisplus.starter.version>3.3.1</mybatisplus.starter.version>
+		<mybatisplus.starter.version>3.3.2</mybatisplus.starter.version>
 		<smart.doc.version>1.7.5</smart.doc.version>
 		<shardingjdbc.starter.version>4.0.0</shardingjdbc.starter.version>
 		<springfox.version>2.9.2</springfox.version>
@@ -67,7 +67,7 @@
 		<spring-boot-admin.version>2.2.2</spring-boot-admin.version>
 		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
-		<spring.version>5.2.3.RELEASE</spring.version>
+		<spring.version>5.2.5.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>

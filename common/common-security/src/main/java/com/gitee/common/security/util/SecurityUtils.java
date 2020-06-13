@@ -24,7 +24,7 @@ public class SecurityUtils {
 	 * 获取用户
 	 *
 	 * @param authentication
-	 * @return PigxUser
+	 * @return MicroservicePlatformUser
 	 * <p>
 	 */
 	public SsoUserVO getUser(Authentication authentication) {
