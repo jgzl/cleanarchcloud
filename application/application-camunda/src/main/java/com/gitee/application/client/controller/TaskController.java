@@ -53,10 +53,10 @@ public class TaskController {
 		values.put("assigneeList", Arrays.asList(assigneeList));
 		values.put("personnel","lzw");
 		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey,values);
-		System.out.println("当前流程实例id为"+processInstance.getId());
-		System.out.println("当前流程定义的id为"+processInstance.getProcessDefinitionId());
-		System.out.println("当前ProcessInstance的id为"+processInstance.getProcessInstanceId());
-		System.out.println("当前RootProcessInstance的id为"+processInstance.getRootProcessInstanceId());
+		log.info("当前流程实例id为[{}]",processInstance.getId());
+		log.info("当前流程定义的id为[{}]",processInstance.getProcessDefinitionId());
+		log.info("当前ProcessInstance的id为[{}]",processInstance.getProcessInstanceId());
+		log.info("当前RootProcessInstance的id为[{}]",processInstance.getRootProcessInstanceId());
 		return "success";
 	}
 
