@@ -198,10 +198,15 @@
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${druid.starter.version}</version>
 			</dependency>
-			<dependency>
+<!--			<dependency>
 				<groupId>org.flowable</groupId>
 				<artifactId>flowable-spring-boot-starter</artifactId>
 				<version>${flowable.starter.version}</version>
+			</dependency>-->
+			<dependency>
+				<groupId>org.camunda.bpm.springboot</groupId>
+				<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+				<version>7.13.0</version>
 			</dependency>
 			<!--   cxf版ws,rs,包括swagger-ui   -->
 			<dependency>
