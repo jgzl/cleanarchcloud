@@ -44,7 +44,7 @@
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
 		<bootstrap.swagger.version>2.0.1</bootstrap.swagger.version>
-		<cxf.rs.version>3.3.4</cxf.rs.version>
+		<cxf.rs.version>3.3.7</cxf.rs.version>
 		<cxf.rs.json>2.10.1</cxf.rs.json>
 		<druid.starter.version>1.1.21</druid.starter.version>
 		<flowable.starter.version>6.5.0</flowable.starter.version>
