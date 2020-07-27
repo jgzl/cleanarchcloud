@@ -40,6 +40,29 @@ spring:
     user:
       name: admin
       password: admin
+  mail:
+    #设置邮箱主机
+    host: hwhzsmtp.qiye.163.com
+    #设置用户名
+    username: haifeng.li01@hand-china.com
+    #这里不是注册时的密码，而是生成的授权码
+    password: "952726SS507."
+    port: 994
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          #设置是否需要认证，如果为true,那么用户名和密码就必须的
+          auth: true
+          starttls:
+            #加密通讯，true开启，false不开启
+            enable: true
+            #是否必须通过使用加密通讯进行通讯，true开启，false不开启
+            required: true
+          socketFactory:
+            port: 994
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
 redis:
   topic:
     chat: chat-topic
