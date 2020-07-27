@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.gitee.annotation.EnableSwaggerPlus;
 import com.gitee.common.security.annotation.EnableFeignClientsPlus;
+import com.gitee.common.security.annotation.EnableResourceServerPlus;
 
 /**
  * @author lihaifeng

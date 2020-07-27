@@ -2,6 +2,7 @@ package com.gitee.common.security.util;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import com.gitee.common.security.vo.SsoUserVO;
 import com.gitee.common.security.vo.UserVO;
@@ -35,6 +36,12 @@ public class SecurityUtils {
 			UserVO userVO=(UserVO)principal;
 			SsoUserVO ssoUserVO=new SsoUserVO();
 			ssoUserVO.setUsername(userVO.getUsername());
+			ssoUserVO.setUserId("0");
+			return ssoUserVO;
+		}else if(principal instanceof User){
+			SsoUserVO ssoUserVO=new SsoUserVO();
+			ssoUserVO.setUsername(((User) principal).getUsername());
+			ssoUserVO.setUserId("0");
 			return ssoUserVO;
 		}
 		return null;

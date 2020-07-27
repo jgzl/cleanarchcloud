@@ -37,7 +37,8 @@
 		<module>application-ssoclient2</module>
 		<module>application-camunda</module>
 		<module>application-interface</module>
-	</modules>
+    <module>application-custom-component</module>
+  </modules>
 
 	<dependencies>
 		<dependency>

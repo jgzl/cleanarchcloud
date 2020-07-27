@@ -1,5 +1,12 @@
 package com.gitee.application.controller;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +19,7 @@ import com.gitee.common.enums.OperateModule;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import cn.hutool.core.date.DateTime;
 
 /**
  * @author lihaifeng
@@ -35,10 +43,14 @@ public class WelcomeController {
 	@GetMapping("mv")
 	@ApiOperation(value = "跳转welcome页2")
 	public ModelAndView welcomeByModelAndView(ModelAndView mv) {
+		List<Map<String,Object>> list = new ArrayList<>();
 		WelcomeVO welcomeVO = WelcomeVO.builder().userName("李海峰")
 				.urlName("/index.html")
 				.urlDescription("首页").build();
 		mv.addObject("welcomeVO", welcomeVO);
+		mv.addObject("today", new Date());
+		mv.addObject("testStr1",null);
+		mv.addObject("testStr2","testValue");
 		mv.setViewName("welcome");
 		return mv;
 	}

@@ -34,8 +34,8 @@ import lombok.extern.slf4j.Slf4j;
  * @author xuhang
  */
 @Slf4j
-@Aspect
-@Component
+//@Aspect
+//@Component
 @AllArgsConstructor
 //@PropertySource("classpath:bootstarp.yml")
 //@ConfigurationProperties(prefix = "spring.application")

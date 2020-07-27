@@ -36,6 +36,10 @@ spring:
   redis:
     host: 127.0.0.1
     password:
+  security:
+    user:
+      name: admin
+      password: admin
 redis:
   topic:
     chat: chat-topic

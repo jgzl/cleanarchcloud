@@ -87,7 +87,7 @@ public class IndexController {
 	 */
 	@GetMapping("/orderWithNoArgs")
 	@ApiOperation(value = "无参创建订单")
-	public List createOrderWithNoArguments() {
+	public List createOrderWithNoArguments(HttpServletRequest request,HttpServletResponse response) {
 		List<OrderDO> orders = Lists.newArrayListWithCapacity(1300);
 		List<OrderItemDO> orderItems = Lists.newArrayListWithCapacity(1300);
 		for (long i = 0; i < 1000; i++) {
