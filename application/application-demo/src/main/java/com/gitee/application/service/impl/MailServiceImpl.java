@@ -2,7 +2,13 @@ package com.gitee.application.service.impl;
 
 import java.util.Map;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,6 +51,10 @@ public class MailServiceImpl implements MailService {
 					.processTemplateIntoString(configuration.getTemplate(templateName), params);
 			//// text：内容，true:为HTML邮件（false则为普通文本邮件）
 			helper.setText(text, true);
+			DataSource dataSource1 = new FileDataSource("/Users/lihaifeng/Downloads/需求.jpg");
+			DataSource dataSource2 = new FileDataSource("/Users/lihaifeng/Downloads/需求.jpg");
+			helper.addAttachment("附件1.jpg",dataSource1);
+			helper.addAttachment("附件2.jpg",dataSource2);
 			mailSender.send(mimeMessage);
 
 		} catch (Exception e) {
