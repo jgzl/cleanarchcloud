@@ -14,16 +14,17 @@
  *    limitations under the License.
  */
 
-drop database if exists odb;
-create database odb charset utf8mb4;
-USE odb;
+drop database if exists demo;
+create database demo charset utf8mb4;
+USE demo;
 CREATE TABLE o_order (
 	id BIGINT AUTO_INCREMENT,
 	shop_id BIGINT NOT NULL,
 	CODE VARCHAR ( 50 ),
 	create_time TIMESTAMP ( 0 ),
 	PRIMARY KEY ( id )
-);
+) ENGINE = INNODB CHARACTER
+SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `o_dict` (
 	`id` BIGINT ( 20 ) NOT NULL,
 	`shop_id` BIGINT ( 20 ) NULL DEFAULT NULL,
@@ -38,4 +39,5 @@ CREATE TABLE o_order_item (
 	shop_id BIGINT NOT NULL,
 	NAME VARCHAR ( 50 ),
 	PRIMARY KEY ( id )
-);
+) ENGINE = INNODB CHARACTER
+SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;

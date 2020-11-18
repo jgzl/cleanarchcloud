@@ -4,112 +4,112 @@ server:
 spring:
   shardingsphere:
     datasource:
-      names: odb,odb-slave,odb0,odb1,odb2,odb3,odb4,odb5,odb6,odb7,odb0-slave,odb1-slave,odb2-slave,odb3-slave,odb4-slave,odb5-slave,odb6-slave,odb7-slave
-      odb:
+      names: demo,demo-slave,demo0,demo1,demo2,demo3,demo4,demo5,demo6,demo7,demo0-slave,demo1-slave,demo2-slave,demo3-slave,demo4-slave,demo5-slave,demo6-slave,demo7-slave
+      demo:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb-slave:
+      demo-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb0:
+      demo0:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb0-slave:
+      demo0-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo0?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb1:
+      demo1:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb1-slave:
+      demo1-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo1?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb2:
+      demo2:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb2-slave:
+      demo2-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo2?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb3:
+      demo3:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb3-slave:
+      demo3-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo3?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb4:
+      demo4:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb4-slave:
+      demo4-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo4?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb5:
+      demo5:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb5-slave:
+      demo5-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo5?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb6:
+      demo6:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb6-slave:
+      demo6-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo6?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb7:
+      demo7:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.201:3306/odb7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.201:3306/demo7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
-      odb7-slave:
+      demo7-slave:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbcUrl: jdbc:mysql://192.168.0.202:3306/odb7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        jdbcUrl: jdbc:mysql://192.168.0.202:3306/demo7?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
         password: root
         type: com.zaxxer.hikari.HikariDataSource
         username: root
@@ -121,36 +121,36 @@ spring:
     sharding:
       binding-tables: o_order,o_order_item
       broadcast-tables: o_dict
-      default-data-source-name: odb
+      default-data-source-name: demo
       default-database-strategy:
         inline:
           algorithm-expression: ds$->{shop_id % 8}
           sharding-column: shop_id
       master-slave-rules:
         ds0:
-          master-data-source-name: odb0
-          slave-data-source-names: odb0-slave
+          master-data-source-name: demo0
+          slave-data-source-names: demo0-slave
         ds1:
-          master-data-source-name: odb1
-          slave-data-source-names: odb1-slave
+          master-data-source-name: demo1
+          slave-data-source-names: demo1-slave
         ds2:
-          master-data-source-name: odb2
-          slave-data-source-names: odb2-slave
+          master-data-source-name: demo2
+          slave-data-source-names: demo2-slave
         ds3:
-          master-data-source-name: odb3
-          slave-data-source-names: odb3-slave
+          master-data-source-name: demo3
+          slave-data-source-names: demo3-slave
         ds4:
-          master-data-source-name: odb4
-          slave-data-source-names: odb4-slave
+          master-data-source-name: demo4
+          slave-data-source-names: demo4-slave
         ds5:
-          master-data-source-name: odb5
-          slave-data-source-names: odb5-slave
+          master-data-source-name: demo5
+          slave-data-source-names: demo5-slave
         ds6:
-          master-data-source-name: odb6
-          slave-data-source-names: odb6-slave
+          master-data-source-name: demo6
+          slave-data-source-names: demo6-slave
         ds7:
-          master-data-source-name: odb7
-          slave-data-source-names: odb7-slave
+          master-data-source-name: demo7
+          slave-data-source-names: demo7-slave
       tables:
         o_order:
           actual-data-nodes: ds$->{0..7}.o_order$->{0..1}
