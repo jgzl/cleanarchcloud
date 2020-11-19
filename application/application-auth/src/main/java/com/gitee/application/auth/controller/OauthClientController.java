@@ -85,8 +85,8 @@ public class OauthClientController {
 	/**
 	 * 分页查询客户端
 	 *
-	 * @param page 分页参数
-	 * @return
+	 * @param request 请求参数
+	 * @return ResponseEntity
 	 */
 	@GetMapping
 	public ResponseEntity<Result> page(HttpServletRequest request) {

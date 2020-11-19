@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.Constants;
 import com.alibaba.csp.sentinel.config.SentinelConfig;

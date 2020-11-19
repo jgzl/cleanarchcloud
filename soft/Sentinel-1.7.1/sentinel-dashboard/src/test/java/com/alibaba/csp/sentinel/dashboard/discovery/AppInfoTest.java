@@ -23,7 +23,7 @@ import static org.junit.Assert.fail;
 import java.util.ConcurrentModificationException;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.dashboard.config.DashboardConfig;
 

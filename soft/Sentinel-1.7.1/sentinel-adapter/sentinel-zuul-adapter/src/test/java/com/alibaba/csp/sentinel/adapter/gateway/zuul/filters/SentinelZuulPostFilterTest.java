@@ -19,7 +19,7 @@ package com.alibaba.csp.sentinel.adapter.gateway.zuul.filters;
 import static com.alibaba.csp.sentinel.adapter.gateway.zuul.constants.ZuulConstant.POST_TYPE;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author tiger

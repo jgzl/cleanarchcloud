@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.cluster.client.codec.data;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

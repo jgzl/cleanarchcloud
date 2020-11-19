@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.cluster.server.envoy.rls.rule.EnvoyRlsRule.KeyValueResource;
 import com.alibaba.csp.sentinel.cluster.server.envoy.rls.rule.EnvoyRlsRule.ResourceDescriptor;

@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Method;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.util.StringUtil;

@@ -42,7 +42,7 @@ import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.support.RpcUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.BaseTest;
 import com.alibaba.csp.sentinel.Entry;

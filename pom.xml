@@ -47,7 +47,7 @@
 		<ttl.version>2.11.4</ttl.version>
 
 		<!-- bom依赖配置管理 -->
-		<spring-boot.version>2.4.0</spring-boot.version>
+		<spring-boot.version>2.3.6.RELEASE</spring-boot.version>
 		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
@@ -427,9 +427,9 @@
 				<!--当前环境-->
 				<pom.profile>lhf</pom.profile>
 				<!--Nacos配置中心地址-->
-				<pom.nacos.address>106.14.155.108:8848</pom.nacos.address>
+				<pom.nacos.address>manager:8848</pom.nacos.address>
 				<!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
-				<pom.nacos.namespace>477d63ba-d9b4-472f-83a8-7020412fcae0</pom.nacos.namespace>
+				<pom.nacos.namespace></pom.nacos.namespace>
 				<!--    扩展类型    -->
 				<pom.nacos.fileext>yaml</pom.nacos.fileext>
 				<pom.nacos.share>common.yaml</pom.nacos.share>

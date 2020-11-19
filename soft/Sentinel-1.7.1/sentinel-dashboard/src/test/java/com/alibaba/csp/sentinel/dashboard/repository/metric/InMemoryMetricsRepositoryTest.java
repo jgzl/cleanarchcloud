@@ -34,7 +34,7 @@ import java.util.concurrent.TimeoutException;
 import org.assertj.core.util.Lists;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.CollectionUtils;
 
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.MetricEntity;

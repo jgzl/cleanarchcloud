@@ -17,13 +17,12 @@
 package com.alibaba.csp.sentinel.datasource.spring.cloud.config.test;
 
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.config.client.ConfigClientProperties;
 import org.springframework.core.env.Environment;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.csp.sentinel.datasource.spring.cloud.config.SentinelRuleLocator;
 import com.alibaba.csp.sentinel.datasource.spring.cloud.config.SentinelRuleStorage;
@@ -35,7 +34,6 @@ import com.alibaba.csp.sentinel.util.StringUtil;
  * @author lianglin
  * @since 1.7.0
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = DataSourceBootstrapConfiguration.class, properties = {
 		"spring.application.name=sentinel"
 })

@@ -17,7 +17,7 @@ package com.alibaba.csp.sentinel.adapter.gateway.common.rule;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.adapter.gateway.common.SentinelGatewayConstants;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;

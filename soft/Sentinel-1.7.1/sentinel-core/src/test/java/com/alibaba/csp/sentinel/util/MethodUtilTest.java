@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test cases for {@link MethodUtil}.

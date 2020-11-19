@@ -15,7 +15,7 @@
  */
 package com.alibaba.csp.sentinel.adapter.spring.webmvc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.config.SentinelWebMvcConfig;
 

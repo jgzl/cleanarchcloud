@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.slots.block.flow.param.RollingParamEvent;
 import com.alibaba.csp.sentinel.slots.statistic.base.WindowWrap;

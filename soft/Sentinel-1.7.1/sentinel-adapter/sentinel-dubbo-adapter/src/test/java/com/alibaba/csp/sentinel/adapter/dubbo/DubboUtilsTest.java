@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.HashMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.dubbo.rpc.Invocation;
 

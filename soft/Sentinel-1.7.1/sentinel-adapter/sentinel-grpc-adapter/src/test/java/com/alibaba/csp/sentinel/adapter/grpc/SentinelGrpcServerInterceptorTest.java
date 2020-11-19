@@ -24,7 +24,7 @@ import java.util.Collections;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.adapter.grpc.gen.FooRequest;

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.hamcrest.io.FileMatchers;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.log.LogBase;
 import com.alibaba.csp.sentinel.log.RecordLog;

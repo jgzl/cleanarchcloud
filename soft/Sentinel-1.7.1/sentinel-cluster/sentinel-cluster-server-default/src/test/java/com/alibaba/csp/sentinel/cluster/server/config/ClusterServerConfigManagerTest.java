@@ -3,7 +3,7 @@ package com.alibaba.csp.sentinel.cluster.server.config;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Eric Zhao

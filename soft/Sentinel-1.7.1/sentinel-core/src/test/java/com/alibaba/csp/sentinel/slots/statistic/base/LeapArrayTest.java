@@ -19,7 +19,7 @@ import static org.junit.Assert.assertSame;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.test.AbstractTimeBasedTest;
 

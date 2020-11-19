@@ -16,7 +16,7 @@
 package com.alibaba.csp.sentinel.util;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StringUtilTest {
 

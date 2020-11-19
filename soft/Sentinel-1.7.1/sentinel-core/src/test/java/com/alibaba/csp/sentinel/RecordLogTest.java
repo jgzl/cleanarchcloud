@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.log.LogBase;
 import com.alibaba.csp.sentinel.log.RecordLog;

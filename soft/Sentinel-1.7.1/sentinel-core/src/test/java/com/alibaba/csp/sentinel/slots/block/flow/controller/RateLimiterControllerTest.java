@@ -22,7 +22,7 @@ import static org.mockito.Mockito.mock;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.alibaba.csp.sentinel.node.Node;
 import com.alibaba.csp.sentinel.util.TimeUtil;

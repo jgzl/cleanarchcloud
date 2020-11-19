@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -39,7 +38,6 @@ import com.gitee.common.core.config.SsoProperties;
  * @author lihaifeng
  * @date 2018/7/24 15:58
  * @see SecurityFilterAutoConfiguration
- * @see SpringBootWebSecurityConfiguration
  */
 @EnableWebSecurity
 public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
