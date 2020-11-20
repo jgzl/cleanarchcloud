@@ -33,8 +33,7 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 
         // 如果是JSON登录
         UsernamePasswordAuthenticationToken authRequest;
-        if (MediaType.APPLICATION_JSON_UTF8_VALUE.equalsIgnoreCase(request.getContentType())
-                || request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)) {
+        if (request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)) {
             ObjectMapper mapper = new ObjectMapper();
 
             try (InputStream is = request.getInputStream()) {
