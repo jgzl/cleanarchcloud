@@ -19,7 +19,7 @@
 			<groupId>com.gitee</groupId>
 		</dependency>
 		<dependency>
-			<artifactId>spring-cloud-gateway-core</artifactId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
 			<groupId>org.springframework.cloud</groupId>
 		</dependency>
 		<dependency>

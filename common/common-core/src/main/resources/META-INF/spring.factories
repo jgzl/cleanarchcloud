@@ -5,4 +5,4 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.gitee.common.core.util.SpringContextHolder,\
   com.gitee.common.core.config.PlatformErrorPageConfiguration,\
   com.gitee.common.core.controller.PlatformErrorPageController,\
-  com.gitee.common.core.config.SsoProperties
+  com.gitee.common.core.config.SysProperties

@@ -18,8 +18,8 @@
 	<description>基础服务::基础设施组件POM</description>
 
 	<modules>
-		<module>infrastructure-apm-admin</module>
-		<module>infrastructure-gateway</module>
+		<module>business-admin</module>
+		<module>business-gateway</module>
 	</modules>
 
 	<dependencies>

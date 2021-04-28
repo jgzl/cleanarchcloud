@@ -27,7 +27,7 @@
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
-		<bootstrap.swagger.version>2.0.1</bootstrap.swagger.version>
+		<bootstrap.swagger.version>3.0.2</bootstrap.swagger.version>
 		<cxf.rs.version>3.3.7</cxf.rs.version>
 		<cxf.rs.json>2.10.1</cxf.rs.json>
 		<druid.starter.version>1.1.21</druid.starter.version>
@@ -40,18 +40,20 @@
 		<keycloak.version>9.0.0</keycloak.version>
 		<lombok.version>1.18.12</lombok.version>
 		<mybatisplus.starter.version>3.4.1</mybatisplus.starter.version>
-		<smart.doc.version>1.7.5</smart.doc.version>
 		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
-		<springfox.version>2.9.2</springfox.version>
+		<springfox.version>3.0.0</springfox.version>
 		<swagger.version>1.5.22</swagger.version>
 		<ttl.version>2.11.4</ttl.version>
+		<smartdoc.version>2.1.4</smartdoc.version>
+		<jasypt.version>2.1.0</jasypt.version>
+		<nacos.version>2.0.0</nacos.version>
 
 		<!-- bom依赖配置管理 -->
-		<spring-boot.version>2.3.6.RELEASE</spring-boot.version>
+		<spring-boot.version>2.4.5</spring-boot.version>
 		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
-		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-		<spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
-		<spring.version>5.3.1</spring.version>
+		<spring-cloud.version>2020.0.2</spring-cloud.version>
+		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+		<spring.version>5.3.6</spring.version>
 	</properties>
 
 	<dependencies>
@@ -68,6 +70,17 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
+		</dependency>
+		<!--bootstrap 启动器-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+		<!--配置文件加解密-->
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>${jasypt.version}</version>
 		</dependency>
 		<!--  配置可视化，可以通过yml直接点击到java代码配置位置  -->
 		<dependency>
@@ -226,46 +239,24 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
-				<artifactId>knife4j-micro-spring-boot-starter</artifactId>
+				<artifactId>knife4j-spring-boot-autoconfigure</artifactId>
 				<version>${bootstrap.swagger.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${springfox.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>io.swagger</groupId>
-						<artifactId>swagger-models</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<!--swagger 依赖-->
-			<dependency>
-				<groupId>io.swagger</groupId>
-				<artifactId>swagger-models</artifactId>
-				<version>${swagger.version}</version>
+				<groupId>com.github.xiaoymin</groupId>
+				<artifactId>knife4j-micro-spring-boot-starter</artifactId>
+				<version>${bootstrap.swagger.version}</version>
 			</dependency>
 			<dependency>
 				<artifactId>swagger-annotations</artifactId>
 				<groupId>io.swagger</groupId>
 				<version>${swagger.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-bean-validators</artifactId>
-				<version>${springfox.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>${springfox.version}</version>
-			</dependency>
 			<!--   自动生成文档   -->
 			<dependency>
 				<groupId>com.github.shalousun</groupId>
 				<artifactId>smart-doc</artifactId>
-				<version>${smart.doc.version}</version>
+				<version>${smartdoc.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
@@ -350,108 +341,42 @@
 						</execution>
 					</executions>
 				</plugin>
+
 				<plugin>
-					<groupId>io.fabric8</groupId>
-					<artifactId>docker-maven-plugin</artifactId>
-					<version>0.33.0</version>
-
-					<!--全局配置-->
+					<groupId>com.github.shalousun</groupId>
+					<artifactId>smart-doc-maven-plugin</artifactId>
+					<version>${smartdoc.version}</version>
 					<configuration>
-						<!--这一部分是为了实现对远程docker容器的控制-->
-						<!--docker主机地址,用于完成docker各项功能,注意是tcp不是http!-->
-						<dockerHost>${docker-host}</dockerHost>
-						<!--docker远程访问所需证书地址,如果docker远程主机没有启用TLS验证则不需要配证书-->
-						<!--<certPath>${project.basedir}/docker/ssh</certPath>-->
-
-						<!--这一部分是为了实现docker镜像的构建和推送-->
-						<!--registry地址,用于推送,拉取镜像,我这里用的是阿里的registry-->
-						<registry>${docker-registry-url}</registry>
-						<!--认证配置,用于私有registry认证,如果忘记了可以去阿里的registry查看-->
-						<authConfig>
-							<push>
-								<username>${docker-registry-username}</username>
-								<password>${docker-registry-password}</password>
-							</push>
-						</authConfig>
-
-						<!--镜像相关配置,支持多镜像-->
-						<images>
-							<!-- 单个镜像配置 -->
-							<image>
-								<!--镜像名(含版本号)-->
-								<name>${docker-registry-url}/${docker-registry-org}/${project.artifactId}:${project.version}</name>
-								<!--别名:用于容器命名和在docker-compose.yml文件只能找到对应名字的配置-->
-								<alias>${project.artifactId}</alias>
-								<!--镜像build相关配置-->
-								<build>
-									<assembly>
-										<descriptorRef>artifact-with-dependencies</descriptorRef>
-									</assembly>
-								</build>
-							</image>
-						</images>
+						<configFile>${basedir}/src/main/resources/smart-doc.json</configFile>
+						<projectName>${project.name}</projectName>
+						<excludes>
+							<exclude>com.alibaba:fastjson</exclude>
+						</excludes>
+						<includes>
+							<include>com.alibaba:fastjson</include>
+						</includes>
 					</configuration>
+					<executions>
+						<execution>
+							<id>smart-doc</id>
+							<goals>
+								<goal>html</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 
 	<profiles>
-		<!-- 开发 -->
 		<profile>
-			<id>dev-xh</id>
-			<properties>
-				<!--当前环境-->
-				<pom.profile>xh</pom.profile>
-				<!--Nacos配置中心地址-->
-				<pom.nacos.address>106.14.155.108:8848</pom.nacos.address>
-				<!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
-				<pom.nacos.namespace>98a66c0d-1da3-43e9-acb4-c0b06abcaad6</pom.nacos.namespace>
-				<!--    扩展类型    -->
-				<pom.nacos.fileext>yaml</pom.nacos.fileext>
-				<pom.nacos.share>common.yaml</pom.nacos.share>
-				<docker-host>tcp://10.144.187.188:2375</docker-host>
-				<docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
-				<docker-registry-org>phoenix-platform</docker-registry-org>
-				<docker-registry-username>admin</docker-registry-username>
-				<docker-registry-password>Harbor12345</docker-registry-password>
-			</properties>
-		</profile>
-		<profile>
-			<id>dev-lhf</id>
+			<id>dev</id>
 			<activation>
 				<!--默认激活配置-->
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<properties>
-				<!--当前环境-->
-				<pom.profile>lhf</pom.profile>
-				<!--Nacos配置中心地址-->
-				<pom.nacos.address>manager:8848</pom.nacos.address>
-				<!--Nacos配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
-				<pom.nacos.namespace></pom.nacos.namespace>
-				<!--    扩展类型    -->
-				<pom.nacos.fileext>yaml</pom.nacos.fileext>
-				<pom.nacos.share>common.yaml</pom.nacos.share>
-				<docker-host>tcp://10.144.187.188:2375</docker-host>
-				<docker-registry-url>harbor.dlihaifeng.cn</docker-registry-url>
-				<docker-registry-org>phoenix-platform</docker-registry-org>
-				<docker-registry-username>admin</docker-registry-username>
-				<docker-registry-password>Harbor12345</docker-registry-password>
-			</properties>
 		</profile>
 	</profiles>
 
-	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>User Project Release</name>
-			<url>http://nexus.dlihaifeng.cn/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>User Project SNAPSHOTS</name>
-			<url>http://nexus.dlihaifeng.cn/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 </project>

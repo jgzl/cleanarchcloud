@@ -1,0 +1,98 @@
+#主从读写分离配置
+server:
+  port: 8040
+spring:
+  freemarker:
+    cache: false
+    request-context-attribute: request
+  shardingsphere:
+    dataSource:
+      ds-master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        type: com.zaxxer.hikari.HikariDataSource
+        password: root
+        username: root
+      ds-slave0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        type: com.zaxxer.hikari.HikariDataSource
+        password: root
+        username: root
+      ds-slave1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT&allowPublicKeyRetrieval=true
+        type: com.zaxxer.hikari.HikariDataSource
+        password: root
+        username: root
+      names: ds-master,ds-slave0,ds-slave1
+    props:
+      sql:
+        show: true
+    masterslave:
+      name: ms
+      master-data-source-name: ds-master
+      slave-data-source-names: ds-slave0,ds-slave1
+  redis:
+    host: 127.0.0.1
+    password: 123456
+  security:
+    user:
+      name: admin
+      password: admin
+  mail:
+    #设置邮箱主机
+    host: hwhzsmtp.qiye.163.com
+    #设置用户名
+    username: haifeng.li01@hand-china.com
+    #这里不是注册时的密码，而是生成的授权码
+    password: "952726SS507."
+    port: 994
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          #设置是否需要认证，如果为true,那么用户名和密码就必须的
+          auth: true
+          starttls:
+            #加密通讯，true开启，false不开启
+            enable: true
+            #是否必须通过使用加密通讯进行通讯，true开启，false不开启
+            required: true
+          socketFactory:
+            port: 994
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+redis:
+  topic:
+    chat: chat-topic
+security:
+  oauth2:
+    client:
+      # 客户端ID
+      client-id: app
+      # 客户端密钥
+      client-secret: app
+      # 获取访问令牌的URI
+      access-token-uri: http://localhost:8030/oauth/token
+      # 用户将被重定向到的授权 URI
+      user-authorization-uri: http://localhost:8030/oauth/authorize
+    resource:
+      jwt:
+        # 获取JWT 非对称加密的公钥URI
+        key-uri: http://localhost:8030/oauth/token_key
+sso:
+  oauth2:
+    url-permit-all:
+      - /actuator/**
+      - /v2/api-docs
+      - /webjars/**
+      - /static/**
+      - /**/*.css
+      - /**/*.jpg
+      - /**/*.jpeg
+      - /**/*.png
+      - /**/*.svg
+      - /**/*.woff2
+      - /**/*.js
+      - /**/*.ico

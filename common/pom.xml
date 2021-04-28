@@ -31,8 +31,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>common</artifactId>
 	<packaging>pom</packaging>
-	<name>公共资源::Common组件POM</name>
-	<description>公共资源::Common组件POM</description>
+	<name>公共资源::common组件POM</name>
+	<description>公共资源::common组件POM</description>
 
 	<dependencies>
 		<dependency>

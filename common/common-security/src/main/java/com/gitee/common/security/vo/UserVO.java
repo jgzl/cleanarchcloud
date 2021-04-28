@@ -33,7 +33,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel(value = "SsoUser对象", description = "SpringSecurity用户")
+@ApiModel(value = "SysUser对象", description = "SpringSecurity用户")
 public class UserVO extends BaseDO<UserVO> implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -96,7 +96,7 @@ public class UserVO extends BaseDO<UserVO> implements UserDetails {
 	/**
 	 * 角色列表
 	 */
-	private List<SsoRoleVO> roles = new ArrayList<>();
+	private List<SysRoleVO> roles = new ArrayList<>();
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -104,7 +104,7 @@ public class UserVO extends BaseDO<UserVO> implements UserDetails {
 			return Collections.emptyList();
 		}
 		final List<GrantedAuthority> authorities = new ArrayList<>(AuthorityUtils.createAuthorityList(
-				roles.stream().map(SsoRoleVO::getAuthority).collect(Collectors.joining())));
+				roles.stream().map(SysRoleVO::getAuthority).collect(Collectors.joining())));
 		roles.forEach(role -> {
 			if (CollUtil.isNotEmpty(role.getOperations())) {
 				authorities.addAll(AuthorityUtils.createAuthorityList(

@@ -1,0 +1,19 @@
+server:
+  port: 7000
+spring:
+  profiles:
+    active: dev
+  application:
+    name: business-admin
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        namespace: business-dev
+        file-extension: yaml
+        shared-configs:
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+      discovery:
+        namespace: business-dev

@@ -19,7 +19,7 @@ import com.gitee.common.annotation.LogRecord;
 import com.gitee.common.model.OperateLog;
 import com.gitee.common.properties.LogProperties;
 import com.gitee.common.security.util.SecurityUtils;
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.vo.SysUserVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +73,7 @@ public class LogRecordHandler {
 		//判断签名是否属性指定的签名类型--->这里我只处理方法的签名(注解也只允许在方法上注解)
 		if (signature instanceof MethodSignature) {
 			// 如果这里报错,由最终的拦截器拦截异常 统一推送至ELK或者别的日志记录方式.
-			SsoUserVO user = SecurityUtils.getUser();
+			SysUserVO user = SecurityUtils.getUser();
 			//获取方法签名
 			Method method = ((MethodSignature) signature).getMethod();
 			//获取方法上的自定义注解

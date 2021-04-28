@@ -43,20 +43,28 @@ import lombok.experimental.Accessors;
 public class Result<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 返回标记：成功标记=0，失败标记=1
+	 */
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "返回标记：成功标记=0，失败标记=1")
+	@ApiModelProperty(value = "")
 	private int code;
 
+	/**
+	 * 返回信息
+	 */
 	@Getter
 	@Setter
 	@ApiModelProperty(value = "返回信息")
 	private String msg;
 
-
+	/**
+	 * 返回信息
+	 */
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "数据")
+	@ApiModelProperty(value = "返回信息")
 	private T data;
 
 	public static <T> Result<T> ok() {

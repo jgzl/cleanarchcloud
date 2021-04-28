@@ -15,14 +15,14 @@
 	<description>应用服务::应用组件POM</description>
 
 	<modules>
-		<module>application-auth</module>
-		<module>application-codegen</module>
-		<module>application-demo</module>
-		<module>application-ssoclient1</module>
-		<module>application-ssoclient2</module>
-		<module>application-camunda</module>
-		<module>application-interface</module>
-    <module>application-custom-component</module>
+		<module>business-auth</module>
+		<module>business-codegen</module>
+		<module>business-ssoclient1</module>
+		<module>business-ssoclient2</module>
+		<module>business-camunda</module>
+		<module>business-interface</module>
+		<module>business-demo</module>
+    	<module>business-test</module>
   </modules>
 
 	<dependencies>

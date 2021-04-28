@@ -29,7 +29,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import com.gitee.common.core.config.SsoProperties;
+import com.gitee.common.core.config.SysProperties;
 import com.gitee.common.core.constant.CacheConstants;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +48,7 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 	private RedisConnectionFactory redisConnectionFactory;
 
 	@Autowired
-	private SsoProperties ssoProperties;
+	private SysProperties ssoProperties;
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {

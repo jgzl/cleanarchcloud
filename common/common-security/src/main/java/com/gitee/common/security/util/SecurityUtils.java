@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
-import com.gitee.common.security.vo.SsoUserVO;
+import com.gitee.common.security.vo.SysUserVO;
 import com.gitee.common.security.vo.UserVO;
 
 import lombok.experimental.UtilityClass;
@@ -28,18 +28,18 @@ public class SecurityUtils {
 	 * @return MicroservicePlatformUser
 	 * <p>
 	 */
-	public SsoUserVO getUser(Authentication authentication) {
+	public SysUserVO getUser(Authentication authentication) {
 		Object principal = authentication.getPrincipal();
-		if (principal instanceof SsoUserVO) {
-			return (SsoUserVO) principal;
+		if (principal instanceof SysUserVO) {
+			return (SysUserVO) principal;
 		}else if(principal instanceof UserVO){
 			UserVO userVO=(UserVO)principal;
-			SsoUserVO ssoUserVO=new SsoUserVO();
+			SysUserVO ssoUserVO=new SysUserVO();
 			ssoUserVO.setUsername(userVO.getUsername());
 			ssoUserVO.setUserId("0");
 			return ssoUserVO;
 		}else if(principal instanceof User){
-			SsoUserVO ssoUserVO=new SsoUserVO();
+			SysUserVO ssoUserVO=new SysUserVO();
 			ssoUserVO.setUsername(((User) principal).getUsername());
 			ssoUserVO.setUserId("0");
 			return ssoUserVO;
@@ -50,7 +50,7 @@ public class SecurityUtils {
 	/**
 	 * 获取用户
 	 */
-	public SsoUserVO getUser() {
+	public SysUserVO getUser() {
 		Authentication authentication = getAuthentication();
 		return getUser(authentication);
 	}

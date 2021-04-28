@@ -63,13 +63,13 @@
               </td>
               <td>
                 <p ng-repeat="cg in serverVO.state.connection">
-                  namespace: {{cg.namespace}}, 连接数: {{cg.connectedCount}}, clients:
+                  namespace: business-dev {{cg.namespace}}, 连接数: {{cg.connectedCount}}, clients:
                   {{generateConnectionSet(cg.connectionSet)}}
                 </p>
               </td>
               <td>
                 <p ng-repeat="crl in serverVO.state.requestLimitData">
-                  namespace: {{crl.namespace}}, 当前 QPS: {{crl.currentQps}}, 最大允许 QPS:
+                  namespace: business-dev {{crl.namespace}}, 当前 QPS: {{crl.currentQps}}, 最大允许 QPS:
                   {{crl.maxAllowedQps}}
                 </p>
               </td>

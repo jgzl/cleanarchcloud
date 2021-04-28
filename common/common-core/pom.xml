@@ -34,7 +34,7 @@
 			<artifactId>spring-boot-starter-json</artifactId>
 			<groupId>org.springframework.boot</groupId>
 		</dependency>
-		<!--swagger 依赖-->
+		<!--swagger-->
 		<dependency>
 			<artifactId>swagger-annotations</artifactId>
 			<groupId>io.swagger</groupId>

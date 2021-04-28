@@ -15,15 +15,27 @@
 	<name>公共资源::common接口文档</name>
 	<description>使用这个common-swagger包的@EnableSwaggerPlus快速接入swagger，需要配置相关的swagger配置</description>
 	<dependencies>
-		<!--swagger 依赖-->
 		<dependency>
-			<artifactId>springfox-swagger2</artifactId>
-			<groupId>io.springfox</groupId>
-		</dependency>
-		<!--knife4j是为Java MVC框架集成Swagger生成Api文档的增强-->
-		<dependency>
-			<artifactId>knife4j-micro-spring-boot-starter</artifactId>
 			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-autoconfigure</artifactId>
+			<version>${bootstrap.swagger.version}</version>
+		</dependency>
+		<!--webflux 相关包-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!--网关 swagger 聚合依赖-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gateway-server</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-commons</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

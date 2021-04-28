@@ -27,8 +27,8 @@
 		</dependency>
 		<!--安全模块 -->
 		<dependency>
-			<artifactId>spring-cloud-starter-oauth2</artifactId>
-			<groupId>org.springframework.cloud</groupId>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
 		</dependency>
 		<!--feign 依赖-->
 		<dependency>

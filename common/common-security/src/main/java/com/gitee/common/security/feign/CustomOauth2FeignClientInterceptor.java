@@ -16,8 +16,8 @@
 
 package com.gitee.common.security.feign;
 
-import org.springframework.cloud.security.oauth2.client.AccessTokenContextRelay;
-import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
+import org.springframework.cloud.commons.security.AccessTokenContextRelay;
+import org.springframework.cloud.openfeign.security.OAuth2FeignRequestInterceptor;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 

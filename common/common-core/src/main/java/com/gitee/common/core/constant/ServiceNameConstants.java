@@ -25,10 +25,10 @@ public interface ServiceNameConstants {
 	/**
 	 * 认证中心
 	 */
-	String AUTH_SERVICE = "application-auth";
+	String AUTH_SERVICE = "business-auth";
 
 	/**
 	 * UMPS模块
 	 */
-	String UPMS_SERVICE = "application-upms";
+	String UPMS_SERVICE = "business-upms";
 }

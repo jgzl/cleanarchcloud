@@ -142,7 +142,7 @@ public interface SecurityConstants {
 	 * JdbcClientDetailsService 查询语句
 	 */
 	String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
-			+ " from sso_oauth_client_details";
+			+ " from sys_oauth_client_details";
 
 	/**
 	 * 默认的查询语句
