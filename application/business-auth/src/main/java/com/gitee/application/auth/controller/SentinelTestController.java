@@ -6,16 +6,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 测试Sentinel
  * @author lihaifeng
  */
 @RestController
 @RequestMapping("test")
 public class SentinelTestController {
+	/**
+	 * ping
+	 * @return
+	 */
 	@GetMapping("ping")
 	public String ping() {
 		return "pong";
 	}
 
+	/**
+	 * 根据传入返回值
+	 * @param name
+	 * @return
+	 */
 	@GetMapping("name")
 	public String query(@RequestParam(value = "name") String name) {
 		return "name:[" + name + "]";

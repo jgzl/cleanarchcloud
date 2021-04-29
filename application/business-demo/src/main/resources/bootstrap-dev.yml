@@ -3,6 +3,8 @@ server:
   port: 8040
 spring:
   freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
     cache: false
     request-context-attribute: request
   shardingsphere:
@@ -31,8 +33,10 @@ spring:
         show: true
     masterslave:
       name: ms
-      master-data-source-name: ds-master
-      slave-data-source-names: ds-slave0,ds-slave1
+      masterDataSourceName: ds_master
+      slaveDataSourceNames:
+        - ds_slave0
+        - ds_slave1
   redis:
     host: 127.0.0.1
     password: 123456

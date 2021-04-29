@@ -37,11 +37,7 @@ spring:
             dataId: ${spring.application.name}-gateway-flow-rules
             groupId: SENTINEL_GROUP
             rule-type: gw-flow
-# 应用启动时饥饿加载ribbon客户端负载均衡，第一次调用时间过长
-ribbon:
-  eager-load:
-    enabled: true
-    clients: business-auth,business-codegen
+
 feign:
   httpclient:
     enabled: true

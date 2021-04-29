@@ -21,6 +21,7 @@ import com.gitee.common.security.util.SecurityUtils;
 import com.gitee.common.security.vo.SysOauthClientDetailsVO;
 
 /**
+ * 管理token
  * @author lihaifeng
  * @date 2018年03月10日
  */

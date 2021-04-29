@@ -19,10 +19,10 @@
   "responseExample":"true",
   "displayActualType":false,
   "tornaDebug": false,
-  "appKey": "20210320822955522473852928",
-  "appToken": "03f395e766a548bb82fc7b49ceb5e0ee",
-  "secret": "RiXSz0XrTM8LLM&#=xhr0cUKGyoR!lHN",
-  "openUrl": "http://localhost:18080/api",
+  "appKey": "20210413831551519089229824",
+  "appToken": "e24b2106892145e3a90b19a139fe0108",
+  "secret": "Pz4dGwKw5!X%H$zF2-Eq&3!l9ex%q-Zd",
+  "openUrl": "http://localhost:7700/api",
   "debugEnvName":"开发环境",
   "debugEnvUrl":"http://localhost:8080"
 }

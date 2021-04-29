@@ -4,11 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
+ * 首页
  * @author lihaifeng
  */
 @Controller
 public class IndexController {
-	@GetMapping(value = {"/", "/index"})
+	/**
+	 * 默认返回
+	 * @return
+	 */
+	@GetMapping(value = "/")
 	public String redirectToMember() {
 		return "member/list";
 	}
