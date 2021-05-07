@@ -1,0 +1,5 @@
+/Users/lihaifeng/IdeaProjects/phoenix/common/common-gateway/src/main/java/com/gitee/common/gateway/vo/RouteDefinitionVO.java
+/Users/lihaifeng/IdeaProjects/phoenix/common/common-gateway/src/main/java/com/gitee/common/gateway/annotation/EnableDynamicSpringCloudGateway.java
+/Users/lihaifeng/IdeaProjects/phoenix/common/common-gateway/src/main/java/com/gitee/common/gateway/support/RedisRouteDefinitionWriter.java
+/Users/lihaifeng/IdeaProjects/phoenix/common/common-gateway/src/main/java/com/gitee/common/gateway/support/RouteCacheHolder.java
+/Users/lihaifeng/IdeaProjects/phoenix/common/common-gateway/src/main/java/com/gitee/common/gateway/config/DynamicRouteConfiguration.java

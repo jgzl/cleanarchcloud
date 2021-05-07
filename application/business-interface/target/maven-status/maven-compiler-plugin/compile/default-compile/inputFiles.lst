@@ -1,0 +1,8 @@
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/ws/StudentWebService.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/common/WebServiceConstants.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/dto/StudentResponseDTO.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/dto/WebServiceHeaderDTO.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/dto/WebServiceBodyDTO.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/dto/StudentDTO.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/dto/StudentRequestDTO.java
+/Users/lihaifeng/IdeaProjects/phoenix/application/business-interface/src/main/java/com/gitee/application/client/domain/StudentDO.java

@@ -1,0 +1,6 @@
+com/gitee/common/data/mybatis/MybatisPlusConfig.class
+com/gitee/common/data/redis/RedisTemplateConfiguration.class
+com/gitee/common/data/mybatis/BaseDOMetaObjectHandler.class
+com/gitee/common/data/redis/CustomRedisRepository.class
+com/gitee/common/data/bo/BaseVO.class
+com/gitee/common/data/bo/BaseDO.class

@@ -1,0 +1,8 @@
+com/gitee/application/client/dto/StudentRequestDTO.class
+com/gitee/application/client/dto/StudentDTO.class
+com/gitee/application/client/dto/StudentResponseDTO.class
+com/gitee/application/client/common/WebServiceConstants.class
+com/gitee/application/client/ws/StudentWebService.class
+com/gitee/application/client/dto/WebServiceHeaderDTO.class
+com/gitee/application/client/dto/WebServiceBodyDTO.class
+com/gitee/application/client/domain/StudentDO.class

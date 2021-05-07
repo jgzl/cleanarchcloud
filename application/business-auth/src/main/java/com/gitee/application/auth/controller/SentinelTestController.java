@@ -22,7 +22,7 @@ public class SentinelTestController {
 	}
 
 	/**
-	 * 根据传入返回值
+	 * 查找数据
 	 * @param name
 	 * @return
 	 */
