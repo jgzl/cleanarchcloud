@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>cleanarch-common</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>${revison}</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>cleanarch-common-swagger</artifactId>

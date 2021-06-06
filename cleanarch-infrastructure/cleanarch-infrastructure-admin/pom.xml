@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>com.github.jgzl</groupId>
 		<artifactId>cleanarch-infrastructure</artifactId>
-		<version>${revison}</version>
+		<version>${revision}</version>
 	</parent>
 	<name>基础服务::业务监控</name>
 	<description>基础服务::业务监控</description>

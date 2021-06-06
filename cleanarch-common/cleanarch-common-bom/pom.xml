@@ -6,20 +6,22 @@
 	<parent>
 		<groupId>org.apache</groupId>
 		<artifactId>apache</artifactId>
-		<version>18</version>
+		<version>23</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.jgzl</groupId>
 	<artifactId>cleanarch-common-bom</artifactId>
-	<version>${revison}</version>
+	<version>${revision}</version>
 	<packaging>pom</packaging>
 
 	<description>公共资源::common依赖管理bom</description>
 	<name>公共资源::common依赖管理bom</name>
 
 	<properties>
-		<revison>2021.6.5-SNAPSHOT</revison>
+		<revision>2021.6.5-SNAPSHOT</revision>
+		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
+		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 	</properties>
 
 	<build>
@@ -28,7 +30,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
@@ -43,7 +44,7 @@
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
+				<version>${nexus-staging-maven-plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<serverId>oss-release</serverId>
@@ -54,7 +55,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>1.1.0</version>
+				<version>${flatten-maven-plugin.version}</version>
 				<configuration>
 					<updatePomFile>true</updatePomFile>
 					<flattenMode>resolveCiFriendliesOnly</flattenMode>

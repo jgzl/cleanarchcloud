@@ -87,3 +87,4 @@ luac.out
 /target/
 /.idea/*
 **/rebel.xml
+**/.flattened-pom.xml

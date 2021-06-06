@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>cleanarch-business</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>${revison}</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>cleanarch-business-ssoclient2</artifactId>

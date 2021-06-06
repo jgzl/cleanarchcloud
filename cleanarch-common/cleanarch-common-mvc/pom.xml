@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>cleanarch-common</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>${revison}</version>
+		<version>${revision}</version>
 	</parent>
 	<artifactId>cleanarch-common-mvc</artifactId>
 	<description>公共资源::common Web层公共模块</description>
