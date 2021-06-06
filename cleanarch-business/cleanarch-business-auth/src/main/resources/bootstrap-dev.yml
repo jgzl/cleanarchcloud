@@ -45,7 +45,7 @@ feign:
         loggerLevel: full
 logging:
   level:
-    com.gitee.common.upms: debug
+    com.github.jgzl.common.upms: debug
 
 sso:
   frontend-url: http://localhost:${server.port}

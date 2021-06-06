@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.gitee.application.DemoApplication;
-import com.gitee.application.mapper.OrderMapper;
-import com.gitee.application.model.dao.OrderDO;
-import com.gitee.application.service.IOrderService;
+import com.github.jgzl.application.DemoApplication;
+import com.github.jgzl.application.mapper.OrderMapper;
+import com.github.jgzl.application.model.dao.OrderDO;
+import com.github.jgzl.application.service.IOrderService;
 
 
 @SpringBootTest(classes = {DemoApplication.class})

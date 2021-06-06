@@ -5,7 +5,7 @@
   "outPath": "src/main/resources/static/doc",
   "coverOld": true,
   "createDebugPage": true,
-  "packageFilters": "com.gitee",
+  "packageFilters": "com.github.jgzl",
   "md5EncryptedHtmlName": false,
   "style":"xt256",
   "projectName": "smart-doc",

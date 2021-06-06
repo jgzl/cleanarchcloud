@@ -38,10 +38,10 @@
 				<configuration>
 					<archive>
 						<manifestEntries>
-							<Agent-Class>com.gitee.common.CommonAgent</Agent-Class>
+							<Agent-Class>com.github.jgzl.common.CommonAgent</Agent-Class>
 							<Can-Redefine-Classes>true</Can-Redefine-Classes>
 							<Can-Retransform-Classes>true</Can-Retransform-Classes>
-							<Premain-Class>com.gitee.common.CommonAgent</Premain-Class>
+							<Premain-Class>com.github.jgzl.common.CommonAgent</Premain-Class>
 							<Project-name>${project.name}</Project-name>
 							<Project-version>${project.version}</Project-version>
 						</manifestEntries>

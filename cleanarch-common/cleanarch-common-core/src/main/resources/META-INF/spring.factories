@@ -1,8 +1,8 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.gitee.common.core.config.JacksonConfig,\
-  com.gitee.common.core.config.MessageSourceConfig,\
-  com.gitee.common.core.config.RestTemplateConfig,\
-  com.gitee.common.core.util.SpringContextHolder,\
-  com.gitee.common.core.config.PlatformErrorPageConfiguration,\
-  com.gitee.common.core.controller.PlatformErrorPageController,\
-  com.gitee.common.core.config.SysProperties
+  com.github.jgzl.common.core.config.JacksonConfig,\
+  com.github.jgzl.common.core.config.MessageSourceConfig,\
+  com.github.jgzl.common.core.config.RestTemplateConfig,\
+  com.github.jgzl.common.core.util.SpringContextHolder,\
+  com.github.jgzl.common.core.config.PlatformErrorPageConfiguration,\
+  com.github.jgzl.common.core.controller.PlatformErrorPageController,\
+  com.github.jgzl.common.core.config.SysProperties

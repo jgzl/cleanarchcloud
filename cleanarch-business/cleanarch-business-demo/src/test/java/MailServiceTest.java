@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.gitee.application.DemoApplication;
-import com.gitee.application.service.MailService;
+import com.github.jgzl.application.DemoApplication;
+import com.github.jgzl.application.service.MailService;
 
 import lombok.extern.slf4j.Slf4j;
 
