@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: business-codegen
+    name: cleanarch-business-codegen
   cloud:
     nacos:
       server-addr: localhost:8848

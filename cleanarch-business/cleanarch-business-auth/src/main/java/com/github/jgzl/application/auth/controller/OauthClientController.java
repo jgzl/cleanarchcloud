@@ -1,25 +1,16 @@
 package com.github.jgzl.application.auth.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsService;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.validate.Add;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsService;
+import javax.validation.Valid;
 
 /**
  * 客户端管理Controller
@@ -89,10 +80,8 @@ public class OauthClientController {
 	 * @return ResponseEntity
 	 */
 	@GetMapping
-	public ResponseEntity<Result> page(HttpServletRequest request) {
-		final Integer current = Integer.valueOf(request.getParameter("page"));
-		final Integer size = Integer.valueOf(request.getParameter("limit"));
-		Page page = new Page(current, size);
-		return ResponseEntity.ok(Result.ok(oauthClientService.selectPageVo(page)));
+	public ResponseEntity<Result> page(@RequestParam Integer page,@RequestParam Integer rows) {
+		Page pageVo = new Page(page, rows);
+		return ResponseEntity.ok(Result.ok(oauthClientService.selectPageVo(pageVo)));
 	}
 }

@@ -5,7 +5,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: business-ssoclient2
+    name: cleanarch-business-ssoclient2
   cloud:
     nacos:
       server-addr: localhost:8848

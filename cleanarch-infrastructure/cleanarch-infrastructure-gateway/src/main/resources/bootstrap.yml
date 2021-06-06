@@ -4,7 +4,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: business-gateway
+    name: cleanarch-infrastructure-gateway
   cloud:
     nacos:
       server-addr: localhost:8848

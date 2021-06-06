@@ -27,10 +27,11 @@ public class IndexController {
 	 * http://localhost:8081/demo
 	 * @return
 	 */
-	@RequestMapping("/auth-tokenkey")
+	@RequestMapping("/oauth/tokenkey")
 	public Mono<String> demo() {
-		String result = restTemplate.getForObject("http://business-auth/oauth/token_key", String.class);
-		return Mono.just(result);
+		Object result = restTemplate.getForObject("http://cleanarch-business-auth/oauth/token_key", Object.class);
+		log.info("result:{}",result);
+		return Mono.just("");
 	}
 
 	@RequestMapping("ping")
