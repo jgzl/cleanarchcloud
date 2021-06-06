@@ -23,7 +23,7 @@
 	<parent>
 		<artifactId>cleanarch-common</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>1.0.0.RELEASE</version>
+		<version>${revison}</version>
 	</parent>
 
 	<description>公共资源::common代理包动态修改字节码</description>

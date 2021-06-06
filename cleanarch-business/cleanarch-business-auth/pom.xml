@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>cleanarch-business</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>1.0.0.RELEASE</version>
+		<version>${revison}</version>
 	</parent>
 	<artifactId>cleanarch-business-auth</artifactId>
 	<modelVersion>4.0.0</modelVersion>

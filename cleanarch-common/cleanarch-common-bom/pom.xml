@@ -3,15 +3,81 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.apache</groupId>
+		<artifactId>apache</artifactId>
+		<version>18</version>
+	</parent>
 
+	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.jgzl</groupId>
 	<artifactId>cleanarch-common-bom</artifactId>
-	<version>1.0.0.RELEASE</version>
+	<version>${revison}</version>
 	<packaging>pom</packaging>
 
 	<description>公共资源::common依赖管理bom</description>
 	<name>公共资源::common依赖管理bom</name>
+
+	<properties>
+		<revison>2021.6.5-SNAPSHOT</revison>
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- GPG -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--自动发布-->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>oss-release</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencyManagement>
 		<dependencies>
@@ -48,16 +114,15 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<!-- 发布项目到 sonatype -->
 	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>User Project Release</name>
-			<url>http://nexus.dlihaifeng.cn/repository/maven-releases/</url>
-		</repository>
 		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>User Project SNAPSHOTS</name>
-			<url>http://nexus.dlihaifeng.cn/repository/maven-snapshots/</url>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
+		<repository>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
 </project>

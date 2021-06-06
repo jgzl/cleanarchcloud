@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>cleanarch-common</artifactId>
 		<groupId>com.github.jgzl</groupId>
-		<version>1.0.0.RELEASE</version>
+		<version>${revison}</version>
 	</parent>
 
 	<artifactId>cleanarch-common-core</artifactId>
