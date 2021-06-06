@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: business-auth
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        namespace: business-dev
+        file-extension: yaml
+        shared-configs:
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+      discovery:
+        namespace: business-dev
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      eager: true
+      filter:
+        enabled: true
+        url-patterns: /*
+      datasource:
+        # 名称随意
+        flow:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
+            namespace: sentinel-dev
+            rule-type: flow
+        degrade:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
+            namespace: sentinel-dev
+            rule-type: degrade
+        system:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
+            namespace: sentinel-dev
+            rule-type: system
+        authority:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
+            namespace: sentinel-dev
+            rule-type: authority
+        param-flow:
+          nacos:
+            server-addr: ${spring.cloud.nacos.server-addr}
+            dataId: ${spring.application.name}-param-flow-rules
+            groupId: SENTINEL_GROUP
+            namespace: sentinel-dev
+            rule-type: param-flow

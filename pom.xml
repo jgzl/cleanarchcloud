@@ -4,8 +4,8 @@
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.gitee</groupId>
-	<artifactId>phoenix</artifactId>
+	<groupId>com.github.jgzl</groupId>
+	<artifactId>cleanarchcloud</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0.0.RELEASE</version>
 
@@ -13,9 +13,9 @@
 	<url>https://blog.dlihaifeng.com</url>
 
 	<modules>
-		<module>common</module>
-		<module>infrastructure</module>
-		<module>application</module>
+		<module>cleanarch-common</module>
+		<module>cleanarch-infrastructure</module>
+		<module>cleanarch-business</module>
 	</modules>
 
 	<properties>
@@ -44,9 +44,9 @@
 		<springfox.version>3.0.0</springfox.version>
 		<swagger.version>1.5.22</swagger.version>
 		<ttl.version>2.11.4</ttl.version>
-		<smartdoc.version>2.1.4</smartdoc.version>
+		<smartdoc.version>2.1.9</smartdoc.version>
 		<jasypt.version>2.1.0</jasypt.version>
-		<nacos.version>2.0.0</nacos.version>
+		<nacos.version>2.0.1</nacos.version>
 
 		<!-- bom依赖配置管理 -->
 		<spring-boot.version>2.4.5</spring-boot.version>
@@ -128,8 +128,8 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<artifactId>common-bom</artifactId>
-				<groupId>com.gitee</groupId>
+				<artifactId>cleanarch-common-bom</artifactId>
+				<groupId>com.github.jgzl</groupId>
 				<version>1.0.0.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -379,4 +379,15 @@
 		</profile>
 	</profiles>
 
+	<!-- 发布项目到 sonatype -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 </project>

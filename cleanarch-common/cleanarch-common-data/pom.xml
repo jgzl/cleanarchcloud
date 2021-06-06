@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>cleanarch-common</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>1.0.0.RELEASE</version>
+	</parent>
+
+	<artifactId>cleanarch-common-data</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<description>公共资源::common数据库</description>
+	<name>公共资源::common数据库</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-core</artifactId>
+		</dependency>
+		<!-- mybatis-plus注解-->
+		<dependency>
+			<artifactId>mybatis-plus-extension</artifactId>
+			<groupId>com.baomidou</groupId>
+		</dependency>
+		<!--缓存依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+	</dependencies>
+
+
+</project>
