@@ -3,7 +3,7 @@ package com.github.jgzl.common.gateway.support;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.jgzl.common.gateway.vo.RouteDefinitionVO;
+import com.github.jgzl.common.gateway.vo.RouteDefinitionVo;
 
 import cn.hutool.cache.Cache;
 import cn.hutool.cache.CacheUtil;
@@ -17,15 +17,15 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class RouteCacheHolder {
-	private Cache<String, RouteDefinitionVO> cache = CacheUtil.newLFUCache(50);
+	private Cache<String, RouteDefinitionVo> cache = CacheUtil.newLFUCache(50);
 
 	/**
 	 * 获取缓存的全部对象
 	 *
 	 * @return routeList
 	 */
-	public List<RouteDefinitionVO> getRouteList() {
-		List<RouteDefinitionVO> routeList = new ArrayList<>();
+	public List<RouteDefinitionVo> getRouteList() {
+		List<RouteDefinitionVo> routeList = new ArrayList<>();
 		cache.forEach(route -> routeList.add(route));
 		return routeList;
 	}
@@ -35,7 +35,7 @@ public class RouteCacheHolder {
 	 *
 	 * @param routeList 缓存列表
 	 */
-	public void setRouteList(List<RouteDefinitionVO> routeList) {
+	public void setRouteList(List<RouteDefinitionVo> routeList) {
 		routeList.forEach(route -> cache.put(route.getId(), route));
 	}
 

@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class RouteDefinitionVO extends RouteDefinition implements Serializable {
+public class RouteDefinitionVo extends RouteDefinition implements Serializable {
 	/**
 	 * 路由名称
 	 */

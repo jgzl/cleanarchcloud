@@ -16,10 +16,14 @@
 	<description>基础服务::业务网关</description>
 
 	<dependencies>
-		<!--    <dependency>
-			  <artifactId>cleanarch-common-gateway</artifactId>
-			  <groupId>com.github.jgzl</groupId>
-			</dependency>-->
+		<dependency>
+		  <groupId>com.github.jgzl</groupId>
+		  <artifactId>cleanarch-common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-gateway</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
@@ -37,10 +41,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-loadbalancer</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
@@ -62,9 +62,21 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
-<!--		<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+		</dependency>
+<!--		<dependency>
+			<groupId>dev.miku</groupId>
+			<artifactId>r2dbc-mysql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.r2dbc</groupId>
+			<artifactId>r2dbc-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
 		</dependency>-->
 		<dependency>
 			<groupId>cn.hutool</groupId>
@@ -79,7 +91,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

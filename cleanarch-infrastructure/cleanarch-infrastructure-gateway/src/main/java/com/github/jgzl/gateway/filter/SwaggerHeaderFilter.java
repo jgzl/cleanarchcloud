@@ -1,4 +1,4 @@
-package com.github.jgzl.gateway.config;
+package com.github.jgzl.gateway.filter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;

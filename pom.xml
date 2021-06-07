@@ -72,12 +72,6 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-		<!--  实体类转换  -->
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${mapstruct.version}</version>
-		</dependency>
 		<!--bootstrap 启动器-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -140,6 +134,12 @@
 				<version>${revision}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<!--  实体类转换  -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>cn.hutool</groupId>

@@ -15,12 +15,12 @@
 	<description>公共资源::common网关</description>
 	<dependencies>
 		<dependency>
-			<artifactId>cleanarch-common-core</artifactId>
 			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-core</artifactId>
 		</dependency>
 		<dependency>
-			<artifactId>spring-cloud-starter-gateway</artifactId>
 			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gateway-server</artifactId>
 		</dependency>
 		<dependency>
 			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
@@ -30,6 +30,10 @@
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
 		</dependency>
 	</dependencies>
 

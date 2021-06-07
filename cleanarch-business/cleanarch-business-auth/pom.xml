@@ -79,6 +79,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-gateway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-common-security</artifactId>
 		</dependency>
 		<dependency>
@@ -92,6 +96,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--  实体类转换  -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
 		</dependency>
 	</dependencies>
 

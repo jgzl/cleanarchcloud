@@ -12,6 +12,7 @@ import lombok.Data;
 @Configuration
 @ConfigurationProperties(prefix = "sso")
 public class SysProperties {
+	
 	private String frontendUrl;
 
 	private SysOauth2Properties oauth2 = new SysOauth2Properties();

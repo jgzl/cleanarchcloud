@@ -1,8 +1,10 @@
 package com.github.jgzl.common.gateway.support;
 
-import java.util.List;
-
-import com.github.jgzl.common.gateway.vo.RouteDefinitionVO;
+import cn.hutool.core.collection.CollUtil;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.gateway.vo.RouteDefinitionVo;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
@@ -10,14 +12,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
-
-import com.github.jgzl.common.core.constant.CacheConstants;
-
-import cn.hutool.core.collection.CollUtil;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /**
  * @author lihaifeng
@@ -34,7 +32,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	@Override
 	public Mono<Void> save(Mono<RouteDefinition> route) {
 		return route.flatMap(r -> {
-			RouteDefinitionVO vo = new RouteDefinitionVO();
+			RouteDefinitionVo vo = new RouteDefinitionVo();
 			BeanUtils.copyProperties(r, vo);
 			log.info("保存路由信息{}", vo);
 			vo.setRouteName(r.getId());
@@ -68,15 +66,15 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	 */
 	@Override
 	public Flux<RouteDefinition> getRouteDefinitions() {
-		List<RouteDefinitionVO> routeList = RouteCacheHolder.getRouteList();
+		List<RouteDefinitionVo> routeList = RouteCacheHolder.getRouteList();
 		if (CollUtil.isNotEmpty(routeList)) {
 			log.debug("内存 中路由定义条数： {}， {}", routeList.size(), routeList);
 			return Flux.fromIterable(routeList);
 		}
 
 		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(RouteDefinitionVO.class));
-		List<RouteDefinitionVO> values = redisTemplate.opsForHash().values(CacheConstants.ROUTE_KEY);
+		redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(RouteDefinitionVo.class));
+		List<RouteDefinitionVo> values = redisTemplate.opsForHash().values(CacheConstants.ROUTE_KEY);
 		log.debug("redis 中路由定义条数： {}， {}", values.size(), values);
 
 		RouteCacheHolder.setRouteList(values);

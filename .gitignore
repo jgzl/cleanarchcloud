@@ -28,6 +28,8 @@ logs
 
 # maven ignore
 target
+**/target
+**/**/target
 
 # other ignore
 *.log

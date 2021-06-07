@@ -62,7 +62,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDO> implemen
 		this.baseMapper.selectPage(page, new LambdaQueryWrapper<OrderDO>().eq(OrderDO::getCode, "123"));
 		System.out.println(orderDOIPage.getPages());
 		System.out.println(orderDOIPage.getTotal());
-		orderDOIPage.getRecords().forEach(a -> System.out.println(a));
+		orderDOIPage.getRecords().forEach(System.out::println);
 		return null;
 	}
 

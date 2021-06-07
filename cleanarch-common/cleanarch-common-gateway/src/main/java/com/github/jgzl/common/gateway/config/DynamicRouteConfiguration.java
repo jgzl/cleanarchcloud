@@ -1,8 +1,11 @@
 package com.github.jgzl.common.gateway.config;
 
-import java.time.Duration;
-
+import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.gateway.support.RouteCacheHolder;
+import io.lettuce.core.ReadFrom;
+import io.lettuce.core.cluster.ClusterClientOptions;
+import io.lettuce.core.cluster.ClusterTopologyRefreshOptions;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
@@ -10,6 +13,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.config.PropertiesRouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -18,19 +22,14 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
-import com.github.jgzl.common.core.constant.CacheConstants;
-
-import io.lettuce.core.ReadFrom;
-import io.lettuce.core.cluster.ClusterClientOptions;
-import io.lettuce.core.cluster.ClusterTopologyRefreshOptions;
-import lombok.extern.slf4j.Slf4j;
+import java.time.Duration;
 
 /**
  * @author lihaifeng
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "platform.gateway.dynamic", havingValue = "true")
+@ComponentScan("com.github.jgzl.common.gateway")
 @ConditionalOnWebApplication(type = Type.REACTIVE)
 public class DynamicRouteConfiguration {
 	/**

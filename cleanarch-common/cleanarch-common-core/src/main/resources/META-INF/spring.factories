@@ -3,6 +3,4 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.github.jgzl.common.core.config.MessageSourceConfig,\
   com.github.jgzl.common.core.config.RestTemplateConfig,\
   com.github.jgzl.common.core.util.SpringContextHolder,\
-  com.github.jgzl.common.core.config.PlatformErrorPageConfiguration,\
-  com.github.jgzl.common.core.controller.PlatformErrorPageController,\
   com.github.jgzl.common.core.config.SysProperties
