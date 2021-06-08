@@ -5,6 +5,7 @@ import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsServ
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.validate.Add;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
  * @author lihaifeng
  * 2019/7/5 15:15
  */
+@Api(tags = "客户端控制器")
 @RestController
 @RequestMapping("/clients")
 public class OauthClientController {

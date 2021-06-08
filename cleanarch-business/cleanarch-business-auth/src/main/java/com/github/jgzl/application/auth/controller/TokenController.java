@@ -1,15 +1,9 @@
 package com.github.jgzl.application.auth.controller;
 
-import java.io.IOException;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsService;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -19,11 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.Map;
+
 /**
  * 管理token
  * @author lihaifeng
  * @date 2018年03月10日
  */
+@Api(tags = "oauth2控制器")
 @RestController
 @RequestMapping("/token")
 public class TokenController {
