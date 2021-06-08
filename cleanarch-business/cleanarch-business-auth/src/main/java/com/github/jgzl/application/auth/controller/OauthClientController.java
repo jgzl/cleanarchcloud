@@ -7,7 +7,6 @@ import com.github.jgzl.common.security.validate.Add;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,9 +33,9 @@ public class OauthClientController {
 	 * @return
 	 */
 	@GetMapping("/{clientId}")
-	public ResponseEntity<Result> get(@PathVariable("clientId") String clientId) {
+	public Result get(@PathVariable("clientId") String clientId) {
 
-		return ResponseEntity.ok(Result.ok(oauthClientService.getVo(clientId)));
+		return Result.ok(oauthClientService.getVo(clientId));
 	}
 
 	/**
@@ -46,9 +45,9 @@ public class OauthClientController {
 	 * @return
 	 */
 	@PutMapping
-	public ResponseEntity<Result> update(@Valid @RequestBody SysOauthClientDetailsVO vo) {
+	public Result update(@Valid @RequestBody SysOauthClientDetailsVO vo) {
 
-		return ResponseEntity.ok(Result.ok(oauthClientService.update(vo)));
+		return Result.ok(oauthClientService.update(vo));
 	}
 
 	/**
@@ -58,9 +57,9 @@ public class OauthClientController {
 	 * @return
 	 */
 	@PostMapping
-	public ResponseEntity<Result> add(@Validated(Add.class) @RequestBody SysOauthClientDetailsVO vo) {
+	public Result add(@Validated(Add.class) @RequestBody SysOauthClientDetailsVO vo) {
 
-		return ResponseEntity.ok(Result.ok(oauthClientService.add(vo)));
+		return Result.ok(oauthClientService.add(vo));
 	}
 
 	/**
@@ -70,9 +69,9 @@ public class OauthClientController {
 	 * @return
 	 */
 	@DeleteMapping("/{clientId}")
-	public ResponseEntity<Result> delete(@PathVariable("clientId") String clientId) {
+	public Result delete(@PathVariable("clientId") String clientId) {
 
-		return ResponseEntity.ok(Result.ok(oauthClientService.delete(clientId)));
+		return Result.ok(oauthClientService.delete(clientId));
 	}
 
 	/**
@@ -82,8 +81,8 @@ public class OauthClientController {
 	 * @return ResponseEntity
 	 */
 	@GetMapping
-	public ResponseEntity<Result> page(@RequestParam Integer page,@RequestParam Integer rows) {
+	public Result page(@RequestParam Integer page,@RequestParam Integer rows) {
 		Page pageVo = new Page(page, rows);
-		return ResponseEntity.ok(Result.ok(oauthClientService.selectPageVo(pageVo)));
+		return Result.ok(oauthClientService.selectPageVo(pageVo));
 	}
 }

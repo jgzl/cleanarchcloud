@@ -35,8 +35,8 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {BusiException.class})
-	public ResponseEntity<Result> handleBusiException(BusiException e) {
-		return ResponseEntity.ok(Result.failed(e.getMessage()));
+	public Result handleBusiException(BusiException e) {
+		return Result.failed(e.getMessage()));
 	}
 
 	*//**
@@ -46,8 +46,8 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {ConstraintViolationException.class})
-	public ResponseEntity<Result> handleCiException(ConstraintViolationException ex) {
-		final ResponseEntity<Result> result = ResponseEntity.ok(Result.failed(null));
+	public Result handleCiException(ConstraintViolationException ex) {
+		final Result result = Result.failed(null));
 		final Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
 		for (ConstraintViolation<?> violation : violations) {
 			if (!StringUtils.isEmpty(violation.getMessage())) {
@@ -67,7 +67,7 @@ public class GlobalExceptionHandler {
 	 * @return
 	 *//*
 	@ExceptionHandler( {Exception.class})
-	public ResponseEntity<Result> handle(Exception ex) {
+	public Result handle(Exception ex) {
 		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 		final Response response = Result.failed("系统错误");
 		if (ex instanceof HttpMessageNotReadableException

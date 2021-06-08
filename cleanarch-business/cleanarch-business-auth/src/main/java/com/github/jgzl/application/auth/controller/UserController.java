@@ -11,7 +11,6 @@ import com.github.jgzl.common.security.vo.SysUserVO;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -50,11 +49,11 @@ public class UserController {
 	 */
 	@GetMapping("/info")
 	@ResponseBody
-	public ResponseEntity<Result> userInfo(Authentication authentication) {
+	public Result userInfo(Authentication authentication) {
 		if (authentication == null) {
 			return null;
 		}
-		return ResponseEntity.ok(Result.ok(authentication.getPrincipal()));
+		return Result.ok(authentication.getPrincipal());
 	}
 
 	/**
@@ -65,21 +64,21 @@ public class UserController {
 	 */
 	@GetMapping("/smsCode/{mobile}")
 	@ResponseBody
-	public ResponseEntity<Result> smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号") @PathVariable String mobile) {
+	public Result smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号") @PathVariable String mobile) {
 		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
 		if (tempCode != null) {
 			log.error("用户:{}验证码未失效{}", mobile, tempCode);
-			return ResponseEntity.ok(Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请"));
+			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
 		}
 		if (userService.findUserByMobile(mobile) == null) {
 			log.error("根据用户手机号:{}, 查询用户为空", mobile);
-			return ResponseEntity.ok(Result.failed("手机号不存在"));
+			return Result.failed("手机号不存在");
 		}
 		String code = RandomUtil.randomNumbers(6);
 		log.info("短信发送请求消息中心 -> 手机号:{} -> 验证码：{}", mobile, code);
 		redisRepository
 				.setExpire(CacheConstants.DEFAULT_CODE_KEY + mobile, code, CacheConstants.DEFAULT_EXPIRE_SECONDS);
-		return ResponseEntity.ok(Result.ok(code));
+		return Result.ok(code);
 	}
 
 	/**
@@ -89,9 +88,9 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Result> get(@PathVariable("id") String id) {
+	public Result get(@PathVariable("id") String id) {
 
-		return ResponseEntity.ok(Result.ok(userService.getVo(id)));
+		return Result.ok(userService.getVo(id));
 	}
 
 	/**
@@ -101,9 +100,9 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping
-	public ResponseEntity<Result> update(@Valid @RequestBody SysUserVO vo) {
+	public Result update(@Valid @RequestBody SysUserVO vo) {
 
-		return ResponseEntity.ok(Result.ok(userService.update(vo)));
+		return Result.ok(userService.update(vo));
 	}
 
 	/**
@@ -113,9 +112,9 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public ResponseEntity<Result> add(@Validated(Add.class) @RequestBody SysUserVO vo) {
+	public Result add(@Validated(Add.class) @RequestBody SysUserVO vo) {
 
-		return ResponseEntity.ok(Result.ok(userService.add(vo)));
+		return Result.ok(userService.add(vo));
 	}
 
 	/**
@@ -125,9 +124,8 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Result> delete(@PathVariable("id") String id) {
-
-		return ResponseEntity.ok(Result.ok(userService.delete(id)));
+	public Result<Boolean> delete(@PathVariable("id") String id) {
+		return Result.ok(userService.delete(id));
 	}
 
 	/**
@@ -137,8 +135,8 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public ResponseEntity<Result> page(HttpServletRequest request,Page page) {
+	public Result<Page<SysUserVO>> page(HttpServletRequest request, Page page) {
 		userService.selectPageVo(page);
-		return ResponseEntity.ok(Result.ok(page));
+		return Result.ok(page);
 	}
 }

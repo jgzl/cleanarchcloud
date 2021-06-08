@@ -17,7 +17,7 @@ public class IndexController {
 	 * @return
 	 */
 	@GetMapping("/")
-	public ResponseEntity<Result> idx(){
-		return ResponseEntity.ok(Result.ok());
+	public Result idx(){
+		return Result.ok();
 	}
 }
