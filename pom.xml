@@ -83,6 +83,11 @@
 			<artifactId>jasypt-spring-boot-starter</artifactId>
 			<version>${jasypt.version}</version>
 		</dependency>
+		<!--监控-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<!--  配置可视化，可以通过yml直接点击到java代码配置位置  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

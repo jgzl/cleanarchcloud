@@ -21,10 +21,6 @@
 		  <artifactId>cleanarch-common-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-gateway</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
 		</dependency>
@@ -41,6 +37,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>

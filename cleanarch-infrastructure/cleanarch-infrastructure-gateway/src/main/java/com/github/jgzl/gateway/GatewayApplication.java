@@ -12,7 +12,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * @author lihaifeng
  */
-//@EnableDynamicRoute
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication

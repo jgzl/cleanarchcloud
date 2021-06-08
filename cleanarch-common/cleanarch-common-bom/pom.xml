@@ -88,11 +88,6 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<artifactId>cleanarch-common-gateway</artifactId>
-				<groupId>com.github.jgzl</groupId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
 				<artifactId>cleanarch-common-swagger</artifactId>
 				<groupId>com.github.jgzl</groupId>
 				<version>${project.version}</version>

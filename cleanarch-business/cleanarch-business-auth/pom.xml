@@ -79,10 +79,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-gateway</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-common-security</artifactId>
 		</dependency>
 		<dependency>

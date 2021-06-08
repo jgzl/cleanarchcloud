@@ -21,7 +21,6 @@
 	<modules>
 		<module>cleanarch-common-bom</module>
 		<module>cleanarch-common-core</module>
-		<module>cleanarch-common-gateway</module>
 		<module>cleanarch-common-security</module>
 		<module>cleanarch-common-swagger</module>
 		<module>cleanarch-common-data</module>

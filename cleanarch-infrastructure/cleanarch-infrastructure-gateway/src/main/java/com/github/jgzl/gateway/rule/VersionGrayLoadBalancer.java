@@ -25,8 +25,8 @@ import java.util.Map;
 @Slf4j
 @AllArgsConstructor
 public class VersionGrayLoadBalancer implements GrayLoadBalancer {
-	private DiscoveryClient discoveryClient;
 
+	private DiscoveryClient discoveryClient;
 
 	/**
 	 * 根据serviceId 筛选可用服务
@@ -56,7 +56,7 @@ public class VersionGrayLoadBalancer implements GrayLoadBalancer {
 			Map<String, String> metadata = instance.getMetadata();
 			String targetVersion = MapUtil.getStr(metadata, CommonConstants.VERSION);
 			if (reqVersion.equalsIgnoreCase(targetVersion)) {
-				log.debug("gray requst match success :{} {}", reqVersion, instance);
+				log.debug("gray request match success :{} {}", reqVersion, instance);
 				return instance;
 			}
 		}

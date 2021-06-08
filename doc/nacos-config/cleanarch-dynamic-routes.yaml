@@ -1,0 +1,21 @@
+routes:
+  - id: auth
+    uri: lb://cleanarch-business-auth
+    predicates:
+      - Path=/auth/**
+  - id: codegen
+    uri: lb://cleanarch-business-codegen
+    predicates:
+      - Path=/codegen/**
+  - id: demo
+    uri: lb://cleanarch-business-demo
+    predicates:
+      - Path=/demo/**
+  - id: ssoclient1
+    uri: lb://cleanarch-business-ssoclient1
+    predicates:
+      - Path=/ssoclient1/**
+  - id: ssoclient2
+    uri: lb://cleanarch-business-ssoclient2
+    predicates:
+      - Path=/ssoclient2/**
