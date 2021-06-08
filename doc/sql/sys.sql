@@ -311,4 +311,30 @@ INSERT INTO `sys_user_role` VALUES (0, 1);
 INSERT INTO `sys_user_role` VALUES (0, 2);
 INSERT INTO `sys_user_role` VALUES (0, 3);
 
+-- ----------------------------
+-- Table structure for sys_route_conf
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_route_conf`;
+CREATE TABLE `sys_route_conf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `route_name` varchar(30) DEFAULT NULL,
+  `route_id` varchar(30) DEFAULT NULL,
+  `predicates` json DEFAULT NULL COMMENT '断言',
+  `filters` json DEFAULT NULL COMMENT '过滤器',
+  `uri` varchar(50) DEFAULT NULL,
+  `order` int(2) DEFAULT '0' COMMENT '排序',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `del_flag` char(1) DEFAULT '0',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='路由配置表';
+
+-- ----------------------------
+-- Records of sys_route_conf
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_route_conf` VALUES (1, '认证中心', 'cleanarch-business-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-business-auth', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:57', '0');
+INSERT INTO `sys_route_conf` VALUES (2, '代码生成模块', 'cleanarch-business-codegen', '[{\"args\": {\"_genkey_0\": \"/codegen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-business-codegen', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:58', '0');
+COMMIT;
+
 SET FOREIGN_KEY_CHECKS = 1;
