@@ -1,36 +1,29 @@
 package com.github.jgzl.application.auth.oauth2.handler;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.hutool.core.codec.Base64;
+import cn.hutool.core.map.MapUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.jgzl.common.core.constant.SecurityConstants;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.UnapprovedClientAuthenticationException;
-import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.OAuth2Request;
-import org.springframework.security.oauth2.provider.TokenRequest;
+import org.springframework.security.oauth2.provider.*;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.jgzl.common.core.constant.SecurityConstants;
-
-import cn.hutool.core.codec.Base64;
-import cn.hutool.core.map.MapUtil;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 手机号登录成功, 直接返回token
@@ -39,21 +32,19 @@ import lombok.extern.slf4j.Slf4j;
  * 2019/5/15 16:03
  * @see SavedRequestAwareAuthenticationSuccessHandler
  */
-@Component
 @Slf4j
 @Data
+@Component
+@AllArgsConstructor
 public class MobileTokenLoginSuccessHandler implements AuthenticationSuccessHandler {
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-    @Autowired
-    private ClientDetailsService clientDetailsService;
+    private final ClientDetailsService clientDetailsService;
 
-    @Autowired
-    private DefaultTokenServices tokenServices;
+    private final DefaultTokenServices tokenServices;
 
-    @Override
+	@Override
     public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException,
 			ServletException {
         final String header = request.getHeader(SecurityConstants.AUTHORIZATION);

@@ -22,7 +22,7 @@ import com.github.jgzl.application.auth.service.user.MobileUserDetailsService;
  * 2019/7/22 16:14
  */
 @Component
-public class MobileTokenAuthenticationSecurityConfigration extends
+public class MobileTokenAuthenticationSecurityConfiguration extends
 		SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
     @Autowired

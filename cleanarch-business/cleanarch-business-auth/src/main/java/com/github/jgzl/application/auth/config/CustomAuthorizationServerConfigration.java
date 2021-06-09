@@ -1,14 +1,18 @@
 package com.github.jgzl.application.auth.config;
 
-import java.security.KeyPair;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
+import com.github.jgzl.application.auth.mvc.handler.CustomAccessDeniedHandler;
 import com.github.jgzl.application.auth.mvc.handler.CustomExceptionEntryPoint;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.github.jgzl.application.auth.oauth2.code.RedisAuthenticationCodeServices;
+import com.github.jgzl.application.auth.oauth2.exception.CustomWebResponseExceptionTranslator;
+import com.github.jgzl.application.auth.oauth2.provider.CustomClientDetailsService;
+import com.github.jgzl.application.auth.oauth2.token.CustomAccessTokenConverter;
+import com.github.jgzl.application.auth.service.user.UserNameUserDetailsServiceImpl;
+import com.github.jgzl.common.core.config.SysProperties;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.SecurityConstants;
+import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.security.vo.UserVO;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -28,17 +32,11 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import com.github.jgzl.application.auth.mvc.handler.CustomAccessDeniedHandler;
-import com.github.jgzl.application.auth.oauth2.code.RedisAuthenticationCodeServices;
-import com.github.jgzl.application.auth.oauth2.exception.CustomWebResponseExceptionTranslator;
-import com.github.jgzl.application.auth.oauth2.provider.CustomClientDetailsService;
-import com.github.jgzl.application.auth.oauth2.token.CustomAccessTokenConverter;
-import com.github.jgzl.application.auth.service.user.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.core.config.SysProperties;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
-import com.github.jgzl.common.security.vo.UserVO;
+import javax.sql.DataSource;
+import java.security.KeyPair;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * 认证服务器配置抽象
@@ -46,38 +44,30 @@ import com.github.jgzl.common.security.vo.UserVO;
  * @author lihaifeng
  * @date 2018/7/24 16:10
  */
+@AllArgsConstructor
 @Configuration
 @EnableAuthorizationServer
 public class CustomAuthorizationServerConfigration extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-	@Autowired
-	private SysProperties ssoProperties;
+	private final SysProperties ssoProperties;
 
-    @Autowired
-    private CustomRedisRepository redisRepository;
+    private final CustomRedisRepository redisRepository;
 
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    private final RedisConnectionFactory redisConnectionFactory;
 
-    @Autowired
-    private UserNameUserDetailsServiceImpl userNameUserDetailsService;
+    private final UserNameUserDetailsServiceImpl userNameUserDetailsService;
 
-    @Autowired
-    private CustomWebResponseExceptionTranslator exceptionTranslator;
+    private final CustomWebResponseExceptionTranslator exceptionTranslator;
 
-    @Autowired
-    private CustomExceptionEntryPoint exceptionEntryPoint;
+    private final CustomExceptionEntryPoint exceptionEntryPoint;
 
-    @Autowired
-    private CustomAccessDeniedHandler accessDeniedHandler;
+    private final CustomAccessDeniedHandler accessDeniedHandler;
 
-	@Autowired
-    private DataSource dataSource;
+	private final DataSource dataSource;
 
-    @Override
+	@Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
     	CustomClientDetailsService clientDetailsService=new CustomClientDetailsService(dataSource);
     	clientDetailsService.setSelectClientDetailsSql(SecurityConstants.DEFAULT_SELECT_STATEMENT);

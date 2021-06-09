@@ -1,13 +1,11 @@
 package com.github.jgzl.application.auth.config;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.sql.DataSource;
-
 import com.github.jgzl.application.auth.mvc.configurer.SmsCodeAuthenticationSecurityConfigration;
-import com.github.jgzl.application.auth.mvc.handler.CustomExceptionEntryPoint;
-import com.github.jgzl.application.auth.mvc.handler.UsernamePasswordAuthenticationSuccessHandler;
+import com.github.jgzl.application.auth.mvc.filter.CustomUsernamePasswordAuthenticationFilter;
+import com.github.jgzl.application.auth.mvc.handler.*;
+import com.github.jgzl.application.auth.oauth2.configurer.MobileTokenAuthenticationSecurityConfiguration;
+import com.github.jgzl.application.auth.service.user.UserNameUserDetailsServiceImpl;
+import com.github.jgzl.common.core.config.SysProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,13 +22,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 
-import com.github.jgzl.application.auth.mvc.filter.CustomUsernamePasswordAuthenticationFilter;
-import com.github.jgzl.application.auth.mvc.handler.CustomAccessDeniedHandler;
-import com.github.jgzl.application.auth.mvc.handler.UsernamePasswordAuthenticationFailureHandler;
-import com.github.jgzl.application.auth.mvc.handler.UsernamePasswordLogoutSuccessHandler;
-import com.github.jgzl.application.auth.oauth2.configurer.MobileTokenAuthenticationSecurityConfigration;
-import com.github.jgzl.application.auth.service.user.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.core.config.SysProperties;
+import javax.sql.DataSource;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * webSecurity 权限控制类
@@ -67,7 +61,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     private UsernamePasswordLogoutSuccessHandler logoutSuccessHandler;
 
     @Autowired
-    private MobileTokenAuthenticationSecurityConfigration mobileTokenAuthenticationSecurityConfigration;
+    private MobileTokenAuthenticationSecurityConfiguration mobileTokenAuthenticationSecurityConfigration;
 
     @Autowired
     private SmsCodeAuthenticationSecurityConfigration smsCodeAuthenticationSecurityConfigration;

@@ -3,6 +3,8 @@ package com.github.jgzl.application.auth.config;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -14,7 +16,7 @@ import org.springframework.web.filter.CorsFilter;
  * @date 2018/8/9 15:59
  */
 @Configuration
-public class CustomCorsConfiguration {
+public class CustomApplicationConfiguration {
 
     @Bean
     public CorsFilter corsFilter() {

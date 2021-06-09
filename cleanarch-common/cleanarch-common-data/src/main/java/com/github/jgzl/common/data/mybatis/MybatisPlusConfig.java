@@ -2,6 +2,8 @@ package com.github.jgzl.common.data.mybatis;
 
 import javax.sql.DataSource;
 
+import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -9,9 +11,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 
 /**
  * xuhang
@@ -27,8 +26,8 @@ public class MybatisPlusConfig {
 	 * @return
 	 */
 	@Bean
-	public PaginationInterceptor paginationInterceptor() {
-		PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+	public PaginationInnerInterceptor paginationInterceptor() {
+		PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
 		// 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
 		// paginationInterceptor.setOverflow(false);
 		// 设置最大单页限制数量，默认 500 条，-1 不受限制
@@ -41,8 +40,8 @@ public class MybatisPlusConfig {
 	 * @return
 	 */
 	@Bean
-	public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-		return new OptimisticLockerInterceptor();
+	public OptimisticLockerInnerInterceptor optimisticLockerInterceptor() {
+		return new OptimisticLockerInnerInterceptor();
 	}
 
 	@Bean

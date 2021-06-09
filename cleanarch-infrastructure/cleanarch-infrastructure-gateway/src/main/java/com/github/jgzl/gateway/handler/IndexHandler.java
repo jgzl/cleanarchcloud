@@ -29,7 +29,7 @@ public class IndexHandler {
 	 */
 	@RequestMapping("/token_key")
 	public Mono<String> demo() {
-		Object result = restTemplate.getForObject("http://cleanarch-business-auth/oauth/token_key", Object.class);
+		Object result = restTemplate.getForObject("http://localhost:8000/auth/oauth/token_key", Object.class);
 		log.info("result:{}",result);
 		return Mono.just("");
 	}

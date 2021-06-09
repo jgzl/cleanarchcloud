@@ -36,29 +36,32 @@
 		<bootstrap.swagger.version>3.0.2</bootstrap.swagger.version>
 		<cxf.rs.version>3.3.7</cxf.rs.version>
 		<cxf.rs.json>2.10.1</cxf.rs.json>
-		<druid.starter.version>1.1.21</druid.starter.version>
+		<druid.starter.version>1.2.6</druid.starter.version>
 		<flowable.starter.version>6.5.0</flowable.starter.version>
-		<guava.version>27.0.1-jre</guava.version>
+		<guava.version>30.1.1-jre</guava.version>
 		<hutool.version>5.2.0</hutool.version>
 		<javassist.version>3.26.0-GA</javassist.version>
 		<jwt.version>3.9.0</jwt.version>
 		<jjwt.version>0.9.1</jjwt.version>
-		<keycloak.version>9.0.0</keycloak.version>
+		<keycloak.version>13.0.1</keycloak.version>
 		<lombok.version>1.18.12</lombok.version>
-		<mybatisplus.starter.version>3.4.1</mybatisplus.starter.version>
+		<mybatisplus.starter.version>3.4.3</mybatisplus.starter.version>
+		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
 		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
 		<springfox.version>3.0.0</springfox.version>
 		<swagger.version>1.5.22</swagger.version>
-		<ttl.version>2.11.4</ttl.version>
+		<ttl.version>2.12.1</ttl.version>
 		<smartdoc.version>2.1.9</smartdoc.version>
-		<jasypt.version>2.1.0</jasypt.version>
+		<jasypt.version>3.0.3</jasypt.version>
 		<nacos.version>2.0.1</nacos.version>
+		<jackson.jsr.version>2.12.3</jackson.jsr.version>
+		<mybatis.jsr.version>1.0.2</mybatis.jsr.version>
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 
 		<!-- bom依赖配置管理 -->
-		<spring-boot.version>2.4.5</spring-boot.version>
-		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
-		<spring-cloud.version>2020.0.2</spring-cloud.version>
+		<spring-boot.version>2.5.0</spring-boot.version>
+		<spring-boot-admin.version>2.4.1</spring-boot-admin.version>
+		<spring-cloud.version>2020.0.3</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
 		<spring.version>5.3.6</spring.version>
 	</properties>
@@ -157,6 +160,21 @@
 				<version>${guava.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-typehandlers-jsr310</artifactId>
+				<version>${mybatis.jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr353</artifactId>
+				<version>${jackson.jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.nacos</groupId>
+				<artifactId>nacos-client</artifactId>
+				<version>${nacos.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.auth0</groupId>
 				<artifactId>java-jwt</artifactId>
 				<version>${jwt.version}</version>
@@ -195,7 +213,7 @@
 			<dependency>
 				<artifactId>mybatis-plus-generator</artifactId>
 				<groupId>com.baomidou</groupId>
-				<version>${mybatisplus.starter.version}</version>
+				<version>${mybatisplus.generator.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shardingsphere</groupId>
