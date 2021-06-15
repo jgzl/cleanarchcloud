@@ -14,19 +14,21 @@ spring:
         server-addr: ${spring.cloud.nacos.server-addr}
     sentinel:
       transport:
-        dashboard: localhost:8080
+        dashboard: localhost:8888
       scg:
-        order: -100
+        fallback:
+          response-status: 426
+          response-body: "{'code':'426' , 'message':'请求频繁，请稍后重试'}"
       datasource:
         # 名称随意
-        api:
+        gw-api:
           nacos:
             server-addr: ${spring.cloud.nacos.server-addr}
             dataId: ${spring.application.name}-gateway-api-rules
             groupId: SENTINEL_GROUP
             namespace: sentinel-dev
             rule-type: gw-api-group
-        flow:
+        gw-flow:
           nacos:
             server-addr: ${spring.cloud.nacos.server-addr}
             dataId: ${spring.application.name}-gateway-flow-rules

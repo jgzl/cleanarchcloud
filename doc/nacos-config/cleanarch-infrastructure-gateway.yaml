@@ -2,7 +2,7 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: localhost:8080
+        dashboard: localhost:8888
       scg:
         order: -100
       datasource:

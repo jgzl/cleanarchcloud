@@ -17,7 +17,7 @@ spring:
         namespace: business-dev
     sentinel:
       transport:
-        dashboard: 127.0.0.1:8080
+        dashboard: localhost:8888
       eager: true
       filter:
         enabled: true

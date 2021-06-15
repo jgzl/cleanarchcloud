@@ -48,7 +48,6 @@ logging:
     com.github.jgzl.common.upms: debug
 
 sso:
-  frontend-url: http://localhost:${server.port}
   oauth2:
     key-store:
       location: classpath:taroco.jks
