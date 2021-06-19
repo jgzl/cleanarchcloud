@@ -4,20 +4,20 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.jgzl.application.model.bo.OrderBO;
-import com.github.jgzl.application.model.dao.OrderDO;
-import com.github.jgzl.application.model.vo.OrderVO;
+import com.github.jgzl.application.model.dao.OrderDo;
+import com.github.jgzl.application.model.vo.OrderVo;
 
 /**
  * @author lihaifeng
  */
-public interface IOrderService extends IService<OrderDO> {
+public interface IOrderService extends IService<OrderDo> {
 	/**
-	 * 通过VO创建订单
+	 * 通过Vo创建订单
 	 *
-	 * @param orderVO
+	 * @param orderVo
 	 * @return
 	 */
-	List<OrderBO> createOrderByVO(OrderVO orderVO);
+	List<OrderBO> createOrderByVo(OrderVo orderVo);
 
 	List<OrderBO> pageList();
 

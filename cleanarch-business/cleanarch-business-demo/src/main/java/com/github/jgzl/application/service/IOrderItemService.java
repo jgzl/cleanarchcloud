@@ -17,11 +17,11 @@
 package com.github.jgzl.application.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.application.model.dao.OrderItemDO;
+import com.github.jgzl.application.model.dao.OrderItemDo;
 
 /**
  * @author lihaifeng
  */
-public interface IOrderItemService extends IService<OrderItemDO> {
+public interface IOrderItemService extends IService<OrderItemDo> {
 
 }

@@ -57,7 +57,7 @@ public abstract class AbstractUserDetailsAuthenticationProvider implements Authe
             try {
                 user = this.retrieveUser(username, authentication);
             } catch (UsernameNotFoundException var6) {
-                log.error("SysUserVO \'" + username + "\' not found");
+                log.error("SysUserVo \'" + username + "\' not found");
                 if (this.hideUserNotFoundExceptions) {
                     throw new BadCredentialsException(this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
                 }
@@ -178,8 +178,8 @@ public abstract class AbstractUserDetailsAuthenticationProvider implements Authe
         @Override
         public void check(UserDetails user) {
             if (!user.isCredentialsNonExpired()) {
-                log.debug("SysUserVO account credentials have expired");
-                throw new CredentialsExpiredException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", "SysUserVO credentials have expired"));
+                log.debug("SysUserVo account credentials have expired");
+                throw new CredentialsExpiredException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", "SysUserVo credentials have expired"));
             }
         }
     }
@@ -191,14 +191,14 @@ public abstract class AbstractUserDetailsAuthenticationProvider implements Authe
         @Override
         public void check(UserDetails user) {
             if (!user.isAccountNonLocked()) {
-                log.debug("SysUserVO account is locked");
-                throw new LockedException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.locked", "SysUserVO account is locked"));
+                log.debug("SysUserVo account is locked");
+                throw new LockedException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.locked", "SysUserVo account is locked"));
             } else if (!user.isEnabled()) {
-                log.debug("SysUserVO account is disabled");
-                throw new DisabledException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.disabled", "SysUserVO is disabled"));
+                log.debug("SysUserVo account is disabled");
+                throw new DisabledException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.disabled", "SysUserVo is disabled"));
             } else if (!user.isAccountNonExpired()) {
-                log.debug("SysUserVO account is expired");
-                throw new AccountExpiredException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.expired", "SysUserVO account has expired"));
+                log.debug("SysUserVo account is expired");
+                throw new AccountExpiredException(AbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.expired", "SysUserVo account has expired"));
             }
         }
     }

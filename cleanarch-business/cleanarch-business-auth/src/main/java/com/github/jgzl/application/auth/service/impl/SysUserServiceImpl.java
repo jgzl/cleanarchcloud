@@ -9,11 +9,11 @@ import com.github.jgzl.application.auth.service.SysUserService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.data.redis.CustomRedisRepository;
-import com.github.jgzl.common.security.dataobject.SysUserDO;
+import com.github.jgzl.common.security.dataobject.SysUserDo;
 import com.github.jgzl.common.security.vo.Operation;
-import com.github.jgzl.common.security.vo.SysRoleVO;
-import com.github.jgzl.common.security.vo.SysUserVO;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.SysRoleVo;
+import com.github.jgzl.common.security.vo.SysUserVo;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> implements SysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> implements SysUserService {
 
 	@Autowired
 	private CustomRedisRepository redisRepository;
@@ -39,10 +39,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> im
 	private PasswordEncoder encoder;
 
 	@Override
-	public UserVO findUserByUsername(String username) {
-		SysUserDO dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDO>lambdaQuery().eq(SysUserDO::getUsername, username));
-		UserVO user = SysUserConvert.INSTANCE.convertUserDetails(dao);
+	public UserVo findUserByUsername(String username) {
+		SysUserDo dao = this.baseMapper
+				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(SysUserDo::getUsername, username));
+		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(dao);
 		user.setEnabled(true);
 		user.setExpired(false);
 		user.setLocked(false);
@@ -52,10 +52,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> im
 	}
 
 	@Override
-	public UserVO findUserByMobile(String mobile) {
-		SysUserDO dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDO>lambdaQuery().eq(SysUserDO::getMobile, mobile));
-		UserVO user = SysUserConvert.INSTANCE.convertUserDetails(dao);
+	public UserVo findUserByMobile(String mobile) {
+		SysUserDo dao = this.baseMapper
+				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(SysUserDo::getMobile, mobile));
+		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(dao);
 		user.setEnabled(true);
 		user.setExpired(false);
 		user.setLocked(false);
@@ -65,14 +65,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> im
 	}
 
 	@Override
-	public SysUserVO getVo(final String id) {
-		final SysUserDO userDO = this.getById(id);
-		SysUserVO userVO = SysUserConvert.INSTANCE.convert(userDO);
-		return userVO;
+	public SysUserVo getVo(final String id) {
+		final SysUserDo userDo = this.getById(id);
+		SysUserVo userVo = SysUserConvert.INSTANCE.convert(userDo);
+		return userVo;
 	}
 
 	@Override
-	public Boolean update(final SysUserVO vo) {
+	public Boolean update(final SysUserVo vo) {
 		final String key = CacheConstants.REDIS_USER_PREFIX + vo.getUserId();
 		if (redisRepository.exists(key)) {
 			if (log.isDebugEnabled()) {
@@ -86,19 +86,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> im
 		if (vo.getMobile() != null && vo.getMobile().contains("***")) {
 			vo.setMobile(null);
 		}
-		SysUserDO userDO = SysUserConvert.INSTANCE.convert(vo);
-		return this.updateById(userDO);
+		SysUserDo userDo = SysUserConvert.INSTANCE.convert(vo);
+		return this.updateById(userDo);
 	}
 
 	@Override
-	public Boolean add(final SysUserVO vo) {
-		SysUserDO userDO = SysUserConvert.INSTANCE.convert(vo);
+	public Boolean add(final SysUserVo vo) {
+		SysUserDo userDo = SysUserConvert.INSTANCE.convert(vo);
 		//密码进行加密
-		userDO.setPassword(encoder.encode(userDO.getPassword()));
-		userDO.setLoginCount(0);
-		userDO.setLoginErrorCount(0);
-		userDO.setLoginTime(LocalDateTime.now());
-		return this.save(userDO);
+		userDo.setPassword(encoder.encode(userDo.getPassword()));
+		userDo.setLoginCount(0);
+		userDo.setLoginErrorCount(0);
+		userDo.setLoginTime(LocalDateTime.now());
+		return this.save(userDo);
 	}
 
 	@Override
@@ -114,13 +114,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDO> im
 	}
 
 	@Override
-	public IPage<SysUserVO> selectPageVo(final Page page) {
-		final IPage<SysUserDO> iPage = this.page(page);
-		return iPage.convert(SysUserVO::new);
+	public IPage<SysUserVo> selectPageVo(final Page page) {
+		final IPage<SysUserDo> iPage = this.page(page);
+		return iPage.convert(SysUserVo::new);
 	}
 
-	private SysRoleVO defaultRole() {
-		return new SysRoleVO().setRemark(
+	private SysRoleVo defaultRole() {
+		return new SysRoleVo().setRemark(
 				CommonConstants.ROLE_DEFAULT)
 				.setOperations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
 	}

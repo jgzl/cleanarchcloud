@@ -190,21 +190,6 @@ public interface SecurityConstants {
 	String AES = "aes";
 
 	/**
-	 * 手机号获取token路径
-	 */
-	String MOBILE_TOKEN_URL = "/oauth/mobile";
-
-	/**
-	 * 手机号登录路径
-	 */
-	String MOBILE_LOGIN_URL = "/login/mobile";
-
-	/**
-	 * springboot暴露信息
-	 */
-	String PATH_TOKEN = "/token/**";
-
-	/**
 	 * springboot暴露信息
 	 */
 	String PATH_ACTUATOR = "/actuator/**";
@@ -212,7 +197,7 @@ public interface SecurityConstants {
 	/**
 	 * springboot暴露信息
 	 */
-	String PATH_API_DOCS = "/v2/api-docs";
+	String PATH_API_DoCS = "/v2/api-docs";
 
 	String JWT_KEY = "platform-key";
 

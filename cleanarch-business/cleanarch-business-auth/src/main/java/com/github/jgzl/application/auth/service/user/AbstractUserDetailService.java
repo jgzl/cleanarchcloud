@@ -1,6 +1,6 @@
 package com.github.jgzl.application.auth.service.user;
 
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,14 +18,14 @@ public abstract class AbstractUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return getUserVO(username);
+        return getUserVo(username);
     }
 
 	/**
-	 * 获取 SysUserVO 对象
+	 * 获取 SysUserVo 对象
 	 *
 	 * @param username 用户名
 	 * @return
 	 */
-	protected abstract UserVO getUserVO(String username);
+	protected abstract UserVo getUserVo(String username);
 }

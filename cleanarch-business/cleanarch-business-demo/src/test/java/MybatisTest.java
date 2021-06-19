@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.github.jgzl.application.DemoApplication;
 import com.github.jgzl.application.mapper.OrderMapper;
-import com.github.jgzl.application.model.dao.OrderDO;
+import com.github.jgzl.application.model.dao.OrderDo;
 import com.github.jgzl.application.service.IOrderService;
 
 
@@ -39,7 +39,7 @@ public class MybatisTest {
 
 	@Test
 	public void update() {
-		OrderDO orderDao = new OrderDO();
+		OrderDo orderDao = new OrderDo();
 		orderDao.setId(1L);
 		orderDao.setCode("12346789");
 		orderDao.setVersion(0);

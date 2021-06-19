@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.github.jgzl.common.properties.LogProperties;
 import com.github.jgzl.common.security.util.SecurityUtils;
-import com.github.jgzl.common.security.vo.SysUserVO;
+import com.github.jgzl.common.security.vo.SysUserVo;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -71,7 +71,7 @@ public class LogRecordHandler {
 		//判断签名是否属性指定的签名类型--->这里我只处理方法的签名(注解也只允许在方法上注解)
 		if (signature instanceof MethodSignature) {
 			// 如果这里报错,由最终的拦截器拦截异常 统一推送至ELK或者别的日志记录方式.
-			SysUserVO user = SecurityUtils.getUser();
+			SysUserVo user = SecurityUtils.getUser();
 			//获取方法签名
 			Method method = ((MethodSignature) signature).getMethod();
 			//获取方法上的自定义注解

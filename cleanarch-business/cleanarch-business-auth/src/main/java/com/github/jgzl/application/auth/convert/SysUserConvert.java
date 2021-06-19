@@ -1,12 +1,12 @@
 package com.github.jgzl.application.auth.convert;
 
-import com.github.jgzl.common.security.vo.SysUserVO;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.SysUserVo;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import com.github.jgzl.common.security.dataobject.SysUserDO;
+import com.github.jgzl.common.security.dataobject.SysUserDo;
 
 /**
  * @author Administrator
@@ -18,14 +18,14 @@ public interface SysUserConvert {
 	@Mapping(
 			target = "userId", expression = "java(String.valueOf(user.getUserId()))"
 	)
-    SysUserVO convert(SysUserDO user);
+    SysUserVo convert(SysUserDo user);
 
 	@Mapping(
 			target = "userId", expression = "java(user.getUserId()!=null&&!user.getUserId().equals(\"\")?Long.valueOf(user.getUserId()):null)"
 	)
-	SysUserDO convert(SysUserVO user);
+	SysUserDo convert(SysUserVo user);
 
-	UserVO convertUserDetails(SysUserDO user);
+	UserVo convertUserDetails(SysUserDo user);
 
-	SysUserDO convertUserDetails(UserVO user);
+	SysUserDo convertUserDetails(UserVo user);
 }

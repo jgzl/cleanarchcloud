@@ -22,8 +22,8 @@ import java.util.List;
 import com.github.jgzl.application.mapper.OrderMapper;
 import com.github.jgzl.application.model.bo.OrderBO;
 import com.github.jgzl.application.model.convertor.OrderConvertor;
-import com.github.jgzl.application.model.dao.OrderDO;
-import com.github.jgzl.application.model.vo.OrderVO;
+import com.github.jgzl.application.model.dao.OrderDo;
+import com.github.jgzl.application.model.vo.OrderVo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,30 +39,30 @@ import com.google.common.collect.Lists;
  * @author lihaifeng
  */
 @Service
-public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDO> implements IOrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDo> implements IOrderService {
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public List<OrderBO> createOrderByVO(OrderVO orderVO) {
-		OrderDO orderDO = OrderConvertor.INSTANCE.covertVO2DO(orderVO);
-		orderDO.setCreateTime(new Date());
-		this.baseMapper.insert(orderDO);
+	public List<OrderBO> createOrderByVo(OrderVo orderVo) {
+		OrderDo orderDo = OrderConvertor.INSTANCE.covertVo2Do(orderVo);
+		orderDo.setCreateTime(new Date());
+		this.baseMapper.insert(orderDo);
 		List<OrderBO> orderBOs = Lists.newArrayListWithCapacity(1);
-		orderBOs.add(OrderConvertor.INSTANCE.convertDO2BO(orderDO));
+		orderBOs.add(OrderConvertor.INSTANCE.convertDo2BO(orderDo));
 		return orderBOs;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public List<OrderBO> pageList() {
-		IPage<OrderDO> page = new Page<>(1, 2);
-		QueryWrapper<OrderDO> queryWrapper = new QueryWrapper<>();
+		IPage<OrderDo> page = new Page<>(1, 2);
+		QueryWrapper<OrderDo> queryWrapper = new QueryWrapper<>();
 		queryWrapper.eq("code", "123");
-		IPage<OrderDO> orderDOIPage = this.baseMapper.selectPage(page, queryWrapper);
-		this.baseMapper.selectPage(page, new LambdaQueryWrapper<OrderDO>().eq(OrderDO::getCode, "123"));
-		System.out.println(orderDOIPage.getPages());
-		System.out.println(orderDOIPage.getTotal());
-		orderDOIPage.getRecords().forEach(System.out::println);
+		IPage<OrderDo> orderDoIPage = this.baseMapper.selectPage(page, queryWrapper);
+		this.baseMapper.selectPage(page, new LambdaQueryWrapper<OrderDo>().eq(OrderDo::getCode, "123"));
+		System.out.println(orderDoIPage.getPages());
+		System.out.println(orderDoIPage.getTotal());
+		orderDoIPage.getRecords().forEach(System.out::println);
 		return null;
 	}
 
@@ -70,8 +70,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderDO> implemen
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void insert() {
-		OrderDO orderDO = new OrderDO();
-		orderDO.setCode("123");
-		this.save(orderDO);
+		OrderDo orderDo = new OrderDo();
+		orderDo.setCode("123");
+		this.save(orderDo);
 	}
 }

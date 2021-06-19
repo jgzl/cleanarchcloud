@@ -2,7 +2,7 @@ package com.github.jgzl.application.auth.service.user;
 
 import com.github.jgzl.application.auth.service.SysUserService;
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,13 +28,13 @@ public class UserNameUserDetailsServiceImpl extends AbstractUserDetailService {
 	}
 
 	@Override
-	protected UserVO getUserVO(final String username) {
+	protected UserVo getUserVo(final String username) {
 		Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
 		if (cache != null && cache.get(username) != null) {
-			return (UserVO) cache.get(username).get();
+			return (UserVo) cache.get(username).get();
 		}
 		// 查询用户信息,包含角色列表
-		UserVO user = userService.findUserByUsername(username);
+		UserVo user = userService.findUserByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("用户名/密码错误");
 		}

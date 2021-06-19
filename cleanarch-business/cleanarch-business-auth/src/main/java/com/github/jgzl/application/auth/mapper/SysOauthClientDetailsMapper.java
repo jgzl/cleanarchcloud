@@ -1,7 +1,7 @@
 package com.github.jgzl.application.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDO;
+import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
 
 /**
  * 客户端dao
@@ -9,6 +9,6 @@ import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDO;
  * @author lihaifeng
  * 2019/7/5 14:49
  */
-public interface SysOauthClientDetailsMapper extends BaseMapper<SysOauthClientDetailsDO> {
+public interface SysOauthClientDetailsMapper extends BaseMapper<SysOauthClientDetailsDo> {
 
 }

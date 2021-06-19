@@ -15,7 +15,7 @@
  */
 package com.github.jgzl.application.auth;
 
-import com.github.jgzl.common.security.vo.SysUserVO;
+import com.github.jgzl.common.security.vo.SysUserVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,7 +37,7 @@ public class SysUserTest {
 
 	@Test
 	public void save() {
-		SysUserVO user = new SysUserVO();
+		SysUserVo user = new SysUserVo();
 		user.setUserId("-10");
 		user.setUsername("test");
 		user.setPassword("test");

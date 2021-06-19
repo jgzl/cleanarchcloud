@@ -16,7 +16,7 @@
 
 package com.github.jgzl.application.service.impl;
 
-import com.github.jgzl.application.model.dao.OrderItemDO;
+import com.github.jgzl.application.model.dao.OrderItemDo;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,6 +27,6 @@ import com.github.jgzl.application.service.IOrderItemService;
  * @author lihaifeng
  */
 @Service
-public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItemDO> implements IOrderItemService {
+public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItemDo> implements IOrderItemService {
 
 }

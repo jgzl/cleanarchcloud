@@ -27,8 +27,8 @@ public class Result<T> implements Serializable {
 	 */
 	@Getter
 	@Setter
-	@ApiModelProperty(value = "")
-	private int code;
+	@ApiModelProperty(value = "返回标记")
+	private String code;
 
 	/**
 	 * 返回信息
@@ -74,7 +74,7 @@ public class Result<T> implements Serializable {
 		return restResult(data, CommonConstants.FAIL, msg);
 	}
 
-	private static <T> Result<T> restResult(T data, int code, String msg) {
+	private static <T> Result<T> restResult(T data, String code, String msg) {
 		Result<T> apiResult = new Result<>();
 		apiResult.setCode(code);
 		apiResult.setData(data);

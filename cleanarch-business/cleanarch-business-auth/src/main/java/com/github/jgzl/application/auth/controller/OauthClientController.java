@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsService;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.validate.Add;
-import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
+import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -45,7 +45,7 @@ public class OauthClientController {
 	 * @return
 	 */
 	@PutMapping
-	public Result update(@Valid @RequestBody SysOauthClientDetailsVO vo) {
+	public Result update(@Valid @RequestBody SysOauthClientDetailsVo vo) {
 
 		return Result.ok(oauthClientService.update(vo));
 	}
@@ -57,7 +57,7 @@ public class OauthClientController {
 	 * @return
 	 */
 	@PostMapping
-	public Result add(@Validated(Add.class) @RequestBody SysOauthClientDetailsVO vo) {
+	public Result add(@Validated(Add.class) @RequestBody SysOauthClientDetailsVo vo) {
 
 		return Result.ok(oauthClientService.add(vo));
 	}

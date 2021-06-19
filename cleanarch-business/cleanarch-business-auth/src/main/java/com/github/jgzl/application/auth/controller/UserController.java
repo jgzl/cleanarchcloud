@@ -1,13 +1,10 @@
 package com.github.jgzl.application.auth.controller;
 
-import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.application.auth.service.SysUserService;
-import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
 import com.github.jgzl.common.security.validate.Add;
-import com.github.jgzl.common.security.vo.SysUserVO;
+import com.github.jgzl.common.security.vo.SysUserVo;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 
 /**
  * 用户Controller
@@ -32,11 +28,6 @@ import javax.validation.constraints.Pattern;
 @Validated
 @RequestMapping("/user")
 public class UserController {
-
-    private static final String MOBILE_REG = "^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$";
-
-    @Autowired
-    private CustomRedisRepository redisRepository;
 
 	@Autowired
 	private SysUserService userService;
@@ -54,31 +45,6 @@ public class UserController {
 			return null;
 		}
 		return Result.ok(authentication.getPrincipal());
-	}
-
-	/**
-	 * 发送手机验证码
-	 *
-	 * @param mobile
-	 * @return
-	 */
-	@GetMapping("/smsCode/{mobile}")
-	@ResponseBody
-	public Result smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号") @PathVariable String mobile) {
-		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
-		if (tempCode != null) {
-			log.error("用户:{}验证码未失效{}", mobile, tempCode);
-			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
-		}
-		if (userService.findUserByMobile(mobile) == null) {
-			log.error("根据用户手机号:{}, 查询用户为空", mobile);
-			return Result.failed("手机号不存在");
-		}
-		String code = RandomUtil.randomNumbers(6);
-		log.info("短信发送请求消息中心 -> 手机号:{} -> 验证码：{}", mobile, code);
-		redisRepository
-				.setExpire(CacheConstants.DEFAULT_CODE_KEY + mobile, code, CacheConstants.DEFAULT_EXPIRE_SECONDS);
-		return Result.ok(code);
 	}
 
 	/**
@@ -100,7 +66,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping
-	public Result update(@Valid @RequestBody SysUserVO vo) {
+	public Result update(@Valid @RequestBody SysUserVo vo) {
 
 		return Result.ok(userService.update(vo));
 	}
@@ -112,7 +78,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public Result add(@Validated(Add.class) @RequestBody SysUserVO vo) {
+	public Result add(@Validated(Add.class) @RequestBody SysUserVo vo) {
 
 		return Result.ok(userService.add(vo));
 	}
@@ -135,7 +101,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public Result<Page<SysUserVO>> page(HttpServletRequest request, Page page) {
+	public Result<Page<SysUserVo>> page(HttpServletRequest request, Page page) {
 		userService.selectPageVo(page);
 		return Result.ok(page);
 	}

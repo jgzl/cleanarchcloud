@@ -1,7 +1,7 @@
 package com.github.jgzl.application.auth.service.user;
 
 import com.github.jgzl.application.auth.service.SysUserService;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +20,8 @@ public class MobileUserDetailsService extends AbstractUserDetailService {
 	}
 
 	@Override
-	protected UserVO getUserVO(final String username) {
-		final UserVO user = userService.findUserByMobile(username);
+	protected UserVo getUserVo(final String username) {
+		final UserVo user = userService.findUserByMobile(username);
 		if (user == null) {
 			throw new InternalAuthenticationServiceException("手机号: " + username + ", 不存在");
 		}

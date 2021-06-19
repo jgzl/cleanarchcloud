@@ -46,7 +46,7 @@ public class MybatisPlusConfig {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public BaseDOMetaObjectHandler metaObjectHandler() {
-		return new BaseDOMetaObjectHandler();
+	public BaseDoMetaObjectHandler metaObjectHandler() {
+		return new BaseDoMetaObjectHandler();
 	}
 }

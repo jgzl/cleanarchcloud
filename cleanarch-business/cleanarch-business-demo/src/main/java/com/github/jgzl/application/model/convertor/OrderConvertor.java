@@ -20,14 +20,14 @@ import java.util.List;
 
 import com.github.jgzl.application.model.bo.OrderBO;
 import com.github.jgzl.application.model.bo.OrderItemBO;
-import com.github.jgzl.application.model.vo.OrderVO;
+import com.github.jgzl.application.model.vo.OrderVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
-import com.github.jgzl.application.model.dao.OrderDO;
-import com.github.jgzl.application.model.dao.OrderItemDO;
+import com.github.jgzl.application.model.dao.OrderDo;
+import com.github.jgzl.application.model.dao.OrderItemDo;
 
 /**
  * @author lihaifeng
@@ -38,45 +38,45 @@ public interface OrderConvertor {
 
 	/**
 	 * 根据order数据库对象转换为order业务对象
-	 * @param orderDO
+	 * @param orderDo
 	 * @return OrderBO
 	 */
 	@Mappings({
 			@Mapping(source = "id", target = "orderId")
 	})
-    OrderBO convertDO2BO(OrderDO orderDO);
+    OrderBO convertDo2BO(OrderDo orderDo);
 
 	/**
 	 * dao->bo
-	 * @param orderItemDO
+	 * @param orderItemDo
 	 * @return
 	 */
 	@Mappings({
 			@Mapping(source = "id", target = "orderItemId")
 	})
-    OrderItemBO convertDO2BO(OrderItemDO orderItemDO);
+    OrderItemBO convertDo2BO(OrderItemDo orderItemDo);
 
 	/**
 	 * 批量转换
-	 * @param orderItemDOs
+	 * @param orderItemDos
 	 * @return
 	 */
-	List<OrderItemBO> convertDO2BOList(List<OrderItemDO> orderItemDOs);
+	List<OrderItemBO> convertDo2BOList(List<OrderItemDo> orderItemDos);
 
 	/**
 	 * vo->bo
-	 * @param orderVO
+	 * @param orderVo
 	 * @return
 	 */
-	OrderBO covertVO2BO(OrderVO orderVO);
+	OrderBO covertVo2BO(OrderVo orderVo);
 
 	/**
 	 * vo->dao
-	 * @param orderVO
+	 * @param orderVo
 	 * @return
 	 */
 	@Mappings({
 			@Mapping(source = "orderId", target = "id")
 	})
-	OrderDO covertVO2DO(OrderVO orderVO);
+	OrderDo covertVo2Do(OrderVo orderVo);
 }

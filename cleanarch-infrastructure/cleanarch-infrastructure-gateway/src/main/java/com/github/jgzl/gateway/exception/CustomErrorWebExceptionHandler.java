@@ -1,23 +1,19 @@
 package com.github.jgzl.gateway.exception;
 
-import java.util.Map;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.server.RequestPredicates;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -36,9 +32,9 @@ public class CustomErrorWebExceptionHandler extends DefaultErrorWebExceptionHand
 	 * @param errorProperties    the error configuration properties
 	 * @param applicationContext the current application context
 	 */
-	public CustomErrorWebExceptionHandler(ErrorAttributes errorAttributes, ResourceProperties resourceProperties,
+	public CustomErrorWebExceptionHandler(ErrorAttributes errorAttributes, WebProperties.Resources resources,
 			ErrorProperties errorProperties, ApplicationContext applicationContext) {
-		super(errorAttributes, resourceProperties, errorProperties, applicationContext);
+		super(errorAttributes, resources, errorProperties, applicationContext);
 	}
 
 	@Override
@@ -49,7 +45,7 @@ public class CustomErrorWebExceptionHandler extends DefaultErrorWebExceptionHand
 	@Override
 	protected Mono<ServerResponse> renderErrorResponse(ServerRequest request) {
 		boolean includeStackTrace = isIncludeStackTrace(request, MediaType.ALL);
-		Map<String, Object> error = getErrorAttributes(request, includeStackTrace);
+		Map<String, Object> error = getErrorAttributes(request, (includeStackTrace) ? ErrorAttributeOptions.of(ErrorAttributeOptions.Include.STACK_TRACE) : ErrorAttributeOptions.defaults());
 		Throwable throwable = getError(request);
 		return ServerResponse.status(getHttpStatus(error))
 				.contentType(MediaType.APPLICATION_JSON)

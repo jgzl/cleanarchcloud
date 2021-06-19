@@ -6,13 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.jgzl.application.model.dao.OrderDO;
+import com.github.jgzl.application.model.dao.OrderDo;
 
 /**
  * @author lihaifeng
  */
 @Mapper
-public interface OrderMapper extends BaseMapper<OrderDO> {
+public interface OrderMapper extends BaseMapper<OrderDo> {
 
 	List<Map<Object, Object>> list();
 }

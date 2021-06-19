@@ -50,18 +50,17 @@ logging:
 sso:
   oauth2:
     key-store:
-      location: classpath:taroco.jks
-      secret: taroco!@#$
-      alias: taroco
+      location: classpath:cleanarch.jks
+      secret: cleanarch
+      alias: cleanarch
     url-permit-all:
-      - /test/**
-      - /token/**
+      - /feign/**
+      - /login/normal/**
+      - /login/mobile/login
+      - /login/mobile/code
+      - /oauth/mobile
       - /v2/api-docs
       - /actuator/**
-      - /user/smsCode/*
-      - /login/mobile
-      - /oauth/mobile
-      - /oauth/exit
       - /webjars/**
       - /static/**
       - /**/*.css

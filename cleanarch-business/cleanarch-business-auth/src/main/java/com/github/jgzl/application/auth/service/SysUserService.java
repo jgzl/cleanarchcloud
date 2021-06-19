@@ -3,25 +3,25 @@ package com.github.jgzl.application.auth.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.common.security.dataobject.SysUserDO;
-import com.github.jgzl.common.security.vo.SysUserVO;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.dataobject.SysUserDo;
+import com.github.jgzl.common.security.vo.SysUserVo;
+import com.github.jgzl.common.security.vo.UserVo;
 
 /**
  * @author Administrator
  */
-public interface SysUserService extends IService<SysUserDO> {
-	UserVO findUserByUsername(String username);
+public interface SysUserService extends IService<SysUserDo> {
+	UserVo findUserByUsername(String username);
 
-	UserVO findUserByMobile(String mobile);
+	UserVo findUserByMobile(String mobile);
 
 	/**
-	 * 查询用户VO
+	 * 查询用户Vo
 	 *
 	 * @param id
 	 * @return
 	 */
-	SysUserVO getVo(String id);
+	SysUserVo getVo(String id);
 
 	/**
 	 * 更新用户
@@ -29,7 +29,7 @@ public interface SysUserService extends IService<SysUserDO> {
 	 * @param vo 用户
 	 * @return
 	 */
-	Boolean update(SysUserVO vo);
+	Boolean update(SysUserVo vo);
 
 	/**
 	 * 新增用户
@@ -37,10 +37,10 @@ public interface SysUserService extends IService<SysUserDO> {
 	 * @param vo 用户
 	 * @return
 	 */
-	Boolean add(SysUserVO vo);
+	Boolean add(SysUserVo vo);
 
 	/**
-	 * 删除用户VO
+	 * 删除用户Vo
 	 *
 	 * @param clientId
 	 * @return
@@ -53,5 +53,5 @@ public interface SysUserService extends IService<SysUserDO> {
 	 * @param page
 	 * @return
 	 */
-	IPage<SysUserVO> selectPageVo(Page page);
+	IPage<SysUserVo> selectPageVo(Page page);
 }

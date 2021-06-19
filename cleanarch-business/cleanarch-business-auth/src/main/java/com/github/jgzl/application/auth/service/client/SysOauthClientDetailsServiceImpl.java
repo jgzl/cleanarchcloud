@@ -3,9 +3,9 @@ package com.github.jgzl.application.auth.service.client;
 import com.github.jgzl.application.auth.mapper.SysOauthClientDetailsMapper;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.data.redis.CustomRedisRepository;
-import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDO;
+import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
 import com.github.jgzl.common.security.exception.BusiException;
-import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
+import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @SuppressWarnings("unchecked")
 @Service
 @Slf4j
-public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClientDetailsMapper, SysOauthClientDetailsDO> implements SysOauthClientDetailsService {
+public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClientDetailsMapper, SysOauthClientDetailsDo> implements SysOauthClientDetailsService {
 
     @Autowired
     private PasswordEncoder encoder;
@@ -35,13 +35,13 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
     private CustomRedisRepository redisRepository;
 
     @Override
-    public SysOauthClientDetailsVO getVo(final String clientId) {
-		final SysOauthClientDetailsDO client = this.getById(clientId);
-		return new SysOauthClientDetailsVO(client);
+    public SysOauthClientDetailsVo getVo(final String clientId) {
+		final SysOauthClientDetailsDo client = this.getById(clientId);
+		return new SysOauthClientDetailsVo(client);
 	}
 
     @Override
-    public Boolean update(final SysOauthClientDetailsVO vo) {
+    public Boolean update(final SysOauthClientDetailsVo vo) {
         if (StrUtil.isEmpty(vo.getClientId())) {
             throw new BusiException("不存在客户端ID");
         }
@@ -52,17 +52,17 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
             }
             redisRepository.del(key);
         }
-        return this.updateById(new SysOauthClientDetailsDO(vo));
+        return this.updateById(new SysOauthClientDetailsDo(vo));
     }
 
     @Override
-    public Boolean add(final SysOauthClientDetailsVO vo) {
+    public Boolean add(final SysOauthClientDetailsVo vo) {
         vo.setClientSecret(encoder.encode(vo.getClientSecret()));
         if (StrUtil.isNotEmpty(vo.getClientId())) {
             throw new BusiException("存在客户端ID,无法新增");
         }
         vo.setClientId(vo.getAppName());
-        return this.save(new SysOauthClientDetailsDO(vo));
+        return this.save(new SysOauthClientDetailsDo(vo));
     }
 
     @Override
@@ -81,8 +81,8 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 	}
 
     @Override
-    public IPage<SysOauthClientDetailsVO> selectPageVo(final Page page) {
-        final IPage<SysOauthClientDetailsDO> iPage = this.page(page);
-        return iPage.convert(SysOauthClientDetailsVO::new);
+    public IPage<SysOauthClientDetailsVo> selectPageVo(final Page page) {
+        final IPage<SysOauthClientDetailsDo> iPage = this.page(page);
+        return iPage.convert(SysOauthClientDetailsVo::new);
     }
 }

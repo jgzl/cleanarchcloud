@@ -44,7 +44,7 @@ public class PlatformClientWebSecurityConfigurer extends WebSecurityConfigurerAd
 		http.logout().logoutSuccessHandler(logoutSuccessHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DOCS).permitAll()
+				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DoCS).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.csrf().disable();

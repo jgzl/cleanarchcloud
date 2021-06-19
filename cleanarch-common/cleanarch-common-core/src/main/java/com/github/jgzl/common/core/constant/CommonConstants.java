@@ -68,11 +68,11 @@ public interface CommonConstants {
 	/**
 	 * 成功标记
 	 */
-	Integer SUCCESS = 0;
+	String SUCCESS = "0";
 	/**
 	 * 失败标记
 	 */
-	Integer FAIL = 1;
+	String FAIL = "1";
 
 	/**
 	 * 默认角色

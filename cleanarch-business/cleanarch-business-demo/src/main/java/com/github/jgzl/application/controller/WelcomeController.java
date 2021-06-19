@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.github.jgzl.application.model.vo.WelcomeVO;
+import com.github.jgzl.application.model.vo.WelcomeVo;
 import com.github.jgzl.common.annotation.LogRecord;
 import com.github.jgzl.common.enums.OperateModule;
 import org.springframework.stereotype.Controller;
@@ -29,10 +29,10 @@ public class WelcomeController {
 	@ApiOperation(value = "跳转welcome页1")
 	@LogRecord(operateContent = "abc", operateModule = OperateModule.BUSINESS1)
 	public String welcomeByModelMap(ModelMap mm) {
-		WelcomeVO welcomeVO = WelcomeVO.builder().userName("李海峰")
+		WelcomeVo welcomeVo = WelcomeVo.builder().userName("李海峰")
 				.urlName("/index.html")
 				.urlDescription("首页").build();
-		mm.addAttribute("welcomeVO", welcomeVO);
+		mm.addAttribute("welcomeVo", welcomeVo);
 		return "welcome";
 	}
 
@@ -40,10 +40,10 @@ public class WelcomeController {
 	@ApiOperation(value = "跳转welcome页2")
 	public ModelAndView welcomeByModelAndView(ModelAndView mv) {
 		List<Map<String,Object>> list = new ArrayList<>();
-		WelcomeVO welcomeVO = WelcomeVO.builder().userName("李海峰")
+		WelcomeVo welcomeVo = WelcomeVo.builder().userName("李海峰")
 				.urlName("/index.html")
 				.urlDescription("首页").build();
-		mv.addObject("welcomeVO", welcomeVO);
+		mv.addObject("welcomeVo", welcomeVo);
 		mv.addObject("today", new Date());
 		mv.addObject("testStr1",null);
 		mv.addObject("testStr2","testValue");

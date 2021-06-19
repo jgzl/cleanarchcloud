@@ -16,7 +16,7 @@
 
 package com.github.jgzl.application.mapper;
 
-import com.github.jgzl.application.model.dao.OrderItemDO;
+import com.github.jgzl.application.model.dao.OrderItemDo;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -25,5 +25,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author lihaifeng
  */
 @Mapper
-public interface OrderItemMapper extends BaseMapper<OrderItemDO> {
+public interface OrderItemMapper extends BaseMapper<OrderItemDo> {
 }

@@ -23,7 +23,7 @@ public class MavenWrapperDownloader {
 	/**
 	 * Default URL to download the maven-wrapper.jar from, if no 'downloadUrl' is provided.
 	 */
-	private static final String DEFAULT_DOWNLOAD_URL = "https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/"
+	private static final String DEFAULT_DoWNLOAD_URL = "https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/"
 			+ WRAPPER_VERSION + "/maven-wrapper-" + WRAPPER_VERSION + ".jar";
 
 	/**
@@ -52,7 +52,7 @@ public class MavenWrapperDownloader {
 		// If the maven-wrapper.properties exists, read it and check if it contains a custom
 		// wrapperUrl parameter.
 		File mavenWrapperPropertyFile = new File(baseDirectory, MAVEN_WRAPPER_PROPERTIES_PATH);
-		String url = DEFAULT_DOWNLOAD_URL;
+		String url = DEFAULT_DoWNLOAD_URL;
 		if (mavenWrapperPropertyFile.exists()) {
 			FileInputStream mavenWrapperPropertyFileInputStream = null;
 			try {

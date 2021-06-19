@@ -3,8 +3,8 @@ package com.github.jgzl.application.auth.service.client;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDO;
-import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
+import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
 
 /**
  * 客户端Service
@@ -12,15 +12,15 @@ import com.github.jgzl.common.security.vo.SysOauthClientDetailsVO;
  * @author lihaifeng
  * 2019/7/5 14:55
  */
-public interface SysOauthClientDetailsService extends IService<SysOauthClientDetailsDO> {
+public interface SysOauthClientDetailsService extends IService<SysOauthClientDetailsDo> {
 
     /**
-     * 查询客户端VO
+     * 查询客户端Vo
      *
      * @param clientId
      * @return
      */
-    SysOauthClientDetailsVO getVo(String clientId);
+    SysOauthClientDetailsVo getVo(String clientId);
 
     /**
      * 更新客户端
@@ -28,7 +28,7 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
      * @param vo 客户端
      * @return
      */
-    Boolean update(SysOauthClientDetailsVO vo);
+    Boolean update(SysOauthClientDetailsVo vo);
 
     /**
      * 新增客户端
@@ -36,10 +36,10 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
      * @param vo 客户端
      * @return
      */
-    Boolean add(SysOauthClientDetailsVO vo);
+    Boolean add(SysOauthClientDetailsVo vo);
 
     /**
-     * 删除客户端VO
+     * 删除客户端Vo
      *
      * @param clientId
      * @return
@@ -52,5 +52,5 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
      * @param page
      * @return
      */
-    IPage<SysOauthClientDetailsVO> selectPageVo(Page page);
+    IPage<SysOauthClientDetailsVo> selectPageVo(Page page);
 }

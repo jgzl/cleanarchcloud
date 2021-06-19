@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.github.jgzl.common.data.bo.BaseDO;
+import com.github.jgzl.common.data.bo.BaseDo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -39,7 +39,7 @@ import lombok.Setter;
 @Getter
 @ApiModel(description = "日志格式信息封装类")
 @TableName("operate_log")
-public class OperateLog extends BaseDO<OperateLog> implements Serializable {
+public class OperateLog extends BaseDo<OperateLog> implements Serializable {
 
 	@ApiModelProperty("主键id")
 	@TableId(type = IdType.ASSIGN_ID)

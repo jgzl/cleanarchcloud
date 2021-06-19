@@ -4,8 +4,8 @@ import java.util.Collections;
 
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.security.vo.Operation;
-import com.github.jgzl.common.security.vo.SysRoleVO;
-import com.github.jgzl.common.security.vo.UserVO;
+import com.github.jgzl.common.security.vo.SysRoleVo;
+import com.github.jgzl.common.security.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,8 +33,8 @@ public class MockUserService {
 	 * @param username 用户名称,必须唯一
 	 * @return
 	 */
-	public UserVO findUserByUsername(String username) {
-		final UserVO user = new UserVO();
+	public UserVo findUserByUsername(String username) {
+		final UserVo user = new UserVo();
 		user.setUsername(username);
 		// 密码和用户名保持一致
 		user.setPassword(PWD);
@@ -54,8 +54,8 @@ public class MockUserService {
 	 * @param mobile 手机号,必须唯一
 	 * @return
 	 */
-	public UserVO findUserByMobile(String mobile) {
-		final UserVO user = new UserVO();
+	public UserVo findUserByMobile(String mobile) {
+		final UserVo user = new UserVo();
 		user.setUsername(mobile);
 		// 密码和用户名保持一致
 		user.setPassword(encoder.encode(mobile));
@@ -69,8 +69,8 @@ public class MockUserService {
         return user;
     }
 
-    private SysRoleVO defaultRole() {
-		return new SysRoleVO().setRemark(
+    private SysRoleVo defaultRole() {
+		return new SysRoleVo().setRemark(
 				CommonConstants.ROLE_DEFAULT)
 				.setOperations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
 	}
