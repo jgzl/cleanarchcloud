@@ -55,10 +55,12 @@ sso:
       alias: cleanarch
     url-permit-all:
       - /feign/**
-      - /login/normal/**
-      - /login/mobile/login
+      - /login/username/page
+      - /login/username/login
       - /login/mobile/code
-      - /oauth/mobile
+      - /login/mobile/login
+      - /login/email/code
+      - /login/email/login
       - /v2/api-docs
       - /actuator/**
       - /webjars/**

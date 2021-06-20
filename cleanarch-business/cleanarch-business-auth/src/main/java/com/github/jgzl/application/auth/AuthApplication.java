@@ -26,7 +26,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 /**
  * @author lihaifeng
- * 登录http://localhost:8030/token/login
+ * 登录 http://localhost:8030/login/username/login
  * 输入账号密码 admin admin
  */
 @EnableSwaggerPlus
