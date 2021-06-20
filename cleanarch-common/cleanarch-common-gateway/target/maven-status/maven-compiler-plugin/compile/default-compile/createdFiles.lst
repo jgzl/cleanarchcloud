@@ -1,5 +1,0 @@
-com/gitee/common/gateway/vo/RouteDefinitionVO.class
-com/gitee/common/gateway/support/RouteCacheHolder.class
-com/gitee/common/gateway/support/RedisRouteDefinitionWriter.class
-com/gitee/common/gateway/config/DynamicRouteConfiguration.class
-com/gitee/common/gateway/annotation/EnableDynamicSpringCloudGateway.class
