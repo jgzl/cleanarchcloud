@@ -4,7 +4,7 @@ import com.github.jgzl.application.auth.mapper.SysOauthClientDetailsMapper;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.data.redis.CustomRedisRepository;
 import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
-import com.github.jgzl.common.security.exception.BusiException;
+import com.github.jgzl.common.security.exception.BusinessException;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,7 +43,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
     @Override
     public Boolean update(final SysOauthClientDetailsVo vo) {
         if (StrUtil.isEmpty(vo.getClientId())) {
-            throw new BusiException("不存在客户端ID");
+            throw new BusinessException("不存在客户端ID");
         }
         final String key = CacheConstants.REDIS_CLIENTS_PREFIX + vo.getClientId();
         if (redisRepository.exists(key)) {
@@ -59,7 +59,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
     public Boolean add(final SysOauthClientDetailsVo vo) {
         vo.setClientSecret(encoder.encode(vo.getClientSecret()));
         if (StrUtil.isNotEmpty(vo.getClientId())) {
-            throw new BusiException("存在客户端ID,无法新增");
+            throw new BusinessException("存在客户端ID,无法新增");
         }
         vo.setClientId(vo.getAppName());
         return this.save(new SysOauthClientDetailsDo(vo));
@@ -68,7 +68,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
     @Override
     public Boolean delete(final String clientId) {
 		if (this.getById(clientId) == null) {
-			throw new BusiException("不存在的客户端ID: " + clientId);
+			throw new BusinessException("不存在的客户端ID: " + clientId);
 		}
 		final String key = CacheConstants.REDIS_CLIENTS_PREFIX + clientId;
 		if (redisRepository.exists(key)) {

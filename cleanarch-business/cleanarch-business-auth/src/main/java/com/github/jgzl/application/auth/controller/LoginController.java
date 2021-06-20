@@ -36,6 +36,7 @@ import java.util.Map;
 public class LoginController {
 
 	private static final String MOBILE_REG = "^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$";
+	private static final String EMAIL_REG = "^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$";
 
 	@Autowired
 	private CustomRedisRepository redisRepository;
@@ -53,7 +54,7 @@ public class LoginController {
 	 * @param error        表单登录失败处理回调的错误信息
 	 * @return ModelAndView
 	 */
-	@GetMapping(PathConstants.LOGIN_URL)
+	@GetMapping(PathConstants.LOGIN_PAGE_URL)
 	public ModelAndView require(ModelAndView modelAndView, @RequestParam(required = false) String error) {
 		modelAndView.setViewName("ftl/login");
 		modelAndView.addObject("error", error);
@@ -102,18 +103,17 @@ public class LoginController {
         }
     }
 
-
 	/**
-	 * 发送手机验证码(手机普通登录，oauth2登录)
+	 * 发送手机验证码(手机登录)
 	 * @param mobile
 	 * @return
 	 */
 	@GetMapping(PathConstants.LOGIN_MOBILE_CODE_URL)
 	@ResponseBody
-	public Result smsCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号") @RequestParam String mobile) {
+	public Result mobileCode(@Pattern(regexp = MOBILE_REG, message = "请输入正确的手机号") @RequestParam String mobile) {
 		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
 		if (tempCode != null) {
-			log.error("用户:{}验证码未失效{}", mobile, tempCode);
+			log.error("用户:{},验证码{},未失效", mobile, tempCode);
 			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
 		}
 		if (userService.findUserByMobile(mobile) == null) {
@@ -126,4 +126,29 @@ public class LoginController {
 				.setExpire(CacheConstants.DEFAULT_CODE_KEY + mobile, code, CacheConstants.DEFAULT_EXPIRE_SECONDS);
 		return Result.ok(code);
 	}
+
+	/**
+	 * 发送邮箱验证码(邮箱登录)
+	 * @param email
+	 * @return
+	 */
+	@GetMapping(PathConstants.LOGIN_EMAIL_CODE_URL)
+	@ResponseBody
+	public Result emailCode(@Pattern(regexp = EMAIL_REG, message = "请输入正确的邮箱") @RequestParam String email) {
+		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + email);
+		if (tempCode != null) {
+			log.error("用户:{},验证码{},未失效", email, tempCode);
+			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
+		}
+		if (userService.findUserByEmail(email) == null) {
+			log.error("根据用户邮箱:{}, 查询用户为空", email);
+			return Result.failed("邮箱不存在");
+		}
+		String code = RandomUtil.randomNumbers(6);
+		log.info("邮箱发送请求消息中心 -> 邮箱:{} -> 验证码：{}", email, code);
+		redisRepository
+				.setExpire(CacheConstants.DEFAULT_CODE_KEY + email, code, CacheConstants.DEFAULT_EXPIRE_SECONDS);
+		return Result.ok(code);
+	}
+
 }

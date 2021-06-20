@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.jgzl.common.core.jackson.PlatformJavaTimeModule;
+import com.github.jgzl.common.core.jackson.CustomJavaTimeModule;
 
 import cn.hutool.core.date.DatePattern;
 
@@ -35,7 +35,7 @@ public class JacksonConfig {
 			builder.locale(Locale.CHINA);
 			builder.timeZone(TimeZone.getTimeZone(ZoneId.systemDefault()));
 			builder.simpleDateFormat(DatePattern.NORM_DATETIME_PATTERN);
-			builder.modules(new PlatformJavaTimeModule());
+			builder.modules(new CustomJavaTimeModule());
 		};
 	}
 }

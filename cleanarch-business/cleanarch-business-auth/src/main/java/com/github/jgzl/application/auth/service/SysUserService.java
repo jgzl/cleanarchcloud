@@ -11,9 +11,27 @@ import com.github.jgzl.common.security.vo.UserVo;
  * @author Administrator
  */
 public interface SysUserService extends IService<SysUserDo> {
+
+	/**
+	 * 根据用户名查找用户
+	 * @param username
+	 * @return
+	 */
 	UserVo findUserByUsername(String username);
 
+	/**
+	 * 根据用户名查找用户
+	 * @param mobile
+	 * @return
+	 */
 	UserVo findUserByMobile(String mobile);
+
+	/**
+	 * 根据用户名查找用户
+	 * @param email
+	 * @return
+	 */
+	UserVo findUserByEmail(String email);
 
 	/**
 	 * 查询用户Vo
