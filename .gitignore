@@ -1,39 +1,62 @@
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# 忽略匹配下列规则的Git 提交 V2.1.0
+### gradle ###
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
 
-# Package Files #
-*.jar
+### STS ###
+.settings/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.lock
+rebel.xml
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+### maven ###
+target/
 *.war
 *.ear
+*.zip
+*.tar
+*.tar.gz
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-*~
-
-# eclipse ignore
-.settings
-.project
-.classpath
-.tomcatplugin
-logPath_IS_UNDEFINED
-*.gz
-disconf
-dist
-logs
-
-# idea ignore
-.idea
-*.iml
-
-# maven ignore
-target
-**/target
-**/**/target
-
-# other ignore
+### logs ####
+/logs/
 *.log
+
+### temp ignore ###
+*.cache
+*.diff
+*.patch
 *.tmp
+*.java~
+*.properties~
+*.xml~
+
+### system ignore ###
+.DS_Store
 Thumbs.db
-*.DS_Store
-.factorypath
+Servers
+.metadata
+upload
+gen_code
+
+### node ###
+node_modules
