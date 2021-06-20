@@ -1,17 +1,16 @@
 package com.github.jgzl.application.ws.interceptor;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import cn.hutool.core.util.CharsetUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.http.HttpUtil;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Map;
 
 /**
  * @author lihaifeng
@@ -39,7 +38,7 @@ public class HttpAuthInterceptor implements HandshakeInterceptor {
 			Map<String, Object> attributes) throws Exception {
 		log.info("握手开始");
 		// 获得请求参数
-		HashMap<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), "utf-8");
+		Map<String, String> paramMap = HttpUtil.decodeParamMap(request.getURI().getQuery(), CharsetUtil.CHARSET_UTF_8);
 		String uid = paramMap.get("token");
 		if (StrUtil.isNotBlank(uid)) {
 			// 放入属性域

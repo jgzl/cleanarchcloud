@@ -25,7 +25,6 @@
 
 	<properties>
 		<revision>2021.6.5-SNAPSHOT</revision>
-		<mapstruct.version>1.3.1.Final</mapstruct.version>
 		<maven.docker.version>1.2.2</maven.docker.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -33,25 +32,28 @@
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
-		<bootstrap.swagger.version>3.0.2</bootstrap.swagger.version>
-		<cxf.rs.version>3.3.7</cxf.rs.version>
-		<cxf.rs.json>2.10.1</cxf.rs.json>
+		<mica.version>2.5.1</mica.version>
+		<disruptor.version>3.4.4</disruptor.version>
+		<lombok.version>1.18.20</lombok.version>
+		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<knife4j.swagger.version>3.0.2</knife4j.swagger.version>
+		<cxf.rs.version>3.4.4</cxf.rs.version>
+		<cxf.rs.json>2.12.3</cxf.rs.json>
 		<druid.starter.version>1.2.6</druid.starter.version>
-		<flowable.starter.version>6.5.0</flowable.starter.version>
+		<flowable.starter.version>6.6.0</flowable.starter.version>
+		<camunda.starter.version>7.15.0</camunda.starter.version>
 		<guava.version>30.1.1-jre</guava.version>
-		<hutool.version>5.2.0</hutool.version>
-		<javassist.version>3.26.0-GA</javassist.version>
-		<jwt.version>3.9.0</jwt.version>
-		<jjwt.version>0.9.1</jjwt.version>
-		<keycloak.version>13.0.1</keycloak.version>
-		<lombok.version>1.18.12</lombok.version>
-		<mybatisplus.starter.version>3.4.3</mybatisplus.starter.version>
+		<hutool.version>5.7.2</hutool.version>
+		<javassist.version>3.28.0-GA</javassist.version>
+		<jwt.version>3.16.0</jwt.version>
+		<keycloak.version>14.0.0</keycloak.version>
+		<mybatisplus.starter.version>3.4.3.1</mybatisplus.starter.version>
 		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
 		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
 		<springfox.version>3.0.0</springfox.version>
-		<swagger.version>1.5.22</swagger.version>
+		<swagger.version>1.6.2</swagger.version>
 		<ttl.version>2.12.1</ttl.version>
-		<smartdoc.version>2.1.9</smartdoc.version>
+		<smartdoc.version>2.2.0</smartdoc.version>
 		<jasypt.version>3.0.3</jasypt.version>
 		<nacos.version>2.0.1</nacos.version>
 		<jackson.jsr.version>2.12.3</jackson.jsr.version>
@@ -59,15 +61,15 @@
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 
 		<!-- bom依赖配置管理 -->
-		<spring-boot.version>2.5.0</spring-boot.version>
+		<spring-boot.version>2.5.1</spring-boot.version>
 		<spring-boot-admin.version>2.4.1</spring-boot-admin.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-		<spring.version>5.3.6</spring.version>
+		<spring.version>5.3.8</spring.version>
 	</properties>
 
 	<dependencies>
-		<!--  lombok自动添加getset  -->
+		<!--  lombok自动添加get set  -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -137,11 +139,23 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<artifactId>cleanarch-common-bom</artifactId>
+				<groupId>net.dreamlu</groupId>
+				<artifactId>mica-bom</artifactId>
+				<version>${mica.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
 				<groupId>com.github.jgzl</groupId>
+				<artifactId>cleanarch-common-bom</artifactId>
 				<version>${revision}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>${disruptor.version}</version>
 			</dependency>
 			<!--  实体类转换  -->
 			<dependency>
@@ -178,11 +192,6 @@
 				<groupId>com.auth0</groupId>
 				<artifactId>java-jwt</artifactId>
 				<version>${jwt.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.jsonwebtoken</groupId>
-				<artifactId>jjwt</artifactId>
-				<version>${jjwt.version}</version>
 			</dependency>
 			<!--TTL-->
 			<dependency>
@@ -225,15 +234,15 @@
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${druid.starter.version}</version>
 			</dependency>
-<!--			<dependency>
+			<dependency>
 				<groupId>org.flowable</groupId>
 				<artifactId>flowable-spring-boot-starter</artifactId>
 				<version>${flowable.starter.version}</version>
-			</dependency>-->
+			</dependency>
 			<dependency>
 				<groupId>org.camunda.bpm.springboot</groupId>
 				<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-				<version>7.13.0</version>
+				<version>${camunda.starter.version}</version>
 			</dependency>
 			<!--   cxf版ws,rs,包括swagger-ui   -->
 			<dependency>
@@ -265,34 +274,34 @@
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
 				<artifactId>knife4j-spring-boot-starter</artifactId>
-				<version>${bootstrap.swagger.version}</version>
+				<version>${knife4j.swagger.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
 				<artifactId>knife4j-spring-boot-autoconfigure</artifactId>
-				<version>${bootstrap.swagger.version}</version>
+				<version>${knife4j.swagger.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.xiaoymin</groupId>
 				<artifactId>knife4j-micro-spring-boot-starter</artifactId>
-				<version>${bootstrap.swagger.version}</version>
+				<version>${knife4j.swagger.version}</version>
 			</dependency>
 			<dependency>
-				<artifactId>swagger-annotations</artifactId>
 				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
 				<version>${swagger.version}</version>
 			</dependency>
 			<!--   自动生成文档   -->
 			<dependency>
-				<groupId>com.github.shalousun</groupId>
 				<artifactId>smart-doc</artifactId>
+				<groupId>com.github.shalousun</groupId>
 				<version>${smartdoc.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
 			<dependency>
-				<artifactId>javassist</artifactId>
 				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
 				<version>${javassist.version}</version>
 			</dependency>
 		</dependencies>
@@ -377,14 +386,8 @@
 					<artifactId>smart-doc-maven-plugin</artifactId>
 					<version>${smartdoc.version}</version>
 					<configuration>
-						<configFile>${basedir}/src/main/resources/smart-doc.json</configFile>
+						<configFile>${basedir}/smart-doc.json</configFile>
 						<projectName>${project.name}</projectName>
-						<excludes>
-							<exclude>com.alibaba:fastjson</exclude>
-						</excludes>
-						<includes>
-							<include>com.alibaba:fastjson</include>
-						</includes>
 					</configuration>
 					<executions>
 						<execution>

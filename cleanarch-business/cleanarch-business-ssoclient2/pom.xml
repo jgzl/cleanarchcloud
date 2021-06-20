@@ -12,8 +12,8 @@
 
 	<artifactId>cleanarch-business-ssoclient2</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<name>应用服务::单点登录客户端模块2</name>
-	<description>应用服务::单点登录客户端模块2</description>
+	<name>应用服务::单点登录客户端2模块</name>
+	<description>应用服务::单点登录客户端2模块</description>
 
 	<dependencies>
 		<dependency>

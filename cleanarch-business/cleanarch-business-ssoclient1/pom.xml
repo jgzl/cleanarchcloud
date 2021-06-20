@@ -11,8 +11,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-business-ssoclient1</artifactId>
-	<name>应用服务::单点登录客户端模块1</name>
-	<description>应用服务::单点登录客户端模块1</description>
+	<name>应用服务::单点登录客户端1模块</name>
+	<description>应用服务::单点登录客户端1模块</description>
 
 	<dependencies>
 		<dependency>

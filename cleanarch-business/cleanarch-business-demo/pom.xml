@@ -12,8 +12,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-business-demo</artifactId>
-	<name>应用服务::Demo服务</name>
-	<description>应用服务::Demo服务</description>
+	<name>应用服务::demo服务模块</name>
+	<description>应用服务::demo服务模块</description>
 
 	<dependencies>
 		<dependency>

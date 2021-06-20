@@ -12,8 +12,8 @@
 		<artifactId>cleanarch-infrastructure</artifactId>
 		<version>${revision}</version>
 	</parent>
-	<name>基础服务::业务监控</name>
-	<description>基础服务::业务监控</description>
+	<name>基础服务::业务监控模块</name>
+	<description>基础服务::业务监控模块</description>
 
 	<dependencies>
 		<dependency>

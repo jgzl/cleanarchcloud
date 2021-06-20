@@ -1,5 +1,5 @@
 {
-  "serverUrl": "",
+  "serverUrl": "{server}",
   "isStrict": false,
   "allInOne": true,
   "outPath": "src/main/resources/static/doc",
@@ -20,7 +20,7 @@
   "displayActualType":false,
   "tornaDebug": false,
   "appKey": "20210413831551519089229824",
-  "appToken": "490e689f38594b4fb6ebe969716a2c2c",
+  "appToken": "e24b2106892145e3a90b19a139fe0108",
   "secret": "Pz4dGwKw5!X%H$zF2-Eq&3!l9ex%q-Zd",
   "openUrl": "http://localhost:7700/api",
   "debugEnvName":"开发环境",
