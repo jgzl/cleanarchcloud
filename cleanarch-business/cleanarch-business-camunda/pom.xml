@@ -20,6 +20,22 @@
 			<artifactId>cleanarch-business-interface</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-data</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-swagger</artifactId>
+		</dependency>
 		<!--web 模块-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,12 +74,13 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.rocketmq</groupId>
 			<artifactId>rocketmq-client</artifactId>
-			<version>4.7.1</version>
+			<version>4.8.0</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

@@ -16,13 +16,21 @@
 
 package com.github.jgzl.application.client;
 
+import com.github.jgzl.common.security.annotation.EnableFeignClientsPlus;
+import com.github.jgzl.common.security.annotation.EnableResourceServerPlus;
+import com.github.jgzl.swagger.annotation.EnableSwaggerPlus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author lihaifeng
  */
+@EnableDiscoveryClient
 @SpringBootApplication
+@EnableSwaggerPlus
+@EnableFeignClientsPlus
+@EnableResourceServerPlus
 public class CamundaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CamundaApplication.class, args);

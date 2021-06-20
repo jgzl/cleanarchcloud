@@ -3,6 +3,10 @@ routes:
     uri: lb://cleanarch-business-auth
     predicates:
       - Path=/auth/**
+  - id: auth
+    uri: lb://cleanarch-business-camunda
+    predicates:
+      - Path=/camunda/**
   - id: codegen
     uri: lb://cleanarch-business-codegen
     predicates:

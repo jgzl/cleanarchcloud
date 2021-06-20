@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * codegen微服务模块远程调用
+ * camunda微服务模块远程调用
  */
-@FeignClient(contextId = ServiceNameConstants.CODE_GEN_SERVICE,value = ServiceNameConstants.CODE_GEN_SERVICE)
-public interface CodeGenFeignClient {
+@FeignClient(contextId = ServiceNameConstants.CAMUNDA_SERVICE,value = ServiceNameConstants.CAMUNDA_SERVICE)
+public interface CamundaFeignClient {
 
 	/**
 	 * 心跳接口

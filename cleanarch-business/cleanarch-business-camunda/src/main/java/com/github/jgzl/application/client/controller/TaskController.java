@@ -1,24 +1,19 @@
 package com.github.jgzl.application.client.controller;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.camunda.bpm.engine.HistoryService;
-import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.ManagementService;
-import org.camunda.bpm.engine.RepositoryService;
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.engine.TaskService;
+import lombok.extern.slf4j.Slf4j;
+import org.camunda.bpm.engine.*;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.task.TaskQuery;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -45,7 +40,7 @@ public class TaskController {
 		this.taskService = taskService;
 	}
 
-	@RequestMapping("/start")
+	@GetMapping("/start")
 	public String startProcess(){
 		Map<String,Object> values=new HashMap<>();
 		String[] assigneeList = {"a","b","c","d"};
@@ -60,13 +55,13 @@ public class TaskController {
 		return "success";
 	}
 
-	@RequestMapping("/delete")
+	@GetMapping("/delete")
 	public String deleteDeployment(){
 		repositoryService.deleteDeployment("ebc7586c-be81-11ea-8282-aeb3837f64d0",true);
 		return "success";
 	}
 
-	@RequestMapping("/addUser/{processInstanceId}/{username}")
+	@GetMapping("/addUser/{processInstanceId}/{username}")
 	public String addUser(@PathVariable String processInstanceId,@PathVariable String username){
 		runtimeService.createProcessInstanceModification(processInstanceId)
 				.startBeforeActivity("seniorManagerApproval")//会签节点的activityId
@@ -75,7 +70,7 @@ public class TaskController {
 		return "success";
 	}
 
-	@RequestMapping("/list/{username}")
+	@GetMapping("/list/{username}")
 	public String listTask(@PathVariable String username){
 		TaskQuery taskQuery = taskService.createTaskQuery();
 		List<Task> taskList = taskQuery
@@ -93,7 +88,7 @@ public class TaskController {
 		return "success";
 	}
 
-	@RequestMapping("/complete/{taskId}")
+	@GetMapping("/complete/{taskId}")
 	public String complete(@PathVariable String taskId){
 		log.info("审批开始");
 		taskService.complete(taskId);

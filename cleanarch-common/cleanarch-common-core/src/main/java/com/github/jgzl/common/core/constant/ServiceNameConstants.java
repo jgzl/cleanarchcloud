@@ -31,4 +31,9 @@ public interface ServiceNameConstants {
 	 * 代码生成器模块
 	 */
 	String CODE_GEN_SERVICE = "cleanarch-business-codegen";
+
+	/**
+	 * 代码生成器模块
+	 */
+	String CAMUNDA_SERVICE = "cleanarch-business-camunda";
 }
