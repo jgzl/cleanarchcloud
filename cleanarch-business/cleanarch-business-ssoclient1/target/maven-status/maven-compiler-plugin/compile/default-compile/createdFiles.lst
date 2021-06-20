@@ -1,5 +1,0 @@
-com/gitee/application/client/controller/IndexController.class
-com/gitee/application/client/config/PlatformClientWebSecurityConfigurer.class
-com/gitee/application/client/SsoClient1Application.class
-com/gitee/application/client/controller/MemberController.class
-com/gitee/application/client/handler/PlatformLogoutSuccessHandler.class

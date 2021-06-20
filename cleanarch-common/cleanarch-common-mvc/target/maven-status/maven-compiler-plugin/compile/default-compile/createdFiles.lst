@@ -1,6 +1,0 @@
-com/gitee/common/properties/LogProperties.class
-com/gitee/common/enums/OperateModule.class
-com/gitee/common/model/OperateLog.class
-com/gitee/common/mapper/OperateLogMapper.class
-com/gitee/common/annotation/LogRecord.class
-com/gitee/common/handler/LogRecordHandler.class

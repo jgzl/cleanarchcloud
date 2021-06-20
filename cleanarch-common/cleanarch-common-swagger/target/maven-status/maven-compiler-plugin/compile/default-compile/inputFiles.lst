@@ -1,9 +1,0 @@
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/config/GatewaySwaggerAutoConfiguration.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/config/SwaggerProperties.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/config/SwaggerAutoConfiguration.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/support/SwaggerSecurityHandler.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/annotation/EnableSwaggerPlus.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/support/SwaggerUiHandler.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/support/SwaggerProvider.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/support/SwaggerResourceHandler.java
-/Users/lihaifeng/IdeaProjects/phoenix/cleanarch-common/cleanarch-common-swagger/src/main/java/com/gitee/swagger/config/WebFluxSwaggerConfiguration.java
