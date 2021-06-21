@@ -16,10 +16,9 @@
 
 package com.github.jgzl.common.security.component;
 
-import java.util.List;
-
 import com.github.jgzl.common.core.config.SysProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -28,10 +27,13 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.UserAuthenticationConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 /**
  * @author lihaifeng
@@ -47,6 +49,9 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 	private RedisConnectionFactory redisConnectionFactory;
 
 	@Autowired
+	private CustomResourceAuthExceptionEntryPoint authExceptionEntryPoint;
+
+	@Autowired
 	private SysProperties ssoProperties;
 
 	@Override
@@ -56,6 +61,14 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 		final List<String> urls = ssoProperties.getOauth2().getUrlPermitAll();
 		urls.forEach(url -> registry.antMatchers(url).permitAll());
 		registry.anyRequest().authenticated().and().cors().and().csrf().disable();
+	}
+
+	@Override
+	public void configure(ResourceServerSecurityConfigurer resources) {
+		DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
+		UserAuthenticationConverter userTokenConverter = new CustomUserAuthenticationConverter();
+		accessTokenConverter.setUserTokenConverter(userTokenConverter);
+		resources.authenticationEntryPoint(authExceptionEntryPoint);
 	}
 
 	@Bean
