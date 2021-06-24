@@ -1,30 +1,23 @@
-# docker安装mysql
+# docker安装mysql5.7
 ```shell
-docker run -d -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root  mysql:5.7.32
+docker run -d -p 3307:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root  mysql:5.7.32
+```
+
+# docker安装mysql8
+
+```shell
+docker run -d -p 3308:3306 --name mysql8 -e MYSQL_ROOT_PASSWORD=root  mysql:8.0.25
 ```
 
 # 获取2.0.1的nacos脚本 
+
 [mysql-nacos](https://gitee.com/mirrors/Nacos/raw/2.0.1/distribution/conf/nacos-mysql.sql)
 
 ```shell
-docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 \
+docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 --link mysql8:mysql  \
 -e MODE=standalone \
 -e SPRING_DATASOURCE_PLATFORM=mysql \
--e MYSQL_SERVICE_HOST=10.144.98.59 \
--e MYSQL_SERVICE_DB_NAME=nacos \
--e MYSQL_SERVICE_PORT=3306 \
--e MYSQL_SERVICE_USER=root \
--e MYSQL_SERVICE_PASSWORD=root \
---name nacos nacos/nacos-server:2.0.1
-```
-
-# docker安装nacos
-```shell
-
-docker run -d -p 8848:8848 \
--e MODE=standalone \
--e SPRING_DATASOURCE_PLATFORM=mysql \
--e MYSQL_SERVICE_HOST=10.144.98.59 \
+-e MYSQL_SERVICE_HOST=mysql \
 -e MYSQL_SERVICE_DB_NAME=nacos \
 -e MYSQL_SERVICE_PORT=3306 \
 -e MYSQL_SERVICE_USER=root \
@@ -103,5 +96,17 @@ docker run --name skywalking-ui -d -p 8080:8080 --link skywalking:skywalking -e 
 -javaagent:/Users/lihaifeng/data/skywalking/agent/skywalking-agent.jar -DSW_AGENT_NAME=cleanarch-infrastructure-gateway -DSW_AGENT_COLLECTOR_BACKEND_SERVICES=localhost:11800
 ```
 
+# docker安装zookeeper
 
+```shell
+docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
+```
 
+```shell
+docker run -d --name kafka \
+-p 9092:9092 --link zookeeper:zookeeper \
+-e KAFKA_BROKER_ID=0 \
+-e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://10.144.98.59:9092 \
+-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka
+```
