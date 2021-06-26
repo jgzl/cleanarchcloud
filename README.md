@@ -1,5 +1,5 @@
 # 前言
-[![Spring Boot](https://img.shields.io/badge/spring--boot-2.5.1-brightgreen)](https://github.com/spring-projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/spring--boot-2.5.2-brightgreen)](https://github.com/spring-projects/spring-boot)
 [![Spring Cloud](https://img.shields.io/badge/spring--cloud-2020.0.3-brightgreen)](https://github.com/spring-cloud)
 [![Spring Cloud Alibaba](https://img.shields.io/badge/spring--cloud--alibaba-2021.1-brightgreen)](https://github.com/alibaba/spring-cloud-alibaba)
 [![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/dlhf/conversion-platform/blob/master/LICENSE)
@@ -15,7 +15,7 @@
 
 依赖 | 版本
 ---|---
-Spring Boot |  2.5.1
+Spring Boot |  2.5.2
 Spring Cloud | 2020.0.3  
 Spring Cloud Alibaba | 2021.1 
 Spring Security OAuth2 | 2.3.6

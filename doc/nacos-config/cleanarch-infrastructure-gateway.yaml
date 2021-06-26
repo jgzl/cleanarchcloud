@@ -28,7 +28,7 @@ spring:
     host: 127.0.0.1
     password: 123456
 #  r2dbc:
-#    url: r2dbc:mysql://127.0.0.1:3306/sys?serverTimezone=GMT&characterEncoding=UTF-8
+#    url: r2dbc:mysql://127.0.0.1:3307/sys?serverTimezone=GMT&characterEncoding=UTF-8
 #    username: root
 #    password: root
 #    pool:

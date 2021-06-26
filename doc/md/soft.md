@@ -110,3 +110,12 @@ docker run -d --name kafka \
 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://10.144.98.59:9092 \
 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 wurstmeister/kafka
 ```
+
+
+
+# docker安装grafana
+
+```shell
+docker run -d --name=grafana -p 3000:3000 grafana/grafana:8.0.3
+```
+

@@ -61,7 +61,7 @@
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 
 		<!-- bom依赖配置管理 -->
-		<spring-boot.version>2.5.1</spring-boot.version>
+		<spring-boot.version>2.5.2</spring-boot.version>
 		<spring-boot-admin.version>2.4.1</spring-boot-admin.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>

@@ -15,6 +15,7 @@ spring:
             refresh: true
       discovery:
         namespace: business-dev
+        server-addr: ${spring.cloud.nacos.server-addr}
     sentinel:
       transport:
         dashboard: localhost:8888
