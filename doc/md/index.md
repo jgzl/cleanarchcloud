@@ -1,15 +1,15 @@
 ## 初始化数据库
-sql/create_database.sql,create_table.sql全部执行一遍
+sql/cleanarch.sql
 ## 下载nacos注册配置中心
 ```shell script
-wget https://github.com/alibaba/nacos/releases/download/1.1.4/nacos-server-1.1.4.tar.gz
-tar -zxvf nacos-server-1.1.4.tar.gz
-cd nacos-server-1.1.4/conf
+wget https://github.com/alibaba/nacos/releases/download/2.0.3/nacos-server-2.0.3.tar.gz
+tar -zxvf nacos-server-2.0.3.tar.gz
+cd nacos-server-2.0.3/conf
 vim application.properties
 #增加mysql配置
 spring.datasource.platform=mysql
 db.num=1
-db.url.0=jdbc:mysql://127.0.0.1:3307/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+db.url.0=jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
 db.user=root
 db.password=root
 ```
@@ -22,14 +22,6 @@ db.password=root
         <id>aliyun-dockerhub</id>
         <username>li7hai26</username>
         <password>Root1q2w.</password>
-        <configuration>
-            <email>li7hai26@gmail.com</email>
-        </configuration>
-    </server>
-    <server>
-        <id>local-dockerhub</id>
-        <username>admin</username>
-        <password>Harbor12345</password>
         <configuration>
             <email>li7hai26@gmail.com</email>
         </configuration>

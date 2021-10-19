@@ -20,7 +20,7 @@
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
 		<module>cleanarch-business-camunda</module>
-		<module>cleanarch-business-interface</module>
+		<module>cleanarch-business-webservice</module>
 		<module>cleanarch-business-demo</module>
   </modules>
 

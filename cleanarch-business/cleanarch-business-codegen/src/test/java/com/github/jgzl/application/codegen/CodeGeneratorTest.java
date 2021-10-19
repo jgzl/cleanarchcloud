@@ -52,7 +52,7 @@ public class CodeGeneratorTest {
 	}
 
 	public static void main(String[] args) {
-		DataSourceConfig dsc = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3307/sso?useUnicode=true&useSSL=false&characterEncoding=utf8","root","root").build();
+		DataSourceConfig dsc = new DataSourceConfig.Builder("jdbc:mysql://127.0.0.1:3306/sso?useUnicode=true&useSSL=false&characterEncoding=utf8","root","root").build();
 		// 代码生成器
 		AutoGenerator mpg = new AutoGenerator(dsc);
 

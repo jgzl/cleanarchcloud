@@ -60,10 +60,7 @@ public class CustomOauth2FeignClientInterceptor extends OAuth2FeignRequestInterc
 	 */
 	@Override
 	public void apply(RequestTemplate template) {
-/*		Collection<String> fromHeader = template.headers().get(SecurityConstants.FROM);
-		if (CollUtil.isNotEmpty(fromHeader) && fromHeader.contains(SecurityConstants.FROM_IN)) {
-			return;
-		}*/
+
 
 		accessTokenContextRelay.copyToken();
 		if (oAuth2ClientContext != null

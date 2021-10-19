@@ -17,13 +17,13 @@
 	<dependencies>
 		<!--工具类核心包-->
 		<dependency>
-			<artifactId>cleanarch-common-core</artifactId>
 			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-core</artifactId>
 		</dependency>
 		<!--数据库操作包-->
 		<dependency>
-			<artifactId>cleanarch-common-data</artifactId>
 			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-data</artifactId>
 		</dependency>
 		<!--安全模块 -->
 		<dependency>

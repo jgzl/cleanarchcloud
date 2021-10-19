@@ -16,7 +16,6 @@
 
 package com.github.jgzl.application.codegen;
 
-import com.github.jgzl.swagger.annotation.EnableSwaggerPlus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -29,7 +28,6 @@ import com.github.jgzl.common.security.annotation.EnableResourceServerPlus;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableSwaggerPlus
 @EnableFeignClientsPlus
 @EnableResourceServerPlus
 public class CodegenApplication {

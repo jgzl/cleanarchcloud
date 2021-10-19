@@ -1,6 +1,6 @@
 # docker安装mysql5.7
 ```shell
-docker run -d -p 3307:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root  mysql:5.7.32
+docker run -d -p 3306:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root  mysql:5.7.32
 ```
 
 # docker安装mysql8

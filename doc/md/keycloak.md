@@ -25,7 +25,7 @@ docker network create keycloak-network
 ```
 ####启动mysql容器:
 ```shell script
-docker run --name mysql-keycloak -d -p 3307:3306 \
+docker run --name mysql-keycloak -d -p 3306:3306 \
 --net keycloak-network -e MYSQL_DATABASE=keycloak \
 -e MYSQL_USER=keycloak -e MYSQL_PASSWORD=keycloak \
 -e MYSQL_ROOT_PASSWORD=root mysql

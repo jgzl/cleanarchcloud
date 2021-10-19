@@ -17,7 +17,6 @@
 package com.github.jgzl.application.auth;
 
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.swagger.annotation.EnableSwaggerPlus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -29,7 +28,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * 登录 http://localhost:8030/login/username/login
  * 输入账号密码 admin admin
  */
-@EnableSwaggerPlus
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication

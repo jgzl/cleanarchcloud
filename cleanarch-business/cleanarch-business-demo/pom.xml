@@ -66,11 +66,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-swagger</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-mvc</artifactId>
+			<artifactId>cleanarch-common-security</artifactId>
 		</dependency>
 		<!--  实体类转换  -->
 		<dependency>
@@ -81,7 +77,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

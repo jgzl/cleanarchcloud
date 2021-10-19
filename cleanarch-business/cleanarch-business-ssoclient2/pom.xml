@@ -51,10 +51,6 @@
 			<artifactId>cleanarch-common-security</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-swagger</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 		</dependency>
@@ -65,7 +61,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

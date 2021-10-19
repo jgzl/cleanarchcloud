@@ -23,12 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import com.github.jgzl.application.model.bo.OrderBO;
-import com.github.jgzl.application.model.dao.OrderDo;
-import com.github.jgzl.application.model.dao.OrderItemDo;
-import com.github.jgzl.application.model.vo.OrderVo;
-import com.github.jgzl.application.service.IOrderItemService;
-import com.github.jgzl.application.service.IOrderService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,12 +57,6 @@ public class IndexController {
 	private Environment environment;
 
 	@Autowired
-	private IOrderService orderService;
-
-	@Autowired
-	private IOrderItemService orderItemService;
-
-	@Autowired
 	private StringRedisTemplate redisTemplate;
 
 	@Value("${redis.topic.chat}")
@@ -79,50 +67,6 @@ public class IndexController {
 	public String ping() {
 		log.info("ping_url:{}", environment.getProperty("server.port"));
 		return environment.getProperty("server.port");
-	}
-
-	/**
-	 * 无参创建订单
-	 * @return
-	 */
-	@GetMapping("/orderWithNoArgs")
-	@ApiOperation(value = "无参创建订单")
-	public List createOrderWithNoArguments(HttpServletRequest request,HttpServletResponse response) {
-		List<OrderDo> orders = Lists.newArrayListWithCapacity(1300);
-		List<OrderItemDo> orderItems = Lists.newArrayListWithCapacity(1300);
-		for (long i = 0; i < 1000; i++) {
-			OrderDo orderDo = new OrderDo();
-			orderDo.setCode("a0" + i);
-			orderDo.setShopId(i % 8);
-			orderDo.setCreateTime(new Date());
-			orders.add(orderDo);
-		}
-		orderService.saveBatch(orders);
-		orders.forEach(s -> {
-			OrderItemDo orderItemDo = new OrderItemDo();
-			orderItemDo.setOrderId(s.getId());
-			orderItemDo.setShopId(s.getShopId());
-			orderItemDo.setName(s.getId() + ":name");
-			orderItems.add(orderItemDo);
-		});
-		orderItemService.saveBatch(orderItems);
-		List<OrderDo> shopIds = orderService.query().eq("shop_id", 2).list();
-		return shopIds;
-	}
-
-	/**
-	 * 通过orderVo视图对象创建订单对象
-	 * @param orderVo
-	 * @return
-	 */
-	@GetMapping("/createOrders")
-	@ApiOperation(value = "通过OrderVo创建订单Do")
-	public List<OrderDo> createOrders(@Valid OrderVo orderVo) {
-		List<OrderBO> orderVos = orderService.createOrderByVo(orderVo);
-		orderVos.forEach(System.out::println);
-		List<OrderDo> orderDos = orderService.query().eq("shop_id", 2).list();
-		orderDos.forEach(System.out::println);
-		return orderDos;
 	}
 
 	/**

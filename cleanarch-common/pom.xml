@@ -18,13 +18,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>cleanarchcloud</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>${revision}</version>
+	</parent>
 	<modules>
 		<module>cleanarch-common-bom</module>
 		<module>cleanarch-common-core</module>
 		<module>cleanarch-common-security</module>
-		<module>cleanarch-common-swagger</module>
 		<module>cleanarch-common-data</module>
-		<module>cleanarch-common-mvc</module>
 		<module>cleanarch-common-agent</module>
 	</modules>
 	<modelVersion>4.0.0</modelVersion>
@@ -39,10 +42,4 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
-
-	<parent>
-		<artifactId>cleanarchcloud</artifactId>
-		<groupId>com.github.jgzl</groupId>
-		<version>${revision}</version>
-	</parent>
 </project>

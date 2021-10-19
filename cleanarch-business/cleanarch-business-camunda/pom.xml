@@ -17,11 +17,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-business-interface</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-common-core</artifactId>
 		</dependency>
 		<dependency>
@@ -34,7 +29,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-swagger</artifactId>
+			<artifactId>cleanarch-business-webservice</artifactId>
+			<version>${revision}</version>
 		</dependency>
 		<!--web 模块-->
 		<dependency>
@@ -85,7 +81,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
