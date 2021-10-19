@@ -32,7 +32,7 @@
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
-		<mica.version>2.5.1</mica.version>
+		<mica.version>2.5.5</mica.version>
 		<disruptor.version>3.4.4</disruptor.version>
 		<lombok.version>1.18.20</lombok.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
@@ -62,10 +62,10 @@
 
 		<!-- bom依赖配置管理 -->
 		<spring-boot.version>2.5.2</spring-boot.version>
-		<spring-boot-admin.version>2.4.1</spring-boot-admin.version>
-		<spring-cloud.version>2020.0.3</spring-cloud.version>
+		<spring-boot-admin.version>2.5.2</spring-boot-admin.version>
+		<spring-cloud.version>2020.0.4</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-		<spring.version>5.3.8</spring.version>
+		<spring.version>5.3.11</spring.version>
 	</properties>
 
 	<dependencies>

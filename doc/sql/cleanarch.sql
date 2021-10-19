@@ -14,9 +14,9 @@
  *    limitations under the License.
  */
 
-drop database if exists `sys`;
-create database `sys` charset utf8mb4;
-use `sys`;
+drop database if exists `cleanarch`;
+create database `cleanarch` charset utf8mb4;
+use `cleanarch`;
 
 /*
  Navicat Premium Data Transfer
