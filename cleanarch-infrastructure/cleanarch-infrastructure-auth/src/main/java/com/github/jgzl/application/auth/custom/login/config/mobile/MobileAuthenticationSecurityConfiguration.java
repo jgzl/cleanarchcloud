@@ -5,7 +5,7 @@ import com.github.jgzl.application.auth.custom.login.handler.UsernamePasswordAut
 import com.github.jgzl.application.auth.custom.login.handler.UsernamePasswordAuthenticationSuccessHandler;
 import com.github.jgzl.application.auth.custom.login.provider.mobile.MobileAuthenticationProvider;
 import com.github.jgzl.application.auth.service.user.MobileUserDetailsService;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;

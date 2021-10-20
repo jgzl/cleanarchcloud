@@ -30,35 +30,47 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
+ * 基础对象
  * @author lihaifeng
  */
 @Data
-@ApiModel("基础对象")
-public class BaseDo<M> extends Model<BaseDo<M>> implements Serializable, Cloneable {
+public class BaseDo<M> extends Model<BaseDo<M>> implements Serializable {
 
-	@ApiModelProperty("创建人")
+	/**
+	 * 创建人
+	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Long createUser;
+	private String createUser;
 
-	@ApiModelProperty("创建时间")
+	/**
+	 * 创建时间
+	 */
 	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createDate;
 
-	@ApiModelProperty("更新人")
+	/**
+	 * 更新人
+	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private Long updateUser;
+	private String updateUser;
 
-	@ApiModelProperty("更新时间")
+	/**
+	 * 更新时间
+	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private LocalDateTime updateDate;
 
+	/**
+	 * 乐观锁
+	 */
 	@Version
 	@TableField(fill = FieldFill.INSERT)
-	@ApiModelProperty("乐观锁")
 	private Integer version;
 
+	/**
+	 * 逻辑删除
+	 */
 	@TableLogic
 	@TableField(fill = FieldFill.INSERT)
-	@ApiModelProperty("逻辑删除")
 	private Integer deleted;
 }

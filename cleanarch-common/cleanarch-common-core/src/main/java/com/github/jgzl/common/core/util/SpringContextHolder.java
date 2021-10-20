@@ -84,6 +84,7 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
 	 */
 	public static void publishEvent(ApplicationEvent event) {
 		if (applicationContext == null) {
+			log.error("applicationContext为null!");
 			return;
 		}
 		applicationContext.publishEvent(event);

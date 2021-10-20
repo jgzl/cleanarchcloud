@@ -1,6 +1,7 @@
-package com.github.jgzl.common.data.redis;
+package com.github.jgzl.common.data.cache;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +33,7 @@ public class CustomRedisRepository {
     /**
      * 默认编码
      */
-    private static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     /**
      * key序列化

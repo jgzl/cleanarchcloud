@@ -9,7 +9,7 @@ import com.github.jgzl.application.auth.mapper.SysUserMapper;
 import com.github.jgzl.application.auth.service.SysUserService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.CommonConstants;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 import com.github.jgzl.common.security.dataobject.SysUserDo;
 import com.github.jgzl.common.security.vo.Operation;
 import com.github.jgzl.common.security.vo.SysRoleVo;

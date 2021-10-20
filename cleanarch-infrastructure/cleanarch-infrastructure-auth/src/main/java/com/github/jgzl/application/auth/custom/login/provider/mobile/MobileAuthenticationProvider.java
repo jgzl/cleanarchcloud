@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.github.jgzl.application.auth.core.AbstractUserDetailsAuthenticationProvider;
 import com.github.jgzl.application.auth.custom.login.token.mobile.MobileAuthenticationToken;
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;

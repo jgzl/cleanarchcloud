@@ -7,7 +7,7 @@ import com.github.jgzl.application.auth.service.SysUserService;
 import com.github.jgzl.application.auth.service.client.SysOauthClientDetailsService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
 import io.swagger.annotations.Api;

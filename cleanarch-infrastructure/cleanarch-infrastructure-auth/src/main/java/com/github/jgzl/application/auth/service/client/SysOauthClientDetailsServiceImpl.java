@@ -2,7 +2,7 @@ package com.github.jgzl.application.auth.service.client;
 
 import com.github.jgzl.application.auth.mapper.SysOauthClientDetailsMapper;
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
 import com.github.jgzl.common.security.exception.BusinessException;
 import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;

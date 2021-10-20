@@ -20,8 +20,8 @@
 		</dependency>
 		<!-- mybatis-plus注解-->
 		<dependency>
-			<artifactId>mybatis-plus-extension</artifactId>
 			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-extension</artifactId>
 		</dependency>
 		<!--缓存依赖-->
 		<dependency>

@@ -29,17 +29,17 @@ public class BaseDoMetaObjectHandler implements MetaObjectHandler {
 
 	@Override
 	public void insertFill(MetaObject metaObject) {
-		this.strictInsertFill(metaObject, "createUser", Long.class, 0L);
+		this.strictInsertFill(metaObject, "createUser", String.class, "admin");
 		this.strictInsertFill(metaObject, "createDate", LocalDateTime.class, LocalDateTime.now());
-		this.strictUpdateFill(metaObject, "updateUser", Long.class, 0L);
-		this.strictUpdateFill(metaObject, "updateDate", LocalDateTime.class, LocalDateTime.now());
+		this.strictInsertFill(metaObject, "updateUser", String.class, "admin");
+		this.strictInsertFill(metaObject, "updateDate", LocalDateTime.class, LocalDateTime.now());
 		this.strictInsertFill(metaObject, "version", Integer.class, 0);
 		this.strictInsertFill(metaObject, "deleted", Integer.class, 0);
 	}
 
 	@Override
 	public void updateFill(MetaObject metaObject) {
-		this.strictUpdateFill(metaObject, "updateUser", Long.class, 0L);
+		this.strictUpdateFill(metaObject, "updateUser", String.class, "admin");
 		this.strictUpdateFill(metaObject, "updateDate", LocalDateTime.class, LocalDateTime.now());
 	}
 }

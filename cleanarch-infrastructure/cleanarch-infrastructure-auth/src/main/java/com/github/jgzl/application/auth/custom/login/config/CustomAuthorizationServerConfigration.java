@@ -10,7 +10,7 @@ import com.github.jgzl.application.auth.service.user.UserNameUserDetailsServiceI
 import com.github.jgzl.common.core.config.SysProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.data.redis.CustomRedisRepository;
+import com.github.jgzl.common.data.cache.CustomRedisRepository;
 import com.github.jgzl.common.security.vo.UserVo;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
