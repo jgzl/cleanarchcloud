@@ -25,12 +25,12 @@ public interface ServiceNameConstants {
 	/**
 	 * 认证中心
 	 */
-	String AUTH_SERVICE = "cleanarch-business-auth";
+	String AUTH_SERVICE = "cleanarch-infrastructure-auth";
 
 	/**
 	 * 代码生成器模块
 	 */
-	String CODE_GEN_SERVICE = "cleanarch-business-codegen";
+	String CODE_GEN_SERVICE = "cleanarch-infrastructure-codegen";
 
 	/**
 	 * 代码生成器模块

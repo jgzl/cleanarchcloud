@@ -333,8 +333,8 @@ CREATE TABLE `sys_route_conf` (
 -- Records of sys_route_conf
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_route_conf` VALUES (1, '认证中心', 'cleanarch-business-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-business-auth', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:57', '0');
-INSERT INTO `sys_route_conf` VALUES (2, '代码生成模块', 'cleanarch-business-codegen', '[{\"args\": {\"_genkey_0\": \"/codegen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-business-codegen', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:58', '0');
+INSERT INTO `sys_route_conf` VALUES (1, '认证中心', 'cleanarch-infrastructure-auth', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-auth', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:57', '0');
+INSERT INTO `sys_route_conf` VALUES (2, '代码生成模块', 'cleanarch-infrastructure-codegen', '[{\"args\": {\"_genkey_0\": \"/codegen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-codegen', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:58', '0');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
