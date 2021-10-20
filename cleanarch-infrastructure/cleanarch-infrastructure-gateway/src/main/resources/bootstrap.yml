@@ -4,4 +4,4 @@ spring:
   profiles:
     active: dev
   application:
-    name: cleanarch-infrastructure-gateway
+    name: @project.artifactId@

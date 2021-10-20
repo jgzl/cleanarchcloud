@@ -12,8 +12,8 @@
 		<artifactId>cleanarch-infrastructure</artifactId>
 		<version>${revision}</version>
 	</parent>
-	<name>基础服务::业务监控模块</name>
-	<description>基础服务::业务监控模块</description>
+	<name>基础服务::业务监控服务模块</name>
+	<description>基础服务::业务监控服务模块</description>
 
 	<dependencies>
 		<dependency>
@@ -32,17 +32,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.github.shalousun</groupId>
 				<artifactId>smart-doc-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

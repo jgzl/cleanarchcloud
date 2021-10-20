@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>cleanarch-common-security</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>公共资源::安全模块</description>
-	<name>公共资源::安全模块</name>
+	<description>通用资源::安全模块</description>
+	<name>通用资源::安全模块</name>
 
 	<dependencies>
 		<!--工具类核心包-->

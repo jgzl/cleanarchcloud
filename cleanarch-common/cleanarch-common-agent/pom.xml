@@ -26,9 +26,9 @@
 		<version>${revision}</version>
 	</parent>
 
-	<description>公共资源::字节码Agent模块</description>
+	<description>通用资源::字节码Agent模块</description>
 	<modelVersion>4.0.0</modelVersion>
-	<name>公共资源::字节码Agent模块</name>
+	<name>通用资源::字节码Agent模块</name>
 	<packaging>jar</packaging>
 
 	<build>

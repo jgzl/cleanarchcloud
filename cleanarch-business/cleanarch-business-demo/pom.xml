@@ -12,8 +12,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-business-demo</artifactId>
-	<name>应用服务::demo服务模块</name>
-	<description>应用服务::demo服务模块</description>
+	<name>应用服务::演示服务模块</name>
+	<description>应用服务::演示服务模块</description>
 
 	<dependencies>
 		<dependency>
@@ -82,17 +82,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.github.shalousun</groupId>
 				<artifactId>smart-doc-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

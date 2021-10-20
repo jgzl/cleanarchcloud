@@ -15,8 +15,8 @@
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 
-	<description>公共资源::依赖管理bom模块</description>
-	<name>公共资源::依赖管理bom模块</name>
+	<description>通用资源::依赖管理BOM模块</description>
+	<name>通用资源::依赖管理BOM模块</name>
 
 	<properties>
 		<revision>2021.10.19-SNAPSHOT</revision>

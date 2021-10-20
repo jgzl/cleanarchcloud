@@ -11,8 +11,8 @@
 
 	<artifactId>cleanarch-common-data</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>公共资源::数据模块</description>
-	<name>公共资源::数据模块</name>
+	<description>通用资源::数据模块</description>
+	<name>通用资源::数据模块</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>

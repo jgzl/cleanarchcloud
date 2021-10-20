@@ -44,7 +44,7 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 				Mono.fromRunnable(() -> {
 					long startTime = exchange.getAttribute(COUNT_START_TIME);
 					long endTime = (Instant.now().toEpochMilli() - startTime);
-					log.info("执行共消耗时间为：{}", exchange.getRequest().getURI().getRawPath() + ": " + endTime + "ms");
+					log.info("访问[{}]共消耗时间为:{}ms", exchange.getRequest().getURI().getRawPath(), endTime);
 				})
 		);
 	}

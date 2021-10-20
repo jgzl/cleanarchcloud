@@ -14,10 +14,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-infrastructure</artifactId>
 	<packaging>pom</packaging>
-	<name>基础服务::基础设施组件POM</name>
-	<description>基础服务::基础设施组件POM</description>
+	<name>基础服务::基础设施组件POM模块</name>
+	<description>基础服务::基础设施组件POM模块</description>
 
 	<modules>
+		<module>cleanarch-infrastructure-auth</module>
+		<module>cleanarch-infrastructure-codegen</module>
+		<module>cleanarch-infrastructure-camunda</module>
 		<module>cleanarch-infrastructure-admin</module>
 		<module>cleanarch-infrastructure-gateway</module>
 	</modules>

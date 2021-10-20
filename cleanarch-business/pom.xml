@@ -11,15 +11,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-business</artifactId>
 	<packaging>pom</packaging>
-	<name>应用服务::应用组件POM</name>
-	<description>应用服务::应用组件POM</description>
+	<name>应用服务::应用组件POM模块</name>
+	<description>应用服务::应用组件POM模块</description>
 
 	<modules>
-		<module>cleanarch-business-auth</module>
-		<module>cleanarch-business-codegen</module>
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
-		<module>cleanarch-business-camunda</module>
 		<module>cleanarch-business-webservice</module>
 		<module>cleanarch-business-demo</module>
   </modules>

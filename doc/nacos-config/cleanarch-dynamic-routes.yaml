@@ -1,14 +1,14 @@
 routes:
   - id: auth
-    uri: lb://cleanarch-business-auth
+    uri: lb://cleanarch-infrastructure-auth
     predicates:
       - Path=/auth/**
   - id: camunda
-    uri: lb://cleanarch-business-camunda
+    uri: lb://cleanarch-infrastructure-camunda
     predicates:
       - Path=/camunda/**
   - id: codegen
-    uri: lb://cleanarch-business-codegen
+    uri: lb://cleanarch-infrastructure-codegen
     predicates:
       - Path=/codegen/**
   - id: demo

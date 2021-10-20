@@ -1,5 +1,6 @@
 package com.github.jgzl.gateway.init;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.cloud.nacos.NacosConfigProperties;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
@@ -45,6 +46,10 @@ public class DynamicRouteInit {
 			ConfigService configService = NacosFactory.createConfigService(properties);
 
 			String content = configService.getConfig(GatewayConstants.CONFIG_DATA_ID_DYNAMIC_ROUTES, nacosProperties.getGroup(), GatewayConstants.CONFIG_TIMEOUT_MS);
+			if (StrUtil.isBlank(content)) {
+				log.error("路由信息不存在,请查看配置中心于NameSpace[{}]是否存在[{}]配置",nacosProperties.getNamespace(),GatewayConstants.CONFIG_DATA_ID_DYNAMIC_ROUTES);
+				return;
+			}
 			log.info("初始化网关路由开始");
 			updateRoute(content);
 			log.info("初始化网关路由完成");
