@@ -25,7 +25,7 @@ import com.github.jgzl.common.security.annotation.EnableFeignClientsPlus;
 
 /**
  * @author lihaifeng
- * 登录http://localhost:8030/login/username/login
+ * 登录http://localhost:8010/login/username/login
  * 输入账号密码 admin admin
  */
 @EnableDiscoveryClient

@@ -1,6 +1,6 @@
 #主从读写分离配置
 server:
-  port: 8040
+  port: 8100
 spring:
   freemarker:
     template-loader-path: classpath:/templates/
@@ -78,13 +78,13 @@ security:
       # 客户端密钥
       client-secret: app
       # 获取访问令牌的URI
-      access-token-uri: http://localhost:8030/oauth/token
+      access-token-uri: http://localhost:8010/oauth/token
       # 用户将被重定向到的授权 URI
-      user-authorization-uri: http://localhost:8030/oauth/authorize
+      user-authorization-uri: http://localhost:8010/oauth/authorize
     resource:
       jwt:
         # 获取JWT 非对称加密的公钥URI
-        key-uri: http://localhost:8030/oauth/token_key
+        key-uri: http://localhost:8010/oauth/token_key
 sso:
   oauth2:
     url-permit-all:

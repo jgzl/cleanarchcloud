@@ -1,5 +1,5 @@
 server:
-  port: 8072
+  port: 8102
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/sso?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
@@ -16,8 +16,8 @@ security:
     client:
       client-id: ssoclient2
       client-secret: ssoclient2
-      user-authorization-uri: http://localhost:8030/oauth/authorize
-      access-token-uri: http://localhost:8030/oauth/token
+      user-authorization-uri: http://localhost:8010/oauth/authorize
+      access-token-uri: http://localhost:8010/oauth/token
       scope: sso
     resource:
-      token-info-uri: http://localhost:8030/oauth/check_token
+      token-info-uri: http://localhost:8010/oauth/check_token

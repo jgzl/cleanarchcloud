@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentWebServiceTest {
 	public static void main(String[] args) {
 		JaxWsProxyFactoryBean jaxWsProxyFactoryBean=new JaxWsProxyFactoryBean();
-		jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8071/services/student?wsdl");
+		jaxWsProxyFactoryBean.setAddress("http://127.0.0.1:8101/services/student?wsdl");
 		jaxWsProxyFactoryBean.setServiceClass(StudentWebService.class);
 
 		StudentWebService studentWebService = (StudentWebService) jaxWsProxyFactoryBean.create(); // 创建客户端对象

@@ -37,7 +37,7 @@ public class PlatformLogoutSuccessHandler implements LogoutSuccessHandler {
 				|| SecurityConstants.LHF.equalsIgnoreCase(profile)
 				|| SecurityConstants.XH.equalsIgnoreCase(profile)
 		) {
-			response.sendRedirect("http://localhost:8030/logout");
+			response.sendRedirect("http://localhost:8010/logout");
 		}
 	}
 }

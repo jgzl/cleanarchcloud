@@ -32,6 +32,7 @@
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
+		<git.commit.version>2.2.5</git.commit.version>
 		<mica.version>2.5.5</mica.version>
 		<disruptor.version>3.4.4</disruptor.version>
 		<lombok.version>1.18.20</lombok.version>
@@ -368,6 +369,12 @@
 				<artifactId>versions-maven-plugin</artifactId>
 				<version>${maven.versions.version}</version>
 			</plugin>
+			<!--打包关联最新 git commit 信息插件-->
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>${git.commit.version}</version>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -399,7 +406,7 @@
 						</authConfig>
 						<images>
 							<image>
-								<name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
+								<name>${docker.registry}/${docker.namespace}/${project.artifactId}:${project.version}</name>
 								<build>
 									<dockerFile>${project.basedir}/Dockerfile</dockerFile>
 								</build>

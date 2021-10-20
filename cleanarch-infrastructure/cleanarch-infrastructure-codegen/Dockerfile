@@ -1,4 +1,4 @@
-ROM adoptopenjdk:8u292-b10-jdk-hotspot
+FROM docker.io/adoptopenjdk:8u292-b10-jdk-hotspot
 
 MAINTAINER li7hai26@gmail.com
 
@@ -11,7 +11,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-EXPOSE 8032
+EXPOSE 8020
 
 ADD ./target/app.jar app.jar
 
