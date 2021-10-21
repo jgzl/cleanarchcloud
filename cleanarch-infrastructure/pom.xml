@@ -18,7 +18,7 @@
 	<description>基础服务::基础设施组件POM模块</description>
 
 	<modules>
-		<module>cleanarch-infrastructure-auth</module>
+		<module>cleanarch-infrastructure-upms</module>
 		<module>cleanarch-infrastructure-codegen</module>
 		<module>cleanarch-infrastructure-camunda</module>
 		<module>cleanarch-infrastructure-admin</module>

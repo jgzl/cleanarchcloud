@@ -41,6 +41,16 @@
 				<artifactId>cleanarch-common-data</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>cleanarch-common-cache</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>cleanarch-common-file</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

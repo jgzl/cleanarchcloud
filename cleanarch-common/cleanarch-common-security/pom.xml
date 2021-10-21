@@ -25,6 +25,11 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-common-data</artifactId>
 		</dependency>
+		<!--数据库操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-cache</artifactId>
+		</dependency>
 		<!--安全模块 -->
 		<dependency>
 			<groupId>org.springframework.security.oauth.boot</groupId>

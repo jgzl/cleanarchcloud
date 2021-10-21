@@ -21,7 +21,7 @@ import cn.hutool.core.date.DatePattern;
  * 必须是json传入才会走这个自动序列化反序列化LocalDateTime,LocalDate,LocalTime
  *
  * @author: lihaifeng
- * @author L.cm
+ * @author lihaifeng
  * @author: lishangbu
  * @date: 2018/10/22
  */

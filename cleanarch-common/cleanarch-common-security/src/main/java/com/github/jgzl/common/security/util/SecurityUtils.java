@@ -1,5 +1,6 @@
 package com.github.jgzl.common.security.util;
 
+import com.github.jgzl.common.data.external.ReceiveUserInfoService;
 import com.github.jgzl.common.security.vo.SysUserVo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,17 +8,17 @@ import org.springframework.security.core.userdetails.User;
 
 import com.github.jgzl.common.security.vo.UserVo;
 
-import lombok.experimental.UtilityClass;
+import org.springframework.stereotype.Component;
 
 /**
  * @author lihaifeng
  */
-@UtilityClass
-public class SecurityUtils {
+@Component
+public class SecurityUtils implements ReceiveUserInfoService {
 	/**
 	 * 获取Authentication
 	 */
-	public Authentication getAuthentication() {
+	public static Authentication getAuthentication() {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 
@@ -28,7 +29,7 @@ public class SecurityUtils {
 	 * @return MicroservicePlatformUser
 	 * <p>
 	 */
-	public SysUserVo getUser(Authentication authentication) {
+	public static SysUserVo getUser(Authentication authentication) {
 		Object principal = authentication.getPrincipal();
 		if (principal instanceof SysUserVo) {
 			return (SysUserVo) principal;
@@ -50,8 +51,13 @@ public class SecurityUtils {
 	/**
 	 * 获取用户
 	 */
-	public SysUserVo getUser() {
+	public static SysUserVo getUser() {
 		Authentication authentication = getAuthentication();
 		return getUser(authentication);
+	}
+
+	@Override
+	public SysUserVo getCurrentUserAccount() {
+		return getUser();
 	}
 }

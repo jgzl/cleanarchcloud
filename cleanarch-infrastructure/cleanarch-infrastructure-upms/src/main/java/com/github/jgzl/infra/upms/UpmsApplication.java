@@ -1,0 +1,23 @@
+package com.github.jgzl.infra.upms;
+
+import com.github.jgzl.common.core.constant.CacheConstants;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+
+/**
+ * @author lihaifeng
+ * 登录 http://localhost:8010/login/username/login
+ * 输入账号密码 admin admin
+ */
+@EnableFeignClients
+@EnableDiscoveryClient
+@SpringBootApplication
+@EnableRedisHttpSession(redisNamespace = CacheConstants.REDIS_SESSION_PREFIX)
+public class UpmsApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(UpmsApplication.class, args);
+	}
+}

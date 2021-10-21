@@ -9,7 +9,6 @@ import lombok.Data;
  * @author Administrator
  */
 @Data
-@Configuration
 @ConfigurationProperties(prefix = "sso")
 public class SysProperties {
 	

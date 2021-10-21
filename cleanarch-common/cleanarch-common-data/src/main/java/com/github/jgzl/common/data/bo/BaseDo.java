@@ -72,5 +72,5 @@ public class BaseDo<M> extends Model<BaseDo<M>> implements Serializable {
 	 */
 	@TableLogic
 	@TableField(fill = FieldFill.INSERT)
-	private Integer deleted;
+	private Integer delFlag;
 }

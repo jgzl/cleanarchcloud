@@ -65,5 +65,5 @@ public class BaseVo<M> implements Serializable, Cloneable {
 		/**
 		 * 逻辑删除
 		 */
-		private Integer deleted;
+		private Integer delFlag;
 }

@@ -1,6 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.jgzl.common.core.config.JacksonConfig,\
-  com.github.jgzl.common.core.config.MessageSourceConfig,\
-  com.github.jgzl.common.core.config.RestTemplateConfig,\
-  com.github.jgzl.common.core.util.SpringContextHolder,\
-  com.github.jgzl.common.core.config.SysProperties
+  com.github.jgzl.common.core.CoreAutoConfiguration

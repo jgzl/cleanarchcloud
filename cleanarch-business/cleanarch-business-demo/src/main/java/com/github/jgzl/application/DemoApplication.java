@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2019-2019
- */
-
 package com.github.jgzl.application;
 
 import org.springframework.boot.SpringApplication;

@@ -11,8 +11,8 @@
 
 	<artifactId>cleanarch-common-data</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::数据模块</description>
-	<name>通用资源::数据模块</name>
+	<description>通用资源::数据操作模块</description>
+	<name>通用资源::数据操作模块</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
@@ -22,11 +22,6 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-extension</artifactId>
-		</dependency>
-		<!--缓存依赖-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 	</dependencies>
 

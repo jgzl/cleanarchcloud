@@ -1,4 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.jgzl.common.data.mybatis.MybatisPlusConfig,\
-  com.github.jgzl.common.data.cache.RedisCacheConfiguration,\
-  com.github.jgzl.common.data.cache.DataCacheService
+  com.github.jgzl.common.data.DataAutoConfiguration

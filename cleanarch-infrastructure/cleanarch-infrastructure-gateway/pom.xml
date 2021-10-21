@@ -12,8 +12,8 @@
 		<artifactId>cleanarch-infrastructure</artifactId>
 		<version>${revision}</version>
 	</parent>
-	<name>基础服务::业务网关服务模块</name>
-	<description>基础服务::业务网关服务模块</description>
+	<name>基础服务::网关服务模块</name>
+	<description>基础服务::网关服务模块</description>
 
 	<dependencies>
 		<dependency>

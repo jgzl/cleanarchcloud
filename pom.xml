@@ -32,6 +32,7 @@
 		<maven.resources.version>3.1.0</maven.resources.version>
 		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
+		<aws.version>1.11.543</aws.version>
 		<git.commit.version>2.2.5</git.commit.version>
 		<mica.version>2.5.5</mica.version>
 		<disruptor.version>3.4.4</disruptor.version>
@@ -96,6 +97,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!--监控客户端-->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>${spring-boot-admin.version}</version>
 		</dependency>
 		<!--  配置可视化，可以通过yml直接点击到java代码配置位置  -->
 		<dependency>

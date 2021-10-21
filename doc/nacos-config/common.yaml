@@ -18,3 +18,10 @@ mybatis-plus:
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+oss:
+  path-style-access: false
+  endpoint: localhost:9000
+  access-key: cleanarch
+  secret-key: cleanarch
+  bucketName: cleanarch
