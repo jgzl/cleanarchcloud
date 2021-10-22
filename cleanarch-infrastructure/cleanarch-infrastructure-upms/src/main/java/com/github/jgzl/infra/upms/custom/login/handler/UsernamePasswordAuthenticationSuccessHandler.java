@@ -1,10 +1,6 @@
 package com.github.jgzl.infra.upms.custom.login.handler;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -14,7 +10,6 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,25 +25,21 @@ import java.io.IOException;
 @Component
 public class UsernamePasswordAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
-	@Autowired
-	private ObjectMapper objectMapper;
+	private static final RequestCache requestCache = new HttpSessionRequestCache();
 
-	private RequestCache requestCache = new HttpSessionRequestCache();
-
-	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+	private static final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 	@Override
 	public void onAuthenticationSuccess(final HttpServletRequest request,
 			final HttpServletResponse response,
-			final Authentication authentication) throws IOException, ServletException {
+			final Authentication authentication) throws IOException {
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 		String redirectUri = null;
 		if (savedRequest != null) {
 			redirectUri = savedRequest.getRedirectUrl();
 		}
+		log.info("登录成功,调准url为{}",redirectUri);
 		clearAuthenticationAttributes(request);
-		response.setStatus(HttpServletResponse.SC_OK);
-		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(Result.ok(redirectUri)));
+		redirectStrategy.sendRedirect(request,response,redirectUri);
 	}
 }

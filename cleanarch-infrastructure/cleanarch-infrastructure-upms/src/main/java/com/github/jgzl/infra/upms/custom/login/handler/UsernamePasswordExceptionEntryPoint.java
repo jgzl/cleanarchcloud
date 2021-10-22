@@ -1,5 +1,6 @@
 package com.github.jgzl.infra.upms.custom.login.handler;
 
+import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 自定义token校验失败返回信息: 通用
@@ -20,21 +22,16 @@ import java.io.IOException;
  * @author lihaifeng
  * 2019/5/6 10:54
  */
-@Component
 @Slf4j
+@Component
 public class UsernamePasswordExceptionEntryPoint implements AuthenticationEntryPoint {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Override
-    public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authException) throws IOException,
-			ServletException {
-		if (log.isDebugEnabled()) {
-			log.debug("CustomExceptionEntryPoint:" + authException.getMessage());
-		}
+    public void commence(final HttpServletRequest request, final HttpServletResponse response, final AuthenticationException authException) throws IOException {
+		log.info("UsernamePasswordExceptionEntryPoint:",authException);
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(Result.failed(authException.getMessage())));
+		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		response.getWriter().write(JSONUtil.toJsonStr(Result.failed(authException.getMessage())));
 	}
 }

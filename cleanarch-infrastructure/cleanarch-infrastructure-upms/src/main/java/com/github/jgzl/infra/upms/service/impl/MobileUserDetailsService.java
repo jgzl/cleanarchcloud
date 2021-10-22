@@ -23,7 +23,7 @@ public class MobileUserDetailsService extends AbstractUserDetailService {
 	protected UserVo getUserVo(final String username) {
 		final UserVo user = userService.findUserByMobile(username);
 		if (user == null) {
-			throw new InternalAuthenticationServiceException("手机号: " + username + ", 不存在");
+			throw new InternalAuthenticationServiceException("手机号[" + username + "]不存在");
 		}
 		return user;
 	}

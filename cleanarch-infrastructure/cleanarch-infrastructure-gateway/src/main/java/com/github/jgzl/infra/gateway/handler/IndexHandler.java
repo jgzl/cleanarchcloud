@@ -50,4 +50,9 @@ public class IndexHandler {
 		sb.append("<div><ul><li>文档地址：<a href='doc.html'>doc.html</a></li></ul></div>");
 		return sb.toString();
 	}
+
+	public static void main(String[] args) {
+		String format = String.format("http://%s/oauth/token_key", ServiceNameConstants.UPMS_SERVICE);
+		log.info(format);
+	}
 }

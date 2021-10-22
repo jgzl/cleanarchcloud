@@ -55,9 +55,6 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     private UsernamePasswordAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
-    private UsernamePasswordExceptionEntryPoint exceptionEntryPoint;
-
-    @Autowired
     private UsernamePasswordLogoutSuccessHandler logoutSuccessHandler;
 
     @Autowired
@@ -84,8 +81,6 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                         .and().logout().logoutUrl("/logout").permitAll().logoutSuccessHandler(logoutSuccessHandler)
                         // 异常处理filter: ExceptionTranslationFilter
                         .and().exceptionHandling()
-                        // 匿名用户访问无权限资源时的异常
-                        .authenticationEntryPoint(exceptionEntryPoint)
                         // 认证过的用户访问无权限资源时的异常
                         .accessDeniedHandler(accessDeniedHandler)
                         // 开启RememberMe

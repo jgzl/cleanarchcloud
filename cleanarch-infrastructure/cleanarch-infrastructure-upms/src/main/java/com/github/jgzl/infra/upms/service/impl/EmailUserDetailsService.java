@@ -23,7 +23,7 @@ public class EmailUserDetailsService extends AbstractUserDetailService {
 	protected UserVo getUserVo(final String username) {
 		final UserVo user = userService.findUserByEmail(username);
 		if (user == null) {
-			throw new InternalAuthenticationServiceException("邮箱: " + username + ", 不存在");
+			throw new InternalAuthenticationServiceException("邮箱[" + username + "]不存在");
 		}
 		return user;
 	}

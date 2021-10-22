@@ -1,5 +1,6 @@
 package com.github.jgzl.infra.upms.custom.login.handler;
 
+import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 自定义授权失败返回信息: 通用
@@ -20,21 +22,15 @@ import java.io.IOException;
  * @author lihaifeng
  * 2019/5/6 11:02
  */
-@Component
-@Slf4j
+@Slf4j@Component
 public class UsernamePasswordAccessDeniedHandler implements AccessDeniedHandler {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @Override
-    public void handle(final HttpServletRequest request, final HttpServletResponse response, final AccessDeniedException accessDeniedException) throws IOException,
-			ServletException {
-		if (log.isDebugEnabled()) {
-			log.debug("CustomAccessDeniedHandler:" + accessDeniedException.getMessage());
-		}
+    public void handle(final HttpServletRequest request, final HttpServletResponse response, final AccessDeniedException accessDeniedException) throws IOException{
+		log.info("UsernamePasswordAccessDeniedHandler:",accessDeniedException);
 		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().write(objectMapper.writeValueAsString(Result.failed(accessDeniedException.getMessage())));
+		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		response.getWriter().write(JSONUtil.toJsonStr(Result.failed(accessDeniedException.getMessage())));
 	}
 }

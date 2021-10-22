@@ -43,9 +43,6 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
-logging:
-  level:
-    com.github.jgzl.common.upms: debug
 
 sso:
   oauth2:

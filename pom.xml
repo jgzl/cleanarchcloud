@@ -30,7 +30,6 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.version>3.8.1</maven.compiler.version>
 		<maven.resources.version>3.1.0</maven.resources.version>
-		<maven.versions.version>2.7</maven.versions.version>
 		<maven.encoding>UTF-8</maven.encoding>
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 		<aws.version>1.11.543</aws.version>
@@ -396,11 +395,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<version>${maven.versions.version}</version>
 			</plugin>
 			<!--打包关联最新 git commit 信息插件-->
 			<plugin>

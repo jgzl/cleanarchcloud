@@ -2,6 +2,7 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.jgzl.infra.upms.convert.SysUserConvert;
@@ -15,6 +16,7 @@ import com.github.jgzl.common.security.vo.Operation;
 import com.github.jgzl.common.security.vo.SysRoleVo;
 import com.github.jgzl.common.security.vo.SysUserVo;
 import com.github.jgzl.common.security.vo.UserVo;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,18 +30,19 @@ import java.util.Collections;
  */
 @Slf4j
 @Service
+@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> implements SysUserService {
 
-	@Autowired
-	private CustomRedisRepository redisRepository;
+	private final CustomRedisRepository redisRepository;
 
-	@Autowired
-	private PasswordEncoder encoder;
+	private final PasswordEncoder encoder;
 
-	@Override
-	public UserVo findUserByUsername(String username) {
+	public UserVo findByTypeAndTypeValue(SFunction<SysUserDo,String> function,String value) {
 		SysUserDo dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(SysUserDo::getUsername,username));
+				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(function,value));
+		if (dao==null) {
+			return null;
+		}
 		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(dao);
 		user.setEnabled(true);
 		user.setExpired(false);
@@ -47,40 +50,30 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> im
 		user.setPasswordExpired(false);
 		user.setRoles(Collections.singletonList(defaultRole()));
 		return user;
+	}
+
+	@Override
+	public UserVo findUserByUsername(String username) {
+		return findByTypeAndTypeValue(SysUserDo::getUsername,username);
 	}
 
 	@Override
 	public UserVo findUserByMobile(String mobile) {
-		SysUserDo dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(SysUserDo::getMobile, mobile));
-		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(dao);
-		user.setEnabled(true);
-		user.setExpired(false);
-		user.setLocked(false);
-		user.setPasswordExpired(false);
-		user.setRoles(Collections.singletonList(defaultRole()));
-		return user;
+		return findByTypeAndTypeValue(SysUserDo::getMobile,mobile);
 	}
-
 
 	@Override
 	public UserVo findUserByEmail(String email) {
-		SysUserDo dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(SysUserDo::getEmail, email));
-		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(dao);
-		user.setEnabled(true);
-		user.setExpired(false);
-		user.setLocked(false);
-		user.setPasswordExpired(false);
-		user.setRoles(Collections.singletonList(defaultRole()));
-		return user;
+		return findByTypeAndTypeValue(SysUserDo::getEmail,email);
 	}
 
 	@Override
 	public SysUserVo getVo(final String id) {
 		final SysUserDo userDo = this.getById(id);
-		SysUserVo userVo = SysUserConvert.INSTANCE.convert(userDo);
-		return userVo;
+		if (userDo==null) {
+			return null;
+		}
+		return SysUserConvert.INSTANCE.convert(userDo);
 	}
 
 	@Override

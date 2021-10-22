@@ -36,7 +36,7 @@ public class UserNameUserDetailsServiceImpl extends AbstractUserDetailService {
 		// 查询用户信息,包含角色列表
 		UserVo user = userService.findUserByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("用户名/密码错误");
+			throw new UsernameNotFoundException("用户名["+username+"]不存在");
 		}
 		cache.put(username, user);
         return user;
