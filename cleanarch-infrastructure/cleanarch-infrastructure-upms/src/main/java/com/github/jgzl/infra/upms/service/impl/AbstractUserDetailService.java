@@ -1,6 +1,6 @@
 package com.github.jgzl.infra.upms.service.impl;
 
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

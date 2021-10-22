@@ -38,7 +38,7 @@ public class UsernamePasswordAuthenticationSuccessHandler extends SavedRequestAw
 		if (savedRequest != null) {
 			redirectUri = savedRequest.getRedirectUrl();
 		}
-		log.info("登录成功,调准url为{}",redirectUri);
+		log.info("登录成功,重定向url为{}",redirectUri);
 		clearAuthenticationAttributes(request);
 		redirectStrategy.sendRedirect(request,response,redirectUri);
 	}

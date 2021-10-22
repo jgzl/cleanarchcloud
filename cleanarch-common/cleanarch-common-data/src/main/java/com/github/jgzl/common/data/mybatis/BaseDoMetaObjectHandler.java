@@ -2,8 +2,8 @@ package com.github.jgzl.common.data.mybatis;
 
 import java.time.LocalDateTime;
 
+import com.github.jgzl.common.api.vo.SysUserVo;
 import com.github.jgzl.common.data.external.ReceiveUserInfoService;
-import com.github.jgzl.common.security.vo.SysUserVo;
 import org.apache.ibatis.reflection.MetaObject;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;

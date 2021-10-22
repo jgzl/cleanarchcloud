@@ -15,7 +15,7 @@
  */
 package com.github.jgzl.infra.upms;
 
-import com.github.jgzl.common.security.vo.SysUserVo;
+import com.github.jgzl.common.api.vo.SysUserVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

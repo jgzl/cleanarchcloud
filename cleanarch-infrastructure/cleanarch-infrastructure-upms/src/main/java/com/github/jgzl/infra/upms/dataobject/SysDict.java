@@ -2,7 +2,7 @@ package com.github.jgzl.infra.upms.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.github.jgzl.common.data.bo.BaseDo;
+import com.github.jgzl.common.api.dataobject.BaseDo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

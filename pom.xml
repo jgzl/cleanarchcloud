@@ -68,6 +68,7 @@
 		<spring-cloud.version>2020.0.4</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
 		<spring.version>5.3.11</spring.version>
+		<spring.security-oauth2.version>2.3.4.RELEASE</spring.security-oauth2.version>
 
 		<docker.plugin.version>0.33.0</docker.plugin.version>
 		<!--  默认忽略docker构建 -->
@@ -314,6 +315,11 @@
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>${javassist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>${spring.security-oauth2.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

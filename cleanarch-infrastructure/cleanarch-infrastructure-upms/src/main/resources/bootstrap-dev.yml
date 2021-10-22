@@ -51,6 +51,7 @@ sso:
       secret: cleanarch
       alias: cleanarch
     url-permit-all:
+      - /heartbeat
       - /feign/**
       - /login/username/page
       - /login/username/login

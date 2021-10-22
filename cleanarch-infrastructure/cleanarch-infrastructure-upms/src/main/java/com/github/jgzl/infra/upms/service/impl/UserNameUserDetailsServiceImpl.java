@@ -2,7 +2,7 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

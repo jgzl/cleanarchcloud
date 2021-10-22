@@ -28,6 +28,7 @@ security:
 sso:
   oauth2:
     url-permit-all:
+      - /service
       - /heartbeat
       - /actuator/**
       - /v2/api-docs

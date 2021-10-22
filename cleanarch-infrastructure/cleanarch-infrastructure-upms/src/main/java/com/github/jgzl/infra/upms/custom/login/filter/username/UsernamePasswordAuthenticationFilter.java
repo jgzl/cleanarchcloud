@@ -1,8 +1,8 @@
 package com.github.jgzl.infra.upms.custom.login.filter.username;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.jgzl.common.api.vo.AuthenticationBean;
 import com.github.jgzl.infra.upms.core.PathConstants;
-import com.github.jgzl.common.security.vo.AuthenticationBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;

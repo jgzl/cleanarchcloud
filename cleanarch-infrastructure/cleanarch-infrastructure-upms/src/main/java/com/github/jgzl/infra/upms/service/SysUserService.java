@@ -3,14 +3,14 @@ package com.github.jgzl.infra.upms.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.common.security.dataobject.SysUserDo;
-import com.github.jgzl.common.security.vo.SysUserVo;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.dataobject.SysUser;
+import com.github.jgzl.common.api.vo.SysUserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 
 /**
  * @author lihaifeng
  */
-public interface SysUserService extends IService<SysUserDo> {
+public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 根据用户名查找用户

@@ -2,7 +2,6 @@ package com.github.jgzl.infra.upms.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.jgzl.infra.upms.core.PathConstants;
@@ -12,7 +11,7 @@ import com.github.jgzl.common.cache.support.CustomRedisRepository;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.util.SecurityUtils;
-import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
+import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

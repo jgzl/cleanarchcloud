@@ -3,8 +3,8 @@ package com.github.jgzl.infra.upms.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
-import com.github.jgzl.common.security.vo.SysOauthClientDetailsVo;
+import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
 
 /**
  * 客户端Service

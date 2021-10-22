@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.github.jgzl.common.security.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
 
 /**
  * 客户端dao

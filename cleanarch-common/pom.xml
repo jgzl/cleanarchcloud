@@ -30,6 +30,9 @@
 		<module>cleanarch-common-data</module>
 		<module>cleanarch-common-cache</module>
 		<module>cleanarch-common-file</module>
+		<module>cleanarch-common-feign</module>
+		<module>cleanarch-common-log</module>
+		<module>cleanarch-common-client-sdk</module>
 		<module>cleanarch-common-agent</module>
 	</modules>
 	<modelVersion>4.0.0</modelVersion>

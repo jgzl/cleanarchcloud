@@ -30,6 +30,16 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-common-cache</artifactId>
 		</dependency>
+		<!--接口操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-client-sdk</artifactId>
+		</dependency>
+		<!--OpenFeign操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-feign</artifactId>
+		</dependency>
 		<!--安全模块 -->
 		<dependency>
 			<groupId>org.springframework.security.oauth.boot</groupId>

@@ -1,12 +1,12 @@
 package com.github.jgzl.infra.upms.convert;
 
-import com.github.jgzl.common.security.vo.SysUserVo;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.SysUserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import com.github.jgzl.common.security.dataobject.SysUserDo;
+import com.github.jgzl.common.api.dataobject.SysUser;
 
 /**
  * @author lihaifeng
@@ -18,14 +18,14 @@ public interface SysUserConvert {
 	@Mapping(
 			target = "userId", expression = "java(String.valueOf(user.getUserId()))"
 	)
-    SysUserVo convert(SysUserDo user);
+    SysUserVo convert(SysUser user);
 
 	@Mapping(
 			target = "userId", expression = "java(user.getUserId()!=null&&!user.getUserId().equals(\"\")?Long.valueOf(user.getUserId()):null)"
 	)
-	SysUserDo convert(SysUserVo user);
+    SysUser convert(SysUserVo user);
 
-	UserVo convertUserDetails(SysUserDo user);
+	UserVo convertUserDetails(SysUser user);
 
-	SysUserDo convertUserDetails(UserVo user);
+	SysUser convertUserDetails(UserVo user);
 }

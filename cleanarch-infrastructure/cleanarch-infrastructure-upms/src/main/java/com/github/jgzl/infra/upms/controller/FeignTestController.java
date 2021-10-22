@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.controller;
 
-import com.github.jgzl.infra.upms.feign.CamundaFeignClient;
-import com.github.jgzl.infra.upms.feign.CodeGenFeignClient;
+import com.github.jgzl.common.api.feign.CamundaFeignClient;
+import com.github.jgzl.common.api.feign.CodeGenFeignClient;
 import com.github.jgzl.common.core.util.Result;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;

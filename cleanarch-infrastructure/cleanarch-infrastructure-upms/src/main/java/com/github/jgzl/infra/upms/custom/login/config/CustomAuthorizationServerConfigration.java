@@ -11,7 +11,7 @@ import com.github.jgzl.common.cache.support.CustomRedisRepository;
 import com.github.jgzl.common.core.config.SysProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

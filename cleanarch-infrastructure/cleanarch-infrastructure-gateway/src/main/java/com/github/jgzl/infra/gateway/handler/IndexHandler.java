@@ -1,7 +1,9 @@
 package com.github.jgzl.infra.gateway.handler;
 
+import com.github.jgzl.common.api.feign.RemoteOauth2Service;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
+import com.github.jgzl.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -9,6 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author lihaifeng
@@ -19,40 +28,30 @@ import reactor.core.publisher.Mono;
 public class IndexHandler {
 
 	private WebClient.Builder webClientBuilder;
+
+	private RemoteOauth2Service remoteOauth2Service;
+
 	/**
 	 * http://localhost:8081/demo
 	 * @return
 	 */
 	@GetMapping("/token_key")
-	public Mono<Result> demo() {
-		return webClientBuilder.build()
-				.get()
-				.uri(String.format("http://%s/oauth/token_key", ServiceNameConstants.UPMS_SERVICE))
-				.retrieve()
-				.bodyToMono(Result.class);
+	public Mono<Map<String,String>> demo() throws ExecutionException, InterruptedException, TimeoutException {
+		CompletableFuture<Map<String,String>> future = CompletableFuture.supplyAsync(() -> {
+			Map<String, String> result = remoteOauth2Service.token_key();
+			return result;
+		});
+		return Mono.just(future.get());
 	}
 
-	@GetMapping("/health")
-	public Mono<String> ping(ServerHttpRequest serverHttpRequest) {
-		log.info("ping_url:{}", serverHttpRequest.getURI());
-		return Mono.just("pong");
+	@GetMapping("/heartbeat")
+	public Mono<Result> heartbeat() {
+		return Mono.just(Result.ok(null,"成功接收心跳请求"));
 	}
 
 	@GetMapping("/")
-	public Mono<String> index() {
-		return Mono.just(desc());
+	public Mono<Result> index() {
+		return Mono.just(Result.ok());
 	}
 
-	private String desc() {
-		StringBuilder sb = new StringBuilder(100);
-		sb.append("<div style='color: blue'>Gateway has been started!</div>");
-		sb.append("<br/>");
-		sb.append("<div><ul><li>文档地址：<a href='doc.html'>doc.html</a></li></ul></div>");
-		return sb.toString();
-	}
-
-	public static void main(String[] args) {
-		String format = String.format("http://%s/oauth/token_key", ServiceNameConstants.UPMS_SERVICE);
-		log.info(format);
-	}
 }

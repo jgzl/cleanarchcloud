@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.custom.login.config;
 
 import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;

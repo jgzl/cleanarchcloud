@@ -11,14 +11,13 @@ import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.cache.support.CustomRedisRepository;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.CommonConstants;
-import com.github.jgzl.common.security.dataobject.SysUserDo;
-import com.github.jgzl.common.security.vo.Operation;
-import com.github.jgzl.common.security.vo.SysRoleVo;
-import com.github.jgzl.common.security.vo.SysUserVo;
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.dataobject.SysUser;
+import com.github.jgzl.common.api.vo.Operation;
+import com.github.jgzl.common.api.vo.SysRoleVo;
+import com.github.jgzl.common.api.vo.SysUserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -31,15 +30,15 @@ import java.util.Collections;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> implements SysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
 	private final CustomRedisRepository redisRepository;
 
 	private final PasswordEncoder encoder;
 
-	public UserVo findByTypeAndTypeValue(SFunction<SysUserDo,String> function,String value) {
-		SysUserDo dao = this.baseMapper
-				.selectOne(Wrappers.<SysUserDo>lambdaQuery().eq(function,value));
+	public UserVo findByTypeAndTypeValue(SFunction<SysUser,String> function, String value) {
+		SysUser dao = this.baseMapper
+				.selectOne(Wrappers.<SysUser>lambdaQuery().eq(function,value));
 		if (dao==null) {
 			return null;
 		}
@@ -54,22 +53,22 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> im
 
 	@Override
 	public UserVo findUserByUsername(String username) {
-		return findByTypeAndTypeValue(SysUserDo::getUsername,username);
+		return findByTypeAndTypeValue(SysUser::getUsername,username);
 	}
 
 	@Override
 	public UserVo findUserByMobile(String mobile) {
-		return findByTypeAndTypeValue(SysUserDo::getMobile,mobile);
+		return findByTypeAndTypeValue(SysUser::getMobile,mobile);
 	}
 
 	@Override
 	public UserVo findUserByEmail(String email) {
-		return findByTypeAndTypeValue(SysUserDo::getEmail,email);
+		return findByTypeAndTypeValue(SysUser::getEmail,email);
 	}
 
 	@Override
 	public SysUserVo getVo(final String id) {
-		final SysUserDo userDo = this.getById(id);
+		final SysUser userDo = this.getById(id);
 		if (userDo==null) {
 			return null;
 		}
@@ -91,13 +90,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> im
 		if (vo.getMobile() != null && vo.getMobile().contains("***")) {
 			vo.setMobile(null);
 		}
-		SysUserDo userDo = SysUserConvert.INSTANCE.convert(vo);
+		SysUser userDo = SysUserConvert.INSTANCE.convert(vo);
 		return this.updateById(userDo);
 	}
 
 	@Override
 	public Boolean add(final SysUserVo vo) {
-		SysUserDo userDo = SysUserConvert.INSTANCE.convert(vo);
+		SysUser userDo = SysUserConvert.INSTANCE.convert(vo);
 		//密码进行加密
 		userDo.setPassword(encoder.encode(userDo.getPassword()));
 		userDo.setLoginCount(0);
@@ -120,7 +119,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserDo> im
 
 	@Override
 	public IPage<SysUserVo> selectPageVo(final Page page) {
-		final IPage<SysUserDo> iPage = this.page(page);
+		final IPage<SysUser> iPage = this.page(page);
 		return iPage.convert(SysUserVo::new);
 	}
 

@@ -1,12 +1,12 @@
 package com.github.jgzl.common.security.util;
 
 import com.github.jgzl.common.data.external.ReceiveUserInfoService;
-import com.github.jgzl.common.security.vo.SysUserVo;
+import com.github.jgzl.common.api.vo.SysUserVo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
-import com.github.jgzl.common.security.vo.UserVo;
+import com.github.jgzl.common.api.vo.UserVo;
 
 import org.springframework.stereotype.Component;
 
