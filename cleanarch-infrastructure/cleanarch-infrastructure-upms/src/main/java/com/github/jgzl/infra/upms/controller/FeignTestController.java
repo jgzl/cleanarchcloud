@@ -22,12 +22,12 @@ public class FeignTestController {
 	private CamundaFeignClient camundaFeignClient;
 
 	@GetMapping("/codegen/heartbeat")
-	public Result heartbeat1(){
+	public Result codegen_heartbeat(){
 		return codeGenFeignClient.heartbeat();
 	}
 
 	@GetMapping("/camunda/heartbeat")
-	public Result heartbeat2(){
+	public Result camunda_heartbeat(){
 		return camundaFeignClient.heartbeat();
 	}
 }

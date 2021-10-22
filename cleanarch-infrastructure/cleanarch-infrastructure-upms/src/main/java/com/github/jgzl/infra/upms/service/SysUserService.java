@@ -8,7 +8,7 @@ import com.github.jgzl.common.security.vo.SysUserVo;
 import com.github.jgzl.common.security.vo.UserVo;
 
 /**
- * @author Administrator
+ * @author lihaifeng
  */
 public interface SysUserService extends IService<SysUserDo> {
 

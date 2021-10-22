@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 import com.github.jgzl.common.security.dataobject.SysUserDo;
 
 /**
- * @author Administrator
+ * @author lihaifeng
  */
 @Mapper
 public interface SysUserConvert {

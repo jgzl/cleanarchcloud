@@ -2,21 +2,25 @@ package com.github.jgzl.infra.upms.controller;
 
 import com.github.jgzl.common.core.util.Result;
 import io.swagger.annotations.Api;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 主页
+ * 首页
+ * @author lihaifeng
  */
-@Api(tags = "主页控制器")
-@RestController
+@Controller
 public class IndexController {
+
 	/**
 	 * 默认返回
 	 * @return
 	 */
 	@GetMapping("/")
-	public Result idx(){
+	@ResponseBody
+	public Result<String> index() {
 		return Result.ok();
 	}
 }

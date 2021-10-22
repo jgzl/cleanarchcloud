@@ -1,4 +1,4 @@
-package com.github.jgzl.infra.flow.controller;
+package com.github.jgzl.common.core.controller;
 
 import com.github.jgzl.common.core.util.Result;
 import org.springframework.web.bind.annotation.GetMapping;

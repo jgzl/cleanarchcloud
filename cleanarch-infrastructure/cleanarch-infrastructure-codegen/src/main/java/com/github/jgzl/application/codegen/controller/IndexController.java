@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 首页
- * @author Administrator
+ * @author lihaifeng
  */
 @Controller
 public class IndexController {
@@ -19,6 +19,6 @@ public class IndexController {
 	@GetMapping("/")
 	@ResponseBody
 	public Result<String> index() {
-		return Result.ok("hello,codegen!!!");
+		return Result.ok();
 	}
 }

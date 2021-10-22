@@ -8,7 +8,7 @@ import org.springframework.core.io.Resource;
 import lombok.Data;
 
 /**
- * @author Administrator
+ * @author lihaifeng
  */
 @Data
 public class SysOauth2Properties {

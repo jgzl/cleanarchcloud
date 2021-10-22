@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import lombok.Data;
 
 /**
- * @author Administrator
+ * @author lihaifeng
  */
 @Data
 @ConfigurationProperties(prefix = "sso")
