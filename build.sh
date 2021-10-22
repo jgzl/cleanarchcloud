@@ -6,28 +6,34 @@ fi
 
 work_path=$(dirname $(readlink -f $0))
 env=$1
+base_opts='-Dmaven.test.skip=true -P'$env
+
 echo 'env:'$env
 
+mvn_docker_build_push(){
+  mvn docker:build docker:push $base_opts
+}
+
 build_mvn(){
-  mvn clean package -Dmaven.test.skip=true -P$env
+  mvn clean package $base_opts
 }
 
 build_docker(){
-  cd $work_path/cleanarch-infrastructure/cleanarch-infrastructure-gateway && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-infrastructure/cleanarch-infrastructure-camunda && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-infrastructure/cleanarch-infrastructure-codegen && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-infrastructure/cleanarch-infrastructure-gateway && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-infrastructure/cleanarch-infrastructure-upms && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-business/cleanarch-business-demo && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-business/cleanarch-business-ssoclient1 && mvn docker:build docker:push -Dmaven.test.skip -P$env
-  cd $work_path/cleanarch-business/cleanarch-business-ssoclient2 && mvn docker:build docker:push -Dmaven.test.skip -P$env
+  dirArray=(
+    cleanarch-infrastructure/cleanarch-infrastructure-gateway
+    cleanarch-infrastructure/cleanarch-infrastructure-camunda
+    cleanarch-infrastructure/cleanarch-infrastructure-codegen
+    cleanarch-infrastructure/cleanarch-infrastructure-gateway
+    cleanarch-infrastructure/cleanarch-infrastructure-upms
+    cleanarch-business/cleanarch-business-demo
+    cleanarch-business/cleanarch-business-ssoclient1
+    cleanarch-business/cleanarch-business-ssoclient2
+  )
+  for dir in ${dirArray[@]} ; do
+    echo 'dir:'$dir
+    mvn docker:build docker:push -pl $dir $base_opts
+  done
 }
 
-build_all(){
-  pwd
-  build_mvn
-  build_docker
-}
-
-build_all
-
+build_mvn
+build_docker
