@@ -25,6 +25,9 @@ import javax.validation.constraints.Pattern;
 import java.io.IOException;
 import java.util.Map;
 
+import static com.github.jgzl.common.core.constant.RegexConstants.EMAIL_REG;
+import static com.github.jgzl.common.core.constant.RegexConstants.MOBILE_REG;
+
 /**
  * 登录控制器
  * @author lihaifeng
@@ -34,9 +37,6 @@ import java.util.Map;
 @Api(tags = "登录控制器")
 @RestController
 public class LoginController {
-
-	private static final String MOBILE_REG = "^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$";
-	private static final String EMAIL_REG = "^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$";
 
 	@Autowired
 	private CustomRedisRepository redisRepository;
