@@ -2,6 +2,9 @@ package com.github.jgzl.infra.upms.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
@@ -78,11 +81,18 @@ public class LoginController {
 		if (auth != null) {
 			AuthorizationRequest authorizationRequest = (AuthorizationRequest) auth;
 			SysOauthClientDetailsVo clientDetails = oauthClientService.getVo(authorizationRequest.getClientId());
-			if (StrUtil.isNotBlank(clientDetails.getAdditionalInformation())) {
+			String additionalInformation = clientDetails.getAdditionalInformation();
+			if (StrUtil.isNotBlank(additionalInformation)) {
 				// 从扩展信息中获取相应的应用访问地址和应用名称
+				JSONObject jsonObject = JSON.parseObject(additionalInformation);
+				String website = jsonObject.getString("website");
+				String appName = jsonObject.getString("appName");
+				modelAndView.addObject("website",website);
+				modelAndView.addObject("appName",appName);
+			}else {
+				modelAndView.addObject("website", "https://www.baidu.com");
+				modelAndView.addObject("appName", "DemoApp");
 			}
-			modelAndView.addObject("website", "https://www.baidu.com");
-			modelAndView.addObject("appName", "DemoApp");
 			modelAndView.addObject("user", SecurityUtils.getUser());
 		}
 

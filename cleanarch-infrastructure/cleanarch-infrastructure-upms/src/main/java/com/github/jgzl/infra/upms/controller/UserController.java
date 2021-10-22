@@ -1,6 +1,7 @@
 package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.validate.Add;
@@ -35,16 +36,12 @@ public class UserController {
 	/**
 	 * 查询登录用户
 	 *
-	 * @param authentication 信息
 	 * @return 用户信息
 	 */
 	@GetMapping("/info")
 	@ResponseBody
-	public Result userInfo(Authentication authentication) {
-		if (authentication == null) {
-			return null;
-		}
-		return Result.ok(authentication.getPrincipal());
+	public Result userInfo() {
+		return Result.ok(SecurityUtils.getUser());
 	}
 
 	/**
