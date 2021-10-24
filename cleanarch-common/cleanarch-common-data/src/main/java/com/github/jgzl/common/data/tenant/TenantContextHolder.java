@@ -4,7 +4,7 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import lombok.experimental.UtilityClass;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2018/10/4 租户工具类
  */
 @UtilityClass

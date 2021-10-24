@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2020-02-08
  */
 @Target(ElementType.TYPE)

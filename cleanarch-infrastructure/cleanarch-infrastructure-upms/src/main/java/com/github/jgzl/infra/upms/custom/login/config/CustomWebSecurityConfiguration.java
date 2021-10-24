@@ -6,7 +6,7 @@ import com.github.jgzl.infra.upms.custom.login.config.mobile.MobileAuthenticatio
 import com.github.jgzl.infra.upms.custom.login.filter.username.UsernamePasswordAuthenticationFilter;
 import com.github.jgzl.infra.upms.custom.login.handler.*;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.core.config.SysProperties;
+import com.github.jgzl.common.core.properties.SecurityConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +40,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     private DataSource dataSource;
 
 	@Autowired
-	private SysProperties ssoProperties;
+	private SecurityConfigProperties securityProperties;
 
     @Autowired
     private UserNameUserDetailsServiceImpl userNameUserDetailsService;
@@ -87,7 +87,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                         .and().rememberMe().key(RM_KEY).rememberMeServices(rememberMeServices())
                         .and().authorizeRequests();
 
-		final List<String> urlPermitAll = ssoProperties.getOauth2().getUrlPermitAll();
+		final List<String> urlPermitAll = securityProperties.getUrlPermitAll();
         urlPermitAll.forEach(url -> registry.antMatchers(url).permitAll());
         registry.anyRequest().authenticated().and().cors().and().csrf().disable();
     }

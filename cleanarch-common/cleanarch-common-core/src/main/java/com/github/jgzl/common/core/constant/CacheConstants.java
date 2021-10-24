@@ -13,7 +13,7 @@ public interface CacheConstants {
 	 * <p/>
 	 * {@code @Cacheable(value = CacheConstants.GLOBALLY+CacheConstants.MENU_DETAILS, key = "#roleId  + '_menu'", unless = "#result == null")}
 	 */
-	String SYS_NAME = "cleanarch";
+	String SYS_NAME = CommonConstants.SYS_NAME;
 
 	/**
 	 * 缓存分隔符

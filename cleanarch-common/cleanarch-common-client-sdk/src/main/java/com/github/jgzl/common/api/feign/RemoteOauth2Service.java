@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2018/6/28
  */
 @FeignClient(contextId = "remoteOauth2Service", value = ServiceNameConstants.UPMS_SERVICE)

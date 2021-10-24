@@ -6,7 +6,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import java.util.Locale;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2020/9/4
  * <p>
  * @see org.springframework.security.core.SpringSecurityMessageSource 框架自身异常处理，

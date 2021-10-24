@@ -5,7 +5,7 @@ import com.github.jgzl.common.data.tenant.TenantContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2020/9/29
  * <p>
  * 租户字符串处理（方便其他模块获取）

@@ -6,6 +6,10 @@ package com.github.jgzl.common.core.constant;
  */
 public interface SecurityConstants {
 	/**
+	 * 启动时是否检查Inner注解安全性
+	 */
+	boolean INNER_CHECK = true;
+	/**
 	 * 刷新
 	 */
 	String REFRESH_TOKEN = "refresh_token";
@@ -181,7 +185,7 @@ public interface SecurityConstants {
 	/**
 	 * springboot暴露信息
 	 */
-	String PATH_API_DoCS = "/v2/api-docs";
+	String PATH_API_DOCS = "/v2/api-docs";
 
 	String JWT_KEY = "platform-key";
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2020/12/05
  */
 @FeignClient(contextId = "remoteClientDetailsService", value = ServiceNameConstants.UPMS_SERVICE)
@@ -22,7 +22,7 @@ public interface RemoteClientDetailsService {
 	 * @param from 调用标志
 	 * @return R
 	 */
-	@GetMapping("/client/getClientDetailsById/{clientId}")
+	@GetMapping("/clients/{clientId}")
 	Result<SysOauthClientDetailsDo> getClientDetailsById(@PathVariable("clientId") String clientId,
 														 @RequestHeader(SecurityConstants.FROM) String from);
 

@@ -39,14 +39,6 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
     Boolean add(SysOauthClientDetailsVo vo);
 
     /**
-     * 删除客户端Vo
-     *
-     * @param clientId
-     * @return
-     */
-    Boolean delete(String clientId);
-
-    /**
      * 分页查询
      *
      * @param page

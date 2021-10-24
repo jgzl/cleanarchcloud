@@ -1,6 +1,6 @@
 package com.github.jgzl.common.security.component;
 
-import com.github.jgzl.common.core.config.SysProperties;
+import com.github.jgzl.common.core.properties.SecurityConfigProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +33,21 @@ public class CustomResourceServerConfiguration extends ResourceServerConfigurerA
 	private RedisConnectionFactory redisConnectionFactory;
 
 	@Autowired
-	private CustomResourceAuthExceptionEntryPoint authExceptionEntryPoint;
+	private SecurityConfigProperties securityProperties;
 
 	@Autowired
-	private SysProperties ssoProperties;
+	private PermitAllUrlResolver permitAllUrlResolver;
+
+	@Autowired
+	private CustomResourceAuthExceptionEntryPoint authExceptionEntryPoint;
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
 				.authorizeRequests();
-		final List<String> urls = ssoProperties.getOauth2().getUrlPermitAll();
+		final List<String> urls = securityProperties.getUrlPermitAll();
 		urls.forEach(url -> registry.antMatchers(url).permitAll());
+		permitAllUrlResolver.registry(registry);
 		registry.anyRequest().authenticated().and().cors().and().csrf().disable();
 	}
 

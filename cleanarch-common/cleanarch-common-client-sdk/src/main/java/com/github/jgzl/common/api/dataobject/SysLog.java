@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
  * 日志表
  * </p>
  *
- * @author lengleng
+ * @author lihaifeng
  * @since 2017-11-20
  */
 @Data
 @ApiModel(value = "日志")
-public class SysLog extends BaseDo<SysMenuDo> {
+public class SysLog extends BaseDo<SysLog> {
 
 	private static final long serialVersionUID = 1L;
 

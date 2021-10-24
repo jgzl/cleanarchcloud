@@ -7,6 +7,7 @@ import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
 import com.github.jgzl.common.security.exception.BusinessException;
 import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * 客户端 Service
  *
@@ -27,13 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 @SuppressWarnings("unchecked")
 @Service
 @Slf4j
+@AllArgsConstructor
 public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClientDetailsMapper, SysOauthClientDetailsDo> implements SysOauthClientDetailsService {
 
-    @Autowired
     private PasswordEncoder encoder;
-
-    @Autowired
-    private CustomRedisRepository redisRepository;
 
     @Override
     public SysOauthClientDetailsVo getVo(final String clientId) {
@@ -43,16 +45,6 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 
     @Override
     public Boolean update(final SysOauthClientDetailsVo vo) {
-        if (StrUtil.isEmpty(vo.getClientId())) {
-            throw new BusinessException("不存在客户端ID");
-        }
-        final String key = CacheConstants.REDIS_CLIENTS_PREFIX + vo.getClientId();
-        if (redisRepository.exists(key)) {
-            if (log.isDebugEnabled()) {
-                log.debug("Remove client:{} from redis.", key);
-            }
-            redisRepository.del(key);
-        }
         return this.updateById(new SysOauthClientDetailsDo(vo));
     }
 
@@ -65,21 +57,6 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
         vo.setClientId(vo.getAppName());
         return this.save(new SysOauthClientDetailsDo(vo));
     }
-
-    @Override
-    public Boolean delete(final String clientId) {
-		if (this.getById(clientId) == null) {
-			throw new BusinessException("不存在的客户端ID: " + clientId);
-		}
-		final String key = CacheConstants.REDIS_CLIENTS_PREFIX + clientId;
-		if (redisRepository.exists(key)) {
-			if (log.isDebugEnabled()) {
-				log.debug("Remove client:{} from redis.", key);
-			}
-			redisRepository.del(key);
-		}
-		return this.removeById(clientId);
-	}
 
     @Override
     public IPage<SysOauthClientDetailsVo> selectPageVo(final Page page) {

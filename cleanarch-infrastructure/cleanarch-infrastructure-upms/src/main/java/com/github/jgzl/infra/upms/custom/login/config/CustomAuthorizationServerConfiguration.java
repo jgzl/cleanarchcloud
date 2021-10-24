@@ -8,7 +8,7 @@ import com.github.jgzl.infra.upms.custom.login.service.CustomClientDetailsServic
 import com.github.jgzl.infra.upms.custom.login.service.RedisAuthenticationCodeServices;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
 import com.github.jgzl.common.cache.support.CustomRedisRepository;
-import com.github.jgzl.common.core.config.SysProperties;
+import com.github.jgzl.common.core.properties.SecurityConfigProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.api.vo.UserVo;
@@ -47,11 +47,11 @@ import java.util.Map;
 @AllArgsConstructor
 @Configuration
 @EnableAuthorizationServer
-public class CustomAuthorizationServerConfigration extends AuthorizationServerConfigurerAdapter {
+public class CustomAuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
 
-	private final SysProperties ssoProperties;
+	private final SecurityConfigProperties securityProperties;
 
     private final CustomRedisRepository redisRepository;
 
@@ -155,8 +155,8 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 		tokenServices.setSupportRefreshToken(true);
 		tokenServices.setReuseRefreshToken(false);
 		tokenServices.setTokenStore(tokenStore());
-		tokenServices.setAccessTokenValiditySeconds(ssoProperties.getOauth2().getAccessTokenValiditySeconds());
-		tokenServices.setRefreshTokenValiditySeconds(ssoProperties.getOauth2().getRefreshTokenValiditySeconds());
+		tokenServices.setAccessTokenValiditySeconds(securityProperties.getAccessTokenValiditySeconds());
+		tokenServices.setRefreshTokenValiditySeconds(securityProperties.getRefreshTokenValiditySeconds());
 
 		tokenServices.setTokenEnhancer(tokenEnhancerChain);
 		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtAccessTokenConverter(), tokenEnhancer()));
@@ -172,9 +172,9 @@ public class CustomAuthorizationServerConfigration extends AuthorizationServerCo
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 		KeyPair keyPair = new KeyStoreKeyFactory
-				(ssoProperties.getOauth2().getKeyStore().getLocation(),
-						ssoProperties.getOauth2().getKeyStore().getSecret().toCharArray())
-				.getKeyPair(ssoProperties.getOauth2().getKeyStore().getAlias());
+				(securityProperties.getKeyStore().getLocation(),
+						securityProperties.getKeyStore().getSecret().toCharArray())
+				.getKeyPair(securityProperties.getKeyStore().getAlias());
 		converter.setKeyPair(keyPair);
 		converter.setAccessTokenConverter(new CustomAccessTokenConverter());
 		return converter;

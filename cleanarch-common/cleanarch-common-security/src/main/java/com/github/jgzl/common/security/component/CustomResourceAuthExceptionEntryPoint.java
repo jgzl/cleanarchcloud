@@ -1,10 +1,12 @@
 package com.github.jgzl.common.security.component;
 
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.core.util.Result;
 import org.springframework.http.MediaType;
@@ -29,13 +31,13 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @AllArgsConstructor
 public class CustomResourceAuthExceptionEntryPoint implements AuthenticationEntryPoint {
-	private final ObjectMapper objectMapper;
 
 	@Override
 	@SneakyThrows
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) {
-		response.setCharacterEncoding(CommonConstants.UTF8);
+		log.info("====================自定义资源登录异常====================");
+		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		Result<String> result = new Result<>();
 		result.setCode(CommonConstants.FAIL);
@@ -44,7 +46,6 @@ public class CustomResourceAuthExceptionEntryPoint implements AuthenticationEntr
 			result.setData(authException.getMessage());
 		}
 		response.setStatus(HttpStatus.HTTP_UNAUTHORIZED);
-		PrintWriter printWriter = response.getWriter();
-		printWriter.append(objectMapper.writeValueAsString(result));
+		response.getWriter().write(JSONUtil.toJsonStr(result));
 	}
 }

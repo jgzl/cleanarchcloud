@@ -1,11 +1,11 @@
-package com.github.jgzl.infra.upms.controller;
+package com.github.jgzl.infra.log.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.api.vo.PreLogVO;
 import com.github.jgzl.common.api.vo.SysLogDTO;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.annotation.Inner;
-import com.github.jgzl.infra.upms.service.SysLogService;
+import com.github.jgzl.infra.log.service.SysLogService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,7 +19,7 @@ import java.util.List;
  * 日志表 前端控制器
  * </p>
  *
- * @author lengleng
+ * @author lihaifeng
  * @since 2017-11-20
  */
 @RestController
@@ -59,7 +59,7 @@ public class SysLogController {
 	 */
 	@Inner
 	@PostMapping("/save")
-	public Result save(@Valid @RequestBody SysLogDTO sysLog) {
+	public Result<Boolean> save(@Valid @RequestBody SysLogDTO sysLog) {
 		return Result.ok(sysLogService.saveLog(sysLog));
 	}
 

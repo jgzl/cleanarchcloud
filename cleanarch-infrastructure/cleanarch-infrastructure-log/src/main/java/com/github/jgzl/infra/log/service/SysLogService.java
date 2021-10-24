@@ -1,4 +1,4 @@
-package com.github.jgzl.infra.upms.service;
+package com.github.jgzl.infra.log.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -13,7 +13,7 @@ import java.util.List;
  * 日志表 服务类
  * </p>
  *
- * @author lengleng
+ * @author lihaifeng
  * @since 2017-11-20
  */
 public interface SysLogService extends IService<SysLog> {

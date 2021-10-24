@@ -17,6 +17,11 @@ public interface ServiceNameConstants {
 	String CODE_GEN_SERVICE = "cleanarch-infrastructure-codegen";
 
 	/**
+	 * 日志中心
+	 */
+	String LOG_SERVICE = "cleanarch-infrastructure-log";
+
+	/**
 	 * 流程中心
 	 */
 	String CAMUNDA_SERVICE = "cleanarch-infrastructure-camunda";

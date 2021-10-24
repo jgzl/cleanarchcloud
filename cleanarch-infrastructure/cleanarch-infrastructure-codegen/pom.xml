@@ -40,6 +40,10 @@
 			<artifactId>cleanarch-common-security</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-common-log</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 		</dependency>

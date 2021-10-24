@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author lihaifeng
  */
 @Slf4j
-public class PlatformLogoutSuccessHandler implements LogoutSuccessHandler {
+public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
 	@Autowired
 	private Environment environment;
@@ -37,7 +37,7 @@ public class PlatformLogoutSuccessHandler implements LogoutSuccessHandler {
 				|| SecurityConstants.LHF.equalsIgnoreCase(profile)
 				|| SecurityConstants.XH.equalsIgnoreCase(profile)
 		) {
-			response.sendRedirect("http://localhost:8010/logout");
+			response.sendRedirect("http://localhost:8010/logout?callBackUrl=http://localhost:8101/sso");
 		}
 	}
 }

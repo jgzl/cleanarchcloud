@@ -2,11 +2,8 @@ package com.github.jgzl.infra.upms.custom.login.handler;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.jgzl.common.core.config.SysProperties;
 import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

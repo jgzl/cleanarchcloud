@@ -1,4 +1,4 @@
-package com.github.jgzl.infra.upms.service.impl;
+package com.github.jgzl.infra.log.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
@@ -12,13 +12,12 @@ import com.github.jgzl.common.api.vo.SysLogDTO;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.data.tenant.TenantBroker;
 import com.github.jgzl.common.data.tenant.TenantContextHolder;
-import com.github.jgzl.infra.upms.mapper.SysLogMapper;
-import com.github.jgzl.infra.upms.service.SysLogService;
+import com.github.jgzl.infra.log.mapper.SysLogMapper;
+import com.github.jgzl.infra.log.service.SysLogService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +26,7 @@ import java.util.stream.Collectors;
  * 日志表 服务实现类
  * </p>
  *
- * @author lengleng
+ * @author lihaifeng
  * @since 2017-11-20
  */
 @Service

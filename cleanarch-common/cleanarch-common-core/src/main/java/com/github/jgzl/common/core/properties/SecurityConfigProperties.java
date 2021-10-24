@@ -1,17 +1,20 @@
-package com.github.jgzl.common.core.config;
+package com.github.jgzl.common.core.properties;
+
+import com.github.jgzl.common.core.constant.CommonConstants;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import lombok.Data;
+import org.springframework.core.io.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.core.io.Resource;
-
-import lombok.Data;
 
 /**
  * @author lihaifeng
  */
 @Data
-public class SysOauth2Properties {
+@ConfigurationProperties(prefix = CommonConstants.SYS_NAME+".security")
+public class SecurityConfigProperties {
 
 	/**
 	 * accessTokenValiditySeconds, default: 1 day.
@@ -24,7 +27,7 @@ public class SysOauth2Properties {
 	private int refreshTokenValiditySeconds = 60 * 60 * 24;
 
 	/**
-	 * the urls for permitAll.
+	 * 全部微服务公共暴露URL(统一使用配置中心进行配置)
 	 */
 	private List<String> urlPermitAll = new ArrayList<>();
 

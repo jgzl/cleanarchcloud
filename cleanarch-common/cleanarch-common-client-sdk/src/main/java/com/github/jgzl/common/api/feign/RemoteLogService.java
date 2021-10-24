@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2018/6/28
  */
-@FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.UPMS_SERVICE)
+@FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.LOG_SERVICE)
 public interface RemoteLogService {
 
 	/**

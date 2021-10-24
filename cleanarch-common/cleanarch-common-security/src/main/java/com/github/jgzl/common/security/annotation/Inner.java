@@ -3,7 +3,7 @@ package com.github.jgzl.common.security.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2019/4/13
  * <p>
  * 服务调用鉴权注解

@@ -1,6 +1,7 @@
 package com.github.jgzl.application.config;
 
-import com.github.jgzl.application.handler.PlatformLogoutSuccessHandler;
+import com.github.jgzl.application.handler.CustomLogoutSuccessHandler;
+import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,8 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-
-import com.github.jgzl.common.core.constant.SecurityConstants;
 
 import lombok.SneakyThrows;
 
@@ -22,14 +21,14 @@ import lombok.SneakyThrows;
 @Order(101)
 @Configuration
 @EnableOAuth2Sso
-public class PlatformClientWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class ClientWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {
 		http.logout().logoutSuccessHandler(logoutSuccessHandler())
 				.and()
 				.authorizeRequests()
-				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DoCS).permitAll()
+				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DOCS).permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.csrf().disable();
@@ -42,6 +41,6 @@ public class PlatformClientWebSecurityConfigurer extends WebSecurityConfigurerAd
 
 	@Bean
 	public LogoutSuccessHandler logoutSuccessHandler() {
-		return new PlatformLogoutSuccessHandler();
+		return new CustomLogoutSuccessHandler();
 	}
 }

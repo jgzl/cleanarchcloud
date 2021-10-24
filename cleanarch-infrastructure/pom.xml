@@ -20,6 +20,7 @@
 	<modules>
 		<module>cleanarch-infrastructure-upms</module>
 		<module>cleanarch-infrastructure-codegen</module>
+		<module>cleanarch-infrastructure-log</module>
 		<module>cleanarch-infrastructure-camunda</module>
 		<module>cleanarch-infrastructure-admin</module>
 		<module>cleanarch-infrastructure-gateway</module>

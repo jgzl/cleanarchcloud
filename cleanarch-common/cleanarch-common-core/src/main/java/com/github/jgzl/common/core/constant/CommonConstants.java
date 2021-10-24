@@ -6,6 +6,10 @@ package com.github.jgzl.common.core.constant;
  */
 public interface CommonConstants {
 	/**
+	 * 系统名称
+	 */
+	String SYS_NAME = "cleanarch";
+	/**
 	 * header 中租户ID
 	 */
 	String TENANT_ID = "TENANT-ID";

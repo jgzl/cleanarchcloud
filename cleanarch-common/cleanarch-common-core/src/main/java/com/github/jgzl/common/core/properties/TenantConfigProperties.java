@@ -1,5 +1,6 @@
-package com.github.jgzl.common.data.tenant;
+package com.github.jgzl.common.core.properties;
 
+import com.github.jgzl.common.core.constant.CommonConstants;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -16,7 +17,7 @@ import java.util.List;
 @Data
 @RefreshScope
 @Configuration
-@ConfigurationProperties(prefix = "cleanarch.tenant")
+@ConfigurationProperties(prefix = CommonConstants.SYS_NAME+".tenant")
 public class TenantConfigProperties {
 
 	/**

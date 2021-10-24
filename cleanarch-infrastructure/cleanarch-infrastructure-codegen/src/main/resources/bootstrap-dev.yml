@@ -25,8 +25,8 @@ security:
       jwt:
         # 获取JWT 非对称加密的公钥URI
         key-uri: http://localhost:8010/oauth/token_key
-sso:
-  oauth2:
+cleanarch:
+  security:
     url-permit-all:
       - /service
       - /heartbeat

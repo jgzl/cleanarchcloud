@@ -69,27 +69,31 @@ INSERT INTO `sys_dept` VALUES (6, 0, '测试部', 4, 0, '2020-01-12 08:51:13', 0
 -- Table structure for sys_log
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
-CREATE TABLE `sys_log`  (
-                            `log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志id',
-                            `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作用户',
-                            `operation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '操作内容',
-                            `time` decimal(11, 0) NULL DEFAULT NULL COMMENT '耗时',
-                            `method` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '操作方法',
-                            `params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '方法参数',
-                            `ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作者ip',
-                            `location` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作地点',
-                            `create_user` varchar(64) NOT NULL COMMENT '创建人',
-                            `create_date` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                            `update_user` varchar(64) NOT NULL COMMENT '更新人',
-                            `update_date` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                            `version` int(10) NOT NULL DEFAULT 0 COMMENT '乐观锁',
-                            `del_flag` int(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除标志',
-                            PRIMARY KEY (`log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户操作日志表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of sys_log
--- ----------------------------
+CREATE TABLE `sys_log` (
+                           `id` bigint(64) NOT NULL AUTO_INCREMENT,
+                           `type` char(1) DEFAULT '0',
+                           `title` varchar(255) DEFAULT NULL,
+                           `service_id` varchar(32) DEFAULT NULL,
+                           `remote_addr` varchar(255) DEFAULT NULL,
+                           `user_agent` varchar(1000) DEFAULT NULL,
+                           `request_uri` varchar(255) DEFAULT NULL,
+                           `method` varchar(10) DEFAULT NULL,
+                           `params` text,
+                           `time` mediumtext CHARACTER SET utf8 COMMENT '执行时间',
+                           `exception` text,
+                           `del_flag` char(1) DEFAULT '0',
+                           `version` varchar(10) DEFAULT '0',
+                           `create_user` varchar(255) DEFAULT NULL,
+                           `update_user` varchar(255) DEFAULT NULL,
+                           `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+                           `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+                           `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
+                           PRIMARY KEY (`id`) USING BTREE,
+                           KEY `sys_log_create_by` (`create_user`) USING BTREE,
+                           KEY `sys_log_request_uri` (`request_uri`) USING BTREE,
+                           KEY `sys_log_type` (`type`) USING BTREE,
+                           KEY `sys_log_create_date` (`create_date`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='日志表';
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -154,20 +158,25 @@ CREATE TABLE `sys_oauth_client_details`  (
   `refresh_token_validity` int(11) NULL DEFAULT NULL,
   `additional_information` varchar(4096) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `autoapprove` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `del_flag` int(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除标志',
-  `version` int(10) NOT NULL DEFAULT 0 COMMENT '乐观锁',
+  `del_flag` char(1) DEFAULT '0',
+  `version` varchar(10) DEFAULT '0',
+  `create_user` varchar(255) DEFAULT NULL,
+  `update_user` varchar(255) DEFAULT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+  `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
   PRIMARY KEY (`client_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '终端信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oauth_client_details
 -- ----------------------------
-INSERT INTO `sys_oauth_client_details` VALUES ('app', 'app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com', '', 43200, 2592001, '{\"website\":\"https://blog.dlihaifeng.cn\",\"appName\":\"APP\"}', '', 0, 0);
-INSERT INTO `sys_oauth_client_details` VALUES ('codegen', 'codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
-INSERT INTO `sys_oauth_client_details` VALUES ('daemon', 'daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
-INSERT INTO `sys_oauth_client_details` VALUES ('ssoclient1', 'ssoclient1', NULL, 'ssoclient1', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8101/sso/login,http://127.0.0.1:8101/sso/login,http://client.sso-1.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8101/sso\",\"appName\":\"单点登录客户端1\"}', 'true', 0, 0);
-INSERT INTO `sys_oauth_client_details` VALUES ('ssoclient2', 'ssoclient2', NULL, 'ssoclient2', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8102/sso/login,http://127.0.0.1:8102/sso/login,http://client.sso-2.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8102/sso\",\"appName\":\"单点登录客户端2\"}', 'true', 0, 0);
-INSERT INTO `sys_oauth_client_details` VALUES ('test', 'test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0);
+INSERT INTO `sys_oauth_client_details` VALUES ('app', 'app', NULL, 'app', 'server', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://www.baidu.com', '', 43200, 2592001, '{\"website\":\"https://blog.dlihaifeng.cn\",\"appName\":\"APP\"}', '', 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_oauth_client_details` VALUES ('codegen', 'codegen', NULL, 'codegen', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_oauth_client_details` VALUES ('daemon', 'daemon', NULL, 'daemon', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_oauth_client_details` VALUES ('ssoclient1', 'ssoclient1', NULL, 'ssoclient1', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8101/sso/login,http://127.0.0.1:8101/sso/login,http://client.sso-1.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8101/sso\",\"appName\":\"单点登录客户端1\"}', 'true', 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_oauth_client_details` VALUES ('ssoclient2', 'ssoclient2', NULL, 'ssoclient2', 'sso', 'password,refresh_token,authorization_code,client_credentials,implicit', 'http://localhost:8102/sso/login,http://127.0.0.1:8102/sso/login,http://client.sso-2.com/sso/login', '', 432000, 2592001, '{\"website\":\"http://localhost:8102/sso\",\"appName\":\"单点登录客户端2\"}', 'true', 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_oauth_client_details` VALUES ('test', 'test', NULL, 'test', 'server', 'password,refresh_token', NULL, '', NULL, NULL, NULL, '', 0, 0,'admin','admin',current_date,current_date,0);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -269,8 +278,13 @@ CREATE TABLE `sys_user_connection`  (
   `image_url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方平台头像',
   `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '地址',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `version` int(10) NOT NULL DEFAULT 0 COMMENT '乐观锁',
-  `del_flag` int(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除标志',
+  `del_flag` char(1) DEFAULT '0',
+  `version` varchar(10) DEFAULT '0',
+  `create_user` varchar(255) DEFAULT NULL,
+  `update_user` varchar(255) DEFAULT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+  `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
   PRIMARY KEY (`user_connection_id`) USING BTREE,
   UNIQUE INDEX `idx_user_connection`(`user_name`, `provider_name`, `provider_user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '平台系统用户关联第三方用户表' ROW_FORMAT = Dynamic;
@@ -307,9 +321,13 @@ CREATE TABLE `sys_route_conf` (
   `filters` json DEFAULT NULL COMMENT '过滤器',
   `uri` varchar(50) DEFAULT NULL,
   `order` int(2) DEFAULT '0' COMMENT '排序',
-  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `del_flag` char(1) DEFAULT '0',
+  `version` varchar(10) DEFAULT '0',
+  `create_user` varchar(255) DEFAULT NULL,
+  `update_user` varchar(255) DEFAULT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+  `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='路由配置表';
 
@@ -317,8 +335,8 @@ CREATE TABLE `sys_route_conf` (
 -- Records of sys_route_conf
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_route_conf` VALUES (1, '认证中心', 'cleanarch-infrastructure-upms', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-upms', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:57', '0');
-INSERT INTO `sys_route_conf` VALUES (2, '代码生成模块', 'cleanarch-infrastructure-codegen', '[{\"args\": {\"_genkey_0\": \"/codegen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-codegen', 0, '2019-10-16 16:44:41', '2019-11-05 22:36:58', '0');
+INSERT INTO `sys_route_conf` VALUES (1, '认证中心', 'cleanarch-infrastructure-upms', '[{\"args\": {\"_genkey_0\": \"/auth/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-upms', 0, 0, 0,'admin','admin',current_date,current_date,0);
+INSERT INTO `sys_route_conf` VALUES (2, '代码生成模块', 'cleanarch-infrastructure-codegen', '[{\"args\": {\"_genkey_0\": \"/codegen/**\"}, \"name\": \"Path\"}]', '[]', 'lb://cleanarch-infrastructure-codegen', 0, 0, 0,'admin','admin',current_date,current_date,0);
 COMMIT;
 
 -- ----------------------------
@@ -466,12 +484,13 @@ CREATE TABLE `sys_file` (
                             `original` varchar(100) DEFAULT NULL,
                             `type` varchar(50) DEFAULT NULL,
                             `file_size` bigint(50) DEFAULT NULL COMMENT '文件大小',
-                            `create_user` varchar(32) DEFAULT NULL,
-                            `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '上传时间',
-                            `update_user` varchar(32) DEFAULT NULL,
-                            `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                             `del_flag` char(1) DEFAULT '0',
-                            `tenant_id` int(11) DEFAULT NULL COMMENT '所属租户',
+                            `version` varchar(10) DEFAULT '0',
+                            `create_user` varchar(255) DEFAULT NULL,
+                            `update_user` varchar(255) DEFAULT NULL,
+                            `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+                            `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+                            `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文件管理表';
 

@@ -1,6 +1,7 @@
 package com.github.jgzl.common.data.tenant;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.github.jgzl.common.core.properties.TenantConfigProperties;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
@@ -8,7 +9,7 @@ import net.sf.jsqlparser.expression.NullValue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2018-12-26
  * <p>
  * 租户维护处理器
