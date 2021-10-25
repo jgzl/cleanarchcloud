@@ -1,8 +1,10 @@
 package com.github.jgzl.infra.upms.login.normal.handler;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -25,14 +27,16 @@ public class UsernamePasswordLogoutSuccessHandler implements LogoutSuccessHandle
 	@Override
 	public void onLogoutSuccess(final HttpServletRequest request, final HttpServletResponse response,
 			final Authentication authentication) throws IOException {
-		String callBackUrl = request.getParameter("callBackUrl");
-		if (StrUtil.isBlank(callBackUrl)) {
-			response.setStatus(HttpServletResponse.SC_OK);
-			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-			response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-			response.getWriter().write(JSONUtil.toJsonStr(Result.failed("callBackUrl不允许为空,否则无法重定向!")));
-		}else {
-			response.sendRedirect(callBackUrl);
+		// 获取请求参数中是否包含 回调地址
+		String redirectUrl = request.getParameter(SecurityConstants.REDIRECT_URL);
+		String referer = request.getHeader(HttpHeaders.REFERER);
+
+		if (StrUtil.isNotBlank(redirectUrl)) {
+			response.sendRedirect(redirectUrl);
+		}
+		else if (StrUtil.isNotBlank(referer)) {
+			// 默认跳转referer 地址
+			response.sendRedirect(referer);
 		}
 	}
 }

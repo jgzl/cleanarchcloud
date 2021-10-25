@@ -36,9 +36,10 @@ cleanarch:
       secret: cleanarch
       alias: cleanarch
     url-permit-all:
-      - /heartbeat
       - /oauth/**
       - /login/**
+      - /heartbeat
+      - /actuator/**
       - /**/*.css
       - /**/*.jpg
       - /**/*.jpeg

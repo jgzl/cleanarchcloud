@@ -5,7 +5,7 @@ import com.github.jgzl.infra.upms.login.normal.config.mobile.MobileAuthenticatio
 import com.github.jgzl.infra.upms.login.normal.filter.username.UsernamePasswordAuthenticationFilter;
 import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordAccessDeniedHandler;
 import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordAuthenticationFailureHandler;
-import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordAuthenticationSuccessHandler;
+import com.github.jgzl.infra.upms.login.normal.handler.TenantSavedRequestAwareAuthenticationSuccessHandler;
 import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordLogoutSuccessHandler;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
 import com.github.jgzl.common.core.properties.SecurityConfigProperties;
@@ -44,7 +44,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
     private UserNameUserDetailsServiceImpl userNameUserDetailsService;
 
-    private UsernamePasswordAuthenticationSuccessHandler successHandler;
+    private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
 
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
 

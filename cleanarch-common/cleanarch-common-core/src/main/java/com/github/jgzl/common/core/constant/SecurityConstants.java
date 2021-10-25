@@ -76,45 +76,6 @@ public interface SecurityConstants {
 	String FROM = "from";
 
 	/**
-	 * OAUTH URL
-	 */
-	String OAUTH_TOKEN_URL = "/oauth/token";
-
-	/**
-	 * 微信获取OPENID
-	 */
-	String WX_AUTHORIZATION_CODE_URL = "https://api.weixin.qq.com/sns/oauth2/access_token" +
-			"?appid=%s&secret=%s&code=%s&grant_type=authorization_code";
-
-	/**
-	 * 微信小程序OPENID
-	 */
-	String MINI_APP_AUTHORIZATION_CODE_URL = "https://api.weixin.qq.com/sns/jscode2session" +
-			"?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
-
-	/**
-	 * 码云获取token
-	 */
-	String GITEE_AUTHORIZATION_CODE_URL = "https://gitee.com/oauth/token?grant_type=" +
-			"authorization_code&code=%S&client_id=%s&redirect_uri=" +
-			"%s&client_secret=%s";
-
-	/**
-	 * 开源中国获取token
-	 */
-	String OSC_AUTHORIZATION_CODE_URL = "https://www.oschina.net/action/openapi/token";
-
-	/**
-	 * 码云获取用户信息
-	 */
-	String GITEE_USER_INFO_URL = "https://gitee.com/api/v5/user?access_token=%s";
-
-	/**
-	 * 开源中国用户信息
-	 */
-	String OSC_USER_INFO_URL = "https://www.oschina.net/action/openapi/user?access_token=%s&dataType=json";
-
-	/**
 	 * {bcrypt} 加密的特征码
 	 */
 	String BCRYPT = "{bcrypt}";
@@ -187,27 +148,15 @@ public interface SecurityConstants {
 	 */
 	String PATH_API_DOCS = "/v2/api-docs";
 
-	String JWT_KEY = "platform-key";
-
 	/**
 	 * dev环境变量
 	 */
 	String DEV = "dev";
 
 	/**
-	 * lhf环境变量
-	 */
-	String LHF = "lhf";
-
-	/**
-	 * xh环境变量
-	 */
-	String XH = "xh";
-
-	/**
 	 * test环境变量
 	 */
-	String TEST = "test";
+	String SIT = "sit";
 
 	/**
 	 * uat环境变量
@@ -218,4 +167,9 @@ public interface SecurityConstants {
 	 * prod环境变量
 	 */
 	String PROD = "prod";
+
+	/**
+	 * 重定向URL
+	 */
+	String REDIRECT_URL="redirect_url";
 }

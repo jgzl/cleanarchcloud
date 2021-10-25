@@ -1,19 +1,17 @@
 package com.github.jgzl.infra.upms.login.normal.config.mobile;
 import com.github.jgzl.infra.upms.login.normal.filter.mobile.MobileAuthenticationFilter;
 import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordAuthenticationFailureHandler;
-import com.github.jgzl.infra.upms.login.normal.handler.UsernamePasswordAuthenticationSuccessHandler;
+import com.github.jgzl.infra.upms.login.normal.handler.TenantSavedRequestAwareAuthenticationSuccessHandler;
 import com.github.jgzl.infra.upms.login.normal.provider.mobile.MobileAuthenticationProvider;
 import com.github.jgzl.infra.upms.service.impl.MobileUserDetailsService;
 import com.github.jgzl.common.cache.support.CustomRedisRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 
 /**
  * 手机号/验证码登录 安全配置
@@ -30,7 +28,7 @@ public class MobileAuthenticationSecurityConfiguration extends
 
     private MobileUserDetailsService userDetailsService;
 
-    private UsernamePasswordAuthenticationSuccessHandler successHandler;
+    private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
 
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
 

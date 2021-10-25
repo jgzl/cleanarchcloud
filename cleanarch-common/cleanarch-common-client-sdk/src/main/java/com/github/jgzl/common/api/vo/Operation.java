@@ -15,7 +15,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Operation implements GrantedAuthority {
 
-    private static final long serialVersionUID = 6260083887682221456L;
+    private static final long serialVersionUID = 1L;
 
     private static final String PREFIX = "OP_";
 

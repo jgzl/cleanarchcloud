@@ -29,10 +29,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 		} else {
 			profile = environment.getDefaultProfiles()[0];
 		}
-		if (SecurityConstants.DEV.equalsIgnoreCase(profile)
-				|| SecurityConstants.LHF.equalsIgnoreCase(profile)
-				|| SecurityConstants.XH.equalsIgnoreCase(profile)
-		) {
+		if (SecurityConstants.DEV.equalsIgnoreCase(profile)) {
 			response.sendRedirect("http://localhost:8010/logout?callBackUrl=http://localhost:8101/sso");
 		}
 	}
