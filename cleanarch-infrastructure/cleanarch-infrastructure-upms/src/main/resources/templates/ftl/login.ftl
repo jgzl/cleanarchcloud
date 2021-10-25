@@ -26,6 +26,9 @@
         </#if>
     </form>
 </div>
+<div class="container form-margin-top">
+    <a href="/oauth/login/GITEE">GITEE登录</a>
+</div>
 <footer>
     <p>support by: li7hai26</p>
     <p>email: <a href="mailto:li7hai26@qq.com">li7hai26@qq.com</a>.</p>

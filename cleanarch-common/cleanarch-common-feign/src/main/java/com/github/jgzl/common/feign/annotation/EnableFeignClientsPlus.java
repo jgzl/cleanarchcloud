@@ -1,10 +1,8 @@
 package com.github.jgzl.common.feign.annotation;
-
 import org.springframework.cloud.openfeign.CustomFeignClientsRegistrar;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.context.annotation.Import;
-
 import java.lang.annotation.*;
 
 /**

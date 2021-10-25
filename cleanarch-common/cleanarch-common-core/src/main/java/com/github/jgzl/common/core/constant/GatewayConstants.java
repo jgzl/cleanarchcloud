@@ -8,6 +8,4 @@ public interface GatewayConstants {
 	String CONFIG_DATA_ID_DYNAMIC_ROUTES = "cleanarch-dynamic-routes.yaml";
 	String CONFIG_GROUP = "DEFAULT_GROUP";
 	long CONFIG_TIMEOUT_MS = 5000;
-	String SWAGGER_URL = "/v2/api-docs";
-	String SWAGGER_VERSION = "2.0";
 }

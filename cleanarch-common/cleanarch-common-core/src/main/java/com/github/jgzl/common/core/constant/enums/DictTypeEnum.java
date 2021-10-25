@@ -1,12 +1,10 @@
 package com.github.jgzl.common.core.constant.enums;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * @author lihaifeng
  * @date 2019-05-16
- * <p>
  * 字典类型
  */
 @Getter

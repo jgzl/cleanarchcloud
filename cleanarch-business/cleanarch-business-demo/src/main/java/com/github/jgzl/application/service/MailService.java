@@ -1,5 +1,4 @@
 package com.github.jgzl.application.service;
-
 import java.util.Map;
 
 public interface MailService {

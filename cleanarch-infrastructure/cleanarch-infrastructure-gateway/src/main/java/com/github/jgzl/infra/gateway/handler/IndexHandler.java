@@ -1,9 +1,7 @@
 package com.github.jgzl.infra.gateway.handler;
-
 import com.github.jgzl.common.api.feign.RemoteOauth2Service;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
-import com.github.jgzl.common.log.annotation.SysLog;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;

@@ -1,17 +1,14 @@
 package com.github.jgzl.infra.upms.controller;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.api.validate.Add;
 import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
-import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +22,6 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @AllArgsConstructor
-@Api(tags = "客户端控制器")
 @RestController
 public class OauthClientController {
 

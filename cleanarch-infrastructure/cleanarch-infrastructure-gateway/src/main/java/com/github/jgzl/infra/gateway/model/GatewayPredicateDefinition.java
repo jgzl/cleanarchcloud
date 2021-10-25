@@ -1,7 +1,5 @@
 package com.github.jgzl.infra.gateway.model;
-
 import lombok.Data;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 

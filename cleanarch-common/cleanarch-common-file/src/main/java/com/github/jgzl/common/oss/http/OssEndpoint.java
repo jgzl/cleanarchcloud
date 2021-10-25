@@ -1,5 +1,4 @@
 package com.github.jgzl.common.oss.http;
-
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
@@ -9,7 +8,6 @@ import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +17,6 @@ import java.util.Map;
  *
  * @author lihaifeng
  * @author xuhang
- * <p>
  * oss.info
  */
 @RestController

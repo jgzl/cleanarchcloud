@@ -1,8 +1,6 @@
 package com.github.jgzl.infra.gateway.dataobject;
-
 import lombok.Data;
 import org.springframework.cloud.gateway.route.RouteDefinition;
-
 import java.util.List;
 
 /**

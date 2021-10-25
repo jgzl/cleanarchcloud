@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.filter;
-
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -9,21 +8,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR;
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.addOriginalRequestUrl;
 
 /**
- * <p>
  * 全局拦截器，作用所有的微服务
- * <p>
  *     1. 对请求头中参数进行处理 from 参数进行清洗
  *     2. 重写StripPrefix = 1,支持全局
- *     3. 支持swagger添加X-Forwarded-Prefix header （F SR2 已经支持，不需要自己维护）
- * </p>
  * @author lihaifeng
  * @date 2018/10/8
  */

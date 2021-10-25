@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import com.github.jgzl.common.core.properties.SecurityConfigProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +15,11 @@ import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConv
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.UserAuthenticationConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
-
 import java.util.List;
 
 /**
  * @author lihaifeng
  * @date 2018/6/22
- * <p>
  * 1. 支持remoteTokenServices 负载均衡
  * 2. 支持 获取用户全部信息
  */

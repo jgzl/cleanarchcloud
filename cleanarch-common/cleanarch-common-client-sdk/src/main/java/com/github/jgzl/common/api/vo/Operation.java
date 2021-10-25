@@ -1,8 +1,6 @@
 package com.github.jgzl.common.api.vo;
-
 import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.core.GrantedAuthority;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

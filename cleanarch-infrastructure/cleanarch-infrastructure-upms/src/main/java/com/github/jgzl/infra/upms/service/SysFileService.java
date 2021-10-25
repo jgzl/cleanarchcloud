@@ -1,10 +1,8 @@
 package com.github.jgzl.infra.upms.service;
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.jgzl.infra.upms.dataobject.SysFile;
 import com.github.jgzl.common.core.util.Result;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletResponse;
 
 /**

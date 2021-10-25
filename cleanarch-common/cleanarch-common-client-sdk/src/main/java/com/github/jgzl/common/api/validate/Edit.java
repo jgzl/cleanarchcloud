@@ -1,5 +1,4 @@
 package com.github.jgzl.common.api.validate;
-
 import javax.validation.groups.Default;
 
 /**

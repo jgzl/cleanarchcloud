@@ -1,7 +1,5 @@
 package com.github.jgzl.infra.upms.service;
-
 import java.util.Collections;
-
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.api.vo.Operation;
 import com.github.jgzl.common.api.vo.SysRoleVo;
@@ -9,7 +7,6 @@ import com.github.jgzl.common.api.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import cn.hutool.core.util.RandomUtil;
 
 /**

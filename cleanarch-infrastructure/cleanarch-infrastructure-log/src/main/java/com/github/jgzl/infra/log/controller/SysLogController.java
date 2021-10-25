@@ -1,23 +1,18 @@
 package com.github.jgzl.infra.log.controller;
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.common.api.vo.PreLogVO;
+import com.github.jgzl.common.api.vo.PreLogVo;
 import com.github.jgzl.common.api.vo.SysLogDTO;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.annotation.Inner;
 import com.github.jgzl.infra.log.service.SysLogService;
-import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
 /**
- * <p>
  * 日志表 前端控制器
- * </p>
  *
  * @author lihaifeng
  * @since 2017-11-20
@@ -25,7 +20,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/log")
-@Api(value = "log", tags = "日志管理模块")
 public class SysLogController {
 
 	private final SysLogService sysLogService;
@@ -69,7 +63,7 @@ public class SysLogController {
 	 * @return success/false
 	 */
 	@PostMapping("/logs")
-	public Result saveBatchLogs(@RequestBody List<PreLogVO> preLogVoList) {
+	public Result saveBatchLogs(@RequestBody List<PreLogVo> preLogVoList) {
 		return Result.ok(sysLogService.saveBatchLogs(preLogVoList));
 	}
 

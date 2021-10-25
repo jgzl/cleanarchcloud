@@ -14,14 +14,11 @@
  *    limitations under the License.
  */
 package com.github.jgzl.infra.upms;
-
 import com.github.jgzl.common.api.vo.SysUserVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.github.jgzl.infra.upms.service.SysUserService;
-
 import cn.hutool.core.lang.Assert;
 
 @SpringBootTest(classes = {UpmsApplication.class})

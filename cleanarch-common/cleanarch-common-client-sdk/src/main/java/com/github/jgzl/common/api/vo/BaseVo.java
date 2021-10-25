@@ -1,16 +1,12 @@
 package com.github.jgzl.common.api.vo;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
-
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 import lombok.Data;
 
 /**
@@ -18,7 +14,6 @@ import lombok.Data;
  * @author lihaifeng
  */
 @Data
-@ApiModel("基础对象")
 public class BaseVo<M> implements Serializable, Cloneable {
 
 		/**

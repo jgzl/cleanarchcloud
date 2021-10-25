@@ -1,6 +1,5 @@
 package com.github.jgzl.common.core.util;
 
-
 import cn.hutool.core.util.StrUtil;
 
 /**

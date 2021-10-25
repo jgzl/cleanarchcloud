@@ -18,7 +18,7 @@ public class PathConstants {
 	public static final String LOGIN_MOBILE_CODE_URL = PathConstants.LOGIN_MODULE_MOBILE_PATH+"/code";
 
 	public static final String LOGIN_MODULE_PATH = "/login/username";
-	public static final String LOGIN_PAGE_URL = LOGIN_MODULE_PATH+"/page";
+	public static final String LOGIN_PAGE_URL = LOGIN_MODULE_PATH+"/index";
 	public static final String LOGIN_URL = LOGIN_MODULE_PATH+"/login";
 	public static final String LOGIN_CONFIRM_URL = LOGIN_MODULE_PATH+"/confirm_access";
 	public static final String LOGIN_LOGOUT_URL = LOGIN_MODULE_PATH+"/oauth/exit";

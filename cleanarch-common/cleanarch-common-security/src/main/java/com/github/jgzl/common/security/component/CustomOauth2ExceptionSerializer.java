@@ -1,18 +1,15 @@
 package com.github.jgzl.common.security.component;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.security.exception.CustomOauth2Exception;
-
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
  * @date 2018/11/16
- * <p>
  * OAuth2 异常格式化
  */
 @Slf4j

@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.jgzl.infra.upms.dataobject.SysDict;
 import com.github.jgzl.infra.upms.dataobject.SysDictItem;

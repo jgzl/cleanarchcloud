@@ -1,5 +1,4 @@
 package com.github.jgzl.common.oss;
-
 import com.github.jgzl.common.oss.http.OssEndpoint;
 import com.github.jgzl.common.oss.service.OssTemplate;
 import lombok.AllArgsConstructor;

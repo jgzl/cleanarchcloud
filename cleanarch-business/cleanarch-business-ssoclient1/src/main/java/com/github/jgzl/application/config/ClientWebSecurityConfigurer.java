@@ -1,5 +1,4 @@
 package com.github.jgzl.application.config;
-
 import com.github.jgzl.application.handler.CustomLogoutSuccessHandler;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -10,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-
 import lombok.SneakyThrows;
 
 /**

@@ -1,7 +1,5 @@
 package com.github.jgzl.application.config;
-
 import javax.xml.ws.Endpoint;
-
 import com.github.jgzl.application.ws.StudentWebServiceImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;

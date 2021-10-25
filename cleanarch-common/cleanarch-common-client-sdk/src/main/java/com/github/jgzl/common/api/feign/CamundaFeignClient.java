@@ -1,5 +1,4 @@
 package com.github.jgzl.common.api.feign;
-
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
 import org.springframework.cloud.openfeign.FeignClient;

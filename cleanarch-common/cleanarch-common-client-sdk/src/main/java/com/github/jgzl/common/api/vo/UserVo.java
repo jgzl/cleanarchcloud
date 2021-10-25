@@ -1,76 +1,89 @@
 package com.github.jgzl.common.api.vo;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.github.jgzl.common.core.sensitive.Sensitive;
 import com.github.jgzl.common.core.sensitive.SensitiveTypeEnum;
 import com.github.jgzl.common.api.dataobject.BaseDo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 import cn.hutool.core.collection.CollUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * <p>
  * 单点登录用户表
- * </p>
  *
  * @author lihaifeng
  * @since 2020-01-12
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
-@ApiModel(value = "SysUser对象", description = "SpringSecurity用户")
 public class UserVo extends BaseDo<UserVo> implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "用户id")
+	/**
+	 * 用户id
+	 */
 	private Long userId;
 
-	@ApiModelProperty(value = "用户姓名(账户)")
+	/**
+	 * 用户姓名(账户)
+	 */
 	private String username;
 
-	@ApiModelProperty(value = "用户昵称")
+	/**
+	 * 用户昵称
+	 */
 	private String nickname;
 
-	@ApiModelProperty(value = "用户密码")
+	/**
+	 * 用户密码
+	 */
 	private String password;
 
+	/**
+	 * 手机号
+	 */
 	@Sensitive(type = SensitiveTypeEnum.MOBILE_PHONE)
-	@ApiModelProperty(value = "手机号")
 	private String mobile;
 
+	/**
+	 * 邮箱
+	 */
 	@Sensitive(type = SensitiveTypeEnum.EMAIL)
-	@ApiModelProperty(value = "邮箱")
 	private String email;
 
-	@ApiModelProperty(value = "登录次数")
+	/**
+	 * 登录次数
+	 */
 	private Integer loginCount;
 
-	@ApiModelProperty(value = "登录错误次数")
+	/**
+	 * 登录错误次数
+	 */
 	private Integer loginErrorCount;
 
-	@ApiModelProperty(value = "登录时间(最新)")
+	/**
+	 * 登录时间(最新)
+	 */
 	private LocalDateTime loginTime;
 
-	@ApiModelProperty(value = "账号状态")
+	/**
+	 * 账号状态
+	 */
 	private Integer loginStatus;
 
-	@ApiModelProperty(value = "头像")
+	/**
+	 * 头像
+	 */
 	private String avatar;
 
 	/**

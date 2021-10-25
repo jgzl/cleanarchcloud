@@ -1,7 +1,5 @@
 package com.github.jgzl.common.cache.support;
-
 import org.springframework.context.ApplicationEvent;
-
 import java.time.Clock;
 
 public class RefreshCacheEvent extends ApplicationEvent {

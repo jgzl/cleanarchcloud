@@ -1,5 +1,4 @@
 package com.github.jgzl.common.api.vo;
-
 import lombok.Data;
 
 /**

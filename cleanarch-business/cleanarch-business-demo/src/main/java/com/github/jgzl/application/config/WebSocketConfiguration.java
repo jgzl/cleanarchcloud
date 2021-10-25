@@ -1,5 +1,4 @@
 package com.github.jgzl.application.config;
-
 import com.github.jgzl.application.ws.handler.HttpAuthHandler;
 import com.github.jgzl.application.ws.interceptor.HttpAuthInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;

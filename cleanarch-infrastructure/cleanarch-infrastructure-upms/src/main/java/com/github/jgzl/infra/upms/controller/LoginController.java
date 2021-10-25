@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.controller;
-
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
@@ -12,21 +11,18 @@ import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Pattern;
 import java.io.IOException;
 import java.util.Map;
-
 import static com.github.jgzl.common.core.constant.RegexConstants.EMAIL_REG;
 import static com.github.jgzl.common.core.constant.RegexConstants.MOBILE_REG;
 
@@ -36,7 +32,6 @@ import static com.github.jgzl.common.core.constant.RegexConstants.MOBILE_REG;
  * @date 2018年03月10日
  */
 @Slf4j
-@Api(tags = "登录控制器")
 @RestController
 public class LoginController {
 

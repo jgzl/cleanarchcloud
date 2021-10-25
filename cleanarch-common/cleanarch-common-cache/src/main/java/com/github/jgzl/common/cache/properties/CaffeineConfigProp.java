@@ -1,11 +1,9 @@
 package com.github.jgzl.common.cache.properties;
-
 import lombok.Data;
 
 /**
  * @author lihaifeng
  * @date 2020/9/26
- * <p>
  * Caffeine 相关配置
  */
 @Data

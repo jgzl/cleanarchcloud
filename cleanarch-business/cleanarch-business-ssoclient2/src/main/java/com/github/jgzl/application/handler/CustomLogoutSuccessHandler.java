@@ -1,18 +1,13 @@
 package com.github.jgzl.application.handler;
-
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-
 import com.github.jgzl.common.core.constant.SecurityConstants;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**

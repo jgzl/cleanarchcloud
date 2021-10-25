@@ -1,5 +1,4 @@
 package com.github.jgzl.common.log.event;
-
 import com.github.jgzl.common.api.feign.RemoteLogService;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.api.vo.SysLogDTO;

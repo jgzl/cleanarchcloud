@@ -1,5 +1,4 @@
 package com.github.jgzl.common.feign;
-
 import com.github.jgzl.common.feign.endpoint.FeignClientEndpoint;
 import feign.Feign;
 import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Import;
 /**
  * @author lihaifeng
  * @date 2020/2/8
- * <p>
  * feign 自动化配置
  */
 @Configuration

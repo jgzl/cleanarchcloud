@@ -1,5 +1,4 @@
 package com.github.jgzl.common.oss;
-
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -11,7 +10,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * pathStyleAccess 采用nginx反向代理或者AWS S3 配置成true，支持第三方云存储配置成false pathStyleAccess: false
  * access-key: lihaifeng secret-key: lihaifeng bucket-name: lihaifeng region: custom-domain:
  * https://oss.xxx.com/lihaifeng
- * <p>
  * bucket 设置公共读权限
  */
 @Data

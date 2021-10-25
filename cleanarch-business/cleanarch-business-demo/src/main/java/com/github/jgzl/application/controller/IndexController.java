@@ -1,12 +1,6 @@
 package com.github.jgzl.application.controller;
-
-import java.util.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,11 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.google.common.collect.Lists;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping
-@Api(value = "demo测试服务", tags = {"demo测试服务"})
 public class IndexController {
 
 	@Autowired
@@ -47,7 +35,6 @@ public class IndexController {
 	private String chatTopic;
 
 	@GetMapping("ping")
-	@ApiOperation(value = "存活心跳接口")
 	public String ping() {
 		log.info("ping_url:{}", environment.getProperty("server.port"));
 		return environment.getProperty("server.port");
@@ -67,7 +54,6 @@ public class IndexController {
 	 * @return
 	 */
 	@GetMapping("/sendMsg")
-	@ApiOperation(value = "发送信息")
 	public String sendMsg(String msg) {
 		redisTemplate.convertAndSend(chatTopic, msg);
 		return "success";

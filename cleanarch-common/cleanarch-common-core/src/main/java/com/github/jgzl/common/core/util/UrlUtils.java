@@ -1,5 +1,4 @@
 package com.github.jgzl.common.core.util;
-
 import java.util.HashMap;
 import java.util.Map;
 

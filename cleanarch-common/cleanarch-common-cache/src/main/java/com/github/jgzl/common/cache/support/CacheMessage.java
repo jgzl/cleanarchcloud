@@ -1,8 +1,6 @@
 package com.github.jgzl.common.cache.support;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import java.io.Serializable;
 
 /**

@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.exception;
-
 import lombok.Data;
 
 /**

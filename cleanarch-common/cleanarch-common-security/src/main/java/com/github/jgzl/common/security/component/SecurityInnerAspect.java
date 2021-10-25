@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.security.annotation.Inner;
@@ -13,13 +12,11 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.security.access.AccessDeniedException;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author lengleng
  * @date 2018/11/26
- * <p>
  * 服务间接口不鉴权处理逻辑
  */
 @Slf4j

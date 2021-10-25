@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.api.vo.UserVo;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;

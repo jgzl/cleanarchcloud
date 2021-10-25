@@ -1,5 +1,4 @@
 package com.github.jgzl.common.cache.metrics;
-
 import io.micrometer.core.instrument.binder.MeterBinder;
 import org.springframework.boot.actuate.metrics.cache.CacheMeterBinderProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

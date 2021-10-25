@@ -1,5 +1,4 @@
 package com.github.jgzl.common;
-
 import java.lang.instrument.Instrumentation;
 
 /**

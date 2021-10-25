@@ -1,5 +1,4 @@
 package com.github.jgzl.common.log;
-
 import com.github.jgzl.common.api.feign.RemoteLogService;
 import com.github.jgzl.common.core.util.KeyStrResolver;
 import com.github.jgzl.common.log.aspect.SysLogAspect;
@@ -15,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * @author lihaifeng
  * @date 2018/6/28
- * <p>
  * 日志自动配置
  */
 @EnableAsync

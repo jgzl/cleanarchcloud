@@ -1,5 +1,4 @@
 package com.github.jgzl.common.oss.service;
-
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -15,7 +14,6 @@ import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.InitializingBean;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;

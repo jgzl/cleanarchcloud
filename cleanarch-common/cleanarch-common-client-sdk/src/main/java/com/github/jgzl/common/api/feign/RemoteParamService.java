@@ -1,5 +1,4 @@
 package com.github.jgzl.common.api.feign;
-
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 /**
  * @author lihaifeng
  * @date 2020/5/12
- * <p>
  * 查询参数相关
  */
 @FeignClient(contextId = "remoteParamService", value = ServiceNameConstants.UPMS_SERVICE)

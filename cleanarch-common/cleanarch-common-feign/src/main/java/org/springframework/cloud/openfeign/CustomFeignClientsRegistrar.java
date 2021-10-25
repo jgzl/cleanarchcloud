@@ -1,5 +1,4 @@
 package org.springframework.cloud.openfeign;
-
 import com.github.jgzl.common.feign.FeignAutoConfiguration;
 import lombok.Getter;
 import org.springframework.beans.factory.BeanClassLoaderAware;
@@ -17,14 +16,12 @@ import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
-
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author L.cm
  * @date 2020/2/8
- * <p>
  * feign 自动配置功能 from mica
  */
 public class CustomFeignClientsRegistrar

@@ -29,10 +29,6 @@
 		  <artifactId>cleanarch-common-client-sdk</artifactId>
 		</dependency>
 		<dependency>
-		  <groupId>com.github.jgzl</groupId>
-		  <artifactId>cleanarch-common-log</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
 		</dependency>
@@ -44,14 +40,6 @@
 		<dependency>
 			<groupId>com.alibaba.csp</groupId>
 			<artifactId>sentinel-datasource-nacos</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-micro-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>

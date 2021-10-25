@@ -11,13 +11,37 @@ management:
   endpoint:
     health:
       show-details: always
+
 mybatis-plus:
+  tenant-enable: true
   mapper-locations: classpath*:mybatis.mapper/*.xml
   global-config:
+    banner: false
     db-config:
+      select-strategy: not_empty
+      insert-strategy: not_empty
+      update-strategy: not_empty
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 20000
+        readTimeout: 20000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
 
 oss:
   path-style-access: false

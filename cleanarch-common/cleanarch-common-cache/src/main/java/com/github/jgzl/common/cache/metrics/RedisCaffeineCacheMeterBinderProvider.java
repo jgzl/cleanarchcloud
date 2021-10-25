@@ -1,5 +1,4 @@
 package com.github.jgzl.common.cache.metrics;
-
 import com.github.jgzl.common.cache.support.RedisCaffeineCache;
 import io.micrometer.core.instrument.Tag;
 import io.micrometer.core.instrument.binder.MeterBinder;

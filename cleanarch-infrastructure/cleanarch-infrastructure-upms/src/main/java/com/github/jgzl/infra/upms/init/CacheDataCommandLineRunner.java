@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.init;
-
 import cn.hutool.core.collection.CollUtil;
 import com.github.jgzl.infra.upms.dataobject.SysDict;
 import com.github.jgzl.infra.upms.dataobject.SysDictItem;
@@ -15,7 +14,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Slf4j

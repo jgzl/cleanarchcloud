@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.exception.BusinessException;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.sql.SQLException;

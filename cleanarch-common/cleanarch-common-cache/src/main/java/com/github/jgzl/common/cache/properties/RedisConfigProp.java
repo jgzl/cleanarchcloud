@@ -1,14 +1,11 @@
 package com.github.jgzl.common.cache.properties;
-
 import lombok.Data;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author lihaifeng
  * @date 2020/9/26
- * <p>
  * redis 相关配置
  */
 @Data

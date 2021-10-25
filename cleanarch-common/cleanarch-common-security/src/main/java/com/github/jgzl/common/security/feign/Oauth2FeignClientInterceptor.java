@@ -1,15 +1,12 @@
 package com.github.jgzl.common.security.feign;
-
 import cn.hutool.core.collection.CollUtil;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.cloud.commons.security.AccessTokenContextRelay;
 import org.springframework.cloud.openfeign.security.OAuth2FeignRequestInterceptor;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
-
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.Collection;
 
 /**

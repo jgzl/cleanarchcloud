@@ -1,5 +1,4 @@
 package com.github.jgzl.common.api.feign;
-
 import com.github.jgzl.common.api.vo.SysLogDTO;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;

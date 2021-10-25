@@ -1,5 +1,4 @@
 package com.github.jgzl.application.codegen;
-
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -7,7 +6,6 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.github.jgzl.common.api.dataobject.BaseDo;
-
 import java.util.Scanner;
 
 /**
@@ -49,7 +47,6 @@ public class CodeGeneratorTest {
 				.outputDir(projectPath + "/" + moduleName + "/src/main/java")
 				.author("lihaifeng")
 				.openDir(true)
-				.enableSwagger()
 				.build();
 
 		// 包配置
@@ -71,7 +68,7 @@ public class CodeGeneratorTest {
 
 		// 策略配置
 		StrategyConfig strategy = new StrategyConfig.Builder()
-				.addInclude("platform_sys_user,platform_dept,platform_log,platform_menu,platform_role,platform_user_connection"
+				.addInclude("sys_user,sys_dept,sys_log,sys_menu,sys_role,sys_user_connection"
 						.split(","))
 				.controllerBuilder()
 				.enableRestStyle()

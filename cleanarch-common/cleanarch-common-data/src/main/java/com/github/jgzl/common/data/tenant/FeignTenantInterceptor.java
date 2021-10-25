@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.tenant;
-
 import com.github.jgzl.common.core.constant.CommonConstants;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

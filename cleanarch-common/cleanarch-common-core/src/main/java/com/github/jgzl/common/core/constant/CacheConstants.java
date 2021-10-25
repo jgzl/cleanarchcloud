@@ -3,7 +3,6 @@ package com.github.jgzl.common.core.constant;
 /**
  * @author lihaifeng
  * @date 2019-04-28
- * <p>
  * 缓存的key 常量
  */
 public interface CacheConstants {

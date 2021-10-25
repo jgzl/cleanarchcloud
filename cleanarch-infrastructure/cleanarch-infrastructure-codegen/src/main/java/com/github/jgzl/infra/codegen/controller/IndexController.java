@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.codegen.controller;
-
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.log.annotation.SysLog;
 import org.springframework.stereotype.Controller;

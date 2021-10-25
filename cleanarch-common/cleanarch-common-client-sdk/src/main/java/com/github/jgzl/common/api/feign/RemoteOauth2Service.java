@@ -1,9 +1,7 @@
 package com.github.jgzl.common.api.feign;
-
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.util.Map;
 
 /**

@@ -1,5 +1,4 @@
 package com.github.jgzl.common.core.constant.enums;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

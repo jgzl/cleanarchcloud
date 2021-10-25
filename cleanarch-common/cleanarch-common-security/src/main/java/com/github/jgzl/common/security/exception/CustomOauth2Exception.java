@@ -1,8 +1,6 @@
 package com.github.jgzl.common.security.exception;
-
 import com.github.jgzl.common.security.component.CustomOauth2ExceptionSerializer;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**

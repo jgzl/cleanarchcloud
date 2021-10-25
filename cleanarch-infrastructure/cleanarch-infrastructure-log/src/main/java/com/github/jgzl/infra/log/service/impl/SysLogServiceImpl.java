@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.log.service.impl;
-
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -7,7 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.jgzl.common.api.dataobject.SysLog;
-import com.github.jgzl.common.api.vo.PreLogVO;
+import com.github.jgzl.common.api.vo.PreLogVo;
 import com.github.jgzl.common.api.vo.SysLogDTO;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.data.tenant.TenantBroker;
@@ -17,14 +16,11 @@ import com.github.jgzl.infra.log.service.SysLogService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * <p>
  * 日志表 服务实现类
- * </p>
  *
  * @author lihaifeng
  * @since 2017-11-20
@@ -38,7 +34,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 	 * @return true/false
 	 */
 	@Override
-	public Boolean saveBatchLogs(List<PreLogVO> preLogVoList) {
+	public Boolean saveBatchLogs(List<PreLogVo> preLogVoList) {
 		List<SysLog> sysLogs = preLogVoList.stream().map(pre -> {
 			SysLog log = new SysLog();
 			log.setType(CommonConstants.STATUS_LOCK);

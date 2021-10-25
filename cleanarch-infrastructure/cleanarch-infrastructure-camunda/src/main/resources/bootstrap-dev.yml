@@ -34,7 +34,6 @@ cleanarch:
       - /camunda/**
       - /camunda-welcome
       - /actuator/**
-      - /v2/api-docs
       - /webjars/**
       - /static/**
       - /**/*.css

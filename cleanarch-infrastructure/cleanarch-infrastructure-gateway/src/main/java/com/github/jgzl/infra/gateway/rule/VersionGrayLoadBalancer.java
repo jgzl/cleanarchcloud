@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.rule;
-
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -11,7 +10,6 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-
 import java.util.List;
 import java.util.Map;
 

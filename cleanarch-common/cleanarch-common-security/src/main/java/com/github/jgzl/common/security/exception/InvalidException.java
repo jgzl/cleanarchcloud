@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.exception;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.github.jgzl.common.security.component.CustomOauth2ExceptionSerializer;
 

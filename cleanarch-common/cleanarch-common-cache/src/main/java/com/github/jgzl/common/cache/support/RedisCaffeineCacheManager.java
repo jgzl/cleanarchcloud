@@ -1,12 +1,10 @@
 package com.github.jgzl.common.cache.support;
-
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.jgzl.common.cache.properties.CacheConfigProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
-
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;

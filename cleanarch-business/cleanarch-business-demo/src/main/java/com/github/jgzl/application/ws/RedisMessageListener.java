@@ -1,5 +1,4 @@
 package com.github.jgzl.application.ws;
-
 import com.github.jgzl.application.ws.handler.HttpAuthHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.Message;
@@ -7,9 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
-
 import com.github.jgzl.application.ws.interceptor.HttpAuthInterceptor;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**

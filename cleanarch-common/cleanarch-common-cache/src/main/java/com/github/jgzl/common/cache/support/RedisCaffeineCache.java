@@ -1,5 +1,4 @@
 package com.github.jgzl.common.cache.support;
-
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.jgzl.common.cache.properties.CacheConfigProperties;
 import lombok.Getter;
@@ -10,7 +9,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;

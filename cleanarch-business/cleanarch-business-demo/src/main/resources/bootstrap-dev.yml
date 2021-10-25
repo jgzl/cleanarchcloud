@@ -89,7 +89,6 @@ cleanarch:
   security:
     url-permit-all:
       - /actuator/**
-      - /v2/api-docs
       - /webjars/**
       - /static/**
       - /**/*.css

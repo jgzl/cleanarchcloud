@@ -5,14 +5,12 @@ package com.github.jgzl.common.log.util;
  * @author lihaifeng
  * @date 2021/1/13
  */
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
  * @author lihaifeng
  * @date 2020/7/30
- * <p>
  * 日志类型
  */
 @Getter

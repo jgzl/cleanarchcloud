@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.init;
-
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.cloud.nacos.NacosConfigProperties;
 import com.alibaba.nacos.api.NacosFactory;
@@ -15,7 +14,6 @@ import org.springframework.cloud.gateway.route.RouteDefinitionWriter;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
 import reactor.core.publisher.Mono;
-
 import javax.annotation.PostConstruct;
 import java.util.Properties;
 import java.util.concurrent.Executor;

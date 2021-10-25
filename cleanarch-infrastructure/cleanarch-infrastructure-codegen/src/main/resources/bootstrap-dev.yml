@@ -31,7 +31,6 @@ cleanarch:
       - /service
       - /heartbeat
       - /actuator/**
-      - /v2/api-docs
       - /webjars/**
       - /static/**
       - /**/*.css

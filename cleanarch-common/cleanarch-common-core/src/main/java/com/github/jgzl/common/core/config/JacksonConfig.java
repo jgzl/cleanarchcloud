@@ -1,19 +1,15 @@
 package com.github.jgzl.common.core.config;
-
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.TimeZone;
-
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jgzl.common.core.jackson.CustomJavaTimeModule;
-
 import cn.hutool.core.date.DatePattern;
 
 /**

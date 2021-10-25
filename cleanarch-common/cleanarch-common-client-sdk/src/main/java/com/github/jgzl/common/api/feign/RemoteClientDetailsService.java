@@ -1,9 +1,8 @@
 package com.github.jgzl.common.api.feign;
-
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
-import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.api.dataobject.SysOauthClientDetails;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,7 @@ public interface RemoteClientDetailsService {
 	 * @return R
 	 */
 	@GetMapping("/clients/{clientId}")
-	Result<SysOauthClientDetailsDo> getClientDetailsById(@PathVariable("clientId") String clientId,
-														 @RequestHeader(SecurityConstants.FROM) String from);
+	Result<SysOauthClientDetails> getClientDetailsById(@PathVariable("clientId") String clientId,
+                                                       @RequestHeader(SecurityConstants.FROM) String from);
 
 }

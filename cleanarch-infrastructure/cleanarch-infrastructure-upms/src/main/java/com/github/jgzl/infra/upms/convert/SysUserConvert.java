@@ -1,11 +1,9 @@
 package com.github.jgzl.infra.upms.convert;
-
 import com.github.jgzl.common.api.vo.SysUserVo;
 import com.github.jgzl.common.api.vo.UserVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-
 import com.github.jgzl.common.api.dataobject.SysUser;
 
 /**

@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.config;
-
 import feign.codec.Decoder;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;

@@ -1,8 +1,6 @@
 package com.github.jgzl.common.core.sensitive;
-
 import java.io.IOException;
 import java.util.Objects;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -10,14 +8,12 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.github.jgzl.common.core.util.DesensitizedUtils;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 /**
  * @author lihaifeng
  * @date 2019-08-13
- * <p>
  * 脱敏序列化
  */
 @NoArgsConstructor

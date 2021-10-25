@@ -19,6 +19,11 @@
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
 		</dependency>
+		<!--okhttp-->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+		</dependency>
 		<!--server-api-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -33,11 +38,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-json</artifactId>
-		</dependency>
-		<!--swagger-->
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
 		</dependency>
 		<!--TTL-->
 		<dependency>

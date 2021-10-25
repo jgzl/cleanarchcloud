@@ -1,19 +1,15 @@
 package com.github.jgzl.common.api.vo;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
-
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
  * @author lihaifeng
  * @date 2020/10/9
- * <p>
  * 日志查询传输对象
  */
 @Data
-@ApiModel(value = "日志查询对象")
 public class SysLogDTO {
 
 	/**

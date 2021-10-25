@@ -1,18 +1,15 @@
 package com.github.jgzl.infra.upms.controller;
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.api.validate.Add;
 import com.github.jgzl.common.api.vo.SysUserVo;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -22,7 +19,6 @@ import javax.validation.Valid;
  * @author lihaifeng
  * 2019/7/4 15:44
  */
-@Api(tags = "用户控制器")
 @Slf4j
 @Controller
 @Validated

@@ -1,9 +1,8 @@
 package com.github.jgzl.infra.upms.service;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.api.dataobject.SysOauthClientDetails;
 import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
 
 /**
@@ -12,7 +11,7 @@ import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
  * @author lihaifeng
  * 2019/7/5 14:55
  */
-public interface SysOauthClientDetailsService extends IService<SysOauthClientDetailsDo> {
+public interface SysOauthClientDetailsService extends IService<SysOauthClientDetails> {
 
     /**
      * 查询客户端Vo

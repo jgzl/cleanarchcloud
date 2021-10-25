@@ -1,7 +1,5 @@
 package com.github.jgzl.application.controller;
-
 import java.security.Principal;
-
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -10,16 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
 /**
  * 管理成员
  * @author lihaifeng
  * @date 2018/1/27
  * demo controller
  */
-@Api(value = "member页面")
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -38,7 +32,6 @@ public class MemberController {
 	 * @param principal
 	 * @return
 	 */
-	@ApiOperation(value = "登录用户信息")
 	@GetMapping("/info")
 	@ResponseBody
 	public Principal info(Principal principal) {
@@ -50,7 +43,6 @@ public class MemberController {
 	 * @param authentication
 	 * @return
 	 */
-	@ApiOperation(value = "登录用户信息")
 	@GetMapping("/me")
 	@ResponseBody
 	public Authentication me(Authentication authentication) {

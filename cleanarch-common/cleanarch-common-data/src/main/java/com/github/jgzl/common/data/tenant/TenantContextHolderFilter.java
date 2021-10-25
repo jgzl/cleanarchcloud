@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.tenant;
-
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import lombok.SneakyThrows;
@@ -8,7 +7,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;

@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.gateway.exception;
-
 import com.github.jgzl.common.core.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,6 @@
 package com.github.jgzl.application.ws;
-
 import java.util.List;
-
 import javax.jws.WebService;
-
 import com.github.jgzl.application.common.WebServiceConstants;
 import com.github.jgzl.application.dto.StudentDTO;
 import com.github.jgzl.application.dto.StudentRequestDTO;

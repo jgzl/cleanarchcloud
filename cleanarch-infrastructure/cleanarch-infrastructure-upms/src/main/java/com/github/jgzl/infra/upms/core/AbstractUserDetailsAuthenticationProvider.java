@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.core;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -19,7 +18,6 @@ import org.springframework.security.core.userdetails.UserDetailsChecker;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.cache.NullUserCache;
 import org.springframework.util.Assert;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**

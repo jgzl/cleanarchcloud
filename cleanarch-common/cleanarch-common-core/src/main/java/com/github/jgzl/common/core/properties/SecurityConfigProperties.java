@@ -1,11 +1,8 @@
 package com.github.jgzl.common.core.properties;
-
 import com.github.jgzl.common.core.constant.CommonConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-
 import lombok.Data;
 import org.springframework.core.io.Resource;
-
 import java.util.ArrayList;
 import java.util.List;
 

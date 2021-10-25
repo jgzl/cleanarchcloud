@@ -1,11 +1,8 @@
 package com.github.jgzl.common.security.util;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.github.jgzl.common.api.vo.TreeNode;
-
 import lombok.experimental.UtilityClass;
 
 /**

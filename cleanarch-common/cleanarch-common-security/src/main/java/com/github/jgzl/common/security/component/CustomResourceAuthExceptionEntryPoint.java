@@ -1,11 +1,8 @@
 package com.github.jgzl.common.security.component;
-
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.core.util.Result;
@@ -13,9 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import cn.hutool.http.HttpStatus;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;

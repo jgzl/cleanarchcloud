@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.mapper;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.jgzl.infra.upms.dataobject.SysFile;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.tenant;
-
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.github.jgzl.common.core.properties.TenantConfigProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author lihaifeng
  * @date 2018-12-26
- * <p>
  * 租户维护处理器
  */
 @Slf4j

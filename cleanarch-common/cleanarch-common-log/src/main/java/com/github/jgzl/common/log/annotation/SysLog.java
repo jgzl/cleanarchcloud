@@ -1,5 +1,4 @@
 package com.github.jgzl.common.log.annotation;
-
 import java.lang.annotation.*;
 
 /**

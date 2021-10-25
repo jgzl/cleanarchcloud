@@ -1,8 +1,6 @@
 package com.github.jgzl.common.data.mybatis;
-
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
-
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;

@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.resolver;
-
 import com.github.jgzl.common.core.util.KeyStrResolver;
 import com.github.jgzl.common.data.tenant.TenantContextHolder;
 import org.springframework.stereotype.Component;
@@ -7,7 +6,6 @@ import org.springframework.stereotype.Component;
 /**
  * @author lihaifeng
  * @date 2020/9/29
- * <p>
  * 租户字符串处理（方便其他模块获取）
  */
 @Component

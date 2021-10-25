@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.security.oauth2.provider.token.store.redis.StandardStringSerializationStrategy;
 

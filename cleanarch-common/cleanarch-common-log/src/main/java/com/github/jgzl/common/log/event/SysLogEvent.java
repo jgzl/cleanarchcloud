@@ -1,5 +1,4 @@
 package com.github.jgzl.common.log.event;
-
 import com.github.jgzl.common.api.vo.SysLogDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

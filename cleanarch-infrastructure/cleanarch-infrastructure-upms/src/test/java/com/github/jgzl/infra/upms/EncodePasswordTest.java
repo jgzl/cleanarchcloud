@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms;
-
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

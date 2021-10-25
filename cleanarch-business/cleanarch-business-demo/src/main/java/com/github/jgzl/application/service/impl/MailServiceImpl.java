@@ -1,20 +1,15 @@
 package com.github.jgzl.application.service.impl;
-
 import java.util.Map;
-
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-
 import com.github.jgzl.application.service.MailService;
-
 import freemarker.template.Configuration;
 import lombok.extern.slf4j.Slf4j;
 

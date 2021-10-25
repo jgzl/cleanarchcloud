@@ -1,15 +1,12 @@
 package com.github.jgzl.common.cache.properties;
-
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * @author fuwei.deng
  * @version 1.0.0
- * <p>
  * 全局配置
  */
 @Data

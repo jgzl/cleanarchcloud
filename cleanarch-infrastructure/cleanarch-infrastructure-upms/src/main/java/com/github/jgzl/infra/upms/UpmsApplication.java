@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms;
-
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.feign.annotation.EnableFeignClientsPlus;
 import org.springframework.boot.SpringApplication;

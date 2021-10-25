@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import com.github.jgzl.common.security.util.SecurityMessageSourceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.MessageSourceAccessor;

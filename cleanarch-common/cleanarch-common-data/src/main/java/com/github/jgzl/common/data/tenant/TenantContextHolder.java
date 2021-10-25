@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.tenant;
-
 import com.alibaba.ttl.TransmittableThreadLocal;
 import lombok.experimental.UtilityClass;
 

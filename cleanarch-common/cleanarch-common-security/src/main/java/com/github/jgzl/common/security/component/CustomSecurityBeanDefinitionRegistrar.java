@@ -1,11 +1,9 @@
 package com.github.jgzl.common.security.component;
-
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**

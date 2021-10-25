@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.external;
-
 import com.github.jgzl.common.api.vo.SysUserVo;
 
 /**

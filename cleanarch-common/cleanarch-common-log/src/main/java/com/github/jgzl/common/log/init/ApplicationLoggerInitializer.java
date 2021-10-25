@@ -1,5 +1,4 @@
 package com.github.jgzl.common.log.init;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.Ordered;
@@ -8,7 +7,6 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * @author lihaifeng
  * @date 2019-05-22
- * <p>
  * 通过环境变量的形式注入 logging.file 自动维护 Spring Boot Admin Logger Viewer
  */
 public class ApplicationLoggerInitializer implements EnvironmentPostProcessor, Ordered {

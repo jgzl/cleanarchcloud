@@ -1,15 +1,10 @@
 package com.github.jgzl.common.security.handler;
-
 import java.nio.charset.Charset;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-
 import com.github.jgzl.common.core.util.WebUtils;
-
 import cn.hutool.http.HttpUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author lihaifeng
  * @date 2019-08-20
- * <p>
  * 表单登录失败处理逻辑
  */
 @Slf4j

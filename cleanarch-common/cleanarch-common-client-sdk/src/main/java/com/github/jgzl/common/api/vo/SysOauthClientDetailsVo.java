@@ -1,15 +1,11 @@
 package com.github.jgzl.common.api.vo;
-
 import java.io.Serializable;
 import java.util.Collection;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import com.github.jgzl.common.api.dataobject.SysOauthClientDetailsDo;
+import com.github.jgzl.common.api.dataobject.SysOauthClientDetails;
 import com.github.jgzl.common.api.validate.Add;
-
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 
@@ -55,7 +51,7 @@ public class SysOauthClientDetailsVo implements Serializable {
 
     public SysOauthClientDetailsVo(){}
 
-    public SysOauthClientDetailsVo(final SysOauthClientDetailsDo client) {
+    public SysOauthClientDetailsVo(final SysOauthClientDetails client) {
         this.setClientId(client.getClientId());
         this.setAppName(client.getAppName());
         this.setResourceIds(StrUtil.splitTrim(client.getResourceIds(), StrUtil.COMMA));
