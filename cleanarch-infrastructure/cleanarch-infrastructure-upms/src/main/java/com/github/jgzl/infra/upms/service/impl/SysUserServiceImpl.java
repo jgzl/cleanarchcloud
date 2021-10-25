@@ -122,8 +122,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	}
 
 	private SysRoleVo defaultRole() {
-		return new SysRoleVo().setRemark(
-				CommonConstants.ROLE_DEFAULT)
-				.setOperations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
+		return SysRoleVo.builder()
+				.remark(CommonConstants.ROLE_DEFAULT)
+				.operations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)))
+				.build();
 	}
 }

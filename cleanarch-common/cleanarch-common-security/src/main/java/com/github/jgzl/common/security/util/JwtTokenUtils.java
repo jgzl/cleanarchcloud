@@ -3,6 +3,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -89,7 +91,7 @@ public class JwtTokenUtils {
 	public static Long getAppUID(String token) {
 		Map<String, Claim> claims = verifyToken(token);
 		Claim user_id_claim = claims.get("user_id");
-		if (null == user_id_claim || StringUtils.isEmpty(user_id_claim.asString())) {
+		if (null == user_id_claim || ObjectUtils.isEmpty(user_id_claim.asString())) {
 			// token 校验失败, 抛出Token验证非法异常
 		}
 		return Long.valueOf(user_id_claim.asString());

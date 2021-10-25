@@ -1,10 +1,11 @@
 package com.github.jgzl.common.api.vo;
 import java.util.List;
+
+import lombok.Builder;
+import lombok.Singular;
 import org.springframework.security.core.GrantedAuthority;
 import com.github.jgzl.common.api.dataobject.BaseDo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * 角色表
@@ -13,6 +14,7 @@ import lombok.experimental.Accessors;
  * @since 2020-01-12
  */
 @Data
+@Builder
 public class SysRoleVo extends BaseDo<SysRoleVo> implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +36,7 @@ public class SysRoleVo extends BaseDo<SysRoleVo> implements GrantedAuthority {
 	 */
 	private String remark;
 
+	@Singular
 	private List<Operation> operations;
 
 	@Override

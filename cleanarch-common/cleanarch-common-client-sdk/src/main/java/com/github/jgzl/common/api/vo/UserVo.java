@@ -32,7 +32,7 @@ public class UserVo extends BaseDo<UserVo> implements UserDetails {
 	/**
 	 * 用户id
 	 */
-	private Long userId;
+	private String userId;
 
 	/**
 	 * 用户姓名(账户)

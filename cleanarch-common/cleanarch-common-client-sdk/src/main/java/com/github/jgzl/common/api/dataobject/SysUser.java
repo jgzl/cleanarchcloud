@@ -25,12 +25,12 @@ public class SysUser extends BaseDo<SysUser> {
 	/**
 	 * 用户id
 	 */
-	@TableId(value = "id", type = IdType.ASSIGN_ID)
 
 	/**
 	 * 用户id
 	 */
-	private String userId;
+	@TableId(value = "id", type = IdType.ASSIGN_ID)
+	private Long userId;
 
 	/**
 	 * 用户姓名(账户)

@@ -36,7 +36,7 @@ public class MockUserService {
 		// 密码和用户名保持一致
 		user.setPassword(PWD);
 		user.setEnabled(true);
-		user.setUserId(RandomUtil.randomLong());
+		user.setUserId(RandomUtil.randomLong()+"");
 		user.setEnabled(true);
 		user.setExpired(false);
 		user.setLocked(false);
@@ -57,7 +57,7 @@ public class MockUserService {
 		// 密码和用户名保持一致
 		user.setPassword(encoder.encode(mobile));
 		user.setEnabled(true);
-		user.setUserId(RandomUtil.randomLong());
+		user.setUserId(RandomUtil.randomLong()+"");
 		user.setEnabled(true);
 		user.setExpired(false);
 		user.setLocked(false);
@@ -67,8 +67,9 @@ public class MockUserService {
     }
 
     private SysRoleVo defaultRole() {
-		return new SysRoleVo().setRemark(
-				CommonConstants.ROLE_DEFAULT)
-				.setOperations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)));
+		return SysRoleVo.builder()
+				.remark(CommonConstants.ROLE_DEFAULT)
+				.operations(Collections.singletonList(new Operation(CommonConstants.OP_DEFAULT)))
+				.build();
 	}
 }

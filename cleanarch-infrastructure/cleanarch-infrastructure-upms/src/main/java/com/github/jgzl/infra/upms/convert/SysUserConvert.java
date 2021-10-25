@@ -23,7 +23,13 @@ public interface SysUserConvert {
 	)
     SysUser convert(SysUserVo user);
 
+	@Mapping(
+			target = "userId", expression = "java(String.valueOf(user.getUserId()))"
+	)
 	UserVo convertUserDetails(SysUser user);
 
+	@Mapping(
+			target = "userId", expression = "java(user.getUserId()!=null&&!user.getUserId().equals(\"\")?Long.valueOf(user.getUserId()):null)"
+	)
 	SysUser convertUserDetails(UserVo user);
 }
