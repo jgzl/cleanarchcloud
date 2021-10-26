@@ -50,7 +50,11 @@ public class SecurityUtils implements ReceiveUserInfoService {
 	 */
 	public static SysUserVo getUser() {
 		Authentication authentication = getAuthentication();
-		return getUser(authentication);
+		if (authentication!=null) {
+			return getUser(authentication);
+		}else {
+			return null;
+		}
 	}
 
 	@Override

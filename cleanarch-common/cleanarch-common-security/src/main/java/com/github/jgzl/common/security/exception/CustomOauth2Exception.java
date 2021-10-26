@@ -13,8 +13,17 @@ public class CustomOauth2Exception extends OAuth2Exception {
 
 	private String oauth2ErrorCode;
 
+	public CustomOauth2Exception(final String msg) {
+		super(msg);
+	}
+
 	public CustomOauth2Exception(final String msg, final Throwable t) {
 		super(msg, t);
+	}
+
+	public CustomOauth2Exception(String msg, String oauth2ErrorCode) {
+		super(msg);
+		this.oauth2ErrorCode = oauth2ErrorCode;
 	}
 
 	@Override

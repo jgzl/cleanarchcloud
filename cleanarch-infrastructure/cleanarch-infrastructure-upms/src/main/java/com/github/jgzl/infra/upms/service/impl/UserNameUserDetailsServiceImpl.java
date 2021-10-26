@@ -2,8 +2,10 @@ package com.github.jgzl.infra.upms.service.impl;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.api.vo.UserVo;
+import lombok.AllArgsConstructor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -14,31 +16,19 @@ import org.springframework.stereotype.Service;
  * @date 2018/7/24 17:06
  */
 @Service
+@AllArgsConstructor
 public class UserNameUserDetailsServiceImpl extends AbstractUserDetailService {
 
     private final SysUserService userService;
 
-    private final CacheManager cacheManager;
-
-	public UserNameUserDetailsServiceImpl(SysUserService userService,
-			CacheManager cacheManager) {
-		this.userService = userService;
-		this.cacheManager = cacheManager;
-	}
-
+	@Cacheable(value = CacheConstants.USER_DETAILS,key = "#username",unless = "#result==null")
 	@Override
-	protected UserVo getUserVo(final String username) {
-		Cache cache = cacheManager.getCache(CacheConstants.USER_DETAILS);
-		if (cache != null && cache.get(username) != null) {
-			return (UserVo) cache.get(username).get();
-		}
+	public UserVo getUserVo(final String username) {
 		// 查询用户信息,包含角色列表
 		UserVo user = userService.findUserByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("用户名["+username+"]不存在");
 		}
-		cache.put(username, user);
-        return user;
+		return user;
     }
-
 }

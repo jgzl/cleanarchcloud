@@ -25,5 +25,5 @@ public abstract class AbstractUserDetailService implements UserDetailsService {
 	 * @param username 用户名
 	 * @return
 	 */
-	protected abstract UserVo getUserVo(String username);
+	public abstract UserVo getUserVo(String username);
 }

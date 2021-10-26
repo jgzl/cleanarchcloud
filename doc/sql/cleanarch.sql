@@ -494,4 +494,56 @@ CREATE TABLE `sys_file` (
                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文件管理表';
 
+DROP TABLE IF EXISTS `sys_social_user`;
+create table sys_social_user
+(
+    id bigint not null comment '主键',
+    uuid varchar(256) not null comment '第三方系统唯一ID',
+    source varchar(256) not null comment '第三方用户来源',
+    access_token longtext null comment '用户的授权令牌',
+    expire_in int null comment '第三方用户的授权令牌的有效期',
+    refresh_token longtext null comment '刷新令牌',
+    refresh_token_expire_in int null comment '第三方用户的刷新令牌的有效期',
+    open_id varchar(256) null comment '第三方用户的 open id',
+    uid varchar(256) null comment '第三方用户的 ID',
+    access_code varchar(256) null comment '个别平台的授权信息',
+    union_id varchar(256) null comment '第三方用户的 union id',
+    scope varchar(256) null comment '第三方用户授予的权限',
+    token_type varchar(256) null comment '个别平台的授权信息',
+    id_token varchar(256) null comment 'id token',
+    mac_algorithm varchar(256) null comment '小米平台用户的附带属性',
+    mac_key varchar(256) null comment '小米平台用户的附带属性',
+    code varchar(256) null comment '用户的授权code',
+    oauth_token varchar(256) null comment 'Twitter平台用户的附带属性',
+    oauth_token_secret varchar(256) null comment 'Twitter平台用户的附带属性',
+    `username` varchar(128) not null DEFAULT '' COMMENT '用户姓名(账户)',
+    `nickname` varchar(128) DEFAULT '' COMMENT '用户昵称',
+    `email` varchar(128) DEFAULT '' COMMENT '邮箱',
+    `avatar` varchar(1024) DEFAULT '' COMMENT '头像',
+    `del_flag` char(1) DEFAULT '0',
+    `version` varchar(10) DEFAULT '0',
+    `create_user` varchar(255) DEFAULT NULL,
+    `update_user` varchar(255) DEFAULT NULL,
+    `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+    `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
+    constraint sys_social_user_pk primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment '社会登录用户表';
+
+DROP TABLE IF EXISTS `sys_social_user_auth`;
+create table sys_social_user_auth
+(
+    id bigint not null comment '主键',
+    user_id varchar(256) not null comment '系统用户ID',
+    social_user_id varchar(256) not null comment '社会化用户ID',
+    `del_flag` char(1) DEFAULT '0',
+    `version` varchar(10) DEFAULT '0',
+    `create_user` varchar(255) DEFAULT NULL,
+    `update_user` varchar(255) DEFAULT NULL,
+    `create_date` datetime DEFAULT CURRENT_TIMESTAMP ,
+    `update_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    `tenant_id` int(11) DEFAULT '0' COMMENT '所属租户',
+    constraint sys_social_user_pk primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment '社会登录用户表';
+
 SET FOREIGN_KEY_CHECKS = 1;

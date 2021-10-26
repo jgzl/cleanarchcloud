@@ -8,7 +8,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;

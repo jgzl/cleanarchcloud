@@ -1,4 +1,5 @@
 package com.github.jgzl.infra.upms.controller;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.infra.upms.service.SysUserService;
@@ -71,7 +72,7 @@ public class SysUserController {
 	 */
 	@PostMapping
 	public Result add(@Validated(Add.class) @RequestBody SysUserVo vo) {
-
+		log.info("新增单个用户:{}", JSONUtil.toJsonStr(vo));
 		return Result.ok(userService.add(vo));
 	}
 
@@ -89,11 +90,10 @@ public class SysUserController {
 	/**
 	 * 分页查询用户
 	 *
-	 * @param request
 	 * @return
 	 */
 	@GetMapping
-	public Result<Page<SysUserVo>> page(HttpServletRequest request, Page page) {
+	public Result<Page<SysUserVo>> page(Page page) {
 		userService.selectPageVo(page);
 		return Result.ok(page);
 	}

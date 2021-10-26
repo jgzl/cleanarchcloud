@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +27,7 @@ import lombok.experimental.Accessors;
  * @since 2020-01-12
  */
 @Data
+@Builder
 public class UserVo extends BaseDo<UserVo> implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -60,6 +63,11 @@ public class UserVo extends BaseDo<UserVo> implements UserDetails {
 	 */
 	@Sensitive(type = SensitiveTypeEnum.EMAIL)
 	private String email;
+
+	/**
+	 * 租户id
+	 */
+	private Integer tenantId;
 
 	/**
 	 * 登录次数

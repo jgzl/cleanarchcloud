@@ -3,7 +3,6 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
@@ -14,16 +13,13 @@ import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Pattern;
-import java.io.IOException;
 import java.util.Map;
 import static com.github.jgzl.common.core.constant.RegexConstants.EMAIL_REG;
 import static com.github.jgzl.common.core.constant.RegexConstants.MOBILE_REG;
@@ -45,6 +41,9 @@ public class LoginController {
 
 	@Autowired
 	private SysOauthClientDetailsService oauthClientService;
+
+	@Autowired
+	private ConsumerTokenServices consumerTokenServices;
 
 	/**
 	 * 认证页面
@@ -87,7 +86,7 @@ public class LoginController {
 				modelAndView.addObject("appName",appName);
 			}else {
 				modelAndView.addObject("website", "https://www.baidu.com");
-				modelAndView.addObject("appName", "DemoApp");
+				modelAndView.addObject("appName", "百度");
 			}
 			modelAndView.addObject("user", SecurityUtils.getUser());
 		}
@@ -95,25 +94,6 @@ public class LoginController {
 		modelAndView.setViewName("ftl/confirm");
 		return modelAndView;
 	}
-
-    /**
-     * 需要重定向到请求之前的地址，则使用此登出方法
-     */
-    @GetMapping(PathConstants.LOGIN_LOGOUT_URL)
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        new SecurityContextLogoutHandler().logout(request, null, null);
-		// 获取请求参数中是否包含 回调地址
-		String redirectUrl = request.getParameter(SecurityConstants.REDIRECT_URL);
-		String referer = request.getHeader(HttpHeaders.REFERER);
-
-		if (StrUtil.isNotBlank(redirectUrl)) {
-			response.sendRedirect(redirectUrl);
-		}
-		else if (StrUtil.isNotBlank(referer)) {
-			// 默认跳转referer 地址
-			response.sendRedirect(referer);
-		}
-    }
 
 	/**
 	 * 发送手机验证码(手机登录)

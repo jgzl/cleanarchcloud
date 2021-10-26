@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.jgzl.common.api.dataobject.SysUser;
 import com.github.jgzl.common.api.vo.SysUserVo;
 import com.github.jgzl.common.api.vo.UserVo;
+import me.zhyd.oauth.model.AuthUser;
+
+import java.util.List;
 
 /**
  * @author lihaifeng
@@ -71,4 +74,19 @@ public interface SysUserService extends IService<SysUser> {
 	 * @return
 	 */
 	IPage<SysUserVo> selectPageVo(Page page);
+
+	/**
+	 * 绑定社会登录账号
+	 * @param authUser
+	 * @param userId
+	 */
+	void bindSocialUser(AuthUser authUser, String userId);
+
+	/**
+	 * 根据第三方系统唯一ID查找用户
+	 * @param uuid
+	 * @param source
+	 * @return
+	 */
+	List<SysUser> findUserBySocialUserUuidAndSource(String uuid, String source);
 }

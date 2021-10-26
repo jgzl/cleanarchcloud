@@ -113,15 +113,41 @@ public interface SecurityConstants {
 	 */
 	String CLIENT_CREDENTIALS = "client_credentials";
 
+
 	/**
 	 * 用户ID字段
 	 */
 	String DETAILS_USER_ID = "id";
 
 	/**
-	 * 用户名字段
+	 * 用户名
 	 */
 	String DETAILS_USERNAME = "username";
+
+	/**
+	 * 用户基本信息
+	 */
+	String DETAILS_USER = "user_info";
+
+	/**
+	 * 用户名phone
+	 */
+	String DETAILS_PHONE = "phone";
+
+	/**
+	 * 头像
+	 */
+	String DETAILS_AVATAR = "avatar";
+
+	/**
+	 * 用户部门字段
+	 */
+	String DETAILS_DEPT_ID = "deptId";
+
+	/**
+	 * 租户ID 字段
+	 */
+	String DETAILS_TENANT_ID = "tenantId";
 
 	/**
 	 * 协议字段

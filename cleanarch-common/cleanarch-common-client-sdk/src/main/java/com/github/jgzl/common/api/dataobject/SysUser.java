@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.jgzl.common.core.sensitive.Sensitive;
 import com.github.jgzl.common.core.sensitive.SensitiveTypeEnum;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
  * @since 2020-01-12
  */
 @Data
+@Builder
 @TableName("sys_user")
 public class SysUser extends BaseDo<SysUser> {
 
