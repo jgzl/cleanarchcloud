@@ -3,6 +3,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -22,15 +24,12 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
+		String frontendUrl = environment.getProperty("cleanarch.frontend-url");
+		if (StrUtil.isBlank(frontendUrl)) {
+			frontendUrl = "/";
+		}
 		log.info(environment.getProperty("spring.application.name") + ":登出成功");
-		String profile;
-		if (environment.getActiveProfiles().length > 0) {
-			profile = environment.getActiveProfiles()[0];
-		} else {
-			profile = environment.getDefaultProfiles()[0];
-		}
-		if (SecurityConstants.DEV.equalsIgnoreCase(profile)) {
-			response.sendRedirect("http://localhost:8010/logout?callBackUrl=http://localhost:8101/sso");
-		}
+		log.info("跳转地址:"+ frontendUrl);
+		response.sendRedirect(frontendUrl);
 	}
 }

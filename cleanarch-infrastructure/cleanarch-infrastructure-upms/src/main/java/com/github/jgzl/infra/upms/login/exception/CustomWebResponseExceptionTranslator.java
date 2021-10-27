@@ -1,4 +1,5 @@
 package com.github.jgzl.infra.upms.login.exception;
+import com.github.jgzl.common.security.exception.CustomOauth2Exception;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

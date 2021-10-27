@@ -10,11 +10,9 @@ import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAuthenticationFa
 import com.github.jgzl.infra.upms.login.provider.third.ThirdLoginAuthenticationProvider;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
 import com.github.jgzl.common.core.properties.SecurityConfigProperties;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,7 +21,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
@@ -32,6 +29,8 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.AllArgsConstructor;
+
 /**
  * webSecurity 权限控制类
  *
@@ -39,8 +38,8 @@ import java.util.UUID;
  * @date 2018/7/24 15:58
  * @see SecurityFilterAutoConfiguration
  */
+@Configuration
 @AllArgsConstructor
-@EnableWebSecurity
 public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private DataSource dataSource;
@@ -100,9 +99,13 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         registry.anyRequest().authenticated().and().cors().and().csrf().disable();
     }
 
+	/**
+	 * 不拦截静态资源
+	 * @param web
+	 */
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/static/**","/public/**");
+	public void configure(WebSecurity web) {
+		web.ignoring().antMatchers("/favicon.ico", "/css/**", "/error", "/doc/**");
 	}
 
     /**

@@ -22,3 +22,6 @@ security:
     resource:
       jwt:
         key-uri: http://localhost:8010/oauth/token_key
+
+cleanarch:
+  frontend-url: http://localhost:${server.port}/${server.servlet.context-path}

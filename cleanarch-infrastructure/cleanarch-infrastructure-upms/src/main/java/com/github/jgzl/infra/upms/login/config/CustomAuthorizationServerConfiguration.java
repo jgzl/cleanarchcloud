@@ -1,37 +1,24 @@
 package com.github.jgzl.infra.upms.login.config;
+
+import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.infra.upms.core.PathConstants;
+import com.github.jgzl.infra.upms.login.exception.CustomWebResponseExceptionTranslator;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAccessDeniedHandler;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordExceptionEntryPoint;
-import com.github.jgzl.infra.upms.login.exception.CustomWebResponseExceptionTranslator;
 import com.github.jgzl.infra.upms.login.service.CustomClientDetailsService;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.cache.support.CustomRedisRepository;
-import com.github.jgzl.common.core.properties.SecurityConfigProperties;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.api.vo.UserVo;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.*;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+
 import javax.sql.DataSource;
-import java.security.KeyPair;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * 认证服务器配置抽象
@@ -90,7 +77,7 @@ public class CustomAuthorizationServerConfiguration extends AuthorizationServerC
         security
 				//isAuthenticated() permitAll()
 				.tokenKeyAccess("permitAll()")
-				.checkTokenAccess("permitAll()")
+				.checkTokenAccess("isAuthenticated()")
                 //allowFormAuthenticationForClients是为了注册clientCredentialsTokenEndpointFilter
                 //clientCredentialsTokenEndpointFilter,解析request中的client_id和client_secret
                 //构造成UsernamePasswordAuthenticationToken,然后通过UserDetailsService查询作简单的认证而已

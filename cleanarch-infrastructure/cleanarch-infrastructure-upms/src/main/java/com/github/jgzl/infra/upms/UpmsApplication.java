@@ -14,7 +14,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableFeignClientsPlus
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableRedisHttpSession(redisNamespace = CacheConstants.REDIS_SESSION_PREFIX)
+@EnableRedisHttpSession(redisNamespace = CacheConstants.REDIS_SESSION_PREFIX+CacheConstants.SPLIT+"auth")
 public class UpmsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UpmsApplication.class, args);

@@ -6,11 +6,12 @@ import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.properties.SecurityConfigProperties;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
+
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -64,7 +65,8 @@ public class CustomOauth2TokenConfiguration {
 	}
 
 	@Bean
-	public AuthorizationServerTokenServices authorizationServerTokenServices() {
+	@Primary
+	public AuthorizationServerTokenServices tokenServices() {
 
 		DefaultTokenServices tokenServices = new DefaultTokenServices();
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();

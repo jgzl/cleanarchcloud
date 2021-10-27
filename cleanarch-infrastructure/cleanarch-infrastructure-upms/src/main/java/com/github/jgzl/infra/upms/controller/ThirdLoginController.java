@@ -46,7 +46,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/oauth")
+@RequestMapping("/third/oauth")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class ThirdLoginController {
 
