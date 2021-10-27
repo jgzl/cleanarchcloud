@@ -10,6 +10,7 @@ spring:
   redis:
     host: 127.0.0.1
     password: 123456
+    database: 0
   main:
     allow-bean-definition-overriding: true
 security:
@@ -30,23 +31,11 @@ security:
 cleanarch:
   security:
     url-permit-all:
-      - /heartbeat
+      - /service
       - /camunda/**
       - /camunda-welcome
+      - /heartbeat
       - /actuator/**
-      - /webjars/**
-      - /static/**
-      - /**/*.css
-      - /**/*.jpg
-      - /**/*.jpeg
-      - /**/*.png
-      - /**/*.svg
-      - /**/*.woff2
-      - /**/*.woff
-      - /**/*.otf
-      - /**/*.ttf
-      - /**/*.js
-      - /**/*.ico
 camunda:
   bpm:
     admin-user:

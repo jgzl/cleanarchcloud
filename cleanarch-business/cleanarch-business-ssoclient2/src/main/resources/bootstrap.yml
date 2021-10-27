@@ -1,6 +1,9 @@
 server:
   servlet:
     context-path: /sso
+    session:
+      cookie:
+        comment: client-cookie
 spring:
   profiles:
     active: dev

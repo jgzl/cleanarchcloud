@@ -1,5 +1,6 @@
 package com.github.jgzl.application.config;
 import com.github.jgzl.application.handler.CustomLogoutSuccessHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,10 +22,14 @@ import lombok.SneakyThrows;
 @Configuration
 @EnableOAuth2Sso
 public class ClientWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+
+	@Value("${server.servlet.session.cookie.comment:cookie}")
+	private String cookieName;
+
 	@Override
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {
-		http.logout().logoutSuccessHandler(logoutSuccessHandler())
+		http.logout().logoutSuccessHandler(logoutSuccessHandler()).deleteCookies(cookieName)
 				.and()
 				.authorizeRequests()
 				.antMatchers(SecurityConstants.PATH_ACTUATOR, SecurityConstants.PATH_API_DOCS).permitAll()

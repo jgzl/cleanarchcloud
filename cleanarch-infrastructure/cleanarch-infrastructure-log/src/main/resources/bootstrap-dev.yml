@@ -10,6 +10,7 @@ spring:
   redis:
     host: 127.0.0.1
     password: 123456
+    database: 0
 security:
   oauth2:
     client:
@@ -28,15 +29,6 @@ security:
 cleanarch:
   security:
     url-permit-all:
+      - /service
       - /heartbeat
       - /actuator/**
-      - /webjars/**
-      - /static/**
-      - /**/*.css
-      - /**/*.jpg
-      - /**/*.jpeg
-      - /**/*.png
-      - /**/*.svg
-      - /**/*.woff2
-      - /**/*.js
-      - /**/*.ico
