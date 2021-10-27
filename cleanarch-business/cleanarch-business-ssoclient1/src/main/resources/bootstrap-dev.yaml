@@ -12,16 +12,16 @@ spring:
     password: 123456
 
 security:
+  upms-url: http://localhost:8010
+  frontend-url: http://localhost:${server.port}/${server.servlet.context-path}
+  redirect-url: ${security.upms-url}/logout?redirect_url=${security.frontend-url}
   oauth2:
     client:
       client-id: ssoclient1
       client-secret: ssoclient1
-      user-authorization-uri: http://localhost:8010/oauth/authorize
-      access-token-uri: http://localhost:8010/oauth/token
+      user-authorization-uri: ${security.upms-url}/oauth/authorize
+      access-token-uri: ${security.upms-url}/oauth/token
       scope: sso
     resource:
       jwt:
-        key-uri: http://localhost:8010/oauth/token_key
-
-cleanarch:
-  frontend-url: http://localhost:${server.port}/${server.servlet.context-path}
+        key-uri: ${security.upms-url}/oauth/token_key

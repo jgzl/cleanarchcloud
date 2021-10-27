@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -24,12 +26,22 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
-		String frontendUrl = environment.getProperty("cleanarch.frontend-url");
-		if (StrUtil.isBlank(frontendUrl)) {
-			frontendUrl = "/";
+		String redirectUrl = environment.getProperty("security.redirect-url");
+		if (StrUtil.isBlank(redirectUrl)) {
+			redirectUrl = "/";
+		}
+		if (authentication!=null) {
+			Object details = authentication.getDetails();
+			if (details!=null) {
+				JSONObject jsonObject = JSONUtil.parseObj(details);
+				Object tokenValue = jsonObject.get("tokenValue");
+				if (tokenValue!=null) {
+					redirectUrl = redirectUrl+"&access_token="+tokenValue;
+				}
+			}
 		}
 		log.info(environment.getProperty("spring.application.name") + ":登出成功");
-		log.info("跳转地址:"+ frontendUrl);
-		response.sendRedirect(frontendUrl);
+		log.info("跳转地址:"+ redirectUrl);
+		response.sendRedirect(redirectUrl);
 	}
 }
