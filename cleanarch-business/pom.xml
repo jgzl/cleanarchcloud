@@ -14,12 +14,17 @@
 	<name>应用服务::应用组件POM模块</name>
 	<description>应用服务::应用组件POM模块</description>
 
+	<properties>
+		<fastjson.version>1.2.75</fastjson.version>
+	</properties>
+
 	<modules>
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
 		<module>cleanarch-business-webservice</module>
 		<module>cleanarch-business-demo</module>
-  </modules>
+  	</modules>
+
 
 	<dependencies>
 		<dependency>
@@ -50,6 +55,10 @@
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
 			<version>${nacos.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
 		</dependency>
 	</dependencies>
 </project>

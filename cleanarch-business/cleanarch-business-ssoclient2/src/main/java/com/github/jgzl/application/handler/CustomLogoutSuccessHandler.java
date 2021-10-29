@@ -7,12 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.github.jgzl.common.security.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import com.github.jgzl.common.core.constant.SecurityConstants;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -27,7 +25,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
-		String redirectUrl = environment.getProperty("security.redirect-url");
+		String redirectUrl = environment.getProperty("cleanarch.security.redirect-url");
 		if (StrUtil.isBlank(redirectUrl)) {
 			redirectUrl = "/";
 		}

@@ -9,7 +9,7 @@ import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAccessDeniedHand
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAuthenticationFailureHandler;
 import com.github.jgzl.infra.upms.login.provider.third.ThirdLoginAuthenticationProvider;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.core.properties.SecurityConfigProperties;
+import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,7 +43,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
     private DataSource dataSource;
 
-	private SecurityConfigProperties securityProperties;
+	private FrameworkSecurityConfigProperties securityProperties;
 
     private UserNameUserDetailsServiceImpl userNameUserDetailsService;
 

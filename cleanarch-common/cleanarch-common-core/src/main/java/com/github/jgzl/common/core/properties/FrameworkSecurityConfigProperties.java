@@ -11,7 +11,13 @@ import java.util.List;
  */
 @Data
 @ConfigurationProperties(prefix = CommonConstants.SYS_NAME+".security")
-public class SecurityConfigProperties {
+public class FrameworkSecurityConfigProperties {
+	
+	private String upmsUrl;
+	private String frontendUrl;
+	private String redirectUrl;
+	private String systemCode;
+	private String integrationCode;
 
 	/**
 	 * accessTokenValiditySeconds, default: 1 day.

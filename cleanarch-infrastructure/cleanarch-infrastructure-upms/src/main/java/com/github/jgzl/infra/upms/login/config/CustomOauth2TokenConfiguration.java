@@ -3,7 +3,7 @@ package com.github.jgzl.infra.upms.login.config;
 import com.github.jgzl.common.api.vo.UserVo;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.core.properties.SecurityConfigProperties;
+import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
 import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
 
@@ -27,7 +27,7 @@ import java.util.Map;
 @Configuration
 public class CustomOauth2TokenConfiguration {
 
-	private final SecurityConfigProperties securityProperties;
+	private final FrameworkSecurityConfigProperties securityProperties;
 
 	private final UserNameUserDetailsServiceImpl userNameUserDetailsService;
 

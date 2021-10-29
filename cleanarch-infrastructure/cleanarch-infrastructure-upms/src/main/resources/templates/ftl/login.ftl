@@ -27,7 +27,7 @@
     </form>
 </div>
 <div class="container form-margin-top">
-    <a href="/oauth/login/GITEE">GITEE登录</a>
+    <a href="/third/oauth/login/gitee">GITEE登录</a>
 </div>
 <footer>
     <p>support by: li7hai26</p>

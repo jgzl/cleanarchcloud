@@ -57,7 +57,7 @@ justauth:
     GITEE:
       client-id: 3033eb0082a4b2b5b9f60c5fc319255c70652e5b8ee9b91e8f0037e21b120bd8
       client-secret: d2e1bd1b5454da8c9b1dd8d526d7ee08355044a2b7122bd62c48b4866f2451d5
-      redirect-uri: http://localhost:8010/oauth/gitee/callback
+      redirect-uri: http://localhost:8010/third/oauth/gitee/callback
 #    DINGTALK:
 #      client-id: 10**********6
 #      client-secret: 1f7d08**********5b7**********29e

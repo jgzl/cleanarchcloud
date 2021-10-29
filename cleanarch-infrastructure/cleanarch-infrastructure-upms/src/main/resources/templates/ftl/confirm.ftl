@@ -44,7 +44,7 @@
     </form>
 </div>
 <footer>
-    <p>support by: dlihaifeng.cn</p>
+    <p>support by: lihaifeng</p>
     <p>email: <a href="mailto:li7hai26@gmail.com">li7hai26@gmail.com</a>.</p>
 </footer>
 </body>
