@@ -17,6 +17,11 @@ public class PathConstants {
 	public static final String LOGIN_MOBILE_CODE_URL = PathConstants.LOGIN_MODULE_MOBILE_PATH+"/code";
 
 	/**
+	 * 第三方登录，登录成功的请求路径
+	 */
+	public static final String LOGIN_MODULE_THIRD_PATH = "/login/third";
+
+	/**
 	 * 用户名密码
 	 */
 	public static final String LOGIN_MODULE_PATH = "/login/username";

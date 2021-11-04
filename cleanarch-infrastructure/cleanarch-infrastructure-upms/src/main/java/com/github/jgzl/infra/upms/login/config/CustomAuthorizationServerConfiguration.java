@@ -7,7 +7,7 @@ import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAccessDeniedHand
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordExceptionEntryPoint;
 import com.github.jgzl.infra.upms.login.service.CustomClientDetailsService;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
-import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
+import com.github.jgzl.infra.upms.service.impl.UsernameUserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +33,7 @@ public class CustomAuthorizationServerConfiguration extends AuthorizationServerC
 
     private final AuthenticationManager authenticationManager;
 
-    private final UserNameUserDetailsServiceImpl userNameUserDetailsService;
+    private final UsernameUserDetailsServiceImpl userNameUserDetailsService;
 
     private final CustomWebResponseExceptionTranslator exceptionTranslator;
 

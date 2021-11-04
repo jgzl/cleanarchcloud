@@ -1,15 +1,18 @@
 package com.github.jgzl.infra.upms.login.config;
+
+import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
 import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.login.config.email.EmailTokenAuthenticationSecurityConfiguration;
 import com.github.jgzl.infra.upms.login.config.mobile.MobileAuthenticationSecurityConfiguration;
+import com.github.jgzl.infra.upms.login.config.third.ThirdAuthenticationSecurityConfiguration;
 import com.github.jgzl.infra.upms.login.filter.username.MultiplyUsernamePasswordAuthenticationFilter;
 import com.github.jgzl.infra.upms.login.handler.MultiplyLogoutSuccessHandler;
 import com.github.jgzl.infra.upms.login.handler.TenantSavedRequestAwareAuthenticationSuccessHandler;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAccessDeniedHandler;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAuthenticationFailureHandler;
 import com.github.jgzl.infra.upms.login.provider.third.ThirdLoginAuthenticationProvider;
-import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
-import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
+import com.github.jgzl.infra.upms.service.impl.UsernameUserDetailsServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +27,10 @@ import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.UUID;
-
-import lombok.AllArgsConstructor;
 
 /**
  * webSecurity 权限控制类
@@ -45,7 +47,7 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
 	private FrameworkSecurityConfigProperties securityProperties;
 
-    private UserNameUserDetailsServiceImpl userNameUserDetailsService;
+    private UsernameUserDetailsServiceImpl userNameUserDetailsService;
 
     private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
 
@@ -59,6 +61,8 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
     private MobileAuthenticationSecurityConfiguration mobileAuthenticationSecurityConfiguration;
 
+    private ThirdAuthenticationSecurityConfiguration thirdAuthenticationSecurityConfiguration;
+
 	private PasswordEncoder passwordEncoder;
 
     private static final String RM_KEY = UUID.randomUUID().toString();
@@ -68,12 +72,13 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry =
                 http
                         // 默认的用户名密码认证器
-                        .authenticationProvider(thirdLoginAuthenticationProvider())
                         .authenticationProvider(daoAuthenticationProvider())
                         .apply(mobileTokenAuthenticationSecurityConfiguration)
                         .and()
                         .apply(mobileAuthenticationSecurityConfiguration)
                         .and()
+						.apply(thirdAuthenticationSecurityConfiguration)
+						.and()
                         .addFilterAt(multiplyUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                         .formLogin().loginPage(PathConstants.LOGIN_PAGE_URL).loginProcessingUrl(PathConstants.LOGIN_URL)
                         .and()

@@ -23,7 +23,6 @@ public class ThirdLoginAuthenticationProvider extends AbstractUserDetailsAuthent
 		log.info("第三方登录认证开始...");
 		String username = (authentication.getPrincipal() == null) ? "NONE_PROVIDED" : authentication.getName();
 		String password = (String) authentication.getCredentials();
-		// TODO 此处只是为了展示效果，详细校验逻辑暂时就跳过了
 		ThirdLoginAuthenticationToken result = new ThirdLoginAuthenticationToken(username, password);
 		result.setDetails(authentication.getDetails());
 		log.info("第三方登录认证成功...");

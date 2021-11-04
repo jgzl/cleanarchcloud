@@ -5,7 +5,7 @@ import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
-import com.github.jgzl.infra.upms.service.impl.UserNameUserDetailsServiceImpl;
+import com.github.jgzl.infra.upms.service.impl.UsernameUserDetailsServiceImpl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,7 @@ public class CustomOauth2TokenConfiguration {
 
 	private final FrameworkSecurityConfigProperties securityProperties;
 
-	private final UserNameUserDetailsServiceImpl userNameUserDetailsService;
+	private final UsernameUserDetailsServiceImpl userNameUserDetailsService;
 
 	private final RedisConnectionFactory redisConnectionFactory;
 

@@ -1,10 +1,9 @@
 package com.github.jgzl.infra.upms.service.impl;
-import com.github.jgzl.infra.upms.service.SysUserService;
-import com.github.jgzl.common.core.constant.CacheConstants;
+
 import com.github.jgzl.common.api.vo.UserVo;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.infra.upms.service.SysUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @AllArgsConstructor
-public class UserNameUserDetailsServiceImpl extends AbstractUserDetailService {
+public class UsernameUserDetailsServiceImpl extends AbstractUserDetailService {
 
     private final SysUserService userService;
 

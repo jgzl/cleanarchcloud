@@ -59,21 +59,25 @@ public class EmailTokenAuthenticationProvider extends AbstractUserDetailsAuthent
     }
 
     @Override
-    protected UserDetails retrieveUser(final String mobile, final Authentication authentication) throws
+    protected UserDetails retrieveUser(final String email, final Authentication authentication) throws
 			AuthenticationException {
-        UserDetails loadedUser;
-        try {
-            loadedUser = userDetailsService.loadUserByUsername(mobile);
-        } catch (UsernameNotFoundException var6) {
-            throw var6;
-        } catch (Exception var7) {
-            throw new InternalAuthenticationServiceException(var7.getMessage(), var7);
-        }
-        if (loadedUser == null) {
-            throw new InternalAuthenticationServiceException("UserDetailsService returned null, which is an interface contract violation");
-        } else {
-            return loadedUser;
-        }
+		try {
+			UserDetails loadedUser = this.getUserDetailsService().loadUserByUsername(email);
+			if (loadedUser == null) {
+				throw new InternalAuthenticationServiceException(
+						"UserDetailsService returned null, which is an interface contract violation");
+			}
+			return loadedUser;
+		}
+		catch (UsernameNotFoundException ex) {
+			throw ex;
+		}
+		catch (InternalAuthenticationServiceException ex) {
+			throw ex;
+		}
+		catch (Exception ex) {
+			throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
+		}
     }
 
     @Override
