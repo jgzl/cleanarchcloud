@@ -2,6 +2,7 @@ package com.github.jgzl.infra.upms.login.provider.third;
 
 import com.github.jgzl.infra.upms.core.AbstractUserDetailsAuthenticationProvider;
 import com.github.jgzl.infra.upms.login.token.third.ThirdLoginAuthenticationToken;
+import com.github.jgzl.infra.upms.service.ThirdUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
@@ -16,18 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @Slf4j
 public class ThirdLoginAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
-	private UserDetailsService userDetailsService;
-
-	@Override
-	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		log.info("第三方登录认证开始...");
-		String username = (authentication.getPrincipal() == null) ? "NONE_PROVIDED" : authentication.getName();
-		String password = (String) authentication.getCredentials();
-		ThirdLoginAuthenticationToken result = new ThirdLoginAuthenticationToken(username, password);
-		result.setDetails(authentication.getDetails());
-		log.info("第三方登录认证成功...");
-		return result;
-	}
+	private ThirdUserDetailsService userDetailsService;
 
 	@Override
 	protected Authentication createSuccessAuthentication(Object principal, Authentication authentication, UserDetails user) {
@@ -44,7 +34,7 @@ public class ThirdLoginAuthenticationProvider extends AbstractUserDetailsAuthent
 	@Override
 	protected UserDetails retrieveUser(String username, Authentication authentication) throws AuthenticationException {
 		try {
-			UserDetails loadedUser = this.getUserDetailsService().loadUserByUsername(username);
+			UserDetails loadedUser = this.getUserDetailsService().loadUserByUniqueKey(authentication);
 			if (loadedUser == null) {
 				throw new InternalAuthenticationServiceException(
 						"UserDetailsService returned null, which is an interface contract violation");
@@ -63,11 +53,11 @@ public class ThirdLoginAuthenticationProvider extends AbstractUserDetailsAuthent
 		return ThirdLoginAuthenticationToken.class.isAssignableFrom(aClass);
 	}
 
-	public void setUserDetailsService(UserDetailsService userDetailsService) {
+	public void setUserDetailsService(ThirdUserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
 
-	protected UserDetailsService getUserDetailsService() {
+	protected ThirdUserDetailsService getUserDetailsService() {
 		return this.userDetailsService;
 	}
 }

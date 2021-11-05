@@ -72,7 +72,6 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry =
                 http
                         // 默认的用户名密码认证器
-                        .authenticationProvider(daoAuthenticationProvider())
                         .apply(mobileTokenAuthenticationSecurityConfiguration)
                         .and()
                         .apply(mobileAuthenticationSecurityConfiguration)
@@ -134,16 +133,6 @@ public class CustomWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return daoAuthenticationProvider;
     }
-
-	/**
-	 * 第三方登录 AuthenticationProvider
-	 */
-	@Bean
-	public ThirdLoginAuthenticationProvider thirdLoginAuthenticationProvider(){
-		ThirdLoginAuthenticationProvider thirdLoginAuthenticationProvider = new ThirdLoginAuthenticationProvider();
-		thirdLoginAuthenticationProvider.setUserDetailsService(userNameUserDetailsService);
-		return thirdLoginAuthenticationProvider;
-	}
 
     /**
      * 注册自定义的UsernamePasswordAuthenticationFilter

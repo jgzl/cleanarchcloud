@@ -4,7 +4,9 @@ import com.github.jgzl.infra.upms.login.filter.third.ThirdAuthenticationFilter;
 import com.github.jgzl.infra.upms.login.handler.TenantSavedRequestAwareAuthenticationSuccessHandler;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAuthenticationFailureHandler;
 import com.github.jgzl.infra.upms.login.provider.third.ThirdLoginAuthenticationProvider;
+import com.github.jgzl.infra.upms.service.ThirdUserDetailsService;
 import com.github.jgzl.infra.upms.service.impl.UsernameUserDetailsServiceImpl;
+import com.xkcoding.justauth.AuthRequestFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,11 +26,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class ThirdAuthenticationSecurityConfiguration extends
 		SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
-    private UsernameUserDetailsServiceImpl userDetailsService;
+    private ThirdUserDetailsService userDetailsService;
 
     private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
 
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
+
+	private AuthRequestFactory authRequestFactory;
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
@@ -36,6 +40,7 @@ public class ThirdAuthenticationSecurityConfiguration extends
         filter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
         filter.setAuthenticationSuccessHandler(successHandler);
         filter.setAuthenticationFailureHandler(failureHandler);
+		filter.setAuthRequestFactory(authRequestFactory);
 
         final ThirdLoginAuthenticationProvider provider = new ThirdLoginAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);

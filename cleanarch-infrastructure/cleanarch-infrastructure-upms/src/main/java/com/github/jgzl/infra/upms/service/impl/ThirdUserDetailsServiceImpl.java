@@ -1,0 +1,72 @@
+package com.github.jgzl.infra.upms.service.impl;
+
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.RandomUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.jgzl.common.api.dataobject.SysUser;
+import com.github.jgzl.common.api.vo.UserVo;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.infra.upms.convert.SysUserConvert;
+import com.github.jgzl.infra.upms.dataobject.SysSocialUser;
+import com.github.jgzl.infra.upms.service.SysSocialUserAuthService;
+import com.github.jgzl.infra.upms.service.SysSocialUserService;
+import com.github.jgzl.infra.upms.service.SysUserService;
+import com.github.jgzl.infra.upms.service.ThirdUserDetailsService;
+import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import me.zhyd.oauth.model.AuthUser;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+/**
+ * 用户信息获取
+ *
+ * @author lihaifeng
+ * @date 2018/7/24 17:06
+ */
+@Service
+@AllArgsConstructor
+public class ThirdUserDetailsServiceImpl implements ThirdUserDetailsService {
+
+    private final SysUserService userService;
+
+	@Override
+	public UserVo loadUserByUniqueKey(final Authentication authentication) {
+		AuthUser authUser = (AuthUser)authentication.getPrincipal();
+		String uuid = authUser.getUuid();
+		String source = authUser.getSource();
+		List<SysUser> sysUsers = userService.findUserBySocialUserUuidAndSource(uuid,source);
+		SysUser sysUser;
+		if (CollUtil.isEmpty(sysUsers)) {
+			sysUser = SysUser.builder()
+					.username(source+"_"+uuid)
+					.password(RandomUtil.randomStringUpper(32))
+					.nickname(authUser.getNickname())
+					.avatar(authUser.getAvatar())
+					.email(authUser.getEmail())
+					.loginTime(LocalDateTime.now())
+					.build();
+			userService.save(sysUser);
+			// 第三方账户创建并绑定用户
+			userService.bindSocialUser(authUser,sysUser.getUserId()+"");
+		}else {
+			sysUser = sysUsers.get(0);
+		}
+		UserVo user = SysUserConvert.INSTANCE.convertUserDetails(sysUser);
+		user.setEnabled(true);
+		user.setExpired(false);
+		user.setLocked(false);
+		user.setPasswordExpired(false);
+		user.setRoles(Lists.newArrayList());
+		return user;
+    }
+}

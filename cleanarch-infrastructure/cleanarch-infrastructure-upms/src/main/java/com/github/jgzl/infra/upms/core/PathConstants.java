@@ -19,7 +19,10 @@ public class PathConstants {
 	/**
 	 * 第三方登录，登录成功的请求路径
 	 */
-	public static final String LOGIN_MODULE_THIRD_PATH = "/login/third";
+	public static final String LOGIN_THIRD_CALLBACK = "/callback";
+	public static final String LOGIN_MODULE_THIRD_PATH = "/third/oauth/";
+	public static final String LOGIN_THIRD_LOGIN_URL = LOGIN_MODULE_THIRD_PATH+"login/{type}";
+	public static final String LOGIN_THIRD_CALLBACK_URL = LOGIN_MODULE_THIRD_PATH+"**"+LOGIN_THIRD_CALLBACK;
 
 	/**
 	 * 用户名密码
