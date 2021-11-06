@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @author lihaifeng
- * @date 2018/6/28
+ * @date 2020/6/28
  */
 @FeignClient(contextId = "remoteOauth2Service", value = ServiceNameConstants.UPMS_SERVICE)
 public interface RemoteOauth2Service {

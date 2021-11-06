@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @author lihaifeng
- * @date 2018/9/30
+ * @date 2020/9/30
  * 流程状态
  */
 @Getter

@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
- * @date 2018/7/8
+ * @date 2020/7/8
  * 客户端异常处理
  * 1. 可以根据 AuthenticationException 不同细化异常处理
  */

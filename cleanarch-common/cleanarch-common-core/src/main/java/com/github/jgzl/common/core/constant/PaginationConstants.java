@@ -3,7 +3,7 @@ package com.github.jgzl.common.core.constant;
 /**
  * 分页相关的参数
  * @author lishangbu
- * @date 2018/11/22
+ * @date 2020/11/22
  */
 public interface PaginationConstants {
 	/**

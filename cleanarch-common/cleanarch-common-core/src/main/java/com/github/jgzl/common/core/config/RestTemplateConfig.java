@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author lihaifeng
- * @date 2018/8/16
+ * @date 2020/8/16
  * RestTemplate
  */
 @Configuration

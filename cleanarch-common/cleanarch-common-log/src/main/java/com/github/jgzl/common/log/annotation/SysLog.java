@@ -3,7 +3,7 @@ import java.lang.annotation.*;
 
 /**
  * @author lihaifeng
- * @date 2018/6/28 操作日志注解
+ * @date 2020/6/28 操作日志注解
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

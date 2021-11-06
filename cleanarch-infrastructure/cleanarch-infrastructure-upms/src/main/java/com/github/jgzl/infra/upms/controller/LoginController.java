@@ -42,14 +42,11 @@ public class LoginController {
 	@Autowired
 	private SysOauthClientDetailsService oauthClientService;
 
-	@Autowired
-	private ConsumerTokenServices consumerTokenServices;
-
 	/**
 	 * 认证页面
 	 *
 	 * @param modelAndView
-	 * @param error        表单登录失败处理回调的错误信息
+	 * @param error 表单登录失败处理回调的错误信息
 	 * @return ModelAndView
 	 */
 	@GetMapping(PathConstants.LOGIN_PAGE_URL)

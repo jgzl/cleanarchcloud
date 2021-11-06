@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author lixk
  * @description url工具类
- * @date 2018/9/26 9:58
+ * @date 2020/9/26 9:58
  */
 public class UrlUtils {
 

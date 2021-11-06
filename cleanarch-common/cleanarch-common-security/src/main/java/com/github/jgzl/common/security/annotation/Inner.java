@@ -3,7 +3,7 @@ import java.lang.annotation.*;
 
 /**
  * @author lihaifeng
- * @date 2019/4/13
+ * @date 2020/4/13
  * 服务调用鉴权注解
  */
 @Target({ ElementType.METHOD, ElementType.TYPE })

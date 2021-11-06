@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author lihaifeng
- * @date 2019/6/19
+ * @date 2020/6/19
  * 租户接口
  */
 @FeignClient(contextId = "remoteTenantService", value = ServiceNameConstants.UPMS_SERVICE)

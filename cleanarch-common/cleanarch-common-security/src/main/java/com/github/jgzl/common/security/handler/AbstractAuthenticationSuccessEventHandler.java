@@ -10,7 +10,7 @@ import cn.hutool.core.collection.CollUtil;
 
 /**
  * @author lihaifeng
- * @date 2018/10/8
+ * @date 2020/10/8
  * 认证成功事件处理器
  */
 public abstract class AbstractAuthenticationSuccessEventHandler implements

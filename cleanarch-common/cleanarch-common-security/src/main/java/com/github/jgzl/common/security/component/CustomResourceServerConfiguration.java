@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * @author lihaifeng
- * @date 2018/6/22
+ * @date 2020/6/22
  * 1. 支持remoteTokenServices 负载均衡
  * 2. 支持 获取用户全部信息
  */

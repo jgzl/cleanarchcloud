@@ -10,7 +10,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * @author lihaifeng
- * @date 2018/10/8
+ * @date 2020/10/8
  * 认证失败事件处理器
  */
 public abstract class AbstractAuthenticationFailureEvenHandler implements

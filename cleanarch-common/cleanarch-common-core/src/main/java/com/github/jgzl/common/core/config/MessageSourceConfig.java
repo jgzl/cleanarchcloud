@@ -6,7 +6,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 
 /**
  * @author lihaifeng
- * @date 2018/11/14
+ * @date 2020/11/14
  * 国际化配置
  */
 @Configuration

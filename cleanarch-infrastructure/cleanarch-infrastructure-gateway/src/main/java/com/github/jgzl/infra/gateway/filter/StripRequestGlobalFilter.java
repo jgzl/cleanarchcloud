@@ -18,7 +18,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.a
  *     1. 对请求头中参数进行处理 from 参数进行清洗
  *     2. 重写StripPrefix = 1,支持全局
  * @author lihaifeng
- * @date 2018/10/8
+ * @date 2020/10/8
  */
 @Component
 public class StripRequestGlobalFilter implements GlobalFilter, Ordered {

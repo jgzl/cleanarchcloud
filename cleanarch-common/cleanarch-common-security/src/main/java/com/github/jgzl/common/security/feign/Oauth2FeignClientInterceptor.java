@@ -11,7 +11,7 @@ import java.util.Collection;
 
 /**
  * @author lihaifeng
- * @date 2018/8/13
+ * @date 2020/8/13
  * 扩展OAuth2FeignRequestInterceptor
  */
 @Slf4j

@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 
 /**
  * @author lihaifeng
- * @date 2018/6/22
+ * @date 2020/6/22
  * 认证相关配置
  */
 @Order(101)

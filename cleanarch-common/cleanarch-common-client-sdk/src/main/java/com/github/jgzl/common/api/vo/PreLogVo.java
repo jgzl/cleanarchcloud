@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @author lihaifeng
- * @date 2018/8/27 前端日志vo
+ * @date 2020/8/27 前端日志vo
  */
 @Data
 public class PreLogVo {

@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author lihaifeng
- * @date 2019/4/13
+ * @date 2020/4/13
  * 资源暴露处理器(资源服务层级内部调用URL暴露)
  */
 @Slf4j

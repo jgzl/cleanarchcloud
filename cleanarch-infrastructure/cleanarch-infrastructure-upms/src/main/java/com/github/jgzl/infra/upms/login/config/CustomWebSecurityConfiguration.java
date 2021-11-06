@@ -36,7 +36,7 @@ import java.util.UUID;
  * webSecurity 权限控制类
  *
  * @author lihaifeng
- * @date 2018/7/24 15:58
+ * @date 2020/7/24 15:58
  * @see SecurityFilterAutoConfiguration
  */
 @Configuration

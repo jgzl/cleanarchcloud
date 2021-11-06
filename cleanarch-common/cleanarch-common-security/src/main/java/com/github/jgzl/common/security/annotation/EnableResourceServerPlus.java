@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 /**
  * @author lihaifeng
- * @date 2018/11/10
+ * @date 2020/11/10
  * 资源服务注解
  */
 @Documented

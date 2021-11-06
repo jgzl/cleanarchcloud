@@ -85,7 +85,7 @@ public class ThirdAuthenticationFilter extends AbstractAuthenticationProcessingF
 	private String getCallbackType(HttpServletRequest request) {
 		String uri = request.getRequestURI();
 		int end = uri.length() - PathConstants.LOGIN_THIRD_CALLBACK.length();
-		int start = PathConstants.LOGIN_MODULE_THIRD_PATH.length();
+		int start = PathConstants.LOGIN_MODULE_THIRD_PATH.length()+1;
 		if(start == end) {
 			log.warn("【justauth 第三方登录 response】回调类型为空，uri={}", uri);
 			return null;

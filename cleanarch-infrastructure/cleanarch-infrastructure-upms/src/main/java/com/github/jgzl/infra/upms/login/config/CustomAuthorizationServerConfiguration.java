@@ -24,7 +24,7 @@ import javax.sql.DataSource;
  * 认证服务器配置抽象
  *
  * @author lihaifeng
- * @date 2018/7/24 16:10
+ * @date 2020/7/24 16:10
  */
 @AllArgsConstructor
 @Configuration

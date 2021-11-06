@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * @author lihaifeng
- * @date 2018/11/10
+ * @date 2020/11/10
  */
 @Slf4j
 @ComponentScan("com.github.jgzl.common.security")

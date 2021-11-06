@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
- * @date 2018/11/16
+ * @date 2020/11/16
  * OAuth2 异常格式化
  */
 @Slf4j

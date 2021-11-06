@@ -4,7 +4,7 @@ import com.github.jgzl.common.security.component.CustomOauth2ExceptionSerializer
 
 /**
  * @author lihaifeng
- * @date 2018/7/8
+ * @date 2020/7/8
  */
 @JsonSerialize(using = CustomOauth2ExceptionSerializer.class)
 public class InvalidException extends CustomOauth2Exception {

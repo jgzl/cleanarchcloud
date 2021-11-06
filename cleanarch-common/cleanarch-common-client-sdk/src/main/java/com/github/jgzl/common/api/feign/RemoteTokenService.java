@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @author lihaifeng
- * @date 2018/9/4
+ * @date 2020/9/4
  */
 @FeignClient(contextId = "remoteTokenService", value = ServiceNameConstants.UPMS_SERVICE)
 public interface RemoteTokenService {

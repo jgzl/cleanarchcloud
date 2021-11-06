@@ -15,8 +15,8 @@ import org.springframework.security.access.AccessDeniedException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author lengleng
- * @date 2018/11/26
+ * @author lihaifeng
+ * @date 2020/11/26
  * 服务间接口不鉴权处理逻辑
  */
 @Slf4j

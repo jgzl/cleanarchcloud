@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 /**
  * @author lihaifeng
- * @date 2018/6/28
+ * @date 2020/6/28
  */
 @FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.LOG_SERVICE)
 public interface RemoteLogService {

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author lihaifeng
- * @date 2018/7/8
+ * @date 2020/7/8
  */
 @JsonSerialize(using = CustomOauth2ExceptionSerializer.class)
 public class ForbiddenException extends CustomOauth2Exception {

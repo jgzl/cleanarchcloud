@@ -21,7 +21,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * @author lihaifeng
- * @date 2019/4/14
+ * @date 2020/4/14
  * 注入AccessTokenContextRelay 解决feign 传递token 为空问题
  */
 @Configuration

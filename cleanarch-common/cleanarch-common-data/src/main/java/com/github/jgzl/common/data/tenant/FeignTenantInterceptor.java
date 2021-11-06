@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng
- * @date 2018/9/14
+ * @date 2020/9/14
  */
 @Slf4j
 public class FeignTenantInterceptor implements RequestInterceptor {

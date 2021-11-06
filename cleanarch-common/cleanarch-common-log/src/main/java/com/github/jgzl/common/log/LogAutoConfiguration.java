@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * @author lihaifeng
- * @date 2018/6/28
+ * @date 2020/6/28
  * 日志自动配置
  */
 @EnableAsync
