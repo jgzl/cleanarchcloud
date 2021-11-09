@@ -17,15 +17,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-core</artifactId>
+			<artifactId>common-framework-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-data</artifactId>
+			<artifactId>data-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>cleanarch-common-security</artifactId>
+			<artifactId>security-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>cleanarch-common-framework</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>${revision}</version>
+	</parent>
+
+	<artifactId>data-spring-boot-starter</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<description>通用资源::数据操作模块</description>
+	<name>通用资源::数据操作模块</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>common-framework-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>common-framework-client-sdk</artifactId>
+		</dependency>
+	</dependencies>
+
+
+</project>

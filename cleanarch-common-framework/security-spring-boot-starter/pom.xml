@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>cleanarch-common-framework</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>security-spring-boot-starter</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<description>通用资源::认证权限模块</description>
+	<name>通用资源::认证权限模块</name>
+
+	<dependencies>
+		<!--工具类核心包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>common-framework-core</artifactId>
+		</dependency>
+		<!--数据库操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>data-spring-boot-starter</artifactId>
+		</dependency>
+		<!--数据库操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>redis-spring-boot-starter</artifactId>
+		</dependency>
+		<!--接口操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>common-framework-client-sdk</artifactId>
+		</dependency>
+		<!--OpenFeign操作包-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>feign-spring-boot-starter</artifactId>
+		</dependency>
+		<!--安全模块 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+		<!--feign 依赖-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

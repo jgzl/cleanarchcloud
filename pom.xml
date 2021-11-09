@@ -18,7 +18,8 @@
 	<url>https://blog.dlihaifeng.com</url>
 
 	<modules>
-		<module>cleanarch-common</module>
+		<module>cleanarch-common-framework</module>
+		<module>cleanarch-dependencies-bom</module>
 		<module>cleanarch-infrastructure</module>
 		<module>cleanarch-business</module>
 	</modules>
@@ -41,7 +42,6 @@
 		<cxf.rs.version>3.4.4</cxf.rs.version>
 		<cxf.rs.json>2.12.3</cxf.rs.json>
 		<druid.starter.version>1.2.6</druid.starter.version>
-		<flowable.starter.version>6.6.0</flowable.starter.version>
 		<camunda.starter.version>7.15.0</camunda.starter.version>
 		<guava.version>30.1.1-jre</guava.version>
 		<hutool.version>5.7.15</hutool.version>
@@ -153,15 +153,10 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>cleanarch-common-bom</artifactId>
+				<artifactId>cleanarch-dependencies-bom</artifactId>
 				<version>${revision}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.lmax</groupId>
-				<artifactId>disruptor</artifactId>
-				<version>${disruptor.version}</version>
 			</dependency>
 			<!--  实体类转换  -->
 			<dependency>
@@ -186,7 +181,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.datatype</groupId>
-				<artifactId>jackson-datatype-jsr353</artifactId>
+				<artifactId>jackson-datatype-jsr310</artifactId>
 				<version>${jackson.jsr.version}</version>
 			</dependency>
 			<dependency>
@@ -204,11 +199,6 @@
 				<artifactId>transmittable-thread-local</artifactId>
 				<groupId>com.alibaba</groupId>
 				<version>${ttl.version}</version>
-			</dependency>
-			<dependency>
-				<artifactId>keycloak-spring-boot-starter</artifactId>
-				<groupId>org.keycloak</groupId>
-				<version>${keycloak.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
@@ -241,11 +231,6 @@
 				<version>${druid.starter.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.flowable</groupId>
-				<artifactId>flowable-spring-boot-starter</artifactId>
-				<version>${flowable.starter.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.camunda.bpm.springboot</groupId>
 				<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
 				<version>${camunda.starter.version}</version>
@@ -259,11 +244,6 @@
 			<dependency>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
-				<version>${cxf.rs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-rt-features-logging</artifactId>
 				<version>${cxf.rs.version}</version>
 			</dependency>
 			<dependency>

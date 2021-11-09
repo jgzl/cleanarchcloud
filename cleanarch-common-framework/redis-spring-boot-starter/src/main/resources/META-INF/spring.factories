@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.jgzl.common.cache.MultiLevelCacheAutoConfiguration,\
+  com.github.jgzl.common.cache.ExtendCacheAutoConfiguration
