@@ -1,6 +1,5 @@
 package com.github.jgzl.common.core.properties;
 
-import com.github.jgzl.common.core.constant.CommonConstants;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * @author oathsign
  */
 @Data
-@ConfigurationProperties(prefix = CommonConstants.SYS_NAME+".tenant")
+@ConfigurationProperties(prefix = "framework.tenant")
 public class TenantConfigProperties {
 
 	/**

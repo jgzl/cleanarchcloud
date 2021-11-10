@@ -1,20 +1,19 @@
 package com.github.jgzl.common.security.component;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+import cn.hutool.http.HttpStatus;
 import cn.hutool.json.JSONUtil;
-import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.core.util.Result;
+import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import cn.hutool.http.HttpStatus;
-import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author lihaifeng
@@ -34,10 +33,9 @@ public class CustomResourceAuthExceptionEntryPoint implements AuthenticationEntr
 		log.info("====================自定义资源登录异常====================");
 		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		Result<String> result = new Result<>();
-		result.setCode(CommonConstants.FAIL);
+		Result<String> result = Result.fail("自定义资源登录异常");
 		if (authException != null) {
-			result.setMsg(authException.getMessage());
+			result.setMessage(authException.getMessage());
 			result.setData(authException.getMessage());
 		}
 		response.setStatus(HttpStatus.HTTP_UNAUTHORIZED);

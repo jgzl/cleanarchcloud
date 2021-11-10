@@ -11,12 +11,8 @@
 
 	<artifactId>redis-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::数据缓存模块</description>
-	<name>通用资源::数据缓存模块</name>
-
-	<properties>
-		<redisson.version>3.16.2</redisson.version>
-	</properties>
+	<description>通用资源::缓存数据库操作模块</description>
+	<name>通用资源::缓存数据库操作模块</name>
 
 	<dependencies>
 		<dependency>
@@ -38,7 +34,6 @@
 		<dependency>
 			<groupId>org.redisson</groupId>
 			<artifactId>redisson-spring-boot-starter</artifactId>
-			<version>${redisson.version}</version>
 		</dependency>
 
 		<dependency>

@@ -36,9 +36,9 @@ public class UsernamePasswordAuthenticationFailureHandler implements Authenticat
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		if (exception instanceof BadCredentialsException) {
-			response.getWriter().write(JSONUtil.toJsonStr(Result.failed("密码错误")));
+			response.getWriter().write(JSONUtil.toJsonStr(Result.fail("密码错误")));
 		}else {
-			response.getWriter().write(JSONUtil.toJsonStr(Result.failed(exception.getMessage())));
+			response.getWriter().write(JSONUtil.toJsonStr(Result.fail(exception.getMessage())));
 		}
 	}
 }

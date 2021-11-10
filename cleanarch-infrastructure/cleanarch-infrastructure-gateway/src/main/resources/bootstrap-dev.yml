@@ -1,5 +1,10 @@
 spring:
   cloud:
+    gateway:
+      # 动态路由
+      dynamic-route:
+        type: redis
+        enabled: true
     nacos:
       server-addr: localhost:8848
       config:
@@ -12,32 +17,32 @@ spring:
       discovery:
         namespace: business-dev
         server-addr: ${spring.cloud.nacos.server-addr}
-    sentinel:
-      transport:
-        dashboard: localhost:8888
-      scg:
-        fallback:
-          response-status: 426
-          response-body: "{'code':'426' , 'message':'请求频繁，请稍后重试'}"
-      datasource:
-        # 名称随意
-        gw-api:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-gateway-api-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: gw-api-group
-        gw-flow:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-gateway-flow-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: gw-flow
-      eager: true
-      filter:
-        enabled: false
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8888
+#      scg:
+#        fallback:
+#          response-status: 426
+#          response-body: "{'code':'426' , 'message':'请求频繁，请稍后重试'}"
+#      datasource:
+#        # 名称随意
+#        gw-api:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-gateway-api-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: gw-api-group
+#        gw-flow:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-gateway-flow-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: gw-flow
+#      eager: true
+#      filter:
+#        enabled: false
   redis:
     host: 127.0.0.1
     password: 123456

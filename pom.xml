@@ -44,12 +44,15 @@
 		<druid.starter.version>1.2.6</druid.starter.version>
 		<camunda.starter.version>7.15.0</camunda.starter.version>
 		<guava.version>30.1.1-jre</guava.version>
+		<xxl-job.version>2.3.0</xxl-job.version>
 		<hutool.version>5.7.15</hutool.version>
 		<javassist.version>3.28.0-GA</javassist.version>
 		<jwt.version>3.16.0</jwt.version>
 		<keycloak.version>14.0.0</keycloak.version>
+		<redisson.version>3.16.2</redisson.version>
 		<mybatisplus.starter.version>3.4.3.4</mybatisplus.starter.version>
 		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
+		<dynamic-datasource.version>3.4.1</dynamic-datasource.version>
 		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
 		<ttl.version>2.12.1</ttl.version>
 		<smartdoc.version>2.2.0</smartdoc.version>
@@ -175,6 +178,11 @@
 				<version>${guava.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.xuxueli</groupId>
+				<artifactId>xxl-job-core</artifactId>
+				<version>${xxl-job.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis-typehandlers-jsr310</artifactId>
 				<version>${mybatis.jsr.version}</version>
@@ -205,6 +213,12 @@
 				<artifactId>mybatis-plus-boot-starter</artifactId>
 				<version>${mybatisplus.starter.version}</version>
 			</dependency>
+			<!-- redission -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-annotation</artifactId>
@@ -219,6 +233,11 @@
 				<groupId>com.baomidou</groupId>
 				<artifactId>mybatis-plus-generator</artifactId>
 				<version>${mybatisplus.generator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+				<version>${dynamic-datasource.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shardingsphere</groupId>

@@ -57,7 +57,7 @@ public class SysFileServiceImpl extends ServiceImpl<SysFileMapper, SysFile> impl
 		}
 		catch (Exception e) {
 			log.error("上传失败", e);
-			return Result.failed(e.getLocalizedMessage());
+			return Result.fail(e.getLocalizedMessage());
 		}
 		return Result.ok(resultMap);
 	}

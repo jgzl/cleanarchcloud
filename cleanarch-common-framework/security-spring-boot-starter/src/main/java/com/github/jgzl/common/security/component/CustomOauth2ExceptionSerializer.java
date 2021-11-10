@@ -1,8 +1,9 @@
 package com.github.jgzl.common.security.component;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.github.jgzl.common.core.constant.CommonConstants;
+import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.exception.CustomOauth2Exception;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ public class CustomOauth2ExceptionSerializer extends StdSerializer<CustomOauth2E
 	@SneakyThrows
 	public void serialize(CustomOauth2Exception value, JsonGenerator gen, SerializerProvider provider) {
 		gen.writeStartObject();
-		gen.writeObjectField("code", CommonConstants.FAIL);
+		gen.writeObjectField("code", Result.FAIL_CODE);
 		gen.writeStringField("msg", value.getMessage());
 		gen.writeStringField("data", value.getOAuth2ErrorCode());
 		gen.writeEndObject();

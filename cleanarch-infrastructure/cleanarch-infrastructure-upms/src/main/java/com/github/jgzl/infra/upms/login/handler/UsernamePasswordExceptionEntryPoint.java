@@ -30,6 +30,6 @@ public class UsernamePasswordExceptionEntryPoint implements AuthenticationEntryP
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		response.getWriter().write(JSONUtil.toJsonStr(Result.failed(authException.getMessage())));
+		response.getWriter().write(JSONUtil.toJsonStr(Result.fail(authException.getMessage())));
 	}
 }

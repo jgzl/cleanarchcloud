@@ -29,6 +29,7 @@
 		<module>data-spring-boot-starter</module>
 		<module>redis-spring-boot-starter</module>
 		<module>websocket-spring-boot-starter</module>
+		<module>xxl-job-spring-boot-starter</module>
 		<module>file-spring-boot-starter</module>
 		<module>feign-spring-boot-starter</module>
 		<module>log-spring-boot-starter</module>

@@ -1,6 +1,6 @@
 package com.github.jgzl.common.core.exception;
 
-import com.github.jgzl.common.core.enums.IntEnum;
+import com.github.jgzl.common.core.model.enums.IntEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

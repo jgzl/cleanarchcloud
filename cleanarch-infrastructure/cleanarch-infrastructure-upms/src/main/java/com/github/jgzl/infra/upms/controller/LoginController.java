@@ -102,11 +102,11 @@ public class LoginController {
 		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + mobile);
 		if (tempCode != null) {
 			log.error("用户:{},验证码{},未失效", mobile, tempCode);
-			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
+			return Result.fail("验证码: " + tempCode + " 未失效，请失效后再次申请");
 		}
 		if (userService.findUserByMobile(mobile) == null) {
 			log.error("根据用户手机号:{}, 查询用户为空", mobile);
-			return Result.failed("手机号不存在");
+			return Result.fail("手机号不存在");
 		}
 		String code = RandomUtil.randomNumbers(6);
 		log.info("短信发送请求消息中心 -> 手机号:{} -> 验证码：{}", mobile, code);
@@ -126,11 +126,11 @@ public class LoginController {
 		Object tempCode = redisRepository.get(CacheConstants.DEFAULT_CODE_KEY + email);
 		if (tempCode != null) {
 			log.error("用户:{},验证码{},未失效", email, tempCode);
-			return Result.failed("验证码: " + tempCode + " 未失效，请失效后再次申请");
+			return Result.fail("验证码: " + tempCode + " 未失效，请失效后再次申请");
 		}
 		if (userService.findUserByEmail(email) == null) {
 			log.error("根据用户邮箱:{}, 查询用户为空", email);
-			return Result.failed("邮箱不存在");
+			return Result.fail("邮箱不存在");
 		}
 		String code = RandomUtil.randomNumbers(6);
 		log.info("邮箱发送请求消息中心 -> 邮箱:{} -> 验证码：{}", email, code);

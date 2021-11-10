@@ -11,8 +11,8 @@
 
 	<artifactId>data-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::数据操作模块</description>
-	<name>通用资源::数据操作模块</name>
+	<description>通用资源::关系数据库操作模块</description>
+	<name>通用资源::关系数据库操作模块</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
@@ -21,6 +21,10 @@
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>common-framework-client-sdk</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
 

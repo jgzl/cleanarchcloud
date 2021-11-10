@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HeartBeatController {
 	@GetMapping
 	public Result<String> heartbeat(){
-		return Result.ok(null,"成功接收心跳请求");
+		return Result.ok("成功接收心跳请求");
 	}
 }

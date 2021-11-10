@@ -38,12 +38,12 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 		SysDict dict = this.getById(id);
 		// 系统内置
 		if (DictTypeEnum.SYSTEM.getType().equals(dict.getSystem())) {
-			return Result.failed("系统内置字典不能删除");
+			return Result.fail("系统内置字典不能删除");
 		}
 
 		baseMapper.deleteById(id);
 		dictItemMapper.delete(Wrappers.<SysDictItem>lambdaQuery().eq(SysDictItem::getDictId, id));
-		return Result.ok();
+		return Result.success();
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 		SysDict sysDict = this.getById(dict.getId());
 		// 系统内置
 		if (DictTypeEnum.SYSTEM.getType().equals(sysDict.getSystem())) {
-			return Result.failed("系统内置字典不能修改");
+			return Result.fail("系统内置字典不能修改");
 		}
 		return Result.ok(this.updateById(dict));
 	}

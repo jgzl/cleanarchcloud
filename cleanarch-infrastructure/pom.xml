@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright (c) 2019-2019
-  -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -22,7 +19,7 @@
 		<module>cleanarch-infrastructure-codegen</module>
 		<module>cleanarch-infrastructure-log</module>
 		<module>cleanarch-infrastructure-camunda</module>
-		<module>cleanarch-infrastructure-admin</module>
+		<module>cleanarch-infrastructure-monitor</module>
 		<module>cleanarch-infrastructure-gateway</module>
 	</modules>
 

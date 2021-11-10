@@ -29,6 +29,6 @@ public class UsernamePasswordAccessDeniedHandler implements AccessDeniedHandler 
 		response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		response.getWriter().write(JSONUtil.toJsonStr(Result.failed(accessDeniedException.getMessage())));
+		response.getWriter().write(JSONUtil.toJsonStr(Result.fail(accessDeniedException.getMessage())));
 	}
 }

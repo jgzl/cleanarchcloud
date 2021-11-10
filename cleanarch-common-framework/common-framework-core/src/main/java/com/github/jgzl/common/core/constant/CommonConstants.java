@@ -54,15 +54,6 @@ public interface CommonConstants {
 	String UTF8 = "UTF-8";
 
 	/**
-	 * 成功标记
-	 */
-	String SUCCESS = "0";
-	/**
-	 * 失败标记
-	 */
-	String FAIL = "1";
-
-	/**
 	 * 默认角色
 	 */
 	String ROLE_DEFAULT = "USER";

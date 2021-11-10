@@ -18,6 +18,6 @@ public class IndexController {
 	@GetMapping("/")
 	@ResponseBody
 	public Result<String> index() {
-		return Result.ok();
+		return Result.success();
 	}
 }

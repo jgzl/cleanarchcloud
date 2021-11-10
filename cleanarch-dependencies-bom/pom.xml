@@ -53,6 +53,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
+				<artifactId>xxl-job-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
 				<artifactId>file-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>

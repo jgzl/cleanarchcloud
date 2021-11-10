@@ -37,7 +37,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper, SysDi
 		SysDict dict = dictService.getById(dictItem.getDictId());
 		// 系统内置
 		if (DictTypeEnum.SYSTEM.getType().equals(dict.getSystem())) {
-			return Result.failed("系统内置字典项目不能删除");
+			return Result.fail("系统内置字典项目不能删除");
 		}
 		return Result.ok(this.removeById(id));
 	}
@@ -54,7 +54,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper, SysDi
 		SysDict dict = dictService.getById(item.getDictId());
 		// 系统内置
 		if (DictTypeEnum.SYSTEM.getType().equals(dict.getSystem())) {
-			return Result.failed("系统内置字典项目不能删除");
+			return Result.fail("系统内置字典项目不能删除");
 		}
 		return Result.ok(this.updateById(item));
 	}

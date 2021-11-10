@@ -1,6 +1,6 @@
 package com.github.jgzl.common.cache.support;
 import com.github.benmanes.caffeine.cache.Cache;
-import com.github.jgzl.common.cache.properties.CacheConfigProperties;
+import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
@@ -40,15 +40,15 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	private final Map<String, ReentrantLock> keyLockMap = new ConcurrentHashMap<>();
 
 	public RedisCaffeineCache(String name, RedisTemplate<Object, Object> stringKeyRedisTemplate,
-			Cache<Object, Object> caffeineCache, CacheConfigProperties cacheConfigProperties) {
-		super(cacheConfigProperties.isCacheNullValues());
+			Cache<Object, Object> caffeineCache, MultiLevelCacheConfigProperties multiLevelCacheConfigProperties) {
+		super(multiLevelCacheConfigProperties.isCacheNullValues());
 		this.name = name;
 		this.stringKeyRedisTemplate = stringKeyRedisTemplate;
 		this.caffeineCache = caffeineCache;
-		this.cachePrefix = cacheConfigProperties.getCachePrefix();
-		this.defaultExpiration = cacheConfigProperties.getRedis().getDefaultExpiration();
-		this.expires = cacheConfigProperties.getRedis().getExpires();
-		this.topic = cacheConfigProperties.getRedis().getTopic();
+		this.cachePrefix = multiLevelCacheConfigProperties.getCachePrefix();
+		this.defaultExpiration = multiLevelCacheConfigProperties.getRedis().getDefaultExpiration();
+		this.expires = multiLevelCacheConfigProperties.getRedis().getExpires();
+		this.topic = multiLevelCacheConfigProperties.getRedis().getTopic();
 	}
 
 	@Override
