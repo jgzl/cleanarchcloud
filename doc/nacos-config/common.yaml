@@ -15,7 +15,7 @@ management:
 mybatis-plus:
   mapper-locations: classpath*:mybatis.mapper/*.xml
   typeAliasesPackage: com.github.jgzl.**.entity;com.github.jgzl.**.typehandler
-  typeEnumsPackage: com.github.jgzl.**.enums
+  typeEnumsPackage: com.github.jgzl.**.enums,com.github.jgzl.common.data.mybatis
   global-config:
     db-config:
       id-type: auto
