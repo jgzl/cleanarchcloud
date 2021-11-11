@@ -1,6 +1,6 @@
 package com.github.jgzl.infra.gateway.handler;
 
-import com.github.jgzl.common.api.feign.RemoteOauth2Service;
+import com.github.jgzl.common.api.feign.upms.RemoteOauth2Service;
 import com.github.jgzl.common.core.util.Result;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

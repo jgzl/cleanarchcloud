@@ -24,7 +24,10 @@
 		<version>${revision}</version>
 	</parent>
 	<modules>
+		<module>common-framework-agent</module>
+		<module>common-framework-client-sdk</module>
 		<module>common-framework-core</module>
+		<module>common-spring-boot-starter</module>
 		<module>security-spring-boot-starter</module>
 		<module>data-spring-boot-starter</module>
 		<module>redis-spring-boot-starter</module>
@@ -33,8 +36,6 @@
 		<module>file-spring-boot-starter</module>
 		<module>feign-spring-boot-starter</module>
 		<module>log-spring-boot-starter</module>
-		<module>common-framework-client-sdk</module>
-		<module>common-framework-agent</module>
 	</modules>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-common-framework</artifactId>

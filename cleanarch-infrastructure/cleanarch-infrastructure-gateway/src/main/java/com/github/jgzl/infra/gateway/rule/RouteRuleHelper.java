@@ -43,7 +43,6 @@ public class RouteRuleHelper {
     private final RedisRouteDynamicGatewayService redisRouteDynamicGatewayService;
     private final DiscoveryClient discoveryClient;
 
-
     @SneakyThrows
     public void saveOrUpdate(RouteRule rule) {
         if (rule == null) {

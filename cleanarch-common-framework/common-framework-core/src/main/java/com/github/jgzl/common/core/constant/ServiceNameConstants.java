@@ -12,14 +12,9 @@ public interface ServiceNameConstants {
 	String UPMS_SERVICE = "cleanarch-infrastructure-upms";
 
 	/**
-	 * 代码生成器模块
+	 * 工具中心-日志,代码生成器
 	 */
-	String CODE_GEN_SERVICE = "cleanarch-infrastructure-codegen";
-
-	/**
-	 * 日志中心
-	 */
-	String LOG_SERVICE = "cleanarch-infrastructure-log";
+	String TOOLS_SERVICE = "cleanarch-infrastructure-tools";
 
 	/**
 	 * 流程中心

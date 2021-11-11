@@ -23,11 +23,11 @@
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
 		</dependency>
-		<!-- Sentinel-nacos -->
-		<dependency>
-			<groupId>com.alibaba.csp</groupId>
-			<artifactId>sentinel-datasource-nacos</artifactId>
-		</dependency>
+<!--		&lt;!&ndash; Sentinel-nacos &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.alibaba.csp</groupId>-->
+<!--			<artifactId>sentinel-datasource-nacos</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -73,6 +73,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
+			<artifactId>websocket-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
 			<artifactId>data-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
@@ -104,6 +108,11 @@
 		<dependency>
 			<groupId>com.xkcoding.justauth</groupId>
 			<artifactId>justauth-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.whvcse</groupId>
+			<artifactId>easy-captcha</artifactId>
+			<version>1.6.2</version>
 		</dependency>
 	</dependencies>
 

@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.jgzl.common.log.LogAutoConfiguration
+  LogAutoConfiguration
 org.springframework.boot.env.EnvironmentPostProcessor=\
-  com.github.jgzl.common.log.init.ApplicationLoggerInitializer
+  ApplicationLoggerInitializer

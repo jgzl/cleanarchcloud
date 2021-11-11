@@ -4,8 +4,8 @@
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<artifactId>cleanarch-common-framework</artifactId>
 		<groupId>com.github.jgzl</groupId>
+		<artifactId>cleanarch-common-framework</artifactId>
 		<version>${revision}</version>
 	</parent>
 
@@ -25,6 +25,10 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
 	</dependencies>
 

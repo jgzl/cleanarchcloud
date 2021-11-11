@@ -15,12 +15,12 @@
 	<description>基础服务::基础设施组件POM模块</description>
 
 	<modules>
-		<module>cleanarch-infrastructure-upms</module>
-		<module>cleanarch-infrastructure-codegen</module>
-		<module>cleanarch-infrastructure-log</module>
-		<module>cleanarch-infrastructure-camunda</module>
-		<module>cleanarch-infrastructure-monitor</module>
+		<module>cleanarch-infrastructure-tools</module>
 		<module>cleanarch-infrastructure-gateway</module>
+		<module>cleanarch-infrastructure-job-admin</module>
+		<module>cleanarch-infrastructure-monitor</module>
+		<module>cleanarch-infrastructure-upms</module>
+		<module>cleanarch-infrastructure-workflow</module>
 	</modules>
 
 	<dependencies>

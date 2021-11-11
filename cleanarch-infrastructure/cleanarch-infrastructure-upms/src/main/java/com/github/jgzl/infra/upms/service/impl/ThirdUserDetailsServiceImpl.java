@@ -2,33 +2,23 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.jgzl.common.api.dataobject.SysUser;
 import com.github.jgzl.common.api.vo.SysUserVo;
 import com.github.jgzl.common.api.vo.UserVo;
-import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.security.exception.BusinessException;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.infra.upms.convert.SysUserConvert;
-import com.github.jgzl.infra.upms.dataobject.SysSocialUser;
-import com.github.jgzl.infra.upms.service.SysSocialUserAuthService;
-import com.github.jgzl.infra.upms.service.SysSocialUserService;
 import com.github.jgzl.infra.upms.service.SysUserService;
 import com.github.jgzl.infra.upms.service.ThirdUserDetailsService;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import me.zhyd.oauth.model.AuthUser;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * 用户信息获取
@@ -48,7 +38,6 @@ public class ThirdUserDetailsServiceImpl implements ThirdUserDetailsService {
 		AuthUser authUser = (AuthUser)authentication.getPrincipal();
 		String uuid = authUser.getUuid();
 		String source = authUser.getSource();
-
 		SysUser sysUser;
 		SysUserVo userVo = SecurityUtils.getUser();
 		List<SysUser> sysUsers = userService.findUserBySocialUserUuidAndSource(uuid,source);

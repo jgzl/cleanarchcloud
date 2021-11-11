@@ -5,8 +5,8 @@
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-		<artifactId>cleanarch-common-framework</artifactId>
 		<groupId>com.github.jgzl</groupId>
+		<artifactId>cleanarch-common-framework</artifactId>
 		<version>${revision}</version>
 	</parent>
 	<artifactId>file-spring-boot-starter</artifactId>

@@ -42,7 +42,7 @@
 		<cxf.rs.version>3.4.4</cxf.rs.version>
 		<cxf.rs.json>2.12.3</cxf.rs.json>
 		<druid.starter.version>1.2.6</druid.starter.version>
-		<camunda.starter.version>7.15.0</camunda.starter.version>
+		<camunda.starter.version>7.16.0</camunda.starter.version>
 		<guava.version>30.1.1-jre</guava.version>
 		<xxl-job.version>2.3.0</xxl-job.version>
 		<hutool.version>5.7.15</hutool.version>
@@ -61,6 +61,7 @@
 		<jackson.jsr.version>2.12.3</jackson.jsr.version>
 		<mybatis.jsr.version>1.0.2</mybatis.jsr.version>
 		<okhttp.version>4.9.2</okhttp.version>
+		<ip2region.version>1.7.2</ip2region.version>
 		<justauth.version>1.16.5</justauth.version>
 		<justauth.starter.version>1.4.0</justauth.starter.version>
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
@@ -308,6 +309,11 @@
 				<groupId>com.squareup.okhttp3</groupId>
 				<artifactId>okhttp</artifactId>
 				<version>${okhttp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.lionsoul</groupId>
+				<artifactId>ip2region</artifactId>
+				<version>${ip2region.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
