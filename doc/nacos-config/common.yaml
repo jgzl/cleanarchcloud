@@ -13,17 +13,18 @@ management:
       show-details: always
 
 mybatis-plus:
-  tenant-enable: true
   mapper-locations: classpath*:mybatis.mapper/*.xml
+  typeAliasesPackage: com.github.jgzl.**.entity;com.github.jgzl.**.typehandler
+  typeEnumsPackage: com.github.jgzl.**.enums
   global-config:
-    banner: false
     db-config:
+      id-type: auto
+      insert-strategy: NOT_NULL
+      update-strategy: NOT_NULL
       select-strategy: not_empty
-      insert-strategy: not_empty
-      update-strategy: not_empty
-      logic-delete-field: deleted
-      logic-delete-value: 1
-      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
 
 feign:
   sentinel:

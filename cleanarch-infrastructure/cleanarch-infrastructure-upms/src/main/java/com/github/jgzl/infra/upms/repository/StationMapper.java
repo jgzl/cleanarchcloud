@@ -7,6 +7,7 @@ import com.github.jgzl.common.data.configuration.dynamic.ann.DynamicDS;
 import com.github.jgzl.common.data.mybatis.SuperMapper;
 import com.github.jgzl.common.data.mybatis.auth.DataScope;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.Station;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Repository;
  * @since 2019-07-22
  */
 @DynamicDS
-@Repository
+@Mapper
 public interface StationMapper extends SuperMapper<Station> {
     /**
      * 分页查询岗位信息（含角色）

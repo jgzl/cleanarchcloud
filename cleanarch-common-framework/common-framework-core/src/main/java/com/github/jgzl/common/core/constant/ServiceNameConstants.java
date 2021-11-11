@@ -6,6 +6,12 @@ package com.github.jgzl.common.core.constant;
  * 服务名称
  */
 public interface ServiceNameConstants {
+
+	/**
+	 * 网关中心
+	 */
+	String GATEWAY_SERVICE = "cleanarch-infrastructure-gateway";
+
 	/**
 	 * 用户中心
 	 */
@@ -19,5 +25,5 @@ public interface ServiceNameConstants {
 	/**
 	 * 流程中心
 	 */
-	String CAMUNDA_SERVICE = "cleanarch-infrastructure-camunda";
+	String WORKFLOW_SERVICE = "cleanarch-infrastructure-workflow";
 }

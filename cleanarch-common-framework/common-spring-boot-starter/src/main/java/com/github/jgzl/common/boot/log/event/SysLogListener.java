@@ -1,6 +1,6 @@
 package com.github.jgzl.common.boot.log.event;
 
-import com.github.jgzl.common.api.feign.tools.RemoteLogService;
+import com.github.jgzl.common.api.feign.tools.RemoteToolsService;
 import com.github.jgzl.common.api.vo.OptLogDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.function.Consumer;
 @AllArgsConstructor
 public class SysLogListener {
 
-	private final RemoteLogService remoteLogService;
+	private final RemoteToolsService remoteLogService;
 
 	private final Consumer<OptLogDTO> consumer;
 

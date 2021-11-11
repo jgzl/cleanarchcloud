@@ -59,6 +59,7 @@ public class MultiLevelCacheAutoConfiguration extends CachingConfigurerSupport {
 
 	@Bean
 	@ConditionalOnBean(RedisConnectionFactory.class)
+	@ConditionalOnMissingBean
 	public RedisMessageListenerContainer redisMessageListenerContainer(
 			MultiLevelCacheConfigProperties multiLevelCacheConfigProperties,
 			RedisConnectionFactory redisConnectionFactory,

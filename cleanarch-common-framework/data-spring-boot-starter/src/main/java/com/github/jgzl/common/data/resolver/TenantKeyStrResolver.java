@@ -19,7 +19,7 @@ public class TenantKeyStrResolver implements KeyStrResolver {
 	 */
 	@Override
 	public String extract(String in, String split) {
-		return TenantContextHolder.getTenantId() + split + in;
+		return TenantContextHolder.getTenantCode() + split + in;
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class TenantKeyStrResolver implements KeyStrResolver {
 	 */
 	@Override
 	public String key() {
-		return String.valueOf(TenantContextHolder.getTenantId());
+		return String.valueOf(TenantContextHolder.getTenantCode());
 	}
 
 }

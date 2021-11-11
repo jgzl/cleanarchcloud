@@ -1,14 +1,13 @@
 package com.github.jgzl.common.api.feign.upms;
+
 import cn.hutool.system.UserInfo;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
-import com.github.jgzl.common.api.dataobject.SysUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
-import java.util.List;
 
 /**
  * @author lihaifeng
@@ -34,13 +33,5 @@ public interface RemoteUserService {
 	 */
 	@GetMapping("/social/info/{inStr}")
 	Result<UserInfo> social(@PathVariable("inStr") String inStr, @RequestHeader(SecurityConstants.FROM) String from);
-
-	/**
-	 * 查询上级部门的用户信息
-	 * @param username 用户名
-	 * @return R
-	 */
-	@GetMapping("/user/ancestor/{username}")
-	Result<List<SysUser>> ancestorUsers(@PathVariable("username") String username);
 
 }

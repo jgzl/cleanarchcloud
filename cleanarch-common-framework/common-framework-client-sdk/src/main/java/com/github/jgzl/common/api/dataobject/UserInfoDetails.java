@@ -41,7 +41,6 @@ public class UserInfoDetails implements UserDetails, CredentialsContainer, java.
     private Collection<String> roles = new ArrayList<>();
     private Collection<GrantedAuthority> authorities;
 
-
     @Override
     public void eraseCredentials() {
         this.password = null;

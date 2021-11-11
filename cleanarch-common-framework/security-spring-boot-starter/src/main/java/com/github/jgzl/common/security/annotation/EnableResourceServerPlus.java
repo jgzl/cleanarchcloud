@@ -5,8 +5,8 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import com.github.jgzl.common.security.component.CustomResourceServerAutoConfiguration;
-import com.github.jgzl.common.security.component.CustomSecurityBeanDefinitionRegistrar;
+import com.github.jgzl.common.security.component.ExtendResourceServerAutoConfiguration;
+import com.github.jgzl.common.security.component.ExtendSecurityBeanDefinitionRegistrar;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -22,7 +22,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import({CustomResourceServerAutoConfiguration.class, CustomSecurityBeanDefinitionRegistrar.class})
+@Import({ExtendResourceServerAutoConfiguration.class, ExtendSecurityBeanDefinitionRegistrar.class})
 public @interface EnableResourceServerPlus {
 
 }

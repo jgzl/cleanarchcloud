@@ -15,7 +15,7 @@ import com.github.jgzl.infra.upms.domain.enums.ReceiverType;
 import com.github.jgzl.infra.upms.domain.vo.CommonDataResp;
 import com.github.jgzl.infra.upms.domain.vo.StationMessagePublishResp;
 import com.github.jgzl.infra.upms.service.StationMessagePublishService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +31,10 @@ import static com.github.jgzl.infra.upms.domain.converts.StationMessagePublishCo
 @DynamicDS
 @RequestMapping("station_messages_publish")
 @RestController
-@RequiredArgsConstructor
 public class StationMessagePublishController {
 
-    private final StationMessagePublishService stationMessagePublishService;
+	@Autowired
+    private StationMessagePublishService stationMessagePublishService;
 
     @GetMapping
     public Result<IPage<StationMessagePublishResp>> publishList(PageRequest request, String title, Integer level, Integer type) {

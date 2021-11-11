@@ -1,6 +1,5 @@
 package com.github.jgzl.common.websocket;
 
-import com.github.jgzl.common.websocket.utils.SpringContextHolder;
 import com.github.jgzl.common.websocket.utils.WebSocketUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -71,7 +70,5 @@ public abstract class BaseWebSocketEndpoint {
         webSocketManager.onMessage(identifier, message);
     }
 
-    protected WebSocketManager getWebSocketManager() {
-        return SpringContextHolder.getBean(WebSocketManager.WEBSOCKET_MANAGER_NAME, WebSocketManager.class);
-    }
+    protected abstract WebSocketManager getWebSocketManager();
 }

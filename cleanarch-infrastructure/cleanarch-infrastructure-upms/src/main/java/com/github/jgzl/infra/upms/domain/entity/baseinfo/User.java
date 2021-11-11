@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.jgzl.common.core.model.SuperEntity;
 import com.github.jgzl.infra.upms.domain.enums.Sex;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
@@ -84,7 +81,6 @@ public class User extends SuperEntity<Long> {
 
     private Boolean status;
 
-
     /**
      * 名族
      */
@@ -94,7 +90,6 @@ public class User extends SuperEntity<Long> {
      * 学历
      */
     private String education;
-
 
     /**
      * 生日

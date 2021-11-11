@@ -7,6 +7,7 @@ import com.github.jgzl.common.data.mybatis.conditions.query.LbqWrapper;
 import com.github.jgzl.infra.upms.domain.dto.UserSaveDTO;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.User;
 import com.github.jgzl.infra.upms.domain.vo.UserResp;
+import me.zhyd.oauth.model.AuthUser;
 
 import java.util.List;
 
@@ -21,6 +22,27 @@ import java.util.List;
  */
 public interface UserService extends SuperService<User> {
 
+
+	/**
+	 * 根据用户名查找用户
+	 * @param username
+	 * @return
+	 */
+	User findUserByUsername(String username);
+
+	/**
+	 * 根据用户名查找用户
+	 * @param mobile
+	 * @return
+	 */
+	User findUserByMobile(String mobile);
+
+	/**
+	 * 根据用户名查找用户
+	 * @param email
+	 * @return
+	 */
+	User findUserByEmail(String email);
 
     /**
      * 添加用户
@@ -61,4 +83,8 @@ public interface UserService extends SuperService<User> {
      * @param id id
      */
     void deleteById(Long id);
+
+	List<User> findUserBySocialUserUuidAndSource(String uuid, String source);
+
+	void bindSocialUser(AuthUser authUser, Long userId);
 }

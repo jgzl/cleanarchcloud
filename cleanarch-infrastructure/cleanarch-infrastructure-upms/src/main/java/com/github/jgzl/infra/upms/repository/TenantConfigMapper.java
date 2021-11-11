@@ -3,15 +3,15 @@ package com.github.jgzl.infra.upms.repository;
 import com.github.jgzl.common.data.mybatis.SuperMapper;
 import com.github.jgzl.infra.upms.domain.entity.tenant.TenantConfig;
 import com.github.jgzl.infra.upms.domain.vo.TenantDynamicDatasourceVO;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author Levin
  */
-@Repository
+@Mapper
 public interface TenantConfigMapper extends SuperMapper<TenantConfig> {
 
     /**

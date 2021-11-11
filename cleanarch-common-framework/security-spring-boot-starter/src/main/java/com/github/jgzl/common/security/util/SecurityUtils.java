@@ -3,8 +3,6 @@ package com.github.jgzl.common.security.util;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.api.dataobject.UserInfoDetails;
-import com.github.jgzl.common.api.vo.SysUserVo;
-import com.github.jgzl.common.api.vo.UserVo;
 import com.github.jgzl.common.core.exception.CheckedException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,44 +20,6 @@ public class SecurityUtils {
 	 */
 	public static OAuth2Authentication getAuthentication() {
 		return (OAuth2Authentication) SecurityContextHolder.getContext().getAuthentication();
-	}
-
-	/**
-	 * 获取用户
-	 *
-	 * @param authentication
-	 * @return MicroservicePlatformUser
-	 * <p>
-	 */
-	public static SysUserVo getUser(Authentication authentication) {
-		Object principal = authentication.getPrincipal();
-		if (principal instanceof SysUserVo) {
-			return (SysUserVo) principal;
-		}else if(principal instanceof UserVo){
-			UserVo userVo=(UserVo)principal;
-			SysUserVo ssoUserVo=new SysUserVo();
-			ssoUserVo.setUsername(userVo.getUsername());
-			ssoUserVo.setUserId("0");
-			return ssoUserVo;
-		}else if(principal instanceof User){
-			SysUserVo ssoUserVo=new SysUserVo();
-			ssoUserVo.setUsername(((User) principal).getUsername());
-			ssoUserVo.setUserId("0");
-			return ssoUserVo;
-		}
-		return null;
-	}
-
-	/**
-	 * 获取用户
-	 */
-	public static SysUserVo getUser() {
-		Authentication authentication = getAuthentication();
-		if (authentication!=null) {
-			return getUser(authentication);
-		}else {
-			return null;
-		}
 	}
 
 	/**

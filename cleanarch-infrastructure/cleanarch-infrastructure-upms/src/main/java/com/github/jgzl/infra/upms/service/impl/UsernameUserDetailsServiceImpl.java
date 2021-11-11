@@ -1,12 +1,35 @@
 package com.github.jgzl.infra.upms.service.impl;
 
-import com.github.jgzl.common.api.vo.UserVo;
+import com.github.jgzl.common.api.dataobject.UserInfoDetails;
 import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.infra.upms.service.SysUserService;
-import lombok.AllArgsConstructor;
+import com.github.jgzl.common.core.exception.CheckedException;
+import com.github.jgzl.common.core.util.StringUtils;
+import com.github.jgzl.common.data.mybatis.conditions.Wraps;
+import com.github.jgzl.common.data.tenant.TenantContextHolder;
+import com.github.jgzl.infra.upms.domain.entity.baseinfo.Role;
+import com.github.jgzl.infra.upms.domain.entity.baseinfo.User;
+import com.github.jgzl.infra.upms.domain.entity.tenant.Tenant;
+import com.github.jgzl.infra.upms.repository.ResourceMapper;
+import com.github.jgzl.infra.upms.repository.RoleMapper;
+import com.github.jgzl.infra.upms.service.TenantService;
+import com.github.jgzl.infra.upms.service.UserService;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * 用户信息获取
@@ -15,19 +38,64 @@ import org.springframework.stereotype.Service;
  * @date 2020/7/24 17:06
  */
 @Service
-@AllArgsConstructor
-public class UsernameUserDetailsServiceImpl extends AbstractUserDetailService {
+public class UsernameUserDetailsServiceImpl implements UserDetailsService {
 
-    private final SysUserService userService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private TenantService tenantService;
+	@Autowired
+	private RoleMapper roleMapper;
+	@Autowired
+	private ResourceMapper resourceMapper;
 
 	@Cacheable(value = CacheConstants.USER_DETAILS,key = "#username",unless = "#result==null")
 	@Override
-	public UserVo getUserVo(final String username) {
-		// 查询用户信息,包含角色列表
-		UserVo user = userService.findUserByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("用户名["+username+"]不存在");
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userService.findUserByUsername(username);
+		if (user==null) {
+			throw CheckedException.notFound("账户不存在");
 		}
-		return user;
-    }
+		UserInfoDetails info;
+		String tenantCode = TenantContextHolder.getTenantCode();
+		final Tenant tenant = Optional.ofNullable(tenantService.getOne(Wraps.<Tenant>lbQ().eq(Tenant::getCode, tenantCode)))
+				.orElseThrow(() -> CheckedException.notFound("{1}租户不存在", tenantCode));
+		if (!Objects.equals(tenant.getId(),user.getTenantId())) {
+			throw CheckedException.notFound("账户不存在");
+		}
+		info = new UserInfoDetails();
+		info.setTenantCode(tenantCode);
+		info.setTenantId(user.getTenantId());
+		info.setUserId(user.getId());
+		info.setUsername(user.getUsername());
+		info.setRealName(user.getNickName());
+		info.setNickName(user.getNickName());
+		info.setMobile(user.getMobile());
+		info.setEmail(user.getEmail());
+		info.setDescription(user.getDescription());
+		info.setSex(Objects.isNull(user.getSex()) ? null : user.getSex().getValue());
+		info.setEnabled(user.getStatus());
+		info.setAvatar(user.getAvatar());
+		info.setPassword(user.getPassword());
+		setAuthorize(info);
+		return info;
+	}
+
+	/**
+	 * 设置授权信息
+	 *
+	 * @param user user
+	 */
+	private void setAuthorize(UserInfoDetails user) {
+		final List<String> roles = Optional.ofNullable(this.roleMapper.findRoleByUserId(user.getUserId())).orElseGet(Lists::newArrayList)
+				.stream().map(Role::getCode).collect(toList());
+		final List<String> permissions = Optional.ofNullable(this.resourceMapper.queryPermissionByUserId(user.getUserId())).orElseGet(Lists::newArrayList);
+		// 验证角色和登录系统
+		Set<String> authorize = Sets.newHashSet();
+		authorize.addAll(roles);
+		authorize.addAll(permissions);
+		user.setRoles(roles);
+		user.setPermissions(permissions);
+		user.setAuthorities(authorize.stream().filter(StringUtils::isNotBlank).map(SimpleGrantedAuthority::new).collect(Collectors.toSet()));
+	}
 }

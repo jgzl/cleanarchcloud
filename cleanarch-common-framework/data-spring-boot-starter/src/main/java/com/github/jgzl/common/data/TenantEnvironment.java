@@ -45,5 +45,4 @@ public interface TenantEnvironment {
      */
     boolean anonymous();
 
-
 }

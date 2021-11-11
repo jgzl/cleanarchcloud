@@ -1,5 +1,6 @@
 package com.github.jgzl.common.data.configuration.dynamic.feign;
 
+import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.data.configuration.dynamic.event.body.TenantDynamicDatasource;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * @author Levin
  */
-@FeignClient(name = "wemirr-platform-authority", decode404 = true, fallback = TenantFeignClient.TenantFeignClientFallback.class)
+@FeignClient(name = ServiceNameConstants.UPMS_SERVICE, decode404 = true, fallback = TenantFeignClient.TenantFeignClientFallback.class)
 public interface TenantFeignClient {
 
     /**

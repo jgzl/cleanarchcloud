@@ -1,1 +1,2 @@
-
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.jgzl.common.api.ClientSdkAutoConfiguration

@@ -1,6 +1,6 @@
 package com.github.jgzl.infra.upms.controller;
 
-import com.github.jgzl.common.api.feign.tools.RemoteCodeGenService;
+import com.github.jgzl.common.api.feign.tools.RemoteToolsService;
 import com.github.jgzl.common.core.util.Result;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "feign")
 public class FeignTestController {
 
-	private RemoteCodeGenService remoteCodeGenService;
+	private RemoteToolsService remoteToolsService;
 
-	@GetMapping("/tools/heartbeat")
+	@GetMapping("/heartbeat")
 	public Result tools_heartbeat(){
-		return remoteCodeGenService.heartbeat();
+		return remoteToolsService.heartbeat();
 	}
 }

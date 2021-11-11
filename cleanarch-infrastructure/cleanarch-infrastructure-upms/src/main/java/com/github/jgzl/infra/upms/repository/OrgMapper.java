@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.github.jgzl.common.data.configuration.dynamic.ann.DynamicDS;
 import com.github.jgzl.common.data.mybatis.SuperMapper;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.Org;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Levin
  */
 @DynamicDS
-@Repository
+@Mapper
 public interface OrgMapper extends SuperMapper<Org> {
 
 

@@ -150,6 +150,11 @@ public interface SecurityConstants {
 	String DETAILS_TENANT_ID = "tenantId";
 
 	/**
+	 * 租户ID 字段
+	 */
+	String DETAILS_TENANT_CODE = "tenantCode";
+
+	/**
 	 * 协议字段
 	 */
 	String DETAILS_LICENSE = "license";

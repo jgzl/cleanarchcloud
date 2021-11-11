@@ -7,6 +7,9 @@ import com.github.jgzl.common.data.mybatis.auth.DataScope;
 import com.github.jgzl.common.data.mybatis.conditions.query.LbqWrapper;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.User;
 import com.github.jgzl.infra.upms.domain.vo.UserResp;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +18,7 @@ import java.util.List;
  * @author Levin
  */
 @DynamicDS
-@Repository
+@Mapper
 public interface UserMapper extends SuperMapper<User> {
 
 
@@ -35,4 +38,15 @@ public interface UserMapper extends SuperMapper<User> {
      * @return 用户
      */
     List<User> list(DataScope dataScope);
+
+	@Select("SELECT " +
+			"    su.* " +
+			"FROM " +
+			"    `sys_social_user_auth` sua " +
+			"INNER JOIN `sys_social_user` ssu ON sua.social_user_id = ssu.id " +
+			"INNER JOIN `t_user` su ON sua.id = su.id " +
+			"WHERE " +
+			"    ssu.uuid = #{uuid} " +
+			"    AND ssu.source = #{source}")
+	List<User> findUserBySocialUserUuidAndSource(@Param("uuid") String uuid, @Param("source") String source);
 }

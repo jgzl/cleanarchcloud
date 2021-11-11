@@ -9,9 +9,11 @@ import com.github.jgzl.common.data.mybatis.conditions.Wraps;
 import com.github.jgzl.common.data.properties.DatabaseProperties;
 import com.github.jgzl.common.data.properties.MultiTenantType;
 import com.github.jgzl.common.websocket.BaseWebSocketEndpoint;
+import com.github.jgzl.common.websocket.WebSocketManager;
 import com.github.jgzl.infra.upms.domain.entity.message.StationMessage;
 import com.github.jgzl.infra.upms.service.StationMessageService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -31,7 +33,10 @@ import java.util.List;
 @ServerEndpoint(value = "/message/{tenantCode}/{identifier}")
 public class StationMessageEndpoint extends BaseWebSocketEndpoint {
 
-    @OnOpen
+	@Autowired
+	private WebSocketManager webSocketManager;
+
+	@OnOpen
     public void openSession(@PathParam("tenantCode") String tenantCode, @PathParam(IDENTIFIER) String userId, Session session) {
         connect(userId, session);
         List<StationMessage> messages;
@@ -73,4 +78,8 @@ public class StationMessageEndpoint extends BaseWebSocketEndpoint {
         disconnect(userId);
     }
 
+	@Override
+	protected WebSocketManager getWebSocketManager() {
+		return webSocketManager;
+	}
 }

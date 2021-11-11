@@ -16,47 +16,47 @@ spring:
       discovery:
         namespace: business-dev
         server-addr: ${spring.cloud.nacos.server-addr}
-    sentinel:
-      transport:
-        dashboard: localhost:8888
-      eager: true
-      filter:
-        enabled: true
-        url-patterns: /*
-      datasource:
-        # 名称随意
-        flow:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-flow-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: flow
-        degrade:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-degrade-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: degrade
-        system:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-system-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: system
-        authority:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-authority-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: authority
-        param-flow:
-          nacos:
-            server-addr: ${spring.cloud.nacos.server-addr}
-            dataId: ${spring.application.name}-param-flow-rules
-            groupId: SENTINEL_GROUP
-            namespace: sentinel-dev
-            rule-type: param-flow
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8888
+#      eager: true
+#      filter:
+#        enabled: true
+#        url-patterns: /*
+#      datasource:
+#        # 名称随意
+#        flow:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-flow-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: flow
+#        degrade:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-degrade-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: degrade
+#        system:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-system-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: system
+#        authority:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-authority-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: authority
+#        param-flow:
+#          nacos:
+#            server-addr: ${spring.cloud.nacos.server-addr}
+#            dataId: ${spring.application.name}-param-flow-rules
+#            groupId: SENTINEL_GROUP
+#            namespace: sentinel-dev
+#            rule-type: param-flow

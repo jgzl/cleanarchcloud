@@ -1,5 +1,5 @@
 package com.github.jgzl.common.security.exception;
-import com.github.jgzl.common.security.component.CustomOauth2ExceptionSerializer;
+import com.github.jgzl.common.security.component.ExtendOauth2ExceptionSerializer;
 import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @date 2020/7/8
  * 自定义OAuth2Exception
  */
-@JsonSerialize(using = CustomOauth2ExceptionSerializer.class)
+@JsonSerialize(using = ExtendOauth2ExceptionSerializer.class)
 public class CustomOauth2Exception extends OAuth2Exception {
 
 	private String oauth2ErrorCode;

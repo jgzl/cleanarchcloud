@@ -13,11 +13,11 @@ public class FeignTenantInterceptor implements RequestInterceptor {
 
 	@Override
 	public void apply(RequestTemplate requestTemplate) {
-		if (TenantContextHolder.getTenantId() == null) {
+		if (TenantContextHolder.getTenantCode() == null) {
 			log.debug("TTL 中的 租户ID为空，feign拦截器 >> 跳过");
 			return;
 		}
-		requestTemplate.header(CommonConstants.TENANT_ID, TenantContextHolder.getTenantId().toString());
+		requestTemplate.header(CommonConstants.TENANT_CODE, TenantContextHolder.getTenantCode());
 	}
 
 }

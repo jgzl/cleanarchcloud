@@ -32,8 +32,6 @@ public class OAuthClientDetails {
      * 应用类型（0=综合应用,1=服务应用,2=PC网页,3=手机网页,4=小程序）
      */
     private Integer type;
-
-
     private String resourceIds;
     private String authorities;
     private Integer refreshTokenValidity;

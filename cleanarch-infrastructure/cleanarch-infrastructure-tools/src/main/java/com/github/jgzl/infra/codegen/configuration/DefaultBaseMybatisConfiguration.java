@@ -7,6 +7,7 @@ import com.github.jgzl.common.data.mybatis.auth.DataScopeInnerInterceptor;
 import com.github.jgzl.common.data.properties.DatabaseProperties;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,7 @@ import java.util.List;
 public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {
 
     @Bean
+	@ConditionalOnMissingBean
     public TenantEnvironment tenantEnvironment() {
         return new TenantEnvironment() {
             @Override

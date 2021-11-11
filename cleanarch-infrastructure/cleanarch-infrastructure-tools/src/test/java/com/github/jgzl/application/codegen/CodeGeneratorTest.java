@@ -5,7 +5,8 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.github.jgzl.common.api.dataobject.BaseDo;
+import com.github.jgzl.common.core.model.SuperEntity;
+
 import java.util.Scanner;
 
 /**
@@ -77,7 +78,7 @@ public class CodeGeneratorTest {
 				.entityBuilder()
 				.naming(NamingStrategy.underline_to_camel)
 				.columnNaming(NamingStrategy.underline_to_camel)
-				.superClass(BaseDo.class)
+				.superClass(SuperEntity.class)
 				.enableLombok()
 				.mapperBuilder()
 				.build();

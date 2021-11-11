@@ -10,9 +10,9 @@ public interface CommonConstants {
 	 */
 	String SYS_NAME = "cleanarch";
 	/**
-	 * header 中租户ID
+	 * header 中租户CODE
 	 */
-	String TENANT_ID = "TENANT-ID";
+	String TENANT_CODE = "TENANT-CODE";
 
 	/**
 	 * header 中版本信息
@@ -20,9 +20,9 @@ public interface CommonConstants {
 	String VERSION = "VERSION";
 
 	/**
-	 * 租户ID
+	 * 租户code
 	 */
-	Integer TENANT_ID_1 = 1;
+	String TENANT_CODE_1 = "1";
 
 	/**
 	 * 删除

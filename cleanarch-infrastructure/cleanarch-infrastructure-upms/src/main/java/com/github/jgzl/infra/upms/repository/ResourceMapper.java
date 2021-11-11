@@ -6,6 +6,7 @@ import com.github.jgzl.common.data.mybatis.SuperMapper;
 import com.github.jgzl.infra.upms.domain.dto.ResourceQueryDTO;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.Resource;
 import com.github.jgzl.infra.upms.domain.vo.VueRouter;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * @since 2019-07-03
  */
 @DynamicDS
-@Repository
+@Mapper
 public interface ResourceMapper extends SuperMapper<Resource> {
     /**
      * 查询 拥有的资源

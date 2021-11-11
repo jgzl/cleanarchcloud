@@ -1,4 +1,5 @@
 package com.github.jgzl.common.data.tenant;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.github.jgzl.common.core.properties.TenantConfigProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -25,13 +26,12 @@ public class TenantHandler implements TenantLineHandler {
 	 */
 	@Override
 	public Expression getTenantId() {
-		Integer tenantId = TenantContextHolder.getTenantId();
-		log.debug("当前租户为 >> {}", tenantId);
-
-		if (tenantId == null) {
+		String tenantCode = TenantContextHolder.getTenantCode();
+		log.debug("当前租户为 >> {}", tenantCode);
+		if (StrUtil.isBlank(tenantCode)) {
 			return new NullValue();
 		}
-		return new LongValue(tenantId);
+		return new LongValue(tenantCode);
 	}
 
 	/**
@@ -52,12 +52,11 @@ public class TenantHandler implements TenantLineHandler {
 	 */
 	@Override
 	public boolean ignoreTable(String tableName) {
-		Integer tenantId = TenantContextHolder.getTenantId();
+		String tenantCode = TenantContextHolder.getTenantCode();
 		// 租户中ID 为空，查询全部，不进行过滤
-		if (tenantId == null) {
+		if (StrUtil.isBlank(tenantCode)) {
 			return Boolean.TRUE;
 		}
-
 		return !properties.getTables().contains(tableName);
 	}
 

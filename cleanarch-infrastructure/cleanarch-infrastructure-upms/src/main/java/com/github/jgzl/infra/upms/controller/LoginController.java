@@ -4,13 +4,13 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.jgzl.infra.upms.core.PathConstants;
-import com.github.jgzl.infra.upms.service.SysUserService;
-import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
+import com.github.jgzl.infra.upms.domain.entity.baseinfo.OAuthClientDetails;
+import com.github.jgzl.infra.upms.repository.OAuthClientDetailsMapper;
+import com.github.jgzl.infra.upms.service.UserService;
 import com.github.jgzl.common.cache.support.CustomRedisRepository;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.util.SecurityUtils;
-import com.github.jgzl.common.api.vo.SysOauthClientDetailsVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
@@ -36,10 +36,10 @@ public class LoginController {
 	private CustomRedisRepository redisRepository;
 
 	@Autowired
-	private SysUserService userService;
+	private UserService userService;
 
 	@Autowired
-	private SysOauthClientDetailsService oauthClientService;
+	private OAuthClientDetailsMapper oAuthClientDetailsMapper;
 
 	/**
 	 * 认证页面
@@ -71,7 +71,7 @@ public class LoginController {
 		Object auth = session.getAttribute("authorizationRequest");
 		if (auth != null) {
 			AuthorizationRequest authorizationRequest = (AuthorizationRequest) auth;
-			SysOauthClientDetailsVo clientDetails = oauthClientService.getVo(authorizationRequest.getClientId());
+			OAuthClientDetails clientDetails = oAuthClientDetailsMapper.selectById(authorizationRequest.getClientId());
 			String additionalInformation = clientDetails.getAdditionalInformation();
 			if (StrUtil.isNotBlank(additionalInformation)) {
 				// 从扩展信息中获取相应的应用访问地址和应用名称
@@ -84,7 +84,7 @@ public class LoginController {
 				modelAndView.addObject("website", "https://www.baidu.com");
 				modelAndView.addObject("appName", "百度");
 			}
-			modelAndView.addObject("user", SecurityUtils.getUser());
+			modelAndView.addObject("user", SecurityUtils.getAuthInfo());
 		}
 
 		modelAndView.setViewName("ftl/confirm");

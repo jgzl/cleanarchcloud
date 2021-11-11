@@ -9,23 +9,23 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class TenantContextHolder {
 
-	private final ThreadLocal<Integer> THREAD_LOCAL_TENANT = new TransmittableThreadLocal<>();
+	private final ThreadLocal<String> THREAD_LOCAL_TENANT = new TransmittableThreadLocal<>();
 
 	/**
 	 * TTL 设置租户ID<br/>
 	 * <b>谨慎使用此方法,避免嵌套调用。尽量使用 {@code TenantBroker} </b>
-	 * @param tenantId
+	 * @param tenantCode
 	 * @see TenantBroker
 	 */
-	public void setTenantId(Integer tenantId) {
-		THREAD_LOCAL_TENANT.set(tenantId);
+	public void setTenantCode(String tenantCode) {
+		THREAD_LOCAL_TENANT.set(tenantCode);
 	}
 
 	/**
 	 * 获取TTL中的租户ID
 	 * @return
 	 */
-	public Integer getTenantId() {
+	public String getTenantCode() {
 		return THREAD_LOCAL_TENANT.get();
 	}
 

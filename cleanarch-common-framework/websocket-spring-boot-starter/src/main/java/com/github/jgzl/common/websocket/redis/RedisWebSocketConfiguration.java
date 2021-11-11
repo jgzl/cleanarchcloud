@@ -1,10 +1,9 @@
 package com.github.jgzl.common.websocket.redis;
 
-import com.github.jgzl.common.websocket.redis.action.ActionConfig;
 import com.github.jgzl.common.websocket.WebSocketManager;
 import com.github.jgzl.common.websocket.configuration.WebSocketHeartBeatChecker;
 import com.github.jgzl.common.websocket.configuration.WebSocketProperties;
-import com.github.jgzl.common.websocket.utils.SpringContextHolder;
+import com.github.jgzl.common.websocket.redis.action.ActionConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -55,26 +54,19 @@ public class RedisWebSocketConfiguration {
 
     @Bean
     public MessageListenerAdapter listenerAdapter(@Qualifier(RedisReceiver.REDIS_RECEIVER_NAME) RedisReceiver redisReceiver) {
-        return new MessageListenerAdapter(redisReceiver, RedisReceiver.RECEIVER_METHOD_NAME);
-    }
+		MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisReceiver, RedisReceiver.RECEIVER_METHOD_NAME);
+		return messageListenerAdapter;
+	}
 
-
-    @Bean("redisMessageListenerContainer")
-    public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory,
-                                                                       MessageListenerAdapter listenerAdapter) {
-
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
+	@Bean
+	@ConditionalOnMissingBean
+    public RedisMessageListenerContainer redisMessageListenerContainer(RedisMessageListenerContainer redisMessageListenerContainer,RedisConnectionFactory connectionFactory,
+                                                                       MessageListenerAdapter listenerAdapter,ApplicationContext applicationContext) {
+		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+		container.setConnectionFactory(connectionFactory);
         container.addMessageListener(listenerAdapter, new PatternTopic(RedisWebSocketManager.CHANNEL));
         return container;
     }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public SpringContextHolder springContextHolder() {
-        return new SpringContextHolder();
-    }
-
 
     @Bean
     @ConditionalOnMissingBean
