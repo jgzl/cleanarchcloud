@@ -70,7 +70,7 @@ public class ThirdUserDetailsServiceImpl implements ThirdUserDetailsService {
 		}else {
 			String tenantCode = TenantContextHolder.getTenantCode();
 			final Tenant tenant = Optional.ofNullable(tenantService.getOne(Wraps.<Tenant>lbQ().eq(Tenant::getCode, tenantCode)))
-					.orElseThrow(() -> CheckedException.notFound("{1}租户不存在", tenantCode));
+					.orElseThrow(() -> CheckedException.notFound("{}租户不存在", tenantCode));
 			User user;
 			if (CollUtil.isEmpty(sysUsers)) {
 				user = new User();

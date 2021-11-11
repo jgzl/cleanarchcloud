@@ -59,7 +59,7 @@ public class UsernameUserDetailsServiceImpl implements UserDetailsService {
 		UserInfoDetails info;
 		String tenantCode = TenantContextHolder.getTenantCode();
 		final Tenant tenant = Optional.ofNullable(tenantService.getOne(Wraps.<Tenant>lbQ().eq(Tenant::getCode, tenantCode)))
-				.orElseThrow(() -> CheckedException.notFound("{1}租户不存在", tenantCode));
+				.orElseThrow(() -> CheckedException.notFound("{}租户不存在", tenantCode));
 		if (!Objects.equals(tenant.getId(),user.getTenantId())) {
 			throw CheckedException.notFound("账户不存在");
 		}

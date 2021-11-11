@@ -1,8 +1,6 @@
 package com.github.jgzl.common.data.configuration.dynamic.ann;
 
 
-import com.baomidou.dynamic.datasource.annotation.DS;
-
 import java.lang.annotation.*;
 
 /**
@@ -16,7 +14,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@DS("#custom.tenant_code")
+//@DS("#custom.tenant_code")
 public @interface DynamicDS {
 
 }
