@@ -2,7 +2,7 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.github.jgzl.common.api.dataobject.UserInfoDetails;
+import com.github.jgzl.common.security.dataobject.UserInfoDetails;
 import com.github.jgzl.common.core.exception.CheckedException;
 import com.github.jgzl.common.core.util.StringUtils;
 import com.github.jgzl.common.data.mybatis.conditions.Wraps;

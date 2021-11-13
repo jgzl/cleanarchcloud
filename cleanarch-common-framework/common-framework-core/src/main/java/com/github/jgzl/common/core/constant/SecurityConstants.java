@@ -25,10 +25,6 @@ public interface SecurityConstants {
 	 * 角色前缀
 	 */
 	String ROLE = "ROLE_";
-	/**
-	 * 前缀
-	 */
-	String APP_PREFIX = "cleanarchcloud_";
 
 	/**
 	 * basic

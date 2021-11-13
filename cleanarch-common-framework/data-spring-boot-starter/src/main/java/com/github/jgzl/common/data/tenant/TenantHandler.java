@@ -1,12 +1,18 @@
 package com.github.jgzl.common.data.tenant;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
-import com.github.jgzl.common.core.properties.TenantConfigProperties;
+import com.github.jgzl.common.data.TenantEnvironment;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 import net.sf.jsqlparser.expression.NullValue;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author lihaifeng
@@ -14,10 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 租户维护处理器
  */
 @Slf4j
+@AllArgsConstructor
 public class TenantHandler implements TenantLineHandler {
 
-	@Autowired
-	private TenantConfigProperties properties;
+	private FrameworkMpProperties.MultiTenant tenant;
+
+	private TenantEnvironment tenantEnvironment;
 
 	/**
 	 * 获取租户 ID 值表达式，只支持单个 ID 值
@@ -26,12 +34,9 @@ public class TenantHandler implements TenantLineHandler {
 	 */
 	@Override
 	public Expression getTenantId() {
-		String tenantCode = TenantContextHolder.getTenantCode();
-		log.debug("当前租户为 >> {}", tenantCode);
-		if (StrUtil.isBlank(tenantCode)) {
-			return new NullValue();
-		}
-		return new LongValue(tenantCode);
+		// 租户ID
+		log.debug("当前租户ID - {}", tenantEnvironment.tenantId());
+		return new LongValue(tenantEnvironment.tenantId());
 	}
 
 	/**
@@ -40,7 +45,7 @@ public class TenantHandler implements TenantLineHandler {
 	 */
 	@Override
 	public String getTenantIdColumn() {
-		return properties.getColumn();
+		return tenant.getTenantIdColumn();
 	}
 
 	/**
@@ -57,7 +62,9 @@ public class TenantHandler implements TenantLineHandler {
 		if (StrUtil.isBlank(tenantCode)) {
 			return Boolean.TRUE;
 		}
-		return !properties.getTables().contains(tableName);
+		final List<String> tables = tenant.getIncludeTables();
+		//  判断哪些表不需要多租户判断,返回false表示都需要进行多租户判断
+		return tenantEnvironment.anonymous() || !tables.contains(tableName);
 	}
 
 }

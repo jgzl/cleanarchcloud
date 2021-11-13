@@ -40,7 +40,7 @@ public class TenantContextHolderFilter extends GenericFilterBean {
 			TenantContextHolder.setTenantCode(paramTenant);
 		}
 		else {
-			TenantContextHolder.setTenantCode(CommonConstants.TENANT_CODE_1);
+			TenantContextHolder.setTenantCode(CommonConstants.TENANT_CODE_SUPER);
 		}
 
 		filterChain.doFilter(request, response);

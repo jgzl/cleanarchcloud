@@ -17,7 +17,6 @@
 	<modules>
 		<module>cleanarch-infrastructure-tools</module>
 		<module>cleanarch-infrastructure-gateway</module>
-		<module>cleanarch-infrastructure-job-admin</module>
 		<module>cleanarch-infrastructure-monitor</module>
 		<module>cleanarch-infrastructure-upms</module>
 		<module>cleanarch-infrastructure-workflow</module>

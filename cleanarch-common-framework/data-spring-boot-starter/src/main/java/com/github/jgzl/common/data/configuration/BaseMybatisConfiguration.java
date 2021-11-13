@@ -13,8 +13,9 @@ import com.github.jgzl.common.data.mybatis.auth.DataScopeAspect;
 import com.github.jgzl.common.data.mybatis.typehandler.FullLikeTypeHandler;
 import com.github.jgzl.common.data.mybatis.typehandler.LeftLikeTypeHandler;
 import com.github.jgzl.common.data.mybatis.typehandler.RightLikeTypeHandler;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import com.github.jgzl.common.data.properties.MultiTenantType;
+import com.github.jgzl.common.data.tenant.TenantHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.expression.Expression;
@@ -41,7 +42,7 @@ import java.util.List;
 public abstract class BaseMybatisConfiguration {
 
     @Resource
-    protected DatabaseProperties properties;
+    protected FrameworkMpProperties properties;
     @Resource
     protected TenantEnvironment tenantEnvironment;
 
@@ -57,27 +58,7 @@ public abstract class BaseMybatisConfiguration {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         if (MultiTenantType.NONE != properties.getMultiTenant().getType()) {
             // 新增多租户拦截器
-            interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {
-                @Override
-                public Expression getTenantId() {
-                    // 租户ID
-                    log.debug("当前租户ID - {}", tenantEnvironment.tenantId());
-                    return new LongValue(tenantEnvironment.tenantId());
-                }
-
-                @Override
-                public boolean ignoreTable(String tableName) {
-                    final List<String> tables = properties.getMultiTenant().getIncludeTables();
-                    //  判断哪些表不需要多租户判断,返回false表示都需要进行多租户判断
-                    return tenantEnvironment.anonymous() || !tables.contains(tableName);
-                }
-
-                @Override
-                public String getTenantIdColumn() {
-                    return properties.getMultiTenant().getTenantIdColumn();
-                }
-
-            }));
+            interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantHandler(properties.getMultiTenant(),tenantEnvironment)));
         }
         List<InnerInterceptor> beforeInnerInterceptor = getPaginationBeforeInnerInterceptor();
         if (!beforeInnerInterceptor.isEmpty()) {
@@ -138,7 +119,7 @@ public abstract class BaseMybatisConfiguration {
     @Bean("myBatisMetaObjectHandler")
     @ConditionalOnMissingBean
     public MetaObjectHandler myBatisMetaObjectHandler() {
-        DatabaseProperties.Id id = properties.getId();
+        FrameworkMpProperties.Id id = properties.getId();
         return new MyBatisMetaObjectHandler(id.getWorkerId(), id.getDataCenterId(), tenantEnvironment);
     }
 

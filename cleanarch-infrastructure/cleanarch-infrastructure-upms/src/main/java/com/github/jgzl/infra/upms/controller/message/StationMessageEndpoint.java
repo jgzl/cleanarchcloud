@@ -6,7 +6,7 @@ import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import com.github.jgzl.common.core.util.SpringContextHolder;
 import com.github.jgzl.common.data.configuration.dynamic.TenantDynamicDataSourceProcess;
 import com.github.jgzl.common.data.mybatis.conditions.Wraps;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import com.github.jgzl.common.data.properties.MultiTenantType;
 import com.github.jgzl.common.websocket.BaseWebSocketEndpoint;
 import com.github.jgzl.common.websocket.WebSocketManager;
@@ -40,7 +40,7 @@ public class StationMessageEndpoint extends BaseWebSocketEndpoint {
     public void openSession(@PathParam("tenantCode") String tenantCode, @PathParam(IDENTIFIER) String userId, Session session) {
         connect(userId, session);
         List<StationMessage> messages;
-        final DatabaseProperties properties = SpringContextHolder.getBean(DatabaseProperties.class);
+        final FrameworkMpProperties properties = SpringContextHolder.getBean(FrameworkMpProperties.class);
         final StationMessageService stationMessageService = SpringContextHolder.getBean(StationMessageService.class);
         if (properties.getMultiTenant().getType() == MultiTenantType.DATASOURCE) {
             final TenantDynamicDataSourceProcess dataSourceProcess = SpringContextHolder.getBean(TenantDynamicDataSourceProcess.class);

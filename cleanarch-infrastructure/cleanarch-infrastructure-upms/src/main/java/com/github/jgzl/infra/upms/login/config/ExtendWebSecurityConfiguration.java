@@ -1,6 +1,6 @@
 package com.github.jgzl.infra.upms.login.config;
 
-import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
+import com.github.jgzl.common.security.properties.FrameworkSecurityProperties;
 import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.login.config.email.EmailTokenAuthenticationSecurityConfiguration;
 import com.github.jgzl.infra.upms.login.config.mobile.MobileAuthenticationSecurityConfiguration;
@@ -44,7 +44,7 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 
     private DataSource dataSource;
 
-	private FrameworkSecurityConfigProperties securityProperties;
+	private FrameworkSecurityProperties securityProperties;
 
     private UsernameUserDetailsServiceImpl userNameUserDetailsService;
 

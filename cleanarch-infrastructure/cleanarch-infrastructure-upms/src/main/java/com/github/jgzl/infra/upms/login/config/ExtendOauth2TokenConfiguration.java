@@ -1,9 +1,9 @@
 package com.github.jgzl.infra.upms.login.config;
 
-import com.github.jgzl.common.api.dataobject.UserInfoDetails;
+import com.github.jgzl.common.security.dataobject.UserInfoDetails;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
+import com.github.jgzl.common.security.properties.FrameworkSecurityProperties;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ import java.util.Map;
 @Configuration
 public class ExtendOauth2TokenConfiguration {
 
-	private final FrameworkSecurityConfigProperties securityProperties;
+	private final FrameworkSecurityProperties securityProperties;
 
 	private final RedisConnectionFactory redisConnectionFactory;
 

@@ -13,7 +13,7 @@ import java.util.Set;
 @ConfigurationProperties(prefix = MultiLevelCacheConfigProperties.PREFIX)
 public class MultiLevelCacheConfigProperties {
 
-	public static final String PREFIX="framework.cache.multi";
+	public static final String PREFIX = "framework.cache.multi";
 
 	private Set<String> cacheNames = new HashSet<>();
 

@@ -1,5 +1,5 @@
 package com.github.jgzl.common.security.component;
-import com.github.jgzl.common.core.properties.FrameworkSecurityConfigProperties;
+import com.github.jgzl.common.security.properties.FrameworkSecurityProperties;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class ExtendResourceServerConfiguration extends ResourceServerConfigurerA
 	private RedisConnectionFactory redisConnectionFactory;
 
 	@Autowired
-	private FrameworkSecurityConfigProperties securityProperties;
+	private FrameworkSecurityProperties securityProperties;
 
 	@Autowired
 	private PermitAllUrlResolver permitAllUrlResolver;

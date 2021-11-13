@@ -28,12 +28,17 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
+				<artifactId>common-framework-client-sdk</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
 				<artifactId>common-framework-core</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>security-spring-boot-starter</artifactId>
+				<artifactId>common-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -43,7 +48,22 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
+				<artifactId>feign-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>file-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
 				<artifactId>redis-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>security-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -54,26 +74,6 @@
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
 				<artifactId>xxl-job-spring-boot-starter</artifactId>
-				<version>${revision}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.jgzl</groupId>
-				<artifactId>file-spring-boot-starter</artifactId>
-				<version>${revision}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.jgzl</groupId>
-				<artifactId>feign-spring-boot-starter</artifactId>
-				<version>${revision}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.jgzl</groupId>
-				<artifactId>log-spring-boot-starter</artifactId>
-				<version>${revision}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.jgzl</groupId>
-				<artifactId>common-framework-client-sdk</artifactId>
 				<version>${revision}</version>
 			</dependency>
 		</dependencies>

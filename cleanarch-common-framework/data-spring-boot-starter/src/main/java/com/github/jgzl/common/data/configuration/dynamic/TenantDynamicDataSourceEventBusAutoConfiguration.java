@@ -10,7 +10,7 @@ import com.github.jgzl.common.data.TenantEnvironment;
 import com.github.jgzl.common.data.configuration.dynamic.event.DynamicDatasourceEvent;
 import com.github.jgzl.common.data.configuration.dynamic.event.DynamicDatasourceEventListener;
 import com.github.jgzl.common.data.configuration.dynamic.feign.TenantFeignClient;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -53,7 +53,7 @@ public class TenantDynamicDataSourceEventBusAutoConfiguration {
 
     @Bean
     @Primary
-    public DsProcessor dsProcessor(DatabaseProperties properties) {
+    public DsProcessor dsProcessor(FrameworkMpProperties properties) {
         // 重写 DsHeaderProcessor
         DsProcessor contentProcessor = new DsProcessor() {
             private static final String CUSTOM_PREFIX = "#custom";
@@ -66,7 +66,7 @@ public class TenantDynamicDataSourceEventBusAutoConfiguration {
             @Override
             public String doDetermineDatasource(MethodInvocation invocation, String key) {
                 ServletRequestAttributes attributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
-                DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+                FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
                 if (attributes == null) {
                     log.debug("attributes为空,切换默认数据源 - {}", multiTenant.getDefaultDsName());
                     return multiTenant.getDefaultDsName();
@@ -95,7 +95,7 @@ public class TenantDynamicDataSourceEventBusAutoConfiguration {
         return contentProcessor;
     }
 
-    private String getTenantDB(HttpServletRequest request, DatabaseProperties.MultiTenant multiTenant, String tenantCode) {
+    private String getTenantDB(HttpServletRequest request, FrameworkMpProperties.MultiTenant multiTenant, String tenantCode) {
         if (StringUtils.isBlank(tenantCode) || StringUtils.equals(tenantCode, multiTenant.getSuperTenantCode())) {
             log.debug("tenantCode 为空或者为超级租户,切换默认数据源 - {}", multiTenant.getDefaultDsName());
             return multiTenant.getDefaultDsName();

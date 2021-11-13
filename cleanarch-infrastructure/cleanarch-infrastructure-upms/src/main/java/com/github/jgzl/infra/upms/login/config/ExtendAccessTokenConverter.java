@@ -3,7 +3,7 @@ package com.github.jgzl.infra.upms.login.config;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.github.jgzl.common.api.dataobject.UserInfoDetails;
+import com.github.jgzl.common.security.dataobject.UserInfoDetails;
 import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.security.exception.CustomOauth2Exception;
@@ -50,7 +50,7 @@ public class ExtendAccessTokenConverter extends DefaultAccessTokenConverter {
 		public Map<String, ?> convertUserAuthentication(Authentication authentication) {
 			final Map<String, Object> response = new LinkedHashMap<>();
 			response.put(USERNAME, authentication.getName());
-			response.put(SecurityConstants.LICENSE_KEY, SecurityConstants.LICENSE);
+			response.put(SecurityConstants.DETAILS_USERNAME, authentication.getName());
 			response.put(SecurityConstants.USER_NAME_HEADER, authentication.getName());
 			if (authentication.getAuthorities() != null && !authentication.getAuthorities().isEmpty()) {
 				response.put(AUTHORITIES, AuthorityUtils.authorityListToSet(authentication.getAuthorities()));
@@ -58,6 +58,9 @@ public class ExtendAccessTokenConverter extends DefaultAccessTokenConverter {
 			if (authentication.getPrincipal() instanceof UserInfoDetails) {
 				final UserInfoDetails user = (UserInfoDetails) authentication.getPrincipal();
 				response.put(SecurityConstants.USER_ID_HEADER, user.getUserId());
+				response.put(SecurityConstants.DETAILS_AVATAR, user.getAvatar());
+				response.put(SecurityConstants.DETAILS_PHONE, user.getMobile());
+				response.put(SecurityConstants.DETAILS_TENANT_CODE, user.getTenantCode());
 			}
 			return response;
 		}

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.github.jgzl.common.data.TenantEnvironment;
 import com.github.jgzl.common.data.configuration.BaseMybatisConfiguration;
 import com.github.jgzl.common.data.mybatis.auth.DataScopeInnerInterceptor;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import com.github.jgzl.common.security.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -20,7 +20,6 @@ import java.util.List;
  * @author Levin
  */
 @Configuration
-@EnableConfigurationProperties(DatabaseProperties.class)
 public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {
 
     @Bean

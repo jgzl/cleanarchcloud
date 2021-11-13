@@ -8,7 +8,7 @@ import com.baomidou.dynamic.datasource.support.ScriptRunner;
 import com.github.jgzl.common.core.util.StringUtils;
 import com.github.jgzl.common.data.configuration.dynamic.event.body.EventAction;
 import com.github.jgzl.common.data.configuration.dynamic.event.body.TenantDynamicDatasource;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
@@ -33,7 +33,7 @@ public class TenantDynamicDataSourceProcess {
     @Resource
     private HikariDataSourceCreator hikariDataSourceCreator;
     @Resource
-    private DatabaseProperties properties;
+    private FrameworkMpProperties properties;
 
     public void handler(EventAction action, TenantDynamicDatasource dynamicDatasource) {
         if (Objects.isNull(dynamicDatasource)) {
@@ -46,7 +46,7 @@ public class TenantDynamicDataSourceProcess {
         }
         log.info("接收租户事件消息: - {} - {}", action, dynamicDatasource);
         DynamicRoutingDataSource ds = (DynamicRoutingDataSource) dataSource;
-        final DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+        final FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
         String database = multiTenant.getDsPrefix() + dynamicDatasource.getCode();
         if (action == EventAction.DEL) {
             ds.removeDataSource(database);
@@ -92,7 +92,7 @@ public class TenantDynamicDataSourceProcess {
     }
 
     public String buildDb(String tenantCode) {
-        final DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+        final FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
         if (StringUtils.isBlank(tenantCode) || StringUtils.equals(tenantCode, multiTenant.getSuperTenantCode())) {
             return multiTenant.getDefaultDsName();
         }
@@ -112,7 +112,7 @@ public class TenantDynamicDataSourceProcess {
         // 从ThreadLocal中获取当前数据源
         final DataSource dataSource = ds.getDataSource(dsKey);
         ScriptRunner scriptRunner = new ScriptRunner(false, ";");
-        final DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+        final FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
         final List<String> tenantSqlScripts = multiTenant.getTenantSqlScripts();
 
         if (CollectionUtil.isEmpty(tenantSqlScripts)) {

@@ -15,7 +15,7 @@ import com.github.jgzl.common.core.annotation.log.SysLog;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.core.util.StringUtils;
 import com.github.jgzl.common.data.TenantEnvironment;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import com.github.jgzl.common.data.properties.MultiTenantType;
 import com.github.jgzl.common.boot.log.event.SysLogEvent;
 import lombok.RequiredArgsConstructor;
@@ -64,7 +64,7 @@ public class SysLogAspect {
 	@Autowired(required = false)
 	private TenantEnvironment tenantEnvironment;
 	@Autowired
-	private DatabaseProperties properties;
+	private FrameworkMpProperties properties;
 
 	/**
 	 * 用于SpEL表达式解析.
@@ -226,7 +226,7 @@ public class SysLogAspect {
 			HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 			String strArgs = getArgs(sysLogAnnotation, args, request);
 			sysLog.setParams(getText(strArgs));
-			final DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+			final FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
 			if (multiTenant.getType() == MultiTenantType.DATASOURCE) {
 				String tenantCode = request.getHeader(multiTenant.getTenantCodeColumn());
 				if (StringUtils.equals(multiTenant.getSuperTenantCode(), tenantCode)) {

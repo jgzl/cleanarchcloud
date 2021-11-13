@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  LogAutoConfiguration
-org.springframework.boot.env.EnvironmentPostProcessor=\
-  ApplicationLoggerInitializer

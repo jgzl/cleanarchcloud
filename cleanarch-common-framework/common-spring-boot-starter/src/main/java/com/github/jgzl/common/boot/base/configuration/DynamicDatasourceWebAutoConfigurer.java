@@ -2,7 +2,7 @@ package com.github.jgzl.common.boot.base.configuration;
 
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import com.github.jgzl.common.core.util.StringUtils;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DynamicDatasourceWebAutoConfigurer implements WebMvcConfigurer {
 
     @Resource
-    private DatabaseProperties properties;
+    private FrameworkMpProperties properties;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -35,7 +35,7 @@ public class DynamicDatasourceWebAutoConfigurer implements WebMvcConfigurer {
             @Override
             public boolean preHandle(@Nonnull HttpServletRequest request, @Nonnull HttpServletResponse response, @Nonnull Object handler) {
                 String requestUri = request.getRequestURI();
-                DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+                FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
                 String tenantCode = request.getHeader(multiTenant.getTenantCodeColumn());
                 if (StringUtils.isBlank(tenantCode)) {
                     tenantCode = request.getParameter(multiTenant.getTenantCodeColumn());

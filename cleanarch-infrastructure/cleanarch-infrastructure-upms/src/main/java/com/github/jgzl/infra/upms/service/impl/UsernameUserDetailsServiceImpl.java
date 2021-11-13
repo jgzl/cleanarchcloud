@@ -1,6 +1,6 @@
 package com.github.jgzl.infra.upms.service.impl;
 
-import com.github.jgzl.common.api.dataobject.UserInfoDetails;
+import com.github.jgzl.common.security.dataobject.UserInfoDetails;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.exception.CheckedException;
 import com.github.jgzl.common.core.util.StringUtils;
@@ -68,7 +68,7 @@ public class UsernameUserDetailsServiceImpl implements UserDetailsService {
 		info.setTenantId(user.getTenantId());
 		info.setUserId(user.getId());
 		info.setUsername(user.getUsername());
-		info.setRealName(user.getNickName());
+		info.setRealName(user.getUsername());
 		info.setNickName(user.getNickName());
 		info.setMobile(user.getMobile());
 		info.setEmail(user.getEmail());

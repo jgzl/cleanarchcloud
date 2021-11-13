@@ -7,7 +7,7 @@ import com.github.jgzl.common.data.configuration.dynamic.TenantDynamicDataSource
 import com.github.jgzl.common.data.configuration.dynamic.event.body.EventAction;
 import com.github.jgzl.common.data.mybatis.SuperServiceImpl;
 import com.github.jgzl.common.data.mybatis.conditions.Wraps;
-import com.github.jgzl.common.data.properties.DatabaseProperties;
+import com.github.jgzl.common.data.properties.FrameworkMpProperties;
 import com.github.jgzl.common.data.properties.MultiTenantType;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.Role;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.User;
@@ -40,7 +40,7 @@ public class TenantServiceImpl extends SuperServiceImpl<TenantMapper, Tenant> im
     private final UserRoleMapper userRoleMapper;
     private final TenantConfigMapper tenantConfigMapper;
     private final DynamicDatasourceService dynamicDatasourceService;
-    private final DatabaseProperties properties;
+    private final FrameworkMpProperties properties;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
@@ -94,7 +94,7 @@ public class TenantServiceImpl extends SuperServiceImpl<TenantMapper, Tenant> im
         if (tenant.getLocked()) {
             throw CheckedException.badRequest("租户已被禁用");
         }
-        final DatabaseProperties.MultiTenant multiTenant = properties.getMultiTenant();
+        final FrameworkMpProperties.MultiTenant multiTenant = properties.getMultiTenant();
         if (StringUtils.equals(tenant.getCode(), multiTenant.getSuperTenantCode())) {
             throw CheckedException.badRequest("超级租户,禁止操作");
         }
