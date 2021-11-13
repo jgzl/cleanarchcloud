@@ -1,4 +1,5 @@
 package com.github.jgzl.infra.upms.login.handler;
+import com.github.jgzl.common.core.constant.CommonConstants;
 import com.github.jgzl.common.core.util.KeyStrResolver;
 import com.github.jgzl.common.core.util.SpringContextHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -51,10 +52,10 @@ public class TenantSavedRequestAwareAuthenticationSuccessHandler extends SavedRe
 			log.info("登录成功,重定向url为{}",redirectUrl);
 			String targetUrl;
 			if (redirectUrl.endsWith("/")) {
-				targetUrl = redirectUrl + "?TENANT-ID="
+				targetUrl = redirectUrl + "?"+ CommonConstants.TENANT_CODE +"="
 						+ SpringContextHolder.getBean(KeyStrResolver.class).key();
 			}else {
-				targetUrl = redirectUrl + "&TENANT-ID="
+				targetUrl = redirectUrl + "&"+ CommonConstants.TENANT_CODE +"="
 						+ SpringContextHolder.getBean(KeyStrResolver.class).key();
 			}
 			this.getRedirectStrategy().sendRedirect(request, response, targetUrl);
