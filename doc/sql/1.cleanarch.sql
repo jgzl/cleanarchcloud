@@ -17,7 +17,7 @@ use `cleanarch`;
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 14/11/2021 01:53:17
+ Date: 14/11/2021 02:31:41
 */
 
 SET NAMES utf8mb4;
@@ -3709,6 +3709,22 @@ CREATE TABLE `common_opt_log`  (
 
 -- ----------------------------
 -- Records of common_opt_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for persistent_logins
+-- ----------------------------
+DROP TABLE IF EXISTS `persistent_logins`;
+CREATE TABLE `persistent_logins`  (
+                                      `username` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+                                      `series` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+                                      `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+                                      `last_used` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                                      PRIMARY KEY (`series`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of persistent_logins
 -- ----------------------------
 
 -- ----------------------------
