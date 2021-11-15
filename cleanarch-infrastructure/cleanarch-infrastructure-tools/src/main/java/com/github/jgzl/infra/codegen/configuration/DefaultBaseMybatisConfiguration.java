@@ -28,17 +28,17 @@ public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {
         return new TenantEnvironment() {
             @Override
             public Long tenantId() {
-                return SecurityUtils.getAuthInfo().getTenantId();
+                return SecurityUtils.getNonullUserInfo().getTenantId();
             }
 
             @Override
             public Long userId() {
-                return SecurityUtils.getAuthInfo().getUserId();
+                return SecurityUtils.getNonullUserInfo().getUserId();
             }
 
             @Override
             public String realName() {
-                return SecurityUtils.getAuthInfo().getRealName();
+                return SecurityUtils.getNonullUserInfo().getRealName();
             }
 
             @Override

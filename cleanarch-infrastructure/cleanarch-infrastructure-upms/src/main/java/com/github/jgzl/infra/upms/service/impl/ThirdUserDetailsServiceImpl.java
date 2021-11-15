@@ -80,6 +80,7 @@ public class ThirdUserDetailsServiceImpl implements ThirdUserDetailsService {
 				user.setAvatar(authUser.getAvatar());
 				user.setEmail(authUser.getEmail());
 				user.setTenantId(tenant.getId());
+				user.setStatus(true);
 				userService.save(user);
 				// 第三方账户创建并绑定用户
 				userService.bindSocialUser(authUser,user.getId());

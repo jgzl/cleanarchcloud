@@ -17,9 +17,29 @@ public interface CommonConstants {
 	String TENANT_CODE = "TENANT-CODE";
 
 	/**
-	 * 超级租户CODE
+	 * 默认用户名称
 	 */
-	String TENANT_CODE_SUPER = "0000";
+	Long DEFAULT_USER_ID = 1L;
+
+	/**
+	 * 默认用户名称
+	 */
+	String DEFAULT_USERNAME = "admin";
+
+	/**
+	 * 默认用户名称
+	 */
+	String DEFAULT_NICKNAME = "管理员";
+
+	/**
+	 * 默认租户ID
+	 */
+	Long DEFAULT_TENANT_ID = 1L;
+
+	/**
+	 * 默认租户CODE
+	 */
+	String DEFAULT_TENANT_CODE = "0000";
 
 	/**
 	 * header 中版本信息

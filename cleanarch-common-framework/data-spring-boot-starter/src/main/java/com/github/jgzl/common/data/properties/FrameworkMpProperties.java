@@ -88,7 +88,7 @@ public class FrameworkMpProperties {
         /**
          * 超级租户编码
          */
-        private String superTenantCode = CommonConstants.TENANT_CODE_SUPER;
+        private String superTenantCode = CommonConstants.DEFAULT_TENANT_CODE;
         /**
          * 租户数据库前缀
          */
@@ -97,7 +97,7 @@ public class FrameworkMpProperties {
         /**
          * 租户SQL脚本
          */
-        private List<String> tenantSqlScripts = Lists.newArrayList("classpath*:db/tenant_schema.sql", "classpath*:db/tenant_common_area.sql");
+        private List<String> tenantSqlScripts = Lists.newArrayList("classpath*:db/tenant_schema.sql");
 
         /**
          * 是否从登陆上下文获取数据库信息
