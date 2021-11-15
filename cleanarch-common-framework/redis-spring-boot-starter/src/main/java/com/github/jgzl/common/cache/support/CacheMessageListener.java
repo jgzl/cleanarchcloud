@@ -6,7 +6,7 @@ import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;
 
 /**
- * @author fuwei.deng
+ * @author lihaifeng
  * @version 1.0.0
  */
 @Slf4j
@@ -22,8 +22,6 @@ public class CacheMessageListener implements MessageListener {
 		CacheMessage cacheMessage = (CacheMessage) redisTemplate.getValueSerializer().deserialize(message.getBody());
 		log.debug("receive a redis topic message, clear local cache, the cacheName is {}, the key is {}",
 				cacheMessage.getCacheName(), cacheMessage.getKey());
-//		log.warn("接收到重新JVM 重新加载事件");
-//		SpringContextHolder.publishEvent(new RefreshCacheEvent(this));
 		redisCaffeineCacheManager.clearLocal(cacheMessage.getCacheName(), cacheMessage.getKey());
 	}
 

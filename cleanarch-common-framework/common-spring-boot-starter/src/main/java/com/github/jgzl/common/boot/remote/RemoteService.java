@@ -1,5 +1,4 @@
 package com.github.jgzl.common.boot.remote;
-
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
@@ -14,14 +13,12 @@ import com.google.common.cache.LoadingCache;
 import com.github.jgzl.common.boot.remote.properties.RemoteProperties;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-
 /**
  * 字典数据回显工具类
  * 1. 通过反射将obj的字段上标记了@Remote注解的字段解析出来
@@ -33,7 +30,6 @@ import java.util.function.Consumer;
 @Slf4j
 @SuppressWarnings(value = "all")
 public class RemoteService {
-
     private static final int DEF_MAP_SIZE = 20;
     private static final String[] BASE_TYPES = {
             "java.lang.Integer", "java.lang.Byte", "java.lang.Long", "java.lang.Double",
@@ -49,7 +45,6 @@ public class RemoteService {
      * 内存缓存
      */
     private LoadingCache<CacheLoadKeys, Map<Serializable, Object>> caches;
-
     public RemoteService(RemoteProperties ips, Map<String, LoadService> strategyMap) {
         this.strategyMap.putAll(strategyMap);
         this.ips = ips;
@@ -58,13 +53,10 @@ public class RemoteService {
             this.caches = CacheBuilder.newBuilder().maximumSize(guavaCache.getMaximumSize())
                     .refreshAfterWrite(guavaCache.getRefreshWriteTime(), TimeUnit.MINUTES).build(new DefCacheLoader(guavaCache));
         }
-
     }
-
     public void action(Object obj, String... ignoreFields) {
         this.action(obj, false, ignoreFields);
     }
-
     /**
      * 回显数据的3个步骤：（出现回显失败时，认真debug该方法）
      * <p>
@@ -87,28 +79,19 @@ public class RemoteService {
              Object 为查询后的值
              */
             Map<LoadKey, Map<Serializable, Object>> typeMap = new ConcurrentHashMap<>(DEF_MAP_SIZE);
-
             long parseStart = System.currentTimeMillis();
-
             //1. 通过反射将obj的字段上标记了@Remote注解的字段解析出来
             this.parse(obj, typeMap, 1, ignoreFields);
-
             long parseEnd = System.currentTimeMillis();
-
             if (typeMap.isEmpty()) {
                 return;
             }
-
             // 2. 依次查询待回显的数据
             this.load(typeMap, isUseCache);
-
             long remoteStart = System.currentTimeMillis();
-
             // 3. 将查询出来结果回显到obj的 @Remote注解的字段中
             this.write(obj, typeMap, 1);
-
             long remoteEnd = System.currentTimeMillis();
-
             log.info("解析耗时={} ms", (parseEnd - parseStart));
             log.info("批量查询耗时={} ms", (remoteStart - parseEnd));
             log.info("回显耗时={} ms", (remoteEnd - remoteStart));
@@ -116,7 +99,6 @@ public class RemoteService {
             log.warn("回显失败", e);
         }
     }
-
     /**
      * 1，遍历字段，解析出那些字段上标记了@Remote注解
      *
@@ -133,20 +115,17 @@ public class RemoteService {
             log.info("出现循环依赖，最多执行 {} 次， 已执行 {} 次，已为您跳出循环", ips.getMaxDepth(), depth);
             return;
         }
-
         if (obj instanceof IPage) {
             List<?> records = ((IPage<?>) obj).getRecords();
             parseList(records, typeMap, depth, ignoreFields);
             return;
         }
-
         if (obj instanceof Collection) {
             parseList((Collection<?>) obj, typeMap, depth, ignoreFields);
             return;
         }
         //解析方法上的注解，计算出obj对象中所有需要查询的数据
         List<Field> fields = ClassManager.getFields(obj.getClass());
-
         for (Field field : fields) {
             FieldParam fieldParam = getFieldParam(obj, field, typeMap,
                     innerTypeMap -> parse(ReflectUtil.getFieldValue(obj, field), innerTypeMap, depth + 1, ignoreFields),
@@ -161,7 +140,6 @@ public class RemoteService {
             typeMap.put(type, valueMap);
         }
     }
-
     /**
      * 解析 list
      *
@@ -174,7 +152,6 @@ public class RemoteService {
             parse(item, typeMap, depth, ignoreFields);
         }
     }
-
     /**
      * 加载数据
      * <p>
@@ -195,14 +172,11 @@ public class RemoteService {
                         "若api指定的是ServiceImpl，请确保在同一个服务内。", type.getBean());
                 continue;
             }
-
             CacheLoadKeys lk = new CacheLoadKeys(type, loadService, keys);
             Map<Serializable, Object> value = ips.getGuavaCache().getEnabled() && isUseCache ? caches.get(lk) : lk.loadMap();
-
             typeMap.put(type, value);
         }
     }
-
     /**
      * 向obj对象的字段中回显值
      *
@@ -220,7 +194,6 @@ public class RemoteService {
             log.info("出现循环依赖，最多执行 {} 次， 已执行 {} 次，已为您跳出循环", ips.getMaxDepth(), depth);
             return;
         }
-
         if (obj instanceof IPage) {
             List<?> records = ((IPage<?>) obj).getRecords();
             writeList(records, typeMap, ignoreFields);
@@ -230,10 +203,8 @@ public class RemoteService {
             writeList((Collection<?>) obj, typeMap, ignoreFields);
             return;
         }
-
         iterationWrite(obj, typeMap, depth, ignoreFields);
     }
-
     private void iterationWrite(Object obj, Map<LoadKey, Map<Serializable, Object>> typeMap, int depth, String... ignoreFields) {
         //解析方法上的注解，计算出obj对象中所有需要查询的数据
         List<Field> fields = ClassManager.getFields(obj.getClass());
@@ -248,7 +219,6 @@ public class RemoteService {
             Object actualValue = fieldParam.getActualValue();
             Object originalValue = fieldParam.getOriginalValue();
             String fieldName = fieldParam.getFieldName();
-
             LoadKey loadKey = fieldParam.getLoadKey();
             Object remoteValue = getRemoteValue(remote, actualValue, originalValue, loadKey, typeMap);
             if (remoteValue == null) {
@@ -272,7 +242,6 @@ public class RemoteService {
             }
         }
     }
-
     private void setFieldValue(Object obj, Object remoteValue, String rule, String original, String source) {
         Object value = null;
         if (StringUtils.isAllBlank(rule, original)) {
@@ -285,14 +254,12 @@ public class RemoteService {
         }
         ReflectUtil.setFieldValue(obj, source, value);
     }
-
     private Object getFieldValue(Object remoteValue, String fieldName) {
         if (remoteValue instanceof Map) {
             return ((Map<?, ?>) remoteValue).get(fieldName);
         }
         return ReflectUtil.getFieldValue(remoteValue, fieldName);
     }
-
     /**
      * 从 valueMap
      *
@@ -305,22 +272,18 @@ public class RemoteService {
             return null;
         }
         Map<Serializable, Object> valueMap = typeMap.get(loadKey);
-
         if (MapUtil.isEmpty(valueMap)) {
             return null;
         }
-
         Object newVal = valueMap.get(actualValue);
         // 可能由于序列化原因导致 get 失败，重新尝试get
         if (ObjectUtil.isNotNull(newVal)) {
             return newVal;
         }
-
         newVal = valueMap.get(actualValue.toString());
         // 可能由于是多key原因导致get失败
         return newVal;
     }
-
     /**
      * 回显 集合
      *
@@ -333,7 +296,6 @@ public class RemoteService {
             write(item, typeMap, 1, ignoreFields);
         }
     }
-
     /**
      * 提取参数
      *
@@ -358,7 +320,6 @@ public class RemoteService {
             consumer.accept(typeMap);
             return null;
         }
-
         if (CACHE.containsKey(key)) {
             fieldParam = CACHE.get(key);
         } else {
@@ -384,7 +345,6 @@ public class RemoteService {
         return fieldParam;
     }
 
-
     /**
      * 判断字段是否不为基本类型
      *
@@ -394,7 +354,6 @@ public class RemoteService {
     private boolean isNotBaseType(Field field) {
         return !isBaseType(field);
     }
-
     /**
      * 判断字段是否为基本类型
      *

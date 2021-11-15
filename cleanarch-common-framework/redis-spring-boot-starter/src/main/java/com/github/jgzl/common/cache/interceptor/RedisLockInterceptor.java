@@ -1,5 +1,4 @@
 package com.github.jgzl.common.cache.interceptor;
-
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.MD5;
 import cn.hutool.json.JSONUtil;
@@ -25,11 +24,9 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.util.ObjectUtils;
-
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Objects;
-
 
 /**
  * @author Levin
@@ -38,14 +35,10 @@ import java.util.Objects;
 @Aspect
 @RequiredArgsConstructor
 public class RedisLockInterceptor {
-
     private final RedissonClient redissonClient;
     private final RedisKeyGenerator redisKeyGenerator;
-
     private final ExpressionParser parser = new SpelExpressionParser();
-
     private final LocalVariableTableParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
-
 
     @SneakyThrows
     @Around("execution(public * *(..)) && @annotation(com.github.jgzl.common.cache.annotation.RedisLock)")
@@ -83,7 +76,6 @@ public class RedisLockInterceptor {
             }
         }
     }
-
     /**
      * 解析spring EL表达式,无参数方法
      *
@@ -106,7 +98,6 @@ public class RedisLockInterceptor {
             return parseDefaultKey(key, method, point.getArgs(), point);
         }
     }
-
     /**
      * 生成key的分三部分，类名+方法名，参数,key
      * 不满足指定SPEL表达式并且有适配参数时，
@@ -138,7 +129,6 @@ public class RedisLockInterceptor {
         //使用MD5生成位移key
         return MD5.create().digestHex(jsonText);
     }
-
 
     /**
      * 获取指定类型锁

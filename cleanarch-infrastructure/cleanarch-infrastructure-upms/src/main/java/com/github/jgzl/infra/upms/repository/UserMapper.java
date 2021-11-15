@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.repository;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.jgzl.common.data.configuration.dynamic.ann.DynamicDS;
 import com.github.jgzl.common.data.mybatis.SuperMapper;
@@ -11,16 +10,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
-
 /**
  * @author Levin
  */
 @DynamicDS
 @Mapper
 public interface UserMapper extends SuperMapper<User> {
-
 
     /**
      * 分页查询用户
@@ -30,7 +26,6 @@ public interface UserMapper extends SuperMapper<User> {
      * @return 查询结果
      */
     IPage<UserResp> findPage(IPage<User> page, LbqWrapper<User> wrapper);
-
     /**
      * 带数据权限用户列表
      *
@@ -38,7 +33,6 @@ public interface UserMapper extends SuperMapper<User> {
      * @return 用户
      */
     List<User> list(DataScope dataScope);
-
 	@Select("SELECT " +
 			"    su.* " +
 			"FROM " +

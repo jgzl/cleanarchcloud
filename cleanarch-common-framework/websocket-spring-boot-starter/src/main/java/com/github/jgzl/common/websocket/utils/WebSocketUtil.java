@@ -1,10 +1,8 @@
 package com.github.jgzl.common.websocket.utils;
-
 import javax.websocket.Session;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.Future;
-
 /**
  * @author Levin
  */
@@ -20,7 +18,6 @@ public class WebSocketUtil {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * 异步发送消息
      */
@@ -28,7 +25,6 @@ public class WebSocketUtil {
         Future<Void> voidFuture = session.getAsyncRemote().sendText(message);
         return voidFuture.isDone();
     }
-
     /**
      * 发送字节消息
      */
@@ -40,7 +36,6 @@ public class WebSocketUtil {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * 异步发送字节
      */
@@ -48,7 +43,6 @@ public class WebSocketUtil {
         Future<Void> voidFuture = session.getAsyncRemote().sendBinary(ByteBuffer.wrap(bytes));
         return voidFuture.isDone();
     }
-
     /**
      * 发送对象消息
      */
@@ -60,7 +54,6 @@ public class WebSocketUtil {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * 异步发送对象
      */

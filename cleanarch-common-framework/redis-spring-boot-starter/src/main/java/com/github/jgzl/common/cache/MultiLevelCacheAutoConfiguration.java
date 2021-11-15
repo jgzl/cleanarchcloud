@@ -5,7 +5,7 @@ import cn.hutool.crypto.digest.MD5;
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
 import com.github.jgzl.common.cache.support.CacheMessageListener;
-import com.github.jgzl.common.cache.support.CustomRedisRepository;
+import com.github.jgzl.common.cache.support.RedisRepository;
 import com.github.jgzl.common.cache.support.RedisCaffeineCacheManager;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -27,7 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author fuwei.deng
+ * @author lihaifeng
  * @version 1.0.0
  */
 
@@ -75,13 +75,13 @@ public class MultiLevelCacheAutoConfiguration extends CachingConfigurerSupport {
 	}
 
 	/**
-	 * redis自定义操作仓库
+	 * redis操作仓库
 	 * @param stringRedisTemplate
 	 * @return
 	 */
 	@Bean
-	public CustomRedisRepository customRedisRepository(RedisTemplate stringRedisTemplate){
-		return new CustomRedisRepository(stringRedisTemplate);
+	public RedisRepository customRedisRepository(RedisTemplate<String,String> stringRedisTemplate){
+		return new RedisRepository(stringRedisTemplate);
 	}
 
 

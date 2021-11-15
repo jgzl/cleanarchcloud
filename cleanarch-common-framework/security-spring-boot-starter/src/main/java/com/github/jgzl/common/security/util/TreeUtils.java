@@ -1,10 +1,8 @@
 package com.github.jgzl.common.security.util;
-
 import java.util.ArrayList;
 import java.util.List;
 import com.github.jgzl.common.api.vo.TreeNode;
 import lombok.experimental.UtilityClass;
-
 /**
  * @author lihaifeng
  * @date 2017年11月9日23:34:11
@@ -18,15 +16,11 @@ public class TreeUtils {
 	 * @return
 	 */
 	public <T extends TreeNode> List<T> build(List<T> treeNodes, Object root) {
-
 		List<T> trees = new ArrayList<>();
-
 		for (T treeNode : treeNodes) {
-
 			if (root.equals(treeNode.getParentId())) {
 				trees.add(treeNode);
 			}
-
 			for (T it : treeNodes) {
 				if (it.getParentId() == treeNode.getId()) {
 					if (treeNode.getChildren() == null) {
@@ -38,7 +32,6 @@ public class TreeUtils {
 		}
 		return trees;
 	}
-
 	/**
 	 * 使用递归方法建树
 	 *
@@ -54,7 +47,6 @@ public class TreeUtils {
 		}
 		return trees;
 	}
-
 	/**
 	 * 递归查找子节点
 	 *
@@ -72,7 +64,6 @@ public class TreeUtils {
 		}
 		return treeNode;
 	}
-
 	/**
 	 * 通过sysMenu创建树形节点
 	 *

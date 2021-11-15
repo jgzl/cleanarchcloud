@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.login.config.third;
-
 import com.github.jgzl.infra.upms.login.filter.third.ThirdAuthenticationFilter;
 import com.github.jgzl.infra.upms.login.handler.TenantSavedRequestAwareAuthenticationSuccessHandler;
 import com.github.jgzl.infra.upms.login.handler.UsernamePasswordAuthenticationFailureHandler;
@@ -14,7 +13,6 @@ import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 /**
  * 第三方登录 安全配置
  *
@@ -25,15 +23,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class ThirdAuthenticationSecurityConfiguration extends
 		SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-
     private ThirdUserDetailsService userDetailsService;
-
     private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
-
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
-
 	private AuthRequestFactory authRequestFactory;
-
     @Override
     public void configure(final HttpSecurity http) throws Exception {
         final ThirdAuthenticationFilter filter = new ThirdAuthenticationFilter();
@@ -41,11 +34,9 @@ public class ThirdAuthenticationSecurityConfiguration extends
         filter.setAuthenticationSuccessHandler(successHandler);
         filter.setAuthenticationFailureHandler(failureHandler);
 		filter.setAuthRequestFactory(authRequestFactory);
-
         final ThirdLoginAuthenticationProvider provider = new ThirdLoginAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setHideUserNotFoundExceptions(false);
-
         http
                 .authenticationProvider(provider)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class);

@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.page;
-
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,10 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.jgzl.common.core.util.StringUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * 分页参数
  *
@@ -20,27 +17,22 @@ import java.util.List;
 @Slf4j
 @Data
 public class PageRequest {
-
 	/**
 	 * 当前页码
 	 */
 	private long current = 1;
-
 	/**
 	 * 页面大小
 	 */
 	private long size = 20;
-
 	/**
 	 * 排序字段
 	 */
 	private String column;
-
 	/**
 	 * 排序规则
 	 */
 	private Boolean asc = true;
-
 
     @JsonIgnore
     public <T> Page<T> buildPage() {

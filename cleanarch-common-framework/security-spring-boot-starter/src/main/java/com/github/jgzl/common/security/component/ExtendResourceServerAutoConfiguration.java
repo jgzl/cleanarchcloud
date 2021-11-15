@@ -9,7 +9,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
-
 /**
  * @author lihaifeng
  * @date 2020/11/10

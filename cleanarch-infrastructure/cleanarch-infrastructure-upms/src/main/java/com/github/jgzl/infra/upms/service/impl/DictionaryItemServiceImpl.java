@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import com.github.jgzl.common.core.exception.CheckedException;
 import com.github.jgzl.common.data.mybatis.SuperServiceImpl;
 import com.github.jgzl.common.data.mybatis.conditions.Wraps;
@@ -11,9 +10,7 @@ import com.github.jgzl.infra.upms.service.DictionaryItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
-
 /**
  * <p>
  * 业务实现类
@@ -27,9 +24,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class DictionaryItemServiceImpl extends SuperServiceImpl<DictionaryItemMapper, DictionaryItem> implements DictionaryItemService {
-
     private final DictionaryMapper dictionaryMapper;
-
 
     @Override
     public void addDictionaryItem(Long dictionaryId, DictionaryItem item) {
@@ -45,7 +40,6 @@ public class DictionaryItemServiceImpl extends SuperServiceImpl<DictionaryItemMa
         item.setDictionaryCode(dictionary.getCode());
         this.baseMapper.insert(item);
     }
-
     @Override
     public void editDictionaryItem(Long dictionaryId, DictionaryItem item) {
         final long count = this.baseMapper.selectCount(Wraps.<DictionaryItem>lbQ()

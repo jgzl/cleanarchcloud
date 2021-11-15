@@ -1,15 +1,11 @@
 package com.github.jgzl.infra.gateway.handler.domain;
-
 import lombok.Data;
-
 import java.time.LocalDateTime;
-
 /**
  * @author Levin
  */
 @Data
 public class BlacklistRule {
-
     private String id;
     private String ip;
     private Long visits;

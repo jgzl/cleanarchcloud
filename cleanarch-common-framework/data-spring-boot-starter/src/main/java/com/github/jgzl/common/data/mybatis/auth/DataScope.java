@@ -1,13 +1,10 @@
 package com.github.jgzl.common.data.mybatis.auth;
-
 import com.github.jgzl.common.core.model.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
-
 /**
  * @author Levin
  * @since 2020/2/1
@@ -18,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DataScope {
-
     /**
      * 限制范围为个人时的字段名称
      */
@@ -28,7 +24,6 @@ public class DataScope {
      * 当前用户ID
      */
     private Long userId;
-
     /**
      * 具体的数据范围
      */
@@ -43,5 +38,4 @@ public class DataScope {
      */
     @Builder.Default
     private DataScopeType scopeType = DataScopeType.SELF;
-
 }

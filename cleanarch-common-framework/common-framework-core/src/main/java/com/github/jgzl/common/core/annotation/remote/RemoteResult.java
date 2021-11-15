@@ -1,10 +1,8 @@
 package com.github.jgzl.common.core.annotation.remote;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
 /**
  * 将该注解标记在service方法上， 调用该方法后，返回值中标记了 @Remote 注解的字段将会自动注入属性
  * <p>
@@ -15,7 +13,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})
 public @interface RemoteResult {
-
     String[] ignoreFields() default "";
-
 }

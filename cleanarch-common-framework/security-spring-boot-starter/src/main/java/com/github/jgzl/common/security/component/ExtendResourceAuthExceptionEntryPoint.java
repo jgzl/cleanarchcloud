@@ -1,5 +1,4 @@
 package com.github.jgzl.common.security.component;
-
 import cn.hutool.http.HttpStatus;
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.core.util.Result;
@@ -10,11 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
-
 /**
  * @author lihaifeng
  * @date 2020/7/8
@@ -25,7 +22,6 @@ import java.nio.charset.StandardCharsets;
 @Component
 @AllArgsConstructor
 public class ExtendResourceAuthExceptionEntryPoint implements AuthenticationEntryPoint {
-
 	@Override
 	@SneakyThrows
 	public void commence(HttpServletRequest request, HttpServletResponse response,

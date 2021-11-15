@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import feign.Feign;
 import feign.RequestInterceptor;
-
 /**
  * fegin 配置增强
  *
@@ -18,7 +17,6 @@ import feign.RequestInterceptor;
 @Configuration
 @ConditionalOnClass(Feign.class)
 public class FeignConfiguration {
-
 	@Bean
 	@ConditionalOnProperty("security.oauth2.client.client-id")
 	public RequestInterceptor oauth2FeignRequestInterceptor(

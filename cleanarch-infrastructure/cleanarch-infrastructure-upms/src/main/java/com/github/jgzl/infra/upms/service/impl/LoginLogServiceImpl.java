@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.useragent.Browser;
 import cn.hutool.http.useragent.OS;
@@ -13,9 +12,7 @@ import com.github.jgzl.infra.upms.service.LoginLogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletRequest;
-
 /**
  * <p>
  * 业务实现类
@@ -29,11 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 @Service
 @RequiredArgsConstructor
 public class LoginLogServiceImpl extends SuperServiceImpl<LoginLogMapper, LoginLog> implements LoginLogService {
-
     private final HttpServletRequest request;
-
     private static final String USER_AGENT = "User-Agent";
-
 
     @Override
     public LoginLog saveLoginLog(Long userId, String principal, String realName) {

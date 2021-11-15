@@ -12,21 +12,17 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Slf4j
 @RestController
 @RequestMapping("/task")
 public class TaskController {
-
 	private final HistoryService historyService;
 	private final IdentityService identityService;
 	private final ManagementService managementService;
 	private final RepositoryService repositoryService;
 	private final RuntimeService runtimeService;
 	private final TaskService taskService;
-
 	private String processDefinitionKey="holiday";
-
 	public TaskController(HistoryService historyService,
 			IdentityService identityService, ManagementService managementService, RepositoryService repositoryService,
 			RuntimeService runtimeService, TaskService taskService) {
@@ -37,7 +33,6 @@ public class TaskController {
 		this.runtimeService = runtimeService;
 		this.taskService = taskService;
 	}
-
 	@GetMapping("/start")
 	public String startProcess(){
 		Map<String,Object> values=new HashMap<>();
@@ -52,13 +47,11 @@ public class TaskController {
 		log.info("当前RootProcessInstance的id为[{}]",processInstance.getRootProcessInstanceId());
 		return "success";
 	}
-
 	@GetMapping("/delete")
 	public String deleteDeployment(){
 		repositoryService.deleteDeployment("ebc7586c-be81-11ea-8282-aeb3837f64d0",true);
 		return "success";
 	}
-
 	@GetMapping("/addUser/{processInstanceId}/{username}")
 	public String addUser(@PathVariable String processInstanceId,@PathVariable String username){
 		runtimeService.createProcessInstanceModification(processInstanceId)
@@ -67,14 +60,12 @@ public class TaskController {
 				.execute();
 		return "success";
 	}
-
 	@GetMapping("/list/{username}")
 	public String listTask(@PathVariable String username){
 		TaskQuery taskQuery = taskService.createTaskQuery();
 		List<Task> taskList = taskQuery
 				.processDefinitionKey("holiday")
 				.taskAssignee(username).list();
-
 		taskList.forEach(task -> {
 			log.info("xxx的流程实例ID[{}]",task.getProcessInstanceId());
 			log.info("xxx的流程任务ID[{}]",task.getId());
@@ -85,7 +76,6 @@ public class TaskController {
 		});
 		return "success";
 	}
-
 	@GetMapping("/complete/{taskId}")
 	public String complete(@PathVariable String taskId){
 		log.info("审批开始");

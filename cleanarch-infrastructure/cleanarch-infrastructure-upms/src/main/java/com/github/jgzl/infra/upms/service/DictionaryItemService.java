@@ -1,8 +1,6 @@
 package com.github.jgzl.infra.upms.service;
-
 import com.github.jgzl.common.data.mybatis.SuperService;
 import com.github.jgzl.infra.upms.domain.entity.common.DictionaryItem;
-
 /**
  * <p>
  * 业务接口
@@ -14,7 +12,6 @@ import com.github.jgzl.infra.upms.domain.entity.common.DictionaryItem;
  */
 public interface DictionaryItemService extends SuperService<DictionaryItem> {
 
-
     /**
      * 添加字典项
      *
@@ -22,7 +19,6 @@ public interface DictionaryItemService extends SuperService<DictionaryItem> {
      * @param item         字典项
      */
     void addDictionaryItem(Long dictionaryId, DictionaryItem item);
-
     /**
      * 修改字典项
      *

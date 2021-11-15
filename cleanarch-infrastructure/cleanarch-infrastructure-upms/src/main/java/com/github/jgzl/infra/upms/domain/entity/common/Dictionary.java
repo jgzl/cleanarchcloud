@@ -1,13 +1,10 @@
 package com.github.jgzl.infra.upms.domain.entity.common;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.github.jgzl.common.core.model.SuperEntity;
 import lombok.*;
 import lombok.experimental.Accessors;
-
 import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
-
 /**
  * <p>
  * 实体类
@@ -25,36 +22,28 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @Accessors(chain = true)
 @TableName("common_dictionary")
 public class Dictionary extends SuperEntity<Long> {
-
     private static final long serialVersionUID = 1L;
-
     /**
      * 编码
      */
     @TableField(value = "`code`", condition = LIKE)
     private String code;
-
     /**
      * 名称
      */
     @TableField(value = "name", condition = LIKE)
     private String name;
-
     /**
      * 描述
      */
     @TableField(value = "description", condition = LIKE)
     private String description;
-
     /**
      * 状态
      */
     private Boolean status;
-
     @TableField(value = "`readonly`")
     private Boolean readonly;
-
     @TableField(value = "`sequence`")
     private Integer sequence;
-
 }

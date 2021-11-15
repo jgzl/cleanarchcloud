@@ -1,17 +1,13 @@
 package com.github.jgzl.common.core.util;
 
-
 import cn.hutool.core.map.MapUtil;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableMap;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.function.Function;
-
 import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * Map 类增强
  *
@@ -59,7 +55,6 @@ public class MapHelper {
                             + ".若要在键下索引多个值，请使用: Multimaps.index.");
         }
     }
-
     /**
      * 转换 Map 的 K 和 V
      *
@@ -76,5 +71,4 @@ public class MapHelper {
         map.forEach(biMap::forcePut);
         return biMap.inverse();
     }
-
 }

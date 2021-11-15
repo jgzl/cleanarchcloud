@@ -1,12 +1,9 @@
 package com.github.jgzl.infra.upms.domain.dto;
-
 import lombok.*;
 import lombok.experimental.Accessors;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
-
 /**
  * <p>
  * 实体类
@@ -24,9 +21,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Builder
 public class RoleUserDTO implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     /**
      * 用户ID
      */
@@ -37,5 +32,4 @@ public class RoleUserDTO implements Serializable {
      */
     @NotNull(message = "角色id不能为空")
     private Long roleId;
-
 }

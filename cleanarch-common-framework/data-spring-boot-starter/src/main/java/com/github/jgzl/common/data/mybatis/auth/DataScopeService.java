@@ -1,10 +1,8 @@
 package com.github.jgzl.common.data.mybatis.auth;
-
 /**
  * @author Levin
  */
 public interface DataScopeService {
-
     /**
      * 根据用户编号获取数据权限
      *

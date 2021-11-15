@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR;
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.addOriginalRequestUrl;
-
 /**
  * 全局拦截器，作用所有的微服务
  *     1. 对请求头中参数进行处理 from 参数进行清洗
@@ -22,7 +21,6 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.a
  */
 @Component
 public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
-
 	/**
 	 * Process the Web request and (optionally) delegate to the next {@code WebFilter}
 	 * through the given {@link GatewayFilterChain}.
@@ -35,7 +33,6 @@ public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
 		// 1. 清洗请求头中from 参数
 		ServerHttpRequest request = exchange.getRequest().mutate()
 				.headers(httpHeaders -> httpHeaders.remove(SecurityConstants.FROM)).build();
-
 		// 2. 重写StripPrefix
 		addOriginalRequestUrl(exchange, request.getURI());
 		String rawPath = request.getURI().getRawPath();
@@ -43,13 +40,10 @@ public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
 				.collect(Collectors.joining("/"));
 		ServerHttpRequest newRequest = request.mutate().path(newPath).build();
 		exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, newRequest.getURI());
-
 		return chain.filter(exchange.mutate().request(newRequest.mutate().build()).build());
 	}
-
 	@Override
 	public int getOrder() {
 		return -1000;
 	}
-
 }

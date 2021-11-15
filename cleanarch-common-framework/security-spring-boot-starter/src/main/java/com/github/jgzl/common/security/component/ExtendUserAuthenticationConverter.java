@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.UserAuthenticationConverter;
 import org.springframework.util.StringUtils;
-
 /**
  * 重写 UserAuthenticationConverter 在资源服务器获取jwt中的额外信息
  *
@@ -20,20 +19,15 @@ import org.springframework.util.StringUtils;
  * 2019/7/16 11:33
  */
 public class ExtendUserAuthenticationConverter implements UserAuthenticationConverter {
-
     private UserDetailsService userDetailsService;
-
     private Collection<? extends GrantedAuthority> defaultAuthorities;
-
     public void setUserDetailsService(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
     public void setDefaultAuthorities(String[] defaultAuthorities) {
         this.defaultAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils
                 .arrayToCommaDelimitedString(defaultAuthorities));
     }
-
     @Override
     public Map<String, ?> convertUserAuthentication(final Authentication authentication) {
         Map<String, Object> response = new LinkedHashMap<String, Object>();
@@ -43,7 +37,6 @@ public class ExtendUserAuthenticationConverter implements UserAuthenticationConv
         }
         return response;
     }
-
     @Override
     public Authentication extractAuthentication(final Map<String, ?> map) {
         if (map.containsKey(USERNAME)) {
@@ -70,7 +63,6 @@ public class ExtendUserAuthenticationConverter implements UserAuthenticationConv
         }
         return null;
     }
-
     private Collection<? extends GrantedAuthority> getAuthorities(Map<String, ?> map) {
         if (!map.containsKey(AUTHORITIES)) {
             return defaultAuthorities;

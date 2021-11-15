@@ -1,17 +1,13 @@
 package com.github.jgzl.common.data.mybatis;
-
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.IEnum;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
 import static java.util.stream.Collectors.toList;
-
 /**
  * 枚举类型基类
  *
@@ -19,14 +15,12 @@ import static java.util.stream.Collectors.toList;
  * @since 2019/07/26
  */
 public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
-
     /**
      * 描述信息
      *
      * @return 描述
      */
     String getDesc();
-
 
     /**
      * 获取枚举编码
@@ -36,7 +30,6 @@ public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
     default String getCode() {
         return String.valueOf(this.getValue());
     }
-
 
     /**
      * 枚举数组转集合
@@ -52,7 +45,6 @@ public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
                 .code(dictionary.getCode()).desc(dictionary.getDesc())
                 .build()).collect(Collectors.toList());
     }
-
     /**
      * 获取指定类型枚举映射
      *
@@ -71,9 +63,7 @@ public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
         }
         return null;
     }
-
     char SEPARATOR = ',';
-
 
     /**
      * 转换成字符串
@@ -89,7 +79,6 @@ public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
                 .filter(Objects::nonNull)
                 .map(DictionaryEnum::getCode).collect(Collectors.joining(","));
     }
-
     /**
      * 转换成集合枚举
      *
@@ -106,5 +95,4 @@ public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {
                 .map(type -> of(enumClass, Integer.parseInt(type)))
                 .collect(toList());
     }
-
 }

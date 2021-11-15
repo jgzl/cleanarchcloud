@@ -1,7 +1,5 @@
 package com.github.jgzl.common.data.properties;
-
 import lombok.Getter;
-
 /**
  * 多租户策略
  *
@@ -21,15 +19,12 @@ public enum MultiTenantStrategy {
     ;
     String description;
 
-
     MultiTenantStrategy(String description) {
         this.description = description;
     }
-
     public boolean eq(String val) {
         return this.name().equalsIgnoreCase(val);
     }
-
     public boolean eq(MultiTenantStrategy val) {
         if (val == null) {
             return false;

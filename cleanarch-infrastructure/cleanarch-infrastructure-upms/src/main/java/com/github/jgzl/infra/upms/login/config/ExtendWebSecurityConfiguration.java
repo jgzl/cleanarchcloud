@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.login.config;
-
 import com.github.jgzl.common.security.properties.FrameworkSecurityProperties;
 import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.login.config.email.EmailTokenAuthenticationSecurityConfiguration;
@@ -26,11 +25,9 @@ import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
-
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.UUID;
-
 /**
  * webSecurity 权限控制类
  *
@@ -41,31 +38,18 @@ import java.util.UUID;
 @Configuration
 @AllArgsConstructor
 public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     private DataSource dataSource;
-
 	private FrameworkSecurityProperties securityProperties;
-
     private UsernameUserDetailsServiceImpl userNameUserDetailsService;
-
     private TenantSavedRequestAwareAuthenticationSuccessHandler successHandler;
-
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
-
     private UsernamePasswordAccessDeniedHandler accessDeniedHandler;
-
     private MultiplyLogoutSuccessHandler multiplyLogoutSuccessHandler;
-
     private EmailTokenAuthenticationSecurityConfiguration mobileTokenAuthenticationSecurityConfiguration;
-
     private MobileAuthenticationSecurityConfiguration mobileAuthenticationSecurityConfiguration;
-
     private ThirdAuthenticationSecurityConfiguration thirdAuthenticationSecurityConfiguration;
-
 	private PasswordEncoder passwordEncoder;
-
     private static final String RM_KEY = UUID.randomUUID().toString();
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry =
@@ -95,12 +79,10 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
                         // 开启RememberMe
                         .and().rememberMe().key(RM_KEY).rememberMeServices(rememberMeServices())
                         .and().authorizeRequests();
-
 		final List<String> urlPermitAll = securityProperties.getUrlPermitAll();
         urlPermitAll.forEach(url -> registry.antMatchers(url).permitAll());
         registry.anyRequest().authenticated().and().cors().and().csrf().disable();
     }
-
 	/**
 	 * 不拦截静态资源
 	 * @param web
@@ -109,7 +91,6 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
 	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/favicon.ico", "/css/**", "/error", "/doc/**");
 	}
-
     /**
      * 这一步的配置是必不可少的，否则SpringBoot会自动配置一个AuthenticationManager,覆盖掉内存中的用户
      */
@@ -118,7 +99,6 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
     /**
      * 默认的用户名密码 AuthenticationProvider
      *
@@ -132,7 +112,6 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return daoAuthenticationProvider;
     }
-
     /**
      * 注册自定义的UsernamePasswordAuthenticationFilter
      *
@@ -148,7 +127,6 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         filter.setAuthenticationManager(authenticationManagerBean());
         return filter;
     }
-
     /**
      * RememberMeServices
      */

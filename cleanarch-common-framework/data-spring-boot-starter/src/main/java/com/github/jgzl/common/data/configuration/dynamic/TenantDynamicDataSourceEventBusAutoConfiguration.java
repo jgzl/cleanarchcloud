@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.configuration.dynamic;
-
 import cn.hutool.extra.spring.SpringUtil;
 import com.baomidou.dynamic.datasource.processor.DsHeaderProcessor;
 import com.baomidou.dynamic.datasource.processor.DsProcessor;
@@ -21,9 +20,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
-
 /**
  * 如果要实现自定义 database 库名的话 也很容易
  *
@@ -34,35 +31,29 @@ import javax.servlet.http.HttpServletRequest;
 @ConditionalOnProperty(prefix = "framework.mybatis-plus.multi-tenant", name = "type", havingValue = "datasource")
 @RemoteApplicationEventScan(basePackageClasses = DynamicDatasourceEvent.class)
 public class TenantDynamicDataSourceEventBusAutoConfiguration {
-
     @Bean
     public TenantDynamicDataSourceProcess tenantDynamicDataSourceProcess() {
         return new TenantDynamicDataSourceProcess();
     }
-
     @Bean
     public ApplicationListener<DynamicDatasourceEvent> dynamicDatasourceEventListener(TenantDynamicDataSourceProcess process) {
         return new DynamicDatasourceEventListener(process);
     }
-
     @Bean(initMethod = "init")
     @ConditionalOnProperty(prefix = "framework.mybatis-plus.multi-tenant", name = "strategy", havingValue = "feign")
     public TenantDynamicDataSourceLoad tenantDynamicDataSourceLoad(TenantDynamicDataSourceProcess process, TenantFeignClient tenantFeignClient) {
         return new TenantDynamicDataSourceLoad(process, tenantFeignClient);
     }
-
     @Bean
     @Primary
     public DsProcessor dsProcessor(FrameworkMpProperties properties) {
         // 重写 DsHeaderProcessor
         DsProcessor contentProcessor = new DsProcessor() {
             private static final String CUSTOM_PREFIX = "#custom";
-
             @Override
             public boolean matches(String key) {
                 return key.startsWith(CUSTOM_PREFIX);
             }
-
             @Override
             public String doDetermineDatasource(MethodInvocation invocation, String key) {
                 ServletRequestAttributes attributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
@@ -94,7 +85,6 @@ public class TenantDynamicDataSourceEventBusAutoConfiguration {
         sessionProcessor.setNextProcessor(expressionProcessor);
         return contentProcessor;
     }
-
     private String getTenantDB(HttpServletRequest request, FrameworkMpProperties.MultiTenant multiTenant, String tenantCode) {
         if (StringUtils.isBlank(tenantCode) || StringUtils.equals(tenantCode, multiTenant.getSuperTenantCode())) {
             log.debug("tenantCode 为空或者为超级租户,切换默认数据源 - {}", multiTenant.getDefaultDsName());
@@ -104,5 +94,4 @@ public class TenantDynamicDataSourceEventBusAutoConfiguration {
         log.debug("数据源切换至 - {} - {} - {}", tenantCode, db, request.getRequestURI());
         return db;
     }
-
 }

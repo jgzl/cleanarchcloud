@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.exception.CheckedException;
 import com.github.jgzl.common.core.util.Result;
@@ -12,9 +11,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-
 import java.util.concurrent.TimeUnit;
-
 /**
  * @author Levin
  */
@@ -22,10 +19,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @RequiredArgsConstructor
 public class VerificationServiceImpl implements VerificationService {
-
     private final StringRedisTemplate stringRedisTemplate;
     private static final String CAPTCHA_KEY_PREFIX = "captcha:prefix:%s";
-
 
     @SneakyThrows
     @Override
@@ -39,7 +34,6 @@ public class VerificationServiceImpl implements VerificationService {
         log.debug("验证码结果 - {}", captcha.text());
         return captcha;
     }
-
     @Override
     public Result<Boolean> valid(String key, String value) {
         if (StringUtils.isBlank(value)) {
@@ -55,7 +49,6 @@ public class VerificationServiceImpl implements VerificationService {
         stringRedisTemplate.delete(geyKey(key));
         return Result.success();
     }
-
     private String geyKey(String key) {
         return String.format(CAPTCHA_KEY_PREFIX, key);
     }

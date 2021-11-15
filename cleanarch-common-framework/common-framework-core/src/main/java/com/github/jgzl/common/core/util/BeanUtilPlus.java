@@ -1,21 +1,17 @@
 package com.github.jgzl.common.core.util;
-
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReflectUtil;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
 /**
  * BeanUtil 增强
  *
  * @author Levin
  */
 public class BeanUtilPlus extends BeanUtil {
-
     /**
      * 对象或Map转Bean
      *
@@ -30,7 +26,6 @@ public class BeanUtilPlus extends BeanUtil {
         ReflectUtil.setFieldValue(bean, "id", id);
         return bean;
     }
-
     /**
      * 转换 list （如果有枚举类型请勿使用该方法 ）
      *
@@ -49,5 +44,4 @@ public class BeanUtilPlus extends BeanUtil {
                 .map((source) -> toBean(source, destinationClass))
                 .collect(Collectors.toList());
     }
-
 }

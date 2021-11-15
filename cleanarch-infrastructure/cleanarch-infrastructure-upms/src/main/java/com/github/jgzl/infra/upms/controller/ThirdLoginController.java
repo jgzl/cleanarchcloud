@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.controller;
-
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.util.Result;
@@ -14,12 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-
 /**
  * 第三方登录控制器
  */
@@ -27,9 +24,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class ThirdLoginController {
-
 	private final AuthRequestFactory factory;
-
 	/**
 	 * 查看(所有的第三方登录平台key)
 	 * @return
@@ -39,7 +34,6 @@ public class ThirdLoginController {
 	public Result<List<String>> list() {
 		return Result.ok(factory.oauthList());
 	}
-
 	/**
 	 * 登录(通过第三方平台key)
 	 * @param type

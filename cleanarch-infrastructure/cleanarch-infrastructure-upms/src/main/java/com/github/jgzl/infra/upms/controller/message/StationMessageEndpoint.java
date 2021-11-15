@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.controller.message;
-
 import cn.hutool.core.collection.CollectionUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
@@ -15,12 +14,10 @@ import com.github.jgzl.infra.upms.service.StationMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.util.List;
-
 
 /**
  * 聊天室
@@ -32,10 +29,8 @@ import java.util.List;
 @Component
 @ServerEndpoint(value = "/message/{tenantCode}/{identifier}")
 public class StationMessageEndpoint extends BaseWebSocketEndpoint {
-
 	@Autowired
 	private WebSocketManager webSocketManager;
-
 	@OnOpen
     public void openSession(@PathParam("tenantCode") String tenantCode, @PathParam(IDENTIFIER) String userId, Session session) {
         connect(userId, session);
@@ -60,24 +55,20 @@ public class StationMessageEndpoint extends BaseWebSocketEndpoint {
         }
         messages.forEach(message -> senderMessage(userId, JSON.toJSONString(message)));
     }
-
     @OnMessage
     public void onMessage(@PathParam(IDENTIFIER) String userId, Session session, String message) {
         log.info("接收到的消息" + message);
     }
-
     @OnClose
     public void onClose(@PathParam(IDENTIFIER) String userId, Session session) {
         disconnect(userId);
     }
-
     @OnError
     public void onError(@PathParam(IDENTIFIER) String userId, Session session, Throwable throwable) {
         log.info("发生异常：, identifier {} ", userId);
         log.error(throwable.getMessage(), throwable);
         disconnect(userId);
     }
-
 	@Override
 	protected WebSocketManager getWebSocketManager() {
 		return webSocketManager;

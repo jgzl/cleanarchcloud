@@ -1,12 +1,10 @@
 package com.github.jgzl.common.job.configuration;
-
 import com.github.jgzl.common.job.XxlJobProperties;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
-
 /**
  * @author Levin
  */
@@ -14,7 +12,6 @@ import org.springframework.core.annotation.Order;
 @Order(9999)
 @EnableConfigurationProperties(XxlJobProperties.class)
 public class XxlJobAutoConfiguration {
-
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor(XxlJobProperties properties) {
         log.info(">>>>>>>>>>> xxl-job config init.");

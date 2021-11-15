@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author fuwei.deng
+ * @author lihaifeng
  * @version 1.0.0
  */
 @Slf4j

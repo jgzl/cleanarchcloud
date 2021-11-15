@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
- * redisson限流器自动配置项
+ * redis限流器自动配置项
  *
  * @author Levin
  */

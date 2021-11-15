@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.domain.enums;
-
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -8,7 +7,6 @@ import com.github.jgzl.common.data.mybatis.DictionaryEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 
 /**
  * <p>
@@ -23,7 +21,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonFormat
 public enum ReceiverType implements DictionaryEnum<Integer> {
-
     /**
      * 1
      */
@@ -33,17 +30,14 @@ public enum ReceiverType implements DictionaryEnum<Integer> {
      */
     ROLE(2, "角色"),
 
-
     ;
     @EnumValue
     @JsonValue
     private Integer type;
-
 	/**
 	 * 描述
 	 */
     private String desc;
-
     @JsonCreator
     public static ReceiverType of(Integer type) {
         if (type == null) {
@@ -56,27 +50,22 @@ public enum ReceiverType implements DictionaryEnum<Integer> {
         }
         return null;
     }
-
     public boolean eq(String val) {
         return this.name().equalsIgnoreCase(val);
     }
-
     public boolean eq(ReceiverType val) {
         if (val == null) {
             return false;
         }
         return eq(val.name());
     }
-
     @Override
     public Integer getValue() {
         return this.type;
     }
-
     @Override
     public String toString() {
         return String.valueOf(type);
     }
-
 
 }

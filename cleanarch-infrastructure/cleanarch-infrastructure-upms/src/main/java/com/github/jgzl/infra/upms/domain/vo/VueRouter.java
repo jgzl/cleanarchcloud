@@ -1,7 +1,5 @@
 package com.github.jgzl.infra.upms.domain.vo;
-
 import lombok.Data;
-
 /**
  * 构建 Vue路由
  *
@@ -10,9 +8,7 @@ import lombok.Data;
  */
 @Data
 public class VueRouter {
-
     private static final long serialVersionUID = -3327478146308500708L;
-
     private Long id;
     private Long parentId;
 	/**
@@ -43,9 +39,7 @@ public class VueRouter {
 	 * 元数据
 	 */
 	private RouterMeta meta;
-
     private String model;
-
     private String permission;
     /**
      * 排序
@@ -55,7 +49,6 @@ public class VueRouter {
 	 * 类型（1=菜单;2=按钮;3=路由;5=一键发布模板）
 	 */
 	private Integer type;
-
     private Boolean global;
     private Boolean status;
 	/**

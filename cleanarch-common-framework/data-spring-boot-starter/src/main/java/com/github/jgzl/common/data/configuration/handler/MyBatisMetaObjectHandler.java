@@ -1,5 +1,4 @@
 package com.github.jgzl.common.data.configuration.handler;
-
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.github.jgzl.common.core.model.Entity;
 import com.github.jgzl.common.core.model.SuperEntity;
@@ -8,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
-
 import java.time.LocalDateTime;
-
 /**
  * MyBatis Plus 元数据处理类
  * 用于自动 注入 id, createdTime, lastModifiedTime, createdBy, lastModifiedBy 等字段
@@ -21,16 +18,13 @@ import java.time.LocalDateTime;
 @Slf4j
 @RequiredArgsConstructor
 public class MyBatisMetaObjectHandler implements MetaObjectHandler {
-
     /**
      * id类型判断符
      */
     private static final String ID_TYPE = "java.lang.String";
-
     private final long workerId;
     private final long dataCenterId;
     private final TenantEnvironment tenantEnvironment;
-
     /**
      * 注意：不支持 复合主键 自动注入！！
      * <p>
@@ -63,7 +57,6 @@ public class MyBatisMetaObjectHandler implements MetaObjectHandler {
             }
         }
     }
-
     /**
      * 所有的继承了Entity、SuperEntity的实体，在update时，
      * lastModifiedBy: 自动赋予 当前线程上的登录人id

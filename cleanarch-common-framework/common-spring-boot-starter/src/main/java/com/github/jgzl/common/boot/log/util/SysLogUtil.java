@@ -1,12 +1,9 @@
 package com.github.jgzl.common.boot.log.util;
-
 import com.github.jgzl.common.core.annotation.log.SysLog;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
-
 import java.lang.reflect.Method;
-
 /**
  * 日志工具类
  *
@@ -15,7 +12,6 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 public class SysLogUtil {
-
     /***
      * 获取操作信息
      */
@@ -26,14 +22,12 @@ public class SysLogUtil {
         }
         return annotation.value();
     }
-
     public static String getDescription(SysLog annotation) {
         if (annotation == null) {
             return "";
         }
         return annotation.value();
     }
-
     /**
      * 优先从子类获取 @SysLog：
      * 1，若子类重写了该方法，有标记就记录日志，没标记就忽略日志
@@ -54,31 +48,4 @@ public class SysLogUtil {
             return null;
         }
     }
-
-//
-//	/**
-//	 * 获取客户端
-//	 * @return clientId
-//	 */
-//	public static String getClientId() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (authentication instanceof OAuth2Authentication) {
-//			OAuth2Authentication auth2Authentication = (OAuth2Authentication) authentication;
-//			return auth2Authentication.getOAuth2Request().getClientId();
-//		}
-//		return null;
-//	}
-//
-//	/**
-//	 * 获取用户名称
-//	 * @return username
-//	 */
-//	public static String getUsername() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (authentication == null) {
-//			return null;
-//		}
-//		return authentication.getName();
-//	}
-
 }

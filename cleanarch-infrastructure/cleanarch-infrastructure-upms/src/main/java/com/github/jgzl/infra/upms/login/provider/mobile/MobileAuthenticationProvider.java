@@ -1,5 +1,5 @@
 package com.github.jgzl.infra.upms.login.provider.mobile;
-import com.github.jgzl.common.cache.support.CustomRedisRepository;
+import com.github.jgzl.common.cache.support.RedisRepository;
 import com.github.jgzl.infra.upms.core.AbstractUserDetailsAuthenticationProvider;
 import com.github.jgzl.infra.upms.login.token.mobile.MobileAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,7 +26,7 @@ public class MobileAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
     private UserDetailsService userDetailsService;
 
-    private CustomRedisRepository redisRepository;
+    private RedisRepository redisRepository;
 
     @Override
     protected Authentication createSuccessAuthentication(final Object principal, final Authentication authentication, final UserDetails user) {
@@ -93,11 +93,11 @@ public class MobileAuthenticationProvider extends AbstractUserDetailsAuthenticat
         this.userDetailsService = userDetailsService;
     }
 
-    public CustomRedisRepository getRedisRepository() {
+    public RedisRepository getRedisRepository() {
         return redisRepository;
     }
 
-    public void setRedisRepository(final CustomRedisRepository redisRepository) {
+    public void setRedisRepository(final RedisRepository redisRepository) {
         this.redisRepository = redisRepository;
     }
 }

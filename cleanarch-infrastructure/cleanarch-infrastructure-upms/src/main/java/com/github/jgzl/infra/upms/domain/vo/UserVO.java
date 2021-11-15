@@ -1,44 +1,34 @@
 package com.github.jgzl.infra.upms.domain.vo;
-
 import lombok.Data;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 /**
  * @author Levin
  */
 @Data
 public class UserVO {
-
     private Long id;
-
     /**
      * 姓名
      */
     private String nickName;
-
     /**
      * 姓名
      */
     private String realName;
 
-
     /**
      * 邮箱
      */
     private String email;
-
     /**
      * 手机
      */
     private String mobile;
-
 	/**
 	 * 用户名
 	 */
     private String username;
-
     /**
      * 生日
      */
@@ -53,11 +43,9 @@ public class UserVO {
      */
     private String occupation;
 
-
     /**
      * 创建时间（依托数据库功能）
      */
     protected LocalDateTime createdTime;
-
 
 }

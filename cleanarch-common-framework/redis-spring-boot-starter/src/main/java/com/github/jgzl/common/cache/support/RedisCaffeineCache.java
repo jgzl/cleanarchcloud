@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author fuwei.deng
+ * @author lihaifeng
  * @version 1.0.0
  */
 @Slf4j
@@ -189,7 +189,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	/**
 	 * @param message
 	 * @description 缓存变更时通知其他节点清理本地缓存
-	 * @author fuwei.deng
+	 * @author lihaifeng
 	 * @date 2018年1月31日 下午3:20:28
 	 * @version 1.0.0
 	 */
@@ -200,7 +200,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	/**
 	 * @param key
 	 * @description 清理本地缓存
-	 * @author fuwei.deng
+	 * @author lihaifeng
 	 * @date 2018年1月31日 下午3:15:39
 	 * @version 1.0.0
 	 */

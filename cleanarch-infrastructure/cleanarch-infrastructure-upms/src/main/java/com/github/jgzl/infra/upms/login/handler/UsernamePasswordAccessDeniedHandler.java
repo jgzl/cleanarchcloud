@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
 /**
  * 自定义授权失败返回信息: 通用
  *
@@ -22,7 +21,6 @@ import java.nio.charset.StandardCharsets;
  */
 @Slf4j@Component
 public class UsernamePasswordAccessDeniedHandler implements AccessDeniedHandler {
-
     @Override
     public void handle(final HttpServletRequest request, final HttpServletResponse response, final AccessDeniedException accessDeniedException) throws IOException{
 		log.info("UsernamePasswordAccessDeniedHandler:",accessDeniedException);

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 /**
  * @author lihaifeng
  */
@@ -24,22 +23,17 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping
 public class IndexController {
-
 	@Autowired
 	private Environment environment;
-
 	@Autowired
 	private StringRedisTemplate redisTemplate;
-
 	@Value("${redis.topic.chat}")
 	private String chatTopic;
-
 	@GetMapping("ping")
 	public String ping() {
 		log.info("ping_url:{}", environment.getProperty("server.port"));
 		return environment.getProperty("server.port");
 	}
-
 	/**
 	 * 发送消息
 	 * 先登录 http://www.websocket-test.com/ 打开三个窗口输入
@@ -58,7 +52,6 @@ public class IndexController {
 		redisTemplate.convertAndSend(chatTopic, msg);
 		return "success";
 	}
-
 	/**
 	 * 上传文件
 	 * @param multipartFile

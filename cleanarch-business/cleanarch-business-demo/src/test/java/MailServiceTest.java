@@ -6,14 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.github.jgzl.application.DemoApplication;
 import com.github.jgzl.application.service.MailService;
 import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @SpringBootTest(classes = {DemoApplication.class})
 public class MailServiceTest {
-
 	@Autowired
 	private MailService mailService;
-
 	@Test
 	public void sendTemplateMailTest(){
 		Map<String, Object> mailContentMap = new HashMap<>();
@@ -31,7 +28,5 @@ public class MailServiceTest {
 		}
 		log.info("邮件发送成功");
 	}
-
-
 
 }

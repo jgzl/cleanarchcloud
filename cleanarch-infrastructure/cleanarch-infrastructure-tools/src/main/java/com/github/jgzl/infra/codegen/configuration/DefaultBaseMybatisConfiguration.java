@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.codegen.configuration;
-
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.github.jgzl.common.data.TenantEnvironment;
 import com.github.jgzl.common.data.configuration.BaseMybatisConfiguration;
@@ -12,16 +11,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * @author Levin
  */
 @Configuration
 public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {
-
     @Bean
 	@ConditionalOnMissingBean
     public TenantEnvironment tenantEnvironment() {
@@ -30,27 +26,22 @@ public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {
             public Long tenantId() {
                 return SecurityUtils.getNonullUserInfo().getTenantId();
             }
-
             @Override
             public Long userId() {
                 return SecurityUtils.getNonullUserInfo().getUserId();
             }
-
             @Override
             public String realName() {
                 return SecurityUtils.getNonullUserInfo().getRealName();
             }
-
             @Override
             public boolean anonymous() {
                 return SecurityUtils.anonymous();
             }
         };
     }
-
     @Autowired
     private ApplicationContext applicationContext;
-
     @Override
     protected List<InnerInterceptor> getPaginationBeforeInnerInterceptor() {
         List<InnerInterceptor> list = new ArrayList<>();

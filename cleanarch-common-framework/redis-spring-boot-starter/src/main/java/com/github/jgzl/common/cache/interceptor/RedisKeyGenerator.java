@@ -1,7 +1,5 @@
 package com.github.jgzl.common.cache.interceptor;
-
 import org.aspectj.lang.ProceedingJoinPoint;
-
 /**
  * key生成器
  *
@@ -9,7 +7,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * @since 2021/09/10
  */
 public interface RedisKeyGenerator {
-
     /**
      * 获取AOP参数,生成指定缓存Key
      *
@@ -20,7 +17,6 @@ public interface RedisKeyGenerator {
     default String generate(String prefix, String delimiter) {
         throw new RuntimeException("请自行实现该接口方法");
     }
-
     /**
      * 获取AOP参数,生成指定缓存Key
      *

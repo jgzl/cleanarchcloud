@@ -1,14 +1,11 @@
 package com.github.jgzl.infra.upms.domain.entity.baseinfo;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.validation.constraints.NotNull;
-
 /**
  * <p>
  * 实体类
@@ -24,9 +21,7 @@ import javax.validation.constraints.NotNull;
 @TableName("sys_role_res")
 @Builder
 public class RoleRes {
-
     private static final long serialVersionUID = 1L;
-
     /**
      * 资源id
      * #c_auth_resource
@@ -36,7 +31,6 @@ public class RoleRes {
     @TableField("res_id")
     private Long resId;
 
-
     /**
      * 角色id
      * #t_sys_role
@@ -44,5 +38,4 @@ public class RoleRes {
     @NotNull(message = "角色id不能为空")
     @TableField("role_id")
     private Long roleId;
-
 }

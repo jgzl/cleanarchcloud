@@ -1,7 +1,5 @@
 package com.github.jgzl.common.websocket;
-
 import java.util.List;
-
 /**
  * @author Levin
  */

@@ -1,5 +1,4 @@
 package com.github.jgzl.common.boot.remote;
-
 import com.github.jgzl.common.core.annotation.remote.Remote;
 import com.github.jgzl.common.core.remote.LoadService;
 import com.google.common.base.Objects;
@@ -7,12 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 /**
  * 封装 Remote 注解中解析出来的参数
  * <p>
@@ -25,28 +22,23 @@ import java.util.Set;
 @ToString
 @NoArgsConstructor
 public class CacheLoadKeys {
-
     /**
      * 执行查询任务的类
      */
     private String bean;
-
     /**
      * 动态查询值
      */
     private Set<Serializable> keys = new HashSet<>();
     private LoadService<Serializable> loadService;
-
     public CacheLoadKeys(Remote rf) {
         this.bean = rf.bean();
     }
-
     public CacheLoadKeys(LoadKey lk, LoadService<Serializable> loadService, Set<Serializable> keys) {
         this.bean = lk.getBean();
         this.loadService = loadService;
         this.keys = keys;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -60,12 +52,10 @@ public class CacheLoadKeys {
         boolean isEqualsKeys = keys.size() == that.keys.size() && keys.containsAll(that.keys);
         return apiMethod && isEqualsKeys;
     }
-
     @Override
     public int hashCode() {
         return Objects.hashCode(bean, keys);
     }
-
 
     /**
      * 加载数据

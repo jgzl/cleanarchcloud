@@ -1,12 +1,10 @@
 package com.github.jgzl.infra.upms.domain.entity.baseinfo;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
  * <p>
  * 实体类
@@ -22,21 +20,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @TableName("sys_role_org")
 public class RoleOrg {
-
     private static final long serialVersionUID = 1L;
-
     /**
      * 角色ID
      * #c_auth_role
      */
     @TableField("role_id")
     private Long roleId;
-
     /**
      * 部门ID
      * #c_core_org
      */
     @TableField("org_id")
     private Long orgId;
-
 }

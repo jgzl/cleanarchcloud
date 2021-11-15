@@ -12,7 +12,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  * @author lihaifeng
  * @date 2020/9/13
@@ -21,18 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class TenantContextHolderFilter extends GenericFilterBean {
-
 	@Override
 	@SneakyThrows
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
-
 		String headerTenant = request.getHeader(CommonConstants.TENANT_CODE);
 		String paramTenant = request.getParameter(CommonConstants.TENANT_CODE);
-
 		log.debug("获取header中的租户ID为:{}", headerTenant);
-
 		if (StrUtil.isNotBlank(headerTenant)) {
 			TenantContextHolder.setTenantCode(headerTenant);
 		}
@@ -42,9 +37,7 @@ public class TenantContextHolderFilter extends GenericFilterBean {
 		else {
 			TenantContextHolder.setTenantCode(CommonConstants.DEFAULT_TENANT_CODE);
 		}
-
 		filterChain.doFilter(request, response);
 		TenantContextHolder.clear();
 	}
-
 }

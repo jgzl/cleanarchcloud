@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.controller.baseinfo;
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.core.annotation.log.SysLog;
@@ -27,11 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 import static com.github.jgzl.common.core.util.Result.success;
-
 /**
  * 角色管理
  *
@@ -43,13 +39,11 @@ import static com.github.jgzl.common.core.util.Result.success;
 @RequestMapping("/roles")
 @RequiredArgsConstructor
 public class RoleController {
-
     private final TenantEnvironment tenantEnvironment;
     private final RoleService roleService;
     private final RoleResService roleResService;
     private final RoleOrgService roleOrgService;
     private final UserRoleService userRoleService;
-
 	/**
 	 * 角色列表
 	 * @return
@@ -59,7 +53,6 @@ public class RoleController {
         final List<Role> page = this.roleService.list();
         return success(page);
     }
-
 	/**
 	 * 角色列表
 	 * @param current
@@ -77,7 +70,6 @@ public class RoleController {
                 .eq(Role::getLocked, locked).like(Role::getName, name).eq(Role::getScopeType, scopeType));
         return success(page);
     }
-
 	/**
 	 * 角色详情
 	 * @param id
@@ -91,7 +83,6 @@ public class RoleController {
         detail.setAuthority(authority);
         return success(detail);
     }
-
 	/**
 	 * 添加角色
 	 * @param data
@@ -103,7 +94,6 @@ public class RoleController {
         roleService.saveRole(tenantEnvironment.userId(), data);
         return success();
     }
-
 	/**
 	 * 编辑角色
 	 * @param id
@@ -116,7 +106,6 @@ public class RoleController {
         roleService.updateRole(id, tenantEnvironment.userId(), data);
         return success();
     }
-
 	/**
 	 * 删除角色
 	 * @param id
@@ -128,7 +117,6 @@ public class RoleController {
         this.roleService.removeByRoleId(id);
         return success();
     }
-
 	/**
 	 * 角色关联的用户
 	 * @param roleId
@@ -138,7 +126,6 @@ public class RoleController {
     public Result<UserRoleResp> userByRoleId(@PathVariable Long roleId) {
         return success(userRoleService.findUserByRoleId(roleId));
     }
-
 	/**
 	 * 只能看到自身权限
 	 * @param roleId
@@ -149,7 +136,6 @@ public class RoleController {
         return success(this.roleService.findRolePermissionById(roleId));
     }
 
-
 	/**
 	 * 角色关联的资源
 	 * @param roleId
@@ -159,7 +145,6 @@ public class RoleController {
     public Result<List<RoleRes>> resByRoleId(@PathVariable Long roleId) {
         return success(roleResService.list(Wraps.<RoleRes>lbQ().eq(RoleRes::getRoleId, roleId)));
     }
-
 	/**
 	 * 角色关联的组织
 	 * @param roleId
@@ -169,7 +154,6 @@ public class RoleController {
     public Result<List<RoleOrg>> orgByRoleId(@PathVariable Long roleId) {
         return success(roleOrgService.list(Wraps.<RoleOrg>lbQ().eq(RoleOrg::getRoleId, roleId)));
     }
-
 	/**
 	 * 角色分配操作资源
 	 * @param roleId
@@ -181,7 +165,6 @@ public class RoleController {
         this.roleResService.saveRoleAuthority(dto);
         return success();
     }
-
 	/**
 	 * 角色分配用户
 	 * @param roleId
@@ -193,6 +176,5 @@ public class RoleController {
         this.roleService.saveUserRole(roleId, dto.getUserIdList());
         return success();
     }
-
 
 }

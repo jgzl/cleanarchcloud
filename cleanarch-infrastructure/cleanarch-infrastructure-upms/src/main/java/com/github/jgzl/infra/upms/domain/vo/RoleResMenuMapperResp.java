@@ -1,7 +1,5 @@
 package com.github.jgzl.infra.upms.domain.vo;
-
 import lombok.Data;
-
 /**
  * @author Levin
  */
@@ -19,5 +17,4 @@ public class RoleResMenuMapperResp {
 	 * 资源类型（1=菜单;2=按钮）
 	 */
 	private Integer type;
-
 }

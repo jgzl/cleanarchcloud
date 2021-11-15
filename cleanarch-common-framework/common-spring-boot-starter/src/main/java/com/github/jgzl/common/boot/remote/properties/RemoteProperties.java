@@ -13,7 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(RemoteProperties.PREFIX)
 public class RemoteProperties {
 
-    public static final String PREFIX = "framework.com.wemirr.framework.boot.remote";
+    public static final String PREFIX = "framework.remote";
     /**
      * 是否启用远程查询
      */

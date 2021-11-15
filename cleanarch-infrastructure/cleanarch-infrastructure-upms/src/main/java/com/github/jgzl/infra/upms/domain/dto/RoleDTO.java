@@ -1,15 +1,12 @@
 package com.github.jgzl.infra.upms.domain.dto;
-
 import com.github.jgzl.common.data.mybatis.auth.DataScopeType;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
-
 /**
  * <p>
  * 实体类
@@ -27,9 +24,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Builder
 public class RoleDTO implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     /**
      * 角色名称
      */
@@ -50,7 +45,6 @@ public class RoleDTO implements Serializable {
      * 状态
      */
     private Boolean locked;
-
     private Boolean readonly;
     /**
      * 数据权限类型
@@ -58,7 +52,6 @@ public class RoleDTO implements Serializable {
      */
     @NotNull(message = "数据权限类型不能为空")
     private DataScopeType scopeType;
-
     /**
      * 关联的组织id
      */

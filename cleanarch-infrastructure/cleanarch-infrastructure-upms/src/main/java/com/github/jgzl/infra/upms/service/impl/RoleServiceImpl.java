@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import com.github.jgzl.common.core.exception.CheckedException;
@@ -22,13 +21,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import static java.util.stream.Collectors.toList;
-
 
 /**
  * <p>
@@ -43,18 +39,15 @@ import static java.util.stream.Collectors.toList;
 @Service
 @RequiredArgsConstructor
 public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implements RoleService {
-
     private final RoleResMapper roleResMapper;
     private final RoleOrgMapper roleOrgMapper;
     private final UserRoleMapper userRoleMapper;
     private final ResourceMapper resourceMapper;
     private final TenantEnvironment tenantEnvironment;
-
     @Override
     public List<Role> list(DataScope scope) {
         return baseMapper.list(scope);
     }
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void removeByRoleId(Long roleId) {
@@ -71,7 +64,6 @@ public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implemen
         userRoleMapper.delete(Wraps.<UserRole>lbQ().eq(UserRole::getRoleId, roleId));
     }
 
-
     @Override
     public void saveRole(Long userId, RoleDTO data) {
         Role role = BeanUtil.toBean(data, Role.class);
@@ -79,7 +71,6 @@ public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implemen
         super.save(role);
         saveRoleOrg(role, data.getOrgList());
     }
-
     @Override
     public void updateRole(Long roleId, Long userId, RoleDTO data) {
         Role role = BeanUtil.toBean(data, Role.class);
@@ -91,11 +82,9 @@ public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implemen
         }
         role.setId(roleId);
         baseMapper.updateById(role);
-
         roleOrgMapper.delete(Wraps.<RoleOrg>lbQ().eq(RoleOrg::getRoleId, roleId));
         saveRoleOrg(role, data.getOrgList());
     }
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void saveUserRole(Long roleId, List<Long> userIdList) {
@@ -107,7 +96,6 @@ public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implemen
             this.userRoleMapper.insert(role);
         }
     }
-
     private void saveRoleOrg(Role role, List<Long> orgList) {
         // 根据 数据范围类型 和 勾选的组织ID， 重新计算全量的组织ID
         if (CollectionUtil.isNotEmpty(orgList)) {
@@ -118,7 +106,6 @@ public class RoleServiceImpl extends SuperServiceImpl<RoleMapper, Role> implemen
             }
         }
     }
-
     @Override
     public RolePermissionResp findRolePermissionById(Long roleId) {
         final List<VueRouter> buttons = resourceMapper.findVisibleResource(ResourceQueryDTO.builder()

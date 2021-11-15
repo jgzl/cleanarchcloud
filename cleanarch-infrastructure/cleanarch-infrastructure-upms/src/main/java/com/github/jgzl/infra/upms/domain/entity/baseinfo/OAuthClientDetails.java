@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.domain.entity.baseinfo;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -8,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
  * @author Levin
  */
@@ -18,7 +16,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @TableName("sys_oauth_client_details")
 public class OAuthClientDetails {
-
     @TableId(type = IdType.INPUT)
     private String clientId;
     private String clientSecret;
@@ -38,5 +35,4 @@ public class OAuthClientDetails {
     private String additionalInformation;
     @TableField("autoapprove")
     private String autoApprove;
-
 }

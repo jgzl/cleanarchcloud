@@ -8,7 +8,6 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import java.util.Collection;
-
 /**
  * @author lihaifeng
  * @date 2020/8/13
@@ -17,9 +16,7 @@ import java.util.Collection;
 @Slf4j
 public class Oauth2FeignClientInterceptor extends OAuth2FeignRequestInterceptor {
 	private final OAuth2ClientContext oAuth2ClientContext;
-
 	private final AccessTokenContextRelay accessTokenContextRelay;
-
 	/**
 	 * Default constructor which uses the provided OAuth2ClientContext and Bearer tokens
 	 * within Authorization header
@@ -35,7 +32,6 @@ public class Oauth2FeignClientInterceptor extends OAuth2FeignRequestInterceptor 
 		this.accessTokenContextRelay = accessTokenContextRelay;
 	}
 
-
 	/**
 	 * Create a template with the header of provided name and extracted extract
 	 * 1. 如果使用 非web 请求，header 区别
@@ -50,7 +46,6 @@ public class Oauth2FeignClientInterceptor extends OAuth2FeignRequestInterceptor 
 		if (CollUtil.isNotEmpty(fromHeader) && fromHeader.contains(SecurityConstants.FROM_IN)) {
 			return;
 		}
-
 		accessTokenContextRelay.copyToken();
 		if (oAuth2ClientContext != null
 				&& oAuth2ClientContext.getAccessToken() != null) {

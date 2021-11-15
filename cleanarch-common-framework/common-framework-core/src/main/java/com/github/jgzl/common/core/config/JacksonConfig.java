@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.jgzl.common.core.jackson.CustomJavaTimeModule;
 import cn.hutool.core.date.DatePattern;
-
 /**
  * JacksonConfig
  * 必须是json传入才会走这个自动序列化反序列化LocalDateTime,LocalDate,LocalTime

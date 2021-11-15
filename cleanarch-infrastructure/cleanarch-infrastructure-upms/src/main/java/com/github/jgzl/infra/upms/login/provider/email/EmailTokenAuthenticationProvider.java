@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.login.provider.email;
 import com.github.jgzl.infra.upms.core.AbstractUserDetailsAuthenticationProvider;
 import com.github.jgzl.infra.upms.login.token.email.EmailTokenAuthenticationToken;
-import com.github.jgzl.common.cache.support.CustomRedisRepository;
+import com.github.jgzl.common.cache.support.RedisRepository;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -26,7 +26,7 @@ public class EmailTokenAuthenticationProvider extends AbstractUserDetailsAuthent
 
     private UserDetailsService userDetailsService;
 
-    private CustomRedisRepository redisRepository;
+    private RedisRepository redisRepository;
 
     @Override
     protected Authentication createSuccessAuthentication(final Object principal, final Authentication authentication, final UserDetails user) {
@@ -93,11 +93,11 @@ public class EmailTokenAuthenticationProvider extends AbstractUserDetailsAuthent
         this.userDetailsService = userDetailsService;
     }
 
-    public CustomRedisRepository getRedisRepository() {
+    public RedisRepository getRedisRepository() {
         return redisRepository;
     }
 
-    public void setRedisRepository(final CustomRedisRepository redisRepository) {
+    public void setRedisRepository(final RedisRepository redisRepository) {
         this.redisRepository = redisRepository;
     }
 }

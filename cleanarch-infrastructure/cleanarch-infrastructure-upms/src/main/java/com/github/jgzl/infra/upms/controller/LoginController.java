@@ -7,7 +7,7 @@ import com.github.jgzl.infra.upms.core.PathConstants;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.OAuthClientDetails;
 import com.github.jgzl.infra.upms.repository.OAuthClientDetailsMapper;
 import com.github.jgzl.infra.upms.service.UserService;
-import com.github.jgzl.common.cache.support.CustomRedisRepository;
+import com.github.jgzl.common.cache.support.RedisRepository;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.Result;
 import com.github.jgzl.common.security.util.SecurityUtils;
@@ -33,7 +33,7 @@ import static com.github.jgzl.common.core.constant.RegexConstants.MOBILE_REG;
 public class LoginController {
 
 	@Autowired
-	private CustomRedisRepository redisRepository;
+	private RedisRepository redisRepository;
 
 	@Autowired
 	private UserService userService;

@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -27,10 +26,8 @@ import me.zhyd.oauth.model.AuthUser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
-
 /**
  * @author Levin
  */
@@ -38,35 +35,29 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implements UserService {
-
     private static final String PHONE_REGEX = "^[1][0-9]{10}$";
     private final UserMapper userMapper;
     private final UserRoleMapper userRoleMapper;
 	private final SysSocialUserMapper sysSocialUserMapper;
 	private final SysSocialUserAuthMapper sysSocialUserAuthMapper;
     private final PasswordEncoder passwordEncoder;
-
 	public User findByTypeAndTypeValue(SFunction<User,String> function, String value) {
 		User dao = this.baseMapper
 				.selectOne(Wrappers.<User>lambdaQuery().eq(function,value));
 		return dao;
 	}
-
 	@Override
 	public User findUserByUsername(String username) {
 		return findByTypeAndTypeValue(User::getUsername,username);
 	}
-
 	@Override
 	public User findUserByMobile(String mobile) {
 		return findByTypeAndTypeValue(User::getMobile,mobile);
 	}
-
 	@Override
 	public User findUserByEmail(String email) {
 		return findByTypeAndTypeValue(User::getEmail,email);
 	}
-
     @Override
     public void addUser(UserSaveDTO dto) {
         final long count = super.count(Wraps.<User>lbQ().eq(User::getUsername, dto.getUsername()));
@@ -77,17 +68,14 @@ public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implemen
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         super.save(user);
     }
-
     @Override
     public List<User> list(DataScope scope) {
         return baseMapper.list(scope);
     }
-
     @Override
     public IPage<UserResp> findPage(IPage<User> page, LbqWrapper<User> wrapper) {
         return baseMapper.findPage(page, wrapper);
     }
-
     @Override
     public void changePassword(Long userId, String orgPassword, String newPassword) {
         final User user = Optional.ofNullable(this.baseMapper.selectById(userId))
@@ -100,7 +88,6 @@ public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implemen
         record.setPassword(passwordEncoder.encode(newPassword));
         this.userMapper.updateById(record);
     }
-
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteById(Long id) {
@@ -111,12 +98,10 @@ public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implemen
         baseMapper.deleteById(id);
         userRoleMapper.delete(Wraps.<UserRole>lbQ().eq(UserRole::getUserId, id));
     }
-
 	@Override
 	public List<User> findUserBySocialUserUuidAndSource(String uuid, String source) {
 		return baseMapper.findUserBySocialUserUuidAndSource(uuid,source);
 	}
-
 	@Override
 	public void bindSocialUser(AuthUser authUser, Long userId) {
 		String uuid = authUser.getUuid();

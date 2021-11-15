@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>会员列表</title>
-
   <link type="text/css" rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
-
 </head>
 <body>
 <h3>当前登录用户：<span th:text="${#authentication.name}"></span> | <a th:href="@{/logout}">退出</a></h3>

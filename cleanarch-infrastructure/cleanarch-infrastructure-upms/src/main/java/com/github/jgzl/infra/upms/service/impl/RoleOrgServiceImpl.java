@@ -1,5 +1,4 @@
 package com.github.jgzl.infra.upms.service.impl;
-
 import com.github.jgzl.common.data.mybatis.SuperServiceImpl;
 import com.github.jgzl.common.data.mybatis.conditions.Wraps;
 import com.github.jgzl.infra.upms.domain.entity.baseinfo.RoleOrg;
@@ -7,10 +6,8 @@ import com.github.jgzl.infra.upms.repository.RoleOrgMapper;
 import com.github.jgzl.infra.upms.service.RoleOrgService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 /**
  * <p>
  * 业务实现类

@@ -1,10 +1,8 @@
 package com.github.jgzl.common.boot.remote;
-
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.annotation.remote.Remote;
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -12,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /**
  * 类管理器
  *
@@ -20,11 +17,8 @@ import java.util.Map;
  */
 @Slf4j
 public class ClassManager implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     private static final Map<String, List<Field>> CACHE = new HashMap<>();
-
     public static List<Field> getFields(Class<?> clazz) {
         if (CACHE.containsKey(clazz.getName())) {
             return CACHE.get(clazz.getName());

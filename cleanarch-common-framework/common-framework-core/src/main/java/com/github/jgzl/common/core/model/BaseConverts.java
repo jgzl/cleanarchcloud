@@ -1,9 +1,7 @@
 package com.github.jgzl.common.core.model;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 /**
  * 对象转换接口
  *
@@ -14,7 +12,6 @@ import java.util.stream.Collectors;
  * @since 2019-03-19
  */
 public interface BaseConverts<S, T> {
-
     /**
      * 类型转换
      *
@@ -24,7 +21,6 @@ public interface BaseConverts<S, T> {
     default T convert(S source) {
         return null;
     }
-
     /**
      * 类型转换
      *
@@ -35,7 +31,6 @@ public interface BaseConverts<S, T> {
     default T convert(S source, Long id) {
         return null;
     }
-
     /**
      * 批量类型转换
      *
@@ -45,5 +40,4 @@ public interface BaseConverts<S, T> {
     default List<T> converts(List<S> sources) {
         return sources == null || sources.size() <= 0 ? new ArrayList<>() : sources.stream().map(this::convert).collect(Collectors.toList());
     }
-
 }
