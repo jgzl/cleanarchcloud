@@ -7,14 +7,10 @@ routes:
     uri: lb://cleanarch-infrastructure-camunda
     predicates:
       - Path=/camunda/**
-  - id: codegen
-    uri: lb://cleanarch-infrastructure-codegen
+  - id: tools
+    uri: lb://cleanarch-infrastructure-tools
     predicates:
-      - Path=/codegen/**
-  - id: log
-    uri: lb://cleanarch-infrastructure-log
-    predicates:
-      - Path=/log/**
+      - Path=/tools/**
   - id: demo
     uri: lb://cleanarch-business-demo
     predicates:

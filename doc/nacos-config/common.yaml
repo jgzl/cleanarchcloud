@@ -46,7 +46,7 @@ feign:
 
 oss:
   path-style-access: false
-  endpoint: localhost:9000
+  endpoint: 127.0.0.1:9000
   access-key: cleanarch
   secret-key: cleanarch
   bucketName: cleanarch

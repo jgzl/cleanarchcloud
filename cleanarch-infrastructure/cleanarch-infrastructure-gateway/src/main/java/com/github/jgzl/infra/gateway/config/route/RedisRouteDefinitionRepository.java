@@ -8,7 +8,6 @@ import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -20,7 +19,6 @@ import static java.util.stream.Collectors.toList;
  * @author Levin
  */
 @Slf4j
-@Component
 @RequiredArgsConstructor
 public class RedisRouteDefinitionRepository implements RouteDefinitionRepository {
 
