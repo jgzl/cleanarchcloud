@@ -57,6 +57,7 @@ framework:
     url-permit-all:
       - /captcha
       - /oauth/token
+      - /message/**
       - /third/**
       - /login/**
       - /heartbeat

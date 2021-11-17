@@ -1,12 +1,14 @@
 package com.github.jgzl.infra.gateway.filter;
-import java.time.Instant;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
+
+import java.time.Instant;
 
 /**
  * @author lihaifeng
@@ -21,6 +23,9 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		log.info("Welcome to TimeStatsGlobalFilter.");
 		exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
+		exchange.getRequest().getHeaders().forEach((key,value)->{
+			log.debug("header为[{}:{}]",key,value);
+		});
 		return chain.filter(exchange).then(
 				Mono.fromRunnable(() -> {
 					long startTime = exchange.getAttribute(COUNT_START_TIME);

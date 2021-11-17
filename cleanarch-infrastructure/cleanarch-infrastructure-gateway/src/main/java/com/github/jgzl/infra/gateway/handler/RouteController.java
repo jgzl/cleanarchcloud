@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * http://localhost:9000/actuator/gateway/routes
+ * http://localhost:8000/actuator/gateway/routes
  *
  * @author Levin
  */

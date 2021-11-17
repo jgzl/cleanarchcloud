@@ -14,7 +14,7 @@ public interface CommonConstants {
 	/**
 	 * header 中租户CODE
 	 */
-	String TENANT_CODE = "TENANT-CODE";
+	String TENANT_CODE = "tenant_code";
 
 	/**
 	 * 默认用户名称

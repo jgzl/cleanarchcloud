@@ -1,5 +1,6 @@
 package com.github.jgzl.infra.gateway.filter;
 import com.github.jgzl.common.core.constant.SecurityConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -19,6 +20,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.a
  * @author lihaifeng
  * @date 2020/10/8
  */
+@Slf4j
 @Component
 public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
 	/**

@@ -1,4 +1,5 @@
 package com.github.jgzl.infra.upms.controller.message;
+
 import cn.hutool.core.collection.CollectionUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
@@ -12,8 +13,8 @@ import com.github.jgzl.common.websocket.WebSocketManager;
 import com.github.jgzl.infra.upms.domain.entity.message.StationMessage;
 import com.github.jgzl.infra.upms.service.StationMessageService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -29,8 +30,7 @@ import java.util.List;
 @Component
 @ServerEndpoint(value = "/message/{tenantCode}/{identifier}")
 public class StationMessageEndpoint extends BaseWebSocketEndpoint {
-	@Autowired
-	private WebSocketManager webSocketManager;
+
 	@OnOpen
     public void openSession(@PathParam("tenantCode") String tenantCode, @PathParam(IDENTIFIER) String userId, Session session) {
         connect(userId, session);
@@ -71,6 +71,6 @@ public class StationMessageEndpoint extends BaseWebSocketEndpoint {
     }
 	@Override
 	protected WebSocketManager getWebSocketManager() {
-		return webSocketManager;
+		return SpringContextHolder.getBean(WebSocketManager.class);
 	}
 }

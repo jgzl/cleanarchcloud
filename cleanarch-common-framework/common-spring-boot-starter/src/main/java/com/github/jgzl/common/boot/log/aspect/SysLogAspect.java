@@ -78,12 +78,12 @@ public class SysLogAspect {
 	/***
 	 * 定义controller切入点拦截规则：拦截标记SysLog注解和指定包下的方法
 	 *
-	 * execution(public * com.wemirr.base.controller.*.*(..)) 解释：
+	 * execution(public * com.github.jgzl.common.infra.*.controller.*.*(..)) 解释：
 	 * 第一个* 任意返回类型
 	 * 第三个* 类下的所有方法
 	 * ()中间的.. 任意参数
 	 *
-	 * annotation(com.wemirr.framework.commons.annotation.log.SysLog) 解释：
+	 * annotation(com.github.jgzl.common.core.annotation.log.SysLog) 解释：
 	 * 标记了@SysLog 注解的方法
 	 */
 	@Pointcut("@annotation(com.github.jgzl.common.core.annotation.log.SysLog)")
