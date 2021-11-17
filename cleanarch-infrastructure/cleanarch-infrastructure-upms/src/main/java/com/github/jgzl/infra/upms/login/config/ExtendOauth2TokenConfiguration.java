@@ -1,8 +1,7 @@
 package com.github.jgzl.infra.upms.login.config;
 
-import com.github.jgzl.common.security.dataobject.UserInfoDetails;
-import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
+import com.github.jgzl.common.security.dataobject.UserInfoDetails;
 import com.github.jgzl.common.security.properties.FrameworkSecurityProperties;
 import com.github.jgzl.infra.upms.login.service.RedisAuthenticationCodeServices;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import java.security.KeyPair;
 import java.util.Arrays;
@@ -28,6 +26,8 @@ public class ExtendOauth2TokenConfiguration {
 	private final FrameworkSecurityProperties securityProperties;
 
 	private final RedisConnectionFactory redisConnectionFactory;
+
+	private final TokenStore tokenStore;
 
 	/**
 	 * jwt 生成token 定制化处理
@@ -68,7 +68,7 @@ public class ExtendOauth2TokenConfiguration {
 
 		tokenServices.setSupportRefreshToken(true);
 		tokenServices.setReuseRefreshToken(false);
-		tokenServices.setTokenStore(tokenStore());
+		tokenServices.setTokenStore(tokenStore);
 		tokenServices.setAccessTokenValiditySeconds(securityProperties.getAccessTokenValiditySeconds());
 		tokenServices.setRefreshTokenValiditySeconds(securityProperties.getRefreshTokenValiditySeconds());
 
@@ -92,13 +92,6 @@ public class ExtendOauth2TokenConfiguration {
 		converter.setKeyPair(keyPair);
 		converter.setAccessTokenConverter(new ExtendAccessTokenConverter());
 		return converter;
-	}
-
-	@Bean
-	public TokenStore tokenStore() {
-		final RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-		tokenStore.setPrefix(CacheConstants.REDIS_TOKEN_PREFIX);
-		return tokenStore;
 	}
 
 	/**

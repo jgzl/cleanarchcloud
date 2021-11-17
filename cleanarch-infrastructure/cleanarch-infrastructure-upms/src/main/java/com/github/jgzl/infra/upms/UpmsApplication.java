@@ -2,6 +2,7 @@ package com.github.jgzl.infra.upms;
 
 import com.github.jgzl.common.core.constant.ServiceNameConstants;
 import com.github.jgzl.common.feign.annotation.EnableFeignClientsPlus;
+import com.github.jgzl.common.security.annotation.EnableResourceServerPlus;
 import com.github.jgzl.common.websocket.redis.EnableRedisWebSocket;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * 登录 http://localhost:8010/login/username/login
  * 输入账号密码 admin admin
  */
+@EnableResourceServerPlus
 @EnableFeignClientsPlus
 @EnableRedisWebSocket
 @EnableDiscoveryClient

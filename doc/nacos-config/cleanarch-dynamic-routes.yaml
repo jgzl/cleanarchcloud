@@ -2,7 +2,7 @@ routes:
   - id: upms
     uri: lb://cleanarch-infrastructure-upms
     predicates:
-      - Path=/auth/**,/upms/**
+      - Path=/upms/**
   - id: camunda
     uri: lb://cleanarch-infrastructure-camunda
     predicates:
