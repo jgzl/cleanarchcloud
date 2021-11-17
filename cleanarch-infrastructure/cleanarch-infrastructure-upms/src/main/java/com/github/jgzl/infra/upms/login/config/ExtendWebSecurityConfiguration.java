@@ -45,7 +45,7 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
     private UsernamePasswordAuthenticationFailureHandler failureHandler;
     private UsernamePasswordAccessDeniedHandler accessDeniedHandler;
     private MultiplyLogoutSuccessHandler multiplyLogoutSuccessHandler;
-    private EmailTokenAuthenticationSecurityConfiguration mobileTokenAuthenticationSecurityConfiguration;
+    private EmailTokenAuthenticationSecurityConfiguration emailTokenAuthenticationSecurityConfiguration;
     private MobileAuthenticationSecurityConfiguration mobileAuthenticationSecurityConfiguration;
     private ThirdAuthenticationSecurityConfiguration thirdAuthenticationSecurityConfiguration;
 	private PasswordEncoder passwordEncoder;
@@ -55,7 +55,7 @@ public class ExtendWebSecurityConfiguration extends WebSecurityConfigurerAdapter
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry =
                 http
                         // 默认的用户名密码认证器
-                        .apply(mobileTokenAuthenticationSecurityConfiguration)
+                        .apply(emailTokenAuthenticationSecurityConfiguration)
                         .and()
                         .apply(mobileAuthenticationSecurityConfiguration)
                         .and()

@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 手机号获取token登录认证filter
- * 通过手机号直接获取 token
+ * 自定义邮件验证码登录系统
  *
  * @author lihaifeng
  * 2019/5/13 15:37

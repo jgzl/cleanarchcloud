@@ -55,6 +55,8 @@ framework:
       secret: cleanarch
       alias: cleanarch
     url-permit-all:
+      - /captcha
+      - /oauth/token
       - /third/**
       - /login/**
       - /heartbeat

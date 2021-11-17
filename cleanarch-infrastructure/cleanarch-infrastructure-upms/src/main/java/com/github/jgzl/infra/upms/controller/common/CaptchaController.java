@@ -1,6 +1,5 @@
 package com.github.jgzl.infra.upms.controller.common;
 
-import com.github.jgzl.common.security.annotation.Inner;
 import com.github.jgzl.infra.upms.service.VerificationService;
 import com.wf.captcha.base.Captcha;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +28,6 @@ public class CaptchaController {
     private final VerificationService verificationService;
 
     @SneakyThrows
-    @Inner
     @GetMapping(produces = "image/png")
     public void create(@RequestParam(value = "key") String key, HttpServletResponse response) {
         response.setContentType(MediaType.IMAGE_PNG_VALUE);
@@ -39,6 +37,5 @@ public class CaptchaController {
         final Captcha captcha = verificationService.create(key);
         captcha.out(response.getOutputStream());
     }
-
 
 }

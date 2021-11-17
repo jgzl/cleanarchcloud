@@ -10,8 +10,8 @@
 
     <artifactId>common-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::关系数据库操作模块</description>
-	<name>通用资源::关系数据库操作模块</name>
+	<description>通用资源::通用操作模块</description>
+	<name>通用资源::通用操作模块</name>
 
     <properties>
         <!-- 打包跳过单元测试 -->
