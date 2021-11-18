@@ -4,7 +4,7 @@ import com.github.jgzl.infra.upms.domain.entity.message.StationMessagePublish;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Mapper
 public interface StationMessagePublishMapper extends SuperMapper<StationMessagePublish> {

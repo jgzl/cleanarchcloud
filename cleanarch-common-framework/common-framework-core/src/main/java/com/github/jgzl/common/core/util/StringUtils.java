@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class StringUtils extends StrUtil {
 

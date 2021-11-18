@@ -16,7 +16,7 @@ import java.lang.reflect.Parameter;
 /**
  * 默认的Key生成器
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class DefaultRedisKeyGenerator implements RedisKeyGenerator {
 

@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @Order(9999)

@@ -3,7 +3,7 @@ package com.github.jgzl.common.data.configuration.dynamic.event.body;
 import lombok.Data;
 
 /**
- * @author levin
+ * @author lihaifeng
  */
 @Data
 public class TenantDynamicDatasource {

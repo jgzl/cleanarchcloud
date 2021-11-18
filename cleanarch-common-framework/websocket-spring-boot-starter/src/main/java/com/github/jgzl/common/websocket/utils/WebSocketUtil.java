@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.Future;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class WebSocketUtil {
     /**

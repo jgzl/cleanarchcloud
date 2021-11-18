@@ -11,7 +11,7 @@ import lombok.ToString;
  * <p>
  * 必须重写该类的 equals() 和 hashCode() 便于Map操作
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @NoArgsConstructor

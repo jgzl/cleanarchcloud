@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * MyBatis Plus 元数据处理类
  * 用于自动 注入 id, createdTime, lastModifiedTime, createdBy, lastModifiedBy 等字段
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019/04/29
  */
 @Slf4j

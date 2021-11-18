@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface GatewayRule<T> {
 

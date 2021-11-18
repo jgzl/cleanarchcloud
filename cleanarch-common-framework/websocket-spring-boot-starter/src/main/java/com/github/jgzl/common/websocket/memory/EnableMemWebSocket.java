@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @author Levin at 2018/10/15
+ * @author lihaifeng at 2018/10/15
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

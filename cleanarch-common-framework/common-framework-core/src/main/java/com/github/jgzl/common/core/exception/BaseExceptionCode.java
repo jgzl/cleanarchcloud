@@ -3,7 +3,7 @@ package com.github.jgzl.common.core.exception;
 /**
  * 基础异常码接口
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-09-27
  */
 public interface BaseExceptionCode {

@@ -16,7 +16,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 /**
  * 动态路由自动装配
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @Configuration

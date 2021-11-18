@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 内存管理websocket配置
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Configuration
 @EnableConfigurationProperties(WebSocketProperties.class)

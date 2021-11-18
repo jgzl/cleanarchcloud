@@ -9,7 +9,7 @@ import java.text.MessageFormat;
 /**
  * 检查型异常
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-03-13
  */
 @Data

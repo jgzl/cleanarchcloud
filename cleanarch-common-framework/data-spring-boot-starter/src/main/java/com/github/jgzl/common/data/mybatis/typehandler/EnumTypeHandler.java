@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  * @param <E>
- * @author Levin
+ * @author lihaifeng
  */
 public class EnumTypeHandler<E extends Enum<?> & DictionaryEnum<Integer>> extends BaseTypeHandler<DictionaryEnum<Integer>> {
 

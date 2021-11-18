@@ -11,7 +11,7 @@ import lombok.Getter;
  * 数据权限范围，值越大，权限越大
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-10-01
  */
 @Getter

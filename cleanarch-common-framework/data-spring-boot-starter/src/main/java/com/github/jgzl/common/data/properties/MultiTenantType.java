@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * 多租户类型
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2018/11/20
  */
 @Getter

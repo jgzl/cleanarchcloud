@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * OAuth2 异常格式化
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 public class Auth2ExceptionSerializer extends StdSerializer<Auth2Exception> {

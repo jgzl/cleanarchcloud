@@ -16,9 +16,16 @@
 <div class="container form-margin-top">
     <form class="form-signin" action="/login/username/login" method="post">
         <h2 class="form-signin-heading" align="center">统一认证系统</h2>
+        <#if tenantList??>
+            <select class="form-control form-margin-top" placeholder="所属租户" name="TENANT-CODE">
+                <#list tenantList as tenant>
+                    <option value="${tenant.code}">${tenant.name}</option>
+                </#list>
+            </select>
+        </#if>
         <input type="text" name="username" class="form-control form-margin-top" placeholder="账号" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="密码" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="setTenant">登录</button>
         <#if error??>
             <span style="color: red; ">${error}</span>
         </#if>

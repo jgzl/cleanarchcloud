@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -61,7 +61,7 @@ public class ExtendCacheConfigProperties {
     /**
      * 单项缓存配置信息
      *
-     * @author Levin
+     * @author lihaifeng
      */
     @Data
     @EqualsAndHashCode(callSuper = false)

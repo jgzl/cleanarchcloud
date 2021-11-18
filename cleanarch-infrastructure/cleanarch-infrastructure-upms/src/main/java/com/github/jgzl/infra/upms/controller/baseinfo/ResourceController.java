@@ -34,7 +34,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * 菜单资源
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @Validated

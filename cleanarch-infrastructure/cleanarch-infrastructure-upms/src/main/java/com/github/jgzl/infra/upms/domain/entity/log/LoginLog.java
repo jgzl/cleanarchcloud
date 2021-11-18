@@ -20,7 +20,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
  * 登录日志
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-11-01
  */
 @Data

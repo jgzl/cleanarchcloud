@@ -11,7 +11,7 @@ import java.util.Set;
  * 组织
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-22
  */
 public interface OrgService extends SuperService<Org> {

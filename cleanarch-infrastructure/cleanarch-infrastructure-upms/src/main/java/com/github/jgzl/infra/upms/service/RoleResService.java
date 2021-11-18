@@ -12,7 +12,7 @@ import com.github.jgzl.infra.upms.domain.vo.RoleResVO;
  * 角色的资源
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-03
  */
 public interface RoleResService extends SuperService<RoleRes> {

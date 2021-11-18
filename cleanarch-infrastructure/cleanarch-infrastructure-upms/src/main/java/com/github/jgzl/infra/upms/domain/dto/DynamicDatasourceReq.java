@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class DynamicDatasourceReq {

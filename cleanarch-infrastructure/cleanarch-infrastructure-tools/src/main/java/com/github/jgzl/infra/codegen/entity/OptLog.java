@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import java.util.Date;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @TableName("common_opt_log")

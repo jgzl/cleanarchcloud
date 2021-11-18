@@ -6,7 +6,7 @@ import com.github.jgzl.common.websocket.WebSocketManager;
 /**
  * do nothing action
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class NoActionAction implements Action {
     @Override

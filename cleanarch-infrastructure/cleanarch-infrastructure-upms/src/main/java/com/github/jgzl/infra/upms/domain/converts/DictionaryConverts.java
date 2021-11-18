@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 public class DictionaryConverts {

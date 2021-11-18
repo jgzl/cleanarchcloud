@@ -1,7 +1,7 @@
 package com.github.jgzl.common.cache.sequence;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface Sequence {
 

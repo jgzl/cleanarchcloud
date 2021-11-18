@@ -35,7 +35,7 @@ import java.util.function.Predicate;
  * 4，增加 leFooter 方法， 将日期参数值，强制转换成当天 23：59：59
  * 5，增加 geHeader 方法， 将日期参数值，强制转换成当天 00：00：00
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-05-25
  */
 @SuppressWarnings("serial")

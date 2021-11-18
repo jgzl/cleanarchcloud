@@ -4,7 +4,7 @@ package com.github.jgzl.common.data;
 /**
  * 多租户上下文
  *
- * @author Levin
+ * @author lihaifeng
  */
 public interface TenantEnvironment {
 

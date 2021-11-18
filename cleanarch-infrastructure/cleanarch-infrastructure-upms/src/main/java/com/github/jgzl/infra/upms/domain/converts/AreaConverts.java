@@ -5,7 +5,7 @@ import com.github.jgzl.infra.upms.domain.entity.common.AreaEntity;
 import com.github.jgzl.infra.upms.domain.vo.AreaNodeResp;
 import org.springframework.beans.BeanUtils;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class AreaConverts {
     public static final AreaDto2PoConverts AREA_DTO_2_PO_CONVERTS = new AreaDto2PoConverts();

@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.domain.vo;
 import lombok.Data;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class RoleResMenuMapperResp {

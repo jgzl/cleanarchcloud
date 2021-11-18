@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * 账号角色绑定
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-10-20
  */
 @Data

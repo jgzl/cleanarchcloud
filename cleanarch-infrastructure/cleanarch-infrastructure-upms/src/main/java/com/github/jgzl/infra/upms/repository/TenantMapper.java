@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Mapper
 public interface TenantMapper extends SuperMapper<Tenant> {

@@ -22,7 +22,7 @@ import java.util.Map;
  *
  * <p>异常时用JSON代替HTML异常信息<p>
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {

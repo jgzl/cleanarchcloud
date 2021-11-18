@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * 覆盖默认的异常处理
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Configuration
 @EnableConfigurationProperties({ServerProperties.class, WebProperties.class})

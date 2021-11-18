@@ -30,7 +30,7 @@ import java.util.TimeZone;
 /**
  * 基础配置类
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Configuration
 public class InitBaseConfiguration implements WebMvcConfigurer {

@@ -28,7 +28,7 @@ import static com.github.jgzl.common.core.util.Result.success;
 /**
  * 组织架构
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @RestController

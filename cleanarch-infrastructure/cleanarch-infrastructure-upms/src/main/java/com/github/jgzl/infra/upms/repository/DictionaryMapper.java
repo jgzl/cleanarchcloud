@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * 字典类型
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @date 2019-07-02
  */
 @DynamicDS

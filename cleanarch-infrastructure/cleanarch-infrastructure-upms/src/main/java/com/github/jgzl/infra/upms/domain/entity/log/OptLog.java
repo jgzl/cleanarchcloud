@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @TableName("common_opt_log")

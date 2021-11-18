@@ -1,6 +1,6 @@
 package com.github.jgzl.common.data.mybatis.auth;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface DataScopeService {
     /**

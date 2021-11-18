@@ -45,7 +45,7 @@ import java.sql.SQLSyntaxErrorException;
 import static com.github.jgzl.common.boot.base.GlobalExceptionHandler.GLOBAL_EXCEPTION;
 
 /**
- * @author Levin
+ * @author lihaifeng
  * @since 2019-01-21
  */
 @Slf4j

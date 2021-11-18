@@ -11,7 +11,7 @@ import com.github.jgzl.common.websocket.utils.WebSocketUtil;
  * }
  * 广播给所有的websocket发送消息 action
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class BroadCastAction implements Action {
     @Override

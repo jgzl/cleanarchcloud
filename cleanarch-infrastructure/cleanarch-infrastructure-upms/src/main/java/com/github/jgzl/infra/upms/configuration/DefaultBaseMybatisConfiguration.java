@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Configuration
 public class DefaultBaseMybatisConfiguration extends BaseMybatisConfiguration {

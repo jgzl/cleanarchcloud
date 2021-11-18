@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class MemWebSocketManager implements WebSocketManager, ApplicationContextAware {
 

@@ -13,7 +13,7 @@ import com.github.jgzl.common.websocket.utils.WebSocketUtil;
  * }
  * 给webSocket发送消息的action
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class SendMessageAction implements Action {
     @Override

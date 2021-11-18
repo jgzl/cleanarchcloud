@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 如果要实现自定义 database 库名的话 也很容易
  *
- * @author levin
+ * @author lihaifeng
  */
 @Slf4j
 @Configuration

@@ -26,7 +26,7 @@ import static com.github.jgzl.common.core.util.Result.success;
 import static com.github.jgzl.infra.upms.domain.converts.StationMessagePublishConverts.STATION_MESSAGE_PUBLISH_2_VO_CONVERTS;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @DynamicDS
 @RequestMapping("station_messages_publish")

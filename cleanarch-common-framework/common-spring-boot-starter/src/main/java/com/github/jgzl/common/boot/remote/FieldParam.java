@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * 封装字段上标记了 Remote 注解的字段
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @AllArgsConstructor

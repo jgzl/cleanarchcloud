@@ -8,7 +8,7 @@ import com.github.jgzl.infra.upms.domain.vo.CommonDataResp;
 import java.util.List;
 
 /**
- * @author levin
+ * @author lihaifeng
  */
 public interface StationMessagePublishService extends SuperService<StationMessagePublish> {
 

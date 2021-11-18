@@ -9,7 +9,7 @@ import com.github.jgzl.infra.upms.domain.entity.common.Dictionary;
  * 字典类型
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @date 2019-07-02
  */
 public interface DictionaryService extends SuperService<Dictionary> {

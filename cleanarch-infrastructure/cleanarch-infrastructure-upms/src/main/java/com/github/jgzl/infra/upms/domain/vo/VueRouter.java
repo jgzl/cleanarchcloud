@@ -3,7 +3,7 @@ import lombok.Data;
 /**
  * 构建 Vue路由
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-10-20 15:17
  */
 @Data

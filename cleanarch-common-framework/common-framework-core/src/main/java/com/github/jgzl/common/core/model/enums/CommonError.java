@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 /**
  * 推送异常类型
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-06-11
  */
 @AllArgsConstructor

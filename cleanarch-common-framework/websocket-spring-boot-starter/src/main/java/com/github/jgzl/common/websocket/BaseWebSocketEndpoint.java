@@ -16,7 +16,7 @@ import java.util.Date;
  * 写自己的Endpoint类，继承自此类，添加@ServerEndpoint、@Component注解，
  * 然后在方法中添加@OnOpen、@OnMessage、@OnClose、@OnError即可，这些方法中可以调用父类方法
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 public abstract class BaseWebSocketEndpoint {

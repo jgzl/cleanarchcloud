@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 增强实体类
  *
- * @author Levin
+ * @author lihaifeng
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

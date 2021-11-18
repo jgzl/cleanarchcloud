@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * 基于MP的 BaseMapper 新增了2个方法： insertBatchSomeColumn、updateAllById
  *
  * @param <T> 实体
- * @author Levin
+ * @author lihaifeng
  * @since 2020-04-02
  */
 @Repository

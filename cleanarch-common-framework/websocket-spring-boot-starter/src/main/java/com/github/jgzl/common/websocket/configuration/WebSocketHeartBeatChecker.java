@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Levin at 2020/11/20
+ * @author lihaifeng at 2020/11/20
  */
 @Slf4j
 public class WebSocketHeartBeatChecker {

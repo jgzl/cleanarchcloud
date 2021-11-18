@@ -15,7 +15,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
  * 字典项
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-01-03
  */
 @Data

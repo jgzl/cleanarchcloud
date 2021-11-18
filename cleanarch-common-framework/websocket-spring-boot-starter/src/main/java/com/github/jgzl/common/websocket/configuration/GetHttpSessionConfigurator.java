@@ -15,7 +15,7 @@ import javax.websocket.server.ServerEndpointConfig;
  * sessionMap.put(session.getId(), session);
  * }</pre>
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class GetHttpSessionConfigurator extends ServerEndpointConfig.Configurator {
 

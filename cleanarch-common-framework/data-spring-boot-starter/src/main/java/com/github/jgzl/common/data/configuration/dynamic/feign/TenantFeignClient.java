@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @FeignClient(name = ServiceNameConstants.UPMS_SERVICE, decode404 = true, fallback = TenantFeignClient.TenantFeignClientFallback.class)
 public interface TenantFeignClient {

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * 自定义 redis 缓存实现的 ClientDetailsService
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Service
 @Primary

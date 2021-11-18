@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
  * 租户配置信息
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @Builder

@@ -25,7 +25,7 @@ import java.util.function.Consumer;
  * 2. 依次查询待回显的数据
  * 3. 将查询出来结果回显到obj的 @Remote注解的字段中
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @SuppressWarnings(value = "all")

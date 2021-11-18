@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 /**
  * redis消息订阅者
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @RequiredArgsConstructor

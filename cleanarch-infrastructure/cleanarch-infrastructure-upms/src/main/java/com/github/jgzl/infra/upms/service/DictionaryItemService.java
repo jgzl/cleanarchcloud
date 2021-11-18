@@ -7,7 +7,7 @@ import com.github.jgzl.infra.upms.domain.entity.common.DictionaryItem;
  * 字典项
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-02
  */
 public interface DictionaryItemService extends SuperService<DictionaryItem> {

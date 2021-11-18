@@ -1,7 +1,7 @@
 package com.github.jgzl.common.websocket;
 import java.util.List;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @FunctionalInterface
 public interface TodoAtRemoved {

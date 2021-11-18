@@ -18,7 +18,7 @@ import static com.github.jgzl.infra.upms.domain.converts.DictionaryConverts.DICT
 /**
  * 字典项
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @Validated

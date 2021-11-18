@@ -21,7 +21,6 @@
 	<modules>
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
-		<module>cleanarch-business-webservice</module>
 		<module>cleanarch-business-demo</module>
   	</modules>
 

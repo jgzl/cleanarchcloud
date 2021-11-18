@@ -11,7 +11,7 @@ import com.github.jgzl.infra.upms.domain.vo.UserRoleResp;
  * 账号角色绑定
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-03
  */
 public interface UserRoleService extends SuperService<UserRole> {

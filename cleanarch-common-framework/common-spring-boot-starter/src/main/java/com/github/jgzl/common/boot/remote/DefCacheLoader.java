@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 默认的缓存加载器
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 public class DefCacheLoader extends CacheLoader<CacheLoadKeys, Map<Serializable, Object>> {

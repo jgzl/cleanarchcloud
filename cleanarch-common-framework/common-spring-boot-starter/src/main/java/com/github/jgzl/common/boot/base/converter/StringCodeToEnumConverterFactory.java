@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.ConverterFactory;
 import java.util.Map;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class StringCodeToEnumConverterFactory implements ConverterFactory<String, DictionaryEnum<?>> {
 

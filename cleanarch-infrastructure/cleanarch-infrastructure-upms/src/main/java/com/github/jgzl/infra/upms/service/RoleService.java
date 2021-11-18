@@ -14,7 +14,7 @@ import java.util.List;
  * 角色
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-03
  */
 public interface RoleService extends SuperService<Role> {

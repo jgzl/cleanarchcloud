@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 登录日志
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @Validated

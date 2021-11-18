@@ -8,7 +8,7 @@ import com.github.jgzl.infra.upms.domain.entity.log.LoginLog;
  *
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-10-20
  */
 public interface LoginLogService extends SuperService<LoginLog> {

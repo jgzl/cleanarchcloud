@@ -6,7 +6,7 @@ import com.github.jgzl.common.core.model.SuperEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @TableName("t_dynamic_datasource")

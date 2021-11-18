@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class LimitRule {

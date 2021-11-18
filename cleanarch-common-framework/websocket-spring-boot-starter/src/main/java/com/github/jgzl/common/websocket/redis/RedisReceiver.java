@@ -3,7 +3,7 @@ package com.github.jgzl.common.websocket.redis;
 /**
  * redis 接收器接口,主要目的是固定接口名字
  *
- * @author Levin
+ * @author lihaifeng
  */
 public interface RedisReceiver {
     String RECEIVER_METHOD_NAME = "receiveMessage";

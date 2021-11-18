@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * 枚举类型基类
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019/07/26
  */
 public interface DictionaryEnum<T extends Serializable> extends IEnum<T> {

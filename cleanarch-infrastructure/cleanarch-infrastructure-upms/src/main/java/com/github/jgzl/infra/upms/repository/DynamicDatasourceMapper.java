@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author levin
+ * @author lihaifeng
  */
 @Mapper
 public interface DynamicDatasourceMapper extends SuperMapper<DynamicDatasource> {

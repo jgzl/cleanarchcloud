@@ -12,7 +12,7 @@ import org.aspectj.lang.annotation.Pointcut;
 /**
  * RemoteResult 注解的 AOP 工具
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Aspect
 @Slf4j

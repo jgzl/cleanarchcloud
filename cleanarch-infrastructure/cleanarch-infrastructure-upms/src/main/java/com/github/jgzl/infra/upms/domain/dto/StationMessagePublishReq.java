@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class StationMessagePublishReq {

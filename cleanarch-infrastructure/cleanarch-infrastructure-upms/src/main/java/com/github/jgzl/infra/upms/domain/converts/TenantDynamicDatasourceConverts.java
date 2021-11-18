@@ -4,7 +4,7 @@ import com.github.jgzl.common.data.configuration.dynamic.event.body.TenantDynami
 import com.github.jgzl.infra.upms.domain.vo.TenantDynamicDatasourceVO;
 import org.springframework.beans.BeanUtils;
 /**
- * @author levin
+ * @author lihaifeng
  */
 public class TenantDynamicDatasourceConverts {
     public static final TenantDynamicDatasourceVO2TenantDynamicDatasourceConverts TENANT_DYNAMIC_DATASOURCE_VO_2_TENANT_DYNAMIC_DATASOURCE_CONVERTS = new TenantDynamicDatasourceVO2TenantDynamicDatasourceConverts();

@@ -12,7 +12,7 @@ import com.github.jgzl.infra.upms.domain.entity.baseinfo.Station;
  * 岗位
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-07-22
  */
 public interface StationService extends SuperService<Station> {

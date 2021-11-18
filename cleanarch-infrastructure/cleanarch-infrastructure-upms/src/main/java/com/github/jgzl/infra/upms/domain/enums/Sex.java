@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 /**
  * SexType
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-02-14
  */
 @Getter

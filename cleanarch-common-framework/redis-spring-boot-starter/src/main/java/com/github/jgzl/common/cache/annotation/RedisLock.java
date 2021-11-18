@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -73,7 +73,7 @@ public @interface RedisLock {
 
 
     /**
-     * @author Levin
+     * @author lihaifeng
      */
     @Getter
     @AllArgsConstructor

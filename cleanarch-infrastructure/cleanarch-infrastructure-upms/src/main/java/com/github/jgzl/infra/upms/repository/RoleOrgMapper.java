@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @DynamicDS
 @Mapper

@@ -10,7 +10,7 @@ import java.util.Set;
  * <p>
  * 只保留一个方法，若一个表，想要有多重回显场景，可以新建多个实现类，返回不一样的Map
  *
- * @author Levin
+ * @author lihaifeng
  */
 public interface LoadService<KEY extends Serializable> {
 

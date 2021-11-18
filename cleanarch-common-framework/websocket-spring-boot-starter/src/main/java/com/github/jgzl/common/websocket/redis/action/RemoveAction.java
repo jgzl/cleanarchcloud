@@ -13,7 +13,7 @@ import java.util.Map;
  * }
  * 给webSocket发送消息的action
  *
- * @author Levin
+ * @author lihaifeng
  */
 public class RemoveAction implements Action {
     @Override

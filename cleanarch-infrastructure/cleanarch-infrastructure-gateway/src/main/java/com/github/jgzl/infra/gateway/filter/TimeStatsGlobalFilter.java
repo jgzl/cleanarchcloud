@@ -21,11 +21,12 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		log.info("Welcome to TimeStatsGlobalFilter.");
 		exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
-		exchange.getRequest().getHeaders().forEach((key,value)->{
-			log.debug("header为[{}:{}]",key,value);
-		});
+		if (log.isDebugEnabled()) {
+			exchange.getRequest().getHeaders().forEach((key,value)->{
+				log.debug("header为[{}:{}]",key,value);
+			});
+		}
 		return chain.filter(exchange).then(
 				Mono.fromRunnable(() -> {
 					long startTime = exchange.getAttribute(COUNT_START_TIME);

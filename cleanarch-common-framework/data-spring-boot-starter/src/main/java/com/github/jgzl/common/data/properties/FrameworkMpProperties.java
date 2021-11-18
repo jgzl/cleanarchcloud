@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 客户端认证配置
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2018/11/20
  */
 @Data

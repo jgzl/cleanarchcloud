@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -50,7 +50,7 @@ public class RedisSequenceHelper {
 
 
     /**
-     * @author Levin
+     * @author lihaifeng
      */
     @Getter
     @NoArgsConstructor

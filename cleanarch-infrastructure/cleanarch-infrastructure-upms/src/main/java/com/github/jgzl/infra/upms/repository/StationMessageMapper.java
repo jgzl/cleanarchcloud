@@ -5,7 +5,7 @@ import com.github.jgzl.infra.upms.domain.entity.message.StationMessage;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Mapper
 public interface StationMessageMapper extends SuperMapper<StationMessage> {

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @ConfigurationProperties(prefix = "spring.cloud.gateway")

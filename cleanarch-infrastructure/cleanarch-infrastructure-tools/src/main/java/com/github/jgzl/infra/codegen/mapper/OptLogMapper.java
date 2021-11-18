@@ -5,7 +5,7 @@ import com.github.jgzl.infra.codegen.entity.OptLog;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Repository
 public interface OptLogMapper extends SuperMapper<OptLog> {

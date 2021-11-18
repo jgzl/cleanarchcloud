@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
  * <p>
  * 注意，该方法不能写在 DAO/Mapper 的方法上。
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})

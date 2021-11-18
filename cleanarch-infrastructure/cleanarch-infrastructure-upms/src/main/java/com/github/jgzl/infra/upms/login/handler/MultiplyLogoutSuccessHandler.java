@@ -2,7 +2,7 @@ package com.github.jgzl.infra.upms.login.handler;
 
 import cn.hutool.core.util.StrUtil;
 import com.github.jgzl.common.core.util.SpringContextHolder;
-import com.github.jgzl.infra.upms.controller.LogoutController;
+import com.github.jgzl.infra.upms.controller.login.LogoutController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;

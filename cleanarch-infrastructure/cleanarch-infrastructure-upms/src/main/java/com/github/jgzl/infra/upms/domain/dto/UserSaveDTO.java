@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 实体类
  * 用户
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-02-14
  */
 @Data

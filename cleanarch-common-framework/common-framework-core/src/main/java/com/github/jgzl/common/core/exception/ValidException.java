@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 验证型异常
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-03-13
  */
 @Data

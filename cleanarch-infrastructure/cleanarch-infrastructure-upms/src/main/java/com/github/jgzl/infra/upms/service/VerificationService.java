@@ -4,7 +4,7 @@ import com.github.jgzl.common.core.util.Result;
 import com.wf.captcha.base.Captcha;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface VerificationService {
 

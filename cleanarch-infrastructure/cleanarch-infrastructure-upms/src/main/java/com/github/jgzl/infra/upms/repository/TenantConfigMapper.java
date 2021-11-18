@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Mapper
 public interface TenantConfigMapper extends SuperMapper<TenantConfig> {

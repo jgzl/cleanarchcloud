@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class TenantConfigDTO {

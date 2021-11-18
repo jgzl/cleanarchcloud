@@ -10,7 +10,7 @@ import java.util.List;
  * 资源
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2020-07-03
  */
 public interface ResourceService extends SuperService<Resource> {

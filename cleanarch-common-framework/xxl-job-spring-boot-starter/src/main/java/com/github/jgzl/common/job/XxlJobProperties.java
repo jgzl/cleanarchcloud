@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * SwaggerProperties
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @ConfigurationProperties(prefix = XxlJobProperties.PREFIX)

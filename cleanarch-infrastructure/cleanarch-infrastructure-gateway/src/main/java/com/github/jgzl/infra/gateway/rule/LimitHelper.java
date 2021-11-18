@@ -24,7 +24,7 @@ import static com.github.jgzl.infra.gateway.rule.GatewayRule.Constants.GLOBAL_RA
 import static com.github.jgzl.infra.gateway.rule.GatewayRule.GatewayRuleEnum.RULE_LIMIT;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Component
 @RequiredArgsConstructor

@@ -3,7 +3,7 @@ import com.github.jgzl.common.data.mybatis.SuperService;
 import com.github.jgzl.infra.upms.domain.entity.tenant.Tenant;
 import com.github.jgzl.infra.upms.domain.entity.tenant.TenantConfig;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface TenantService extends SuperService<Tenant> {
 

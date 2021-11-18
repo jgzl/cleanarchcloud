@@ -20,7 +20,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
- * @author Levin
+ * @author lihaifeng
  * redis管理websocket配置，利用redis的发布订阅功能实现，具备集群功能
  * 可以扩展此类，添加listener和topic及相应的receiver，使用自己的Enable注解导入即可
  * @see EnableRedisWebSocket

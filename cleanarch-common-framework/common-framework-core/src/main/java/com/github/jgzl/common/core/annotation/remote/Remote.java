@@ -15,7 +15,7 @@ import static cn.hutool.core.text.CharSequenceUtil.EMPTY;
  * 强烈建议：不要对象之间互相依赖
  * 如： User 想要注入 File， File也想注入User
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD, ElementType.TYPE, ElementType.FIELD})

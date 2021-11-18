@@ -6,7 +6,7 @@ import java.util.Map;
  * 管理websocket的session,可以使用Map，可以自己添加接口功能实现，并放到容器中
  * 注意：放在容器中的名字必须是 WebSocketManager.WEBSOCKET_MANAGER_NAME 即：webSocketManager
  *
- * @author Levin
+ * @author lihaifeng
  */
 public interface WebSocketManager {
     /**

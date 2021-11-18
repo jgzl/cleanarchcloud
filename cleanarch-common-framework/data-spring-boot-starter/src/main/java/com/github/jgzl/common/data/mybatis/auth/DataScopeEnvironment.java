@@ -1,6 +1,6 @@
 package com.github.jgzl.common.data.mybatis.auth;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public class DataScopeEnvironment {
     private static final ThreadLocal<DataScope> DATA_SCOPE_THREAD_LOCAL = new ThreadLocal<>();

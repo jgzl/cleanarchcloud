@@ -17,7 +17,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 /**
  * redis限流器自动配置项
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)

@@ -6,7 +6,7 @@ import com.github.jgzl.infra.upms.domain.entity.common.AreaEntity;
 import java.util.List;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 public interface AreaService extends SuperService<AreaEntity> {
 

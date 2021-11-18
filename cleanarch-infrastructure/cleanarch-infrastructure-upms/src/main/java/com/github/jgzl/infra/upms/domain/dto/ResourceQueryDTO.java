@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 /**
  * 资源 查询DTO
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019/06/05
  */
 @Data

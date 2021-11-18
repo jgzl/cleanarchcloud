@@ -12,7 +12,7 @@ import static com.github.jgzl.common.core.util.times.TimeConstants.DEFAULT_DATE_
 /**
  * 解决入参为 Date类型
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-04-30
  */
 public class String2LocalDateTimeConverter extends BaseDateConverter<LocalDateTime> implements Converter<String, LocalDateTime> {

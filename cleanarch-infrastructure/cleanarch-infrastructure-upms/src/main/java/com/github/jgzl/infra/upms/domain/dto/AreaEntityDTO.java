@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 public class AreaEntityDTO {

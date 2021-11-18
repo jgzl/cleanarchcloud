@@ -6,7 +6,7 @@ import com.github.jgzl.common.websocket.WebSocketManager;
 /**
  * 要做的事情
  *
- * @author Levin
+ * @author lihaifeng
  */
 public interface Action {
 

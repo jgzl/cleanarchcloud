@@ -16,7 +16,7 @@ import static com.baomidou.mybatisplus.annotation.FieldStrategy.IGNORED;
  * 租户信息
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @NoArgsConstructor

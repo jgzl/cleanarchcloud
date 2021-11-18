@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * 名称格式校验
  *
- * @author Levin
+ * @author lihaifeng
  * @version 1.0.0
  * @since 2020-06-06
  */

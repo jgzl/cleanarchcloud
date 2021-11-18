@@ -18,7 +18,7 @@ import static com.github.jgzl.common.core.exception.ExceptionCode.SERVICE_MAPPER
  *
  * @param <M> Mapper
  * @param <T> 实体
- * @author Levin
+ * @author lihaifeng
  * @since 2020年02月27日18:15:17
  */
 public class SuperServiceImpl<M extends SuperMapper<T>, T> extends ServiceImpl<M, T> implements SuperService<T> {

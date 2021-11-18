@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Primary;
  * 通过 DataSourceAutoConfiguration 源代码可以看出 Spring Boot 启动的时候通过
  * properties.initializeDataSourceBuilder() 去实例化的，那么我们只需要在实例化数据源后解密密码即可
  *
- * @author Levin
+ * @author lihaifeng
  * @see org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
  */
 @Slf4j

@@ -18,7 +18,7 @@ import org.springframework.data.redis.core.ValueOperations;
  * <p>
  * 3.需要扩展不同的功能,就写相应的Action,放入容器中,然后给订阅的频道发布一条包含该Action的JSON串
  *
- * @author Levin
+ * @author lihaifeng
  * @see RedisWebSocketManager#sendMessage
  */
 public class RedisWebSocketManager extends MemWebSocketManager {

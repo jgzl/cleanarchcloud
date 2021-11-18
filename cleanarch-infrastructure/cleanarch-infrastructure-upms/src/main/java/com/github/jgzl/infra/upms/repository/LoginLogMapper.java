@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * 系统日志
  * </p>
  *
- * @author Levin
+ * @author lihaifeng
  * @since 2019-10-20
  */
 @DynamicDS

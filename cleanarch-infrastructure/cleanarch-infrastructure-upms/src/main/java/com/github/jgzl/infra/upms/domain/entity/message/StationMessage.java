@@ -5,7 +5,7 @@ import com.github.jgzl.common.core.model.SuperEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 /**
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

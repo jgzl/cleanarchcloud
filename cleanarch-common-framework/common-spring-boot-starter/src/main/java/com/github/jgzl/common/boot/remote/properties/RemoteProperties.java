@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * 配置类
  *
- * @author Levin
+ * @author lihaifeng
  */
 @Data
 @ConfigurationProperties(RemoteProperties.PREFIX)

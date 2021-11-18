@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Levin
+ * @author lihaifeng
  * redisson限流器，注解配置项
  */
 @Target(ElementType.METHOD)

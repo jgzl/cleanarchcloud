@@ -11,6 +11,10 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
+        - id: monitor
+          uri: lb://cleanarch-infrastructure-monitor
+          predicates:
+            - Path=/monitor/**
         - id: upms
           uri: lb://cleanarch-infrastructure-upms
           predicates:
@@ -23,10 +27,10 @@ spring:
           uri: lb:ws://cleanarch-infrastructure-upms
           predicates:
             - Path=/upms/message/**
-        - id: camunda
-          uri: lb://cleanarch-infrastructure-camunda
+        - id: workflow
+          uri: lb://cleanarch-infrastructure-workflow
           predicates:
-            - Path=/camunda/**
+            - Path=/workflow/**
         - id: tools
           uri: lb://cleanarch-infrastructure-tools
           predicates:

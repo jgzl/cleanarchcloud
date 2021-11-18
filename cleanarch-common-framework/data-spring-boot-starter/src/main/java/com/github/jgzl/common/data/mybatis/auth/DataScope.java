@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 /**
- * @author Levin
+ * @author lihaifeng
  * @since 2020/2/1
  * 数据权限查询参数
  */
