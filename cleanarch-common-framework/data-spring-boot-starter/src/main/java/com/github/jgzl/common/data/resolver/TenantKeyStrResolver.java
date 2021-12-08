@@ -1,14 +1,14 @@
 package com.github.jgzl.common.data.resolver;
+
 import com.github.jgzl.common.core.util.KeyStrResolver;
 import com.github.jgzl.common.data.tenant.TenantContextHolder;
-import org.springframework.stereotype.Component;
 
 /**
  * @author lihaifeng
  * @date 2020/9/29
+ * <p>
  * 租户字符串处理（方便其他模块获取）
  */
-@Component
 public class TenantKeyStrResolver implements KeyStrResolver {
 
 	/**
@@ -19,7 +19,7 @@ public class TenantKeyStrResolver implements KeyStrResolver {
 	 */
 	@Override
 	public String extract(String in, String split) {
-		return TenantContextHolder.getTenantCode() + split + in;
+		return TenantContextHolder.getTenantId() + split + in;
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class TenantKeyStrResolver implements KeyStrResolver {
 	 */
 	@Override
 	public String key() {
-		return String.valueOf(TenantContextHolder.getTenantCode());
+		return String.valueOf(TenantContextHolder.getTenantId());
 	}
 
 }

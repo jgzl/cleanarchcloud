@@ -1,15 +1,16 @@
 package com.github.jgzl.common.core.constant.enums;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * @author lihaifeng
- * @date 2020/8/15
- * 社交登录类型
+ * @date 2018/8/15 社交登录类型
  */
 @Getter
 @AllArgsConstructor
 public enum LoginTypeEnum {
+
 	/**
 	 * 账号密码登录
 	 */
@@ -54,4 +55,5 @@ public enum LoginTypeEnum {
 	 * 描述
 	 */
 	private String description;
+
 }

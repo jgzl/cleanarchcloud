@@ -1,10 +1,6 @@
+
 package com.github.jgzl.common.security.component;
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -19,10 +15,11 @@ import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.config.annotation.web.configuration.OAuth2ClientConfiguration;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfiguration;
 
+import java.lang.annotation.*;
+
 /**
  * @author lihaifeng
- * @date 2020/4/14
- * 注入AccessTokenContextRelay 解决feign 传递token 为空问题
+ * @date 2019/4/14 注入AccessTokenContextRelay 解决feign 传递token 为空问题
  */
 @Configuration
 @AutoConfigureAfter(OAuth2AutoConfiguration.class)
@@ -31,12 +28,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class ExtendResourceServerTokenRelayAutoConfiguration {
 
 	@Bean
-	public AccessTokenContextRelay accessTokenContextRelay(
-			@Qualifier("oauth2ClientContext") OAuth2ClientContext context) {
+	public AccessTokenContextRelay accessTokenContextRelay(OAuth2ClientContext context) {
 		return new AccessTokenContextRelay(context);
 	}
 
-	@Target({ElementType.TYPE, ElementType.METHOD})
+	@Target({ ElementType.TYPE, ElementType.METHOD })
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Conditional(OAuth2OnClientInResourceServerCondition.class)
@@ -44,8 +40,7 @@ public class ExtendResourceServerTokenRelayAutoConfiguration {
 
 	}
 
-	private static class OAuth2OnClientInResourceServerCondition
-			extends AllNestedConditions {
+	private static class OAuth2OnClientInResourceServerCondition extends AllNestedConditions {
 
 		public OAuth2OnClientInResourceServerCondition() {
 			super(ConfigurationPhase.REGISTER_BEAN);
@@ -53,10 +48,14 @@ public class ExtendResourceServerTokenRelayAutoConfiguration {
 
 		@ConditionalOnBean(ResourceServerConfiguration.class)
 		static class Server {
+
 		}
 
 		@ConditionalOnBean(OAuth2ClientConfiguration.class)
 		static class Client {
+
 		}
+
 	}
+
 }

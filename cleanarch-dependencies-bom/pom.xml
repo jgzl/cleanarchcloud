@@ -3,11 +3,6 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<groupId>org.apache</groupId>
-		<artifactId>apache</artifactId>
-		<version>23</version>
-	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.jgzl</groupId>
@@ -15,20 +10,111 @@
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 
-	<description>通用资源::依赖管理BOM模块</description>
-	<name>通用资源::依赖管理BOM模块</name>
+	<description>依赖资源::BOM模块</description>
+	<name>依赖资源::BOM模块</name>
 
 	<properties>
 		<revision>2021.10.19-SNAPSHOT</revision>
+		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
 		<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
+
+		<aws.version>1.11.543</aws.version>
+		<git.commit.version>2.2.5</git.commit.version>
+		<mica.version>2.5.5</mica.version>
+		<disruptor.version>3.4.4</disruptor.version>
+		<lombok.version>1.18.20</lombok.version>
+		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<cxf.rs.version>3.4.4</cxf.rs.version>
+		<cxf.rs.json>2.12.3</cxf.rs.json>
+		<druid.starter.version>1.2.6</druid.starter.version>
+		<camunda.starter.version>7.16.0</camunda.starter.version>
+		<guava.version>30.1.1-jre</guava.version>
+		<xxl-job.version>2.3.0</xxl-job.version>
+		<hutool.version>5.7.15</hutool.version>
+		<javassist.version>3.28.0-GA</javassist.version>
+		<jwt.version>3.16.0</jwt.version>
+		<keycloak.version>14.0.0</keycloak.version>
+		<redisson.version>3.16.2</redisson.version>
+		<mybatisplus.starter.version>3.4.3.4</mybatisplus.starter.version>
+		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
+		<dynamic-datasource.version>3.4.1</dynamic-datasource.version>
+		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
+		<ttl.version>2.12.1</ttl.version>
+		<jasypt.version>3.0.4</jasypt.version>
+		<nacos.version>2.0.3</nacos.version>
+		<jackson.jsr.version>2.12.3</jackson.jsr.version>
+		<mybatis.jsr.version>1.0.2</mybatis.jsr.version>
+		<okhttp.version>4.9.2</okhttp.version>
+		<ip2region.version>1.7.2</ip2region.version>
+		<justauth.version>1.16.5</justauth.version>
+		<justauth.starter.version>1.4.0</justauth.starter.version>
+		<easy-capatcha.version>1.6.2</easy-capatcha.version>
+		<swagger.core.version>1.5.22</swagger.core.version>
+
+		<!-- bom依赖配置管理 -->
+		<spring-boot.version>2.6.1</spring-boot.version>
+		<spring-boot-admin.version>2.5.4</spring-boot-admin.version>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+		<spring.version>5.3.13</spring.version>
+		<spring.security-oauth2.version>2.3.4.RELEASE</spring.security-oauth2.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- 需要提前使用，否则会被 spring-cloud-alibaba-dependencies 中的nacos版本覆盖-->
+			<dependency>
+				<groupId>com.alibaba.nacos</groupId>
+				<artifactId>nacos-client</artifactId>
+				<version>${nacos.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>net.dreamlu</groupId>
+				<artifactId>mica-bom</artifactId>
+				<version>${mica.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>common-framework-client-sdk</artifactId>
+				<artifactId>common-framework-core</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -38,12 +124,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>common-spring-boot-starter</artifactId>
+				<artifactId>data-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>data-spring-boot-starter</artifactId>
+				<artifactId>datasource-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>excel-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -54,6 +145,16 @@
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
 				<artifactId>file-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>gateway-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>log-spring-boot-starter</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -73,8 +174,171 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.jgzl</groupId>
+				<artifactId>xss-spring-boot-starter</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
 				<artifactId>xxl-job-spring-boot-starter</artifactId>
 				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jgzl</groupId>
+				<artifactId>cleanarch-upms-api</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!--  实体类转换  -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuxueli</groupId>
+				<artifactId>xxl-job-core</artifactId>
+				<version>${xxl-job.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-typehandlers-jsr310</artifactId>
+				<version>${mybatis.jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-jsr310</artifactId>
+				<version>${jackson.jsr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+			<!--TTL-->
+			<dependency>
+				<artifactId>transmittable-thread-local</artifactId>
+				<groupId>com.alibaba</groupId>
+				<version>${ttl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatisplus.starter.version}</version>
+			</dependency>
+			<!-- redission -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-annotation</artifactId>
+				<version>${mybatisplus.starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-extension</artifactId>
+				<version>${mybatisplus.starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-generator</artifactId>
+				<version>${mybatisplus.generator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+				<version>${dynamic-datasource.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shardingsphere</groupId>
+				<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+				<version>${shardingjdbc.starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.camunda.bpm.springboot</groupId>
+				<artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+				<version>${camunda.starter.version}</version>
+			</dependency>
+			<!--   cxf版ws,rs   -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+				<version>${cxf.rs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+				<version>${cxf.rs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-json-provider</artifactId>
+				<version>${cxf.rs.json}</version>
+			</dependency>
+			<!--配置文件加解密-->
+			<dependency>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-spring-boot-starter</artifactId>
+				<version>${jasypt.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>${spring.security-oauth2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>me.zhyd.oauth</groupId>
+				<artifactId>JustAuth</artifactId>
+				<version>${justauth.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xkcoding.justauth</groupId>
+				<artifactId>justauth-spring-boot-starter</artifactId>
+				<version>${justauth.starter.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>cn.hutool</groupId>
+						<artifactId>hutool-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.squareup.okhttp3</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>${okhttp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.lionsoul</groupId>
+				<artifactId>ip2region</artifactId>
+				<version>${ip2region.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger.core.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -130,6 +394,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>

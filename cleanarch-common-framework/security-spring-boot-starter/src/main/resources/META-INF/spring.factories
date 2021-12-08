@@ -1,2 +1,10 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.jgzl.common.security.SecurityAutoConfiguration
+  com.github.jgzl.common.security.component.ExtendTokenEnhancer,\
+  com.github.jgzl.common.security.component.ExtendSecurityInnerAspect,\
+  com.github.jgzl.common.security.service.ExtendUserDetailsServiceImpl,\
+  com.github.jgzl.common.security.service.ExtendClientDetailsServiceImpl,\
+  com.github.jgzl.common.security.component.ExtendTokenStoreAutoConfiguration,\
+  com.github.jgzl.common.security.component.ExtendTokenStoreCleanSchedule,\
+  com.github.jgzl.common.security.listener.AuthenticationFailureEventListener,\
+  com.github.jgzl.common.security.listener.AuthenticationSuccessEventListener,\
+  com.github.jgzl.common.security.listener.AuthenticationLogoutSuccessEventListener

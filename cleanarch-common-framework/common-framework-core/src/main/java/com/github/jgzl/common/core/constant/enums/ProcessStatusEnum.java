@@ -1,32 +1,29 @@
 package com.github.jgzl.common.core.constant.enums;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * @author lihaifeng
- * @date 2020/9/30
- * 流程状态
+ * @date 2018/9/30 流程状态
  */
 @Getter
 @AllArgsConstructor
 public enum ProcessStatusEnum {
-	/**
-	 * 图片资源
-	 */
-	ACTIVE("active", "图片资源"),
 
 	/**
-	 * xml资源
+	 * 激活
 	 */
-	SUSPEND("suspend", "xml资源");
+	ACTIVE("active"),
 
 	/**
-	 * 类型
+	 * 暂停
+	 */
+	SUSPEND("suspend");
+
+	/**
+	 * 状态
 	 */
 	private final String status;
 
-	/**
-	 * 描述
-	 */
-	private final String description;
 }

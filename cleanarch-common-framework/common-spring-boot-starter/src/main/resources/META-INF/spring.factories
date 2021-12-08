@@ -1,7 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.jgzl.common.boot.base.GlobalExceptionHandler,\
-  com.github.jgzl.common.boot.base.configuration.InitBaseConfiguration ,\
-  com.github.jgzl.common.boot.base.configuration.DynamicDatasourceWebAutoConfigurer,\
-  com.github.jgzl.common.boot.log.LogAutoConfiguration,\
-  com.github.jgzl.common.boot.remote.configuration.RemoteAutoConfiguration

@@ -20,11 +20,11 @@ build_mvn(){
 
 build_docker(){
   dirArray=(
-    cleanarch-infrastructure/cleanarch-infrastructure-gateway
+    cleanarch-infrastructure/cleanarch-gateway
     cleanarch-infrastructure/cleanarch-infrastructure-camunda
     cleanarch-infrastructure/cleanarch-infrastructure-codegen
-    cleanarch-infrastructure/cleanarch-infrastructure-gateway
-    cleanarch-infrastructure/cleanarch-infrastructure-upms
+    cleanarch-infrastructure/cleanarch-gateway
+    cleanarch-infrastructure/cleanarch-upms
     cleanarch-business/cleanarch-business-demo
     cleanarch-business/cleanarch-business-ssoclient1
     cleanarch-business/cleanarch-business-ssoclient2

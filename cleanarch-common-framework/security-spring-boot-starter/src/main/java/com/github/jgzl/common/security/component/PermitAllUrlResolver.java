@@ -1,4 +1,5 @@
 package com.github.jgzl.common.security.component;
+
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ReUtil;
@@ -24,6 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -31,8 +33,9 @@ import java.util.stream.Collectors;
 
 /**
  * @author lihaifeng
- * @date 2020/4/13
- * 资源暴露处理器(资源服务层级内部调用URL暴露)
+ * @date 2019/4/13
+ * <p>
+ * 资源暴露处理器
  */
 @Slf4j
 @Configuration

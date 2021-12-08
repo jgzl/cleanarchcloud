@@ -1,15 +1,16 @@
 package com.github.jgzl.common.core.constant.enums;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * @author lihaifeng
- * @date 2020/9/30
- * 流程状态
+ * @date 2018/9/30 流程状态
  */
 @Getter
 @AllArgsConstructor
 public enum TaskStatusEnum {
+
 	/**
 	 * 未提交
 	 */
@@ -39,4 +40,5 @@ public enum TaskStatusEnum {
 	 * 描述
 	 */
 	private final String description;
+
 }

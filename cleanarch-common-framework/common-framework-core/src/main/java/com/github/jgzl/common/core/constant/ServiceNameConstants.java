@@ -10,20 +10,25 @@ public interface ServiceNameConstants {
 	/**
 	 * 网关中心
 	 */
-	String GATEWAY_SERVICE = "cleanarch-infrastructure-gateway";
+	String GATEWAY_SERVICE = "cleanarch-gateway";
+
+	/**
+	 * 授权中心
+	 */
+	String OAUTH_SERVICE = "cleanarch-oauth";
 
 	/**
 	 * 用户中心
 	 */
-	String UPMS_SERVICE = "cleanarch-infrastructure-upms";
+	String UPMS_SERVICE = "cleanarch-upms";
 
 	/**
 	 * 工具中心-日志,代码生成器
 	 */
-	String TOOLS_SERVICE = "cleanarch-infrastructure-tools";
+	String TOOLS_SERVICE = "cleanarch-tools";
 
 	/**
 	 * 流程中心
 	 */
-	String WORKFLOW_SERVICE = "cleanarch-infrastructure-workflow";
+	String WORKFLOW_SERVICE = "cleanarch-workflow";
 }

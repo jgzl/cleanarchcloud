@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~    Copyright [2020] [lihaifeng,xuhang]
-  ~
-  ~    Licensed under the Apache License, Version 2.0 (the "License");
-  ~    you may not use this file except in compliance with the License.
-  ~    You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~    Unless required by applicable law or agreed to in writing, software
-  ~    distributed under the License is distributed on an "AS IS" BASIS,
-  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~    See the License for the specific language governing permissions and
-  ~    limitations under the License.
-  -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -25,16 +9,19 @@
 	</parent>
 	<modules>
 		<module>common-framework-agent</module>
-		<module>common-framework-client-sdk</module>
 		<module>common-framework-core</module>
-		<module>common-spring-boot-starter</module>
-		<module>security-spring-boot-starter</module>
 		<module>data-spring-boot-starter</module>
-		<module>redis-spring-boot-starter</module>
-		<module>websocket-spring-boot-starter</module>
-		<module>xxl-job-spring-boot-starter</module>
+		<module>datasource-spring-boot-starter</module>
+		<module>excel-spring-boot-starter</module>
 		<module>file-spring-boot-starter</module>
+		<module>gateway-spring-boot-starter</module>
+		<module>log-spring-boot-starter</module>
 		<module>feign-spring-boot-starter</module>
+		<module>redis-spring-boot-starter</module>
+		<module>security-spring-boot-starter</module>
+		<module>websocket-spring-boot-starter</module>
+		<module>xss-spring-boot-starter</module>
+		<module>xxl-job-spring-boot-starter</module>
 	</modules>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-common-framework</artifactId>

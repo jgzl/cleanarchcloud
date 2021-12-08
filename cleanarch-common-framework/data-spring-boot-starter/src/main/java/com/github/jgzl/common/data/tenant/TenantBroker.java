@@ -1,6 +1,8 @@
 package com.github.jgzl.common.data.tenant;
+
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.function.Supplier;
 
 /**
@@ -71,11 +73,11 @@ public class TenantBroker {
 	 * @param tenant 租户ID
 	 * @param func
 	 */
-	public void runAs(String tenant, RunAs<String> func) {
-		final String pre = TenantContextHolder.getTenantCode();
+	public void runAs(Integer tenant, RunAs<Integer> func) {
+		final Integer pre = TenantContextHolder.getTenantId();
 		try {
 			log.trace("TenantBroker 切换租户{} -> {}", pre, tenant);
-			TenantContextHolder.setTenantCode(tenant);
+			TenantContextHolder.setTenantId(tenant);
 			func.run(tenant);
 		}
 		catch (Exception e) {
@@ -83,7 +85,7 @@ public class TenantBroker {
 		}
 		finally {
 			log.trace("TenantBroker 还原租户{} <- {}", pre, tenant);
-			TenantContextHolder.setTenantCode(pre);
+			TenantContextHolder.setTenantId(pre);
 		}
 	}
 
@@ -94,11 +96,11 @@ public class TenantBroker {
 	 * @param <T> 返回数据类型
 	 * @return
 	 */
-	public <T> T applyAs(String tenant, ApplyAs<String, T> func) {
-		final String pre = TenantContextHolder.getTenantCode();
+	public <T> T applyAs(Integer tenant, ApplyAs<Integer, T> func) {
+		final Integer pre = TenantContextHolder.getTenantId();
 		try {
 			log.trace("TenantBroker 切换租户{} -> {}", pre, tenant);
-			TenantContextHolder.setTenantCode(tenant);
+			TenantContextHolder.setTenantId(tenant);
 			return func.apply(tenant);
 		}
 		catch (Exception e) {
@@ -106,7 +108,7 @@ public class TenantBroker {
 		}
 		finally {
 			log.trace("TenantBroker 还原租户{} <- {}", pre, tenant);
-			TenantContextHolder.setTenantCode(pre);
+			TenantContextHolder.setTenantId(pre);
 		}
 	}
 
@@ -115,7 +117,7 @@ public class TenantBroker {
 	 * @param supplier
 	 * @param func
 	 */
-	public void runAs(Supplier<String> supplier, RunAs<String> func) {
+	public void runAs(Supplier<Integer> supplier, RunAs<Integer> func) {
 		runAs(supplier.get(), func);
 	}
 
@@ -126,7 +128,7 @@ public class TenantBroker {
 	 * @param <T> 返回数据类型
 	 * @return
 	 */
-	public <T> T applyAs(Supplier<String> supplier, ApplyAs<String, T> func) {
+	public <T> T applyAs(Supplier<Integer> supplier, ApplyAs<Integer, T> func) {
 		return applyAs(supplier.get(), func);
 	}
 

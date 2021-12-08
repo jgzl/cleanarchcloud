@@ -1,0 +1,65 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:cleanarch-register}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lowerCaseServiceId: true
+#      routes:
+#        - id: monitor
+#          uri: lb://cleanarch-monitor
+#          predicates:
+#            - Path=/monitor/**
+#        - id: oauth
+#          uri: lb://cleanarch-oauth
+#          predicates:
+#            - Path=/auth/**
+#        - id: upms
+#          uri: lb://cleanarch-upms
+#          predicates:
+#            - Path=/upms/**
+#        - id: upms-ws-info
+#          uri: lb://cleanarch-upms
+#          predicates:
+#            - Path=/upms/message/info/**
+#        - id: upms-ws
+#          uri: lb:ws://cleanarch-upms
+#          predicates:
+#            - Path=/upms/message/**
+#        - id: workflow
+#          uri: lb://cleanarch-workflow
+#          predicates:
+#            - Path=/workflow/**
+#        - id: tools
+#          uri: lb://cleanarch-tools
+#          predicates:
+#            - Path=/tools/**
+#        - id: demo
+#          uri: lb://cleanarch-business-demo
+#          predicates:
+#            - Path=/demo/**
+#        - id: ssoclient1
+#          uri: lb://cleanarch-business-ssoclient1
+#          predicates:
+#            - Path=/ssoclient1/**
+#        - id: ssoclient2
+#          uri: lb://cleanarch-business-ssoclient2
+#          predicates:
+#            - Path=/ssoclient2/**
+#      loadbalancer:
+#        use404: true
+#      httpclient:
+#        response-timeout: 300s
+#        pool:
+#          type: elastic
+#          max-idle-time: 30s
+#          max-connections: 1000
+#          acquire-timeout: 180000

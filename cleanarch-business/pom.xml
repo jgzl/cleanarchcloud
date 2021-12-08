@@ -19,9 +19,9 @@
 	</properties>
 
 	<modules>
+		<module>cleanarch-business-demo</module>
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
-		<module>cleanarch-business-demo</module>
   	</modules>
 
 
@@ -53,7 +53,6 @@
 		<dependency>
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
-			<version>${nacos.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>cn.hutool</groupId>

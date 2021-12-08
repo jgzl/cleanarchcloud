@@ -5,61 +5,56 @@ package com.github.jgzl.common.core.constant;
  * @date 2017-12-18
  */
 public interface SecurityConstants {
+
 	/**
 	 * 启动时是否检查Inner注解安全性
 	 */
 	boolean INNER_CHECK = true;
+
 	/**
 	 * 刷新
 	 */
 	String REFRESH_TOKEN = "refresh_token";
+
 	/**
 	 * 验证码有效期
 	 */
 	int CODE_TIME = 60;
+
 	/**
 	 * 验证码长度
 	 */
 	String CODE_SIZE = "4";
+
 	/**
 	 * 角色前缀
 	 */
 	String ROLE = "ROLE_";
 
 	/**
-	 * basic
+	 * 前缀
 	 */
-	String BASIC_HEADER = "Basic ";
+	String PREFIX = "cleanarch_";
 
 	/**
-	 * AUTHORIZATION name
+	 * token 相关前缀
 	 */
-	String AUTHORIZATION = "Authorization";
-
-	/**
-	 * 用户名信息头
-	 */
-	String USER_NAME_HEADER = "x-user-name";
-
-	/**
-	 * 用户密码信息头
-	 */
-	String USER_ID_HEADER = "x-user-id";
-
-	/**
-	 * license key
-	 */
-	String LICENSE_KEY = "license";
-
-	/**
-	 * 项目的license
-	 */
-	String LICENSE = "made by cleanarchcloud";
+	String TOKEN_PREFIX = "token:";
 
 	/**
 	 * oauth 相关前缀
 	 */
 	String OAUTH_PREFIX = "oauth:";
+
+	/**
+	 * 授权码模式code key 前缀
+	 */
+	String OAUTH_CODE_PREFIX = "oauth:code:";
+
+	/**
+	 * 项目的license
+	 */
+	String LICENSE = "made by cleanarch";
 
 	/**
 	 * 内部
@@ -72,10 +67,63 @@ public interface SecurityConstants {
 	String FROM = "from";
 
 	/**
+	 * OAUTH URL
+	 */
+	String OAUTH_TOKEN_URL = "/oauth/token";
+
+	/**
+	 * 手机号登录URL
+	 */
+	String SMS_TOKEN_URL = "/mobile/token/sms";
+
+	/**
+	 * 社交登录URL
+	 */
+	String SOCIAL_TOKEN_URL = "/mobile/token/social";
+
+	/**
+	 * 自定义登录URL
+	 */
+	String MOBILE_TOKEN_URL = "/mobile/token/*";
+
+	/**
+	 * 微信获取OPENID
+	 */
+	String WX_AUTHORIZATION_CODE_URL = "https://api.weixin.qq.com/sns/oauth2/access_token"
+			+ "?appid=%s&secret=%s&code=%s&grant_type=authorization_code";
+
+	/**
+	 * 微信小程序OPENID
+	 */
+	String MINI_APP_AUTHORIZATION_CODE_URL = "https://api.weixin.qq.com/sns/jscode2session"
+			+ "?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
+
+	/**
+	 * 码云获取token
+	 */
+	String GITEE_AUTHORIZATION_CODE_URL = "https://gitee.com/oauth/token?grant_type="
+			+ "authorization_code&code=%S&client_id=%s&redirect_uri=" + "%s&client_secret=%s";
+
+	/**
+	 * 开源中国获取token
+	 */
+	String OSC_AUTHORIZATION_CODE_URL = "https://www.oschina.net/action/openapi/token";
+
+	/**
+	 * 码云获取用户信息
+	 */
+	String GITEE_USER_INFO_URL = "https://gitee.com/api/v5/user?access_token=%s";
+
+	/**
+	 * 开源中国用户信息
+	 */
+	String OSC_USER_INFO_URL = "https://www.oschina.net/action/openapi/user?access_token=%s&dataType=json";
+
+	/**
 	 * {bcrypt} 加密的特征码
 	 */
 	String BCRYPT = "{bcrypt}";
-	String NOOP = "{noop}";
+
 	/**
 	 * sys_oauth_client_details 表的字段，不包括client_id、client_secret
 	 */
@@ -86,18 +134,12 @@ public interface SecurityConstants {
 	/**
 	 * JdbcClientDetailsService 查询语句
 	 */
-	String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS
-			+ " from sys_oauth_client_details";
-
-	/**
-	 * 默认的查询语句
-	 */
-	String DEFAULT_FIND_STATEMENT = BASE_FIND_STATEMENT + " order by client_id";
+	String BASE_FIND_STATEMENT = "select " + CLIENT_FIELDS + " from sys_oauth_client_details";
 
 	/**
 	 * 按条件client_id 查询
 	 */
-	String DEFAULT_SELECT_STATEMENT = BASE_FIND_STATEMENT + " where client_id = ?";
+	String DEFAULT_SELECT_STATEMENT = BASE_FIND_STATEMENT + " where client_id = ? and del_flag = 0 and tenant_id = %s";
 
 	/**
 	 * 资源服务器默认bean名称
@@ -109,6 +151,10 @@ public interface SecurityConstants {
 	 */
 	String CLIENT_CREDENTIALS = "client_credentials";
 
+	/**
+	 * 客户端编号
+	 */
+	String CLIENT_ID = "client_id";
 
 	/**
 	 * 用户ID字段
@@ -146,11 +192,6 @@ public interface SecurityConstants {
 	String DETAILS_TENANT_ID = "tenantId";
 
 	/**
-	 * 租户ID 字段
-	 */
-	String DETAILS_TENANT_CODE = "tenantCode";
-
-	/**
 	 * 协议字段
 	 */
 	String DETAILS_LICENSE = "license";
@@ -165,38 +206,4 @@ public interface SecurityConstants {
 	 */
 	String AES = "aes";
 
-	/**
-	 * springboot暴露信息
-	 */
-	String PATH_ACTUATOR = "/actuator/**";
-
-	/**
-	 * springboot暴露信息
-	 */
-	String PATH_API_DOCS = "/v2/api-docs";
-
-	/**
-	 * dev环境变量
-	 */
-	String DEV = "dev";
-
-	/**
-	 * test环境变量
-	 */
-	String SIT = "sit";
-
-	/**
-	 * uat环境变量
-	 */
-	String UAT = "uat";
-
-	/**
-	 * prod环境变量
-	 */
-	String PROD = "prod";
-
-	/**
-	 * 重定向URL
-	 */
-	String REDIRECT_URL="redirect_url";
 }

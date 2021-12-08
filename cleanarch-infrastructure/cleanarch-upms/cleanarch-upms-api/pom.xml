@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>cleanarch-upms</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>cleanarch-upms-api</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<name>基础服务::用户服务模块Api</name>
+	<description>基础服务::用户服务模块Api</description>
+
+	<dependencies>
+		<!--core 工具类-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>common-framework-core</artifactId>
+		</dependency>
+		<!--mybatis plus extension,包含了mybatis plus core-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-extension</artifactId>
+		</dependency>
+		<!--feign 工具类-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>feign-spring-boot-starter</artifactId>
+		</dependency>
+		<!--excel 工具类-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>excel-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+		</dependency>
+	</dependencies>
+</project>

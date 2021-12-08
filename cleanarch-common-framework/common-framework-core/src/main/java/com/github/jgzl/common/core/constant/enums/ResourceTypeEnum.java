@@ -1,15 +1,16 @@
 package com.github.jgzl.common.core.constant.enums;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * @author lihaifeng
- * @date 2020/9/30
- * 资源类型
+ * @date 2018/9/30 资源类型
  */
 @Getter
 @AllArgsConstructor
 public enum ResourceTypeEnum {
+
 	/**
 	 * 图片资源
 	 */
@@ -29,4 +30,5 @@ public enum ResourceTypeEnum {
 	 * 描述
 	 */
 	private final String description;
+
 }

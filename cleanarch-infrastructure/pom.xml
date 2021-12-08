@@ -15,11 +15,12 @@
 	<description>基础服务::基础设施组件POM模块</description>
 
 	<modules>
-		<module>cleanarch-infrastructure-tools</module>
-		<module>cleanarch-infrastructure-gateway</module>
-		<module>cleanarch-infrastructure-monitor</module>
-		<module>cleanarch-infrastructure-upms</module>
-		<module>cleanarch-infrastructure-workflow</module>
+		<module>cleanarch-gateway</module>
+		<module>cleanarch-monitor</module>
+		<module>cleanarch-oauth</module>
+		<module>cleanarch-tools</module>
+		<module>cleanarch-upms</module>
+		<module>cleanarch-workflow</module>
 	</modules>
 
 	<dependencies>
@@ -46,7 +47,6 @@
 		<dependency>
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
-			<version>${nacos.version}</version>
 		</dependency>
 	</dependencies>
 </project>

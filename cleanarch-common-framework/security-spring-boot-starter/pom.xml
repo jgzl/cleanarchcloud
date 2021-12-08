@@ -15,6 +15,10 @@
 	<name>通用资源::认证权限模块</name>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-upms-api</artifactId>
+		</dependency>
 		<!--工具类核心包-->
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
@@ -23,17 +27,7 @@
 		<!--数据库操作包-->
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>data-spring-boot-starter</artifactId>
-		</dependency>
-		<!--数据库操作包-->
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
 			<artifactId>redis-spring-boot-starter</artifactId>
-		</dependency>
-		<!--接口操作包-->
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
-			<artifactId>common-framework-client-sdk</artifactId>
 		</dependency>
 		<!--OpenFeign操作包-->
 		<dependency>

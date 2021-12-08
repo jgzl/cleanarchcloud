@@ -39,6 +39,10 @@ public interface CacheConstants {
 	 */
 	String DICT_DETAILS = PREFIX+"dict_details";
 
+	/**
+	 * 角色信息缓存
+	 */
+	String ROLE_DETAILS = "role_details";
 
 	/**
 	 * oauth 客户端信息
@@ -110,4 +114,9 @@ public interface CacheConstants {
 	 * 默认过期时间 60秒
 	 */
 	int DEFAULT_EXPIRE_SECONDS = 60;
+
+	/**
+	 * 客户端配置缓存
+	 */
+	String CLIENT_FLAG = "client_config_flag";
 }
