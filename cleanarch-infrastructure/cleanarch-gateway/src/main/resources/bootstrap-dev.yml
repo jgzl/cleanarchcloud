@@ -8,58 +8,11 @@ spring:
         file-extension: yml
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lowerCaseServiceId: true
-#      routes:
-#        - id: monitor
-#          uri: lb://cleanarch-monitor
-#          predicates:
-#            - Path=/monitor/**
-#        - id: oauth
-#          uri: lb://cleanarch-oauth
-#          predicates:
-#            - Path=/auth/**
-#        - id: upms
-#          uri: lb://cleanarch-upms
-#          predicates:
-#            - Path=/upms/**
-#        - id: upms-ws-info
-#          uri: lb://cleanarch-upms
-#          predicates:
-#            - Path=/upms/message/info/**
-#        - id: upms-ws
-#          uri: lb:ws://cleanarch-upms
-#          predicates:
-#            - Path=/upms/message/**
-#        - id: workflow
-#          uri: lb://cleanarch-workflow
-#          predicates:
-#            - Path=/workflow/**
-#        - id: tools
-#          uri: lb://cleanarch-tools
-#          predicates:
-#            - Path=/tools/**
-#        - id: demo
-#          uri: lb://cleanarch-business-demo
-#          predicates:
-#            - Path=/demo/**
-#        - id: ssoclient1
-#          uri: lb://cleanarch-business-ssoclient1
-#          predicates:
-#            - Path=/ssoclient1/**
-#        - id: ssoclient2
-#          uri: lb://cleanarch-business-ssoclient2
-#          predicates:
-#            - Path=/ssoclient2/**
-#      loadbalancer:
-#        use404: true
-#      httpclient:
-#        response-timeout: 300s
-#        pool:
-#          type: elastic
-#          max-idle-time: 30s
-#          max-connections: 1000
-#          acquire-timeout: 180000
+
+  r2dbc:
+    url: r2dbc:mysql://${MYSQL_HOST:cleanarch-mysql}:${MYSQL_PORT:3306}/${MYSQL_DB:cleanarch}?sslMode=DISABLED
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    pool:
+      validation-query: SELECT 1
+      enabled: true

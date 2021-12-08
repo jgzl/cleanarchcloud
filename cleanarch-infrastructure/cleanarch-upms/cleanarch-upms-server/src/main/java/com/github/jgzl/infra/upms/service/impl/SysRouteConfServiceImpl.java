@@ -4,20 +4,19 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.CommonConstants;
+import com.github.jgzl.common.gateway.support.DynamicRouteInitEvent;
+import com.github.jgzl.common.gateway.vo.RouteDefinitionVo;
 import com.github.jgzl.infra.upms.api.entity.SysRouteConf;
 import com.github.jgzl.infra.upms.mapper.SysRouteConfMapper;
 import com.github.jgzl.infra.upms.service.SysRouteConfService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.CommonConstants;
-import com.pig4cloud.pigx.common.gateway.support.DynamicRouteInitEvent;
-import com.pig4cloud.pigx.common.gateway.vo.RouteDefinitionVo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RedissonClient;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
@@ -40,7 +39,7 @@ import java.util.stream.Collectors;
 public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, SysRouteConf>
 		implements SysRouteConfService {
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	private final ApplicationEventPublisher applicationEventPublisher;
 
@@ -53,8 +52,8 @@ public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, Sys
 	@Transactional(rollbackFor = Exception.class)
 	public Mono<Void> updateRoutes(JSONArray routes) {
 		// 清空Redis 缓存
-		Boolean result = redisTemplate.delete(CacheConstants.ROUTE_KEY);
-		log.info("清空网关路由 {} ", result);
+		long result = redisson.getKeys().delete(CacheConstants.ROUTE_KEY);
+		log.info("清空网关路由 {} ", result != 0);
 
 		// 遍历修改的routes，保存到Redis
 		List<RouteDefinitionVo> routeDefinitionVoList = new ArrayList<>();
@@ -106,8 +105,7 @@ public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, Sys
 					vo.setMetadata(metadataMap);
 				}
 
-				redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(RouteDefinitionVo.class));
-				redisTemplate.opsForHash().put(CacheConstants.ROUTE_KEY, vo.getId(), vo);
+				redisson.getMap(CacheConstants.ROUTE_KEY).put(vo.getId(), JSONUtil.toJsonStr(vo));
 				routeDefinitionVoList.add(vo);
 			});
 
@@ -132,7 +130,7 @@ public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, Sys
 			log.debug("更新网关路由结束 ");
 
 			// 通知网关重置路由
-			redisTemplate.convertAndSend(CacheConstants.ROUTE_JVM_RELOAD_TOPIC, "路由信息,网关缓存更新");
+			redisson.getTopic(CacheConstants.ROUTE_JVM_RELOAD_TOPIC).publish("路由信息,网关缓存更新");
 		}
 		catch (Exception e) {
 			log.error("路由配置解析失败", e);

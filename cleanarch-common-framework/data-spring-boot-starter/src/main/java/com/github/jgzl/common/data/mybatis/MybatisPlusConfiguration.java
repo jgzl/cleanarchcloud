@@ -65,7 +65,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 		MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
 		// 多租户支持
 		TenantLineInnerInterceptor tenantLineInnerInterceptor = new TenantLineInnerInterceptor();
-		tenantLineInnerInterceptor.setTenantLineHandler(pigxTenantHandler());
+		tenantLineInnerInterceptor.setTenantLineHandler(extendTenantHandler());
 		interceptor.addInnerInterceptor(tenantLineInnerInterceptor);
 		// 数据权限
 		DataScopeInnerInterceptor dataScopeInnerInterceptor = new DataScopeInnerInterceptor();
@@ -85,7 +85,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 	 */
 	@Bean
 	@ConditionalOnMissingBean
-	public ExtendTenantHandler pigxTenantHandler() {
+	public ExtendTenantHandler extendTenantHandler() {
 		return new ExtendTenantHandler();
 	}
 
@@ -97,15 +97,6 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 	@ConditionalOnBean(DataScopeHandle.class)
 	public DataScopeSqlInjector dataScopeSqlInjector() {
 		return new DataScopeSqlInjector();
-	}
-
-	/**
-	 * SQL 日志格式化
-	 * @return DruidSqlLogFilter
-	 */
-	@Bean
-	public DruidSqlLogFilter sqlLogFilter(MybatisProperties properties) {
-		return new DruidSqlLogFilter(properties);
 	}
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @ConfigurationProperties(prefix = ExtendCacheConfigProperties.PREFIX)
 public class ExtendCacheConfigProperties {
 
-	public static final String PREFIX = "framework.cache.extend";
+	public static final String PREFIX = "extend.cache.extend";
 
     private boolean enabled;
     private RedisSwitch lock;

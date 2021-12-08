@@ -16,8 +16,8 @@ create database `nacos` default character set utf8mb4 collate utf8mb4_general_ci
 -- cleanarch pay配置相关库
 create database `cleanarch_pay` default character set utf8mb4 collate utf8mb4_general_ci;
 
--- cleanarch codegen相关库
-create database `cleanarch_codegen` default character set utf8mb4 collate utf8mb4_general_ci;
+-- cleanarch tools相关库
+create database `cleanarch_tools` default character set utf8mb4 collate utf8mb4_general_ci;
 
 -- cleanarch report相关库
 create database `cleanarch_report` default character set utf8mb4 collate utf8mb4_general_ci;

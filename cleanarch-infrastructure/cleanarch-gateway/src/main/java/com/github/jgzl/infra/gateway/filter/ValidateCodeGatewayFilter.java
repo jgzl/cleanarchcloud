@@ -18,10 +18,10 @@ import com.github.jgzl.common.core.util.WebUtils;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RKeys;
+import org.redisson.api.RedissonClient;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,7 +42,7 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 
 	private final ObjectMapper objectMapper;
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	@Override
 	public GatewayFilter apply(Object config) {
@@ -100,8 +100,7 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 		String key = String.format("%s:%s:%s", StrUtil.isBlank(tenantId) ? CommonConstants.TENANT_ID_1 : tenantId,
 				CacheConstants.CLIENT_FLAG, clientId);
 
-		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		Object val = redisTemplate.opsForValue().get(key);
+		Object val = redisson.getBucket(key).get();
 
 		// 当配置不存在时，默认需要校验
 		if (val == null) {
@@ -148,13 +147,13 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 		}
 
 		String key = CacheConstants.DEFAULT_CODE_KEY + randomStr;
-		redisTemplate.setKeySerializer(new StringRedisSerializer());
 
-		if (!redisTemplate.hasKey(key)) {
+		RKeys keys = redisson.getKeys();
+		if (keys.countExists(key)==0) {
 			throw new ValidateCodeException("验证码不合法");
 		}
 
-		Object codeObj = redisTemplate.opsForValue().get(key);
+		Object codeObj = redisson.getBucket(key).get();
 
 		if (codeObj == null) {
 			throw new ValidateCodeException("验证码不合法");
@@ -162,16 +161,16 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 
 		String saveCode = codeObj.toString();
 		if (StrUtil.isBlank(saveCode)) {
-			redisTemplate.delete(key);
+			keys.delete(key);
 			throw new ValidateCodeException("验证码不合法");
 		}
 
 		if (!StrUtil.equals(saveCode, code)) {
-			redisTemplate.delete(key);
+			keys.delete(key);
 			throw new ValidateCodeException("验证码不合法");
 		}
 
-		redisTemplate.delete(key);
+		keys.delete(key);
 	}
 
 }

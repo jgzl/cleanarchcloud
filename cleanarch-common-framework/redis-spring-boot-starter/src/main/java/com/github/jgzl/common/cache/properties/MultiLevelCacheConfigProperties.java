@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @ConfigurationProperties(prefix = MultiLevelCacheConfigProperties.PREFIX)
 public class MultiLevelCacheConfigProperties {
-	public static final String PREFIX = "framework.cache.multi";
+	public static final String PREFIX = "extend.cache.multi";
 	private Set<String> cacheNames = new HashSet<>();
 	/**
 	 * 是否存储空值，默认true，防止缓存穿透

@@ -23,8 +23,11 @@ import org.springframework.util.PathMatcher;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.mvc.condition.PathPatternsRequestCondition;
+import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.util.pattern.PathPattern;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -68,8 +71,11 @@ public class PermitAllUrlResolver implements InitializingBean {
 			// 2. 当类上不包含 @Inner 注解则获取该方法的注解
 			if (controller == null) {
 				Inner method = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), Inner.class);
-				Optional.ofNullable(method).ifPresent(inner -> info.getPatternsCondition().getPatterns()
-						.forEach(url -> this.filterPath(url, info, map)));
+				PatternsRequestCondition patternsCondition = info.getPatternsCondition();
+				PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
+				if (method!=null) {
+					filterPath(map, info, patternsCondition, pathPatternsCondition);
+				}
 				continue;
 			}
 
@@ -78,10 +84,25 @@ public class PermitAllUrlResolver implements InitializingBean {
 			Method[] methods = beanType.getDeclaredMethods();
 			Method method = handlerMethod.getMethod();
 			if (ArrayUtil.contains(methods, method)) {
-				info.getPatternsCondition().getPatterns().forEach(url -> filterPath(url, info, map));
+				PatternsRequestCondition patternsCondition = info.getPatternsCondition();
+				PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
+				filterPath(map, info, patternsCondition, pathPatternsCondition);
 			}
 		}
 
+	}
+
+	private void filterPath(Map<RequestMappingInfo, HandlerMethod> map, RequestMappingInfo info, PatternsRequestCondition patternsCondition, PathPatternsRequestCondition pathPatternsCondition) {
+		if (patternsCondition!=null){
+			for (String pattern : patternsCondition.getPatterns()) {
+				this.filterPath(pattern, info, map);
+			}
+		}
+		if(pathPatternsCondition!=null) {
+			for (PathPattern pattern : pathPatternsCondition.getPatterns()) {
+				this.filterPath(pattern.getPatternString(), info, map);
+			}
+		}
 	}
 
 	/**
@@ -131,21 +152,36 @@ public class PermitAllUrlResolver implements InitializingBean {
 			}
 
 			// 如果请求方法路径匹配
-			Set<String> patterns = info.getPatternsCondition().getPatterns();
-			for (String pattern : patterns) {
-				// 跳过自身
-				if (StrUtil.equals(url, pattern)) {
-					continue;
-				}
+			PatternsRequestCondition patternsCondition = info.getPatternsCondition();
+			PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
 
-				if (PATHMATCHER.match(url, pattern)) {
-					HandlerMethod rqMethod = map.get(rq);
-					HandlerMethod infoMethod = map.get(info);
-					log.error("@Inner 标记接口 ==> {}.{} 使用不当，会额外暴露接口 ==> {}.{} 请知悉", rqMethod.getBeanType().getName(),
-							rqMethod.getMethod().getName(), infoMethod.getBeanType().getName(),
-							infoMethod.getMethod().getName());
+			if (patternsCondition!=null){
+				for (String pattern : patternsCondition.getPatterns()) {
+					// 跳过自身
+					tagInnerMethod(url, rq, map, info, pattern);
 				}
 			}
+			if(pathPatternsCondition!=null) {
+				for (PathPattern patternItem : pathPatternsCondition.getPatterns()) {
+					String pattern = patternItem.getPatternString();
+					// 跳过自身
+					tagInnerMethod(url, rq, map, info, pattern);
+				}
+			}
+		}
+	}
+
+	private void tagInnerMethod(String url, RequestMappingInfo rq, Map<RequestMappingInfo, HandlerMethod> map, RequestMappingInfo info, String pattern) {
+		if (StrUtil.equals(url, pattern)) {
+			return;
+		}
+
+		if (PATHMATCHER.match(url, pattern)) {
+			HandlerMethod rqMethod = map.get(rq);
+			HandlerMethod infoMethod = map.get(info);
+			log.error("@Inner 标记接口 ==> {}.{} 使用不当，会额外暴露接口 ==> {}.{} 请知悉", rqMethod.getBeanType().getName(),
+					rqMethod.getMethod().getName(), infoMethod.getBeanType().getName(),
+					infoMethod.getMethod().getName());
 		}
 	}
 

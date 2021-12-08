@@ -1,15 +1,15 @@
 package com.github.jgzl.common.websocket.redis;
 
 import cn.hutool.json.JSONObject;
-import com.github.jgzl.common.websocket.redis.action.Action;
-import com.github.jgzl.common.websocket.redis.action.RemoveAction;
 import com.github.jgzl.common.websocket.WebSocket;
 import com.github.jgzl.common.websocket.memory.MemWebSocketManager;
+import com.github.jgzl.common.websocket.redis.action.Action;
 import com.github.jgzl.common.websocket.redis.action.BroadCastAction;
+import com.github.jgzl.common.websocket.redis.action.RemoveAction;
 import com.github.jgzl.common.websocket.redis.action.SendMessageAction;
 import com.github.jgzl.common.websocket.utils.WebSocketUtil;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
+import org.redisson.api.RBucket;
+import org.redisson.api.RedissonClient;
 
 /**
  * WebSocket的session无法序列化,所以session还是保存在本地内存中，发送消息这种就走订阅发布模式
@@ -25,10 +25,10 @@ public class RedisWebSocketManager extends MemWebSocketManager {
 
     public static final String CHANNEL = "websocket";
     private static final String COUNT_KEY = "RedisWebSocketManagerCountKey";
-    protected StringRedisTemplate stringRedisTemplate;
+    protected RedissonClient redisson;
 
-    public RedisWebSocketManager(StringRedisTemplate stringRedisTemplate) {
-        this.stringRedisTemplate = stringRedisTemplate;
+    public RedisWebSocketManager(RedissonClient redisson) {
+        this.redisson = redisson;
     }
 
 
@@ -49,7 +49,7 @@ public class RedisWebSocketManager extends MemWebSocketManager {
             map.set(Action.ACTION, RemoveAction.class.getName());
             map.set(Action.IDENTIFIER, identifier);
             //在websocket频道上发布发送消息的消息
-            stringRedisTemplate.convertAndSend(getChannel(), map.toString());
+            redisson.getTopic(getChannel()).publish(map.toString());
         }
         //在线数量减1
         countChange(-1);
@@ -75,7 +75,7 @@ public class RedisWebSocketManager extends MemWebSocketManager {
         map.put(Action.IDENTIFIER, identifier);
         map.put(Action.MESSAGE, message);
         //在websocket频道上发布发送消息的消息
-        stringRedisTemplate.convertAndSend(getChannel(), map.toString());
+		redisson.getTopic(getChannel()).publish(map.toString());
     }
 
     @Override
@@ -84,7 +84,7 @@ public class RedisWebSocketManager extends MemWebSocketManager {
         map.put(Action.ACTION, BroadCastAction.class.getName());
         map.put(Action.MESSAGE, message);
         //在websocket频道上发布广播的消息
-        stringRedisTemplate.convertAndSend(getChannel(), map.toString());
+		redisson.getTopic(getChannel()).publish(map.toString());
     }
 
     protected String getChannel() {
@@ -95,33 +95,33 @@ public class RedisWebSocketManager extends MemWebSocketManager {
      * 增减在线数量
      */
     private void countChange(int delta) {
-
-        ValueOperations<String, String> value = stringRedisTemplate.opsForValue();
-
-        //获取在线当前数量
-        int count = getCount(value);
+		RBucket<Object> bucket = redisson.getBucket(COUNT_KEY);
+		//获取在线当前数量
+		String countStr = (String) bucket.get();
+		int count = 0;
+		if (null != countStr) {
+			count = Integer.parseInt(countStr);
+		}
 
         count = count + delta;
         count = Math.max(count, 0);
 
         //设置新的数量
-        value.set(COUNT_KEY, "" + count);
+		bucket.set("" + count);
     }
 
     /**
      * 获取当前在线数量
      */
     private int getCount() {
-        ValueOperations<String, String> value = stringRedisTemplate.opsForValue();
-        return getCount(value);
+		RBucket<Object> bucket = redisson.getBucket(COUNT_KEY);
+		//获取在线当前数量
+		String countStr = (String) bucket.get();
+		int count = 0;
+		if (null != countStr) {
+			count = Integer.parseInt(countStr);
+		}
+		return count;
     }
 
-    private int getCount(ValueOperations<String, String> value) {
-        String countStr = value.get(COUNT_KEY);
-        int count = 0;
-        if (null != countStr) {
-            count = Integer.parseInt(countStr);
-        }
-        return count;
-    }
 }

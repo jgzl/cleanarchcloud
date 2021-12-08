@@ -7,11 +7,11 @@ import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
 import com.github.jgzl.infra.upms.service.SysTenantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +31,7 @@ public class ClientDetailsInitRunner {
 
 	private final SysTenantService tenantService;
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	@Async
 	@Order
@@ -49,7 +49,7 @@ public class ClientDetailsInitRunner {
 					// 3. 拼接key 1:client_config_flag:clinetId
 					String key = String.format("%s:%s:%s", tenantId, CacheConstants.CLIENT_FLAG, client.getClientId());
 					// 4. hashkey clientId 保存客户端信息
-					redisTemplate.opsForValue().set(key, client.getAdditionalInformation());
+					redisson.getBucket(key).set(client.getAdditionalInformation());
 				});
 			});
 		});

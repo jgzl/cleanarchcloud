@@ -5,18 +5,17 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.CommonConstants;
+import com.github.jgzl.common.core.util.SpringContextHolder;
 import com.github.jgzl.infra.upms.api.dto.SysOauthClientDetailsDTO;
 import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
 import com.github.jgzl.infra.upms.config.ClientDetailsInitRunner;
 import com.github.jgzl.infra.upms.mapper.SysOauthClientDetailsMapper;
 import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.CommonConstants;
-import com.github.jgzl.common.core.util.SpringContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +34,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClientDetailsMapper, SysOauthClientDetails>
 		implements SysOauthClientDetailsService {
-
-	private final RedisTemplate redisTemplate;
 
 	/**
 	 * 通过ID删除客户端

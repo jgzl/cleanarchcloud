@@ -12,7 +12,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
  * redis限流器自动配置项
@@ -33,8 +32,8 @@ public class ExtendCacheAutoConfiguration {
 
     @Bean
     @Primary
-    public RedisSequenceHelper redisSequenceHelper(StringRedisTemplate stringRedisTemplate) {
-        return new RedisSequenceHelper(stringRedisTemplate);
+    public RedisSequenceHelper redisSequenceHelper(RedissonClient redisson) {
+        return new RedisSequenceHelper(redisson);
     }
 
     @Bean

@@ -17,6 +17,10 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>common-framework-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>redis-spring-boot-starter</artifactId>
+		</dependency>
 		<!--网关 swagger 聚合依赖-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

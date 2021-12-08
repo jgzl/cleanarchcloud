@@ -20,7 +20,7 @@ public interface ServiceNameConstants {
 	/**
 	 * 用户中心
 	 */
-	String UPMS_SERVICE = "cleanarch-upms";
+	String UPMS_SERVICE = "cleanarch-upms-server";
 
 	/**
 	 * 工具中心-日志,代码生成器

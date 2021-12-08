@@ -70,19 +70,15 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>websocket-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jgzl</groupId>
 			<artifactId>data-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>file-spring-boot-starter</artifactId>
+			<artifactId>log-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
-			<artifactId>log-spring-boot-starter</artifactId>
+			<artifactId>redis-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
@@ -92,27 +88,11 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>cleanarch-upms-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
 		<!--  实体类转换  -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>me.zhyd.oauth</groupId>
-			<artifactId>JustAuth</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.xkcoding.justauth</groupId>
-			<artifactId>justauth-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
 

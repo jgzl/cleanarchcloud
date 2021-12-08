@@ -4,16 +4,16 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.github.jgzl.infra.upms.api.entity.SysUser;
-import com.github.jgzl.infra.upms.mapper.SysUserMapper;
-import com.github.jgzl.infra.upms.service.MobileService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.constant.enums.LoginTypeEnum;
 import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.infra.upms.api.entity.SysUser;
+import com.github.jgzl.infra.upms.mapper.SysUserMapper;
+import com.github.jgzl.infra.upms.service.MobileService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class MobileServiceImpl implements MobileService {
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	private final SysUserMapper userMapper;
 
@@ -49,8 +49,8 @@ public class MobileServiceImpl implements MobileService {
 			return R.ok(Boolean.FALSE, "手机号未注册");
 		}
 
-		Object codeObj = redisTemplate.opsForValue()
-				.get(CacheConstants.DEFAULT_CODE_KEY + LoginTypeEnum.SMS.getType() + StringPool.AT + mobile);
+		Object codeObj = redisson
+				.getBucket(CacheConstants.DEFAULT_CODE_KEY + LoginTypeEnum.SMS.getType() + StringPool.AT + mobile).get();
 
 		if (codeObj != null) {
 			log.info("手机号验证码未过期:{}，{}", mobile, codeObj);
@@ -59,9 +59,8 @@ public class MobileServiceImpl implements MobileService {
 
 		String code = RandomUtil.randomNumbers(Integer.parseInt(SecurityConstants.CODE_SIZE));
 		log.debug("手机号生成验证码成功:{},{}", mobile, code);
-		redisTemplate.opsForValue().set(
-				CacheConstants.DEFAULT_CODE_KEY + LoginTypeEnum.SMS.getType() + StringPool.AT + mobile, code,
-				SecurityConstants.CODE_TIME, TimeUnit.SECONDS);
+		redisson.getBucket(CacheConstants.DEFAULT_CODE_KEY + LoginTypeEnum.SMS.getType() + StringPool.AT + mobile)
+				.set(code,SecurityConstants.CODE_TIME, TimeUnit.SECONDS);
 		return R.ok(Boolean.TRUE, code);
 	}
 

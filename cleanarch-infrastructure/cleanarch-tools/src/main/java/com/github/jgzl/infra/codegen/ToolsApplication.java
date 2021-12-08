@@ -7,10 +7,10 @@ import com.github.jgzl.common.security.annotation.EnableResourceServerPlus;
 /**
  * @author lihaifeng
  */
+@EnableResourceServerPlus
 @EnableFeignClientsPlus
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableResourceServerPlus
 public class ToolsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ToolsApplication.class, args);

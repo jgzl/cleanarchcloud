@@ -1,10 +1,12 @@
 package com.github.jgzl.common.cache.support;
+
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RedissonClient;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.data.redis.core.RedisTemplate;
+
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,17 +24,17 @@ public class RedisCaffeineCacheManager implements CacheManager {
 
 	private MultiLevelCacheConfigProperties multiLevelCacheConfigProperties;
 
-	private RedisTemplate<Object, Object> stringKeyRedisTemplate;
+	private RedissonClient redisson;
 
 	private boolean dynamic;
 
 	private Set<String> cacheNames;
 
 	public RedisCaffeineCacheManager(MultiLevelCacheConfigProperties multiLevelCacheConfigProperties,
-                                     RedisTemplate<Object, Object> stringKeyRedisTemplate) {
+									 RedissonClient redisson) {
 		super();
 		this.multiLevelCacheConfigProperties = multiLevelCacheConfigProperties;
-		this.stringKeyRedisTemplate = stringKeyRedisTemplate;
+		this.redisson = redisson;
 		this.dynamic = multiLevelCacheConfigProperties.isDynamic();
 		this.cacheNames = multiLevelCacheConfigProperties.getCacheNames();
 	}
@@ -47,7 +49,7 @@ public class RedisCaffeineCacheManager implements CacheManager {
 			return cache;
 		}
 
-		cache = new RedisCaffeineCache(name, stringKeyRedisTemplate, caffeineCache(), multiLevelCacheConfigProperties);
+		cache = new RedisCaffeineCache(name, redisson, caffeineCache(), multiLevelCacheConfigProperties);
 		Cache oldCache = cacheMap.putIfAbsent(name, cache);
 		log.debug("create cache instance, the cache name is : {}", name);
 		return oldCache == null ? cache : oldCache;

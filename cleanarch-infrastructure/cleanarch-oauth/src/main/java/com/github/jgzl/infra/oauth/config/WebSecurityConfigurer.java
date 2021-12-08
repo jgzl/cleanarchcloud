@@ -36,7 +36,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 				.successHandler(tenantSavedRequestAwareAuthenticationSuccessHandler())
 				.failureHandler(authenticationFailureHandler()).and().logout()
 				.logoutSuccessHandler(logoutSuccessHandler()).deleteCookies("JSESSIONID").invalidateHttpSession(true)
-				.and().authorizeRequests().antMatchers("/token/**", "/actuator/**", "/mobile/**").permitAll()
+				.and().authorizeRequests().antMatchers("/heartbeat","/token/**", "/actuator/**", "/mobile/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable().apply(mobileSecurityConfigurer());
 	}
 

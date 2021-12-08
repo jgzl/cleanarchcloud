@@ -4,6 +4,10 @@ import com.github.jgzl.common.websocket.WebSocketManager;
 import com.github.jgzl.common.websocket.configuration.WebSocketHeartBeatChecker;
 import com.github.jgzl.common.websocket.configuration.WebSocketProperties;
 import com.github.jgzl.common.websocket.redis.action.ActionConfig;
+import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RTopic;
+import org.redisson.api.RedissonClient;
+import org.redisson.api.listener.MessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -12,11 +16,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.listener.PatternTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
@@ -25,6 +24,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
  * 可以扩展此类，添加listener和topic及相应的receiver，使用自己的Enable注解导入即可
  * @see EnableRedisWebSocket
  */
+@Slf4j
 @Configuration
 @Import(ActionConfig.class)
 @EnableConfigurationProperties(WebSocketProperties.class)
@@ -35,16 +35,10 @@ public class RedisWebSocketConfiguration {
         return new ServerEndpointExporter();
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        return new StringRedisTemplate(redisConnectionFactory);
-    }
-
     @Bean(WebSocketManager.WEBSOCKET_MANAGER_NAME)
     @ConditionalOnMissingBean(name = WebSocketManager.WEBSOCKET_MANAGER_NAME)
-    public WebSocketManager webSocketManager(@Autowired StringRedisTemplate stringRedisTemplate) {
-        return new RedisWebSocketManager(stringRedisTemplate);
+    public WebSocketManager webSocketManager(@Autowired RedissonClient redisson) {
+        return new RedisWebSocketManager(redisson);
     }
 
     @Bean(RedisReceiver.REDIS_RECEIVER_NAME)
@@ -52,20 +46,18 @@ public class RedisWebSocketConfiguration {
         return new DefaultRedisReceiver(applicationContext);
     }
 
-    @Bean
-    public MessageListenerAdapter listenerAdapter(@Qualifier(RedisReceiver.REDIS_RECEIVER_NAME) RedisReceiver redisReceiver) {
-		MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(redisReceiver, RedisReceiver.RECEIVER_METHOD_NAME);
-		return messageListenerAdapter;
-	}
-
-	@Bean
-	@ConditionalOnMissingBean
-    public RedisMessageListenerContainer redisMessageListenerContainer(RedisMessageListenerContainer redisMessageListenerContainer,RedisConnectionFactory connectionFactory,
-                                                                       MessageListenerAdapter listenerAdapter,ApplicationContext applicationContext) {
-		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-		container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic(RedisWebSocketManager.CHANNEL));
-        return container;
+	@Bean(value="channelTopic")
+    public RTopic channelTopic(RedissonClient redisson,@Qualifier(RedisReceiver.REDIS_RECEIVER_NAME) RedisReceiver redisReceiver) {
+		RTopic topic = redisson.getTopic(RedisWebSocketManager.CHANNEL);
+		topic.addListener(String.class, new MessageListener<String>() {
+			@Override
+			public void onMessage(CharSequence channel, String message) {
+				log.info("开始处理Redis[{}]接收到的消息",RedisWebSocketManager.CHANNEL);
+				redisReceiver.receiveMessage(message);
+				log.info("结束处理Redis[{}]接收到的消息",RedisWebSocketManager.CHANNEL);
+			}
+		});
+		return topic;
     }
 
     @Bean

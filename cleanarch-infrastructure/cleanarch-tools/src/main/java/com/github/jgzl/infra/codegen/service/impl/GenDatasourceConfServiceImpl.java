@@ -11,9 +11,10 @@ import com.github.jgzl.common.datasource.util.DsJdbcUrlEnum;
 import com.github.jgzl.infra.codegen.entity.GenDatasourceConf;
 import com.github.jgzl.infra.codegen.mapper.GenDatasourceConfMapper;
 import com.github.jgzl.infra.codegen.service.GenDatasourceConfService;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -29,13 +30,17 @@ import java.sql.SQLException;
  */
 @Slf4j
 @Service
-@AllArgsConstructor
 public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfMapper, GenDatasourceConf>
 		implements GenDatasourceConfService {
 
 	private final StringEncryptor stringEncryptor;
 
 	private final DataSourceCreator druidDataSourceCreator;
+
+	public GenDatasourceConfServiceImpl(@Autowired StringEncryptor stringEncryptor, @Autowired @Qualifier(value="hikariDataSourceCreator")DataSourceCreator druidDataSourceCreator) {
+		this.stringEncryptor = stringEncryptor;
+		this.druidDataSourceCreator = druidDataSourceCreator;
+	}
 
 	/**
 	 * 保存数据源并且加密

@@ -2,6 +2,7 @@ package com.github.jgzl.common.data.resolver;
 
 import com.github.jgzl.common.core.util.KeyStrResolver;
 import com.github.jgzl.common.data.tenant.TenantContextHolder;
+import org.springframework.stereotype.Component;
 
 /**
  * @author lihaifeng
@@ -9,6 +10,7 @@ import com.github.jgzl.common.data.tenant.TenantContextHolder;
  * <p>
  * 租户字符串处理（方便其他模块获取）
  */
+@Component
 public class TenantKeyStrResolver implements KeyStrResolver {
 
 	/**

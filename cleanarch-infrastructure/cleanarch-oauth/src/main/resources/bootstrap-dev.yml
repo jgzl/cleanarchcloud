@@ -1,69 +1,10 @@
-server:
-  port: 8010
 spring:
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/cleanarch?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    username: root
-    password: root
-
-  redis:
-    host: 127.0.0.1
-    password: 123456
-  main:
-    allow-bean-definition-overriding: true
-  session:
-    store-type: redis
-  freemarker:
-    allow-request-override: false
-    allow-session-override: false
-    cache: true
-    charset: UTF-8
-    check-template-location: true
-    content-type: text/html
-    enabled: true
-    expose-request-attributes: false
-    expose-session-attributes: false
-    expose-spring-macro-helpers: true
-    prefer-file-system-access: true
-    suffix: .ftl
-    template-loader-path: classpath:/templates/
-
-framework:
-  security:
-    key-store:
-      location: classpath:cleanarch.jks
-      secret: cleanarch
-      alias: cleanarch
-    url-permit-all:
-      - /captcha
-      - /oauth/token
-      - /message/**
-      - /third/**
-      - /login/**
-      - /heartbeat
-      - /actuator/**
-  mybatis-plus:
-    multi-tenant:
-      strategy: local
-      type: column
-
-justauth:
-  enabled: true
-  type:
-    GITEE:
-      client-id: 3033eb0082a4b2b5b9f60c5fc319255c70652e5b8ee9b91e8f0037e21b120bd8
-      client-secret: d2e1bd1b5454da8c9b1dd8d526d7ee08355044a2b7122bd62c48b4866f2451d5
-      redirect-uri: http://127.0.0.1:8010/third/oauth/gitee/callback
-    DINGTALK:
-      client-id: dingsbu9jx2go6sgxmzz
-      client-secret: 0jR1bwzYQTgVwWUk4QX0LqfhVYK6dEDL3t8Rhv5h1hrEDY3Cdt9BzDhvLj8hFHyS
-      redirect-uri: http://127.0.0.1:8010/third/oauth/dingtalk/callback
-    OSCHINA:
-      client-id: MIPPagPZjeYfAUlQn9uN
-      client-secret: UsM4xzfNn9udQeYhxcQdSFIkFwTwPxhu
-      redirect-uri: http://127.0.0.1:8010/third/oauth/oschina/callback
-  cache:
-    type: custom
-    prefix: 'cleanarch:justauth:state:'
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:cleanarch-register}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

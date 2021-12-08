@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.gateway;
 
 import com.github.jgzl.common.feign.annotation.EnableFeignClientsPlus;
-import com.pig4cloud.pigx.common.gateway.annotation.EnableDynamicRoute;
+import com.github.jgzl.common.gateway.annotation.EnableDynamicRoute;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

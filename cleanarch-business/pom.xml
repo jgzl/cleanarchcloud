@@ -19,7 +19,6 @@
 	</properties>
 
 	<modules>
-		<module>cleanarch-business-demo</module>
 		<module>cleanarch-business-ssoclient1</module>
 		<module>cleanarch-business-ssoclient2</module>
   	</modules>

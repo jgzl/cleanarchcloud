@@ -1,15 +1,15 @@
 package com.github.jgzl.common.cache.support;
+
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RKeys;
+import org.redisson.api.RedissonClient;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
+
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +27,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	@Getter
 	private final Cache<Object, Object> caffeineCache;
 
-	private final RedisTemplate<Object, Object> stringKeyRedisTemplate;
+	private final RedissonClient redisson;
 
 	private final String cachePrefix;
 
@@ -39,11 +39,11 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 
 	private final Map<String, ReentrantLock> keyLockMap = new ConcurrentHashMap<>();
 
-	public RedisCaffeineCache(String name, RedisTemplate<Object, Object> stringKeyRedisTemplate,
+	public RedisCaffeineCache(String name, RedissonClient redisson,
 			Cache<Object, Object> caffeineCache, MultiLevelCacheConfigProperties multiLevelCacheConfigProperties) {
 		super(multiLevelCacheConfigProperties.isCacheNullValues());
 		this.name = name;
-		this.stringKeyRedisTemplate = stringKeyRedisTemplate;
+		this.redisson = redisson;
 		this.caffeineCache = caffeineCache;
 		this.cachePrefix = multiLevelCacheConfigProperties.getCachePrefix();
 		this.defaultExpiration = multiLevelCacheConfigProperties.getRedis().getDefaultExpiration();
@@ -96,10 +96,10 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 		}
 		long expire = getExpire();
 		if (expire > 0) {
-			stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value), expire, TimeUnit.MILLISECONDS);
+			redisson.getBucket(getKey(key)).set(toStoreValue(value), expire, TimeUnit.MILLISECONDS);
 		}
 		else {
-			stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value));
+			redisson.getBucket(getKey(key)).set(toStoreValue(value));
 		}
 
 		push(new CacheMessage(this.name, key));
@@ -113,15 +113,15 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 		Object prevValue = null;
 		// 考虑使用分布式锁，或者将redis的setIfAbsent改为原子性操作
 		synchronized (key) {
-			prevValue = stringKeyRedisTemplate.opsForValue().get(cacheKey);
+			prevValue = redisson.getBucket((String)cacheKey).get();
 			if (prevValue == null) {
 				long expire = getExpire();
 				if (expire > 0) {
-					stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value), expire,
+					redisson.getBucket(getKey(key)).set(toStoreValue(value), expire,
 							TimeUnit.MILLISECONDS);
 				}
 				else {
-					stringKeyRedisTemplate.opsForValue().set(getKey(key), toStoreValue(value));
+					redisson.getBucket(getKey(key)).set(toStoreValue(value));
 				}
 
 				push(new CacheMessage(this.name, key));
@@ -135,7 +135,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	@Override
 	public void evict(Object key) {
 		// 先清除redis中缓存数据，然后清除caffeine中的缓存，避免短时间内如果先清除caffeine缓存后其他请求会再从redis里加载到caffeine中
-		stringKeyRedisTemplate.delete(getKey(key));
+		redisson.getBucket(getKey(key)).delete();
 
 		push(new CacheMessage(this.name, key));
 
@@ -145,11 +145,8 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	@Override
 	public void clear() {
 		// 先清除redis中缓存数据，然后清除caffeine中的缓存，避免短时间内如果先清除caffeine缓存后其他请求会再从redis里加载到caffeine中
-		Set<Object> keys = stringKeyRedisTemplate.keys(this.name.concat(":*"));
-
-		if (!CollectionUtils.isEmpty(keys)){
-			stringKeyRedisTemplate.delete(keys);
-		}
+		RKeys rKeys = redisson.getKeys();
+		rKeys.deleteByPattern(this.name.concat(":*"));
 
 		push(new CacheMessage(this.name, null));
 
@@ -158,16 +155,14 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 
 	@Override
 	protected Object lookup(Object key) {
-		Object cacheKey = getKey(key);
+		String cacheKey = getKey(key);
 		Object value = caffeineCache.getIfPresent(key);
 		if (value != null) {
 			log.debug("get cache from caffeine, the key is : {}", cacheKey);
 			return value;
 		}
 
-		// 避免自动一个 RedisTemplate 覆盖失效
-		stringKeyRedisTemplate.setKeySerializer(new StringRedisSerializer());
-		value = stringKeyRedisTemplate.opsForValue().get(cacheKey);
+		value = redisson.getBucket(cacheKey).get();
 
 		if (value != null) {
 			log.debug("get cache from redis and put in caffeine, the key is : {}", cacheKey);
@@ -194,7 +189,7 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	 * @version 1.0.0
 	 */
 	private void push(CacheMessage message) {
-		stringKeyRedisTemplate.convertAndSend(topic, message);
+		redisson.getTopic(topic).publish(message);
 	}
 
 	/**

@@ -4,11 +4,13 @@ import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.crypto.digest.MD5;
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
-import com.github.jgzl.common.cache.support.CacheMessageListener;
-import com.github.jgzl.common.cache.support.RedisRepository;
+import com.github.jgzl.common.cache.support.CacheMessage;
 import com.github.jgzl.common.cache.support.RedisCaffeineCacheManager;
+import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RTopic;
+import org.redisson.api.RedissonClient;
+import org.redisson.api.listener.MessageListener;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -16,12 +18,6 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.listener.ChannelTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,7 +26,7 @@ import java.util.Map;
  * @author lihaifeng
  * @version 1.0.0
  */
-
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 @AutoConfigureAfter(name = { "org.redisson.spring.starter.RedissonAutoConfiguration",
 		"org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration" })
@@ -38,50 +34,28 @@ import java.util.Map;
 public class MultiLevelCacheAutoConfiguration extends CachingConfigurerSupport {
 
 	@Bean
-	@ConditionalOnBean(RedisConnectionFactory.class)
-	public RedisTemplate<Object, Object> stringKeyRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-		RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
-		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-		redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-		redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
-		redisTemplate.setConnectionFactory(redisConnectionFactory);
-		return redisTemplate;
-	}
-
-	@Bean
-	@ConditionalOnBean(RedisTemplate.class)
 	public RedisCaffeineCacheManager cacheManager(
 			MultiLevelCacheConfigProperties multiLevelCacheConfigProperties,
-			RedisTemplate<Object, Object> redisTemplate) {
-		return new RedisCaffeineCacheManager(multiLevelCacheConfigProperties, redisTemplate);
+			RedissonClient redisson) {
+		return new RedisCaffeineCacheManager(multiLevelCacheConfigProperties, redisson);
 	}
 
-	@Bean
-	@ConditionalOnBean(RedisConnectionFactory.class)
-	@ConditionalOnMissingBean
-	public RedisMessageListenerContainer redisMessageListenerContainer(
-			MultiLevelCacheConfigProperties multiLevelCacheConfigProperties,
-			RedisConnectionFactory redisConnectionFactory,
-			RedisTemplate<Object, Object> stringKeyRedisTemplate,
-			RedisCaffeineCacheManager redisCaffeineCacheManager) {
-		RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
-		redisMessageListenerContainer.setConnectionFactory(redisConnectionFactory);
-		CacheMessageListener cacheMessageListener = new CacheMessageListener(stringKeyRedisTemplate,
-				redisCaffeineCacheManager);
-		redisMessageListenerContainer.addMessageListener(cacheMessageListener,
-				new ChannelTopic(multiLevelCacheConfigProperties.getRedis().getTopic()));
-		return redisMessageListenerContainer;
-	}
-
-	/**
-	 * redis操作仓库
-	 * @param stringRedisTemplate
-	 * @return
-	 */
-	@Bean
-	public RedisRepository customRedisRepository(RedisTemplate<String,String> stringRedisTemplate){
-		return new RedisRepository(stringRedisTemplate);
+	@Bean(value="multiLevelCacheTopic")
+	public RTopic topic(
+			RedissonClient redisson,
+			RedisCaffeineCacheManager redisCaffeineCacheManager,
+			MultiLevelCacheConfigProperties multiLevelCacheConfigProperties
+	) {
+		RTopic topic = redisson.getTopic(multiLevelCacheConfigProperties.getRedis().getTopic());
+		topic.addListener(CacheMessage.class, new MessageListener<CacheMessage>() {
+			@Override
+			public void onMessage(CharSequence channel, CacheMessage cacheMessage) {
+				log.debug("receive a redis topic message, clear local cache, the cacheName is {}, the key is {}",
+						cacheMessage.getCacheName(), cacheMessage.getKey());
+				redisCaffeineCacheManager.clearLocal(cacheMessage.getCacheName(), cacheMessage.getKey());
+			}
+		});
+		return topic;
 	}
 
 

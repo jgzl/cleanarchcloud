@@ -1,5 +1,7 @@
 package com.github.jgzl.infra.oauth.service;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.core.constant.CacheConstants;
@@ -9,15 +11,12 @@ import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.core.util.SpringContextHolder;
 import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
 import com.github.jgzl.infra.upms.api.feign.RemoteClientDetailsService;
+import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RKeys;
+import org.redisson.api.RedissonClient;
 import org.springframework.cache.CacheManager;
-import org.springframework.data.redis.core.ConvertingCursor;
-import org.springframework.data.redis.core.Cursor;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ScanOptions;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.security.authentication.event.LogoutSuccessEvent;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
@@ -25,8 +24,9 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ExtendTokenDealServiceImpl {
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	private final CacheManager cacheManager;
 
@@ -103,51 +103,26 @@ public class ExtendTokenDealServiceImpl {
 		// 根据分页参数获取对应数据
 		String key = keyStrResolver.extract(SecurityConstants.PREFIX + SecurityConstants.OAUTH_PREFIX + "access:*",
 				StrUtil.COLON);
-		List<String> pages = findKeysForPage(key, page.getCurrent(), page.getSize());
-		redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-		page.setRecords(redisTemplate.opsForValue().multiGet(pages));
-		page.setTotal(redisTemplate.keys(key).size());
-		return R.ok(page);
-	}
-
-	/**
-	 * 使用游标 分页查询key
-	 * @param patternKey key 通配符
-	 * @param pageNum 当前页
-	 * @param pageSize 每页大小
-	 * @return 符合的 value列表
-	 */
-	private List<String> findKeysForPage(String patternKey, long pageNum, long pageSize) {
-		ScanOptions options = ScanOptions.scanOptions().count(1000L).match(patternKey).build();
-		RedisSerializer<String> redisSerializer = (RedisSerializer<String>) redisTemplate.getKeySerializer();
-		Cursor cursor = (Cursor) redisTemplate.executeWithStickyConnection(
-				redisConnection -> new ConvertingCursor<>(redisConnection.scan(options), redisSerializer::deserialize));
-		List<String> result = new ArrayList<>();
-		int tmpIndex = 0;
-		long startIndex = (pageNum - 1) * pageSize;
-		long end = pageNum * pageSize;
-
-		assert cursor != null;
-		while (cursor.hasNext()) {
-			if (tmpIndex >= startIndex && tmpIndex < end) {
-				result.add(cursor.next().toString());
-				tmpIndex++;
-				continue;
-			}
-			if (tmpIndex >= end) {
+		long pageNum = page.getCurrent();
+		long pageSize = page.getSize();
+		RKeys keys = redisson.getKeys();
+		List<String> allKeyList = Lists.newArrayList();
+		while (true) {
+			Iterable<String> pages = keys.getKeysWithLimit(key,1000);
+			if (CollUtil.isEmpty(pages)) {
 				break;
+			}else {
+				Iterator<String> iterator = pages.iterator();
+				if (iterator.hasNext()) {
+					allKeyList.add(iterator.next());
+				}
 			}
-			tmpIndex++;
-			cursor.next();
 		}
-
-		try {
-			cursor.close();
-		}
-		catch (Exception e) {
-			log.error("关闭cursor 失败");
-		}
-		return result;
+		List<String> pageKeyList = allKeyList.subList((int)((pageNum - 1) * pageSize),(int)(pageNum * pageSize));
+		Map<String, Object> resultMap = redisson.getBuckets().get(ArrayUtil.toArray(pageKeyList, String.class));
+		page.setRecords(Lists.newArrayList(resultMap.values()));
+		page.setTotal(allKeyList.size());
+		return R.ok(page);
 	}
 
 }

@@ -3,11 +3,12 @@ package com.github.jgzl.infra.upms.config;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.gateway.support.DynamicRouteInitEvent;
+import com.github.jgzl.common.gateway.vo.RouteDefinitionVo;
 import com.github.jgzl.infra.upms.service.SysRouteConfService;
-import com.pig4cloud.pigx.common.gateway.support.DynamicRouteInitEvent;
-import com.pig4cloud.pigx.common.gateway.vo.RouteDefinitionVo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
@@ -16,10 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.scheduling.annotation.Async;
 
 import java.net.URI;
@@ -36,7 +35,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class DynamicRouteInitRunner {
 
-	private final RedisTemplate redisTemplate;
+	private final RedissonClient redisson;
 
 	private final SysRouteConfService routeConfService;
 
@@ -44,7 +43,7 @@ public class DynamicRouteInitRunner {
 	@Order
 	@EventListener({ WebServerInitializedEvent.class, DynamicRouteInitEvent.class })
 	public void initRoute() {
-		redisTemplate.delete(CacheConstants.ROUTE_KEY);
+		redisson.getKeys().delete(CacheConstants.ROUTE_KEY);
 		log.info("开始初始化网关路由");
 
 		routeConfService.list().forEach(route -> {
@@ -60,12 +59,11 @@ public class DynamicRouteInitRunner {
 			vo.setPredicates(predicateObj.toList(PredicateDefinition.class));
 			vo.setMetadata(JSONUtil.toBean(route.getMetadata(), Map.class));
 			log.info("加载路由ID：{},{}", route.getRouteId(), vo);
-			redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer<>(RouteDefinitionVo.class));
-			redisTemplate.opsForHash().put(CacheConstants.ROUTE_KEY, route.getRouteId(), vo);
+			redisson.getMap(CacheConstants.ROUTE_KEY).put(route.getRouteId(), JSONUtil.toJsonStr(vo));
 		});
 
 		// 通知网关重置路由
-		redisTemplate.convertAndSend(CacheConstants.ROUTE_JVM_RELOAD_TOPIC, "路由信息,网关缓存更新");
+		redisson.getTopic(CacheConstants.ROUTE_JVM_RELOAD_TOPIC).publish("路由信息,网关缓存更新");
 		log.debug("初始化网关路由结束 ");
 	}
 

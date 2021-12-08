@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.redisson.api.RedissonClient;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +22,7 @@ public class RedisSequenceHelper {
     private static final DateTimeFormatter YYYYMMDD = DateTimeFormatter.ofPattern("yyyyMMdd");
     private static final DateTimeFormatter YYYYMM = DateTimeFormatter.ofPattern("yyyyMM");
 
-    private final StringRedisTemplate redisTemplate;
+    private final RedissonClient redisson;
 
     public String generate(Sequence sequence, KeyRule keyRule, int size) {
         String localDate;
@@ -33,18 +33,18 @@ public class RedisSequenceHelper {
         } else {
             localDate = LocalDate.now().format(YYYYMMDD);
         }
-        Long increment = redisTemplate.opsForValue().increment(StrUtil.join(sequence.key(), localDate));
+        Long increment = redisson.getAtomicLong(StrUtil.join(sequence.key(), localDate)).incrementAndGet();
         return StrUtil.join(sequence.prefix(), localDate, StrUtil.padAfter(increment + "", size, '0'));
     }
 
     public String generate6Number(String key) {
         String localDate = LocalDate.now().format(YYYYMMDD);
-        Long increment = redisTemplate.opsForValue().increment(key + localDate);
+        Long increment = redisson.getAtomicLong(key + localDate).incrementAndGet();
         return StrUtil.padAfter(increment + "", 6, '0');
     }
 
     public String generateNumber(String key, int size) {
-        Long increment = redisTemplate.opsForValue().increment(key);
+        Long increment = redisson.getAtomicLong(key).incrementAndGet();
         return StrUtil.padAfter(increment + "", size, '0');
     }
 

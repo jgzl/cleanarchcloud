@@ -35,11 +35,11 @@ import java.util.Collections;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-	private final ClientDetailsService pigxClientDetailsServiceImpl;
+	private final ClientDetailsService clientDetailsServiceImpl;
 
 	private final AuthenticationManager authenticationManagerBean;
 
-	private final UserDetailsService pigxUserDetailsService;
+	private final UserDetailsService userDetailsService;
 
 	private final AuthorizationCodeServices authorizationCodeServices;
 
@@ -52,7 +52,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	@SneakyThrows
 	public void configure(ClientDetailsServiceConfigurer clients) {
-		clients.withClientDetails(pigxClientDetailsServiceImpl);
+		clients.withClientDetails(clientDetailsServiceImpl);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 		endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST).tokenServices(tokenServices())
-				.tokenStore(redisTokenStore).tokenEnhancer(tokenEnhancer).userDetailsService(pigxUserDetailsService)
+				.tokenStore(redisTokenStore).tokenEnhancer(tokenEnhancer).userDetailsService(userDetailsService)
 				.authorizationCodeServices(authorizationCodeServices).authenticationManager(authenticationManagerBean)
 				.reuseRefreshTokens(false).pathMapping("/oauth/confirm_access", "/token/confirm_access")
 				.exceptionTranslator(new ExtendWebResponseExceptionTranslator());
@@ -77,9 +77,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		tokenServices.setTokenStore(redisTokenStore);
 		tokenServices.setSupportRefreshToken(true);
 		tokenServices.setReuseRefreshToken(false);
-		tokenServices.setClientDetailsService(pigxClientDetailsServiceImpl);
+		tokenServices.setClientDetailsService(clientDetailsServiceImpl);
 		tokenServices.setTokenEnhancer(tokenEnhancer);
-		addUserDetailsService(tokenServices, pigxUserDetailsService);
+		addUserDetailsService(tokenServices, userDetailsService);
 		return tokenServices;
 	}
 
