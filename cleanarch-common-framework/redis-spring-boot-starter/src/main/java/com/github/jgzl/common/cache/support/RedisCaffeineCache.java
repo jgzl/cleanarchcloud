@@ -1,5 +1,6 @@
 package com.github.jgzl.common.cache.support;
 
+import cn.hutool.json.JSONUtil;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.jgzl.common.cache.properties.MultiLevelCacheConfigProperties;
 import lombok.Getter;
@@ -7,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RKeys;
 import org.redisson.api.RedissonClient;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
+import org.springframework.cache.support.NullValue;
+import org.springframework.lang.Nullable;
 import org.springframework.util.ObjectUtils;
 
 import java.util.Map;
@@ -54,6 +57,31 @@ public class RedisCaffeineCache extends AbstractValueAdaptingCache {
 	@Override
 	public Object getNativeCache() {
 		return this;
+	}
+
+	@Nullable
+	protected Object fromStoreValue(@Nullable Object storeValue) {
+		if (isAllowNullValues() && storeValue == NullValue.INSTANCE) {
+			return null;
+		}
+		return storeValue;
+	}
+
+	/**
+	 * Convert the given user value, as passed into the put method,
+	 * to a value in the internal store (adapting {@code null}).
+	 * @param userValue the given user value
+	 * @return the value to store
+	 */
+	protected Object toStoreValue(@Nullable Object userValue) {
+		if (userValue == null) {
+			if (isAllowNullValues()) {
+				return NullValue.INSTANCE;
+			}
+			throw new IllegalArgumentException(
+					"Cache '" + getName() + "' is configured to not allow null values but null was provided");
+		}
+		return JSONUtil.toJsonStr(userValue);
 	}
 
 	@SuppressWarnings("unchecked")
