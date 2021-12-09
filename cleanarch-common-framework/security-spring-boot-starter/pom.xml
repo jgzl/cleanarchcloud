@@ -24,7 +24,7 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>common-framework-core</artifactId>
 		</dependency>
-		<!--数据库操作包-->
+		<!--缓存操作包-->
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>redis-spring-boot-starter</artifactId>
