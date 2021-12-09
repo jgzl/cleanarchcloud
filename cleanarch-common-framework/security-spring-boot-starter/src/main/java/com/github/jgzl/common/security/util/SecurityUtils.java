@@ -30,7 +30,7 @@ public class SecurityUtils {
 	/**
 	 * 获取用户
 	 * @param authentication
-	 * @return PigxUser
+	 * @return ExtendUser
 	 * <p>
 	 */
 	public ExtendUser getUser(Authentication authentication) {

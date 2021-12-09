@@ -40,7 +40,7 @@ public class SysPublicParam extends Model<SysPublicParam> {
 	/**
 	 * 公共参数地址值,英文大写+下划线
 	 */
-	@ApiModelProperty(value = "键[英文大写+下划线]", required = true, example = "PIGX_PUBLIC_KEY")
+	@ApiModelProperty(value = "键[英文大写+下划线]", required = true, example = "PUBLIC_KEY")
 	private String publicKey;
 
 	/**
@@ -65,7 +65,7 @@ public class SysPublicParam extends Model<SysPublicParam> {
 	/**
 	 * 公共参数编码
 	 */
-	@ApiModelProperty(value = "编码", example = "^(PIG|PIGX)$")
+	@ApiModelProperty(value = "编码", example = "^(ADMIN|ADMIN)$")
 	private String validateCode;
 
 	/**

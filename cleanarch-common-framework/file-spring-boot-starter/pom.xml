@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>file-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::文件操作模块</description>
-	<name>通用资源::文件操作模块</name>
+	<description>整洁架构云微服务平台::通用服务::文件操作模块</description>
+	<name>整洁架构云微服务平台::通用服务::文件操作模块</name>
 
 	<dependencies>
 		<dependency>

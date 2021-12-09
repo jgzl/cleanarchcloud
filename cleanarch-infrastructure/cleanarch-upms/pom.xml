@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>cleanarch-upms</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<name>基础服务::用户服务模块</name>
-	<description>基础服务::用户服务模块</description>
+	<name>整洁架构云微服务平台::基础服务::用户服务模块</name>
+	<description>整洁架构云微服务平台::基础服务::用户服务模块</description>
 	<packaging>pom</packaging>
 
 	<properties>

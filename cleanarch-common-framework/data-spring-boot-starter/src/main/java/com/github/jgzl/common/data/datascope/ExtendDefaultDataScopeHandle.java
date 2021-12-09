@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * <p>
  * 默认data scope 判断处理器
  */
-public class ExtendDefaultDatascopeHandle implements DataScopeHandle {
+public class ExtendDefaultDataScopeHandle implements DataScopeHandle {
 
 	@Autowired
 	private RemoteDataScopeService dataScopeService;

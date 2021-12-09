@@ -1,5 +1,5 @@
 # 配置 feignclient 的全类名路径， 避免包名不规范无法扫描问题
-com.pig4cloud.pigx.common.feign.PigxFeignAutoConfiguration=\
+com.github.jgzl.common.feign.FeignAutoConfiguration=\
   com.github.jgzl.infra.upms.api.feign.RemoteDataScopeService,\
   com.github.jgzl.infra.upms.api.feign.RemoteLogService,\
   com.github.jgzl.infra.upms.api.feign.RemoteParamService,\

@@ -9,8 +9,8 @@
 		<artifactId>cleanarch-infrastructure</artifactId>
 		<version>${revision}</version>
 	</parent>
-	<name>基础服务::网关服务模块</name>
-	<description>基础服务::网关服务模块</description>
+	<name>整洁架构云微服务平台::基础服务::网关服务模块</name>
+	<description>整洁架构云微服务平台::基础服务::网关服务模块</description>
 
 	<properties>
 		<fastjson.version>1.2.78</fastjson.version>
@@ -32,7 +32,6 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>
@@ -74,7 +73,6 @@
 		<dependency>
 			<groupId>com.github.anji-plus</groupId>
 			<artifactId>captcha-spring-boot-starter</artifactId>
-			<version>${captcha.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>

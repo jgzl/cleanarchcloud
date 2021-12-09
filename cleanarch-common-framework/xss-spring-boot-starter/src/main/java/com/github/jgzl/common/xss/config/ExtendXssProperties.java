@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.config;
+package com.github.jgzl.common.xss.config;
 
 import lombok.Getter;
 import lombok.Setter;

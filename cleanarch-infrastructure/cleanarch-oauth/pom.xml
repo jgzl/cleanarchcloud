@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>cleanarch-oauth</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<name>基础服务::授权服务模块</name>
-	<description>基础服务::授权服务模块</description>
+	<name>整洁架构云微服务平台::基础服务::授权服务模块</name>
+	<description>整洁架构云微服务平台::基础服务::授权服务模块</description>
 
 	<properties>
 		<compiler.version>1.8</compiler.version>
@@ -92,7 +92,6 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${mapstruct.version}</version>
 		</dependency>
 	</dependencies>
 

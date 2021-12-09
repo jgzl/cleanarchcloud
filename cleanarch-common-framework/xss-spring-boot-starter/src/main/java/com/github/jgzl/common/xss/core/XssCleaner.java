@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.core;
-
-import java.lang.annotation.*;
+package com.github.jgzl.common.xss.core;
 
 /**
- * 忽略 xss
+ * xss 清理器
  *
  * @author L.cm
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface XssCleanIgnore {
+public interface XssCleaner {
+
+	/**
+	 * 清理 html
+	 * @param html html
+	 * @return 清理后的数据
+	 */
+	String clean(String html);
 
 }

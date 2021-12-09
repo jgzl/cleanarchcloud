@@ -11,8 +11,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 /**
  * @author lihaifeng
- * 登录 http://localhost:8010/login/username/login
- * 输入账号密码 admin admin
+ * 登录 http://localhost:8011/token/login
+ * 输入账号密码 admin 123456
  */
 @EnableResourceServerPlus
 @EnableFeignClientsPlus

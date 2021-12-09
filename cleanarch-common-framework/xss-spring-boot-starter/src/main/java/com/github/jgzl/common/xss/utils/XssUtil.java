@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.utils;
+package com.github.jgzl.common.xss.utils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Attribute;

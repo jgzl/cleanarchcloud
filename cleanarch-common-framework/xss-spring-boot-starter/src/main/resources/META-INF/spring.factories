@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.pig4cloud.pigx.common.xss.ExtendXssAutoConfiguration
+  com.github.jgzl.common.xss.ExtendXssAutoConfiguration

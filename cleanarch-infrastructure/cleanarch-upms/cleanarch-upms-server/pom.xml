@@ -11,8 +11,8 @@
 	</parent>
 	<artifactId>cleanarch-upms-server</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<name>基础服务::用户服务模块Server</name>
-	<description>基础服务::用户服务模块Server</description>
+	<name>整洁架构云微服务平台::基础服务::用户服务模块Server</name>
+	<description>整洁架构云微服务平台::基础服务::用户服务模块Server</description>
 
 	<properties>
 		<compiler.version>1.8</compiler.version>
@@ -33,10 +33,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
@@ -108,16 +104,7 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${mapstruct.version}</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>me.zhyd.oauth</groupId>-->
-<!--			<artifactId>JustAuth</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>com.xkcoding.justauth</groupId>-->
-<!--			<artifactId>justauth-spring-boot-starter</artifactId>-->
-<!--		</dependency>-->
 	</dependencies>
 
 	<build>

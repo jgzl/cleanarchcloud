@@ -9,7 +9,8 @@
 	<packaging>pom</packaging>
 	<version>${revision}</version>
 
-	<name>微服务平台::根节点POM模块</name>
+	<name>整洁架构云微服务平台::ROOT::依赖POM模块</name>
+	<description>${project.name}</description>
 	<url>https://blog.dlihaifeng.com</url>
 
 	<modules>
@@ -30,27 +31,24 @@
 		<maven.encoding>UTF-8</maven.encoding>
 		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
-		<git.commit.version>2.2.5</git.commit.version>
-		<smartdoc.version>2.2.0</smartdoc.version>
+		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
+		<smart-doc-maven-plugin.version>2.3.4</smart-doc-maven-plugin.version>
 
-		<captcha.version>1.2.7</captcha.version>
 		<lombok.version>1.18.20</lombok.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<spring-boot.version>2.6.1</spring-boot.version>
-		<velocity.version>1.7</velocity.version>
 
-		<docker.plugin.version>0.33.0</docker.plugin.version>
+		<docker.plugin.version>0.38.0</docker.plugin.version>
 		<!--  默认忽略docker构建 -->
 		<docker.skip>false</docker.skip>
 	</properties>
 
 	<dependencies>
-		<!--  lombok自动添加get set  -->
+		<!-- 自动添加get set -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
-			<optional>true</optional>
 		</dependency>
 		<!--bootstrap 启动器-->
 		<dependency>
@@ -62,7 +60,7 @@
 			<groupId>com.github.ulisesbocchio</groupId>
 			<artifactId>jasypt-spring-boot-starter</artifactId>
 		</dependency>
-		<!--监控-->
+		<!--监控指标-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -175,7 +173,7 @@
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
-				<version>${git.commit.version}</version>
+				<version>${git-commit-id-plugin.version}</version>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -220,7 +218,7 @@
 				<plugin>
 					<groupId>com.github.shalousun</groupId>
 					<artifactId>smart-doc-maven-plugin</artifactId>
-					<version>${smartdoc.version}</version>
+					<version>${smart-doc-maven-plugin.version}</version>
 					<configuration>
 						<configFile>${basedir}/smart-doc.json</configFile>
 						<projectName>${project.name}</projectName>

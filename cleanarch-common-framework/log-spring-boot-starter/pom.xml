@@ -8,8 +8,8 @@
 	</parent>
 	<artifactId>log-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::日志服务模块</description>
-	<name>通用资源::日志服务模块</name>
+	<description>整洁架构云微服务平台::通用服务::日志服务模块</description>
+	<name>整洁架构云微服务平台::通用服务::日志服务模块</name>
 
 	<dependencies>
 		<!--工具类核心包-->

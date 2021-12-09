@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss;
+package com.github.jgzl.common.xss;
 
-import com.pig4cloud.pigx.common.xss.config.ExtendXssProperties;
-import com.pig4cloud.pigx.common.xss.core.*;
+import com.github.jgzl.common.xss.core.*;
+import com.github.jgzl.common.xss.config.ExtendXssProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

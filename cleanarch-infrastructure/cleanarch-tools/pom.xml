@@ -10,8 +10,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-tools</artifactId>
-	<name>基础服务::工具服务模块</name>
-	<description>基础服务::工具服务模块</description>
+	<name>整洁架构云微服务平台::基础服务::工具服务模块</name>
+	<description>整洁架构云微服务平台::基础服务::工具服务模块</description>
 
 	<dependencies>
 		<dependency>
@@ -31,11 +31,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
@@ -63,9 +58,12 @@
 		</dependency>
 		<!--代码生成模板引擎-->
 		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+		<dependency>
 			<artifactId>velocity</artifactId>
 			<groupId>org.apache.velocity</groupId>
-			<version>${velocity.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.baomidou</groupId>
@@ -82,7 +80,6 @@
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
-			<version>1.10</version>
 		</dependency>
 	</dependencies>
 

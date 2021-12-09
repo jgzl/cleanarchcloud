@@ -14,7 +14,7 @@
 </head>
 <body class="sign_body">
 <div class="container form-margin-top">
-    <form class="form-signin" action="/login/username/login" method="post">
+    <form class="form-signin" action="/token/form" method="post">
         <h2 class="form-signin-heading" align="center">统一认证系统</h2>
         <#if tenantList??>
             <select class="form-control form-margin-top" placeholder="所属租户" name="TENANT-CODE">
@@ -30,11 +30,6 @@
             <span style="color: red; ">${error}</span>
         </#if>
     </form>
-</div>
-<div id="thirdLogin" class="form-signin">
-    <div>&nbsp<a href="/third/oauth/login/gitee">GITEE登录</a>&nbsp</div>
-    <div>&nbsp<a href="/third/oauth/login/dingtalk">DINGTALK登录</a>&nbsp</div>
-    <div>&nbsp<a href="/third/oauth/login/oschina">OSCHINA登录</a>&nbsp</div>
 </div>
 <footer>
     <p>support by: li7hai26</p>

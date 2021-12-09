@@ -14,27 +14,18 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.core;
+package com.github.jgzl.common.xss.core;
+
+import java.lang.annotation.*;
 
 /**
- * 利用 ThreadLocal 缓存线程间的数据
+ * 忽略 xss
  *
  * @author L.cm
  */
-class XssHolder {
-
-	private static final ThreadLocal<Boolean> TL = new ThreadLocal<>();
-
-	public static boolean isEnabled() {
-		return Boolean.TRUE.equals(TL.get());
-	}
-
-	public static void setEnable() {
-		TL.set(Boolean.TRUE);
-	}
-
-	public static void remove() {
-		TL.remove();
-	}
+@Target({ ElementType.TYPE, ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface XssCleanIgnore {
 
 }

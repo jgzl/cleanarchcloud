@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.core;
+package com.github.jgzl.common.xss.core;
 
-import com.pig4cloud.pigx.common.xss.config.ExtendXssProperties;
+import com.github.jgzl.common.xss.config.ExtendXssProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.method.HandlerMethod;

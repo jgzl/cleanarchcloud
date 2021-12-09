@@ -45,14 +45,14 @@ public class ExtendLocalResourceServerTokenServices implements ResourceServerTok
 		}
 
 		// 根据 username 查询 spring cache 最新的值 并返回
-		ExtendUser pigxUser = (ExtendUser) oAuth2Authentication.getPrincipal();
+		ExtendUser extendUser = (ExtendUser) oAuth2Authentication.getPrincipal();
 
 		UserDetails userDetails;
 		try {
-			userDetails = userDetailsService.loadUserByUsername(pigxUser.getUsername());
+			userDetails = userDetailsService.loadUserByUsername(extendUser.getUsername());
 		}
 		catch (UsernameNotFoundException notFoundException) {
-			throw new UnauthorizedException(String.format("%s username not found", pigxUser.getUsername()),
+			throw new UnauthorizedException(String.format("%s username not found", extendUser.getUsername()),
 					notFoundException);
 		}
 		Authentication userAuthentication = new UsernamePasswordAuthenticationToken(userDetails, "N/A",

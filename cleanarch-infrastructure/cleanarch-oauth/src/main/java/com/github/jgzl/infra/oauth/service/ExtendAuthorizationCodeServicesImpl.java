@@ -28,7 +28,7 @@ public class ExtendAuthorizationCodeServicesImpl extends RandomValueAuthorizatio
 	/**
 	 * 授权码模式时: 验证码有效期设置, 默认有效期为5分钟, 单位秒
 	 */
-	@Value("${pigx.authorizationCode.expirationTime:300}")
+	@Value("${extend.authorizationCode.expirationTime:300}")
 	private Long expirationTime;
 
 	private final RedisConnectionFactory connectionFactory;

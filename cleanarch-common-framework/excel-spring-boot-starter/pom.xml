@@ -10,8 +10,8 @@
 
 	<artifactId>excel-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::excel操作模块</description>
-	<name>通用资源::excel操作模块</name>
+	<description>整洁架构云微服务平台::通用服务::excel操作模块</description>
+	<name>整洁架构云微服务平台::通用服务::excel操作模块</name>
 
 	<properties>
 		<poi.version>4.1.2</poi.version>

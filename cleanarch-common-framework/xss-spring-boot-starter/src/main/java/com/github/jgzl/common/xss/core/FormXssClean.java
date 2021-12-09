@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.core;
+package com.github.jgzl.common.xss.core;
 
 import cn.hutool.core.util.StrUtil;
-import com.pig4cloud.pigx.common.xss.config.ExtendXssProperties;
-import com.pig4cloud.pigx.common.xss.utils.XssUtil;
+import com.github.jgzl.common.xss.config.ExtendXssProperties;
+import com.github.jgzl.common.xss.utils.XssUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.WebDataBinder;

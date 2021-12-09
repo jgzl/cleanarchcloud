@@ -10,9 +10,9 @@
 		<version>${revision}</version>
 	</parent>
 
-	<description>通用资源::字节码Agent模块</description>
+	<description>整洁架构云微服务平台::通用服务::字节码Agent模块</description>
 	<modelVersion>4.0.0</modelVersion>
-	<name>通用资源::字节码Agent模块</name>
+	<name>整洁架构云微服务平台::通用服务::字节码Agent模块</name>
 	<packaging>jar</packaging>
 
 	<build>

@@ -10,8 +10,8 @@
 
     <artifactId>xxl-job-spring-boot-starter</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::定时任务模块</description>
-	<name>通用资源::定时任务模块</name>
+	<description>整洁架构云微服务平台::通用服务::定时任务模块</description>
+	<name>整洁架构云微服务平台::通用服务::定时任务模块</name>
 
 
     <properties>

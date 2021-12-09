@@ -11,8 +11,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cleanarch-infrastructure</artifactId>
 	<packaging>pom</packaging>
-	<name>基础服务::基础设施组件POM模块</name>
-	<description>基础服务::基础设施组件POM模块</description>
+	<name>整洁架构云微服务平台::基础服务::依赖POM模块</name>
+	<description>${project.name}</description>
 
 	<modules>
 		<module>cleanarch-gateway</module>

@@ -8,7 +8,7 @@ import com.github.jgzl.common.data.config.MybatisProperties;
 import com.github.jgzl.common.data.datascope.DataScopeHandle;
 import com.github.jgzl.common.data.datascope.DataScopeInnerInterceptor;
 import com.github.jgzl.common.data.datascope.DataScopeSqlInjector;
-import com.github.jgzl.common.data.datascope.ExtendDefaultDatascopeHandle;
+import com.github.jgzl.common.data.datascope.ExtendDefaultDataScopeHandle;
 import com.github.jgzl.common.data.resolver.SqlFilterArgumentResolver;
 import com.github.jgzl.common.data.tenant.ExtendTenantHandler;
 import com.github.jgzl.common.security.service.ExtendUser;
@@ -46,19 +46,19 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 	}
 
 	/**
-	 * pigx 默认数据权限处理器
-	 * @return PigxDefaultDatascopeHandle
+	 * 默认数据权限处理器
+	 * @return ExtendDefaultDataScopeHandle
 	 */
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnClass(ExtendUser.class)
 	public DataScopeHandle dataScopeHandle() {
-		return new ExtendDefaultDatascopeHandle();
+		return new ExtendDefaultDataScopeHandle();
 	}
 
 	/**
 	 * mybatis plus 拦截器配置
-	 * @return PigxDefaultDatascopeHandle
+	 * @return ExtendDefaultDatascopeHandle
 	 */
 	@Bean
 	public MybatisPlusInterceptor mybatisPlusInterceptor() {

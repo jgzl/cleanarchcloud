@@ -1,4 +1,4 @@
 /**
  * 此包代码来源至: https://gitee.com/596392912/mica/tree/master/mica-xss
  */
-package com.pig4cloud.pigx.common.xss;
+package com.github.jgzl.common.xss;

@@ -6,7 +6,7 @@ import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.infra.codegen.entity.GenDatasourceConf;
 import com.github.jgzl.infra.codegen.service.GenDatasourceConfService;
-import com.pig4cloud.pigx.common.xss.core.XssCleanIgnore;
+import com.github.jgzl.common.xss.core.XssCleanIgnore;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

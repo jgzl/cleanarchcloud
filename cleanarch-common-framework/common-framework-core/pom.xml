@@ -11,8 +11,8 @@
 
 	<artifactId>common-framework-core</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<description>通用资源::核心模块</description>
-	<name>通用资源::核心模块</name>
+	<description>整洁架构云微服务平台::通用服务::核心模块</description>
+	<name>整洁架构云微服务平台::通用服务::核心模块</name>
 	<dependencies>
 		<!--hutool-->
 		<dependency>
@@ -32,7 +32,6 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.11.0</version>
 		</dependency>
 		<!--okhttp-->
 		<dependency>

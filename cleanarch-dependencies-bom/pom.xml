@@ -10,8 +10,8 @@
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 
-	<description>依赖资源::BOM模块</description>
-	<name>依赖资源::BOM模块</name>
+	<name>整洁架构云微服务平台::BOM::依赖POM模块</name>
+	<description>${project.name}</description>
 
 	<properties>
 		<revision>2021.10.19-SNAPSHOT</revision>
@@ -20,28 +20,25 @@
 		<flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 
 		<aws.version>1.11.543</aws.version>
-		<git.commit.version>2.2.5</git.commit.version>
-		<mica.version>2.5.5</mica.version>
 		<disruptor.version>3.4.4</disruptor.version>
-		<lombok.version>1.18.20</lombok.version>
+		<lombok.version>1.18.22</lombok.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<cxf.rs.version>3.4.4</cxf.rs.version>
-		<cxf.rs.json>2.12.3</cxf.rs.json>
-		<druid.starter.version>1.2.6</druid.starter.version>
+		<cxf.rs.json>2.13.0</cxf.rs.json>
+		<druid.version>1.2.8</druid.version>
 		<camunda.starter.version>7.16.0</camunda.starter.version>
 		<guava.version>30.1.1-jre</guava.version>
 		<xxl-job.version>2.3.0</xxl-job.version>
-		<hutool.version>5.7.15</hutool.version>
-		<javassist.version>3.28.0-GA</javassist.version>
+		<hutool.version>5.7.17</hutool.version>
 		<jwt.version>3.16.0</jwt.version>
-		<keycloak.version>14.0.0</keycloak.version>
-		<redisson.version>3.16.2</redisson.version>
+		<redisson.version>3.16.6</redisson.version>
 		<mybatisplus.starter.version>3.4.3.4</mybatisplus.starter.version>
 		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
-		<dynamic-datasource.version>3.4.1</dynamic-datasource.version>
+		<dynamic-datasource.version>3.5.0</dynamic-datasource.version>
 		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
 		<ttl.version>2.12.1</ttl.version>
 		<jasypt.version>3.0.4</jasypt.version>
+		<javassist.version>3.28.0-GA</javassist.version>
 		<nacos.version>2.0.3</nacos.version>
 		<jackson.jsr.version>2.12.3</jackson.jsr.version>
 		<mybatis.jsr.version>1.0.2</mybatis.jsr.version>
@@ -51,6 +48,12 @@
 		<justauth.starter.version>1.4.0</justauth.starter.version>
 		<easy-capatcha.version>1.6.2</easy-capatcha.version>
 		<swagger.core.version>1.5.22</swagger.core.version>
+		<commons-io.version>2.11.0</commons-io.version>
+		<commons-configuration.version>1.10</commons-configuration.version>
+		<velocity.version>1.7</velocity.version>
+		<captcha.version>1.2.7</captcha.version>
+		<fastjson.version>1.2.78</fastjson.version>
+		<jsoup.version>1.14.3</jsoup.version>
 
 		<!-- bom依赖配置管理 -->
 		<spring-boot.version>2.6.1</spring-boot.version>
@@ -106,15 +109,8 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
-				<groupId>net.dreamlu</groupId>
-				<artifactId>mica-bom</artifactId>
-				<version>${mica.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
 				<groupId>com.github.jgzl</groupId>
-				<artifactId>common-framework-core</artifactId>
+				<artifactId>common-framework-agent</artifactId>
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
@@ -231,15 +227,14 @@
 				<version>${ttl.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.baomidou</groupId>
-				<artifactId>mybatis-plus-boot-starter</artifactId>
-				<version>${mybatisplus.starter.version}</version>
-			</dependency>
-			<!-- redission -->
-			<dependency>
 				<groupId>org.redisson</groupId>
 				<artifactId>redisson-spring-boot-starter</artifactId>
 				<version>${redisson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatisplus.starter.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.baomidou</groupId>
@@ -269,7 +264,13 @@
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>${druid.starter.version}</version>
+				<version>${druid.version}</version>
+			</dependency>
+			<!-- druid 连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.camunda.bpm.springboot</groupId>
@@ -339,6 +340,37 @@
 				<groupId>io.swagger</groupId>
 				<artifactId>swagger-annotations</artifactId>
 				<version>${swagger.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>${commons-configuration.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>velocity</artifactId>
+				<groupId>org.apache.velocity</groupId>
+				<version>${velocity.version}</version>
+			</dependency>
+			<!--验证码-->
+			<dependency>
+				<groupId>com.github.anji-plus</groupId>
+				<artifactId>captcha-spring-boot-starter</artifactId>
+				<version>${captcha.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>${jsoup.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

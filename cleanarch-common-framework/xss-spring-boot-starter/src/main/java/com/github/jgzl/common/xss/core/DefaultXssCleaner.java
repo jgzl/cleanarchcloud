@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pigx.common.xss.core;
+package com.github.jgzl.common.xss.core;
 
 import cn.hutool.core.util.CharsetUtil;
-import com.pig4cloud.pigx.common.xss.config.ExtendXssProperties;
-import com.pig4cloud.pigx.common.xss.utils.XssUtil;
+import com.github.jgzl.common.xss.config.ExtendXssProperties;
+import com.github.jgzl.common.xss.utils.XssUtil;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.internal.StringUtil;

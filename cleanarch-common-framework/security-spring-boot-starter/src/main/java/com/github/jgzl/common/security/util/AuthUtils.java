@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author lengleng
+ * @author lihaifeng
  * @date 2018/5/13 认证授权相关工具类
  */
 @Slf4j
