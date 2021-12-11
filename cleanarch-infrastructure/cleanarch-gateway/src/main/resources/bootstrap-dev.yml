@@ -8,11 +8,3 @@ spring:
         file-extension: yml
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-
-  r2dbc:
-    url: r2dbc:mysql://${MYSQL_HOST:cleanarch-mysql}:${MYSQL_PORT:3306}/${MYSQL_DB:cleanarch}?sslMode=DISABLED
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:root}
-    pool:
-      validation-query: SELECT 1
-      enabled: true
