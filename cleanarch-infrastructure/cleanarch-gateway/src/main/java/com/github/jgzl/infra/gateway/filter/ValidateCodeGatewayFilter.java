@@ -140,7 +140,6 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 			return;
 		}
 
-		// https://gitee.com/log4j/pig/issues/IWA0D
 		String mobile = request.getQueryParams().getFirst("mobile");
 		if (StrUtil.isNotBlank(mobile)) {
 			randomStr = mobile;

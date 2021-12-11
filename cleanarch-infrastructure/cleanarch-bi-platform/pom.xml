@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>cleanarch-infrastructure</artifactId>
+		<groupId>com.github.jgzl</groupId>
+		<version>${revision}</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>cleanarch-bi-platform</artifactId>
+	<name>整洁架构云微服务平台::基础服务::BI报表服务</name>
+	<description>整洁架构云微服务平台::基础服务::BI报表服务</description>
+
+	<properties>
+		<ureport.version>2.2.9</ureport.version>
+	</properties>
+
+	<dependencies>
+		<!--ureport-->
+		<dependency>
+			<groupId>com.bstek.ureport</groupId>
+			<artifactId>ureport2-console</artifactId>
+			<version>${ureport.version}</version>
+		</dependency>
+		<!--web 模块-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--undertow容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<!--server-api-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<!--security-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!--oss-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>file-spring-boot-starter</artifactId>
+		</dependency>
+		<!--feign 调用依赖-->
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>feign-spring-boot-starter</artifactId>
+		</dependency>
+		<!--MYSQL 数据驱动-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>app</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.shalousun</groupId>
+				<artifactId>smart-doc-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

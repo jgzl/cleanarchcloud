@@ -15,6 +15,7 @@
 	<description>${project.name}</description>
 
 	<modules>
+		<module>cleanarch-bi-platform</module>
 		<module>cleanarch-gateway</module>
 		<module>cleanarch-monitor</module>
 		<module>cleanarch-oauth</module>
