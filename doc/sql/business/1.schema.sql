@@ -2,7 +2,7 @@
 create database `cleanarch` default character set utf8mb4 collate utf8mb4_general_ci;
 
 -- cleanarch 工作流相关库
-create database `cleanarch_ac` default character set utf8mb4 collate utf8mb4_general_ci;
+create database `cleanarch_workflow` default character set utf8mb4 collate utf8mb4_general_ci;
 
 -- cleanarch 任务相关库
 create database `xxl_job` default character set utf8mb4 collate utf8mb4_general_ci;

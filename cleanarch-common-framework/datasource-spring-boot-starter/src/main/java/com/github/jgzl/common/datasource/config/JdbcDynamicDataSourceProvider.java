@@ -21,11 +21,11 @@ import java.util.Map;
  */
 public class JdbcDynamicDataSourceProvider extends AbstractJdbcDataSourceProvider {
 
-	private final DruidDataSourceProperties properties;
+	private final ExtendDataSourceProperties properties;
 
 	private final StringEncryptor stringEncryptor;
 
-	public JdbcDynamicDataSourceProvider(StringEncryptor stringEncryptor, DruidDataSourceProperties properties) {
+	public JdbcDynamicDataSourceProvider(StringEncryptor stringEncryptor, ExtendDataSourceProperties properties) {
 		super(properties.getDriverClassName(), properties.getUrl(), properties.getUsername(), properties.getPassword());
 		this.stringEncryptor = stringEncryptor;
 		this.properties = properties;

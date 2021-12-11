@@ -2,7 +2,7 @@ package com.github.jgzl.common.datasource;
 
 import com.baomidou.dynamic.datasource.processor.DsProcessor;
 import com.baomidou.dynamic.datasource.provider.DynamicDataSourceProvider;
-import com.github.jgzl.common.datasource.config.DruidDataSourceProperties;
+import com.github.jgzl.common.datasource.config.ExtendDataSourceProperties;
 import com.github.jgzl.common.datasource.config.JdbcDynamicDataSourceProvider;
 import com.github.jgzl.common.datasource.config.LastParamDsProcessor;
 import com.github.jgzl.common.datasource.config.WebMvcConfig;
@@ -24,12 +24,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @AllArgsConstructor
 @AutoConfigureAfter(DataSourceAutoConfiguration.class)
-@EnableConfigurationProperties(DruidDataSourceProperties.class)
+@EnableConfigurationProperties(ExtendDataSourceProperties.class)
 public class DynamicDataSourceAutoConfiguration {
 
 	private final StringEncryptor stringEncryptor;
 
-	private final DruidDataSourceProperties properties;
+	private final ExtendDataSourceProperties properties;
 
 	@Bean
 	public DynamicDataSourceProvider dynamicDataSourceProvider() {

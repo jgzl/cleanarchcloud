@@ -27,6 +27,10 @@
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>security-spring-boot-starter</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.jgzl</groupId>
+			<artifactId>cleanarch-upms-api</artifactId>
+		</dependency>
 		<!--web 模块-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,12 +76,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.rocketmq</groupId>
-			<artifactId>rocketmq-client</artifactId>
-			<version>4.9.0</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

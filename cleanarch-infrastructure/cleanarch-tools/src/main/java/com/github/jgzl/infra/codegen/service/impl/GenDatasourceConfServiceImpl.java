@@ -33,11 +33,14 @@ import java.sql.SQLException;
 public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfMapper, GenDatasourceConf>
 		implements GenDatasourceConfService {
 
-	@Autowired @Qualifier(value = "lazyJasyptStringEncryptor")
-	private StringEncryptor stringEncryptor;
+	private final StringEncryptor stringEncryptor;
 
-	@Autowired @Qualifier(value="hikariDataSourceCreator")
-	private DataSourceCreator druidDataSourceCreator;
+	private final DataSourceCreator druidDataSourceCreator;
+
+	public GenDatasourceConfServiceImpl(@Qualifier(value = "lazyJasyptStringEncryptor") StringEncryptor stringEncryptor, @Qualifier(value = "hikariDataSourceCreator") DataSourceCreator druidDataSourceCreator) {
+		this.stringEncryptor = stringEncryptor;
+		this.druidDataSourceCreator = druidDataSourceCreator;
+	}
 
 	/**
 	 * 保存数据源并且加密

@@ -1,4 +1,5 @@
 server:
+  port: 8102
   servlet:
     context-path: /sso
     session:
@@ -9,18 +10,3 @@ spring:
     active: dev
   application:
     name: @project.artifactId@
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-      config:
-        namespace: business-dev
-        file-extension: yaml
-        shared-configs:
-          - data-id: common.yaml
-            group: DEFAULT_GROUP
-            refresh: true
-      discovery:
-        namespace: business-dev
-        metadata:
-          management:
-            context-path: ${server.servlet.context-path}/actuator

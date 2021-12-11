@@ -35,7 +35,7 @@
 		<mybatisplus.starter.version>3.4.3.4</mybatisplus.starter.version>
 		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
 		<dynamic-datasource.version>3.5.0</dynamic-datasource.version>
-		<shardingjdbc.starter.version>4.1.1</shardingjdbc.starter.version>
+		<shardingsphere-jdbc.version>5.0.0</shardingsphere-jdbc.version>
 		<ttl.version>2.12.1</ttl.version>
 		<jasypt.version>3.0.4</jasypt.version>
 		<javassist.version>3.28.0-GA</javassist.version>
@@ -258,8 +258,8 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shardingsphere</groupId>
-				<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-				<version>${shardingjdbc.starter.version}</version>
+				<artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+				<version>${shardingsphere-jdbc.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>

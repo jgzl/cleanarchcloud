@@ -25,7 +25,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
-		String redirectUrl = environment.getProperty("cleanarch.security.redirect-url");
+		String redirectUrl = environment.getProperty("security.redirect-url");
 		if (StrUtil.isBlank(redirectUrl)) {
 			redirectUrl = "/";
 		}

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties("spring.datasource.druid")
-public class DruidDataSourceProperties {
+@ConfigurationProperties(prefix = "spring.datasource")
+public class ExtendDataSourceProperties {
 
 	/**
 	 * 数据源用户名

@@ -1,4 +1,4 @@
-package com.github.jgzl.infra.flow.config;
+package com.github.jgzl.application.config;
 
 import com.github.jgzl.application.handler.CustomLogoutSuccessHandler;
 import lombok.SneakyThrows;

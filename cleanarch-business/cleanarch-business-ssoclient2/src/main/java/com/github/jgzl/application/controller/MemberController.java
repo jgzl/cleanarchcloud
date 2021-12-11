@@ -1,4 +1,4 @@
-package com.github.jgzl.infra.flow.controller;
+package com.github.jgzl.application.controller;
 import java.security.Principal;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
