@@ -13,7 +13,6 @@ import com.github.jgzl.infra.codegen.mapper.GenDatasourceConfMapper;
 import com.github.jgzl.infra.codegen.service.GenDatasourceConfService;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
