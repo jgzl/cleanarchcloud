@@ -9,7 +9,7 @@
 		<version>${revision}</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>cleanarch-business</artifactId>
+	<artifactId>cleanarch-optional</artifactId>
 	<packaging>pom</packaging>
 	<name>整洁架构云微服务平台::业务服务::依赖POM模块</name>
 	<description>${project.name}</description>
@@ -19,8 +19,8 @@
 	</properties>
 
 	<modules>
-		<module>cleanarch-business-ssoclient1</module>
-		<module>cleanarch-business-ssoclient2</module>
+		<module>cleanarch-ssoclient1</module>
+		<module>cleanarch-ssoclient2</module>
   	</modules>
 
 

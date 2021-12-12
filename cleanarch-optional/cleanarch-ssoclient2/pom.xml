@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns="http://maven.apache.org/POM/4.0.0"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-		<artifactId>cleanarch-business</artifactId>
+		<artifactId>cleanarch-optional</artifactId>
 		<groupId>com.github.jgzl</groupId>
 		<version>${revision}</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>cleanarch-business-ssoclient1</artifactId>
-	<name>整洁架构云微服务平台::业务服务::单点登录客户端1服务模块</name>
-	<description>整洁架构云微服务平台::业务服务::单点登录客户端1服务模块</description>
+	<artifactId>cleanarch-ssoclient2</artifactId>
+	<name>整洁架构云微服务平台::业务服务::单点登录客户端2服务模块</name>
+	<description>整洁架构云微服务平台::业务服务::单点登录客户端2服务模块</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.jgzl</groupId>
 			<artifactId>redis-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shardingsphere</groupId>
-			<artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-			<version>5.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security.oauth.boot</groupId>
@@ -45,6 +40,11 @@
 			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
@@ -59,6 +59,20 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.atool</groupId>
+			<artifactId>fluent-mybatis-boot-starter</artifactId>
+		</dependency>
+		<!-- 引入fluent-mybatis-processor, scope设置为provider 编译需要，运行时不需要 -->
+		<dependency>
+			<groupId>com.github.atool</groupId>
+			<artifactId>fluent-mybatis-processor</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

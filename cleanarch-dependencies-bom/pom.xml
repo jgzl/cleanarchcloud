@@ -35,6 +35,7 @@
 		<mybatisplus.starter.version>3.4.3.4</mybatisplus.starter.version>
 		<mybatisplus.generator.version>3.5.0</mybatisplus.generator.version>
 		<dynamic-datasource.version>3.5.0</dynamic-datasource.version>
+		<fluent-mybatis.version>1.9.2</fluent-mybatis.version>
 		<shardingsphere-jdbc.version>5.0.0</shardingsphere-jdbc.version>
 		<ttl.version>2.12.1</ttl.version>
 		<jasypt.version>3.0.4</jasypt.version>
@@ -255,6 +256,24 @@
 				<groupId>com.baomidou</groupId>
 				<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
 				<version>${dynamic-datasource.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.atool</groupId>
+				<artifactId>fluent-mybatis-boot-starter</artifactId>
+				<version>${fluent-mybatis.version}</version>
+			</dependency>
+			<!-- 引入fluent-mybatis 运行依赖包, scope为compile -->
+			<dependency>
+				<groupId>com.github.atool</groupId>
+				<artifactId>fluent-mybatis</artifactId>
+				<version>${fluent-mybatis.version}</version>
+			</dependency>
+			<!-- 引入fluent-mybatis-processor, scope设置为provider 编译需要，运行时不需要 -->
+			<dependency>
+				<groupId>com.github.atool</groupId>
+				<artifactId>fluent-mybatis-processor</artifactId>
+				<scope>provided</scope>
+				<version>${fluent-mybatis.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.shardingsphere</groupId>

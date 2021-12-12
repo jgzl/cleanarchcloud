@@ -33,22 +33,7 @@
 </div>
 <footer>
     <p>support by: li7hai26</p>
-    <p>email: <a href="mailto:li7hai26@qq.com">li7hai26@qq.com</a>.</p>
+    <p>email: <a href="mailto:li7hai26@outlook.com">li7hai26@outlook.com</a>.</p>
 </footer>
 </body>
-<script type="text/javascript">
-    function init() {
-        var result = $.ajax({ url: "/third/oauth", dataType: "json", success: function(){
-            console.log("成功发送请求/third/oauth")
-        }});
-        var resultJson = JSON.parse(result)
-        if (resultJson[data] != null) {
-            for (var source of resultJson[data]) {
-                $("#thirdLogin").innerHTML=$("#thirdLogin").innerHTML+"|&nbsp<a href='/third/oauth/login/"+type+"'>"+type+"登录</a>&nbsp"
-            }
-        }
-        console.log("result:"+JSON.parse(result))
-    }
-    init()
-</script>
 </html>

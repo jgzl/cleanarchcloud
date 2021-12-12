@@ -11,7 +11,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-EXPOSE 8011
+EXPOSE 8012
 
 ADD target/app.jar app.jar
 

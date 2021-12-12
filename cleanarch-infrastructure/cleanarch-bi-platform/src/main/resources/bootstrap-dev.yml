@@ -3,6 +3,7 @@ spring:
     nacos:
       discovery:
         server-addr: ${NACOS_HOST:nacos.dev.cn}:${NACOS_PORT:8848}
+        service: @project.artifactId@
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yml

@@ -17,7 +17,7 @@
 		<module>cleanarch-common-framework</module>
 		<module>cleanarch-dependencies-bom</module>
 		<module>cleanarch-infrastructure</module>
-		<module>cleanarch-business</module>
+		<module>cleanarch-optional</module>
 	</modules>
 
 	<properties>
@@ -36,6 +36,7 @@
 
 		<lombok.version>1.18.20</lombok.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<fluent-mybatis.version>1.9.2</fluent-mybatis.version>
 		<spring-boot.version>2.6.1</spring-boot.version>
 
 		<docker.plugin.version>0.38.0</docker.plugin.version>
@@ -124,6 +125,11 @@
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>com.github.atool</groupId>
+							<artifactId>fluent-mybatis-processor</artifactId>
+							<version>${fluent-mybatis.version}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
