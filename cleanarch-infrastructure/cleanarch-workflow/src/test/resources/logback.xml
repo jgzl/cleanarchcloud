@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+	<property name="log.path" value="logs/${project.artifactId}"/>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date [%thread] %-5level [%logger{50}] %file:%line - demoKey1:%X{demoKey1} demoKey2:%X{demoKey2} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+	<root level="INFO">
+		<appender-ref ref="console"/>
+	</root>
+</configuration>

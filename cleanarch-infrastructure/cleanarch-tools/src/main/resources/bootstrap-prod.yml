@@ -1,6 +1,6 @@
 nacos:
   server-addr: ${NACOS_HOST:nacos.dev.cn}:${NACOS_PORT:8848}
-  namespace: ${NACOS_NAMESPACE:dev}
+  namespace: ${NACOS_NAMESPACE:prod}
   group: ${NACOS_GROUP:DEFAULT_GROUP}
 spring:
   cloud:

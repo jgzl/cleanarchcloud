@@ -2,6 +2,6 @@ server:
   port: 8000
 spring:
   profiles:
-    active: dev
+    active: @profiles.active@
   application:
-    name: @project.artifactId@
+    name: @artifactId@

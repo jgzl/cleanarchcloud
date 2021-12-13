@@ -250,56 +250,61 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
+				<profiles.active>dev</profiles.active>
 				<!-- docker构建 -->
 				<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
 				<docker.host>http://127.0.0.1:2375</docker.host>
-				<docker.namespace>cleanarch</docker.namespace>
+				<docker.namespace>cleanarch-dev</docker.namespace>
 				<docker.username>li7hai26</docker.username>
 				<docker.password>li7hai26</docker.password>
 			</properties>
 		</profile>
 		<profile>
-			<id>fat</id>
+			<id>sit</id>
 			<properties>
+				<profiles.active>sit</profiles.active>
 				<!-- docker构建 -->
-				<docker.registry>172.17.0.111</docker.registry>
-				<docker.host>http://172.17.0.111:2375</docker.host>
-				<docker.namespace>library</docker.namespace>
-				<docker.username>admin</docker.username>
-				<docker.password>Harbor12345</docker.password>
+				<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
+				<docker.host>http://127.0.0.1:2375</docker.host>
+				<docker.namespace>cleanarch-sit</docker.namespace>
+				<docker.username>li7hai26</docker.username>
+				<docker.password>li7hai26</docker.password>
 			</properties>
 		</profile>
 		<profile>
 			<id>uat</id>
 			<properties>
+				<profiles.active>uat</profiles.active>
 				<!-- docker构建 -->
-				<docker.registry>172.17.0.111</docker.registry>
-				<docker.host>http://172.17.0.111:2375</docker.host>
-				<docker.namespace>library</docker.namespace>
-				<docker.username>admin</docker.username>
-				<docker.password>Harbor12345</docker.password>
+				<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
+				<docker.host>http://127.0.0.1:2375</docker.host>
+				<docker.namespace>cleanarch-uat</docker.namespace>
+				<docker.username>li7hai26</docker.username>
+				<docker.password>li7hai26</docker.password>
 			</properties>
 		</profile>
 		<profile>
 			<id>pp</id>
 			<properties>
+				<profiles.active>pp</profiles.active>
 				<!-- docker构建 -->
-				<docker.registry>172.17.0.111</docker.registry>
-				<docker.host>http://172.17.0.111:2375</docker.host>
-				<docker.namespace>library</docker.namespace>
-				<docker.username>admin</docker.username>
-				<docker.password>Harbor12345</docker.password>
+				<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
+				<docker.host>http://127.0.0.1:2375</docker.host>
+				<docker.namespace>cleanarch-pp</docker.namespace>
+				<docker.username>li7hai26</docker.username>
+				<docker.password>li7hai26</docker.password>
 			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
 			<properties>
+				<profiles.active>prod</profiles.active>
 				<!-- docker构建 -->
-				<docker.registry>172.17.0.111</docker.registry>
-				<docker.host>http://172.17.0.111:2375</docker.host>
-				<docker.namespace>library</docker.namespace>
-				<docker.username>admin</docker.username>
-				<docker.password>Harbor12345</docker.password>
+				<docker.registry>registry.cn-shanghai.aliyuncs.com</docker.registry>
+				<docker.host>http://127.0.0.1:2375</docker.host>
+				<docker.namespace>cleanarch-prod</docker.namespace>
+				<docker.username>li7hai26</docker.username>
+				<docker.password>li7hai26</docker.password>
 			</properties>
 		</profile>
 	</profiles>

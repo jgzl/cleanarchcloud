@@ -2,7 +2,10 @@ server:
   port: 8015
 spring:
   profiles:
-    active: dev
-
+    active: @profiles.active@
   application:
-    name: @project.artifactId@
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        service: @artifactId@

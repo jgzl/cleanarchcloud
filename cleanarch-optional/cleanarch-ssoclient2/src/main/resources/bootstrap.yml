@@ -1,12 +1,11 @@
 server:
-  port: 8102
-  servlet:
-    context-path: /sso
-    session:
-      cookie:
-        comment: client-cookie
+  port: 8015
 spring:
   profiles:
-    active: dev
+    active: @profiles.active@
   application:
-    name: @project.artifactId@
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        service: @artifactId@

@@ -1,15 +1,18 @@
+nacos:
+  server-addr: ${NACOS_HOST:nacos.dev.cn}:${NACOS_PORT:8848}
+  namespace: ${NACOS_NAMESPACE:dev}
+  group: ${NACOS_GROUP:DEFAULT_GROUP}
 spring:
   cloud:
     nacos:
       discovery:
-        server-addr: ${NACOS_HOST:nacos.dev.cn}:${NACOS_PORT:8848}
-        metadata:
-          management:
-            context-path: ${server.servlet.context-path}/actuator
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
       config:
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        group: ${nacos.group}
         file-extension: yml
         shared-configs:
-          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-mybatis:
-  mapper-locations: classpath*:/mapper/**/*.xml
+          - application.${spring.cloud.nacos.config.file-extension}
