@@ -1,0 +1,1 @@
+## 1.使用cleanarch-dependencies-bom中的新增依赖时,需要重新install才可以进行使用，否则相应模块在idea中无法使用

@@ -1,4 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.jgzl.common.core.controller.WebMvcHeartBeatController,\
+  com.github.jgzl.common.core.controller.WebFluxHeartBeatController,\
   com.github.jgzl.common.core.config.JacksonConfig,\
   com.github.jgzl.common.core.config.MessageSourceConfig,\
   com.github.jgzl.common.core.config.RestTemplateConfig,\

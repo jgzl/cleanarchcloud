@@ -40,7 +40,7 @@ public class DynamicRouteAutoConfiguration {
 
 	/**
 	 * redis 监听配置
-	 * @param redisConnectionFactory redis 配置
+	 * @param redisson redis 配置
 	 * @return
 	 */
 	@Bean(value="routeJvmReloadTopic")

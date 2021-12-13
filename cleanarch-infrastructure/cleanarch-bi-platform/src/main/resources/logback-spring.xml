@@ -2,7 +2,7 @@
 <!--
     小技巧: 在根pom里面设置统一存放路径，统一管理方便维护
     <properties>
-        <log-path>/Users/lihaifeng</log-path>
+        <log-path>/Users/lengleng</log-path>
     </properties>
     1. 其他模块加日志输出，直接copy本文件放在resources 目录即可
     2. 注意修改 <property name="${log-path}/log.path" value=""/> 的value模块
@@ -53,6 +53,10 @@
 			<level>ERROR</level>
 		</filter>
 	</appender>
+
+	<logger name="org.activiti.engine.impl.db" level="DEBUG">
+		<appender-ref ref="debug"/>
+	</logger>
 
 	<!--nacos 心跳 INFO 屏蔽-->
 	<logger name="com.alibaba.nacos" level="OFF">
