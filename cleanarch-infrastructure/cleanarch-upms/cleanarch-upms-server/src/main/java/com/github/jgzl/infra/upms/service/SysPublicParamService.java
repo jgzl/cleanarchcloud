@@ -1,8 +1,8 @@
 package com.github.jgzl.infra.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
 import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
 
 /**
  * 公共参数配置
@@ -14,6 +14,7 @@ public interface SysPublicParamService extends IService<SysPublicParam> {
 
 	/**
 	 * 通过key查询公共参数指定值
+	 *
 	 * @param publicKey
 	 * @return
 	 */
@@ -21,6 +22,7 @@ public interface SysPublicParamService extends IService<SysPublicParam> {
 
 	/**
 	 * 更新参数
+	 *
 	 * @param sysPublicParam
 	 * @return
 	 */
@@ -28,6 +30,7 @@ public interface SysPublicParamService extends IService<SysPublicParam> {
 
 	/**
 	 * 删除参数
+	 *
 	 * @param publicId
 	 * @return
 	 */
@@ -35,6 +38,7 @@ public interface SysPublicParamService extends IService<SysPublicParam> {
 
 	/**
 	 * 同步缓存
+	 *
 	 * @return R
 	 */
 	R syncDictCache();

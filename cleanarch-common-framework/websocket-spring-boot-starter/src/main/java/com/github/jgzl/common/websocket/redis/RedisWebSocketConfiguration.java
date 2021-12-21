@@ -30,39 +30,39 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @EnableConfigurationProperties(WebSocketProperties.class)
 public class RedisWebSocketConfiguration {
 
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
+	@Bean
+	public ServerEndpointExporter serverEndpointExporter() {
+		return new ServerEndpointExporter();
+	}
 
-    @Bean(WebSocketManager.WEBSOCKET_MANAGER_NAME)
-    @ConditionalOnMissingBean(name = WebSocketManager.WEBSOCKET_MANAGER_NAME)
-    public WebSocketManager webSocketManager(@Autowired RedissonClient redisson) {
-        return new RedisWebSocketManager(redisson);
-    }
+	@Bean(WebSocketManager.WEBSOCKET_MANAGER_NAME)
+	@ConditionalOnMissingBean(name = WebSocketManager.WEBSOCKET_MANAGER_NAME)
+	public WebSocketManager webSocketManager(@Autowired RedissonClient redisson) {
+		return new RedisWebSocketManager(redisson);
+	}
 
-    @Bean(RedisReceiver.REDIS_RECEIVER_NAME)
-    public RedisReceiver redisReceiver(ApplicationContext applicationContext) {
-        return new DefaultRedisReceiver(applicationContext);
-    }
+	@Bean(RedisReceiver.REDIS_RECEIVER_NAME)
+	public RedisReceiver redisReceiver(ApplicationContext applicationContext) {
+		return new DefaultRedisReceiver(applicationContext);
+	}
 
-	@Bean(value="channelTopic")
-    public RTopic channelTopic(RedissonClient redisson,@Qualifier(RedisReceiver.REDIS_RECEIVER_NAME) RedisReceiver redisReceiver) {
+	@Bean(value = "channelTopic")
+	public RTopic channelTopic(RedissonClient redisson, @Qualifier(RedisReceiver.REDIS_RECEIVER_NAME) RedisReceiver redisReceiver) {
 		RTopic topic = redisson.getTopic(RedisWebSocketManager.CHANNEL);
 		topic.addListener(String.class, new MessageListener<String>() {
 			@Override
 			public void onMessage(CharSequence channel, String message) {
-				log.info("开始处理Redis[{}]接收到的消息",RedisWebSocketManager.CHANNEL);
+				log.info("开始处理Redis[{}]接收到的消息", RedisWebSocketManager.CHANNEL);
 				redisReceiver.receiveMessage(message);
-				log.info("结束处理Redis[{}]接收到的消息",RedisWebSocketManager.CHANNEL);
+				log.info("结束处理Redis[{}]接收到的消息", RedisWebSocketManager.CHANNEL);
 			}
 		});
 		return topic;
-    }
+	}
 
-    @Bean
-    @ConditionalOnMissingBean
-    public WebSocketHeartBeatChecker webSocketHeartBeatChecker() {
-        return new WebSocketHeartBeatChecker();
-    }
+	@Bean
+	@ConditionalOnMissingBean
+	public WebSocketHeartBeatChecker webSocketHeartBeatChecker() {
+		return new WebSocketHeartBeatChecker();
+	}
 }

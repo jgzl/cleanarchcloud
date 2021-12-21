@@ -35,6 +35,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 
 	/**
 	 * 批量插入前端错误日志
+	 *
 	 * @param preLogVoList 日志信息
 	 * @return true/false
 	 */
@@ -72,6 +73,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 
 	/**
 	 * 插入日志
+	 *
 	 * @param sysLog 日志对象
 	 * @return true/false
 	 */

@@ -29,6 +29,7 @@ public class ExtendDefaultDataScopeHandle implements DataScopeHandle {
 
 	/**
 	 * 计算用户数据权限
+	 *
 	 * @param deptList
 	 * @return
 	 */

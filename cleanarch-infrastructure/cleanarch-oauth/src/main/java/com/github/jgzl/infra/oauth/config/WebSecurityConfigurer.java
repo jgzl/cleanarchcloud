@@ -36,12 +36,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 				.successHandler(tenantSavedRequestAwareAuthenticationSuccessHandler())
 				.failureHandler(authenticationFailureHandler()).and().logout()
 				.logoutSuccessHandler(logoutSuccessHandler()).deleteCookies("JSESSIONID").invalidateHttpSession(true)
-				.and().authorizeRequests().antMatchers("/heartbeat","/token/**", "/actuator/**", "/mobile/**").permitAll()
+				.and().authorizeRequests().antMatchers("/heartbeat", "/token/**", "/actuator/**", "/mobile/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable().apply(mobileSecurityConfigurer());
 	}
 
 	/**
 	 * 不拦截静态资源
+	 *
 	 * @param web
 	 */
 	@Override
@@ -73,6 +74,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * 具备租户传递能力
+	 *
 	 * @return AuthenticationSuccessHandler
 	 */
 	@Bean
@@ -88,6 +90,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	/**
 	 * https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-updated
 	 * Encoded password does not look like BCrypt
+	 *
 	 * @return PasswordEncoder
 	 */
 	@Bean

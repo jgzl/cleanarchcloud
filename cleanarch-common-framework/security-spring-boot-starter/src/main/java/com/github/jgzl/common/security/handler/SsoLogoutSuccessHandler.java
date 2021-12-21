@@ -29,8 +29,7 @@ public class SsoLogoutSuccessHandler implements LogoutSuccessHandler {
 
 		if (StrUtil.isNotBlank(redirectUrl)) {
 			response.sendRedirect(redirectUrl);
-		}
-		else if (StrUtil.isNotBlank(referer)) {
+		} else if (StrUtil.isNotBlank(referer)) {
 			// 默认跳转referer 地址
 			response.sendRedirect(referer);
 		}

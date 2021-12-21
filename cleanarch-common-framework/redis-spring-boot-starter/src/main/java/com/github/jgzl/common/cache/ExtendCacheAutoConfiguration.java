@@ -31,41 +31,41 @@ import java.util.Map;
 @ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ExtendCacheAutoConfiguration {
 
-    @Bean
-    public RedisKeyGenerator redisKeyGenerator() {
-        return new DefaultRedisKeyGenerator();
-    }
+	@Bean
+	public RedisKeyGenerator redisKeyGenerator() {
+		return new DefaultRedisKeyGenerator();
+	}
 
-    @Bean
-    public RedisSequenceHelper redisSequenceHelper(RedissonClient redisson) {
-        return new RedisSequenceHelper(redisson);
-    }
+	@Bean
+	public RedisSequenceHelper redisSequenceHelper(RedissonClient redisson) {
+		return new RedisSequenceHelper(redisson);
+	}
 
-    @Bean
-    @ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX+".limit", name = "enabled", havingValue = "true", matchIfMissing = true)
-    public RedisLimitHelper redisLimitHelper(RedissonClient redissonClient) {
-        return new RedisLimitHelper(redissonClient);
-    }
+	@Bean
+	@ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX + ".limit", name = "enabled", havingValue = "true", matchIfMissing = true)
+	public RedisLimitHelper redisLimitHelper(RedissonClient redissonClient) {
+		return new RedisLimitHelper(redissonClient);
+	}
 
-    @Bean
-    @ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX+".lock", name = "enabled", havingValue = "true", matchIfMissing = true)
-    public RedisLockInterceptor redissonLockAspect(RedissonClient redissonClient, RedisKeyGenerator redisKeyGenerator) {
-        return new RedisLockInterceptor(redissonClient, redisKeyGenerator);
-    }
+	@Bean
+	@ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX + ".lock", name = "enabled", havingValue = "true", matchIfMissing = true)
+	public RedisLockInterceptor redissonLockAspect(RedissonClient redissonClient, RedisKeyGenerator redisKeyGenerator) {
+		return new RedisLockInterceptor(redissonClient, redisKeyGenerator);
+	}
 
-    @Bean
-    @ConditionalOnBean(RedisLimitHelper.class)
-    @ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX+".limit", name = "enabled", havingValue = "true", matchIfMissing = true)
-    public RedisLimitInterceptor redisLimitInterceptor(RedisLimitHelper redisLimitHelper) {
-        return new RedisLimitInterceptor(redisLimitHelper);
-    }
+	@Bean
+	@ConditionalOnBean(RedisLimitHelper.class)
+	@ConditionalOnProperty(prefix = ExtendCacheConfigProperties.PREFIX + ".limit", name = "enabled", havingValue = "true", matchIfMissing = true)
+	public RedisLimitInterceptor redisLimitInterceptor(RedisLimitHelper redisLimitHelper) {
+		return new RedisLimitInterceptor(redisLimitHelper);
+	}
 
 	@Bean
 	@ConditionalOnMissingBean
 	public CacheManager cacheManager(RedissonClient redisson) {
 		Map<String, CacheConfig> config = new HashMap<String, CacheConfig>();
 		// 创建一个名称为"RedissonSpringCacheManager"的缓存，过期时间ttl为24分钟，同时最长空闲时maxIdleTime为12分钟。
-		config.put("RedissonSpringCacheManager", new CacheConfig(24*60*1000, 12*60*1000));
+		config.put("RedissonSpringCacheManager", new CacheConfig(24 * 60 * 1000, 12 * 60 * 1000));
 		return new RedissonSpringCacheManager(redisson, config, new FstCodec());
 	}
 }

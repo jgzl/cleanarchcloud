@@ -22,9 +22,10 @@ public interface RemoteTokenService {
 
 	/**
 	 * 分页查询token 信息
-	 * @param from 内部调用标志
+	 *
+	 * @param from   内部调用标志
 	 * @param params 分页参数
-	 * @param from 内部调用标志
+	 * @param from   内部调用标志
 	 * @return page
 	 */
 	@GetMapping("/token/page")
@@ -33,9 +34,10 @@ public interface RemoteTokenService {
 
 	/**
 	 * 删除token
-	 * @param from 内部调用标志
+	 *
+	 * @param from  内部调用标志
 	 * @param token token
-	 * @param from 内部调用标志
+	 * @param from  内部调用标志
 	 * @return
 	 */
 	@DeleteMapping("/token/{token}")

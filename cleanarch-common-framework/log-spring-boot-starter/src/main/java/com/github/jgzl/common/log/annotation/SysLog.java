@@ -13,6 +13,7 @@ public @interface SysLog {
 
 	/**
 	 * 描述
+	 *
 	 * @return {String}
 	 */
 	String value();

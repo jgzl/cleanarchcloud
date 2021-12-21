@@ -50,8 +50,7 @@ public class ExtendLocalResourceServerTokenServices implements ResourceServerTok
 		UserDetails userDetails;
 		try {
 			userDetails = userDetailsService.loadUserByUsername(extendUser.getUsername());
-		}
-		catch (UsernameNotFoundException notFoundException) {
+		} catch (UsernameNotFoundException notFoundException) {
 			throw new UnauthorizedException(String.format("%s username not found", extendUser.getUsername()),
 					notFoundException);
 		}

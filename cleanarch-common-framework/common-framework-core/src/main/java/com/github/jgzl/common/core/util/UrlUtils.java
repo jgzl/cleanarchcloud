@@ -1,4 +1,5 @@
 package com.github.jgzl.common.core.util;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,18 +9,6 @@ import java.util.Map;
  * @date 2020/9/26 9:58
  */
 public class UrlUtils {
-
-	public static class UrlEntity {
-		/**
-		 * 基础url
-		 */
-		public String baseUrl;
-
-		/**
-		 * url参数
-		 */
-		public Map<String, String> params;
-	}
 
 	/**
 	 * 解析url
@@ -67,5 +56,17 @@ public class UrlUtils {
 		System.out.println(entity.baseUrl + "\n" + entity.params);
 		entity = parse("http://www.123.com?id=1&name=小明");
 		System.out.println(entity.baseUrl + "\n" + entity.params);
+	}
+
+	public static class UrlEntity {
+		/**
+		 * 基础url
+		 */
+		public String baseUrl;
+
+		/**
+		 * url参数
+		 */
+		public Map<String, String> params;
 	}
 }

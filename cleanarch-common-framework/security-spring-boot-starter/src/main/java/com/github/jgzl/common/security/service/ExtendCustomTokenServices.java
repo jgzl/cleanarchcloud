@@ -67,9 +67,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 		if (refreshToken == null) {
 			refreshToken = createRefreshToken(authentication);
-		}
-
-		else if (refreshToken instanceof ExpiringOAuth2RefreshToken) {
+		} else if (refreshToken instanceof ExpiringOAuth2RefreshToken) {
 			ExpiringOAuth2RefreshToken expiring = (ExpiringOAuth2RefreshToken) refreshToken;
 			if (System.currentTimeMillis() > expiring.getExpiration().getTime()) {
 				refreshToken = createRefreshToken(authentication);
@@ -86,7 +84,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 		return accessToken;
 	}
 
-	@Transactional(noRollbackFor = { InvalidTokenException.class, InvalidGrantException.class })
+	@Transactional(noRollbackFor = {InvalidTokenException.class, InvalidGrantException.class})
 	public OAuth2AccessToken refreshAccessToken(String refreshTokenValue, TokenRequest tokenRequest)
 			throws AuthenticationException {
 
@@ -146,14 +144,15 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * Create a refreshed authentication.
+	 *
 	 * @param authentication The authentication.
-	 * @param request The scope for the refreshed token.
+	 * @param request        The scope for the refreshed token.
 	 * @return The refreshed authentication.
 	 * @throws InvalidScopeException If the scope requested is invalid or wider than the
-	 * original scope.
+	 *                               original scope.
 	 */
 	private OAuth2Authentication createRefreshedAuthentication(OAuth2Authentication authentication,
-			TokenRequest request) {
+															   TokenRequest request) {
 		OAuth2Authentication narrowed = authentication;
 		Set<String> scope = request.getScope();
 		OAuth2Request clientAuth = authentication.getOAuth2Request().refresh(request);
@@ -162,8 +161,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 			if (originalScope == null || !originalScope.containsAll(scope)) {
 				throw new InvalidScopeException(
 						"Unable to narrow the scope of the client authentication to " + scope + ".", originalScope);
-			}
-			else {
+			} else {
 				clientAuth = clientAuth.narrowScope(scope);
 			}
 		}
@@ -189,8 +187,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 		OAuth2AccessToken accessToken = tokenStore.readAccessToken(accessTokenValue);
 		if (accessToken == null) {
 			throw new InvalidTokenException("Invalid access token: " + accessTokenValue);
-		}
-		else if (accessToken.isExpired()) {
+		} else if (accessToken.isExpired()) {
 			tokenStore.removeAccessToken(accessToken);
 			throw new InvalidTokenException("Access token expired: " + accessTokenValue);
 		}
@@ -204,8 +201,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 			String clientId = result.getOAuth2Request().getClientId();
 			try {
 				clientDetailsService.loadClientByClientId(clientId);
-			}
-			catch (ClientRegistrationException e) {
+			} catch (ClientRegistrationException e) {
 				throw new InvalidTokenException("Client not valid: " + clientId, e);
 			}
 		}
@@ -263,6 +259,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * The access token validity period in seconds
+	 *
 	 * @param clientAuth the current authorization request
 	 * @return the access token validity period in seconds
 	 */
@@ -279,6 +276,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * The refresh token validity period in seconds
+	 *
 	 * @param clientAuth the current authorization request
 	 * @return the refresh token validity period in seconds
 	 */
@@ -297,6 +295,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	 * Is a refresh token supported for this client (or the global setting if
 	 * {@link #setClientDetailsService(ClientDetailsService) clientDetailsService} is not
 	 * set.
+	 *
 	 * @param clientAuth the current authorization request
 	 * @return boolean to indicate if refresh token is supported
 	 */
@@ -311,6 +310,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	/**
 	 * An access token enhancer that will be applied to a new token before it is saved in
 	 * the token store.
+	 *
 	 * @param accessTokenEnhancer the access token enhancer to set
 	 */
 	public void setTokenEnhancer(TokenEnhancer accessTokenEnhancer) {
@@ -320,6 +320,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	/**
 	 * The validity (in seconds) of the refresh token. If less than or equal to zero then
 	 * the tokens will be non-expiring.
+	 *
 	 * @param refreshTokenValiditySeconds The validity (in seconds) of the refresh token.
 	 */
 	public void setRefreshTokenValiditySeconds(int refreshTokenValiditySeconds) {
@@ -330,6 +331,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	 * The default validity (in seconds) of the access token. Zero or negative for
 	 * non-expiring tokens. If a client details service is set the validity period will be
 	 * read from the client, defaulting to this value if not defined by the client.
+	 *
 	 * @param accessTokenValiditySeconds The validity (in seconds) of the access token.
 	 */
 	public void setAccessTokenValiditySeconds(int accessTokenValiditySeconds) {
@@ -338,6 +340,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * Whether to support the refresh token.
+	 *
 	 * @param supportRefreshToken Whether to support the refresh token.
 	 */
 	public void setSupportRefreshToken(boolean supportRefreshToken) {
@@ -346,6 +349,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * Whether to reuse refresh tokens (until expired).
+	 *
 	 * @param reuseRefreshToken Whether to reuse refresh tokens (until expired).
 	 */
 	public void setReuseRefreshToken(boolean reuseRefreshToken) {
@@ -354,6 +358,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 
 	/**
 	 * The persistence strategy for token storage.
+	 *
 	 * @param tokenStore the store for access and refresh tokens.
 	 */
 	public void setTokenStore(TokenStore tokenStore) {
@@ -363,6 +368,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	/**
 	 * An authentication manager that will be used (if provided) to check the user
 	 * authentication when a token is refreshed.
+	 *
 	 * @param authenticationManager the authenticationManager to set
 	 */
 	public void setAuthenticationManager(AuthenticationManager authenticationManager) {
@@ -373,6 +379,7 @@ public class ExtendCustomTokenServices implements AuthorizationServerTokenServic
 	 * The client details service to use for looking up clients (if necessary). Optional
 	 * if the access token expiry is set globally via
 	 * {@link #setAccessTokenValiditySeconds(int)}.
+	 *
 	 * @param clientDetailsService the client details service
 	 */
 	public void setClientDetailsService(ClientDetailsService clientDetailsService) {

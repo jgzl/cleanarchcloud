@@ -22,7 +22,7 @@ import java.sql.SQLException;
  * @author xuzihui
  * @date 2019-11-20
  */
-@MappedTypes(value = { String[].class })
+@MappedTypes(value = {String[].class})
 @MappedJdbcTypes(value = JdbcType.VARCHAR)
 public class JsonStringArrayTypeHandler extends BaseTypeHandler<String[]> {
 

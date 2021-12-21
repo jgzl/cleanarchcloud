@@ -42,8 +42,9 @@ public class ExtendTokenEndpoint {
 
 	/**
 	 * 认证页面
+	 *
 	 * @param modelAndView
-	 * @param error 表单登录失败处理回调的错误信息
+	 * @param error        表单登录失败处理回调的错误信息
 	 * @return ModelAndView
 	 */
 	@GetMapping("/login")
@@ -57,6 +58,7 @@ public class ExtendTokenEndpoint {
 
 	/**
 	 * 确认授权页面
+	 *
 	 * @param request
 	 * @param session
 	 * @param modelAndView
@@ -81,6 +83,7 @@ public class ExtendTokenEndpoint {
 
 	/**
 	 * 退出token
+	 *
 	 * @param authHeader Authorization
 	 */
 	@DeleteMapping("/logout")
@@ -95,6 +98,7 @@ public class ExtendTokenEndpoint {
 
 	/**
 	 * 令牌管理调用
+	 *
 	 * @param token token
 	 * @return
 	 */
@@ -106,7 +110,8 @@ public class ExtendTokenEndpoint {
 
 	/**
 	 * 查询token
-	 * @param page 分页参数
+	 *
+	 * @param page     分页参数
 	 * @param username 用户名
 	 * @return
 	 */

@@ -41,6 +41,7 @@ public class ExtendUserDetailsServiceImpl implements ExtendUserDetailsService {
 
 	/**
 	 * 用户密码登录
+	 *
 	 * @param username 用户名
 	 * @return
 	 * @throws UsernameNotFoundException
@@ -61,6 +62,7 @@ public class ExtendUserDetailsServiceImpl implements ExtendUserDetailsService {
 
 	/**
 	 * 根据社交登录code 登录
+	 *
 	 * @param inStr TYPE@CODE
 	 * @return UserDetails
 	 * @throws UsernameNotFoundException
@@ -73,6 +75,7 @@ public class ExtendUserDetailsServiceImpl implements ExtendUserDetailsService {
 
 	/**
 	 * 构建userdetails
+	 *
 	 * @param result 用户信息
 	 * @return
 	 */

@@ -1,4 +1,5 @@
 package com.github.jgzl.common.cache.properties;
+
 import lombok.Data;
 
 /**

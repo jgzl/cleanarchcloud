@@ -36,6 +36,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 
 	/**
 	 * 分页查询表
+	 *
 	 * @param tableName 查询条件
 	 * @param dsName
 	 * @return
@@ -66,8 +67,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 			// 生成代码
 			if (CollUtil.isNotEmpty(formConfList)) {
 				return GenUtils.generatorCode(genConfig, table, columns, null, formConfList.get(0));
-			}
-			else {
+			} else {
 				return GenUtils.generatorCode(genConfig, table, columns, null, null);
 			}
 		}
@@ -76,6 +76,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 
 	/**
 	 * 生成代码
+	 *
 	 * @param genConfig 生成配置
 	 * @return
 	 */
@@ -100,8 +101,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 			// 生成代码
 			if (CollUtil.isNotEmpty(formConfList)) {
 				GenUtils.generatorCode(genConfig, table, columns, zip, formConfList.get(0));
-			}
-			else {
+			} else {
 				GenUtils.generatorCode(genConfig, table, columns, zip, null);
 			}
 		}

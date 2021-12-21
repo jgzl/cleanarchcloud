@@ -1,9 +1,9 @@
 package com.github.jgzl.common.excel;
 
-import com.github.jgzl.common.excel.config.ExcelConfigProperties;
 import com.github.jgzl.common.excel.aop.DynamicNameAspect;
 import com.github.jgzl.common.excel.aop.RequestExcelArgumentResolver;
 import com.github.jgzl.common.excel.aop.ResponseExcelReturnValueHandler;
+import com.github.jgzl.common.excel.config.ExcelConfigProperties;
 import com.github.jgzl.common.excel.processor.NameProcessor;
 import com.github.jgzl.common.excel.processor.NameSpelExpressionProcessor;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +38,7 @@ public class ResponseExcelAutoConfiguration {
 
 	/**
 	 * SPEL 解析处理器
+	 *
 	 * @return NameProcessor excel名称解析器
 	 */
 	@Bean
@@ -48,6 +49,7 @@ public class ResponseExcelAutoConfiguration {
 
 	/**
 	 * Excel名称解析处理切面
+	 *
 	 * @param nameProcessor SPEL 解析处理器
 	 * @return DynamicNameAspect
 	 */

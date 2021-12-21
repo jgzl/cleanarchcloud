@@ -50,13 +50,14 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
 	/**
 	 * Called when a user has been successfully authenticated. 调用spring security oauth API
 	 * 生成 oAuth2AccessToken
-	 * @param request the request which caused the successful authentication
-	 * @param response the response
+	 *
+	 * @param request        the request which caused the successful authentication
+	 * @param response       the response
 	 * @param authentication the <tt>Authentication</tt> object which was created during
 	 */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) {
+										Authentication authentication) {
 		String header = request.getHeader(HttpHeaders.AUTHORIZATION);
 
 		if (header == null || !header.startsWith(BASIC_)) {
@@ -90,8 +91,7 @@ public class MobileLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			PrintWriter printWriter = response.getWriter();
 			printWriter.append(objectMapper.writeValueAsString(oAuth2AccessToken));
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			throw new BadCredentialsException("Failed to decode basic authentication token");
 		}
 

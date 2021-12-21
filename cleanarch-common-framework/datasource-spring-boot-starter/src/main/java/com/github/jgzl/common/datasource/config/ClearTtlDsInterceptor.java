@@ -22,7 +22,7 @@ public class ClearTtlDsInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex) {
+								Exception ex) {
 		DynamicDataSourceContextHolder.clear();
 	}
 

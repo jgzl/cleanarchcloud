@@ -1,6 +1,5 @@
 package com.github.jgzl.common.core.sensitive;
-import java.io.IOException;
-import java.util.Objects;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -10,6 +9,9 @@ import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import com.github.jgzl.common.core.util.DesensitizedUtils;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author lihaifeng
@@ -30,7 +32,7 @@ public class SensitiveSerialize extends JsonSerializer<String> implements Contex
 
 	@Override
 	public void serialize(final String origin, final JsonGenerator jsonGenerator,
-			final SerializerProvider serializerProvider) throws IOException {
+						  final SerializerProvider serializerProvider) throws IOException {
 		switch (type) {
 			case CHINESE_NAME:
 				jsonGenerator.writeString(DesensitizedUtils.chineseName(origin));
@@ -70,7 +72,7 @@ public class SensitiveSerialize extends JsonSerializer<String> implements Contex
 
 	@Override
 	public JsonSerializer<?> createContextual(final SerializerProvider serializerProvider,
-			final BeanProperty beanProperty) throws JsonMappingException {
+											  final BeanProperty beanProperty) throws JsonMappingException {
 		if (beanProperty != null) {
 			if (Objects.equals(beanProperty.getType().getRawClass(), String.class)) {
 				Sensitive sensitive = beanProperty.getAnnotation(Sensitive.class);

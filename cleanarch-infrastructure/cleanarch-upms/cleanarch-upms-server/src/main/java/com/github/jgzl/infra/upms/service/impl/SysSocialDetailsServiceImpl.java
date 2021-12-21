@@ -2,6 +2,8 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.security.util.SecurityUtils;
 import com.github.jgzl.infra.upms.api.dto.UserInfo;
 import com.github.jgzl.infra.upms.api.entity.SysSocialDetails;
 import com.github.jgzl.infra.upms.api.entity.SysUser;
@@ -9,8 +11,6 @@ import com.github.jgzl.infra.upms.handler.LoginHandler;
 import com.github.jgzl.infra.upms.mapper.SysSocialDetailsMapper;
 import com.github.jgzl.infra.upms.mapper.SysUserMapper;
 import com.github.jgzl.infra.upms.service.SysSocialDetailsService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.security.util.SecurityUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.CacheManager;
@@ -36,6 +36,7 @@ public class SysSocialDetailsServiceImpl extends ServiceImpl<SysSocialDetailsMap
 
 	/**
 	 * 绑定社交账号
+	 *
 	 * @param type type
 	 * @param code code
 	 * @return
@@ -55,6 +56,7 @@ public class SysSocialDetailsServiceImpl extends ServiceImpl<SysSocialDetailsMap
 
 	/**
 	 * 根据入参查询用户信息
+	 *
 	 * @param inStr TYPE@code
 	 * @return
 	 */

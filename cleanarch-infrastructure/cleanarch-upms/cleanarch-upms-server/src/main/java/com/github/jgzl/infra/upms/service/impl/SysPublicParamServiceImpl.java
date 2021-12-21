@@ -2,12 +2,12 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
-import com.github.jgzl.infra.upms.mapper.SysPublicParamMapper;
-import com.github.jgzl.infra.upms.service.SysPublicParamService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.enums.DictTypeEnum;
 import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
+import com.github.jgzl.infra.upms.mapper.SysPublicParamMapper;
+import com.github.jgzl.infra.upms.service.SysPublicParamService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -38,6 +38,7 @@ public class SysPublicParamServiceImpl extends ServiceImpl<SysPublicParamMapper,
 
 	/**
 	 * 更新参数
+	 *
 	 * @param sysPublicParam
 	 * @return
 	 */
@@ -54,6 +55,7 @@ public class SysPublicParamServiceImpl extends ServiceImpl<SysPublicParamMapper,
 
 	/**
 	 * 删除参数
+	 *
 	 * @param publicId
 	 * @return
 	 */
@@ -70,6 +72,7 @@ public class SysPublicParamServiceImpl extends ServiceImpl<SysPublicParamMapper,
 
 	/**
 	 * 同步缓存
+	 *
 	 * @return R
 	 */
 	@Override

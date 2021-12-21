@@ -1,4 +1,5 @@
 package com.github.jgzl.common.feign.endpoint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,11 +12,13 @@ import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 /**
  * Feign client 端点
  *
@@ -25,18 +28,12 @@ import java.util.Set;
 public class FeignClientEndpoint implements SmartInitializingSingleton {
 	private final ApplicationContext context;
 	private final List<FeignClientInfo> clientList;
+
 	public FeignClientEndpoint(ApplicationContext context) {
 		this.context = context;
 		this.clientList = new ArrayList<>();
 	}
-	@ReadOperation
-	public List<FeignClientInfo> invoke() {
-		return clientList;
-	}
-	@Override
-	public void afterSingletonsInstantiated() {
-		clientList.addAll(getClientList(context));
-	}
+
 	private static List<FeignClientInfo> getClientList(ApplicationContext context) {
 		Map<String, Object> feignClientMap = context.getBeansWithAnnotation(FeignClient.class);
 		// 1. 解析注解
@@ -86,6 +83,17 @@ public class FeignClientEndpoint implements SmartInitializingSingleton {
 		}
 		return feignClientInfoList;
 	}
+
+	@ReadOperation
+	public List<FeignClientInfo> invoke() {
+		return clientList;
+	}
+
+	@Override
+	public void afterSingletonsInstantiated() {
+		clientList.addAll(getClientList(context));
+	}
+
 	@Getter
 	@Setter
 	public static class FeignClientInfo {
@@ -96,6 +104,7 @@ public class FeignClientEndpoint implements SmartInitializingSingleton {
 		private String path;
 		private List<ClientInfo> clientList;
 	}
+
 	@Getter
 	@AllArgsConstructor
 	public static class ClientInfo {

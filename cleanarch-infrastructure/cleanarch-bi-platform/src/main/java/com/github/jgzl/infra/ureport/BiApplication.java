@@ -1,4 +1,3 @@
-
 package com.github.jgzl.infra.ureport;
 
 import com.github.jgzl.common.feign.annotation.EnableFeignClientsPlus;

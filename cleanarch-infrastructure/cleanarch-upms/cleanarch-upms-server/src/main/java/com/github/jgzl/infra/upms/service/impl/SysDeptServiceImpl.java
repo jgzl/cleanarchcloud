@@ -6,12 +6,12 @@ import cn.hutool.core.lang.tree.TreeNode;
 import cn.hutool.core.lang.tree.TreeUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.data.datascope.DataScope;
 import com.github.jgzl.infra.upms.api.entity.SysDept;
 import com.github.jgzl.infra.upms.api.entity.SysDeptRelation;
 import com.github.jgzl.infra.upms.mapper.SysDeptMapper;
 import com.github.jgzl.infra.upms.service.SysDeptRelationService;
 import com.github.jgzl.infra.upms.service.SysDeptService;
-import com.github.jgzl.common.data.datascope.DataScope;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -41,6 +41,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 
 	/**
 	 * 添加信息部门
+	 *
 	 * @param dept 部门
 	 * @return
 	 */
@@ -56,6 +57,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 
 	/**
 	 * 删除部门
+	 *
 	 * @param id 部门 ID
 	 * @return 成功、失败
 	 */
@@ -78,6 +80,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 
 	/**
 	 * 更新部门
+	 *
 	 * @param sysDept 部门信息
 	 * @return 成功、失败
 	 */
@@ -96,6 +99,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 
 	/**
 	 * 查询全部部门树
+	 *
 	 * @return 树
 	 */
 	@Override

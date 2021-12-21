@@ -34,6 +34,7 @@ public class ExtendLocalResourceServerConfigurerAdapter extends ResourceServerCo
 
 	/**
 	 * 默认的配置，对外暴露
+	 *
 	 * @param httpSecurity
 	 */
 	@Override

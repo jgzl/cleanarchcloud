@@ -31,6 +31,7 @@ public class DynamicRouteAutoConfiguration {
 
 	/**
 	 * 配置文件设置为空 redis 加载为准
+	 *
 	 * @return
 	 */
 	@Bean
@@ -40,10 +41,11 @@ public class DynamicRouteAutoConfiguration {
 
 	/**
 	 * redis 监听配置
+	 *
 	 * @param redisson redis 配置
 	 * @return
 	 */
-	@Bean(value="routeJvmReloadTopic")
+	@Bean(value = "routeJvmReloadTopic")
 	public RTopic redisContainer(RedissonClient redisson) {
 		RTopic topic = redisson.getTopic(CacheConstants.ROUTE_JVM_RELOAD_TOPIC);
 		topic.addListener(String.class, new MessageListener<String>() {
@@ -60,12 +62,13 @@ public class DynamicRouteAutoConfiguration {
 
 	/**
 	 * 动态路由监控检查
+	 *
 	 * @param redisson
 	 * @return
 	 */
 	@Bean
 	public DynamicRouteHealthIndicator healthIndicator(RedissonClient redisson) {
-		if (redisson.getKeys().countExists(CacheConstants.ROUTE_KEY)==0) {
+		if (redisson.getKeys().countExists(CacheConstants.ROUTE_KEY) == 0) {
 			throw new RouteCheckException("路由信息未初始化，网关启动失败");
 		}
 

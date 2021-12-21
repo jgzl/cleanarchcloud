@@ -3,8 +3,8 @@ package com.github.jgzl.infra.codegen.mapper;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.codegen.entity.ColumnEntity;
 import com.github.jgzl.common.data.datascope.ExtendBaseMapper;
+import com.github.jgzl.infra.codegen.entity.ColumnEntity;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,7 +20,8 @@ public interface GeneratorMapper extends ExtendBaseMapper<ColumnEntity> {
 
 	/**
 	 * 分页查询表格
-	 * @param page 分页信息
+	 *
+	 * @param page      分页信息
 	 * @param tableName 表名称
 	 * @return
 	 */
@@ -28,8 +29,9 @@ public interface GeneratorMapper extends ExtendBaseMapper<ColumnEntity> {
 
 	/**
 	 * 查询表信息
+	 *
 	 * @param tableName 表名称
-	 * @param dsName 数据源名称
+	 * @param dsName    数据源名称
 	 * @return
 	 */
 	@DS("#last")
@@ -37,6 +39,7 @@ public interface GeneratorMapper extends ExtendBaseMapper<ColumnEntity> {
 
 	/**
 	 * 分页查询表分页信息
+	 *
 	 * @param page
 	 * @param tableName
 	 * @param dsName
@@ -44,10 +47,11 @@ public interface GeneratorMapper extends ExtendBaseMapper<ColumnEntity> {
 	 */
 	@DS("#last")
 	IPage<ColumnEntity> selectTableColumn(Page page, @Param("tableName") String tableName,
-			@Param("dsName") String dsName);
+										  @Param("dsName") String dsName);
 
 	/**
 	 * 查询表全部列信息
+	 *
 	 * @param tableName
 	 * @param dsName
 	 * @return
@@ -57,8 +61,9 @@ public interface GeneratorMapper extends ExtendBaseMapper<ColumnEntity> {
 
 	/**
 	 * 查询表全部列信息
+	 *
 	 * @param tableName 表名称
-	 * @param dsName 数据源名称
+	 * @param dsName    数据源名称
 	 * @return
 	 */
 	@DS("#last")

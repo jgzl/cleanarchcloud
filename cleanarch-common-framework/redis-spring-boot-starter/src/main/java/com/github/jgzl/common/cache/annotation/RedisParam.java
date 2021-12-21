@@ -13,10 +13,10 @@ import java.lang.annotation.*;
 @Inherited
 public @interface RedisParam {
 
-    /**
-     * 字段名称
-     *
-     * @return String
-     */
-    String name() default "";
+	/**
+	 * 字段名称
+	 *
+	 * @return String
+	 */
+	String name() default "";
 }

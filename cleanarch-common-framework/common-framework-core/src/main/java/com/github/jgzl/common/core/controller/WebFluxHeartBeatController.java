@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @ConditionalOnWebApplication(type = Type.REACTIVE)
 public class WebFluxHeartBeatController {
 	@GetMapping
-	public Mono<R<String>> heartbeat(){
+	public Mono<R<String>> heartbeat() {
 		return Mono.just(R.ok("服务端成功接收心跳请求"));
 	}
 }

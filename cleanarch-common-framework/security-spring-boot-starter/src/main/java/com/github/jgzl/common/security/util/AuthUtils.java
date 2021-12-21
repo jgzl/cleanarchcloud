@@ -21,18 +21,18 @@ public class AuthUtils {
 
 	/**
 	 * 从header 请求中的clientId/clientsecect
+	 *
 	 * @param header header中的参数
 	 * @throws RuntimeException if the Basic header is not present or is not valid Base64
 	 */
 	@SneakyThrows
 	public String[] extractAndDecodeHeader(String header) {
 
-		byte[] base64Token = header.substring(6).getBytes("UTF-8");
+		byte[] base64Token = header.substring(6).getBytes(StandardCharsets.UTF_8);
 		byte[] decoded;
 		try {
 			decoded = Base64.decode(base64Token);
-		}
-		catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			throw new RuntimeException("Failed to decode basic authentication token");
 		}
 
@@ -43,11 +43,12 @@ public class AuthUtils {
 		if (delim == -1) {
 			throw new RuntimeException("Invalid basic authentication token");
 		}
-		return new String[] { token.substring(0, delim), token.substring(delim + 1) };
+		return new String[]{token.substring(0, delim), token.substring(delim + 1)};
 	}
 
 	/**
 	 * *从header 请求中的clientId/clientsecect
+	 *
 	 * @param request
 	 * @return
 	 */

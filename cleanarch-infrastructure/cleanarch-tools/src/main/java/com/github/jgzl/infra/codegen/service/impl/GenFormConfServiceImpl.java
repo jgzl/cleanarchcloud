@@ -36,7 +36,8 @@ public class GenFormConfServiceImpl extends ServiceImpl<GenFormConfMapper, GenFo
 
 	/**
 	 * 1. 根据数据源、表名称，查询已配置表单信息 2. 不存在调用模板生成
-	 * @param dsName 数据源ID
+	 *
+	 * @param dsName    数据源ID
 	 * @param tableName 表名称
 	 * @return
 	 */
@@ -67,8 +68,7 @@ public class GenFormConfServiceImpl extends ServiceImpl<GenFormConfMapper, GenFo
 			// 判断注释是否为空
 			if (StrUtil.isNotBlank(column.getComments())) {
 				columnEntity.setComments(column.getComments());
-			}
-			else {
+			} else {
 				columnEntity.setComments(columnEntity.getLowerAttrName());
 			}
 			columnList.add(columnEntity);

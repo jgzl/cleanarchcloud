@@ -7,13 +7,13 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.jgzl.common.core.constant.SecurityConstants;
+import com.github.jgzl.common.core.constant.enums.LoginTypeEnum;
 import com.github.jgzl.infra.upms.api.dto.UserInfo;
 import com.github.jgzl.infra.upms.api.entity.SysSocialDetails;
 import com.github.jgzl.infra.upms.api.entity.SysUser;
 import com.github.jgzl.infra.upms.mapper.SysSocialDetailsMapper;
 import com.github.jgzl.infra.upms.service.SysUserService;
-import com.github.jgzl.common.core.constant.SecurityConstants;
-import com.github.jgzl.common.core.constant.enums.LoginTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -40,6 +40,7 @@ public class GiteeLoginHandler extends AbstractLoginHandler {
 	 * 码云登录传入code
 	 * <p>
 	 * 通过code 调用qq 获取唯一标识
+	 *
 	 * @param code
 	 * @return
 	 */
@@ -67,6 +68,7 @@ public class GiteeLoginHandler extends AbstractLoginHandler {
 
 	/**
 	 * identify 获取用户信息
+	 *
 	 * @param identify identify
 	 * @return
 	 */
@@ -84,7 +86,8 @@ public class GiteeLoginHandler extends AbstractLoginHandler {
 
 	/**
 	 * 绑定逻辑
-	 * @param user 用户实体
+	 *
+	 * @param user     用户实体
 	 * @param identify 渠道返回唯一标识
 	 * @return
 	 */

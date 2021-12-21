@@ -1,4 +1,5 @@
 package com.github.jgzl.common.oss.service;
+
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -14,6 +15,7 @@ import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.InitializingBean;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
@@ -36,6 +38,7 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 创建bucket
+	 *
 	 * @param bucketName bucket名称
 	 */
 	@SneakyThrows
@@ -80,9 +83,10 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 根据文件前置查询文件
+	 *
 	 * @param bucketName bucket名称
-	 * @param prefix 前缀
-	 * @param recursive 是否递归查询
+	 * @param prefix     前缀
+	 * @param recursive  是否递归查询
 	 * @return S3ObjectSummary 列表
 	 * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects">AWS
 	 * API Documentation</a>
@@ -95,9 +99,10 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 获取文件外链
+	 *
 	 * @param bucketName bucket名称
 	 * @param objectName 文件名称
-	 * @param expires 过期时间 <=7
+	 * @param expires    过期时间 <=7
 	 * @return url
 	 * @see AmazonS3#generatePresignedUrl(String bucketName, String key, Date expiration)
 	 */
@@ -113,6 +118,7 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 获取文件
+	 *
 	 * @param bucketName bucket名称
 	 * @param objectName 文件名称
 	 * @return 二进制流
@@ -126,28 +132,30 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 上传文件
+	 *
 	 * @param bucketName bucket名称
 	 * @param objectName 文件名称
-	 * @param stream 文件流
+	 * @param stream     文件流
 	 * @throws Exception
 	 */
 	public void putObject(String bucketName, String objectName, InputStream stream) throws Exception {
-		putObject(bucketName, objectName, stream, (long) stream.available(), "application/octet-stream");
+		putObject(bucketName, objectName, stream, stream.available(), "application/octet-stream");
 	}
 
 	/**
 	 * 上传文件
-	 * @param bucketName bucket名称
-	 * @param objectName 文件名称
-	 * @param stream 文件流
-	 * @param size 大小
+	 *
+	 * @param bucketName  bucket名称
+	 * @param objectName  文件名称
+	 * @param stream      文件流
+	 * @param size        大小
 	 * @param contextType 类型
 	 * @throws Exception
 	 * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject">AWS
 	 * API Documentation</a>
 	 */
 	public PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size,
-			String contextType) throws Exception {
+									 String contextType) throws Exception {
 		// String fileName = getFileName(objectName);
 		byte[] bytes = IOUtils.toByteArray(stream);
 		ObjectMetadata objectMetadata = new ObjectMetadata();
@@ -161,6 +169,7 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 获取文件信息
+	 *
 	 * @param bucketName bucket名称
 	 * @param objectName 文件名称
 	 * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject">AWS
@@ -174,6 +183,7 @@ public class OssTemplate implements InitializingBean {
 
 	/**
 	 * 删除文件
+	 *
 	 * @param bucketName bucket名称
 	 * @param objectName 文件名称
 	 * @throws Exception

@@ -1,11 +1,12 @@
 package com.github.jgzl.common.core.util;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lihaifeng

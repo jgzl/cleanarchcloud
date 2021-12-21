@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnWebApplication(type = Type.SERVLET)
 public class WebMvcHeartBeatController {
 	@GetMapping
-	public R<String> heartbeat(){
+	public R<String> heartbeat() {
 		return R.ok("服务端成功接收心跳请求");
 	}
 }

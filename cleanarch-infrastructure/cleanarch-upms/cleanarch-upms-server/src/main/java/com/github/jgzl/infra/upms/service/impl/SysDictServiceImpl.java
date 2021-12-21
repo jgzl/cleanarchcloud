@@ -2,14 +2,14 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.enums.DictTypeEnum;
+import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.infra.upms.api.entity.SysDict;
 import com.github.jgzl.infra.upms.api.entity.SysDictItem;
 import com.github.jgzl.infra.upms.mapper.SysDictItemMapper;
 import com.github.jgzl.infra.upms.mapper.SysDictMapper;
 import com.github.jgzl.infra.upms.service.SysDictService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.enums.DictTypeEnum;
-import com.github.jgzl.common.core.util.R;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 
 	/**
 	 * 根据ID 删除字典
+	 *
 	 * @param id 字典ID
 	 * @return
 	 */
@@ -49,6 +50,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 
 	/**
 	 * 更新字典
+	 *
 	 * @param dict 字典
 	 * @return
 	 */
@@ -65,6 +67,7 @@ public class SysDictServiceImpl extends ServiceImpl<SysDictMapper, SysDict> impl
 
 	/**
 	 * 同步缓存 （清空缓存）
+	 *
 	 * @return R
 	 */
 	@Override

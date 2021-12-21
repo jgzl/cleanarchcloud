@@ -42,13 +42,11 @@ public class SysLogAspect {
 		Object obj;
 		try {
 			obj = point.proceed();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			logDTO.setType(LogTypeEnum.ERROR.getType());
 			logDTO.setException(e.getMessage());
 			throw e;
-		}
-		finally {
+		} finally {
 			Long endTime = System.currentTimeMillis();
 			logDTO.setTime(endTime - startTime);
 			logDTO.setTenantId(Integer.parseInt(tenantKeyStrResolver.key()));

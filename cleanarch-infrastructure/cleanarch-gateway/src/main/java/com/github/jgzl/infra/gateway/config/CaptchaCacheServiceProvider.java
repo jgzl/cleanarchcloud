@@ -26,7 +26,7 @@ public class CaptchaCacheServiceProvider implements CaptchaCacheService {
 
 	@Override
 	public boolean exists(String key) {
-		return redisson.getKeys().countExists(key)>0;
+		return redisson.getKeys().countExists(key) > 0;
 	}
 
 	@Override

@@ -69,16 +69,14 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 			try {
 				// 校验验证码
 				checkCode(request);
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				ServerHttpResponse response = exchange.getResponse();
 				response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 				response.setStatusCode(HttpStatus.PRECONDITION_REQUIRED);
 				try {
 					return response.writeWith(Mono.just(
 							response.bufferFactory().wrap(objectMapper.writeValueAsBytes(R.failed(e.getMessage())))));
-				}
-				catch (JsonProcessingException e1) {
+				} catch (JsonProcessingException e1) {
 					log.error("对象输出异常", e1);
 				}
 			}
@@ -89,6 +87,7 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 是否需要校验客户端，根据client 查询客户端配置
+	 *
 	 * @param request 请求
 	 * @return true 需要校验， false 不需要校验
 	 */
@@ -116,6 +115,7 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 检查code
+	 *
 	 * @param request
 	 */
 	@SneakyThrows
@@ -148,7 +148,7 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 		String key = CacheConstants.DEFAULT_CODE_KEY + randomStr;
 
 		RKeys keys = redisson.getKeys();
-		if (keys.countExists(key)==0) {
+		if (keys.countExists(key) == 0) {
 			throw new ValidateCodeException("验证码不合法");
 		}
 

@@ -37,6 +37,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 
 	/**
 	 * 通过ID删除客户端
+	 *
 	 * @param clientId
 	 * @return
 	 */
@@ -53,6 +54,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 
 	/**
 	 * 根据客户端信息
+	 *
 	 * @param clientDetailsDTO
 	 * @return
 	 */
@@ -79,6 +81,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 
 	/**
 	 * 添加客户端
+	 *
 	 * @param clientDetailsDTO
 	 * @return
 	 */
@@ -103,6 +106,7 @@ public class SysOauthClientDetailsServiceImpl extends ServiceImpl<SysOauthClient
 
 	/**
 	 * 分页查询客户端信息
+	 *
 	 * @param page
 	 * @param query
 	 * @return

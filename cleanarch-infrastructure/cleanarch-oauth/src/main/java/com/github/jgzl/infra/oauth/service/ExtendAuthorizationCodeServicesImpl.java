@@ -25,14 +25,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ExtendAuthorizationCodeServicesImpl extends RandomValueAuthorizationCodeServices {
 
+	private final RedisConnectionFactory connectionFactory;
 	/**
 	 * 授权码模式时: 验证码有效期设置, 默认有效期为5分钟, 单位秒
 	 */
 	@Value("${extend.authorizationCode.expirationTime:300}")
 	private Long expirationTime;
-
-	private final RedisConnectionFactory connectionFactory;
-
 	@Setter
 	private String prefix = SecurityConstants.PREFIX + SecurityConstants.OAUTH_CODE_PREFIX;
 
@@ -41,7 +39,8 @@ public class ExtendAuthorizationCodeServicesImpl extends RandomValueAuthorizatio
 
 	/**
 	 * 保存 code 和 认证信息
-	 * @param code 授权码模式： code
+	 *
+	 * @param code           授权码模式： code
 	 * @param authentication 认证信息
 	 */
 	@Override
@@ -54,6 +53,7 @@ public class ExtendAuthorizationCodeServicesImpl extends RandomValueAuthorizatio
 
 	/**
 	 * 删除code 并返回认证信息
+	 *
 	 * @param code 授权码模式： code
 	 * @return
 	 */

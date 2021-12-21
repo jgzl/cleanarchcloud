@@ -17,18 +17,18 @@ import java.util.Date;
 @AllArgsConstructor
 public class WebSocket implements java.io.Serializable {
 
-    /**
-     * 代表一个连接
-     */
-    private Session session;
+	/**
+	 * 代表一个连接
+	 */
+	private Session session;
 
-    /**
-     * 唯一标识
-     */
-    private String identifier;
-    /**
-     * 最后心跳时间
-     */
-    private Date lastHeart;
+	/**
+	 * 唯一标识
+	 */
+	private String identifier;
+	/**
+	 * 最后心跳时间
+	 */
+	private Date lastHeart;
 
 }

@@ -64,13 +64,11 @@ public class FormXssClean {
 		public void setAsText(String text) throws IllegalArgumentException {
 			if (text == null) {
 				setValue(null);
-			}
-			else if (XssHolder.isEnabled()) {
+			} else if (XssHolder.isEnabled()) {
 				String value = xssCleaner.clean(XssUtil.trim(text, properties.isTrimText()));
 				setValue(value);
 				log.debug("Request parameter value:{} cleaned up by mica-xss, current value is:{}.", text, value);
-			}
-			else {
+			} else {
 				setValue(XssUtil.trim(text, properties.isTrimText()));
 			}
 		}

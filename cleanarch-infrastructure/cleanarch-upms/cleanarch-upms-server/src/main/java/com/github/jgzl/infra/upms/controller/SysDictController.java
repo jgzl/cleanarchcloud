@@ -3,13 +3,13 @@ package com.github.jgzl.infra.upms.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.infra.upms.api.entity.SysDict;
 import com.github.jgzl.infra.upms.api.entity.SysDictItem;
 import com.github.jgzl.infra.upms.service.SysDictItemService;
 import com.github.jgzl.infra.upms.service.SysDictService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.util.R;
-import com.github.jgzl.common.log.annotation.SysLog;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -39,6 +39,7 @@ public class SysDictController {
 
 	/**
 	 * 通过ID查询字典信息
+	 *
 	 * @param id ID
 	 * @return 字典信息
 	 */
@@ -49,6 +50,7 @@ public class SysDictController {
 
 	/**
 	 * 分页查询字典信息
+	 *
 	 * @param page 分页对象
 	 * @return 分页对象
 	 */
@@ -59,6 +61,7 @@ public class SysDictController {
 
 	/**
 	 * 通过字典类型查找字典
+	 *
 	 * @param type 类型
 	 * @return 同类型字典
 	 */
@@ -70,6 +73,7 @@ public class SysDictController {
 
 	/**
 	 * 添加字典
+	 *
 	 * @param sysDict 字典信息
 	 * @return success、false
 	 */
@@ -82,6 +86,7 @@ public class SysDictController {
 
 	/**
 	 * 删除字典，并且清除字典缓存
+	 *
 	 * @param id ID
 	 * @return R
 	 */
@@ -94,6 +99,7 @@ public class SysDictController {
 
 	/**
 	 * 修改字典
+	 *
 	 * @param sysDict 字典信息
 	 * @return success/false
 	 */
@@ -106,7 +112,8 @@ public class SysDictController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page        分页对象
 	 * @param sysDictItem 字典项
 	 * @return
 	 */
@@ -117,6 +124,7 @@ public class SysDictController {
 
 	/**
 	 * 通过id查询字典项
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -127,6 +135,7 @@ public class SysDictController {
 
 	/**
 	 * 新增字典项
+	 *
 	 * @param sysDictItem 字典项
 	 * @return R
 	 */
@@ -139,6 +148,7 @@ public class SysDictController {
 
 	/**
 	 * 修改字典项
+	 *
 	 * @param sysDictItem 字典项
 	 * @return R
 	 */
@@ -150,6 +160,7 @@ public class SysDictController {
 
 	/**
 	 * 通过id删除字典项
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -161,6 +172,7 @@ public class SysDictController {
 
 	/**
 	 * 同步缓存字典
+	 *
 	 * @return R
 	 */
 	@SysLog("同步字典")

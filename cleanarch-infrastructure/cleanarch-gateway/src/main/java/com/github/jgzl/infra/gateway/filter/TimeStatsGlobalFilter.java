@@ -23,8 +23,8 @@ public class TimeStatsGlobalFilter implements GlobalFilter, Ordered {
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		exchange.getAttributes().put(COUNT_START_TIME, Instant.now().toEpochMilli());
 		if (log.isDebugEnabled()) {
-			exchange.getRequest().getHeaders().forEach((key,value)->{
-				log.debug("header为[{}:{}]",key,value);
+			exchange.getRequest().getHeaders().forEach((key, value) -> {
+				log.debug("header为[{}:{}]", key, value);
 			});
 		}
 		return chain.filter(exchange).then(

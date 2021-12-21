@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.mapper;
 
-import com.github.jgzl.infra.upms.api.entity.SysDept;
 import com.github.jgzl.common.data.datascope.ExtendBaseMapper;
+import com.github.jgzl.infra.upms.api.entity.SysDept;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

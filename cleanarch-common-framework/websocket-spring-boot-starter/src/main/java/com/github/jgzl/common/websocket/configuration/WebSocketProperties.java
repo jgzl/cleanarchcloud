@@ -10,12 +10,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "spring.websocket.heart-check")
 public class WebSocketProperties {
 
-    private boolean enabled = true;
-    /**
-     * 每隔 30s 检查一次
-     */
-    private String trigger = "30 * * * * ?";
-    private long timeSpan = 10000;
-    private int errorToleration = 30;
+	private boolean enabled = true;
+	/**
+	 * 每隔 30s 检查一次
+	 */
+	private String trigger = "30 * * * * ?";
+	private long timeSpan = 10000;
+	private int errorToleration = 30;
 
 }

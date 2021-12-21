@@ -14,11 +14,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @since 2020/9/21
  */
 @Target({
-        METHOD,
-        FIELD,
-        ANNOTATION_TYPE,
-        CONSTRUCTOR,
-        PARAMETER
+		METHOD,
+		FIELD,
+		ANNOTATION_TYPE,
+		CONSTRUCTOR,
+		PARAMETER
 })
 @Retention(RUNTIME)
 @Documented
@@ -26,13 +26,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface Name {
 
 
-    String message() default "不能输入纯数字和特殊字符";
+	String message() default "不能输入纯数字和特殊字符";
 
-    String regexp() default "^(?![0-9]*$)[\\u4e00-\\u9fa50-9A-Za-z-_()（）]*$";
+	String regexp() default "^(?![0-9]*$)[\\u4e00-\\u9fa50-9A-Za-z-_()（）]*$";
 
-    Class<?>[] groups() default {};
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 
 
 }

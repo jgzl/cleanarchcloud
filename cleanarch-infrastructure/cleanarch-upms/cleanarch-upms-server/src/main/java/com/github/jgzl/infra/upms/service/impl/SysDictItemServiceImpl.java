@@ -1,14 +1,14 @@
 package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.enums.DictTypeEnum;
+import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.infra.upms.api.entity.SysDict;
 import com.github.jgzl.infra.upms.api.entity.SysDictItem;
 import com.github.jgzl.infra.upms.mapper.SysDictItemMapper;
 import com.github.jgzl.infra.upms.service.SysDictItemService;
 import com.github.jgzl.infra.upms.service.SysDictService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.enums.DictTypeEnum;
-import com.github.jgzl.common.core.util.R;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
@@ -27,6 +27,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper, SysDi
 
 	/**
 	 * 删除字典项
+	 *
 	 * @param id 字典项ID
 	 * @return
 	 */
@@ -45,6 +46,7 @@ public class SysDictItemServiceImpl extends ServiceImpl<SysDictItemMapper, SysDi
 
 	/**
 	 * 更新字典项
+	 *
 	 * @param item 字典项
 	 * @return
 	 */

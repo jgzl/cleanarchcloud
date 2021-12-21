@@ -20,8 +20,9 @@ public interface RemoteClientDetailsService {
 
 	/**
 	 * 通过clientId 查询客户端信息
+	 *
 	 * @param clientId 用户名
-	 * @param from 调用标志
+	 * @param from     调用标志
 	 * @return R
 	 */
 	@GetMapping("/client/getClientDetailsById/{clientId}")
@@ -30,6 +31,7 @@ public interface RemoteClientDetailsService {
 
 	/**
 	 * 查询全部客户端
+	 *
 	 * @param from 调用标识
 	 * @return R
 	 */

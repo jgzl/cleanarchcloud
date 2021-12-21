@@ -43,6 +43,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 
 	/**
 	 * 保存数据源并且加密
+	 *
 	 * @param conf
 	 * @return
 	 */
@@ -64,6 +65,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 
 	/**
 	 * 更新数据源
+	 *
 	 * @param conf 数据源信息
 	 * @return
 	 */
@@ -89,6 +91,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 
 	/**
 	 * 通过数据源名称删除
+	 *
 	 * @param dsId 数据源ID
 	 * @return
 	 */
@@ -102,6 +105,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 
 	/**
 	 * 添加动态数据源
+	 *
 	 * @param conf 数据源信息
 	 */
 	@Override
@@ -119,6 +123,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 
 	/**
 	 * 校验数据源配置是否有效
+	 *
 	 * @param conf 数据源信息
 	 * @return 有效/无效
 	 */
@@ -128,13 +133,11 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 		// JDBC 配置形式
 		if (DsConfTypeEnum.JDBC.getType().equals(conf.getConfType())) {
 			url = conf.getUrl();
-		}
-		else if (DsJdbcUrlEnum.MSSQL.getDbName().equals(conf.getDsType())) {
+		} else if (DsJdbcUrlEnum.MSSQL.getDbName().equals(conf.getDsType())) {
 			// 主机形式 sql server 特殊处理
 			DsJdbcUrlEnum urlEnum = DsJdbcUrlEnum.get(conf.getDsType());
 			url = String.format(urlEnum.getUrl(), conf.getHost(), conf.getInstance(), conf.getPort(), conf.getDsName());
-		}
-		else {
+		} else {
 			DsJdbcUrlEnum urlEnum = DsJdbcUrlEnum.get(conf.getDsType());
 			url = String.format(urlEnum.getUrl(), conf.getHost(), conf.getPort(), conf.getDsName());
 		}
@@ -142,8 +145,7 @@ public class GenDatasourceConfServiceImpl extends ServiceImpl<GenDatasourceConfM
 		conf.setUrl(url);
 
 		try (Connection connection = DriverManager.getConnection(url, conf.getUsername(), conf.getPassword())) {
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			log.error("数据源配置 {} , 获取链接失败", conf.getName(), e);
 			return Boolean.FALSE;
 		}

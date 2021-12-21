@@ -23,78 +23,78 @@ import org.redisson.api.RedissonClient;
  */
 public class RedisWebSocketManager extends MemWebSocketManager {
 
-    public static final String CHANNEL = "websocket";
-    private static final String COUNT_KEY = "RedisWebSocketManagerCountKey";
-    protected RedissonClient redisson;
+	public static final String CHANNEL = "websocket";
+	private static final String COUNT_KEY = "RedisWebSocketManagerCountKey";
+	protected RedissonClient redisson;
 
-    public RedisWebSocketManager(RedissonClient redisson) {
-        this.redisson = redisson;
-    }
-
-
-    @Override
-    public void put(String identifier, WebSocket webSocket) {
-        super.put(identifier, webSocket);
-        //在线数量加1
-        countChange(1);
-    }
-
-    @Override
-    public void remove(String identifier) {
-        boolean containsKey = localWebSocketMap().containsKey(identifier);
-        if (containsKey) {
-            super.remove(identifier);
-        } else {
-            JSONObject map = new JSONObject();
-            map.set(Action.ACTION, RemoveAction.class.getName());
-            map.set(Action.IDENTIFIER, identifier);
-            //在websocket频道上发布发送消息的消息
-            redisson.getTopic(getChannel()).publish(map.toString());
-        }
-        //在线数量减1
-        countChange(-1);
-    }
-
-    @Override
-    public int size() {
-        return getCount();
-    }
-
-    @Override
-    public void sendMessage(String identifier, String message) {
-        WebSocket webSocket = get(identifier);
-        //本地能找到就直接发
-        if (null != webSocket) {
-            WebSocketUtil.sendMessage(webSocket.getSession(), message);
-            return;
-        }
+	public RedisWebSocketManager(RedissonClient redisson) {
+		this.redisson = redisson;
+	}
 
 
-        JSONObject map = new JSONObject();
-        map.put(Action.ACTION, SendMessageAction.class.getName());
-        map.put(Action.IDENTIFIER, identifier);
-        map.put(Action.MESSAGE, message);
-        //在websocket频道上发布发送消息的消息
+	@Override
+	public void put(String identifier, WebSocket webSocket) {
+		super.put(identifier, webSocket);
+		//在线数量加1
+		countChange(1);
+	}
+
+	@Override
+	public void remove(String identifier) {
+		boolean containsKey = localWebSocketMap().containsKey(identifier);
+		if (containsKey) {
+			super.remove(identifier);
+		} else {
+			JSONObject map = new JSONObject();
+			map.set(Action.ACTION, RemoveAction.class.getName());
+			map.set(Action.IDENTIFIER, identifier);
+			//在websocket频道上发布发送消息的消息
+			redisson.getTopic(getChannel()).publish(map.toString());
+		}
+		//在线数量减1
+		countChange(-1);
+	}
+
+	@Override
+	public int size() {
+		return getCount();
+	}
+
+	@Override
+	public void sendMessage(String identifier, String message) {
+		WebSocket webSocket = get(identifier);
+		//本地能找到就直接发
+		if (null != webSocket) {
+			WebSocketUtil.sendMessage(webSocket.getSession(), message);
+			return;
+		}
+
+
+		JSONObject map = new JSONObject();
+		map.put(Action.ACTION, SendMessageAction.class.getName());
+		map.put(Action.IDENTIFIER, identifier);
+		map.put(Action.MESSAGE, message);
+		//在websocket频道上发布发送消息的消息
 		redisson.getTopic(getChannel()).publish(map.toString());
-    }
+	}
 
-    @Override
-    public void broadcast(String message) {
-        JSONObject map = new JSONObject();
-        map.put(Action.ACTION, BroadCastAction.class.getName());
-        map.put(Action.MESSAGE, message);
-        //在websocket频道上发布广播的消息
+	@Override
+	public void broadcast(String message) {
+		JSONObject map = new JSONObject();
+		map.put(Action.ACTION, BroadCastAction.class.getName());
+		map.put(Action.MESSAGE, message);
+		//在websocket频道上发布广播的消息
 		redisson.getTopic(getChannel()).publish(map.toString());
-    }
+	}
 
-    protected String getChannel() {
-        return CHANNEL;
-    }
+	protected String getChannel() {
+		return CHANNEL;
+	}
 
-    /**
-     * 增减在线数量
-     */
-    private void countChange(int delta) {
+	/**
+	 * 增减在线数量
+	 */
+	private void countChange(int delta) {
 		RBucket<Object> bucket = redisson.getBucket(COUNT_KEY);
 		//获取在线当前数量
 		String countStr = (String) bucket.get();
@@ -103,17 +103,17 @@ public class RedisWebSocketManager extends MemWebSocketManager {
 			count = Integer.parseInt(countStr);
 		}
 
-        count = count + delta;
-        count = Math.max(count, 0);
+		count = count + delta;
+		count = Math.max(count, 0);
 
-        //设置新的数量
+		//设置新的数量
 		bucket.set("" + count);
-    }
+	}
 
-    /**
-     * 获取当前在线数量
-     */
-    private int getCount() {
+	/**
+	 * 获取当前在线数量
+	 */
+	private int getCount() {
 		RBucket<Object> bucket = redisson.getBucket(COUNT_KEY);
 		//获取在线当前数量
 		String countStr = (String) bucket.get();
@@ -122,6 +122,6 @@ public class RedisWebSocketManager extends MemWebSocketManager {
 			count = Integer.parseInt(countStr);
 		}
 		return count;
-    }
+	}
 
 }

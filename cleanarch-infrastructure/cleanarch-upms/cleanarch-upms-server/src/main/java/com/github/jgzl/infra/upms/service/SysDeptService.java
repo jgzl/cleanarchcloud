@@ -18,12 +18,14 @@ public interface SysDeptService extends IService<SysDept> {
 
 	/**
 	 * 查询部门树菜单
+	 *
 	 * @return 树
 	 */
 	List<Tree<Integer>> selectTree();
 
 	/**
 	 * 添加信息部门
+	 *
 	 * @param sysDept
 	 * @return
 	 */
@@ -31,6 +33,7 @@ public interface SysDeptService extends IService<SysDept> {
 
 	/**
 	 * 删除部门
+	 *
 	 * @param id 部门 ID
 	 * @return 成功、失败
 	 */
@@ -38,6 +41,7 @@ public interface SysDeptService extends IService<SysDept> {
 
 	/**
 	 * 更新部门
+	 *
 	 * @param sysDept 部门信息
 	 * @return 成功、失败
 	 */

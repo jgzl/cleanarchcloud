@@ -15,6 +15,7 @@ public interface GenTableColumnService {
 
 	/**
 	 * 查询表的字段信息
+	 *
 	 * @param page
 	 * @param genConfig 查询条件
 	 * @return

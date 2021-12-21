@@ -3,11 +3,11 @@ package com.github.jgzl.infra.upms.controller;
 import cn.hutool.core.io.IoUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.upms.api.entity.SysFile;
-import com.github.jgzl.infra.upms.service.SysFileService;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.common.security.annotation.Inner;
+import com.github.jgzl.infra.upms.api.entity.SysFile;
+import com.github.jgzl.infra.upms.service.SysFileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,8 @@ public class SysFileController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page    分页对象
 	 * @param sysFile 文件管理
 	 * @return
 	 */
@@ -47,6 +48,7 @@ public class SysFileController {
 
 	/**
 	 * 通过id删除文件管理
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -60,6 +62,7 @@ public class SysFileController {
 
 	/**
 	 * 上传文件 文件名采用uuid,避免原始文件名中带"-"符号导致下载的时候解析出现异常
+	 *
 	 * @param file 资源
 	 * @return R(/ admin / bucketName / filename)
 	 */
@@ -70,7 +73,8 @@ public class SysFileController {
 
 	/**
 	 * 获取文件
-	 * @param bucket 桶名称
+	 *
+	 * @param bucket   桶名称
 	 * @param fileName 文件空间/名称
 	 * @param response
 	 * @return
@@ -83,6 +87,7 @@ public class SysFileController {
 
 	/**
 	 * 获取本地（resources）文件
+	 *
 	 * @param fileName 文件名称
 	 * @param response 本地文件
 	 */

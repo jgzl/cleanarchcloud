@@ -1,7 +1,6 @@
 package com.github.jgzl.common.log.util;
 
 /**
- *
  * @author lihaifeng
  * @date 2021/1/13
  */

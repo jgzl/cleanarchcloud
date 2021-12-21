@@ -47,8 +47,7 @@ public class DefaultXssCleaner implements XssCleaner {
 		if (ExtendXssProperties.Mode.escape == mode) {
 			// html 转义
 			return HtmlUtils.htmlEscape(bodyHtml, CharsetUtil.UTF_8);
-		}
-		else {
+		} else {
 			// jsoup html 清理
 			Document.OutputSettings outputSettings = new Document.OutputSettings()
 					// 2. 转义，没找到关闭的方法，目前这个规则最少

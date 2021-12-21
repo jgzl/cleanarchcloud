@@ -11,7 +11,7 @@ import java.lang.annotation.*;
  * <p>
  * 开启动态路由
  */
-@Target({ ElementType.TYPE })
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited

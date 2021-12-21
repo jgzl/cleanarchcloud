@@ -52,6 +52,7 @@ public class SysLogUtils {
 
 	/**
 	 * 获取客户端
+	 *
 	 * @return clientId
 	 */
 	private String getClientId() {
@@ -65,6 +66,7 @@ public class SysLogUtils {
 
 	/**
 	 * 获取用户名称
+	 *
 	 * @return username
 	 */
 	private String getUsername() {

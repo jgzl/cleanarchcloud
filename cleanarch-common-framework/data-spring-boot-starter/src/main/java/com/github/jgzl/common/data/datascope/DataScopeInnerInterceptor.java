@@ -25,7 +25,7 @@ public class DataScopeInnerInterceptor implements InnerInterceptor {
 
 	@Override
 	public void beforeQuery(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds,
-			ResultHandler resultHandler, BoundSql boundSql) {
+							ResultHandler resultHandler, BoundSql boundSql) {
 		PluginUtils.MPBoundSql mpBs = PluginUtils.mpBoundSql(boundSql);
 
 		String originalSql = boundSql.getSql();
@@ -50,8 +50,7 @@ public class DataScopeInnerInterceptor implements InnerInterceptor {
 		if (deptIds.isEmpty()) {
 			originalSql = String.format("SELECT %s FROM (%s) temp_data_scope WHERE 1 = 2",
 					dataScope.getFunc().getType(), originalSql);
-		}
-		else {
+		} else {
 			String join = CollectionUtil.join(deptIds, ",");
 			originalSql = String.format("SELECT %s FROM (%s) temp_data_scope WHERE temp_data_scope.%s IN (%s)",
 					dataScope.getFunc().getType(), originalSql, scopeName, join);
@@ -62,14 +61,14 @@ public class DataScopeInnerInterceptor implements InnerInterceptor {
 
 	/**
 	 * 查找参数是否包括DataScope对象
+	 *
 	 * @param parameterObj 参数列表
 	 * @return DataScope
 	 */
 	private DataScope findDataScopeObject(Object parameterObj) {
 		if (parameterObj instanceof DataScope) {
 			return (DataScope) parameterObj;
-		}
-		else if (parameterObj instanceof Map) {
+		} else if (parameterObj instanceof Map) {
 			for (Object val : ((Map<?, ?>) parameterObj).values()) {
 				if (val instanceof DataScope) {
 					return (DataScope) val;

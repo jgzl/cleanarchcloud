@@ -20,6 +20,7 @@ public abstract class AbstractLoginHandler implements LoginHandler {
 
 	/**
 	 * 处理方法
+	 *
 	 * @param loginStr 登录参数
 	 * @return
 	 */

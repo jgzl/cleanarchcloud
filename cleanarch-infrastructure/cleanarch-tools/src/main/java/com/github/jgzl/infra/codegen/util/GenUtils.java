@@ -72,6 +72,7 @@ public class GenUtils {
 
 	/**
 	 * 配置
+	 *
 	 * @param config
 	 * @return
 	 */
@@ -89,8 +90,7 @@ public class GenUtils {
 		if (StyleTypeEnum.AVUE.getStyle().equals(config.getStyle())) {
 			templates.add("template/avue/index.vue.vm");
 			templates.add("template/avue/crud.js.vm");
-		}
-		else {
+		} else {
 			templates.add("template/element/index.vue.vm");
 			templates.add("template/element/form.vue.vm");
 		}
@@ -100,11 +100,12 @@ public class GenUtils {
 
 	/**
 	 * 生成代码
+	 *
 	 * @return
 	 */
 	@SneakyThrows
 	public Map<String, String> generatorCode(GenConfig genConfig, Map<String, String> table,
-			List<Map<String, String>> columns, ZipOutputStream zip, GenFormConf formConf) {
+											 List<Map<String, String>> columns, ZipOutputStream zip, GenFormConf formConf) {
 		// 配置信息
 		Configuration config = getConfig();
 		boolean hasBigDecimal = false;
@@ -114,8 +115,7 @@ public class GenUtils {
 
 		if (StrUtil.isNotBlank(genConfig.getComments())) {
 			tableEntity.setComments(genConfig.getComments());
-		}
-		else {
+		} else {
 			tableEntity.setComments(table.get("tableComment"));
 		}
 
@@ -124,8 +124,7 @@ public class GenUtils {
 		String tablePrefix;
 		if (StrUtil.isNotBlank(genConfig.getTablePrefix())) {
 			tablePrefix = genConfig.getTablePrefix();
-		}
-		else {
+		} else {
 			tablePrefix = config.getString("tablePrefix");
 		}
 
@@ -147,8 +146,7 @@ public class GenUtils {
 			// 隐藏不需要的在接口文档中展示的字段
 			if (hiddenColumns.contains(column.get("columnName"))) {
 				columnEntity.setHidden(Boolean.TRUE);
-			}
-			else {
+			} else {
 				columnEntity.setHidden(Boolean.FALSE);
 			}
 			// 列名转换成Java属性名
@@ -160,8 +158,7 @@ public class GenUtils {
 			if (StrUtil.isNotBlank(column.get("comments"))) {
 				// 注意去除换行符号
 				columnEntity.setComments(StrUtil.removeAllLineBreaks(column.get("comments")));
-			}
-			else {
+			} else {
 				columnEntity.setComments(columnEntity.getLowerAttrName());
 			}
 
@@ -200,30 +197,26 @@ public class GenUtils {
 
 		if (StrUtil.isNotBlank(genConfig.getComments())) {
 			map.put("comments", genConfig.getComments());
-		}
-		else {
+		} else {
 			map.put("comments", tableEntity.getComments());
 		}
 
 		if (StrUtil.isNotBlank(genConfig.getAuthor())) {
 			map.put("author", genConfig.getAuthor());
-		}
-		else {
+		} else {
 			map.put("author", config.getString("author"));
 		}
 
 		if (StrUtil.isNotBlank(genConfig.getModuleName())) {
 			map.put("moduleName", genConfig.getModuleName());
-		}
-		else {
+		} else {
 			map.put("moduleName", config.getString("moduleName"));
 		}
 
 		if (StrUtil.isNotBlank(genConfig.getPackageName())) {
 			map.put("package", genConfig.getPackageName());
 			map.put("mainPath", genConfig.getPackageName());
-		}
-		else {
+		} else {
 			map.put("package", config.getString("package"));
 			map.put("mainPath", config.getString("mainPath"));
 		}
@@ -234,16 +227,17 @@ public class GenUtils {
 
 	/**
 	 * 渲染数据
-	 * @param genConfig 配置信息
-	 * @param zip 流 （为空，直接返回Map）
-	 * @param formConf 表单信息
+	 *
+	 * @param genConfig   配置信息
+	 * @param zip         流 （为空，直接返回Map）
+	 * @param formConf    表单信息
 	 * @param tableEntity 表基本信息
-	 * @param map 模板参数
+	 * @param map         模板参数
 	 * @return map key-filename value-contents
 	 * @throws IOException
 	 */
 	private Map<String, String> renderData(GenConfig genConfig, ZipOutputStream zip, GenFormConf formConf,
-			TableEntity tableEntity, Map<String, Object> map) throws IOException {
+										   TableEntity tableEntity, Map<String, Object> map) throws IOException {
 		// 设置velocity资源加载器
 		Properties prop = new Properties();
 		prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
@@ -297,7 +291,7 @@ public class GenUtils {
 	 * 列名转换成Java属性名
 	 */
 	public String columnToJava(String columnName) {
-		return WordUtils.capitalizeFully(columnName, new char[] { '_' }).replace("_", "");
+		return WordUtils.capitalizeFully(columnName, new char[]{'_'}).replace("_", "");
 	}
 
 	/**
@@ -316,8 +310,7 @@ public class GenUtils {
 	public Configuration getConfig() {
 		try {
 			return new PropertiesConfiguration("generator.properties");
-		}
-		catch (ConfigurationException e) {
+		} catch (ConfigurationException e) {
 			throw new CheckedException("获取配置文件失败，", e);
 		}
 	}
@@ -389,6 +382,7 @@ public class GenUtils {
 
 	/**
 	 * 根据目标数据源名称动态匹配Mapper
+	 *
 	 * @param dsName
 	 * @return
 	 */
@@ -402,8 +396,7 @@ public class GenUtils {
 		// 默认MYSQL 数据源
 		if (datasourceConf == null) {
 			dbConfType = DsJdbcUrlEnum.MYSQL.getDbName();
-		}
-		else {
+		} else {
 			dbConfType = datasourceConf.getDsType();
 		}
 

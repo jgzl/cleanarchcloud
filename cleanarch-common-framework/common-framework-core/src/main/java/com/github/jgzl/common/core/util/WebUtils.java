@@ -36,6 +36,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 判断是否ajax请求 spring ajax 返回含有 ResponseBody 或者 RestController注解
+	 *
 	 * @param handlerMethod HandlerMethod
 	 * @return 是否ajax请求
 	 */
@@ -46,6 +47,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 读取cookie
+	 *
 	 * @param name cookie name
 	 * @return cookie value
 	 */
@@ -57,8 +59,9 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 读取cookie
+	 *
 	 * @param request HttpServletRequest
-	 * @param name cookie name
+	 * @param name    cookie name
 	 * @return cookie value
 	 */
 	public String getCookieVal(HttpServletRequest request, String name) {
@@ -68,8 +71,9 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 清除 某个指定的cookie
+	 *
 	 * @param response HttpServletResponse
-	 * @param key cookie key
+	 * @param key      cookie key
 	 */
 	public void removeCookie(HttpServletResponse response, String key) {
 		setCookie(response, key, null, 0);
@@ -77,9 +81,10 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 设置cookie
-	 * @param response HttpServletResponse
-	 * @param name cookie name
-	 * @param value cookie value
+	 *
+	 * @param response        HttpServletResponse
+	 * @param name            cookie name
+	 * @param value           cookie value
 	 * @param maxAgeInSeconds maxage
 	 */
 	public void setCookie(HttpServletResponse response, String name, String value, int maxAgeInSeconds) {
@@ -92,20 +97,21 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 获取 HttpServletRequest
+	 *
 	 * @return {HttpServletRequest}
 	 */
 	public HttpServletRequest getRequest() {
 		try {
 			RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
 			return ((ServletRequestAttributes) requestAttributes).getRequest();
-		}
-		catch (IllegalStateException e) {
+		} catch (IllegalStateException e) {
 			return null;
 		}
 	}
 
 	/**
 	 * 获取 HttpServletResponse
+	 *
 	 * @return {HttpServletResponse}
 	 */
 	public HttpServletResponse getResponse() {
@@ -114,8 +120,9 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 返回json
+	 *
 	 * @param response HttpServletResponse
-	 * @param result 结果对象
+	 * @param result   结果对象
 	 */
 	public void renderJson(HttpServletResponse response, Object result) {
 		renderJson(response, result, MediaType.APPLICATION_JSON_VALUE);
@@ -123,8 +130,9 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 返回json
-	 * @param response HttpServletResponse
-	 * @param result 结果对象
+	 *
+	 * @param response    HttpServletResponse
+	 * @param result      结果对象
 	 * @param contentType contentType
 	 */
 	public void renderJson(HttpServletResponse response, Object result, String contentType) {
@@ -132,14 +140,14 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 		response.setContentType(contentType);
 		try (PrintWriter out = response.getWriter()) {
 			out.append(JSONUtil.toJsonStr(result));
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 		}
 	}
 
 	/**
 	 * 获取ip
+	 *
 	 * @return {String}
 	 */
 	public String getIP() {
@@ -148,6 +156,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 获取ip
+	 *
 	 * @param request HttpServletRequest
 	 * @return {String}
 	 */
@@ -177,6 +186,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 解析 client id
+	 *
 	 * @param header
 	 * @param defVal
 	 * @return 如果解析失败返回默认值
@@ -191,8 +201,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 		byte[] decoded;
 		try {
 			decoded = Base64.decode(base64Token);
-		}
-		catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			log.debug("Failed to decode basic authentication token: {}", header);
 			return defVal;
 		}
@@ -210,6 +219,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
 
 	/**
 	 * 从请求头中解析 client id
+	 *
 	 * @param header
 	 * @return
 	 */

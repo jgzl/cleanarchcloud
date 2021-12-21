@@ -41,7 +41,7 @@ public class ExtendSecurityInnerAspect {
 		if (inner.value() && !StrUtil.equals(SecurityConstants.FROM_IN, header)) {
 			log.warn("访问接口 {} 没有权限", inner.value());
 			throw new AccessDeniedException(ExtendSecurityMessageSourceUtil.getAccessor().getMessage(
-					"AbstractAccessDecisionManager.accessDenied", new Object[] { inner.value() }, "access denied"));
+					"AbstractAccessDecisionManager.accessDenied", new Object[]{inner.value()}, "access denied"));
 		}
 		return point.proceed();
 	}

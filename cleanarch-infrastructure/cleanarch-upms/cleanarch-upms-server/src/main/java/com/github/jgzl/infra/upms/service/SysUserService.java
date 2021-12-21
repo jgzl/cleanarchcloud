@@ -3,12 +3,12 @@ package com.github.jgzl.infra.upms.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.infra.upms.api.dto.UserDTO;
 import com.github.jgzl.infra.upms.api.dto.UserInfo;
 import com.github.jgzl.infra.upms.api.entity.SysUser;
 import com.github.jgzl.infra.upms.api.vo.UserExcelVO;
 import com.github.jgzl.infra.upms.api.vo.UserVO;
-import com.github.jgzl.common.core.util.R;
 import org.springframework.validation.BindingResult;
 
 import java.util.List;
@@ -21,6 +21,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 查询用户信息
+	 *
 	 * @param sysUser 用户
 	 * @return userInfo
 	 */
@@ -28,7 +29,8 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 分页查询用户信息（含有角色信息）
-	 * @param page 分页对象
+	 *
+	 * @param page    分页对象
 	 * @param userDTO 参数列表
 	 * @return
 	 */
@@ -36,6 +38,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 删除用户
+	 *
 	 * @param sysUser 用户
 	 * @return boolean
 	 */
@@ -43,6 +46,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 更新当前用户基本信息
+	 *
 	 * @param userDto 用户信息
 	 * @return Boolean
 	 */
@@ -50,6 +54,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 更新指定用户信息
+	 *
 	 * @param userDto 用户信息
 	 * @return
 	 */
@@ -57,6 +62,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 通过ID查询用户信息
+	 *
 	 * @param id 用户ID
 	 * @return 用户信息
 	 */
@@ -64,6 +70,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 查询上级部门的用户信息
+	 *
 	 * @param username 用户名
 	 * @return R
 	 */
@@ -71,6 +78,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 保存用户信息
+	 *
 	 * @param userDto DTO 对象
 	 * @return success/fail
 	 */
@@ -78,6 +86,7 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * 查询全部的用户
+	 *
 	 * @param userDTO 查询条件
 	 * @return list
 	 */
@@ -85,7 +94,8 @@ public interface SysUserService extends IService<SysUser> {
 
 	/**
 	 * excel 导入用户
-	 * @param excelVOList excel 列表数据
+	 *
+	 * @param excelVOList   excel 列表数据
 	 * @param bindingResult 错误数据
 	 * @return ok fail
 	 */

@@ -29,6 +29,7 @@ public class SecurityUtils {
 
 	/**
 	 * 获取用户
+	 *
 	 * @param authentication
 	 * @return ExtendUser
 	 * <p>
@@ -51,6 +52,7 @@ public class SecurityUtils {
 
 	/**
 	 * 获取用户角色信息
+	 *
 	 * @return 角色集合
 	 */
 	public List<Integer> getRoles() {

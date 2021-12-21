@@ -1,8 +1,8 @@
 package com.github.jgzl.infra.upms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.jgzl.infra.upms.api.entity.SysDict;
 import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.infra.upms.api.entity.SysDict;
 
 /**
  * 字典表
@@ -14,6 +14,7 @@ public interface SysDictService extends IService<SysDict> {
 
 	/**
 	 * 根据ID 删除字典
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -21,6 +22,7 @@ public interface SysDictService extends IService<SysDict> {
 
 	/**
 	 * 更新字典
+	 *
 	 * @param sysDict 字典
 	 * @return
 	 */
@@ -28,6 +30,7 @@ public interface SysDictService extends IService<SysDict> {
 
 	/**
 	 * 同步缓存 （清空缓存）
+	 *
 	 * @return R
 	 */
 	R syncDictCache();

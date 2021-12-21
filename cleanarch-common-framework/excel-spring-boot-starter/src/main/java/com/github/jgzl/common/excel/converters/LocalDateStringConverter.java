@@ -34,11 +34,10 @@ public enum LocalDateStringConverter implements Converter<LocalDate> {
 
 	@Override
 	public LocalDate convertToJavaData(CellData cellData, ExcelContentProperty contentProperty,
-			GlobalConfiguration globalConfiguration) throws ParseException {
+									   GlobalConfiguration globalConfiguration) throws ParseException {
 		if (contentProperty == null || contentProperty.getDateTimeFormatProperty() == null) {
 			return LocalDate.parse(cellData.getStringValue());
-		}
-		else {
+		} else {
 			DateTimeFormatter formatter = DateTimeFormatter
 					.ofPattern(contentProperty.getDateTimeFormatProperty().getFormat());
 			return LocalDate.parse(cellData.getStringValue(), formatter);
@@ -47,12 +46,11 @@ public enum LocalDateStringConverter implements Converter<LocalDate> {
 
 	@Override
 	public CellData<String> convertToExcelData(LocalDate value, ExcelContentProperty contentProperty,
-			GlobalConfiguration globalConfiguration) {
+											   GlobalConfiguration globalConfiguration) {
 		DateTimeFormatter formatter;
 		if (contentProperty == null || contentProperty.getDateTimeFormatProperty() == null) {
 			formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-		}
-		else {
+		} else {
 			formatter = DateTimeFormatter.ofPattern(contentProperty.getDateTimeFormatProperty().getFormat());
 		}
 		return new CellData<>(value.format(formatter));

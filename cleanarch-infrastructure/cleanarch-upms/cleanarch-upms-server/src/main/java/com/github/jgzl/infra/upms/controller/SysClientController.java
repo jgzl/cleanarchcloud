@@ -2,12 +2,12 @@ package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.upms.api.dto.SysOauthClientDetailsDTO;
-import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
-import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.common.security.annotation.Inner;
+import com.github.jgzl.infra.upms.api.dto.SysOauthClientDetailsDTO;
+import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
+import com.github.jgzl.infra.upms.service.SysOauthClientDetailsService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,6 +33,7 @@ public class SysClientController {
 
 	/**
 	 * 通过ID查询
+	 *
 	 * @param clientId clientId
 	 * @return SysOauthClientDetails
 	 */
@@ -44,7 +45,8 @@ public class SysClientController {
 
 	/**
 	 * 简单分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page                  分页对象
 	 * @param sysOauthClientDetails 系统终端
 	 * @return
 	 */
@@ -55,6 +57,7 @@ public class SysClientController {
 
 	/**
 	 * 添加
+	 *
 	 * @param clientDetailsDTO 实体
 	 * @return success/false
 	 */
@@ -67,6 +70,7 @@ public class SysClientController {
 
 	/**
 	 * 删除
+	 *
 	 * @param clientId ID
 	 * @return success/false
 	 */
@@ -79,6 +83,7 @@ public class SysClientController {
 
 	/**
 	 * 编辑
+	 *
 	 * @param clientDetailsDTO 实体
 	 * @return success/false
 	 */
@@ -98,6 +103,7 @@ public class SysClientController {
 
 	/**
 	 * 查询全部客户端
+	 *
 	 * @return
 	 */
 	@Inner(false)

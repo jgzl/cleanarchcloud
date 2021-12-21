@@ -10,16 +10,16 @@ import lombok.Data;
 @Data
 @TableName(value = "t_order")
 public class TOrder {
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING)
-  @TableId(type = IdType.ASSIGN_ID)
-  private Long orderId;
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@TableId(type = IdType.ASSIGN_ID)
+	private Long orderId;
 
-  @TableField
-  private String orderDescription;
+	@TableField
+	private String orderDescription;
 
-  @TableField
-  private Long userId;
+	@TableField
+	private Long userId;
 
 }

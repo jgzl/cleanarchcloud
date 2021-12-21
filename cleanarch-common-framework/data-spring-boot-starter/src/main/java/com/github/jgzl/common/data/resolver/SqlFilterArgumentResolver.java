@@ -29,11 +29,12 @@ import java.util.stream.Collectors;
 @Slf4j
 public class SqlFilterArgumentResolver implements HandlerMethodArgumentResolver {
 
-	private final static String[] KEYWORDS = { "master", "truncate", "insert", "select", "delete", "update", "declare",
-			"alter", "drop", "sleep" };
+	private final static String[] KEYWORDS = {"master", "truncate", "insert", "select", "delete", "update", "declare",
+			"alter", "drop", "sleep"};
 
 	/**
 	 * 判断Controller是否包含page 参数
+	 *
 	 * @param parameter 参数
 	 * @return 是否过滤
 	 */
@@ -43,9 +44,9 @@ public class SqlFilterArgumentResolver implements HandlerMethodArgumentResolver 
 	}
 
 	/**
-	 * @param parameter 入参集合
-	 * @param mavContainer model 和 view
-	 * @param webRequest web相关
+	 * @param parameter     入参集合
+	 * @param mavContainer  model 和 view
+	 * @param webRequest    web相关
 	 * @param binderFactory 入参解析
 	 * @return 检查后新的page对象
 	 * <p>
@@ -53,7 +54,7 @@ public class SqlFilterArgumentResolver implements HandlerMethodArgumentResolver 
 	 */
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
+								  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
 
 		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 
@@ -87,6 +88,7 @@ public class SqlFilterArgumentResolver implements HandlerMethodArgumentResolver 
 
 	/**
 	 * 判断用户输入里面有没有关键字
+	 *
 	 * @return Predicate
 	 */
 	private Predicate<String> sqlInjectPredicate() {

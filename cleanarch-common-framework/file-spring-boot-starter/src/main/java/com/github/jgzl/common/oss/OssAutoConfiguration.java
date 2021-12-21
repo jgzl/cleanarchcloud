@@ -1,4 +1,5 @@
 package com.github.jgzl.common.oss;
+
 import com.github.jgzl.common.oss.http.OssEndpoint;
 import com.github.jgzl.common.oss.service.OssTemplate;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.Bean;
  * @author xuhang
  */
 @AllArgsConstructor
-@EnableConfigurationProperties({ OssProperties.class })
+@EnableConfigurationProperties({OssProperties.class})
 public class OssAutoConfiguration {
 
 	private final OssProperties properties;

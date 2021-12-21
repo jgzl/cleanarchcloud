@@ -30,7 +30,10 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.util.pattern.PathPattern;
 
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -73,7 +76,7 @@ public class PermitAllUrlResolver implements InitializingBean {
 				Inner method = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), Inner.class);
 				PatternsRequestCondition patternsCondition = info.getPatternsCondition();
 				PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
-				if (method!=null) {
+				if (method != null) {
 					filterPath(map, info, patternsCondition, pathPatternsCondition);
 				}
 				continue;
@@ -93,12 +96,12 @@ public class PermitAllUrlResolver implements InitializingBean {
 	}
 
 	private void filterPath(Map<RequestMappingInfo, HandlerMethod> map, RequestMappingInfo info, PatternsRequestCondition patternsCondition, PathPatternsRequestCondition pathPatternsCondition) {
-		if (patternsCondition!=null){
+		if (patternsCondition != null) {
 			for (String pattern : patternsCondition.getPatterns()) {
 				this.filterPath(pattern, info, map);
 			}
 		}
-		if(pathPatternsCondition!=null) {
+		if (pathPatternsCondition != null) {
 			for (PathPattern pattern : pathPatternsCondition.getPatterns()) {
 				this.filterPath(pattern.getPatternString(), info, map);
 			}
@@ -111,9 +114,10 @@ public class PermitAllUrlResolver implements InitializingBean {
 	 * 0. 暴露安全检查 1. 路径转换： 如果为restful(/xx/{xx}) --> /xx/* ant 表达式 2.
 	 * 构建表达式：允许暴露的接口|允许暴露的方法类型,允许暴露的方法类型 URL|GET,POST,DELETE,PUT
 	 * </p>
-	 * @param url mapping路径
+	 *
+	 * @param url  mapping路径
 	 * @param info 请求犯法
-	 * @param map 路由映射信息
+	 * @param map  路由映射信息
 	 */
 	private void filterPath(String url, RequestMappingInfo info, Map<RequestMappingInfo, HandlerMethod> map) {
 		// 安全检查
@@ -126,16 +130,16 @@ public class PermitAllUrlResolver implements InitializingBean {
 		String resultUrl = ReUtil.replaceAll(url, PATTERN, "*");
 		if (CollUtil.isEmpty(methodList)) {
 			ignoreUrls.add(resultUrl);
-		}
-		else {
+		} else {
 			ignoreUrls.add(String.format("%s|%s", resultUrl, CollUtil.join(methodList, StrUtil.COMMA)));
 		}
 	}
 
 	/**
 	 * 针对Pathvariable 请求安全检查。增加启动好使影响启动效率 请注意
+	 *
 	 * @param url 接口路径
-	 * @param rq 当前请求的元信息
+	 * @param rq  当前请求的元信息
 	 * @param map springmvc 接口列表
 	 */
 	private void security(String url, RequestMappingInfo rq, Map<RequestMappingInfo, HandlerMethod> map) {
@@ -155,13 +159,13 @@ public class PermitAllUrlResolver implements InitializingBean {
 			PatternsRequestCondition patternsCondition = info.getPatternsCondition();
 			PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
 
-			if (patternsCondition!=null){
+			if (patternsCondition != null) {
 				for (String pattern : patternsCondition.getPatterns()) {
 					// 跳过自身
 					tagInnerMethod(url, rq, map, info, pattern);
 				}
 			}
-			if(pathPatternsCondition!=null) {
+			if (pathPatternsCondition != null) {
 				for (PathPattern patternItem : pathPatternsCondition.getPatterns()) {
 					String pattern = patternItem.getPatternString();
 					// 跳过自身
@@ -187,6 +191,7 @@ public class PermitAllUrlResolver implements InitializingBean {
 
 	/**
 	 * 获取对外暴露的URL，注册到 spring security
+	 *
 	 * @param registry spring security context
 	 */
 	public void registry(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {

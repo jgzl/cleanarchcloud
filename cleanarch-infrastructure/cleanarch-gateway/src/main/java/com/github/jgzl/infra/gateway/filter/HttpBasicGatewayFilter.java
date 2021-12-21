@@ -25,8 +25,7 @@ public class HttpBasicGatewayFilter extends AbstractGatewayFilterFactory {
 		return (exchange, chain) -> {
 			if (hasAuth(exchange)) {
 				return chain.filter(exchange);
-			}
-			else {
+			} else {
 				ServerHttpResponse response = exchange.getResponse();
 				response.setStatusCode(HttpStatus.UNAUTHORIZED);
 				response.getHeaders().add(HttpHeaders.WWW_AUTHENTICATE, "Basic Realm=\"admin\"");
@@ -37,6 +36,7 @@ public class HttpBasicGatewayFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 简单的basic认证
+	 *
 	 * @param exchange 上下文
 	 * @return 是否有权限
 	 */

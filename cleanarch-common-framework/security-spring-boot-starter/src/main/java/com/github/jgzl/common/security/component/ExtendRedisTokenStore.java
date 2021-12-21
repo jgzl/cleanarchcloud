@@ -72,6 +72,16 @@ public class ExtendRedisTokenStore implements TokenStore {
 		}
 	}
 
+	private static String getApprovalKey(OAuth2Authentication authentication) {
+		String userName = authentication.getUserAuthentication() == null ? ""
+				: authentication.getUserAuthentication().getName();
+		return getApprovalKey(authentication.getOAuth2Request().getClientId(), userName);
+	}
+
+	private static String getApprovalKey(String clientId, String userName) {
+		return clientId + (userName == null ? "" : ":" + userName);
+	}
+
 	public void setAuthenticationKeyGenerator(AuthenticationKeyGenerator authenticationKeyGenerator) {
 		this.authenticationKeyGenerator = authenticationKeyGenerator;
 	}
@@ -187,12 +197,10 @@ public class ExtendRedisTokenStore implements TokenStore {
 					this.redisConnectionSet_2_0.invoke(conn, accessKey, serializedAccessToken);
 					this.redisConnectionSet_2_0.invoke(conn, authKey, serializedAuth);
 					this.redisConnectionSet_2_0.invoke(conn, authToAccessKey, serializedAccessToken);
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new RuntimeException(ex);
 				}
-			}
-			else {
+			} else {
 				conn.set(accessKey, serializedAccessToken);
 				conn.set(authKey, serializedAuth);
 				conn.set(authToAccessKey, serializedAccessToken);
@@ -212,8 +220,7 @@ public class ExtendRedisTokenStore implements TokenStore {
 				conn.expire(authToAccessKey, seconds);
 				conn.expire(clientId, seconds);
 				conn.expire(approvalKey, seconds);
-			}
-			else {
+			} else {
 				conn.zAdd(clientId, -1, serializedAccessToken);
 				if (!authentication.isClientOnly()) {
 					conn.zAdd(approvalKey, -1, serializedAccessToken);
@@ -226,12 +233,10 @@ public class ExtendRedisTokenStore implements TokenStore {
 				if (springDataRedis_2_0) {
 					try {
 						this.redisConnectionSet_2_0.invoke(conn, refreshToAccessKey, auth);
-					}
-					catch (Exception ex) {
+					} catch (Exception ex) {
 						throw new RuntimeException(ex);
 					}
-				}
-				else {
+				} else {
 					conn.set(refreshToAccessKey, auth);
 				}
 				if (refreshToken instanceof ExpiringOAuth2RefreshToken) {
@@ -246,16 +251,6 @@ public class ExtendRedisTokenStore implements TokenStore {
 			}
 			conn.closePipeline();
 		}
-	}
-
-	private static String getApprovalKey(OAuth2Authentication authentication) {
-		String userName = authentication.getUserAuthentication() == null ? ""
-				: authentication.getUserAuthentication().getName();
-		return getApprovalKey(authentication.getOAuth2Request().getClientId(), userName);
-	}
-
-	private static String getApprovalKey(String clientId, String userName) {
-		return clientId + (userName == null ? "" : ":" + userName);
 	}
 
 	@Override
@@ -314,12 +309,10 @@ public class ExtendRedisTokenStore implements TokenStore {
 				try {
 					this.redisConnectionSet_2_0.invoke(conn, refreshKey, serializedRefreshToken);
 					this.redisConnectionSet_2_0.invoke(conn, refreshAuthKey, serialize(authentication));
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new RuntimeException(ex);
 				}
-			}
-			else {
+			} else {
 				conn.set(refreshKey, serializedRefreshToken);
 				conn.set(refreshAuthKey, serialize(authentication));
 			}
@@ -418,6 +411,7 @@ public class ExtendRedisTokenStore implements TokenStore {
 	 * being stored into the RedisTokenStore before whole key gets expired, the expiration
 	 * is prolonged and the key is not effectively deleted. To do "garbage collection"
 	 * this method should be called once upon a time.
+	 *
 	 * @return how many items were removed
 	 */
 	public long doMaintenance() {

@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
+import com.github.jgzl.common.xss.core.XssCleanIgnore;
 import com.github.jgzl.infra.codegen.entity.GenDatasourceConf;
 import com.github.jgzl.infra.codegen.service.GenDatasourceConfService;
-import com.github.jgzl.common.xss.core.XssCleanIgnore;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,8 @@ public class GenDsConfController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page           分页对象
 	 * @param datasourceConf 数据源表
 	 * @return
 	 */
@@ -36,6 +37,7 @@ public class GenDsConfController {
 
 	/**
 	 * 查询全部数据源
+	 *
 	 * @return
 	 */
 	@GetMapping("/list")
@@ -45,6 +47,7 @@ public class GenDsConfController {
 
 	/**
 	 * 通过id查询数据源表
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -55,6 +58,7 @@ public class GenDsConfController {
 
 	/**
 	 * 新增数据源表
+	 *
 	 * @param datasourceConf 数据源表
 	 * @return R
 	 */
@@ -67,6 +71,7 @@ public class GenDsConfController {
 
 	/**
 	 * 修改数据源表
+	 *
 	 * @param conf 数据源表
 	 * @return R
 	 */
@@ -79,6 +84,7 @@ public class GenDsConfController {
 
 	/**
 	 * 通过id删除数据源表
+	 *
 	 * @param id id
 	 * @return R
 	 */

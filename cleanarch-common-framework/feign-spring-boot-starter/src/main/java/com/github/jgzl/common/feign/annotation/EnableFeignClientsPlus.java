@@ -1,8 +1,10 @@
 package com.github.jgzl.common.feign.annotation;
+
 import org.springframework.cloud.openfeign.CustomFeignClientsRegistrar;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.context.annotation.Import;
+
 import java.lang.annotation.*;
 
 /**
@@ -20,6 +22,7 @@ public @interface EnableFeignClientsPlus {
 	 * Alias for the {@link #basePackages()} attribute. Allows for more concise annotation
 	 * declarations e.g.: {@code @ComponentScan("org.my.pkg")} instead of
 	 * {@code @ComponentScan(basePackages="org.my.pkg")}.
+	 *
 	 * @return the array of 'basePackages'.
 	 */
 	String[] value() default {};
@@ -31,9 +34,10 @@ public @interface EnableFeignClientsPlus {
 	 * <p>
 	 * Use {@link #basePackageClasses()} for a type-safe alternative to String-based
 	 * package names.
+	 *
 	 * @return the array of 'basePackages'.
 	 */
-	String[] basePackages() default { "com.github.jgzl.common","com.github.jgzl.infra","com.github.jgzl.application" };
+	String[] basePackages() default {"com.github.jgzl.common", "com.github.jgzl.infra", "com.github.jgzl.application"};
 
 	/**
 	 * Type-safe alternative to {@link #basePackages()} for specifying the packages to
@@ -41,6 +45,7 @@ public @interface EnableFeignClientsPlus {
 	 * <p>
 	 * Consider creating a special no-op marker class or interface in each package that
 	 * serves no purpose other than being referenced by this attribute.
+	 *
 	 * @return the array of 'basePackageClasses'.
 	 */
 	Class<?>[] basePackageClasses() default {};
@@ -50,14 +55,15 @@ public @interface EnableFeignClientsPlus {
 	 * <code>@Bean</code> definition for the pieces that make up the client, for instance
 	 * {@link feign.codec.Decoder}, {@link feign.codec.Encoder}, {@link feign.Contract}.
 	 *
-	 * @see FeignClientsConfiguration for the defaults
 	 * @return list of default configurations
+	 * @see FeignClientsConfiguration for the defaults
 	 */
 	Class<?>[] defaultConfiguration() default {};
 
 	/**
 	 * List of classes annotated with @FeignClient. If not empty, disables classpath
 	 * scanning.
+	 *
 	 * @return list of FeignClient classes
 	 */
 	Class<?>[] clients() default {};

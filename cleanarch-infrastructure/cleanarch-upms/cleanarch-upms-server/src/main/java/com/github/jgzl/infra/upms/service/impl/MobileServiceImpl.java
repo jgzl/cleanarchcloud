@@ -36,6 +36,7 @@ public class MobileServiceImpl implements MobileService {
 
 	/**
 	 * 发送手机验证码 TODO: 调用短信网关发送验证码,测试返回前端
+	 *
 	 * @param mobile mobile
 	 * @return code
 	 */
@@ -60,7 +61,7 @@ public class MobileServiceImpl implements MobileService {
 		String code = RandomUtil.randomNumbers(Integer.parseInt(SecurityConstants.CODE_SIZE));
 		log.debug("手机号生成验证码成功:{},{}", mobile, code);
 		redisson.getBucket(CacheConstants.DEFAULT_CODE_KEY + LoginTypeEnum.SMS.getType() + StringPool.AT + mobile)
-				.set(code,SecurityConstants.CODE_TIME, TimeUnit.SECONDS);
+				.set(code, SecurityConstants.CODE_TIME, TimeUnit.SECONDS);
 		return R.ok(Boolean.TRUE, code);
 	}
 

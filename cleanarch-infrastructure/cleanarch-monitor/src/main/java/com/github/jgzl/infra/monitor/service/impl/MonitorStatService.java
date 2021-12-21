@@ -60,8 +60,48 @@ public class MonitorStatService implements DruidStatServiceMBean {
 	@Autowired
 	private DruidMonitorConfigurer.MonitorProperties monitorProperties;
 
+	public static String returnJSONResult(int resultCode, Object content) {
+		Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
+		dataMap.put("ResultCode", resultCode);
+		dataMap.put("Content", content);
+		return JSONUtils.toJSONString(dataMap);
+	}
+
+	/**
+	 * 处理请求参数
+	 *
+	 * @param url
+	 * @return
+	 */
+	public static Map<String, String> getParameters(String url) {
+		if (url == null || (url = url.trim()).length() == 0) {
+			return Collections.emptyMap();
+		}
+
+		String parametersStr = StringUtils.subString(url, "?", null);
+		if (parametersStr == null || parametersStr.length() == 0) {
+			return Collections.emptyMap();
+		}
+
+		String[] parametersArray = parametersStr.split("&");
+		Map<String, String> parameters = new LinkedHashMap<String, String>();
+
+		for (String parameterStr : parametersArray) {
+			int index = parameterStr.indexOf("=");
+			if (index <= 0) {
+				continue;
+			}
+
+			String name = parameterStr.substring(0, index);
+			String value = parameterStr.substring(index + 1);
+			parameters.put(name, value);
+		}
+		return parameters;
+	}
+
 	/**
 	 * 获取所有服务信息
+	 *
 	 * @return
 	 */
 	public Map<String, ServiceNode> getAllServiceNodeMap() {
@@ -97,6 +137,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 
 	/**
 	 * 获取指定服务名的所有节点
+	 *
 	 * @param parameters
 	 * @return
 	 */
@@ -211,13 +252,6 @@ public class MonitorStatService implements DruidStatServiceMBean {
 		return returnJSONResult(RESULT_CODE_ERROR, "Do not support this request, please contact with administrator.");
 	}
 
-	public static String returnJSONResult(int resultCode, Object content) {
-		Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
-		dataMap.put("ResultCode", resultCode);
-		dataMap.put("Content", content);
-		return JSONUtils.toJSONString(dataMap);
-	}
-
 	public String getWallStatMap(Map<String, String> parameters) {
 		Map<String, ServiceNode> allNodeMap = getServiceAllNodeMap(parameters);
 		List<WallResult> countResult = new ArrayList<>();
@@ -292,6 +326,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 
 	/**
 	 * 获取sql详情
+	 *
 	 * @param id
 	 * @param serviceId consul获取的服务id
 	 * @return
@@ -315,6 +350,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 
 	/**
 	 * SQL监控列表
+	 *
 	 * @param parameters
 	 * @return
 	 */
@@ -353,6 +389,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 
 	/**
 	 * 数据源监控
+	 *
 	 * @param
 	 * @return
 	 */
@@ -385,6 +422,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 
 	/**
 	 * 拼接url
+	 *
 	 * @param parameters
 	 * @param serviceNode
 	 * @param prefix
@@ -408,39 +446,8 @@ public class MonitorStatService implements DruidStatServiceMBean {
 		return stringBuilder.toString();
 	}
 
-	/**
-	 * 处理请求参数
-	 * @param url
-	 * @return
-	 */
-	public static Map<String, String> getParameters(String url) {
-		if (url == null || (url = url.trim()).length() == 0) {
-			return Collections.emptyMap();
-		}
-
-		String parametersStr = StringUtils.subString(url, "?", null);
-		if (parametersStr == null || parametersStr.length() == 0) {
-			return Collections.<String, String>emptyMap();
-		}
-
-		String[] parametersArray = parametersStr.split("&");
-		Map<String, String> parameters = new LinkedHashMap<String, String>();
-
-		for (String parameterStr : parametersArray) {
-			int index = parameterStr.indexOf("=");
-			if (index <= 0) {
-				continue;
-			}
-
-			String name = parameterStr.substring(0, index);
-			String value = parameterStr.substring(index + 1);
-			parameters.put(name, value);
-		}
-		return parameters;
-	}
-
 	private List<Map<String, Object>> comparatorOrderBy(List<Map<String, Object>> array,
-			Map<String, String> parameters) {
+														Map<String, String> parameters) {
 		// when open the stat page before executing some sql
 		if (array == null || array.isEmpty()) {
 			return null;
@@ -455,8 +462,7 @@ public class MonitorStatService implements DruidStatServiceMBean {
 			orderType = DEFAULT_ORDER_TYPE;
 			page = DEFAULT_PAGE;
 			perPageCount = DEFAULT_PER_PAGE_COUNT;
-		}
-		else {
+		} else {
 			orderBy = parameters.get("orderBy");
 			orderType = parameters.get("orderType");
 			String pageParam = parameters.get("page");

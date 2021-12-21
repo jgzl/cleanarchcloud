@@ -44,6 +44,7 @@ public class SysUserController {
 
 	/**
 	 * 获取指定用户全部信息
+	 *
 	 * @return 用户信息
 	 */
 	@Inner
@@ -58,9 +59,10 @@ public class SysUserController {
 
 	/**
 	 * 获取当前用户全部信息
+	 *
 	 * @return 用户信息
 	 */
-	@GetMapping(value = { "/info" })
+	@GetMapping(value = {"/info"})
 	public R info() {
 		String username = SecurityUtils.getUser().getUsername();
 		SysUser user = userService.getOne(Wrappers.<SysUser>query().lambda().eq(SysUser::getUsername, username));
@@ -72,6 +74,7 @@ public class SysUserController {
 
 	/**
 	 * 通过ID查询用户信息
+	 *
 	 * @param id ID
 	 * @return 用户信息
 	 */
@@ -82,6 +85,7 @@ public class SysUserController {
 
 	/**
 	 * 根据用户名查询用户信息
+	 *
 	 * @param username 用户名
 	 * @return
 	 */
@@ -94,6 +98,7 @@ public class SysUserController {
 
 	/**
 	 * 删除用户信息
+	 *
 	 * @param id ID
 	 * @return R
 	 */
@@ -109,6 +114,7 @@ public class SysUserController {
 
 	/**
 	 * 添加用户
+	 *
 	 * @param userDto 用户信息
 	 * @return success/false
 	 */
@@ -121,6 +127,7 @@ public class SysUserController {
 
 	/**
 	 * 更新用户信息
+	 *
 	 * @param userDto 用户信息
 	 * @return R
 	 */
@@ -133,7 +140,8 @@ public class SysUserController {
 
 	/**
 	 * 分页查询用户
-	 * @param page 参数集
+	 *
+	 * @param page    参数集
 	 * @param userDTO 查询参数列表
 	 * @return 用户集合
 	 */
@@ -144,6 +152,7 @@ public class SysUserController {
 
 	/**
 	 * 修改个人信息
+	 *
 	 * @param userDto userDto
 	 * @return success/false
 	 */
@@ -164,6 +173,7 @@ public class SysUserController {
 
 	/**
 	 * 导出excel 表格
+	 *
 	 * @param userDTO 查询条件
 	 * @return
 	 */
@@ -176,7 +186,8 @@ public class SysUserController {
 
 	/**
 	 * 导入用户
-	 * @param excelVOList 用户列表
+	 *
+	 * @param excelVOList   用户列表
 	 * @param bindingResult 错误信息列表
 	 * @return R
 	 */

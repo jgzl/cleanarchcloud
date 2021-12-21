@@ -28,7 +28,8 @@ public class GenFormConfController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page     分页对象
 	 * @param formConf 生成记录
 	 * @return
 	 */
@@ -40,6 +41,7 @@ public class GenFormConfController {
 
 	/**
 	 * 通过id查询生成记录
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -51,7 +53,8 @@ public class GenFormConfController {
 
 	/**
 	 * 通过id查询生成记录
-	 * @param dsName 数据源ID
+	 *
+	 * @param dsName    数据源ID
 	 * @param tableName tableName
 	 * @return R
 	 */
@@ -63,6 +66,7 @@ public class GenFormConfController {
 
 	/**
 	 * 新增生成记录
+	 *
 	 * @param formConf 生成记录
 	 * @return R
 	 */
@@ -76,6 +80,7 @@ public class GenFormConfController {
 
 	/**
 	 * 修改生成记录
+	 *
 	 * @param formConf 生成记录
 	 * @return R
 	 */
@@ -89,6 +94,7 @@ public class GenFormConfController {
 
 	/**
 	 * 通过id删除生成记录
+	 *
 	 * @param id id
 	 * @return R
 	 */

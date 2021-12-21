@@ -20,55 +20,55 @@ import java.util.Date;
  */
 @Slf4j
 public abstract class BaseWebSocketEndpoint {
-    /**
-     * 路径标识：目前使用token来代表
-     */
-    public static final String IDENTIFIER = "identifier";
+	/**
+	 * 路径标识：目前使用token来代表
+	 */
+	public static final String IDENTIFIER = "identifier";
 
-    public void connect(String identifier, Session session) {
-        try {
-            if (null == identifier || "".equals(identifier)) {
-                return;
-            }
-            WebSocketManager websocketManager = getWebSocketManager();
-            WebSocket webSocket = new WebSocket();
-            webSocket.setIdentifier(identifier);
-            webSocket.setSession(session);
-            webSocket.setLastHeart(new Date());
-            //像刷新这种，id一样，session不一样，后面的覆盖前面的
-            websocketManager.put(identifier, webSocket);
-            log.info("sessionId {} 身份标识 {} 连接成功", session.getId(), identifier);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-    }
+	public void connect(String identifier, Session session) {
+		try {
+			if (null == identifier || "".equals(identifier)) {
+				return;
+			}
+			WebSocketManager websocketManager = getWebSocketManager();
+			WebSocket webSocket = new WebSocket();
+			webSocket.setIdentifier(identifier);
+			webSocket.setSession(session);
+			webSocket.setLastHeart(new Date());
+			//像刷新这种，id一样，session不一样，后面的覆盖前面的
+			websocketManager.put(identifier, webSocket);
+			log.info("sessionId {} 身份标识 {} 连接成功", session.getId(), identifier);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
+	}
 
-    public void disconnect(String identifier) {
-        getWebSocketManager().remove(identifier);
-        log.info("session close");
-    }
+	public void disconnect(String identifier) {
+		getWebSocketManager().remove(identifier);
+		log.info("session close");
+	}
 
-    public void senderMessage(String identifier, String message) {
-        WebSocketManager webSocketManager = getWebSocketManager();
-        webSocketManager.sendMessage(identifier, message);
-    }
+	public void senderMessage(String identifier, String message) {
+		WebSocketManager webSocketManager = getWebSocketManager();
+		webSocketManager.sendMessage(identifier, message);
+	}
 
-    public void receiveMessage(String identifier, String message, Session session) {
-        WebSocketManager webSocketManager = getWebSocketManager();
-        //心跳监测
-        if (webSocketManager.isPing(identifier, message)) {
-            String pong = webSocketManager.pong(identifier, message);
-            WebSocketUtil.sendMessage(session, pong);
-            WebSocket webSocket = webSocketManager.get(identifier);
-            //更新心跳时间
-            if (null != webSocket) {
-                webSocket.setLastHeart(new Date());
-            }
-            return;
-        }
-        //收到其他消息的时候
-        webSocketManager.onMessage(identifier, message);
-    }
+	public void receiveMessage(String identifier, String message, Session session) {
+		WebSocketManager webSocketManager = getWebSocketManager();
+		//心跳监测
+		if (webSocketManager.isPing(identifier, message)) {
+			String pong = webSocketManager.pong(identifier, message);
+			WebSocketUtil.sendMessage(session, pong);
+			WebSocket webSocket = webSocketManager.get(identifier);
+			//更新心跳时间
+			if (null != webSocket) {
+				webSocket.setLastHeart(new Date());
+			}
+			return;
+		}
+		//收到其他消息的时候
+		webSocketManager.onMessage(identifier, message);
+	}
 
-    protected abstract WebSocketManager getWebSocketManager();
+	protected abstract WebSocketManager getWebSocketManager();
 }

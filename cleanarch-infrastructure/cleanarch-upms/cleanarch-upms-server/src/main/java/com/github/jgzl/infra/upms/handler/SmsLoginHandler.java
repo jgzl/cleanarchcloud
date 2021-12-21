@@ -21,6 +21,7 @@ public class SmsLoginHandler extends AbstractLoginHandler {
 
 	/**
 	 * 验证码登录传入为手机号 不用不处理
+	 *
 	 * @param mobile
 	 * @return
 	 */
@@ -31,6 +32,7 @@ public class SmsLoginHandler extends AbstractLoginHandler {
 
 	/**
 	 * 通过mobile 获取用户信息
+	 *
 	 * @param identify
 	 * @return
 	 */
@@ -47,7 +49,8 @@ public class SmsLoginHandler extends AbstractLoginHandler {
 
 	/**
 	 * 绑定逻辑
-	 * @param user 用户实体
+	 *
+	 * @param user     用户实体
 	 * @param identify 渠道返回唯一标识
 	 * @return
 	 */

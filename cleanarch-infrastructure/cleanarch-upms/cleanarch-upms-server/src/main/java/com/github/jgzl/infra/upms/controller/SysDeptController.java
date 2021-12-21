@@ -1,12 +1,12 @@
 package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.jgzl.common.core.util.R;
+import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.infra.upms.api.entity.SysDept;
 import com.github.jgzl.infra.upms.api.entity.SysDeptRelation;
 import com.github.jgzl.infra.upms.service.SysDeptRelationService;
 import com.github.jgzl.infra.upms.service.SysDeptService;
-import com.github.jgzl.common.core.util.R;
-import com.github.jgzl.common.log.annotation.SysLog;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,6 +35,7 @@ public class SysDeptController {
 
 	/**
 	 * 通过ID查询
+	 *
 	 * @param id ID
 	 * @return SysDept
 	 */
@@ -45,6 +46,7 @@ public class SysDeptController {
 
 	/**
 	 * 返回树形菜单集合
+	 *
 	 * @return 树形菜单
 	 */
 	@GetMapping(value = "/tree")
@@ -54,6 +56,7 @@ public class SysDeptController {
 
 	/**
 	 * 添加
+	 *
 	 * @param sysDept 实体
 	 * @return success/false
 	 */
@@ -66,6 +69,7 @@ public class SysDeptController {
 
 	/**
 	 * 删除
+	 *
 	 * @param id ID
 	 * @return success/false
 	 */
@@ -78,6 +82,7 @@ public class SysDeptController {
 
 	/**
 	 * 编辑
+	 *
 	 * @param sysDept 实体
 	 * @return success/false
 	 */
@@ -91,6 +96,7 @@ public class SysDeptController {
 
 	/**
 	 * 查收子级列表
+	 *
 	 * @return 返回子级
 	 */
 	@GetMapping(value = "/getDescendantList/{deptId}")

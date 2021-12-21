@@ -1,4 +1,5 @@
 package com.github.jgzl.infra.gateway.filter;
+
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -9,14 +10,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR;
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.addOriginalRequestUrl;
+
 /**
  * 全局拦截器，作用所有的微服务
- *     1. 对请求头中参数进行处理 from 参数进行清洗
- *     2. 重写StripPrefix = 1,支持全局
+ * 1. 对请求头中参数进行处理 from 参数进行清洗
+ * 2. 重写StripPrefix = 1,支持全局
+ *
  * @author lihaifeng
  * @date 2020/10/8
  */
@@ -26,8 +31,9 @@ public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
 	/**
 	 * Process the Web request and (optionally) delegate to the next {@code WebFilter}
 	 * through the given {@link GatewayFilterChain}.
+	 *
 	 * @param exchange the current server exchange
-	 * @param chain provides a way to delegate to the next filter
+	 * @param chain    provides a way to delegate to the next filter
 	 * @return {@code Mono<Void>} to indicate when request processing is complete
 	 */
 	@Override
@@ -44,6 +50,7 @@ public class StripRequestGlobalFilter implements GlobalFilter, Ordered {
 		exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, newRequest.getURI());
 		return chain.filter(exchange.mutate().request(newRequest.mutate().build()).build());
 	}
+
 	@Override
 	public int getOrder() {
 		return -1000;

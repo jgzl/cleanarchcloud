@@ -16,13 +16,13 @@ import java.util.Map;
  * @author lihaifeng
  */
 public class RemoveAction implements Action {
-    @Override
-    public void doMessage(WebSocketManager manager, JSONObject object) {
-        if (!object.containsKey(IDENTIFIER)) {
-            return;
-        }
-        String identifier = object.getStr(IDENTIFIER);
-        Map<String, WebSocket> localWebSocketMap = manager.localWebSocketMap();
-        localWebSocketMap.remove(identifier);
-    }
+	@Override
+	public void doMessage(WebSocketManager manager, JSONObject object) {
+		if (!object.containsKey(IDENTIFIER)) {
+			return;
+		}
+		String identifier = object.getStr(IDENTIFIER);
+		Map<String, WebSocket> localWebSocketMap = manager.localWebSocketMap();
+		localWebSocketMap.remove(identifier);
+	}
 }

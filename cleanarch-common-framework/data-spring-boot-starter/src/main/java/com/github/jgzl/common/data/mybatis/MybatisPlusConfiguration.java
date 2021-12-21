@@ -35,6 +35,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * 增加请求参数解析器，对请求中的参数注入SQL 检查
+	 *
 	 * @param resolverList
 	 */
 	@Override
@@ -44,6 +45,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * 默认数据权限处理器
+	 *
 	 * @return ExtendDefaultDataScopeHandle
 	 */
 	@Bean
@@ -55,6 +57,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * mybatis plus 拦截器配置
+	 *
 	 * @return ExtendDefaultDatascopeHandle
 	 */
 	@Bean
@@ -78,6 +81,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * 创建租户维护处理器对象
+	 *
 	 * @return 处理后的租户维护处理器
 	 */
 	@Bean
@@ -88,6 +92,7 @@ public class MybatisPlusConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * 扩展 mybatis-plus baseMapper 支持数据权限
+	 *
 	 * @return
 	 */
 	@Bean

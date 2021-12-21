@@ -18,21 +18,21 @@ import java.io.IOException;
 /**
  * @author lihaifeng
  * @date 2021/2/7
- *
+ * <p>
  * 增强成功回调增加租户上下文避免极端情况下丢失问题
  * @see SavedRequestAwareAuthenticationSuccessHandler
  */
 @Slf4j
 public class TenantSavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-	private RequestCache requestCache = new HttpSessionRequestCache();
+	private final RequestCache requestCache = new HttpSessionRequestCache();
 
 	public TenantSavedRequestAwareAuthenticationSuccessHandler() {
 	}
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws ServletException, IOException {
+										Authentication authentication) throws ServletException, IOException {
 		SavedRequest savedRequest = this.requestCache.getRequest(request, response);
 		if (savedRequest == null) {
 			super.onAuthenticationSuccess(request, response, authentication);
@@ -41,8 +41,7 @@ public class TenantSavedRequestAwareAuthenticationSuccessHandler extends SimpleU
 		if (isAlwaysUseDefaultTargetUrl()) {
 			this.requestCache.removeRequest(request, response);
 			super.onAuthenticationSuccess(request, response, authentication);
-		}
-		else {
+		} else {
 			this.clearAuthenticationAttributes(request);
 			// 增加租户信息
 			String targetUrl = savedRequest.getRedirectUrl() + "&TENANT-ID="

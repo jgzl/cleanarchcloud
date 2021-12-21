@@ -54,12 +54,9 @@ import java.util.function.Function;
 @SuppressWarnings("all")
 public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 
-	private final List<HttpMessageReader<?>> messageReaders = HandlerStrategies.withDefaults().messageReaders();
-
 	private static final String PASSWORD = "password";
-
 	private static final String KEY_ALGORITHM = "AES";
-
+	private final List<HttpMessageReader<?>> messageReaders = HandlerStrategies.withDefaults().messageReaders();
 	private final RedissonClient redisson;
 
 	private final GatewayConfigProperties gatewayConfig;
@@ -108,6 +105,7 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 根据请求的clientId 查询客户端配置是否是加密传输
+	 *
 	 * @param request 请求上下文
 	 * @return true 加密传输 、 false 原文传输
 	 */
@@ -135,6 +133,7 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 原文解密
+	 *
 	 * @return
 	 */
 	private Function decryptAES() {
@@ -150,8 +149,7 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 				String password = aes.decryptStr(inParamsMap.get(PASSWORD));
 				// 返回修改后报文字符
 				inParamsMap.put(PASSWORD, password);
-			}
-			else {
+			} else {
 				log.error("非法请求数据:{}", s);
 			}
 			return Mono.just(HttpUtil.toParams(inParamsMap));
@@ -160,10 +158,11 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 
 	/**
 	 * 报文转换
+	 *
 	 * @return
 	 */
 	private ServerHttpRequestDecorator decorate(ServerWebExchange exchange, HttpHeaders headers,
-			CachedBodyOutputMessage outputMessage) {
+												CachedBodyOutputMessage outputMessage) {
 		return new ServerHttpRequestDecorator(exchange.getRequest()) {
 			@Override
 			public HttpHeaders getHeaders() {
@@ -172,8 +171,7 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 				httpHeaders.putAll(super.getHeaders());
 				if (contentLength > 0) {
 					httpHeaders.setContentLength(contentLength);
-				}
-				else {
+				} else {
 					httpHeaders.set(HttpHeaders.TRANSFER_ENCODING, "chunked");
 				}
 				return httpHeaders;

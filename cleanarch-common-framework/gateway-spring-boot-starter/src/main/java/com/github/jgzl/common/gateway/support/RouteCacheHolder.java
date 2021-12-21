@@ -17,10 +17,11 @@ import java.util.List;
 @UtilityClass
 public class RouteCacheHolder {
 
-	private Cache<String, RouteDefinitionVo> cache = CacheUtil.newLFUCache(50);
+	private final Cache<String, RouteDefinitionVo> cache = CacheUtil.newLFUCache(50);
 
 	/**
 	 * 获取缓存的全部对象
+	 *
 	 * @return routeList
 	 */
 	public List<RouteDefinitionVo> getRouteList() {
@@ -31,6 +32,7 @@ public class RouteCacheHolder {
 
 	/**
 	 * 更新缓存
+	 *
 	 * @param routeList 缓存列表
 	 */
 	public void setRouteList(List<RouteDefinitionVo> routeList) {

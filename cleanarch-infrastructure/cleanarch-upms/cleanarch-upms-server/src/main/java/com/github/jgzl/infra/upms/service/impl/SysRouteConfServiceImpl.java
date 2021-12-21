@@ -45,6 +45,7 @@ public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, Sys
 
 	/**
 	 * 更新路由信息
+	 *
 	 * @param routes 路由信息
 	 * @return
 	 */
@@ -131,8 +132,7 @@ public class SysRouteConfServiceImpl extends ServiceImpl<SysRouteConfMapper, Sys
 
 			// 通知网关重置路由
 			redisson.getTopic(CacheConstants.ROUTE_JVM_RELOAD_TOPIC).publish("路由信息,网关缓存更新");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("路由配置解析失败", e);
 			// 回滚路由，重新加载即可
 			this.applicationEventPublisher.publishEvent(new DynamicRouteInitEvent(this));

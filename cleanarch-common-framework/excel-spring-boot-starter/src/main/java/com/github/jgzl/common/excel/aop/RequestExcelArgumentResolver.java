@@ -42,7 +42,7 @@ public class RequestExcelArgumentResolver implements HandlerMethodArgumentResolv
 	@Override
 	@SneakyThrows
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer modelAndViewContainer,
-			NativeWebRequest webRequest, WebDataBinderFactory webDataBinderFactory) {
+								  NativeWebRequest webRequest, WebDataBinderFactory webDataBinderFactory) {
 		Class<?> parameterType = parameter.getParameterType();
 		if (!parameterType.isAssignableFrom(List.class)) {
 			throw new IllegalArgumentException(
@@ -63,8 +63,7 @@ public class RequestExcelArgumentResolver implements HandlerMethodArgumentResolv
 			MultipartFile file = ((MultipartRequest) request).getFile(requestExcel.fileName());
 			assert file != null;
 			inputStream = file.getInputStream();
-		}
-		else {
+		} else {
 			inputStream = request.getInputStream();
 		}
 

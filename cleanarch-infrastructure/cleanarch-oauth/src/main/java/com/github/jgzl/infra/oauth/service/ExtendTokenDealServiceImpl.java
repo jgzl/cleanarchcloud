@@ -52,6 +52,7 @@ public class ExtendTokenDealServiceImpl {
 
 	/**
 	 * 删除 请求令牌 和 刷新令牌
+	 *
 	 * @param token 请求令牌
 	 * @return R
 	 */
@@ -80,7 +81,8 @@ public class ExtendTokenDealServiceImpl {
 
 	/**
 	 * 根据用户名查询 令牌相关信息
-	 * @param page 分页信息
+	 *
+	 * @param page     分页信息
 	 * @param username 用户名
 	 * @return R
 	 */
@@ -96,6 +98,7 @@ public class ExtendTokenDealServiceImpl {
 
 	/**
 	 * 分页查询token 列表
+	 *
 	 * @param page page
 	 * @return
 	 */
@@ -108,17 +111,17 @@ public class ExtendTokenDealServiceImpl {
 		RKeys keys = redisson.getKeys();
 		List<String> allKeyList = Lists.newArrayList();
 		while (true) {
-			Iterable<String> pages = keys.getKeysWithLimit(key,1000);
+			Iterable<String> pages = keys.getKeysWithLimit(key, 1000);
 			if (CollUtil.isEmpty(pages)) {
 				break;
-			}else {
+			} else {
 				Iterator<String> iterator = pages.iterator();
 				if (iterator.hasNext()) {
 					allKeyList.add(iterator.next());
 				}
 			}
 		}
-		List<String> pageKeyList = allKeyList.subList((int)((pageNum - 1) * pageSize),(int)(pageNum * pageSize));
+		List<String> pageKeyList = allKeyList.subList((int) ((pageNum - 1) * pageSize), (int) (pageNum * pageSize));
 		Map<String, Object> resultMap = redisson.getBuckets().get(ArrayUtil.toArray(pageKeyList, String.class));
 		page.setRecords(Lists.newArrayList(resultMap.values()));
 		page.setTotal(allKeyList.size());

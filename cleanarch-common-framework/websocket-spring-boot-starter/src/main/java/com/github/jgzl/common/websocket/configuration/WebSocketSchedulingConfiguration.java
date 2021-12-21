@@ -27,17 +27,17 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableConfigurationProperties(WebSocketProperties.class)
 public class WebSocketSchedulingConfiguration {
 
-    private final WebSocketProperties properties;
-    private final WebSocketManager webSocketManager;
-    private final WebSocketHeartBeatChecker webSocketHeartBeatChecker;
+	private final WebSocketProperties properties;
+	private final WebSocketManager webSocketManager;
+	private final WebSocketHeartBeatChecker webSocketHeartBeatChecker;
 
-    /**
-     * 定时检测 WebSocket 的心跳
-     */
-    @Scheduled(cron = "${spring.websocket.heart-check.trigger}")
-    public void webSocketHeartCheckJob() {
-        webSocketHeartBeatChecker.check(webSocketManager, properties.getTimeSpan(), properties.getErrorToleration(), (webSocket) -> {
-            log.info("[心跳检测] - {}", webSocket.toString());
-        });
-    }
+	/**
+	 * 定时检测 WebSocket 的心跳
+	 */
+	@Scheduled(cron = "${spring.websocket.heart-check.trigger}")
+	public void webSocketHeartCheckJob() {
+		webSocketHeartBeatChecker.check(webSocketManager, properties.getTimeSpan(), properties.getErrorToleration(), (webSocket) -> {
+			log.info("[心跳检测] - {}", webSocket.toString());
+		});
+	}
 }

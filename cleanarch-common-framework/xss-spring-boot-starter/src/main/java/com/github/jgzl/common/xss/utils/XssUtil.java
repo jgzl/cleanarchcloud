@@ -37,6 +37,7 @@ public class XssUtil {
 
 	/**
 	 * trim 字符串
+	 *
 	 * @param text text
 	 * @return 清理后的 text
 	 */
@@ -46,6 +47,7 @@ public class XssUtil {
 
 	/**
 	 * xss 清理
+	 *
 	 * @param html html
 	 * @return 清理后的 html
 	 */

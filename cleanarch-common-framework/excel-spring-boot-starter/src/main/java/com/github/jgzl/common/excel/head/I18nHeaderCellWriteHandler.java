@@ -33,6 +33,10 @@ public class I18nHeaderCellWriteHandler implements CellWriteHandler {
 	 * 国际化翻译
 	 */
 	private final PropertyPlaceholderHelper.PlaceholderResolver placeholderResolver;
+	/**
+	 * 占位符处理
+	 */
+	private final PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("{", "}");
 
 	public I18nHeaderCellWriteHandler(MessageSource messageSource) {
 		this.messageSource = messageSource;
@@ -40,14 +44,9 @@ public class I18nHeaderCellWriteHandler implements CellWriteHandler {
 				LocaleContextHolder.getLocale());
 	}
 
-	/**
-	 * 占位符处理
-	 */
-	private final PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("{", "}");
-
 	@Override
 	public void beforeCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Row row,
-			Head head, Integer columnIndex, Integer relativeRowIndex, Boolean isHead) {
+								 Head head, Integer columnIndex, Integer relativeRowIndex, Boolean isHead) {
 		if (isHead) {
 			List<String> originHeadNameList = head.getHeadNameList();
 			if (CollectionUtils.isNotEmpty(originHeadNameList)) {
@@ -62,19 +61,19 @@ public class I18nHeaderCellWriteHandler implements CellWriteHandler {
 
 	@Override
 	public void afterCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Cell cell,
-			Head head, Integer relativeRowIndex, Boolean isHead) {
+								Head head, Integer relativeRowIndex, Boolean isHead) {
 
 	}
 
 	@Override
 	public void afterCellDataConverted(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder,
-			CellData cellData, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+									   CellData cellData, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
 
 	}
 
 	@Override
 	public void afterCellDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder,
-			List<CellData> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+								 List<CellData> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
 
 	}
 

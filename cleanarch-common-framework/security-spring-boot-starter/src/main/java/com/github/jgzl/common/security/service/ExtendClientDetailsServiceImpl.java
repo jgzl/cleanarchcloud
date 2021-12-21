@@ -4,10 +4,10 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
-import com.github.jgzl.infra.upms.api.feign.RemoteClientDetailsService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.constant.SecurityConstants;
+import com.github.jgzl.infra.upms.api.entity.SysOauthClientDetails;
+import com.github.jgzl.infra.upms.api.feign.RemoteClientDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -36,6 +36,7 @@ public class ExtendClientDetailsServiceImpl implements ClientDetailsService {
 
 	/**
 	 * 重写原生方法支持redis缓存
+	 *
 	 * @param clientId
 	 * @return ClientDetails
 	 * @throws InvalidClientException
@@ -56,6 +57,7 @@ public class ExtendClientDetailsServiceImpl implements ClientDetailsService {
 	/**
 	 * 客户端类型转化 参考
 	 * {@link org.springframework.security.oauth2.provider.client.JdbcClientDetailsService}
+	 *
 	 * @param origin 数据库保存参数
 	 * @return target oauth 类型客户端参数
 	 */
@@ -103,8 +105,7 @@ public class ExtendClientDetailsServiceImpl implements ClientDetailsService {
 				@SuppressWarnings("unchecked")
 				Map<String, Object> additionalInformation = JSONUtil.toBean(json, Map.class);
 				target.setAdditionalInformation(additionalInformation);
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				log.warn("Could not decode JSON for additional information: " + json, e);
 			}
 		}

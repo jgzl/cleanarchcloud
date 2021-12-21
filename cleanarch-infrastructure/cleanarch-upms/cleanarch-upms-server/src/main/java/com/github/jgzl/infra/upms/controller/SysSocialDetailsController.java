@@ -2,11 +2,11 @@ package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.upms.api.entity.SysSocialDetails;
-import com.github.jgzl.infra.upms.service.SysSocialDetailsService;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.common.security.annotation.Inner;
+import com.github.jgzl.infra.upms.api.entity.SysSocialDetails;
+import com.github.jgzl.infra.upms.service.SysSocialDetailsService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +30,8 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 社交登录账户简单分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page             分页对象
 	 * @param sysSocialDetails 社交登录
 	 * @return
 	 */
@@ -41,6 +42,7 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 信息
+	 *
 	 * @param type 类型
 	 * @return R
 	 */
@@ -52,6 +54,7 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 保存
+	 *
 	 * @param sysSocialDetails
 	 * @return R
 	 */
@@ -64,6 +67,7 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 修改
+	 *
 	 * @param sysSocialDetails
 	 * @return R
 	 */
@@ -77,6 +81,7 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 删除
+	 *
 	 * @param id
 	 * @return R
 	 */
@@ -89,6 +94,7 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 通过社交账号、手机号查询用户、角色信息
+	 *
 	 * @param inStr appid@code
 	 * @return
 	 */
@@ -100,8 +106,9 @@ public class SysSocialDetailsController {
 
 	/**
 	 * 绑定社交账号
+	 *
 	 * @param state 类型
-	 * @param code code
+	 * @param code  code
 	 * @return
 	 */
 	@PostMapping("/bind")

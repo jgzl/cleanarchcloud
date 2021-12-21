@@ -36,8 +36,7 @@ public class DefaultAnalysisEventListener extends ListAnalysisEventListener<Obje
 			Set<String> messageSet = violations.stream().map(ConstraintViolation::getMessage)
 					.collect(Collectors.toSet());
 			errorMessageList.add(new ErrorMessage(lineNum, messageSet));
-		}
-		else {
+		} else {
 			list.add(o);
 		}
 	}

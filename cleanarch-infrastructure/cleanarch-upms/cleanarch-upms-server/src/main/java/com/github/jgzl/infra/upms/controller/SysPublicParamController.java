@@ -2,11 +2,11 @@ package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
-import com.github.jgzl.infra.upms.service.SysPublicParamService;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.common.security.annotation.Inner;
+import com.github.jgzl.infra.upms.api.entity.SysPublicParam;
+import com.github.jgzl.infra.upms.service.SysPublicParamService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -29,6 +29,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 通过key查询公共参数值
+	 *
 	 * @param publicKey
 	 * @return
 	 */
@@ -41,7 +42,8 @@ public class SysPublicParamController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page           分页对象
 	 * @param sysPublicParam 公共参数
 	 * @return
 	 */
@@ -53,6 +55,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 通过id查询公共参数
+	 *
 	 * @param publicId id
 	 * @return R
 	 */
@@ -64,6 +67,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 新增公共参数
+	 *
 	 * @param sysPublicParam 公共参数
 	 * @return R
 	 */
@@ -77,6 +81,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 修改公共参数
+	 *
 	 * @param sysPublicParam 公共参数
 	 * @return R
 	 */
@@ -90,6 +95,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 通过id删除公共参数
+	 *
 	 * @param publicId id
 	 * @return R
 	 */
@@ -103,6 +109,7 @@ public class SysPublicParamController {
 
 	/**
 	 * 同步参数
+	 *
 	 * @return R
 	 */
 	@SysLog("同步参数")

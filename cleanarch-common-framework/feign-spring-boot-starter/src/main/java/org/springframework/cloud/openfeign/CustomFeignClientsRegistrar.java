@@ -1,4 +1,5 @@
 package org.springframework.cloud.openfeign;
+
 import com.github.jgzl.common.feign.FeignAutoConfiguration;
 import lombok.Getter;
 import org.springframework.beans.factory.BeanClassLoaderAware;
@@ -16,6 +17,7 @@ import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
+
 import java.util.List;
 import java.util.Map;
 
@@ -78,8 +80,7 @@ public class CustomFeignClientsRegistrar
 					String contextId = getContextId(attributes);
 					aliasBuilder.append(contextId);
 					definition.addPropertyValue("contextId", contextId);
-				}
-				else {
+				} else {
 					aliasBuilder.append(name);
 				}
 
@@ -105,11 +106,10 @@ public class CustomFeignClientsRegistrar
 				}
 
 				BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, className,
-						new String[] { alias });
+						new String[]{alias});
 				BeanDefinitionReaderUtils.registerBeanDefinition(holder, registry);
 
-			}
-			catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
@@ -118,6 +118,7 @@ public class CustomFeignClientsRegistrar
 	/**
 	 * Return the class used by {@link SpringFactoriesLoader} to load configuration
 	 * candidates.
+	 *
 	 * @return the factory class
 	 */
 	private Class<?> getSpringFactoriesLoaderFactoryClass() {

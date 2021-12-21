@@ -22,6 +22,7 @@ public class RedisController {
 
 	/**
 	 * 查询redis信息
+	 *
 	 * @return
 	 */
 	@GetMapping("/info")

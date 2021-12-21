@@ -8,17 +8,17 @@ package com.github.jgzl.common.core.model.enums;
  */
 public interface IntEnum {
 
-    /**
-     * type
-     *
-     * @return type
-     */
-    public Integer type();
+	/**
+	 * type
+	 *
+	 * @return type
+	 */
+    Integer type();
 
-    /**
-     * 描述
-     *
-     * @return desc
-     */
-    public String desc();
+	/**
+	 * 描述
+	 *
+	 * @return desc
+	 */
+    String desc();
 }

@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.mapper;
 
-import com.github.jgzl.infra.upms.api.entity.SysMenu;
 import com.github.jgzl.common.data.datascope.ExtendBaseMapper;
+import com.github.jgzl.infra.upms.api.entity.SysMenu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -19,6 +19,7 @@ public interface SysMenuMapper extends ExtendBaseMapper<SysMenu> {
 
 	/**
 	 * 通过角色编号查询菜单
+	 *
 	 * @param roleId 角色ID
 	 * @return
 	 */
@@ -26,6 +27,7 @@ public interface SysMenuMapper extends ExtendBaseMapper<SysMenu> {
 
 	/**
 	 * 通过角色ID查询权限
+	 *
 	 * @param roleIds Ids
 	 * @return
 	 */

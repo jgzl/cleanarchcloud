@@ -1,5 +1,5 @@
 package com.github.jgzl.application.controller;
-import java.security.Principal;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
+
 /**
  * 管理成员
+ *
  * @author lihaifeng
  * @date 2020/1/27
  * demo controller
@@ -20,6 +23,7 @@ public class MemberController {
 
 	/**
 	 * 跳转列表
+	 *
 	 * @return
 	 */
 	@GetMapping("/list")
@@ -29,6 +33,7 @@ public class MemberController {
 
 	/**
 	 * 登录用户信息
+	 *
 	 * @param principal
 	 * @return
 	 */
@@ -40,6 +45,7 @@ public class MemberController {
 
 	/**
 	 * 登录用户信息
+	 *
 	 * @param authentication
 	 * @return
 	 */
@@ -51,6 +57,7 @@ public class MemberController {
 
 	/**
 	 * 添加成员
+	 *
 	 * @return
 	 */
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -62,6 +69,7 @@ public class MemberController {
 
 	/**
 	 * 成员详情
+	 *
 	 * @return
 	 */
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")

@@ -9,8 +9,8 @@ import com.github.jgzl.common.websocket.WebSocketManager;
  * @author lihaifeng
  */
 public class NoActionAction implements Action {
-    @Override
-    public void doMessage(WebSocketManager manager, JSONObject object) {
-        // do no thing
-    }
+	@Override
+	public void doMessage(WebSocketManager manager, JSONObject object) {
+		// do no thing
+	}
 }

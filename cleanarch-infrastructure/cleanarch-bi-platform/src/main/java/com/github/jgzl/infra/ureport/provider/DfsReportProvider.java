@@ -44,8 +44,7 @@ public class DfsReportProvider implements ReportProvider {
 	public void deleteReport(String file) {
 		try {
 			ossTemplate.removeObject(properties.getBucketName(), file);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("文件删除失败 ", e);
 		}
 	}
@@ -67,8 +66,7 @@ public class DfsReportProvider implements ReportProvider {
 			@Cleanup
 			InputStream inputStream = IOUtils.toInputStream(content);
 			ossTemplate.putObject(properties.getBucketName(), file, inputStream);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error("文件上传失败", e);
 		}
 	}

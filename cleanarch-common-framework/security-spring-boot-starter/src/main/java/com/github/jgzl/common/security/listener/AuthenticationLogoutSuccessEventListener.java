@@ -25,6 +25,7 @@ public class AuthenticationLogoutSuccessEventListener implements ApplicationList
 
 	/**
 	 * Handle an application event.
+	 *
 	 * @param event the event to respond to
 	 */
 	@Override

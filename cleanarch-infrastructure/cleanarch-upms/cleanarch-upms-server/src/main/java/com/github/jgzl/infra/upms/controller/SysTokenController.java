@@ -1,9 +1,9 @@
 package com.github.jgzl.infra.upms.controller;
 
-import com.github.jgzl.infra.upms.api.feign.RemoteTokenService;
 import com.github.jgzl.common.core.constant.SecurityConstants;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
+import com.github.jgzl.infra.upms.api.feign.RemoteTokenService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,6 +25,7 @@ public class SysTokenController {
 
 	/**
 	 * 分页token 信息
+	 *
 	 * @param params 参数集
 	 * @return token集合
 	 */
@@ -36,6 +37,7 @@ public class SysTokenController {
 
 	/**
 	 * 删除
+	 *
 	 * @param token getTokenPage
 	 * @return success/false
 	 */

@@ -34,8 +34,7 @@ public class DynamicNameAspect {
 		// 当配置的 excel 名称为空时，取当前时间
 		if (!StringUtils.hasText(name)) {
 			name = LocalDateTime.now().toString();
-		}
-		else {
+		} else {
 			name = processor.doDetermineName(point.getArgs(), ms.getMethod(), excel.name());
 		}
 

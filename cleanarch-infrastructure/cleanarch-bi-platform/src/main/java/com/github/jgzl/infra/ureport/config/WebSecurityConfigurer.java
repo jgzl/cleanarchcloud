@@ -1,4 +1,3 @@
-
 package com.github.jgzl.infra.ureport.config;
 
 import lombok.SneakyThrows;
@@ -35,6 +34,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * 不拦截静态资源
+	 *
 	 * @param web
 	 */
 	@Override
@@ -49,13 +49,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 		/**
 		 * Called when an authentication attempt fails.
-		 * @param request the request during which the authentication attempt occurred.
-		 * @param response the response.
+		 *
+		 * @param request   the request during which the authentication attempt occurred.
+		 * @param response  the response.
 		 * @param exception the exception which was thrown to reject the authentication
 		 */
 		@Override
 		public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-				AuthenticationException exception) throws IOException {
+											AuthenticationException exception) throws IOException {
 			response.sendRedirect("/login.html?error="
 					+ URLEncoder.encode(exception.getLocalizedMessage(), StandardCharsets.UTF_8.name()));
 		}

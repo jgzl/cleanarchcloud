@@ -2,12 +2,12 @@ package com.github.jgzl.infra.upms.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.jgzl.infra.upms.api.entity.SysTenant;
-import com.github.jgzl.infra.upms.service.SysTenantService;
 import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.common.log.annotation.SysLog;
 import com.github.jgzl.common.security.annotation.Inner;
+import com.github.jgzl.infra.upms.api.entity.SysTenant;
+import com.github.jgzl.infra.upms.service.SysTenantService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -34,7 +34,8 @@ public class SysTenantController {
 
 	/**
 	 * 分页查询
-	 * @param page 分页对象
+	 *
+	 * @param page      分页对象
 	 * @param sysTenant 租户
 	 * @return
 	 */
@@ -45,6 +46,7 @@ public class SysTenantController {
 
 	/**
 	 * 通过id查询租户
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -55,6 +57,7 @@ public class SysTenantController {
 
 	/**
 	 * 新增租户
+	 *
 	 * @param sysTenant 租户
 	 * @return R
 	 */
@@ -68,6 +71,7 @@ public class SysTenantController {
 
 	/**
 	 * 修改租户
+	 *
 	 * @param sysTenant 租户
 	 * @return R
 	 */
@@ -81,6 +85,7 @@ public class SysTenantController {
 
 	/**
 	 * 通过id删除租户
+	 *
 	 * @param id id
 	 * @return R
 	 */
@@ -94,6 +99,7 @@ public class SysTenantController {
 
 	/**
 	 * 查询全部有效的租户
+	 *
 	 * @return
 	 */
 	@Inner(value = false)

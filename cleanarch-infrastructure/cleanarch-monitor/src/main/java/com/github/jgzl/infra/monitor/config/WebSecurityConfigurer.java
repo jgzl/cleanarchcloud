@@ -48,23 +48,23 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 		successHandler.setDefaultTargetUrl(adminContextPath + "/");
 
 		http
-			.headers().frameOptions().disable()
-			.and().authorizeRequests()
-			.antMatchers(adminContextPath + "/assets/**"
-				,adminContextPath + "/login"
-				, adminContextPath + "/actuator/**"
-				, adminContextPath + "/instances/**"
-				, adminContextPath + "/redis/info"
-			).permitAll()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin().loginPage(adminContextPath + "/login")
-			.successHandler(successHandler).and()
-			.logout().logoutUrl(adminContextPath + "/logout")
-			.and()
-			.httpBasic().and()
-			.csrf()
-			.disable();
+				.headers().frameOptions().disable()
+				.and().authorizeRequests()
+				.antMatchers(adminContextPath + "/assets/**"
+						, adminContextPath + "/login"
+						, adminContextPath + "/actuator/**"
+						, adminContextPath + "/instances/**"
+						, adminContextPath + "/redis/info"
+				).permitAll()
+				.anyRequest().authenticated()
+				.and()
+				.formLogin().loginPage(adminContextPath + "/login")
+				.successHandler(successHandler).and()
+				.logout().logoutUrl(adminContextPath + "/logout")
+				.and()
+				.httpBasic().and()
+				.csrf()
+				.disable();
 		// @formatter:on
 	}
 

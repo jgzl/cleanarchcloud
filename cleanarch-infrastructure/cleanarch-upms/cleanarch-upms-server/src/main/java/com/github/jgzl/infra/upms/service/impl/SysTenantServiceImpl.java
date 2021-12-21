@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 /**
  * 租户
- *
+ * <p>
  * mybatis-plus 3.4.3.3 特殊处理 https://github.com/baomidou/mybatis-plus/pull/3592
  *
  * @author lihaifeng
@@ -62,6 +62,7 @@ public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant
 	 * 获取正常状态租户
 	 * <p>
 	 * 1. 状态正常 2. 开始时间小于等于当前时间 3. 结束时间大于等于当前时间
+	 *
 	 * @return
 	 */
 	@Override
@@ -76,6 +77,7 @@ public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant
 	 * <p>
 	 * 1. 保存租户 2. 初始化权限相关表 - sys_user - sys_role - sys_menu - sys_user_role -
 	 * sys_role_menu - sys_dict - sys_dict_item - sys_client_details - sys_public_params
+	 *
 	 * @param sysTenant 租户实体
 	 * @return
 	 */
@@ -173,7 +175,8 @@ public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant
 
 	/**
 	 * 保存新的租户菜单，维护成新的菜单
-	 * @param menuList 菜单列表
+	 *
+	 * @param menuList       菜单列表
 	 * @param originParentId 原始上级
 	 * @param targetParentId 目标上级
 	 */

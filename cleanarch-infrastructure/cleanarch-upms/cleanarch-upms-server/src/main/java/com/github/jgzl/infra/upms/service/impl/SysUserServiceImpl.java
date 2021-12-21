@@ -57,6 +57,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 保存用户信息
+	 *
 	 * @param userDto DTO 对象
 	 * @return success/fail
 	 */
@@ -79,6 +80,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 通过查用户的全部信息
+	 *
 	 * @param sysUser 用户
 	 * @return
 	 */
@@ -105,7 +107,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 分页查询用户信息（含有角色信息）
-	 * @param page 分页对象
+	 *
+	 * @param page    分页对象
 	 * @param userDTO 参数列表
 	 * @return
 	 */
@@ -116,6 +119,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 通过ID查询用户信息
+	 *
 	 * @param id 用户ID
 	 * @return 用户信息
 	 */
@@ -126,6 +130,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 删除用户
+	 *
 	 * @param sysUser 用户
 	 * @return Boolean
 	 */
@@ -182,6 +187,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 查询上级部门的用户信息
+	 *
 	 * @param username 用户名
 	 * @return R
 	 */
@@ -200,6 +206,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * 查询全部的用户
+	 *
 	 * @param userDTO 查询条件
 	 * @return list
 	 */
@@ -221,7 +228,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
 	/**
 	 * excel 导入用户, 插入正确的 错误的提示行号
-	 * @param excelVOList excel 列表数据
+	 *
+	 * @param excelVOList   excel 列表数据
 	 * @param bindingResult 错误数据
 	 * @return ok fail
 	 */
@@ -267,8 +275,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 			// 数据合法情况
 			if (CollUtil.isEmpty(errorMsg)) {
 				insertExcelUser(excel, deptOptional, roleCollList);
-			}
-			else {
+			} else {
 				// 数据不合法情况
 				errorMessageList.add(new ErrorMessage((long) (i + 2), errorMsg));
 			}

@@ -17,6 +17,7 @@ public class ExtendSecurityBeanDefinitionRegistrar implements ImportBeanDefiniti
 
 	/**
 	 * 根据注解值动态注入资源服务器的相关属性
+	 *
 	 * @param metadata 注解信息
 	 * @param registry 注册器
 	 */
@@ -33,8 +34,7 @@ public class ExtendSecurityBeanDefinitionRegistrar implements ImportBeanDefiniti
 				.get("isLocal");
 		if (isLocal) {
 			beanDefinition.setBeanClass(ExtendLocalResourceServerConfigurerAdapter.class);
-		}
-		else {
+		} else {
 			beanDefinition.setBeanClass(ExtendResourceServerConfigurerAdapter.class);
 		}
 

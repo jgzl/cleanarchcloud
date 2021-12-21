@@ -15,7 +15,7 @@ import java.util.List;
 public class DataScopeSqlInjector extends DefaultSqlInjector {
 
 	public List<AbstractMethod> getMethodList(Class<?> mapperClass) {
-		List<AbstractMethod> methodList = super.getMethodList(mapperClass,null);
+		List<AbstractMethod> methodList = super.getMethodList(mapperClass, null);
 		methodList.add(new SelectListByScope());
 		methodList.add(new SelectPageByScope());
 		methodList.add(new SelectCountByScope());

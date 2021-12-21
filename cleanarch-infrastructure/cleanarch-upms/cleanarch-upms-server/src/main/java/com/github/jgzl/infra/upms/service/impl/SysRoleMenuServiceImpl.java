@@ -33,7 +33,7 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
 
 	/**
 	 * @param role
-	 * @param roleId 角色
+	 * @param roleId  角色
 	 * @param menuIds 菜单ID拼成的字符串，每个id之间根据逗号分隔
 	 * @return
 	 */

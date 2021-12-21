@@ -36,9 +36,10 @@ public class ExtendAuthenticationLogoutEventHandler implements AuthenticationLog
 	 * 处理登录成功方法
 	 * <p>
 	 * 获取到登录的authentication 对象
+	 *
 	 * @param authentication 登录对象
-	 * @param request 请求
-	 * @param response 返回
+	 * @param request        请求
+	 * @param response       返回
 	 */
 	@Async
 	@Override

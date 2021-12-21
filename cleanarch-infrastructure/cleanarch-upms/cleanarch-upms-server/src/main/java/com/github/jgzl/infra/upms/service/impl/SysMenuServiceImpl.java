@@ -6,15 +6,15 @@ import cn.hutool.core.lang.tree.TreeNode;
 import cn.hutool.core.lang.tree.TreeUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
+import com.github.jgzl.common.core.constant.CommonConstants;
+import com.github.jgzl.common.core.constant.enums.MenuTypeEnum;
+import com.github.jgzl.common.core.util.R;
 import com.github.jgzl.infra.upms.api.entity.SysMenu;
 import com.github.jgzl.infra.upms.api.entity.SysRoleMenu;
 import com.github.jgzl.infra.upms.mapper.SysMenuMapper;
 import com.github.jgzl.infra.upms.mapper.SysRoleMenuMapper;
 import com.github.jgzl.infra.upms.service.SysMenuService;
-import com.github.jgzl.common.core.constant.CacheConstants;
-import com.github.jgzl.common.core.constant.CommonConstants;
-import com.github.jgzl.common.core.constant.enums.MenuTypeEnum;
-import com.github.jgzl.common.core.util.R;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -73,7 +73,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
 	/**
 	 * 构建树查询 1. 不是懒加载情况，查询全部 2. 是懒加载，根据parentId 查询 2.1 父节点为空，则查询ID -1
-	 * @param lazy 是否是懒加载
+	 *
+	 * @param lazy     是否是懒加载
 	 * @param parentId 父节点ID
 	 * @return
 	 */
@@ -99,8 +100,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
 	/**
 	 * 查询菜单
-	 * @param all 全部菜单
-	 * @param type 类型
+	 *
+	 * @param all      全部菜单
+	 * @param type     类型
 	 * @param parentId 父节点ID
 	 * @return
 	 */
@@ -136,6 +138,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
 	/**
 	 * menu 类型断言
+	 *
 	 * @param type 类型
 	 * @return Predicate
 	 */

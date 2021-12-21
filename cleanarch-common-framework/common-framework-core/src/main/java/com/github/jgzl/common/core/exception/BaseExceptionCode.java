@@ -8,18 +8,18 @@ package com.github.jgzl.common.core.exception;
  */
 public interface BaseExceptionCode {
 
-    /**
-     * 异常编码
-     *
-     * @return code
-     */
-    int getCode();
+	/**
+	 * 异常编码
+	 *
+	 * @return code
+	 */
+	int getCode();
 
-    /**
-     * 异常消息
-     *
-     * @return 异常信息
-     */
-    String getMessage();
+	/**
+	 * 异常消息
+	 *
+	 * @return 异常信息
+	 */
+	String getMessage();
 
 }

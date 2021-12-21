@@ -26,6 +26,7 @@ public class ResponseExcelReturnValueHandler implements HandlerMethodReturnValue
 
 	/**
 	 * 只处理@ResponseExcel 声明的方法
+	 *
 	 * @param parameter 方法签名
 	 * @return 是否处理
 	 */
@@ -36,15 +37,16 @@ public class ResponseExcelReturnValueHandler implements HandlerMethodReturnValue
 
 	/**
 	 * 处理逻辑
-	 * @param o 返回参数
-	 * @param parameter 方法签名
-	 * @param mavContainer 上下文容器
+	 *
+	 * @param o                返回参数
+	 * @param parameter        方法签名
+	 * @param mavContainer     上下文容器
 	 * @param nativeWebRequest 上下文
 	 * @throws Exception 处理异常
 	 */
 	@Override
 	public void handleReturnValue(Object o, MethodParameter parameter, ModelAndViewContainer mavContainer,
-			NativeWebRequest nativeWebRequest) throws Exception {
+								  NativeWebRequest nativeWebRequest) throws Exception {
 		/* check */
 		HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
 		Assert.state(response != null, "No HttpServletResponse");

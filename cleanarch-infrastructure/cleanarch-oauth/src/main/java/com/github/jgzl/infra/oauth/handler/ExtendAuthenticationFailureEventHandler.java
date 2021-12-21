@@ -36,16 +36,17 @@ public class ExtendAuthenticationFailureEventHandler implements AuthenticationFa
 	/**
 	 * 异步处理，登录失败方法
 	 * <p>
+	 *
 	 * @param authenticationException 登录的authentication 对象
-	 * @param authentication 登录的authenticationException 对象
-	 * @param request 请求
-	 * @param response 响应
+	 * @param authentication          登录的authenticationException 对象
+	 * @param request                 请求
+	 * @param response                响应
 	 */
 	@Async
 	@Override
 	@SneakyThrows
 	public void handle(AuthenticationException authenticationException, Authentication authentication,
-			HttpServletRequest request, HttpServletResponse response) {
+					   HttpServletRequest request, HttpServletResponse response) {
 		String username = authentication.getName();
 		SysLogDTO sysLog = SysLogUtils.getSysLog(request, username);
 		sysLog.setTitle(username + "用户登录");

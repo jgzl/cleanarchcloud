@@ -56,7 +56,7 @@ public class ExcelWriteAddExecutor extends AbstractExcelWriteExecutor {
 	}
 
 	private void addOneRowOfDataToExcel(Object oneRowData, int n, int relativeRowIndex,
-			Map<Integer, Field> sortedAllFiledMap) {
+										Map<Integer, Field> sortedAllFiledMap) {
 		if (oneRowData == null) {
 			return;
 		}
@@ -65,8 +65,7 @@ public class ExcelWriteAddExecutor extends AbstractExcelWriteExecutor {
 		WriteHandlerUtils.afterRowCreate(writeContext, row, relativeRowIndex, Boolean.FALSE);
 		if (oneRowData instanceof List) {
 			addBasicTypeToExcel((List) oneRowData, row, relativeRowIndex);
-		}
-		else {
+		} else {
 			addJavaObjectToExcel(oneRowData, row, relativeRowIndex, sortedAllFiledMap);
 		}
 		WriteHandlerUtils.afterRowDispose(writeContext, row, relativeRowIndex, Boolean.FALSE);
@@ -101,7 +100,7 @@ public class ExcelWriteAddExecutor extends AbstractExcelWriteExecutor {
 	}
 
 	private void doAddBasicTypeToExcel(List<Object> oneRowData, Head head, Row row, int relativeRowIndex, int dataIndex,
-			int cellIndex) {
+									   int cellIndex) {
 		WriteHandlerUtils.beforeCellCreate(writeContext, row, head, cellIndex, relativeRowIndex, Boolean.FALSE);
 		Cell cell = WorkBookUtil.createCell(row, cellIndex);
 		WriteHandlerUtils.afterCellCreate(writeContext, cell, head, relativeRowIndex, Boolean.FALSE);
@@ -112,7 +111,7 @@ public class ExcelWriteAddExecutor extends AbstractExcelWriteExecutor {
 	}
 
 	private void addJavaObjectToExcel(Object oneRowData, Row row, int relativeRowIndex,
-			Map<Integer, Field> sortedAllFiledMap) {
+									  Map<Integer, Field> sortedAllFiledMap) {
 		WriteHolder currentWriteHolder = writeContext.currentWriteHolder();
 		BeanMap beanMap = BeanMap.create(oneRowData);
 		Set<String> beanMapHandledSet = new HashSet<String>();
@@ -174,9 +173,9 @@ public class ExcelWriteAddExecutor extends AbstractExcelWriteExecutor {
 		WriteHolder holder = writeContext.currentWriteHolder();
 		boolean needIgnore = (holder instanceof AbstractWriteHolder)
 				&& (!CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getExcludeColumnFiledNames())
-						|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getExcludeColumnIndexes())
-						|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getIncludeColumnFiledNames())
-						|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getIncludeColumnIndexes()));
+				|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getExcludeColumnIndexes())
+				|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getIncludeColumnFiledNames())
+				|| !CollectionUtils.isEmpty(((AbstractWriteHolder) holder).getIncludeColumnIndexes()));
 
 		ClassUtils.declaredFields(clazz, sortedAllFiledMap,
 				writeContext.writeWorkbookHolder().getWriteWorkbook().getConvertAllFiled(), needIgnore, holder);

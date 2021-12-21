@@ -3,10 +3,10 @@ package com.github.jgzl.common.excel.handler;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.converters.Converter;
 import com.alibaba.excel.write.metadata.WriteSheet;
-import com.github.jgzl.common.excel.enhance.WriterBuilderEnhancer;
 import com.github.jgzl.common.excel.annotation.ResponseExcel;
 import com.github.jgzl.common.excel.annotation.Sheet;
 import com.github.jgzl.common.excel.config.ExcelConfigProperties;
+import com.github.jgzl.common.excel.enhance.WriterBuilderEnhancer;
 import com.github.jgzl.common.excel.kit.ExcelException;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.ObjectProvider;
@@ -22,12 +22,13 @@ import java.util.List;
 public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
 
 	public ManySheetWriteHandler(ExcelConfigProperties configProperties,
-			ObjectProvider<List<Converter<?>>> converterProvider, WriterBuilderEnhancer excelWriterBuilderEnhance) {
+								 ObjectProvider<List<Converter<?>>> converterProvider, WriterBuilderEnhancer excelWriterBuilderEnhance) {
 		super(configProperties, converterProvider, excelWriterBuilderEnhance);
 	}
 
 	/**
 	 * 当且仅当List不为空且List中的元素也是List 才返回true
+	 *
 	 * @param obj 返回对象
 	 * @return
 	 */
@@ -36,8 +37,7 @@ public class ManySheetWriteHandler extends AbstractSheetWriteHandler {
 		if (obj instanceof List) {
 			List objList = (List) obj;
 			return !objList.isEmpty() && objList.get(0) instanceof List;
-		}
-		else {
+		} else {
 			throw new ExcelException("@ResponseExcel 返回值必须为List类型");
 		}
 	}

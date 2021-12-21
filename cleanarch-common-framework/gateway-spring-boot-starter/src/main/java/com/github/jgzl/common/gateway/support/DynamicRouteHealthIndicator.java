@@ -21,9 +21,9 @@ public class DynamicRouteHealthIndicator extends AbstractHealthIndicator {
 
 	@Override
 	protected void doHealthCheck(Health.Builder builder) {
-		if (redisson.getKeys().countExists(CacheConstants.ROUTE_KEY)>0) {
+		if (redisson.getKeys().countExists(CacheConstants.ROUTE_KEY) > 0) {
 			builder.up();
-		}else {
+		} else {
 			log.warn("动态路由监控检查失败，当前无路由配置");
 			builder.down();
 		}

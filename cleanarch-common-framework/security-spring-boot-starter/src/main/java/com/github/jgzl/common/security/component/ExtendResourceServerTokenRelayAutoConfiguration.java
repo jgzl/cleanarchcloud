@@ -1,4 +1,3 @@
-
 package com.github.jgzl.common.security.component;
 
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -32,7 +31,7 @@ public class ExtendResourceServerTokenRelayAutoConfiguration {
 		return new AccessTokenContextRelay(context);
 	}
 
-	@Target({ ElementType.TYPE, ElementType.METHOD })
+	@Target({ElementType.TYPE, ElementType.METHOD})
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Conditional(OAuth2OnClientInResourceServerCondition.class)

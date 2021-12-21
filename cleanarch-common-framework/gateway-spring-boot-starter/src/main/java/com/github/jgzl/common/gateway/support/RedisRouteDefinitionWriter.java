@@ -57,6 +57,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	 * 动态路由入口
 	 * <p>
 	 * 1. 先从内存中获取 2. 为空加载Redis中数据 3. 更新内存
+	 *
 	 * @return
 	 */
 	@Override
@@ -67,9 +68,9 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			return Flux.fromIterable(routeList);
 		}
 
-		Collection<String> values = redisson.<String,String>getMap(CacheConstants.ROUTE_KEY).values();
+		Collection<String> values = redisson.<String, String>getMap(CacheConstants.ROUTE_KEY).values();
 		log.debug("redis 中路由定义条数： {}， {}", values.size(), values);
-		List<RouteDefinitionVo> routeDefinitionList = values.stream().map(value-> JSONUtil.toBean(value,RouteDefinitionVo.class)).collect(Collectors.toList());
+		List<RouteDefinitionVo> routeDefinitionList = values.stream().map(value -> JSONUtil.toBean(value, RouteDefinitionVo.class)).collect(Collectors.toList());
 		RouteCacheHolder.setRouteList(routeDefinitionList);
 		return Flux.fromIterable(routeDefinitionList);
 	}

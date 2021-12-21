@@ -14,11 +14,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @since 2020/6/6
  */
 @Target({
-        METHOD,
-        FIELD,
-        ANNOTATION_TYPE,
-        CONSTRUCTOR,
-        PARAMETER
+		METHOD,
+		FIELD,
+		ANNOTATION_TYPE,
+		CONSTRUCTOR,
+		PARAMETER
 })
 @Retention(RUNTIME)
 @Documented
@@ -26,13 +26,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface DateTime {
 
 
-    String message() default "格式错误";
+	String message() default "格式错误";
 
-    String format() default "yyyy-MM-dd";
+	String format() default "yyyy-MM-dd";
 
-    Class<?>[] groups() default {};
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 
 
 }

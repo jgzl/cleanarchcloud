@@ -17,6 +17,7 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
 
 	/**
 	 * 通过ID删除客户端
+	 *
 	 * @param clientId
 	 * @return
 	 */
@@ -24,6 +25,7 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
 
 	/**
 	 * 根据客户端信息
+	 *
 	 * @param clientDetailsDTO
 	 * @return
 	 */
@@ -31,6 +33,7 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
 
 	/**
 	 * 添加客户端
+	 *
 	 * @param clientDetailsDTO
 	 * @return
 	 */
@@ -38,6 +41,7 @@ public interface SysOauthClientDetailsService extends IService<SysOauthClientDet
 
 	/**
 	 * 分页查询客户端信息
+	 *
 	 * @param page
 	 * @param query
 	 * @return

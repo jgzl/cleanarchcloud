@@ -24,6 +24,7 @@ public class SysRouteConfController {
 
 	/**
 	 * 获取当前定义的路由信息
+	 *
 	 * @return
 	 */
 	@GetMapping
@@ -33,6 +34,7 @@ public class SysRouteConfController {
 
 	/**
 	 * 修改路由
+	 *
 	 * @param routes 路由定义
 	 * @return
 	 */

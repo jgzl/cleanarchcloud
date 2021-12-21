@@ -15,6 +15,7 @@ public interface SysRouteConfService extends IService<SysRouteConf> {
 
 	/**
 	 * 更新路由信息
+	 *
 	 * @param routes 路由信息
 	 * @return
 	 */

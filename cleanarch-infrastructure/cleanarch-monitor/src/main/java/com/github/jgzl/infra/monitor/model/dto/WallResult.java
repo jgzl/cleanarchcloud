@@ -22,6 +22,42 @@ public class WallResult {
 	@JSONField(name = "Content")
 	private ContentBean Content = new ContentBean();
 
+	/**
+	 * 累加结果
+	 *
+	 * @param wallResult 需要累加的对象
+	 * @param sumResult  累加后的对象
+	 */
+	public void sum(WallResult wallResult, WallResult sumResult) {
+		sumResult.getContent()
+				.setCheckCount(sumResult.getContent().getCheckCount() + wallResult.getContent().getCheckCount());
+		sumResult.getContent().setHardCheckCount(
+				sumResult.getContent().getHardCheckCount() + wallResult.getContent().getHardCheckCount());
+		sumResult.getContent().setViolationCount(
+				sumResult.getContent().getViolationCount() + wallResult.getContent().getViolationCount());
+		sumResult.getContent().setViolationEffectRowCount(sumResult.getContent().getViolationEffectRowCount()
+				+ wallResult.getContent().getViolationEffectRowCount());
+		sumResult.getContent().setBlackListHitCount(
+				sumResult.getContent().getBlackListHitCount() + wallResult.getContent().getBlackListHitCount());
+		sumResult.getContent().setBlackListSize(
+				sumResult.getContent().getBlackListSize() + wallResult.getContent().getBlackListSize());
+		sumResult.getContent().setWhiteListHitCount(
+				sumResult.getContent().getWhiteListHitCount() + wallResult.getContent().getWhiteListHitCount());
+		sumResult.getContent().setWhiteListSize(
+				sumResult.getContent().getWhiteListSize() + wallResult.getContent().getWhiteListSize());
+		sumResult.getContent().setSyntaxErrorCount(
+				sumResult.getContent().getSyntaxErrorCount() + wallResult.getContent().getSyntaxErrorCount());
+
+		sumResult.getContent().getTables().addAll(wallResult.getContent().getTables() == null ? Collections.emptyList()
+				: wallResult.getContent().getTables());
+		sumResult.getContent().getFunctions().addAll(wallResult.getContent().getFunctions() == null
+				? Collections.emptyList() : wallResult.getContent().getFunctions());
+		sumResult.getContent().getBlackList().addAll(wallResult.getContent().getBlackList() == null
+				? Collections.emptyList() : wallResult.getContent().getBlackList());
+		sumResult.getContent().getWhiteList().addAll(wallResult.getContent().getWhiteList() == null
+				? Collections.emptyList() : wallResult.getContent().getWhiteList());
+	}
+
 	@NoArgsConstructor
 	@Data
 	public static class ContentBean {
@@ -113,41 +149,6 @@ public class WallResult {
 
 		}
 
-	}
-
-	/**
-	 * 累加结果
-	 * @param wallResult 需要累加的对象
-	 * @param sumResult 累加后的对象
-	 */
-	public void sum(WallResult wallResult, WallResult sumResult) {
-		sumResult.getContent()
-				.setCheckCount(sumResult.getContent().getCheckCount() + wallResult.getContent().getCheckCount());
-		sumResult.getContent().setHardCheckCount(
-				sumResult.getContent().getHardCheckCount() + wallResult.getContent().getHardCheckCount());
-		sumResult.getContent().setViolationCount(
-				sumResult.getContent().getViolationCount() + wallResult.getContent().getViolationCount());
-		sumResult.getContent().setViolationEffectRowCount(sumResult.getContent().getViolationEffectRowCount()
-				+ wallResult.getContent().getViolationEffectRowCount());
-		sumResult.getContent().setBlackListHitCount(
-				sumResult.getContent().getBlackListHitCount() + wallResult.getContent().getBlackListHitCount());
-		sumResult.getContent().setBlackListSize(
-				sumResult.getContent().getBlackListSize() + wallResult.getContent().getBlackListSize());
-		sumResult.getContent().setWhiteListHitCount(
-				sumResult.getContent().getWhiteListHitCount() + wallResult.getContent().getWhiteListHitCount());
-		sumResult.getContent().setWhiteListSize(
-				sumResult.getContent().getWhiteListSize() + wallResult.getContent().getWhiteListSize());
-		sumResult.getContent().setSyntaxErrorCount(
-				sumResult.getContent().getSyntaxErrorCount() + wallResult.getContent().getSyntaxErrorCount());
-
-		sumResult.getContent().getTables().addAll(wallResult.getContent().getTables() == null ? Collections.emptyList()
-				: wallResult.getContent().getTables());
-		sumResult.getContent().getFunctions().addAll(wallResult.getContent().getFunctions() == null
-				? Collections.emptyList() : wallResult.getContent().getFunctions());
-		sumResult.getContent().getBlackList().addAll(wallResult.getContent().getBlackList() == null
-				? Collections.emptyList() : wallResult.getContent().getBlackList());
-		sumResult.getContent().getWhiteList().addAll(wallResult.getContent().getWhiteList() == null
-				? Collections.emptyList() : wallResult.getContent().getWhiteList());
 	}
 
 }

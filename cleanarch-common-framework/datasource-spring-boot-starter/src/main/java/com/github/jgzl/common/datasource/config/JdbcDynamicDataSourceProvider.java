@@ -33,6 +33,7 @@ public class JdbcDynamicDataSourceProvider extends AbstractJdbcDataSourceProvide
 
 	/**
 	 * 执行语句获得数据源参数
+	 *
 	 * @param statement 语句
 	 * @return 数据源参数
 	 * @throws SQLException sql异常
@@ -54,15 +55,13 @@ public class JdbcDynamicDataSourceProvider extends AbstractJdbcDataSourceProvide
 			DsJdbcUrlEnum urlEnum = DsJdbcUrlEnum.get(dsType);
 			if (DsConfTypeEnum.JDBC.getType().equals(confType)) {
 				url = rs.getString(DataSourceConstants.DS_JDBC_URL);
-			}
-			else if (DsJdbcUrlEnum.MSSQL.getDbName().equals(dsType)) {
+			} else if (DsJdbcUrlEnum.MSSQL.getDbName().equals(dsType)) {
 				String host = rs.getString(DataSourceConstants.DS_HOST);
 				String port = rs.getString(DataSourceConstants.DS_PORT);
 				String dsName = rs.getString(DataSourceConstants.DS_NAME);
 				String instance = rs.getString(DataSourceConstants.DS_INSTANCE);
 				url = String.format(urlEnum.getUrl(), host, instance, port, dsName);
-			}
-			else {
+			} else {
 				String host = rs.getString(DataSourceConstants.DS_HOST);
 				String port = rs.getString(DataSourceConstants.DS_PORT);
 				String dsName = rs.getString(DataSourceConstants.DS_NAME);

@@ -18,8 +18,9 @@ public interface RemoteLogService {
 
 	/**
 	 * 保存日志
+	 *
 	 * @param sysLog 日志实体
-	 * @param from 是否内部调用
+	 * @param from   是否内部调用
 	 * @return succes、false
 	 */
 	@PostMapping("/log/save")

@@ -35,7 +35,7 @@ public class ClientDetailsInitRunner {
 
 	@Async
 	@Order
-	@EventListener({ WebServerInitializedEvent.class, ClientDetailsInitEvent.class })
+	@EventListener({WebServerInitializedEvent.class, ClientDetailsInitEvent.class})
 	public void initClientDetails() {
 		log.debug("初始化客户端信息开始 ");
 

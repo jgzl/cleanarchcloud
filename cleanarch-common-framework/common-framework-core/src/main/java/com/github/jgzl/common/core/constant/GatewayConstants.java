@@ -2,6 +2,7 @@ package com.github.jgzl.common.core.constant;
 
 /**
  * 网关常量
+ *
  * @author lihaifeng
  */
 public interface GatewayConstants {

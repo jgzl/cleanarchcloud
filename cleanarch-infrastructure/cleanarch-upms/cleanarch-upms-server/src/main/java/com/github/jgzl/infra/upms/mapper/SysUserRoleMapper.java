@@ -1,7 +1,7 @@
 package com.github.jgzl.infra.upms.mapper;
 
-import com.github.jgzl.infra.upms.api.entity.SysUserRole;
 import com.github.jgzl.common.data.datascope.ExtendBaseMapper;
+import com.github.jgzl.infra.upms.api.entity.SysUserRole;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,6 +18,7 @@ public interface SysUserRoleMapper extends ExtendBaseMapper<SysUserRole> {
 
 	/**
 	 * 根据用户Id删除该用户的角色关系
+	 *
 	 * @param userId 用户ID
 	 * @return boolean
 	 * @author 寻欢·李

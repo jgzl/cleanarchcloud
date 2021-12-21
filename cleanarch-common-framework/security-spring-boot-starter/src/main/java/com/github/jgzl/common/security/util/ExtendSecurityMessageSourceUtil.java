@@ -1,6 +1,8 @@
 package com.github.jgzl.common.security.util;
+
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+
 import java.util.Locale;
 
 /**

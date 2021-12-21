@@ -23,15 +23,15 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class ClassUtils {
 
+	private static final Map<Class, SoftReference<FieldCache>> FIELD_CACHE = new ConcurrentHashMap<Class, SoftReference<FieldCache>>();
+
 	static {
 		log.debug("======[ClassUtils] 修复版被加载了=======");
 	}
 
-	private static final Map<Class, SoftReference<FieldCache>> FIELD_CACHE = new ConcurrentHashMap<Class, SoftReference<FieldCache>>();
-
 	public static void declaredFields(Class clazz, Map<Integer, Field> sortedAllFiledMap,
-			Map<Integer, Field> indexFiledMap, Map<String, Field> ignoreMap, Boolean convertAllFiled,
-			Boolean needIgnore, Holder holder) {
+									  Map<Integer, Field> indexFiledMap, Map<String, Field> ignoreMap, Boolean convertAllFiled,
+									  Boolean needIgnore, Holder holder) {
 		FieldCache fieldCache = getFieldCache(clazz, convertAllFiled);
 		if (fieldCache == null) {
 			return;
@@ -68,8 +68,7 @@ public class ClassUtils {
 				}
 				tempIndexFildMap.remove(index);
 				ignoreNum++;
-			}
-			else if (field != null) {
+			} else if (field != null) {
 				int finalIndex = index - ignoreNum;
 				sortedAllFiledMap.put(finalIndex, field);
 			}
@@ -77,7 +76,7 @@ public class ClassUtils {
 	}
 
 	public static void declaredFields(Class clazz, Map<Integer, Field> sortedAllFiledMap, Boolean convertAllFiled,
-			Boolean needIgnore, WriteHolder writeHolder) {
+									  Boolean needIgnore, WriteHolder writeHolder) {
 		declaredFields(clazz, sortedAllFiledMap, null, null, convertAllFiled, needIgnore, writeHolder);
 	}
 
@@ -125,7 +124,7 @@ public class ClassUtils {
 	}
 
 	private static Map<Integer, Field> buildSortedAllFiledMap(Map<Integer, List<Field>> orderFiledMap,
-			Map<Integer, Field> indexFiledMap) {
+															  Map<Integer, Field> indexFiledMap) {
 
 		Map<Integer, Field> sortedAllFiledMap = new HashMap<Integer, Field>(
 				(orderFiledMap.size() + indexFiledMap.size()) * 4 / 3 + 1);
@@ -148,8 +147,8 @@ public class ClassUtils {
 	}
 
 	private static void declaredOneField(Field field, Map<Integer, List<Field>> orderFiledMap,
-			Map<Integer, Field> indexFiledMap, Map<String, Field> ignoreMap,
-			ExcelIgnoreUnannotated excelIgnoreUnannotated, Boolean convertAllFiled) {
+										 Map<Integer, Field> indexFiledMap, Map<String, Field> ignoreMap,
+										 ExcelIgnoreUnannotated excelIgnoreUnannotated, Boolean convertAllFiled) {
 		ExcelIgnore excelIgnore = field.getAnnotation(ExcelIgnore.class);
 		if (excelIgnore != null) {
 			ignoreMap.put(field.getName(), field);
@@ -191,14 +190,14 @@ public class ClassUtils {
 
 	private static class FieldCache {
 
-		private Map<Integer, Field> sortedAllFiledMap;
+		private final Map<Integer, Field> sortedAllFiledMap;
 
-		private Map<Integer, Field> indexFiledMap;
+		private final Map<Integer, Field> indexFiledMap;
 
-		private Map<String, Field> ignoreMap;
+		private final Map<String, Field> ignoreMap;
 
 		public FieldCache(Map<Integer, Field> sortedAllFiledMap, Map<Integer, Field> indexFiledMap,
-				Map<String, Field> ignoreMap) {
+						  Map<String, Field> ignoreMap) {
 			this.sortedAllFiledMap = sortedAllFiledMap;
 			this.indexFiledMap = indexFiledMap;
 			this.ignoreMap = ignoreMap;

@@ -30,8 +30,9 @@ public class GeneratorController {
 
 	/**
 	 * 列表
+	 *
 	 * @param tableName 参数集
-	 * @param dsName 数据源编号
+	 * @param dsName    数据源编号
 	 * @return 数据库表
 	 */
 	@GetMapping("/page")
@@ -41,6 +42,7 @@ public class GeneratorController {
 
 	/**
 	 * 预览代码
+	 *
 	 * @param genConfig 数据表配置
 	 * @return
 	 */
@@ -51,7 +53,8 @@ public class GeneratorController {
 
 	/**
 	 * 查询表的列信息
-	 * @param page 分页
+	 *
+	 * @param page      分页
 	 * @param genConfig 数据表配置
 	 * @return
 	 */
@@ -62,6 +65,7 @@ public class GeneratorController {
 
 	/**
 	 * 生成代码
+	 *
 	 * @param genConfig 数据表配置
 	 */
 	@SneakyThrows

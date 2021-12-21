@@ -45,11 +45,11 @@ import java.util.UUID;
 @Slf4j
 public class WriteContextImpl implements WriteContext {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(WriteContextImpl.class);
+
 	static {
 		log.debug("======[WriteContextImpl] 修复版被加载了=======");
 	}
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(WriteContextImpl.class);
 
 	/**
 	 * The Workbook currently written
@@ -87,8 +87,7 @@ public class WriteContextImpl implements WriteContext {
 		WriteHandlerUtils.beforeWorkbookCreate(this);
 		try {
 			WorkBookUtil.createWorkBook(writeWorkbookHolder);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new ExcelGenerateException("Create workbook failure", e);
 		}
 		WriteHandlerUtils.afterWorkbookCreate(this);
@@ -171,21 +170,18 @@ public class WriteContextImpl implements WriteContext {
 				// When the add default sort order of appearance
 				if (WriteTypeEnum.ADD.equals(writeType) && writeWorkbookHolder.getTempTemplateInputStream() == null) {
 					currentSheet = createSheet();
-				}
-				else {
+				} else {
 					currentSheet = writeWorkbookHolder.getWorkbook().getSheetAt(writeSheetHolder.getSheetNo());
 					writeSheetHolder.setCachedSheet(
 							writeWorkbookHolder.getCachedWorkbook().getSheetAt(writeSheetHolder.getSheetNo()));
 				}
-			}
-			else {
+			} else {
 				// sheet name must not null
 				currentSheet = writeWorkbookHolder.getWorkbook().getSheet(writeSheetHolder.getSheetName());
 				writeSheetHolder.setCachedSheet(
 						writeWorkbookHolder.getCachedWorkbook().getSheet(writeSheetHolder.getSheetName()));
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			currentSheet = createSheet();
 		}
 		if (currentSheet == null) {
@@ -225,7 +221,7 @@ public class WriteContextImpl implements WriteContext {
 			addMergedRegionToCurrentSheet(excelWriteHeadProperty, newRowIndex);
 		}
 		for (int relativeRowIndex = 0,
-				i = newRowIndex; i < excelWriteHeadProperty.getHeadRowNumber() + newRowIndex; i++, relativeRowIndex++) {
+			 i = newRowIndex; i < excelWriteHeadProperty.getHeadRowNumber() + newRowIndex; i++, relativeRowIndex++) {
 			WriteHandlerUtils.beforeRowCreate(this, newRowIndex, relativeRowIndex, Boolean.TRUE);
 			Row row = WorkBookUtil.createRow(writeSheetHolder.getSheet(), i);
 			WriteHandlerUtils.afterRowCreate(this, row, relativeRowIndex, Boolean.TRUE);
@@ -337,8 +333,7 @@ public class WriteContextImpl implements WriteContext {
 		if (writeExcel) {
 			try {
 				isOutputStreamEncrypt = doOutputStreamEncrypt07();
-			}
-			catch (Throwable t) {
+			} catch (Throwable t) {
 				throwable = t;
 			}
 		}
@@ -348,8 +343,7 @@ public class WriteContextImpl implements WriteContext {
 					writeWorkbookHolder.getWorkbook().write(writeWorkbookHolder.getOutputStream());
 				}
 				writeWorkbookHolder.getWorkbook().close();
-			}
-			catch (Throwable t) {
+			} catch (Throwable t) {
 				throwable = t;
 			}
 		}
@@ -358,23 +352,20 @@ public class WriteContextImpl implements WriteContext {
 			if (workbook instanceof SXSSFWorkbook) {
 				((SXSSFWorkbook) workbook).dispose();
 			}
-		}
-		catch (Throwable t) {
+		} catch (Throwable t) {
 			throwable = t;
 		}
 		try {
 			if (writeWorkbookHolder.getAutoCloseStream() && writeWorkbookHolder.getOutputStream() != null) {
 				writeWorkbookHolder.getOutputStream().close();
 			}
-		}
-		catch (Throwable t) {
+		} catch (Throwable t) {
 			throwable = t;
 		}
 		if (writeExcel && !isOutputStreamEncrypt) {
 			try {
 				doFileEncrypt07();
-			}
-			catch (Throwable t) {
+			} catch (Throwable t) {
 				throwable = t;
 			}
 		}
@@ -382,8 +373,7 @@ public class WriteContextImpl implements WriteContext {
 			if (writeWorkbookHolder.getTempTemplateInputStream() != null) {
 				writeWorkbookHolder.getTempTemplateInputStream().close();
 			}
-		}
-		catch (Throwable t) {
+		} catch (Throwable t) {
 			throwable = t;
 		}
 		clearEncrypt03();
@@ -440,17 +430,15 @@ public class WriteContextImpl implements WriteContext {
 		if (writeWorkbookHolder.getFile() != null) {
 			return false;
 		}
-		File tempXlsx = FileUtils.createTmpFile(UUID.randomUUID().toString() + ".xlsx");
+		File tempXlsx = FileUtils.createTmpFile(UUID.randomUUID() + ".xlsx");
 		FileOutputStream tempFileOutputStream = new FileOutputStream(tempXlsx);
 		try {
 			writeWorkbookHolder.getWorkbook().write(tempFileOutputStream);
-		}
-		finally {
+		} finally {
 			try {
 				writeWorkbookHolder.getWorkbook().close();
 				tempFileOutputStream.close();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				if (!tempXlsx.delete()) {
 					throw new ExcelGenerateException("Can not delete temp File!");
 				}
@@ -461,8 +449,7 @@ public class WriteContextImpl implements WriteContext {
 		try {
 			fileSystem = openFileSystemAndEncrypt(tempXlsx);
 			fileSystem.writeFilesystem(writeWorkbookHolder.getOutputStream());
-		}
-		finally {
+		} finally {
 			if (fileSystem != null) {
 				fileSystem.close();
 			}
@@ -490,8 +477,7 @@ public class WriteContextImpl implements WriteContext {
 			fileSystem = openFileSystemAndEncrypt(writeWorkbookHolder.getFile());
 			fileOutputStream = new FileOutputStream(writeWorkbookHolder.getFile());
 			fileSystem.writeFilesystem(fileOutputStream);
-		}
-		finally {
+		} finally {
 			if (fileOutputStream != null) {
 				fileOutputStream.close();
 			}
@@ -511,8 +497,7 @@ public class WriteContextImpl implements WriteContext {
 			opcPackage = OPCPackage.open(file, PackageAccess.READ_WRITE);
 			outputStream = encryptor.getDataStream(fileSystem);
 			opcPackage.save(outputStream);
-		}
-		finally {
+		} finally {
 			if (opcPackage != null) {
 				opcPackage.close();
 			}

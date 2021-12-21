@@ -31,6 +31,7 @@ public class SysDeptRelationServiceImpl extends ServiceImpl<SysDeptRelationMappe
 
 	/**
 	 * 维护部门关系
+	 *
 	 * @param sysDept 部门
 	 */
 	@Override
@@ -38,7 +39,7 @@ public class SysDeptRelationServiceImpl extends ServiceImpl<SysDeptRelationMappe
 	public void insertDeptRelation(SysDept sysDept) {
 		// 增加部门关系表
 		List<SysDeptRelation> relationList = sysDeptRelationMapper.selectList(
-				Wrappers.<SysDeptRelation>query().lambda().eq(SysDeptRelation::getDescendant, sysDept.getParentId()))
+						Wrappers.<SysDeptRelation>query().lambda().eq(SysDeptRelation::getDescendant, sysDept.getParentId()))
 				.stream().map(relation -> {
 					relation.setDescendant(sysDept.getDeptId());
 					return relation;
@@ -56,6 +57,7 @@ public class SysDeptRelationServiceImpl extends ServiceImpl<SysDeptRelationMappe
 
 	/**
 	 * 通过ID删除部门关系
+	 *
 	 * @param id
 	 */
 	@Override
@@ -65,6 +67,7 @@ public class SysDeptRelationServiceImpl extends ServiceImpl<SysDeptRelationMappe
 
 	/**
 	 * 更新部门关系
+	 *
 	 * @param relation
 	 */
 	@Override

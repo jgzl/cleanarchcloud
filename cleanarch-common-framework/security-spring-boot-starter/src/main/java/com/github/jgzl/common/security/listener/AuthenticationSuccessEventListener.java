@@ -24,6 +24,7 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
 
 	/**
 	 * Handle an application event.
+	 *
 	 * @param event the event to respond to
 	 */
 	@Override

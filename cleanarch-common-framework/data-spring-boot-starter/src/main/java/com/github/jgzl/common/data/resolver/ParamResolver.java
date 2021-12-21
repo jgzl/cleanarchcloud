@@ -18,7 +18,8 @@ public class ParamResolver {
 
 	/**
 	 * 根据key 查询value 配置
-	 * @param key key
+	 *
+	 * @param key        key
 	 * @param defaultVal 默认值
 	 * @return value
 	 */
@@ -28,7 +29,8 @@ public class ParamResolver {
 
 	/**
 	 * 根据key 查询value 配置
-	 * @param key key
+	 *
+	 * @param key        key
 	 * @param defaultVal 默认值
 	 * @return value
 	 */

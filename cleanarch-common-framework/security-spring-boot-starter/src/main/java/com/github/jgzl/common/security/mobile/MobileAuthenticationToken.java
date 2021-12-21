@@ -27,7 +27,7 @@ public class MobileAuthenticationToken extends AbstractAuthenticationToken {
 
 	@JsonCreator
 	public MobileAuthenticationToken(@JsonProperty("principal") Object principal,
-			@JsonProperty("authorities") Collection<? extends GrantedAuthority> authorities) {
+									 @JsonProperty("authorities") Collection<? extends GrantedAuthority> authorities) {
 		super(authorities);
 		this.principal = principal;
 		super.setAuthenticated(true);

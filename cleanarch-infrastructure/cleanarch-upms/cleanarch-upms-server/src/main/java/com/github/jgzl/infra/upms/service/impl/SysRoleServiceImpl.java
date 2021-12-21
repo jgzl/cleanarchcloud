@@ -2,13 +2,13 @@ package com.github.jgzl.infra.upms.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.jgzl.common.core.constant.CacheConstants;
 import com.github.jgzl.infra.upms.api.entity.SysRole;
 import com.github.jgzl.infra.upms.api.entity.SysRoleMenu;
 import com.github.jgzl.infra.upms.api.vo.RoleVO;
 import com.github.jgzl.infra.upms.mapper.SysRoleMapper;
 import com.github.jgzl.infra.upms.service.SysRoleMenuService;
 import com.github.jgzl.infra.upms.service.SysRoleService;
-import com.github.jgzl.common.core.constant.CacheConstants;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -32,6 +32,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
 	/**
 	 * 通过用户ID，查询角色信息
+	 *
 	 * @param userId
 	 * @return
 	 */
@@ -42,8 +43,9 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
 	/**
 	 * 根据角色ID 查询角色列表，注意缓存删除
+	 *
 	 * @param roleIdList 角色ID列表
-	 * @param key 缓存key
+	 * @param key        缓存key
 	 * @return
 	 */
 	@Override
@@ -54,6 +56,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
 	/**
 	 * 通过角色ID，删除角色,并清空角色菜单缓存
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -66,6 +69,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
 	/**
 	 * 根据角色菜单列表
+	 *
 	 * @param roleVo 角色&菜单列表
 	 * @return
 	 */

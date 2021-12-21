@@ -23,6 +23,7 @@ import java.lang.annotation.*;
 public @interface EnableResourceServerPlus {
 	/**
 	 * 是否开启本地模式
+	 *
 	 * @return true
 	 */
 	boolean isLocal() default true;

@@ -66,16 +66,14 @@ public class MobileAuthenticationFilter extends AbstractAuthenticationProcessing
 			logger.debug("Authentication success: " + authResult);
 			SecurityContextHolder.getContext().setAuthentication(authResult);
 
-		}
-		catch (Exception failed) {
+		} catch (Exception failed) {
 			SecurityContextHolder.clearContext();
 			logger.debug("Authentication request failed: " + failed);
 
 			try {
 				authenticationEntryPoint.commence(request, response,
 						new UsernameNotFoundException(failed.getMessage(), failed));
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				logger.error("authenticationEntryPoint handle error:{}", failed);
 			}
 		}

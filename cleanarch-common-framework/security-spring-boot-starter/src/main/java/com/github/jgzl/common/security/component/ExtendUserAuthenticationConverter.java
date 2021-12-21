@@ -37,6 +37,7 @@ public class ExtendUserAuthenticationConverter implements UserAuthenticationConv
 	/**
 	 * Extract information about the user to be used in an access token (i.e. for resource
 	 * servers).
+	 *
 	 * @param authentication an authentication representing a user
 	 * @return a map of key values representing the unique information about the user
 	 */
@@ -53,6 +54,7 @@ public class ExtendUserAuthenticationConverter implements UserAuthenticationConv
 	/**
 	 * Inverse of {@link #convertUserAuthentication(Authentication)}. Extracts an
 	 * Authentication from a map.
+	 *
 	 * @param responseMap a map of user information
 	 * @return an Authentication representing the user or null if there is none
 	 */
@@ -94,14 +96,14 @@ public class ExtendUserAuthenticationConverter implements UserAuthenticationConv
 			log.warn("请求头中的租户ID({})和用户的租户ID({})不一致", headerValue, userValue);
 			// TODO: 不要提示租户ID不对，可能被穷举
 			throw new ExtendOauth2Exception(ExtendSecurityMessageSourceUtil.getAccessor().getMessage(
-					"AbstractUserDetailsAuthenticationProvider.badTenantId", new Object[] { headerValue },
+					"AbstractUserDetailsAuthenticationProvider.badTenantId", new Object[]{headerValue},
 					"Bad tenant ID"));
 		}
 	}
 
 	private Optional<HttpServletRequest> getCurrentHttpRequest() {
 		return Optional.ofNullable(RequestContextHolder.getRequestAttributes()).filter(
-				requestAttributes -> ServletRequestAttributes.class.isAssignableFrom(requestAttributes.getClass()))
+						requestAttributes -> ServletRequestAttributes.class.isAssignableFrom(requestAttributes.getClass()))
 				.map(requestAttributes -> ((ServletRequestAttributes) requestAttributes))
 				.map(ServletRequestAttributes::getRequest);
 	}

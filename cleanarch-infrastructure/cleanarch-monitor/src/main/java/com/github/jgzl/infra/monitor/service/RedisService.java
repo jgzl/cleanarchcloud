@@ -12,6 +12,7 @@ public interface RedisService {
 
 	/**
 	 * 获取内存信息
+	 *
 	 * @return
 	 */
 	Map<String, Object> getInfo();

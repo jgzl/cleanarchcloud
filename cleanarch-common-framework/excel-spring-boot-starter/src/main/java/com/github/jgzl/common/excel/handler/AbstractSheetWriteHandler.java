@@ -7,13 +7,13 @@ import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder;
 import com.alibaba.excel.write.handler.WriteHandler;
 import com.alibaba.excel.write.metadata.WriteSheet;
-import com.github.jgzl.common.excel.enhance.WriterBuilderEnhancer;
 import com.github.jgzl.common.excel.annotation.ResponseExcel;
 import com.github.jgzl.common.excel.annotation.Sheet;
 import com.github.jgzl.common.excel.aop.DynamicNameAspect;
 import com.github.jgzl.common.excel.config.ExcelConfigProperties;
 import com.github.jgzl.common.excel.converters.LocalDateStringConverter;
 import com.github.jgzl.common.excel.converters.LocalDateTimeStringConverter;
+import com.github.jgzl.common.excel.enhance.WriterBuilderEnhancer;
 import com.github.jgzl.common.excel.head.HeadGenerator;
 import com.github.jgzl.common.excel.head.HeadMeta;
 import com.github.jgzl.common.excel.head.I18nHeaderCellWriteHandler;
@@ -93,7 +93,8 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 
 	/**
 	 * 通用的获取ExcelWriter方法
-	 * @param response HttpServletResponse
+	 *
+	 * @param response      HttpServletResponse
 	 * @param responseExcel ResponseExcel注解
 	 * @return ExcelWriter
 	 */
@@ -151,6 +152,7 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 
 	/**
 	 * 自定义注入转换器 如果有需要，子类自己重写
+	 *
 	 * @param builder ExcelWriterBuilder
 	 */
 	public void registerCustomConverter(ExcelWriterBuilder builder) {
@@ -159,14 +161,15 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 
 	/**
 	 * 获取 WriteSheet 对象
-	 * @param sheet sheet annotation info
-	 * @param dataClass 数据类型
-	 * @param template 模板
+	 *
+	 * @param sheet                 sheet annotation info
+	 * @param dataClass             数据类型
+	 * @param template              模板
 	 * @param bookHeadEnhancerClass 自定义头处理器
 	 * @return WriteSheet
 	 */
 	public WriteSheet sheet(Sheet sheet, Class<?> dataClass, String template,
-			Class<? extends HeadGenerator> bookHeadEnhancerClass) {
+							Class<? extends HeadGenerator> bookHeadEnhancerClass) {
 
 		// Sheet 编号和名称
 		Integer sheetNo = sheet.sheetNo() >= 0 ? sheet.sheetNo() : null;
@@ -180,15 +183,13 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 		Class<? extends HeadGenerator> headGenerateClass = null;
 		if (isNotInterface(sheet.headGenerateClass())) {
 			headGenerateClass = sheet.headGenerateClass();
-		}
-		else if (isNotInterface(bookHeadEnhancerClass)) {
+		} else if (isNotInterface(bookHeadEnhancerClass)) {
 			headGenerateClass = bookHeadEnhancerClass;
 		}
 		// 定义头信息增强则使用其生成头信息，否则使用 dataClass 来自动获取
 		if (headGenerateClass != null) {
 			fillCustomHeadInfo(dataClass, bookHeadEnhancerClass, writerSheetBuilder);
-		}
-		else if (dataClass != null) {
+		} else if (dataClass != null) {
 			writerSheetBuilder.head(dataClass);
 			if (sheet.excludes().length > 0) {
 				writerSheetBuilder.excludeColumnFiledNames(Arrays.asList(sheet.excludes()));
@@ -206,7 +207,7 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 	}
 
 	private void fillCustomHeadInfo(Class<?> dataClass, Class<? extends HeadGenerator> headEnhancerClass,
-			ExcelWriterSheetBuilder writerSheetBuilder) {
+									ExcelWriterSheetBuilder writerSheetBuilder) {
 		HeadGenerator headGenerator = this.applicationContext.getBean(headEnhancerClass);
 		Assert.notNull(headGenerator, "The header generated bean does not exist.");
 		HeadMeta head = headGenerator.head(dataClass);
@@ -216,6 +217,7 @@ public abstract class AbstractSheetWriteHandler implements SheetWriteHandler, Ap
 
 	/**
 	 * 是否为Null Head Generator
+	 *
 	 * @param headGeneratorClass
 	 * @return true 已指定 false 未指定(默认值)
 	 */
